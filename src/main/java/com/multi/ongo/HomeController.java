@@ -7,10 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	
-		@RequestMapping("/index")
+		@RequestMapping("/index22")
 		public ModelAndView main() {
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("index");
+			mav.setViewName("/member/login");
 			return mav;
 		}
 
