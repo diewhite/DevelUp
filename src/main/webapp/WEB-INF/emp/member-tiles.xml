@@ -10,6 +10,10 @@
  	 <definition name="emp/findid" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/emp/findID.jsp"></put-attribute>
  	</definition>
+ 	 <definition name="emp/pass" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/emp/findPass.jsp"></put-attribute>
+ 	</definition>
+ 	
  	 <definition name="emp/join1" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/emp/joinsStep1.jsp"></put-attribute>
  	</definition>

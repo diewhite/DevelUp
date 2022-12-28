@@ -2,6 +2,8 @@
 <html>
 <head> </head>
 <body>
+<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
+
 <!-- content -->
 <div id="contents">
   <!-- title -->
@@ -44,11 +46,10 @@
       </div>
       
     </div>
-  </div>
-</div>
-<!-- // content -->
+  </div><!-- // content -->
 
+<!-- Footer -->
 <jsp:include page="../include/footer.jsp"/>
-
+<!-- //Footer -->
 </body>
 </html>

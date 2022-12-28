@@ -336,10 +336,10 @@
                           <input type="checkbox" name="remember" id="remember" class="form-check-input">
                           <label for="remember" class="form-check-label"><span class="checkbox"></span>아이디저장</label>
                         </div><li>
-                        <button onclick="location.href='/ongo/emp/login.do'" type="submit" class="btn btn-primary">로그인</button>
+                        <button onclick="location.href='/ongo/emp/login.do'" type="button" class="btn btn-primary">로그인</button>
                         <div class="text-center login_bottom">
-                          <span><a href="emp/findid.do">아이디찾기</a></span>
-                          <span><a href="emp/findpass.do">비밀번호찾기</a></span>
+                          <span><a href="/ongo/emp/findid.do">아이디찾기</a></span>
+                          <span><a href="/ongo/emp/findpass.do">비밀번호찾기</a></span>
                           <span><a href="/ongo/emp/join1.do" class="blue">회원가입</a></span>
                         </div>
                       </form>

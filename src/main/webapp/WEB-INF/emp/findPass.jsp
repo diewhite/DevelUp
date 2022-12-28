@@ -1,18 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-
-<!-- head 공통 타일즈 연결 -->
-<head>
-<tiles:insertAttribute name="top"></tiles:insertAttribute>
-</head>
-<!-- //head 공통 타일즈 연결 -->
-
+<html>
+<head> </head>
 <body>
-
-<!-- 메뉴 tiles 연결 -->
-<tiles:insertAttribute name="lnb"></tiles:insertAttribute>
-<!-- //메뉴 tiles 연결 -->
+<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 <!-- content -->
 <div id="contents">
@@ -66,9 +56,9 @@
 </div>
 <!-- // contents -->
 
-      <!-- Footer -->
-  <jsp:include page="../include/footer.jsp"/>
-      <!-- //Footer -->
+<!-- Footer -->
+<jsp:include page="../include/footer.jsp"/>
+ <!-- //Footer -->
  
   
 </body>

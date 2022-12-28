@@ -2,6 +2,7 @@
 <html>
 <head> </head>
 <body>
+<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. -->
 <!-- content -->
 <div id="contents">
   <!-- title -->

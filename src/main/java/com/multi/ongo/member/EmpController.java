@@ -20,11 +20,12 @@ public class EmpController {
 		  
 		
 		*/
-//		
+//		<!-- 소정 진행중 -->
+	
 		@RequestMapping(value="/emp/login",method = RequestMethod.GET)
 		public ModelAndView main() {
 		ModelAndView loginf = new ModelAndView();
-		loginf.setViewName("/emp/login");
+		loginf.setViewName("emp/login");
 		return loginf;
 		}
 		
@@ -32,6 +33,11 @@ public class EmpController {
 		public String findID() {
 			return "emp/findid";
 		}
+		@RequestMapping(value="/emp/findpass.do",method = RequestMethod.GET)
+		public String findpass() {
+			return "emp/pass";
+		}
+		
 		@RequestMapping(value="/emp/join1")
 		public String Auction() {
 			return "emp/join1";
