@@ -34,7 +34,7 @@
                 <input type="checkbox" name="remember" id="remember" class="form-check-input">
                 <label for="remember" class="form-check-label"><span class="checkbox"></span>아이디저장</label>
               </div>
-              <button onclick="location.href='/ongo/emp/login.do'" type="submit" class="btn btn-primary btn-full">로그인</button>
+              <button onclick="location.href='/ongo/index.do'" type="submit" class="btn btn-primary btn-full">로그인</button>
               <div class="text-center login_bottom">
                 <span><a href="#">아이디찾기</a></span>
                 <span><a href="#">비밀번호찾기</a></span>

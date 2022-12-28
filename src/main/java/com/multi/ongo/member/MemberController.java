@@ -55,6 +55,27 @@ public class MemberController {
 		}
 		 
 		 */
+		//계정관리
+		 @RequestMapping(value="member/memberboard")
+			public String member() {
+				return "member/memberboard";
+			}
+			
+			@RequestMapping(value="member/memberread")
+			public String memberr() {
+				return "member/memberread";
+			}
+					
+			@RequestMapping(value="member/memberupdate")
+			public String memberu() {
+				return "member/memberupdate";
+			}
+			@RequestMapping(value="member/memberwrite")
+			public String emberc() {
+				return "member/memberwrite";
+			}
+			
+		//서비스관리
 		 @RequestMapping(value="member/memberserviceboard")
 		public String memberservice() {
 			return "member/memberserviceboard";

@@ -23,7 +23,6 @@
  	 <definition name="member/join3" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/joinsStep3.jsp"></put-attribute>
  	</definition>
- 	
  	 <definition name="member/join4" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/joinsStep4.jsp"></put-attribute>
  	</definition>
