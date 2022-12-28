@@ -4,30 +4,30 @@
          
  <tiles-definitions>	
  	
- 	<definition name="member/login" extends="indexTmemberlate">
+ 	<definition name="member/login" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/login.jsp"></put-attribute>
  	</definition>
- 	 <definition name="member/findid" extends="indexTmemberlate">
+ 	 <definition name="member/findid" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/findID.jsp"></put-attribute>
  	</definition>
- 	 <definition name="member/pass" extends="indexTmemberlate">
+ 	 <definition name="member/pass" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/findPass.jsp"></put-attribute>
  	</definition>
  	
- 	 <definition name="member/join1" extends="indexTmemberlate">
+ 	 <definition name="member/join1" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/joinsStep1.jsp"></put-attribute>
  	</definition>
  	
- 	<definition name="member/memberserviceboard" extends="indexTmemberlate">
+ 	<definition name="member/memberserviceboard" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceBoard.jsp"></put-attribute>
  	</definition>
- 	 	<definition name="member/memberserviceread" extends="indexTmemberlate">
+ 	 	<definition name="member/memberserviceread" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceRead.jsp"></put-attribute>
  	</definition>
- 	<definition name="member/memberserviceupdate" extends="indexTmemberlate">
+ 	<definition name="member/memberserviceupdate" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceUpdate.jsp"></put-attribute>
  	</definition>
- 	<definition name="member/memberservicewrite" extends="indexTmemberlate">
+ 	<definition name="member/memberservicewrite" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceWrite.jsp"></put-attribute>
  	</definition>
  	
