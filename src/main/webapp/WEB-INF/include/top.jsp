@@ -246,9 +246,9 @@
                 <h2>관리자</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="/ongo/member/empserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">서비스관리</span></a>
+                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">서비스관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="/ongo/member/empserviceboard.do" >서비스관리</a></li>
+                      <li ><a href="/ongo/member/memberserviceboard.do" >서비스관리</a></li>
                     </ul>
                   </div>
                   <div class="sitemap_depth2">

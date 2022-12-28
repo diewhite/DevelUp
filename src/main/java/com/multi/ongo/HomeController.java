@@ -10,7 +10,7 @@ public class HomeController {
 		@RequestMapping("/index")
 		public ModelAndView main() {
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/member/login");
+			mav.setViewName("index");
 			return mav;
 		}
 
