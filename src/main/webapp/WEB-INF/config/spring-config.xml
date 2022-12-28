@@ -12,12 +12,14 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
+	<!-- ===================== 공통파일 관련설정============== -->
+	<!-- 	<resources mapping="/resources/**" location="/resources/" />  -->
+	<resources mapping="/images/**" location="/WEB-INF/static/images/" />
+	<resources mapping="/common/**" location="/WEB-INF/static/common/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!--===================== 일반jsp만 만들어내는 ViewResolver 등록 ==============-->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="prefix" value="/WEB-INF/" />
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2" />
 	</beans:bean>
