@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	
-		@RequestMapping("/index22")
+		@RequestMapping("/index")
 		public ModelAndView main() {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/member/login");
