@@ -1,6 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
-<head> </head>
+<head>
+
+<script>
+fnIdCheck
+function fnNext(){
+  const agree1 = document.getElementById('agree1').checked;
+  const agree2 = document.getElementById('agree2').checked;
+
+  if(agree1 && agree2){
+    location.href = '/ongo/member/join3.do';
+  }else{
+    toastr.warning("온고 회원약관 또는 개인정보 수집 이용약관이 동의되지 않았습니다.")
+  }
+
+}
+
+function fnChk(){
+  const chk = document.getElementById('remember');
+  const is_checked = chk.checked;
+
+  var checked = document.getElementById('remember').innerText = is_checked;
+
+  if(checked){
+    document.getElementById('agree1').checked = true;
+    document.getElementById('agree2').checked = true;
+  }else{
+    document.getElementById('noagree1').checked = true;
+    document.getElementById('noagree2').checked = true;
+  }
+}
+
+function fnAgree(){
+  const agree1 = document.getElementById('agree1').checked;
+  const agree2 = document.getElementById('agree2').checked;
+
+  const chk = document.getElementById('remember');
+  const is_checked = chk.checked;
+
+  if(agree1 && agree2){
+    document.getElementById('remember').checked = true;
+  }else{
+    document.getElementById('remember').checked = false;
+  }
+  
+}
+
+</script>
+ </head>
 <body>
 <!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. -->
 <!-- content -->
@@ -14,10 +61,11 @@
                   <p class="stepicon"></p>
                   <p class="steptt">약관동의</p>
               </li>
+              <!-- 
               <li>
                   <p class="stepicon"></p>
                   <p class="steptt">인증서 확인</p>
-              </li>
+              </li> -->
               <li>
                   <p class="stepicon"></p>
                   <p class="steptt">정보입력</p>
@@ -81,15 +129,15 @@
               <p class="highlight org-txt">* 필수입력사항</p>
           </div>
           <div class="overflow">
-            온고(이하 "온라인 고물상") 중고거래 업무와 관련하여, 신청(민원)인들의 개인정보를 중요시하며, 개인정보보호법을 준수하고 있습니다.
+            온고(이하 "온라인 고물상") 중고거래 업무와 관련하여, 신청인 들의 개인정보를 중요시하며, 개인정보보호법을 준수하고 있습니다.
             <br>
             <br>
             <p class="mb10"><strong>1. 수집 및 이용 목적</strong><br>
-            온라인 고물상 회원가입 및 민원신청</p>
+            온라인 고물상 회원가입 테스트 제반 서비스의 이용과 관련하여 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
             <p class="mb10"><strong>2. 수집 및 이용 항목</strong><br>
             (필수항목) 성명, 휴대전화번호, 전화번호, 이메일, 아이디, 비밀번호</p>
             <p class="mb10"><strong>3. 보유 및 이용 기간</strong><br>
-            수집 및 이용 동의일로부터 입주관리시스템 탈퇴 시 또는 입주계약 해지 시까지</p>
+            수집 및 이용 동의일로부터 탈퇴 시까지</p>
             - IP Address, 쿠키, 방문 일시, 서비스 이용기록, 시스템 로그 등</p>
             <br>
             <p>※ 만 14세미만 아동의 경우 회원가입을 하실 수 없습니다.</p>
@@ -110,7 +158,7 @@
           </div>
       </div>
       <div class="btn-area">
-          <button class="btn btn-primary btn-large" type="button" onclick="location.href='JoinsStep2.html'">동의합니다.</button>
+          <button class="btn btn-primary btn-large" type="button" onclick="fnNext()">동의합니다.</button>
           <button class="btn btn-outline-secondary btn-large" type="button" onclick="fnCancel()">동의하지 않습니다.</button>
       </div>
     </form>

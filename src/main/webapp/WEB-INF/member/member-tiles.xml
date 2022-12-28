@@ -17,6 +17,16 @@
  	 <definition name="member/join1" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/joinsStep1.jsp"></put-attribute>
  	</definition>
+ 	 <definition name="member/join2" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep2.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/join3" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep3.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	 <definition name="member/join4" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep4.jsp"></put-attribute>
+ 	</definition>
  	
  	<definition name="member/memberserviceboard" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceBoard.jsp"></put-attribute>
