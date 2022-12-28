@@ -21,7 +21,7 @@
                         <div class="login_section all">
                         <h3 class="text-center blue">간편 인증</h3>
                         <p class="text-center">본인명의로 등록된 간편 인증을 진행합니다.</p>
-                        <div class="text-center"><img src="images/idfind.png" alt=""></div>
+                        <div class="text-center"><img src="/ongo/images/idfind.png" alt=""></div>
                         <button type="button" class="btn btn-primary btn-full" onclick="fnCheck()">간편 인증</button>
                     </div>
                 </div>

@@ -19,7 +19,16 @@
  	</definition>
  	
  	<definition name="emp/empserviceboard" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/emp/ServiceBoard.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/emp/empServiceBoard.jsp"></put-attribute>
+ 	</definition>
+ 	 	<definition name="emp/empserviceread" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/emp/empServiceRead.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="emp/empserviceupdate" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/emp/empServiceUpdate.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="emp/empservicewrite" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/emp/empServiceWrite.jsp"></put-attribute>
  	</definition>
  	
  </tiles-definitions>

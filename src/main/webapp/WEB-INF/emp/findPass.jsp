@@ -21,7 +21,7 @@
                     <div class="login_section all">
                         <h3 class="text-center blue">간편 인증</h3>
                         <p class="text-center">본인명의로 등록된 간편 인증을 진행합니다.</p>
-                        <div class="text-center"><img src="images/idfind.png" alt=""></div>
+                        <div class="text-center"><img src="/ongo/images/idfind.png" alt=""></div>
                         <label for="inputUsrId" class="form-label">아이디</label>
                         <input type="text" id="inputUsrId" name="inputUsrId" class="form-control" title="아이디 입력" placeholder="아이디를 입력해주세요.">
                         <button type="button" class="btn btn-primary btn-full" onclick="fnCheck()">간편 인증</button>
@@ -38,7 +38,7 @@
               <div class="login_wrap">
                   <div class="login_section all">
                       <h3 class="text-center blue">비밀번호 변경</h3>
-                      <div class="text-center"><img src="images/joinsuccess.png" alt=""></div>
+                      <div class="text-center"><img src="/ongo/images/joinsuccess.png" alt=""></div>
                       <label for="USER_ID" class="form-label">아이디</label>
                        <input type="text" id="USER_ID" name="USER_ID" class="form-control" title="아이디 입력" disabled="">
                        <label for="ENPWD" class="form-label">비밀번호</label><br>

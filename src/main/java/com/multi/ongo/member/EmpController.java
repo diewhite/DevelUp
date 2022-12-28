@@ -33,7 +33,7 @@ public class EmpController {
 		public String findID() {
 			return "emp/findid";
 		}
-		@RequestMapping(value="/emp/findpass.do",method = RequestMethod.GET)
+		@RequestMapping(value="/emp/findpass",method = RequestMethod.GET)
 		public String findpass() {
 			return "emp/pass";
 		}
@@ -46,6 +46,19 @@ public class EmpController {
 		@RequestMapping(value="emp/empserviceboard")
 		public String empservice() {
 			return "emp/empserviceboard";
+		}
+		@RequestMapping(value="emp/empserviceread")
+		public String empservicer() {
+			return "emp/empserviceread";
+		}
+				
+		@RequestMapping(value="emp/empserviceupdate")
+		public String empserviceu() {
+			return "emp/empserviceupdate";
+		}
+		@RequestMapping(value="emp/empservicewrite")
+		public String empservicec() {
+			return "emp/empservicewrite";
 		}
 				
 		
