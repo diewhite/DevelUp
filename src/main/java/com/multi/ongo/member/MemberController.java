@@ -17,7 +17,7 @@ public class MemberController {
 //		}
 	
 	/*
-		  
+		  테스트
 		
 		*/
 //		<!-- 소정 진행중 -->
