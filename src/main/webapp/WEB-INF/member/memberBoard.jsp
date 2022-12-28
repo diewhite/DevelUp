@@ -17,12 +17,7 @@
         <!-- 게시판 -->
         <div class="container">
             <form id="searchForm" name="searchForm" >
-                <input type="hidden" name="countPerPage" id="countPerPage" value="10">
-                <input type="hidden" name="zon" id="zon" value="">
-
-                <!-- 현재 탭 표시 -->
-                <h2 class="visually-hidden">계정관리</h2>
-                <!-- //현재 탭 표시 -->
+             
 
                 <div class="board_list">
                     <div class="board_info d-flex">
