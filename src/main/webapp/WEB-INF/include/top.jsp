@@ -39,8 +39,8 @@
       <div id="gnb" class="d-flex justify-content-center">
         <ul class="dep1">
         
+        
           <li>
-          
              <a id="siTitle" href="/ongo/board/Auction.do" onmouseover="menuover(this);" ><span >경매</span></a>
             <div class="dep2_wrap ">
               <div class="dep2_left">
@@ -63,7 +63,8 @@
           </li>
 
           <li>
-            <a id="siTitle" href="#" onmouseover="menuover(this);" onclick="location.href='deal.html'"><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_Register" onmouseover="menuover(this);" ><span >거래</span></a>
+            <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
                 <span>거래</span>
