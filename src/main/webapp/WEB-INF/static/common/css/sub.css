@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+.auction-card{padding:30px;position: relative;border:1px solid #eee;}
+.auction-img-main{background-color: #eee;height:180px;}
+.auction-img-main ul li{width:100%;text-align:center;}
+.auction-img-main ul li img{height:180px;border:5px solid #FFF;}
+.thumbnail{margin-top: 20px}
+.thumbnail img{display: inline-block;width: 50px;height: 50px;border: 1px solid #eee;padding: 5px;cursor: pointer;border-radius: 4px}
+.thumbnail img:hover{border: 1px solid blue}
+.auction-label1{position: absolute;left: 76%;top: 3%;width: 72px;text-align: center;height: 25px;line-height: 8px;border-radius: 4px;font-size: 13px;
+display: flex;align-items: center;justify-content: center;color: #fff;background-color: var(--mint-color);}
+.auction-label2{position: absolute;left: 76%;top: 3%;width: 72px;text-align: center;height: 25px;line-height: 8px;border-radius: 4px;font-size: 13px;
+display: flex;align-items: center;justify-content: center;color: #fff;background-color: var(--green-color);}
+
+.deal-card{padding:30px;position: relative;border:1px solid #eee;}
+.deal-img-main{background-color: #eee;height:180px;}
+.deal-img-main ul li{width:100%;text-align:center;overflow: hidden;}
+.deal-img-main ul li img{height:180px;border:5px solid #FFF;}
+.deal-img-main ul li a:hover img{transform: scale(1.2)}
+.deal-label{position: absolute;left: 76%;top: 3%;width: 72px;text-align: center;height: 25px;line-height: 8px;border-radius: 4px;font-size: 13px;
+display: flex;align-items: center;justify-content: center;color: #fff;background-color:#000;z-index: 1;}
+.deal-label2{position: absolute;left: 76%;top: 3%;width: 72px;text-align: center;height: 25px;line-height: 8px;border-radius: 4px;font-size: 13px;
+display: flex;align-items: center;justify-content: center;color: #fff;background-color:rgb(32, 84, 161);z-index: 1;}
+@media (max-width: 1750px){
+  
+}
+@media (max-width: 1200px){
+    
+}
+
+@media (max-width: 768px){
+   
+}
+
+@media (max-width: 1080px){
+}
