@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class EmpController {
+public class MemberController {
 		
-//		@RequestMapping("/emp/login.do")
+//		@RequestMapping("/member/login.do")
 //		public ModelAndView login() {
 //			ModelAndView login = new ModelAndView();
 //			login.addObject("msg", "스프링컨트롤러에서 전달하는 메시지");
@@ -22,43 +22,43 @@ public class EmpController {
 		*/
 //		<!-- 소정 진행중 -->
 	
-		@RequestMapping(value="/emp/login",method = RequestMethod.GET)
+		@RequestMapping(value="/member/login",method = RequestMethod.GET)
 		public ModelAndView main() {
 		ModelAndView loginf = new ModelAndView();
-		loginf.setViewName("emp/login");
+		loginf.setViewName("member/login");
 		return loginf;
 		}
 		
-		@RequestMapping(value="/emp/findid",method = RequestMethod.GET)
+		@RequestMapping(value="/member/findid",method = RequestMethod.GET)
 		public String findID() {
-			return "emp/findid";
+			return "member/findid";
 		}
-		@RequestMapping(value="/emp/findpass",method = RequestMethod.GET)
+		@RequestMapping(value="/member/findpass",method = RequestMethod.GET)
 		public String findpass() {
-			return "emp/pass";
+			return "member/pass";
 		}
 		
-		@RequestMapping(value="/emp/join1")
+		@RequestMapping(value="/member/join1")
 		public String Auction() {
-			return "emp/join1";
+			return "member/join1";
 		}
 		
-		@RequestMapping(value="emp/empserviceboard")
+		@RequestMapping(value="member/empserviceboard")
 		public String empservice() {
-			return "emp/empserviceboard";
+			return "member/empserviceboard";
 		}
 		@RequestMapping(value="emp/empserviceread")
 		public String empservicer() {
-			return "emp/empserviceread";
+			return "member/empserviceread";
 		}
 				
-		@RequestMapping(value="emp/empserviceupdate")
+		@RequestMapping(value="member/empserviceupdate")
 		public String empserviceu() {
-			return "emp/empserviceupdate";
+			return "member/empserviceupdate";
 		}
 		@RequestMapping(value="emp/empservicewrite")
 		public String empservicec() {
-			return "emp/empservicewrite";
+			return "member/empservicewrite";
 		}
 				
 		

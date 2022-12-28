@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+         
+ <tiles-definitions>	
+ 	
+ 	<definition name="member/login" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/login.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/findid" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/findID.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/pass" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/findPass.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	 <definition name="member/join1" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep1.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	<definition name="member/memberserviceboard" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceBoard.jsp"></put-attribute>
+ 	</definition>
+ 	 	<definition name="member/memberserviceread" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceRead.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberserviceupdate" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceUpdate.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberservicewrite" extends="indexTmemberlate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceWrite.jsp"></put-attribute>
+ 	</definition>
+ 	
+ </tiles-definitions>
