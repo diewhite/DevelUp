@@ -9,8 +9,25 @@
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
  	
- 	<definition name="index" extends="indexTemplate">
+ 	<!-- 중고거래관련 -->
+ 	<definition name="dealBoard" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
+ 	<definition name="dealRegister" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_register.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	<!--  -->
+ 	
+ 	
+ 	
+ 	<definition name="index" extends="indexTemplate"></definition>
+ 	
+ 	<definition name="deal_Board" extends="dealBoard"></definition>
+ 	<definition name="deal_Register" extends="dealRegister"></definition>
  	
  	
  </tiles-definitions>

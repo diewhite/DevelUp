@@ -13,6 +13,7 @@ public class DealBoardDTO {
 	private String board_content; // 내용
 	private int hits; // 조회수
 	private Date write_date; //작성일
+	private int deal_number; // 거래번호
 	
 	
 	public DealBoardDTO() {
