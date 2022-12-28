@@ -62,7 +62,7 @@
 	<!-- mybatis의 핵심클래스(sql을 실행하기 위한 메소드를 제공) -->
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sqlSessionFactory"/>
-	</beans:bean>
+	</beans:bean> 
 	
 	<!-- =========================================== 파일업로드 ========================================================= -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
