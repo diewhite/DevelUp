@@ -12,6 +12,7 @@
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/bootstrap/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/bootstrap-icons/font/bootstrap-icons.css">
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/line-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="/ongo/common/css/toastr.min.css">
 <!-- common -->
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/font.css">
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/common.css">
@@ -21,6 +22,7 @@
 <!--jquery -->
 <script src="/ongo/common/js/jquery/jquery-3.3.1.min.js"></script>
 <script src="/ongo/common/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/ongo/common/js/bootstrap/toastr.min.js"></script>
 <!-- common -->
 <script src="/ongo/common/js/common.js"></script>
 

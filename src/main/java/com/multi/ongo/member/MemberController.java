@@ -7,21 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
-		
-//		@RequestMapping("/member/login.do")
-//		public ModelAndView login() {
-//			ModelAndView login = new ModelAndView();
-//			login.addObject("msg", "스프링컨트롤러에서 전달하는 메시지");
-//			login.setViewName("login");
-//			return login;
-//		}
-	
-	/*
-		  테스트
-		
-		*/
-//		<!-- 소정 진행중 -->
-	
 		@RequestMapping(value="/member/login",method = RequestMethod.GET)
 		public ModelAndView main() {
 		ModelAndView loginf = new ModelAndView();
@@ -39,27 +24,55 @@ public class MemberController {
 		}
 		
 		@RequestMapping(value="/member/join1")
-		public String Auction() {
+		public String join1() {
 			return "member/join1";
 		}
+		@RequestMapping(value="/member/join2")
+		public String join2() {
+			return "member/join2";
+		}
+		@RequestMapping(value="/member/join3")
+		public String join3() {
+			return "member/join3";
+		}
+		@RequestMapping(value="/member/join4")
+		public String join4() {
+			return "member/join4";
+		}
+		/*
+
+			
+		//서비스 겟방식으로 뷰 보기
+		@RequestMapping(value="member/memberserviceboard",method = RequestMethod.GET)
+		public String empservicewritePage() {
+			return "member/memberservicewrite";
+		}
+		//포스트방식으로 글 등록
+		@RequestMapping(value = "member/memberservicewrite",method = RequestMethod.POST)
+		public String write(MemberDTO board) {
+			//실제 db에 저장할때 호출되는 컨트롤러의 메소드
+			return "redirect:/member/memberserviceboard";
+		}
+		 
+		 */
+		 @RequestMapping(value="member/memberserviceboard")
+		public String memberservice() {
+			return "member/memberserviceboard";
+		}
 		
-		@RequestMapping(value="member/empserviceboard")
-		public String empservice() {
-			return "member/empserviceboard";
-		}
-		@RequestMapping(value="emp/empserviceread")
-		public String empservicer() {
-			return "member/empserviceread";
+		@RequestMapping(value="member/memberserviceread")
+		public String memberservicer() {
+			return "member/memberserviceread";
 		}
 				
-		@RequestMapping(value="member/empserviceupdate")
-		public String empserviceu() {
-			return "member/empserviceupdate";
+		@RequestMapping(value="member/memberserviceupdate")
+		public String memberserviceu() {
+			return "member/memberserviceupdate";
 		}
-		@RequestMapping(value="emp/empservicewrite")
+		@RequestMapping(value="member/memberservicewrite")
 		public String empservicec() {
-			return "member/empservicewrite";
+			return "member/memberservicewrite";
 		}
-				
+
 		
 }

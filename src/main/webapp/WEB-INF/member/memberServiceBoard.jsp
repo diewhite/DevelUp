@@ -9,7 +9,7 @@
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>공지사항</h1>
+                <h1>서비스관리</h1>
             </div>
         </div>
         <!-- //title -->
@@ -84,9 +84,9 @@
                             </thead>
                             <tbody id="ksicList">
                               <tr class="notice">
-                                <td data-before="번호"><div><img src="images/noti-icon.png" alt="공지"></div></td>
+                                <td data-before="번호"><div><img src="/ongo/images/noti-icon.png" alt="공지"></div></td>
                                 <td data-before="지역">서울</td>
-                                <td data-before="제목"><a href="#" onclick="location.href='boardRead.html'">경매진행성공</a></td>
+                                <td data-before="제목"><a href="#" onclick="location.href='/ongo/member/memberserviceread.do'">경매진행성공</a></td>
                                 <td data-before="담당자">유인선</td><td data-before="작성일">2022-11-15</td>
                                 <td data-before="파일"><i class="las la-file-alt"></i></td>
                                 <td data-before="조회">189</td>
@@ -123,7 +123,7 @@
                             </tbody>
                         </table>
                           <div class="text-right">
-                          <button type="button" class="btn btn-primary btn-large" onclick="location.href='boardWrite.html'">글쓰기</button>
+                          <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberservicewrite.do'">글쓰기</button>
                         </div>
 
                         <!-- 페이지네이션 -->

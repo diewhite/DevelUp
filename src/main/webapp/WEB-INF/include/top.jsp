@@ -128,7 +128,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="emp/empserviceboard" onmouseover="menuover(this);"><span >관리자</span></a>
+            <a id="siTitle" href="/ongo/member/memberserviceboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
             <div class="dep2_wrap">
               <div class="dep2_left">
                 <span>관리자메뉴</span>
@@ -137,13 +137,13 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">서비스관리</a></span>
                   <ul class="dep2_link">
-                    <li ><a href="emp/empserviceboard">서비스관리</a></li>
+                    <li ><a href="/ongo/member/memberserviceboard.do">서비스관리</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">계정관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='prepare.html'">계정관리</a></li>
+                    <li><a href="/ongo/member/memberboard.do">계정관리</a></li>
                   </ul>
                 </div>
               </div>
