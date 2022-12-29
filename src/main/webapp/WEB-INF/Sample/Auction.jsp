@@ -57,7 +57,6 @@
                 <div class="d-grid d-md-flex justify-content-md-end">
                    <div class="select">
                       <select class="form-select" title="50개 보기">
-                        <option value="">30개 보기</option>
                         <option value=" " selected>50개 보기</option>
                         <option value=" ">100개 보기</option>
                         <option value=" ">150개 보기</option>

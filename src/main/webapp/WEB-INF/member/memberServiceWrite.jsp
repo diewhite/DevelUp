@@ -69,7 +69,7 @@
   </div>
 	<div class="btn-area flex-row">
        <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/emp/empserviceboard.do'">글쓰기</button>
-        <button class="btn btn-success btn-large text-white" type="button" onclick="location.href='/ongo/emp/empserviceboard.do'">취소</button>
+        <button class="btn btn-outline-secondary btn-large" type="button" onclick="history.back()">취소</button>
       </div>
     </div><!-- // content -->
 

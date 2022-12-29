@@ -14,100 +14,115 @@
        </div>
        <!-- //title -->
 
-    
-           <form id="searchForm" name="searchForm" >
-            
+  <!-- container -->
+  <div class="container"> 
+         
 
                <div class="board_list">
                    <div class="board_info d-flex">
                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
                        </div>
-                       <div class="form_box">
-
-                           <fieldset>
-                               <legend class="visually-hidden">검색</legend>
-                               <div class="input-group">
-                                   <div class="select">
-                                       <label class="visually-hidden" for="innoSelect">소속지구</label>
-                                       <select class="form-select" id="ZON_SEQ" title="지역선택" name="ZON_SEQ">
-                                         <option value="">지역선택</option>
-                                          <option value="">서울</option>
-                                           <option value="">대전</option>
-                                           <option value="">대구</option>
-                                       </select>
-                                   </div>
-                                   <div class="select">
-                                       <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                       <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                           <option value="ALL">전체</option>
-                                           <option value="NTC_MATT_TTL">제목</option>
-                                           <option value="NTC_MATT_CNTS">내용</option>
-                                           <option value="EMP_NM">작성자</option>
-                                       </select>
-                                   </div>
-                                   <input type="text" class="form-control" name="SCH_KEY_WORD" id="SCH_KEY_WORD" title="검색어 입력" placeholder="검색어를 입력하세요." onkeyup="enterkey()">
-                                   <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
-                               </div>
-                           </fieldset>
-
-                       </div>
+                      <div class="d-grid d-md-flex justify-content-md-end">
+                       <button class="btn btn-outline-primary me-md-2" type="button"">권한적용</button>
+                      <button class="btn btn-outline-danger me-md-2" type="button"">회원삭제</button>
+                    <button class="btn btn-outline-success me-md-2" type="button"><i class="las la-file-excel"></i> 엑셀</button>
+               		 </div>
+                   </div>
                    </div>
                    <div class="board">
                        <table class="table">
                            <caption>게시판 목록</caption>
                            <colgroup>
-                              
+                              <col width="5%">
+                              <col width="6%">
+                               <col width="6%">
+                                <col width="6%">
+                               <col width="20%">
+                               <col width="*">
+                               <col width="*">
+                               <col width="9%">
+                               <col width="10%">
+                               <col width="5%">
                            </colgroup>
                            <thead>
                                <tr> 
+                              	<th><input type="checkbox" name=" "  class="form-check-input" onclick="fnChk()"></th>
+                                   <th scope="col">회원번호</th>
                                    <th scope="col">이름</th>
                                    <th scope="col">아이디</th>
-                                   <th scope="col">회원번호</th>
                                    <th scope="col">주소</th>
                                    <th scope="col">휴대폰번호</th>
                                    <th scope="col">이메일</th>
                                    <th scope="col">권한</th>
                                    <th scope="col">가입일</th>
-                                    <th scope="col">가입일</th>
+                                   <th scope="col">상태</th>
                                </tr>
                            </thead>
                            <tbody id="ksicList">
                              <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						          
+						            </label>
+						          </div>
+						        </td>
+						        <td data-before="회원번호">1</td>
                                <td data-before="이름">박소정</td>
-                               <td data-before="아이디">TEAM1</td>
-                               <td data-before="회원번호">1</td>
+                               <td data-before="아이디" >
+                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
+                               </td>
                                <td data-before="주소">서울특별시 강남구 삼성로111길</td>
                                <td data-before="휴대폰번호">010-1234-1234</td>
                                <td data-before="이메일">psjsub1@gmail.com</td>
                                <td data-before="권한">
                                	<div class="select">
-                                       <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                       <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                           <option value="">일반</option>
-                                           <option value="" selected>관리자</option>
-                                       </select>
-                                   </div>
+                                   <label class="visually-hidden" for="srchSelect">검색 구분</label>
+                                   <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
+                                       <option value="">일반</option>
+                                       <option value="" selected>관리자</option>
+                                   </select>
+                                </div>
                                 </td>
-                                <td data-before="가입일">22-12-19</td>
-                                 <td data-before="가입일">
-                                 <button type="button" class="board_label gray" title="버튼">삭제</button>
-                                 </td>
+                              <td data-before="가입일">22-12-19</td>
+                               <td data-before="가입일">가입</td>
                              </tr>
-                             <tr class="notice">
-                               <td data-before="번호">2</td>
-                               <td data-before="지역">대구</td>
-                               <td data-before="제목"><a href="#">마감안내</a></td>
-                               <td data-before="담당자">시스템관리자</td>
-                               <td data-before="작성일">2022-10-24</td>
-                               <td data-before="파일"></td>
-                               <td data-before="조회">323</td>
+                                <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						          
+						            </label>
+						          </div>
+						        </td>
+						        <td data-before="회원번호">1</td>
+                               <td data-before="이름">박소정</td>
+                               <td data-before="아이디" >
+                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
+                               </td>
+                               <td data-before="주소">서울특별시 강남구 삼성로111길</td>
+                               <td data-before="휴대폰번호">010-1234-1234</td>
+                               <td data-before="이메일">psjsub1@gmail.com</td>
+                               <td data-before="권한">
+                               	<div class="select">
+                                   <label class="visually-hidden" for="srchSelect">검색 구분</label>
+                                   <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
+                                       <option value="">일반</option>
+                                       <option value="">관리자</option>
+                                   </select>
+                                </div>
+                                </td>
+                              <td data-before="가입일">22-12-19</td>
+                               <td data-before="가입일">탈퇴</td>
                              </tr>
                             
                            </tbody>
                        </table>
                          <div class="text-right">
-                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberservicewrite.do'">글쓰기</button>
+                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberwrite.do'">사용자입력</button>
                        </div>
 
                        <!-- 페이지네이션 -->
@@ -138,12 +153,11 @@
                    <!-- 문의사항 -->
                    <div class="survey">
                        <ul class="survey_info d-flex dot_list">
-                           <li><strong>직거래 피해사례 주의</strong><span>안전한 거래를 위해서는 반드시 온고 매매보호서비스를 이용해 주시기 바랍니다.</span></li>
+                           <li><strong class=" ">주의</strong><span>함부로 회원 삭제 하지 마세요</span></li>
                        </ul>
                    </div>
                    <!-- //문의사항 -->
                </div>
-           </form>
            
  		</div><!-- // container-->
    </div><!-- // contents -->

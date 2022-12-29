@@ -7,6 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
+	
+		/*
 		@RequestMapping(value="/member/login",method = RequestMethod.GET)
 		public ModelAndView main() {
 		ModelAndView loginf = new ModelAndView();
@@ -14,6 +16,38 @@ public class MemberController {
 		return loginf;
 		}
 		
+		c 콜론 이게 jstl
+				<c:choose>
+					<c:when test="${user==null}">
+						<li style="margin-right: 20px; height: 70px"><a
+							href="/erp/emp/login.do"><span
+								class="glyphicon glyphicon-log-in"></span>Login</a></li>
+			</ul>
+			</c:when>
+			<c:otherwise>
+				<li><a href="/erp/emp/spring/logout"><span
+						class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+				</ul>
+				<span class="navbar-form pull-right"> <img
+					class="img-circle" style="width: 60px; height: 70px"
+					src="/erp/images/${user.profile_photo}" />
+				</span>
+			</c:otherwise>
+			
+		*/
+			//서비스 겟방식으로 로그인뷰 보기
+			@RequestMapping(value="member/login",method = RequestMethod.GET)
+			public String empservicewritePage() {
+				return "member/logout";
+			}
+			//포스트방식으로 글 등록
+			@RequestMapping(value = "member/logout",method = RequestMethod.POST)
+			public String write(MemberDTO board) {
+				//실제 db에 저장할때 호출되는 컨트롤러의 메소드
+				return "redirect:/index.do";
+			}
+			
+			
 		@RequestMapping(value="/member/findid",method = RequestMethod.GET)
 		public String findID() {
 			return "member/findid";

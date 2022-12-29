@@ -35,15 +35,6 @@
                                 <legend class="visually-hidden">검색</legend>
                                 <div class="input-group">
                                     <div class="select">
-                                        <label class="visually-hidden" for="innoSelect">소속지구</label>
-                                        <select class="form-select" id="ZON_SEQ" title="지역선택" name="ZON_SEQ">
-                                          <option value="">지역선택</option>
-                                           <option value="">서울</option>
-                                            <option value="">대전</option>
-                                            <option value="">대구</option>
-                                        </select>
-                                    </div>
-                                    <div class="select">
                                         <label class="visually-hidden" for="srchSelect">검색 구분</label>
                                         <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
                                             <option value="ALL">전체</option>

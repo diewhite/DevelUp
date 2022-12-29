@@ -13,8 +13,10 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
-          
+ 
+			
             <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
+              <li><a href="/ongo/member/logout"><i class="las la-unlock"></i>로그아웃</a></li>
             <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
 
           <li>
@@ -129,22 +131,23 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/member/memberserviceboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
+            <a id="siTitle" href="/ongo/member/memberboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
             <div class="dep2_wrap">
               <div class="dep2_left">
                 <span>관리자메뉴</span>
               </div>
               <div class="dep2_right" onmouseleave="menuout();">
+               <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#">계정관리</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="/ongo/member/memberboard.do">계정관리</a></li>
+                  </ul>
+                </div>
+                
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">서비스관리</a></span>
                   <ul class="dep2_link">
                     <li ><a href="/ongo/member/memberserviceboard.do">서비스관리</a></li>
-                  </ul>
-                </div>
-                <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#">계정관리</a></span>
-                  <ul class="dep2_link">
-                    <li><a href="/ongo/member/memberboard.do">계정관리</a></li>
                   </ul>
                 </div>
               </div>
@@ -247,17 +250,18 @@
                 <h2>관리자</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">서비스관리</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="/ongo/member/memberserviceboard.do" >서비스관리</a></li>
-                    </ul>
-                  </div>
-                  <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">계정관리</span></a>
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="/ongo/member/memberboard.do">계정관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
                       <li ><a href="#" >계정관리</a></li>
                     </ul>
                   </div>
+                  <!-- 
+                  <div class="sitemap_depth2">
+                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">서비스관리</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                      <li ><a href="/ongo/member/memberserviceboard.do" >서비스관리</a></li>
+                    </ul>
+                  </div> -->
                 </div>
               </div>
             </div>
