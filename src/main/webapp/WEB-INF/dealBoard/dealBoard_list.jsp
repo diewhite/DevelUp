@@ -62,16 +62,11 @@
 	</div>
   
   
-  
   <div class="btn-area">
        <button class="btn btn-primary btn-large" type="button" onclick="location.href='board.html'">글쓰기</button>
       </div>
     </div>
    
-
-
-
-
 
 
 <!-- Footer -->

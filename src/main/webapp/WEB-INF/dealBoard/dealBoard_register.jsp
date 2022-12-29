@@ -119,14 +119,6 @@
 							
 							
 							
-							
-							
-							
-							
-							
-							
-							
-							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">금액</label>
 								<div class="tbl-basic-td">
