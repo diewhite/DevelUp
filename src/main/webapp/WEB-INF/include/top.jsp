@@ -63,7 +63,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_Register" onmouseover="menuover(this);" ><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll.do" onmouseover="menuover(this);" ><span >거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">

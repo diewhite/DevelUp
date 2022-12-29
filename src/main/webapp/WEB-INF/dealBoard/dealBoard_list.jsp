@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head> </head>
 <body>
@@ -10,7 +11,7 @@
          <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>경매리스트</h1>
+                <h1>중고리스트</h1>
             </div>
         </div>
         <!-- //title -->
@@ -20,50 +21,37 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>구분</th>
 					<th>번호</th>
+					<th>구분</th>
+					<th>카테고리</th>
 					<th>상태</th>
 					<th>제목</th>
+					<th>가격</th>
 					<th>조회수</th>
 					<th>작성일</th>
-					<th>수정</th>
-					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%-- <c:forEach var = "member" items="${listall}">
+				<c:forEach var = "board" items="${listall}">
 						<tr>
-							<td>${member.no }</td>
-							<td><a href="/ongo/idRead.do?id=${member.id}&state=READ">${member.id}</a></td>
-							<td>${member.pass }</td>
-							<td>${member.name }</td>
-							<td>${member.tel }</td>
-							<td>${member.addr }</td>
-							<td>${member.email }</td>
-							<td>${member.sort }</td>
-							<td>${member.regdate}</td>
-							<td><a href="/ongo/idRead.do?state=UPDATE&id=${member.id}">수정</a></td>
-							<td><a href="/ongo/idDelete.do?id=${member.id}">삭제</a></td>
-						
+							<td>${board.deal_number }</td>
+							<td>${board.dealType}</td>
+							<td>${board.product_category }</td>
+							<td>${board.product_state }</td>
+							<td>${board.board_title }</td>							
+							<td>${board.product_price }</td>							
+							<td>${board.hits }</td>							
+							<td>${board.write_date }</td>
 						</tr>
-					</c:forEach> --%>
-					<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<tr>
+					</c:forEach>
+					
 			</tbody>
 		</table>
 	</div>
   
   
   <div class="btn-area">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='board.html'">글쓰기</button>
+       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_Register'"> 글쓰기</button>
       </div>
     </div>
    

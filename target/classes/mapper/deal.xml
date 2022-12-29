@@ -6,8 +6,17 @@
 	
 	
 	<!--중고거래_등록  -->
-	<select id="deal_write" parameterType="dealDTO">
+	<insert id="deal_write" parameterType="dealDTO">
 		insert into deal_table
-		values(#{id}, #{dealType}, #{product_category}, #{product_state}, #{product_price}, #{board_title}, #{product_name}, #{board_content}, #{hits}, sysdate, deal_no.nexval)
+		values(#{id}, #{dealType}, #{product_category}, 'ready', #{product_price}, #{board_title}, #{product_name}, #{board_content}, 0, sysdate, deal_no.nextval)
+	</insert>
+	
+	<!--중고거래_전체조회  -->
+	<select id="selectAll" resultType="dealDTO">
+		select * from deal_table
+		order by deal_number desc
 	</select>
+	
+	
+	
   </mapper>
