@@ -71,8 +71,9 @@
 						        </td>
 						        <td data-before="회원번호">1</td>
                                <td data-before="이름">박소정</td>
-                               <td data-before="아이디">TEAM1</td>
-                               
+                               <td data-before="아이디" >
+                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
+                               </td>
                                <td data-before="주소">서울특별시 강남구 삼성로111길</td>
                                <td data-before="휴대폰번호">010-1234-1234</td>
                                <td data-before="이메일">psjsub1@gmail.com</td>
@@ -99,8 +100,9 @@
 						        </td>
 						        <td data-before="회원번호">1</td>
                                <td data-before="이름">박소정</td>
-                               <td data-before="아이디">TEAM1</td>
-                               
+                               <td data-before="아이디" >
+                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
+                               </td>
                                <td data-before="주소">서울특별시 강남구 삼성로111길</td>
                                <td data-before="휴대폰번호">010-1234-1234</td>
                                <td data-before="이메일">psjsub1@gmail.com</td>

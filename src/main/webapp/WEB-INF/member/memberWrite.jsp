@@ -38,7 +38,7 @@ function selectChange(){
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>사용자입력</h1>
+                <h1>계정관리</h1>
             </div>
         </div>
         <!-- //title -->
@@ -49,15 +49,14 @@ function selectChange(){
       <input type="hidden" value=" ">
       <div class="cont-box-inner">
         <div class="title">
-          <h3 class="h4">개인정보</h3>
-          <p class="highlight org-txt">* 필수입력사항</p>
+          <h3 class="h4">신규계정추가</h3>
         </div>
         <div class="tbl grid-layout grid2">
           <div class="grid-item">
             <label for="USR_NM">성명<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                 <input class="grid-input" type="text"title="이름">
+                 <input class="grid-input" type="text" title="이름">
               </div>
             </div>
           </div>
@@ -67,8 +66,15 @@ function selectChange(){
             <div class="tbl-basic-td">
               <div class="input-wrap w30" id="select_target_1">
               <select class="form-select grid-input" title="휴대전화번호" >
-              <option value="">선택</option>
-              <option value="010">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option></select></div>
+	              <option value="">선택</option>
+	              <option value="010">010</option>
+	              <option value="011">011</option>
+	              <option value="016">016</option>
+	              <option value="017">017</option>
+	              <option value="018">018</option>
+	              <option value="019">019</option>
+              </select>
+              </div>
               -
               <div class="input-wrap w30">
                 <input class="grid-input" type="text" name=" " maxlength="4" title="휴대전화번호 앞자리 입력" >
@@ -157,7 +163,7 @@ function selectChange(){
     
   	</div>
 	<div class="btn-area flex-row">
-       <button class="btn btn-primary btn-large" type="button" onclick="history.forward()">등록</button>
+       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard.do'">등록</button>
         <button class="btn btn-outline-secondary btn-large" type="button"  onclick="history.back()">취소</button>
       </div>
     </div><!-- // content -->
