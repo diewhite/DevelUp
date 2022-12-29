@@ -25,6 +25,16 @@
  		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list.jsp"></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
+ 	<definition name="dealBoardRead" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_read.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="dealBoardUpdate" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_update.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
  	<!--  -->
  	
  	
@@ -34,6 +44,8 @@
  	<definition name="deal_Board" extends="dealBoard"></definition>
  	<definition name="deal_Register" extends="dealRegister"></definition>
  	<definition name="deal_listAll" extends="deallistAll"></definition>
+ 	<definition name="dealBoard_Read" extends="dealBoardRead"></definition>
+ 	<definition name="dealBoard_Update" extends="dealBoardUpdate"></definition>
  	
  	
  </tiles-definitions>

@@ -26,7 +26,7 @@
 
 		
 					<!-- 로그인시스템 생성전 임시필요 -->
-					<div class="cont-box-inner">
+			<!-- 		<div class="cont-box-inner">
 						<div class="tbl grid-layout grid2">
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">임시아이디(작성자)</label>
@@ -38,7 +38,7 @@
 								</div>
 							</div>
 							</div>
-					</div><!-- // 로그인시스템 생성전 임시필요 -->
+					</div> -->
 							
 					
 					
@@ -48,10 +48,7 @@
 								<label for="select_target_1">구분</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w20">
-										<select class="form-select grid-input" title="게시판" id="dealType" name="dealType">
-											<option value="중고" >중고</option><!--used  sharing-->
-											<option value="나눔">나눔</option>
-										</select>
+										${dealRead.dealType}
 									</div>
 								</div>
 							</div>
@@ -60,7 +57,8 @@
 								<label for="select_target_1" >상품카테고리</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w20">
-										<select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
+									${dealRead.product_category}
+										<!-- <select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
 											<option value="디지털&가전">디지털&가전</option>
 											<option value="가구&인테리어">가구&인테리어</option>
 											<option value="유아동">유아동</option>
@@ -75,7 +73,7 @@
 											<option value="반려동물용품">반려동물용품</option>
 											<option value="도서&티켓&음반">도서&티켓&음반</option>
 											<option value="기타">기타</option>
-										</select>
+										</select> -->
 									</div>
 								</div>
 							</div>
@@ -98,8 +96,9 @@
 								<label for="HOFS_DTADR">제목</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input class="grid-input" type="text" maxlength="500"
-											title="board_title" id="board_title" name="board_title">
+										${dealRead.board_title}
+										<!-- <input class="grid-input" type="text" maxlength="500"
+											title="board_title" id="board_title" name="board_title"> -->
 									</div>
 								</div>
 							</div>
@@ -108,8 +107,9 @@
 								<label for="HOFS_DTADR">상품명</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input class="grid-input" type="text" maxlength="50"
-											title="product_name" id="product_name" name="product_name">
+										${dealRead.product_name}
+										<!-- <input class="grid-input" type="text" maxlength="50"
+											title="product_name" id="product_name" name="product_name"> -->
 									</div>
 								</div>
 							</div>
@@ -121,8 +121,9 @@
 								<label for="HOFS_DTADR">금액</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w30 me-4">
-										<input class="grid-input" type="number" maxlength="50"
-											title="product_price" id="product_price" name="product_price">
+										${dealRead.product_price}
+										<!-- <input class="grid-input" type="number" maxlength="50"
+											title="product_price" id="product_price" name="product_price"> -->
 									</div>
 									<!--<div class="form-check">
 										<input type="checkbox" class="form-check-input" value=" ">
@@ -136,9 +137,10 @@
 								<label for="HOFS_INTR_MTRL_CNTS">내용</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<textarea class="grid-input" role="textbox"
+										${dealRead.board_content}
+										<!-- <textarea class="grid-input" role="textbox"
 											id="board_content" name="board_content"
-											title="board_content" maxlength="1000" rows="5"></textarea>
+											title="board_content" maxlength="1000" rows="5"></textarea> -->
 									</div>
 								</div>
 							</div>
@@ -155,9 +157,9 @@
 						</div>
 					</div>
 					
-					<div class="btn-area">
+					<!-- <div class="btn-area">
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
-					</div>
+					</div> -->
 					
 					
 					

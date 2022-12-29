@@ -8,7 +8,7 @@
 	<!--중고거래_등록  -->
 	<insert id="deal_write" parameterType="dealDTO">
 		insert into deal_table
-		values(#{id}, #{dealType}, #{product_category}, 'ready', #{product_price}, #{board_title}, #{product_name}, #{board_content}, 0, sysdate, deal_no.nextval)
+		values(#{id}, #{dealType}, #{product_category}, '판매중', #{product_price}, #{board_title}, #{product_name}, #{board_content}, 0, sysdate, deal_no.nextval)
 	</insert>
 	
 	<!--중고거래 게시글_전체조회  -->

@@ -28,8 +28,8 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	}
 
 	@Override
-	public DealBoard_DTO dealRead(int no) {
-		return dao.dealRead(no);
+	public DealBoard_DTO dealRead(int deal_number) {
+		return dao.dealRead(deal_number);
 	}
 
 }

@@ -33,8 +33,8 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 
 	//중고거래 게시글읽기
 	@Override
-	public DealBoard_DTO dealRead(int no) {
-		return sqlSession.selectOne("com.multi.ongo.deal.dealRead", no);
+	public DealBoard_DTO dealRead(int deal_number) {
+		return sqlSession.selectOne("com.multi.ongo.deal.dealRead", deal_number);
 	}
 	
 	

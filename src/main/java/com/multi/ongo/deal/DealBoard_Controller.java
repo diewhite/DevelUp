@@ -60,17 +60,18 @@ public class DealBoard_Controller {
 	
 	//중고거래게시글 읽기
 	@RequestMapping("dealRead.do")
-	public ModelAndView dealRead(int no, String state) {
-		DealBoard_DTO dealRead = service.dealRead(no);
+	public ModelAndView dealRead(int deal_number, String state) {
+		DealBoard_DTO dealRead = service.dealRead(deal_number);
 		String view = "";
-		if(state.equals("Read")) {
-			view ="dealRead_Page";
+		if(state.equals("READ")) {
+			view ="dealBoard_Read";
 		}else {
-			view ="dealUpdate_Page";
+			view ="dealBoard_Update";
 		}
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
-		System.out.println("찍먹no:" + no);
+		System.out.println("찍먹no:" + deal_number);
+		System.out.println("찍먹state:" + state);
 		return mav;
 	}
 	

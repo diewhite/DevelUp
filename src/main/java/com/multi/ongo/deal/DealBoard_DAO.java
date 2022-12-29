@@ -11,6 +11,6 @@ public interface DealBoard_DAO {
 	public List<DealBoard_DTO> boardlist();
 	
 	//중고거래 게시글읽기
-	public DealBoard_DTO dealRead(int no);
+	public DealBoard_DTO dealRead(int deal_number);
 
 }
