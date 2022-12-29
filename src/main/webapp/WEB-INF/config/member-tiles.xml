@@ -14,6 +14,7 @@
  		<put-attribute name="content" value="/WEB-INF/member/findPass.jsp"></put-attribute>
  	</definition>
  	
+<!-- 회원가입 -->
  	 <definition name="member/join1" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/joinsStep1.jsp"></put-attribute>
  	</definition>
@@ -27,6 +28,22 @@
  		<put-attribute name="content" value="/WEB-INF/member/joinsStep4.jsp"></put-attribute>
  	</definition>
  	
+ <!-- 계정관리-->
+ 	<definition name="member/memberboard" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberBoard.jsp"></put-attribute>
+ 	</definition>
+ 	 	<definition name="member/memberread" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberRead.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberupdate" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberUpdate.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberwrite" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberWrite.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	
+ <!-- 서비스관리 -->
  	<definition name="member/memberserviceboard" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceBoard.jsp"></put-attribute>
  	</definition>

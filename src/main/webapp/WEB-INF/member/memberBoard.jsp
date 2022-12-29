@@ -9,7 +9,7 @@
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h>계정관리</h1>
+                <h1>계정관리</h1>
             </div>
         </div>
         <!-- //title -->
@@ -58,17 +58,10 @@
                         <table class="table">
                             <caption>게시판 목록</caption>
                             <colgroup>
-                                <col style="width:10%">
-                                <col style="width:20%">
-                                <col style="width:60%">
-                                <col style="width:10%">
-                                <col style="width:20%">
-                                <col style="width:10%">
-                                <col style="width:10%">
+                               
                             </colgroup>
                             <thead>
                                 <tr> 
-
                                     <th scope="col">이름</th>
                                     <th scope="col">아이디</th>
                                     <th scope="col">회원번호</th>
@@ -77,16 +70,20 @@
                                     <th scope="col">이메일</th>
                                     <th scope="col">권한</th>
                                     <th scope="col">가입일</th>
+                                     <th scope="col">가입일</th>
                                 </tr>
                             </thead>
                             <tbody id="ksicList">
                               <tr class="notice">
-                                <td data-before="번호"><div><img src="/ongo/images/noti-icon.png" alt="공지"></div></td>
-                                <td data-before="지역">서울</td>
-                                <td data-before="제목"><a href="#" onclick="location.href='/ongo/member/memberserviceread.do'">경매진행성공</a></td>
-                                <td data-before="담당자">유인선</td><td data-before="작성일">2022-11-15</td>
-                                <td data-before="파일"><i class="las la-file-alt"></i></td>
-                                <td data-before="조회">189</td>
+                                <td data-before="이름">박소정</td>
+                                <td data-before="아이디">TEAM1</td>
+                                <td data-before="회원번호">1</td>
+                                <td data-before="주소">서울특별시 강남구 삼성로111길</td>
+                                <td data-before="휴대폰번호">010-1234-1234</td>
+                                <td data-before="이메일">psjsub1@gmail.com</td>
+                                <td data-before="권한">일반</td>
+                                 <td data-before="가입일">22-12-19</td>
+                                  <td data-before="가입일">삭제</td>
                               </tr>
                               <tr class="notice">
                                 <td data-before="번호">2</td>
@@ -97,26 +94,7 @@
                                 <td data-before="파일"></td>
                                 <td data-before="조회">323</td>
                               </tr>
-                              <tr class="notice">
-                                <td data-before="번호">2</td>
-                                <td data-before="지역">대구</td>
-                                <td data-before="제목"><a href="#">마감안내</a></td>
-                                <td data-before="담당자">시스템관리자</td>
-                                <td data-before="파일"><div>
-                                  <button type="button" class="board_label yellow" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지발송</button></div>
-                                </td>
-                                <td data-before="작성일">2022-10-24</td>
-                                <td data-before="조회">323</td>
-                              </tr>
-                              <tr class="notice">
-                                <td data-before="번호">1</td>
-                                <td data-before="지역">전주</td>
-                                <td data-before="제목"><a href="#">공지 및 신규 마감안내</a></td>
-                                <td data-before="담당자">시스템관리자</td>
-                                <td data-before="작성일">2022-10-24</td>
-                                <td data-before="파일"><i class="las la-file-alt"></i></td>
-                                <td data-before="조회">323</td>
-                              </tr>
+                             
                             </tbody>
                         </table>
                           <div class="text-right">
