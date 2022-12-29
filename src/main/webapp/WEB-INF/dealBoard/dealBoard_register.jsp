@@ -16,7 +16,7 @@
 
         <!-- 게시판 -->
         <div class="container">
-            <form id="searchForm" name="searchForm" >
+            <form id="searchForm" name="searchForm"  action="/ongo/deal_Write">
                 <input type="hidden" name="countPerPage" id="countPerPage" value="10">
                 <input type="hidden" name="zon" id="zon" value="">
 
@@ -115,9 +115,22 @@
 							</div>
 							
 							
+							<!-- 히든처리 -->
 							
+							<!--상품상태(거래대기,진행중,완료)  -->
+								<div class="input-wrap w100">
+										<input class="hidden" type="text" maxlength="50" value ="ready"
+											title="product_product_name" id="product_state" name="product_state">
+									</div>
+									
+							<!--조회수  -->
+									<div class="input-wrap w100">
+										<input class="hidden" type="text" maxlength="50" value ="0"
+											title="product_product_name" id="hits" name="hits">
+									</div>
+									
 							
-							
+							<!--  -->
 							
 							
 							

@@ -24,17 +24,17 @@ public class DealBoard_DTO {
 	public DealBoard_DTO(String id, String dealType, String product_category, String product_state, int product_price,
 			String board_title, String product_name, String board_content, int hits, Date write_date, int deal_number) {
 		super();
-		this.id = id;
-		this.dealType = dealType;
-		this.product_category = product_category;
-		this.product_state = product_state;
-		this.product_price = product_price;
-		this.board_title = board_title;
-		this.product_name = product_name;
-		this.board_content = board_content;
-		this.hits = hits;
-		this.write_date = write_date;
-		this.deal_number = deal_number;
+		this.id = id; //아이디
+		this.dealType = dealType; // 거래구분
+		this.product_category = product_category; // 상품카테고리
+		this.product_state = product_state; //상품상태(진행중등) 히든
+		this.product_price = product_price; //상품가격
+		this.board_title = board_title; // 게시글제목
+		this.product_name = product_name; //상품명
+		this.board_content = board_content; //게시글내용
+		this.hits = hits; // 조회수
+		this.write_date = write_date; //작성일 맵퍼에서
+		this.deal_number = deal_number; // 게시번호 맵퍼에서(시퀀스)
 	}
 
 

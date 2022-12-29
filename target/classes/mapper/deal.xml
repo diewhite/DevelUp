@@ -8,6 +8,6 @@
 	<!--중고거래_등록  -->
 	<select id="deal_write" parameterType="dealDTO">
 		insert into deal_table
-		values(#{id}, #{dealType}, #{product_category}, #{product_state}, #{product_price}, #{board_title}, #{product_name}, #{board_content}, sysdate, deal_no.nexval)
+		values(#{id}, #{dealType}, #{product_category}, #{product_state}, #{product_price}, #{board_title}, #{product_name}, #{board_content}, #{hits}, sysdate, deal_no.nexval)
 	</select>
   </mapper>

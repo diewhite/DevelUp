@@ -23,6 +23,8 @@ public class DealBoard_Controller {
 	}
 	
 	//게시글등록 config-view처리
+	
+	
 	@RequestMapping("deal_Write")
 	public String dealWrite(DealBoard_DTO dto) {
 		System.out.println("id : " + dto.getId());
