@@ -5,6 +5,44 @@
   <mapper namespace="com.multi.ongo.member">
 	<select id="test" resultType="member" parameterType="member">
 	</select>
+	<!-- psj
+C : 크리에이트- 만든다는 의미 (insert문)
+L : 리스트-전체목록뿌리기 (조건없는 select문)
+R : 리드-읽기 (select문) primary 키로 조건을 주는 경우
+U : 업데이트-수정(update문)
+D : 삭제 (delete문)
 	
+	 -->
+	 	<insert id="write" parameterType="dto">
+                insert into ongo 
+                values(ongo_no.nextval,#{id},#{pass},#{name},#{tel},#{addr},#{email},1,sysdate)
+        </insert>
+       
+        <select id="selectall" resultType="dto">
+                select * from ongo
+                order by no desc
+        </select>
+        
+        <select id="idRead" resultType="dto" parameterType="String">
+        	select * from ongo 
+        	where id=#{id}
+        </select>
+        
+        <delete id="idDelete" parameterType="String">
+        	delete from ongo where id = #{id}
+        </delete>
+        
+        <update id="idUpdate" parameterType="dto">
+        	update ongo
+        	set pass = #{pass}, name = #{name}, tel = #{tel}, addr = #{addr}, email = #{email}
+        	where id = #{id}
+        </update>
+        
+       
+       
+        <select id="login" resultType="dto" parameterType="dto">
+        	select * from ongo 
+        	where id = #{id} and pass = #{pass}
+        </select>
 	
   </mapper>
