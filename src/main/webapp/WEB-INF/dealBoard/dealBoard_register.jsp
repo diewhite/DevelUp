@@ -9,7 +9,7 @@
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>경매</h1>
+                <h1>중고</h1>
             </div>
         </div>
         <!-- //title -->
@@ -21,7 +21,7 @@
                 <input type="hidden" name="zon" id="zon" value="">
 
                 <!-- 현재 탭 표시 -->
-                <h2 class="visually-hidden">경매</h2>
+                <h2 class="visually-hidden">중고</h2>
                 <!-- //현재 탭 표시 -->
 
 		
@@ -99,7 +99,7 @@
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<input class="grid-input" type="text" maxlength="500"
-											title="타이틀" id="board_title" name="board_title">
+											title="board_title" id="board_title" name="board_title">
 									</div>
 								</div>
 							</div>
@@ -109,35 +109,20 @@
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<input class="grid-input" type="text" maxlength="50"
-											title="product_product_name" id="product_name" name="product_name">
+											title="product_name" id="product_name" name="product_name">
 									</div>
 								</div>
 							</div>
 							
 							
-							<!-- 히든처리 -->
 							
-							<!--상품상태(거래대기,진행중,완료)  -->
-								<div class="input-wrap w100">
-										<input class="hidden" type="text" maxlength="50" value ="ready"
-											title="product_product_name" id="product_state" name="product_state">
-									</div>
-									
-							<!--조회수  -->
-									<div class="input-wrap w100">
-										<input class="hidden" type="text" maxlength="50" value ="0"
-											title="product_product_name" id="hits" name="hits">
-									</div>
-									
-							
-							<!--  -->
 							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">금액</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w30 me-4">
 										<input class="grid-input" type="number" maxlength="50"
-											title="금액" id="product_price" name="product_price">
+											title="product_price" id="product_price" name="product_price">
 									</div>
 									<!--<div class="form-check">
 										<input type="checkbox" class="form-check-input" value=" ">
@@ -153,19 +138,19 @@
 									<div class="input-wrap w100">
 										<textarea class="grid-input" role="textbox"
 											id="board_content" name="board_content"
-											title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
+											title="board_content" maxlength="1000" rows="5"></textarea>
 									</div>
 								</div>
 							</div>
 
-							<div class="grid-item colspan2">
+						<!-- 	<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">첨부파일</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<input type="file" class="form-control" id="customFile" />
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 					</div>
@@ -181,7 +166,7 @@
 			</div>
 			<div class="btn-area">
 				<button class="btn btn-primary btn-large" type="button"
-					onclick="location.href='#'">중고 리스트</button>
+					onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
 			</div>
 		</div>
 
