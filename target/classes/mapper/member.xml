@@ -12,8 +12,7 @@ R : 리드-읽기 (select문) primary 키로 조건을 주는 경우
 U : 업데이트-수정(update문)
 D : 삭제 (delete문)
 	
-	 -->
-	 	<insert id="write" parameterType="dto">
+		<insert id="write" parameterType="dto">
                 insert into ongo 
                 values(ongo_no.nextval,#{id},#{pass},#{name},#{tel},#{addr},#{email},1,sysdate)
         </insert>
@@ -44,5 +43,7 @@ D : 삭제 (delete문)
         	select * from ongo 
         	where id = #{id} and pass = #{pass}
         </select>
+	 -->
+	 
 	
   </mapper>
