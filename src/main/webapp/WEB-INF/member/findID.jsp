@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
-<head> </head>
+<head>
+
+<style type="text/css">
+
+</style>
+
+ </head>
 <body>
 <!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
@@ -13,7 +19,7 @@
     </div>
     <!-- //title -->
 
-    <div class="login_container container" id="div1">
+  <div class="login_container container" id="div1">
         <div class="tab-content">
             <div class="tab-pane fade show active" id="normal" role="tabpanel" aria-labelledby="normal-tab">    
                 <h2 class="visually-hidden">일반회원</h2>       
@@ -43,8 +49,14 @@
           </div>
       </div>
   </div>
-</div>
-<!-- // contents -->
+  
+
+  
+  
+  
+  
+  
+</div><!-- // contents -->
 
 
 <!-- Footer -->
