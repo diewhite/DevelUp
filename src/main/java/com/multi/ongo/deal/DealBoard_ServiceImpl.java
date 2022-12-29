@@ -27,4 +27,9 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		return dao.boardlist();
 	}
 
+	@Override
+	public DealBoard_DTO dealRead(int no) {
+		return dao.dealRead(no);
+	}
+
 }

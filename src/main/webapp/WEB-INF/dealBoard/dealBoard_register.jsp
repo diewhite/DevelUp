@@ -49,7 +49,7 @@
 								<div class="tbl-basic-td">
 									<div class="input-wrap w20">
 										<select class="form-select grid-input" title="게시판" id="dealType" name="dealType">
-											<option value="used" >중고</option>
+											<option value="used" >중고</option><!--used  sharing-->
 											<option value="sharing">나눔</option>
 										</select>
 									</div>

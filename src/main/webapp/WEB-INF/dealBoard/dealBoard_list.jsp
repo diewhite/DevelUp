@@ -33,7 +33,8 @@
 			</thead>
 			<tbody>
 				<c:forEach var = "board" items="${listall}">
-						<tr>
+						
+						<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" >
 							<td>${board.deal_number }</td>
 							<td>${board.dealType}</td>
 							<td>${board.product_category }</td>
@@ -43,6 +44,7 @@
 							<td>${board.hits }</td>							
 							<td>${board.write_date }</td>
 						</tr>
+						
 					</c:forEach>
 					
 			</tbody>

@@ -24,9 +24,10 @@ public class DealBoard_Controller {
 		
 	}
 	
-	//게시글등록 config-view처리
+	//중고거래 등록페이지 config-view처리
 	
 	
+	// 중고거래 게시글등록
 	@RequestMapping("deal_Write.do")
 	public String dealWrite(DealBoard_DTO dto) {
 //		System.out.println("id : " + dto.getId());
@@ -46,18 +47,32 @@ public class DealBoard_Controller {
 	}
 	
 	
-	//게시글 전체리스트
+	//중고거래게시글 전체리스트
 	@RequestMapping("deal_listAll.do")
 	public ModelAndView listall() {
 		ModelAndView mav = new ModelAndView();
 		List<DealBoard_DTO> listall = service.boardlist();
-		System.out.println("listall 찍기체크1 : " + listall);
+		//System.out.println("listall 찍기체크1 : " + listall);
 		mav.addObject("listall",listall);
-		System.out.println("listall 찍기체크2 : " + listall);
+		//System.out.println("listall 찍기체크2 : " + listall);
 		return mav;
 	}
 	
-	
+	//중고거래게시글 읽기
+	@RequestMapping("dealRead.do")
+	public ModelAndView dealRead(int no, String state) {
+		DealBoard_DTO dealRead = service.dealRead(no);
+		String view = "";
+		if(state.equals("Read")) {
+			view ="dealRead_Page";
+		}else {
+			view ="dealUpdate_Page";
+		}
+		ModelAndView mav = new ModelAndView(view);
+		mav.addObject("dealRead",dealRead);
+		System.out.println("찍먹no:" + no);
+		return mav;
+	}
 	
 	
 	

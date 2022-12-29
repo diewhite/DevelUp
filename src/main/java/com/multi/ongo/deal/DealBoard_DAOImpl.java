@@ -29,4 +29,16 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	public List<DealBoard_DTO> boardlist() {
 		return sqlSession.selectList("com.multi.ongo.deal.selectAll");
 	}
+
+
+	//중고거래 게시글읽기
+	@Override
+	public DealBoard_DTO dealRead(int no) {
+		return sqlSession.selectOne("com.multi.ongo.deal.dealRead", no);
+	}
+	
+	
+	
+	
+	
 }

@@ -11,11 +11,21 @@
 		values(#{id}, #{dealType}, #{product_category}, 'ready', #{product_price}, #{board_title}, #{product_name}, #{board_content}, 0, sysdate, deal_no.nextval)
 	</insert>
 	
-	<!--중고거래_전체조회  -->
+	<!--중고거래 게시글_전체조회  -->
 	<select id="selectAll" resultType="dealDTO">
 		select * from deal_table
 		order by deal_number desc
 	</select>
+	
+	<!--중고거래 게시글_ 읽기-->
+	<select id="dealRead" resultType="dealDTO" parameterType="int">
+		select * from deal_table
+		where deal_number=#{deal_number}
+	</select>
+	
+	
+	
+	
 	
 	
 	
