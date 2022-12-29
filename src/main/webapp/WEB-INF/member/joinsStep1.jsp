@@ -157,7 +157,7 @@ function fnAgree(){
       </div>
       <div class="btn-area">
           <button class="btn btn-primary btn-large" type="button" onclick="fnNext()">동의합니다.</button>
-          <button class="btn btn-outline-secondary btn-large" type="button" onclick="fnCancel()">동의하지 않습니다.</button>
+          <button class="btn btn-outline-secondary btn-large" type="button" onclick="history.back()">동의하지 않습니다.</button>
       </div>
     </form>
   </div>
@@ -167,7 +167,6 @@ function fnAgree(){
       <!-- Footer -->
   <jsp:include page="../include/footer.jsp"/>
       <!-- //Footer -->
- 
   
 </body>
 </html>
