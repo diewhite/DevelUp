@@ -14,8 +14,8 @@
         </div>
         <!-- //title -->
 
-        <!-- container -->
-        <div class="container">
+  <!-- container -->
+  <div class="container">
     <form id="ef610102">
       <!-- 현재 탭 표시 -->
       <h2 class="visually-hidden">공지사항</h2>
@@ -66,7 +66,7 @@
       <div class="btn-area flex-row">
        <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/emp/empserviceboard.do'">목록</button>
         <button class="btn btn-success btn-large text-white" type="button" onclick="location.href='/ongo/emp/empserviceupdate.do'">수정</button>
-        <button class="btn btn-danger  btn-large" type="button" onclick="location.href='/ongo/emp/empservice.do'">삭제</button>
+        <button class="btn btn-outline-danger btn-large" type="button" onclick="location.href='/ongo/emp/empservice.do'">삭제</button>
       </div>
     </form>
   </div> <!-- // container-->

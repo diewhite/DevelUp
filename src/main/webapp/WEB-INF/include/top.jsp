@@ -13,8 +13,10 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
-          
+ 
+			
             <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
+              <li><a href="/ongo/member/logout"><i class="las la-unlock"></i>로그아웃</a></li>
             <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
 
           <li>

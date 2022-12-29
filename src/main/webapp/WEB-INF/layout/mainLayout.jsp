@@ -335,7 +335,8 @@
                         <div class="form-check">
                           <input type="checkbox" name="remember" id="remember" class="form-check-input">
                           <label for="remember" class="form-check-label"><span class="checkbox"></span>아이디저장</label>
-                        </div><li>
+                        </div>
+                        <li style="  list-style: none;">
                         <button onclick="location.href='/ongo/member/login.do'" type="button" class="btn btn-primary">로그인</button>
                         <div class="text-center login_bottom">
                           <span><a href="/ongo/member/findid.do">아이디찾기</a></span>

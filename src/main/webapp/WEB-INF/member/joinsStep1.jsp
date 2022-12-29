@@ -60,11 +60,10 @@ function fnAgree(){
                   <p class="stepicon"></p>
                   <p class="steptt">약관동의</p>
               </li>
-              <!-- 
               <li>
                   <p class="stepicon"></p>
                   <p class="steptt">인증서 확인</p>
-              </li> -->
+              </li>
               <li>
                   <p class="stepicon"></p>
                   <p class="steptt">정보입력</p>
