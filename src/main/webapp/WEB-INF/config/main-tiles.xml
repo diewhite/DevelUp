@@ -41,11 +41,11 @@
  	
  	<definition name="index" extends="indexTemplate"></definition>
  	
- 	<definition name="deal_Board" extends="dealBoard"></definition>
  	<definition name="deal_Register" extends="dealRegister"></definition>
+ 	<!-- <definition name="deal_Board" extends="dealBoard"></definition>
  	<definition name="deal_listAll" extends="deallistAll"></definition>
  	<definition name="dealBoard_Read" extends="dealBoardRead"></definition>
- 	<definition name="dealBoard_Update" extends="dealBoardUpdate"></definition>
+ 	<definition name="dealBoard_Update" extends="dealBoardUpdate"></definition> -->
  	
  	
  </tiles-definitions>

@@ -42,7 +42,7 @@ public class DealBoard_Controller {
 //		System.out.println("writeDate : " + dto.getWrite_date());
 //		System.out.println("deal_no : " + dto.getDeal_number());
 		service.writeProd(dto);
-		return "index";
+		return "redirect:deal_listAll.do";
 		
 		
 	}
@@ -51,7 +51,7 @@ public class DealBoard_Controller {
 	//중고거래게시글 전체리스트
 	@RequestMapping("deal_listAll.do")
 	public ModelAndView listall() {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("deallistAll");
 		List<DealBoard_DTO> listall = service.boardlist();
 		//System.out.println("listall 찍기체크1 : " + listall);
 		mav.addObject("listall",listall);
@@ -65,9 +65,9 @@ public class DealBoard_Controller {
 		DealBoard_DTO dealRead = service.dealRead(deal_number);
 		String view = "";
 		if(state.equals("READ")) {
-			view ="dealBoard_Read";
+			view ="dealBoardRead";
 		}else {
-			view ="dealBoard_Update";
+			view ="dealBoardUpdate";
 		}
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
