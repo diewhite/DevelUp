@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberController {
 	
 	
-		/*
+		/* 브랜치 테스트중
 		@RequestMapping(value="/member/login",method = RequestMethod.GET)
 		public ModelAndView main() {
 		ModelAndView loginf = new ModelAndView();
