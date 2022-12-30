@@ -2,6 +2,7 @@ package com.multi.ongo.deal;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,20 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	@Override
 	public DealBoard_DTO dealRead(int deal_number) {
 		return sqlSession.selectOne("com.multi.ongo.deal.dealRead", deal_number);
+	}
+
+
+
+	@Override
+	public int update(DealBoard_DTO dto) {
+		return sqlSession.update("com.multi.ongo.deal.dealUpdate", dto);
+	}
+
+
+
+	@Override
+	public int dealDelete(String id) {
+		return sqlSession.delete("com.multi.ongo.deal.dealDelete", id);
 	}
 	
 	

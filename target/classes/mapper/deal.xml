@@ -23,7 +23,18 @@
 		where deal_number=#{deal_number}
 	</select>
 	
+	<!--중고거래 게시글_ 업데이트(수정)-->
+	<update id="dealUpdate" parameterType="dealDTO">
+		update deal_table
+		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title}, product_name=#{product_name}, product_price=#{product_price}, board_content=#{board_content}
+		where deal_number=#{deal_number} and id=#{id}
+	</update>
 	
+	<!--중고거래 게시글_삭제  -->
+	<delete id="dealDelete" parameterType="String">
+		delete from deal_table where id=#{id}
+	</delete>
+		
 	
 	
 	

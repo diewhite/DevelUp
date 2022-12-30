@@ -11,7 +11,8 @@
          <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>중고리스트</h1>
+                <h1>중고거래</h1>
+                <span class="blue">보다 더 · 당신의 일상과 가깝게</span>
             </div>
         </div>
         <!-- //title -->
@@ -28,6 +29,7 @@
 					<th>제목</th>
 					<th>가격</th>
 					<th>조회수</th>
+					<th>작성자</th>
 					<th>작성일</th>
 				</tr>
 			</thead>
@@ -42,6 +44,7 @@
 							<td>${board.board_title }</td>							
 							<td>${board.product_price }</td>							
 							<td>${board.hits }</td>							
+							<td>${board.id }</td>							
 							<td>${board.write_date }</td>
 						</tr>
 						
@@ -53,7 +56,7 @@
   
   
   <div class="btn-area">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_Register'"> 글쓰기</button>
+       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealRegister'"> 글쓰기</button>
       </div>
     </div>
    
