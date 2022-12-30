@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.multi.ongo.member.MemberDTO" alias="member"/>
 		<typeAlias type="com.multi.ongo.deal.DealBoard_DTO" alias="dealDTO"/>
+		<typeAlias type="com.multi.ongo.note.NoteDTO" alias="note"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/member.xml"/>

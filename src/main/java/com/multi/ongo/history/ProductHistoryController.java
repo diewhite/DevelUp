@@ -8,6 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProductHistoryController {
 
 	
+//	// 나의온고 click 시 보이는 화면
+//		@RequestMapping("/history/historylist")	// spring-config의 component-scan에 등록한 패키지 명 뒷부분 이어서 작성해야함 
+//		public ModelAndView historylist () {
+//			ModelAndView mav = new ModelAndView();
+//			mav.setViewName("history/historylist");
+//			return mav;
+//		}
+//		
+	
 	// 중고거래내역 list 
 	@RequestMapping("/history/historylist")	// spring-config의 component-scan에 등록한 패키지 명 뒷부분 이어서 작성해야함 
 	public ModelAndView historylist () {
