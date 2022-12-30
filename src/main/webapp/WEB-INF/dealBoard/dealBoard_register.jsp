@@ -156,11 +156,13 @@
 					</div>
 					
 					<div class="btn-area">
-						<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
+						<button class="btn btn-primary btn-large" type="reset" >새로입력</button>
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
 					</div>
 					
-					
+					<div class="btn-area">
+						<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
+					</div>
 					
 					
 				</form>
