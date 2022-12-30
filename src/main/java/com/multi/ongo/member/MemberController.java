@@ -54,13 +54,13 @@ public class MemberController {
 			//서비스 겟방식으로 로그인뷰 보기
 			@RequestMapping(value="member/login")
 			public String springlogin() {
-				return "member/logout";
+				return "member/login";
 			}
 			//포스트방식으로 글 등록
 			@RequestMapping(value = "member/logout",method = RequestMethod.POST)
 			public String write(MemberDTO board) {
 				//실제 db에 저장할때 호출되는 컨트롤러의 메소드
-				return "redirect:/index.do";
+				return "member/logout";
 			}
 			
 			

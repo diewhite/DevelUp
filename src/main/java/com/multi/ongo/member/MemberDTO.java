@@ -6,7 +6,8 @@ public class MemberDTO {
 	private int member_no; //회원번호
 	private String member_pw; // 비밀번호
 	private String member_name; //이름
-	private String member_addr; // 주소 = 도로명주소
+	private String member_addr1; // 주소 = 도로명주소
+	private String member_addr2; // 주소 = 상세주소
 	private String zipcode; //우편번호
 	private String member_phone; //휴대폰번호
 	private String member_email; //이메일주소
@@ -18,33 +19,34 @@ public class MemberDTO {
 	}
 	
 	
-	public MemberDTO(String member_id, int member_no, String member_pw, String member_name, String member_addr,
-			String zipcode, String member_phone, String member_email, String member_role, Date member_date,
-			String member_sign) {
+	@Override
+	public String toString() {
+		return "MemberDTO [member_id=" + member_id + ", member_no=" + member_no + ", member_pw=" + member_pw
+				+ ", member_name=" + member_name + ", member_addr1=" + member_addr1 + ", member_addr2=" + member_addr2
+				+ ", zipcode=" + zipcode + ", member_phone=" + member_phone + ", member_email=" + member_email
+				+ ", member_role=" + member_role + ", member_date=" + member_date + ", member_sign=" + member_sign
+				+ "]";
+	}
+
+
+	public MemberDTO(String member_id, int member_no, String member_pw, String member_name, String member_addr1,
+			String member_addr2, String zipcode, String member_phone, String member_email, String member_role,
+			Date member_date, String member_sign) {
 		super();
 		this.member_id = member_id;
 		this.member_no = member_no;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
-		this.member_addr = member_addr;
+		this.member_addr1 = member_addr1;
+		this.member_addr2 = member_addr2;
 		this.zipcode = zipcode;
 		this.member_phone = member_phone;
 		this.member_email = member_email;
 		this.member_role = member_role;
 		this.member_date = member_date;
 		this.member_sign = member_sign;
+		
 	}
-
-
-	@Override
-	public String toString() {
-		return "MemberDTO [member_id=" + member_id + ", member_no=" + member_no + ", member_pw=" + member_pw
-				+ ", member_name=" + member_name + ", member_addr=" + member_addr + ", zipcode=" + zipcode
-				+ ", member_phone=" + member_phone + ", member_email=" + member_email + ", member_role=" + member_role
-				+ ", member_date=" + member_date + ", member_sign=" + member_sign + "]";
-	}
-
-
 	public String getMember_id() {
 		return member_id;
 	}
@@ -69,11 +71,17 @@ public class MemberDTO {
 	public void setMember_name(String member_name) {
 		this.member_name = member_name;
 	}
-	public String getMember_addr() {
-		return member_addr;
+	public String getMember_addr1() {
+		return member_addr1;
 	}
-	public void setMember_addr(String member_addr) {
-		this.member_addr = member_addr;
+	public void setMember_addr1(String member_addr1) {
+		this.member_addr1 = member_addr1;
+	}
+	public String getMember_addr2() {
+		return member_addr2;
+	}
+	public void setMember_addr2(String member_addr2) {
+		this.member_addr2 = member_addr2;
 	}
 	public String getZipcode() {
 		return zipcode;
@@ -112,6 +120,5 @@ public class MemberDTO {
 		this.member_sign = member_sign;
 	}
 
-	
 	
 }
