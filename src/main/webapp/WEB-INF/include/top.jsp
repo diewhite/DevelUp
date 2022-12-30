@@ -102,14 +102,32 @@
                 <span>나의온고</span>
               </div>
               <div class="dep2_right" onmouseleave="menuout();">
+              
+             <!-- 수정할부분 -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#none" >거래조회</a></span>
+                  <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#none" onclick="location.href='board.html'">거래조회</a></li>
+                    <li><a href="#">거래현황 </a></li>
                   </ul>
+                   <ul class="dep2_link">
+                    <li><a href="/ongo/history/test">경매내역</a></li>
+                  </ul>
+                   <ul class="dep2_link">
+                    <li><a href="/ongo/history/test">중고거래내역</a></li>
+                  </ul>                 
+              
+        
                 </div>
+                
+              <!-- 원본 
+                 <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="/ongo/history/historylist">거래내역</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="#none" onclick="location.href='board.html'">거래현황</a></li>
+                  </ul>
+                </div> -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >구매내역</a></span>
+                  <span class="dep2_tit" ><a href="#" >결제내역</a></span>
                   <ul class="dep2_link">
                     <li><a href="#" onclick="location.href='prepare.html'">구매내역</a></li>
                   </ul>
