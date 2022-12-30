@@ -36,11 +36,14 @@ public class DealBoard_DTO {
 		this.write_date = write_date; //작성일 맵퍼에서
 		this.deal_number = deal_number; // 게시번호 맵퍼에서(시퀀스)
 	}
+	
+
+
 
 
 	@Override
 	public String toString() {
-		return "DealBoardDTO [id=" + id + ", dealType=" + dealType + ", product_category=" + product_category
+		return "DealBoard_DTO [id=" + id + ", dealType=" + dealType + ", product_category=" + product_category
 				+ ", product_state=" + product_state + ", product_price=" + product_price + ", board_title="
 				+ board_title + ", product_name=" + product_name + ", board_content=" + board_content + ", hits=" + hits
 				+ ", write_date=" + write_date + ", deal_number=" + deal_number + "]";

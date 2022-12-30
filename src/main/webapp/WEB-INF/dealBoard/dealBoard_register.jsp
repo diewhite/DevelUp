@@ -9,7 +9,7 @@
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>중고</h1>
+                <h1>중고거래와 나눔을 통해 보다 더 · 당신의 일상과 가깝게</h1>
             </div>
         </div>
         <!-- //title -->
@@ -156,6 +156,7 @@
 					</div>
 					
 					<div class="btn-area">
+						<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
 					</div>
 					
@@ -164,10 +165,9 @@
 					
 				</form>
 			</div>
-			<div class="btn-area">
-				<button class="btn btn-primary btn-large" type="button"
-					onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
-			</div>
+			<!-- <div class="btn-area">
+				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
+			</div> -->
 		</div>
 
 
