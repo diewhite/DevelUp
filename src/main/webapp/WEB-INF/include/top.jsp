@@ -96,20 +96,41 @@
           </li>
        
           <li>
-            <a id="siTitle" href="#" onmouseover="menuover(this);" onclick="location.href='mypage.html'"><span >나의온고</span></a>
+           <!--  원본 <a id="siTitle" href="#" onmouseover="menuover(this);" onclick="location.href='mypage.html'"><span >나의온고</span></a> -->
+           <!-- test1 view-config = /myongopage  href="/myongopage" -->
+           <!-- test2 view-config = /myongopage  href="/ongo/myongopage" --> 
+            <a id="siTitle" href="/ongo/myongopage" onmouseover="menuover(this);"><span >나의온고</span></a>
             <div class="dep2_wrap">
               <div class="dep2_left">
                 <span>나의온고</span>
               </div>
               <div class="dep2_right" onmouseleave="menuout();">
+              
+             <!-- 수정할부분 -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#none" >거래조회</a></span>
+                  <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#none" onclick="location.href='board.html'">거래조회</a></li>
+                    <li><a href="#">거래현황 </a></li>
                   </ul>
+                   <ul class="dep2_link">
+                    <li><a href="/ongo/history/historylist">경매내역</a></li>
+                  </ul>
+                   <ul class="dep2_link">
+                    <li><a href="/ongo/history/historylist">중고거래내역</a></li>
+                  </ul>                 
+              
+        
                 </div>
+                
+              <!-- 원본 
+                 <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="/ongo/history/historylist">거래내역</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="#none" onclick="location.href='board.html'">거래현황</a></li>
+                  </ul>
+                </div> -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >구매내역</a></span>
+                  <span class="dep2_tit" ><a href="#" >결제내역</a></span>
                   <ul class="dep2_link">
                     <li><a href="#" onclick="location.href='prepare.html'">구매내역</a></li>
                   </ul>
@@ -123,9 +144,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >쪽지함</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=Yeona1231'">받은쪽지함</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=Yeona1231'">보낸쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='prepare.html'">쪽지함</a></li>
                   </ul>
                 </div>
               </div>
@@ -243,9 +262,7 @@
                   <div class="sitemap_depth2">
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                      <li ><a href="/ongo/mypage/note/receivebox?id=Yeona1231" >받은쪽지함</a></li>
-                      <li ><a href="/ongo/mypage/note/sendbox?id=Yeona1231" >보낸쪽지함</a></li>
+                      <li ><a href="#" >쪽지함</a></li>
                     </ul>
                   </div>
                 </div>
@@ -278,49 +295,7 @@
     </div>  <!-- // nav Modal -->
   </div>
 </div>
-<!-- modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="modal-tit">
-                <h2 class="h3">쪽지</h2>
-            </div>
-            <div class="modal-con">
-                <div class="tbl grid-layout grid1">
-                    <div class="grid-item">
-                    <label for="IUY_CLSS_NM">수신자</label>
-                    <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM"><textarea class="grid-input" role="textbox" id="receive_id" name="HOFS_INTR_MTRL_CNTS" title="수신자" maxlength="500" rows="1"></textarea></span>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="grid-item">
-                        <label for="IUY_CLSS_CNTS">내용적기</label>
-                        <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="send_id" name="HOFS_INTR_MTRL_CNTS" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-                          </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-area">
-              <button type="button" class="btn btn-warning text-white btn-large"  data-bs-dismiss="modal" aria-label="Close">전송</button>
-            </div>
-            <!-- 닫기버튼 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                <i class="las la-times"></i>
-            </button>
-            <!-- //닫기버튼 -->
-        </div>
-    </div>
-    </div>
-</div>
-<!-- //modal -->
+<!-- // header -->
 
 
 
