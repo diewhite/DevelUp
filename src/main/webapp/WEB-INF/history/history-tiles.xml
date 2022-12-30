@@ -7,5 +7,9 @@
  	<definition name="history/historylist" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historylist.jsp"></put-attribute>
  	</definition>
+ 	
+ 	<definition name="myongopage" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/history/myongopage"></put-attribute>
+ 	</definition>
  
  </tiles-definitions>
