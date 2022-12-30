@@ -36,9 +36,9 @@
               </div>
               <button onclick="location.href='/ongo/index.do'" type="submit" class="btn btn-primary btn-full">로그인</button>
               <div class="text-center login_bottom">
-                <span><a href="#">아이디찾기</a></span>
-                <span><a href="#">비밀번호찾기</a></span>
-                <span><a href="#" class="blue">회원가입</a></span>
+                <span><a href="/ongo/member/findid.do">아이디찾기</a></span>
+                <span><a href="/ongo/member/pass.do">비밀번호찾기</a></span>
+                <span><a href="/ongo/member/join1.do" class="blue">회원가입</a></span>
               </div>
             </form>
           </div>
