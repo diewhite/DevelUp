@@ -16,7 +16,7 @@
 
         <!-- 게시판 -->
         <div class="container">
-            <form  action="/ongo/dealRead.do?deal_number=${dealRead.deal_number}&state=UPDATE" method="post">
+            <form id="searchForm" name="searchForm"  action="/ongo/deal_Write.do" method="post">
                 <input type="hidden" name="countPerPage" id="countPerPage" value="10">
                 <input type="hidden" name="zon" id="zon" value="">
 
@@ -162,13 +162,13 @@
 					</div> -->
 					
 					
-			<div class="btn-area">
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
-				<button type="submit" class="btn btn-primary btn-large">수정</button>
-				<%-- <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealRead.do?deal_number=${dealRead.deal_number}&state=UPDATE'">글수정</button> --%>
-			</div>
+					
 					
 				</form>
+			</div>
+			<div class="btn-area">
+				<button class="btn btn-primary btn-large" type="button"
+					onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
 			</div>
 		</div>
 

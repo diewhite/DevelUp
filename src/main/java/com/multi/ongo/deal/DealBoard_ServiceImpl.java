@@ -26,16 +26,10 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	public List<DealBoard_DTO> boardlist() {
 		return dao.boardlist();
 	}
-	
-	//중고거래 게시글읽기
+
 	@Override
 	public DealBoard_DTO dealRead(int deal_number) {
 		return dao.dealRead(deal_number);
-	}
-	//중고거래 게시글수정
-	@Override
-	public int update(DealBoard_DTO dto) {
-		return dao.update(dto);
 	}
 
 }

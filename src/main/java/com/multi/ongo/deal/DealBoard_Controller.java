@@ -44,7 +44,6 @@ public class DealBoard_Controller {
 		service.writeProd(dto);
 		return "index";
 		
-		
 	}
 	
 	
@@ -71,19 +70,13 @@ public class DealBoard_Controller {
 		}
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
-		//System.out.println("찍먹no:" + deal_number);
-		//System.out.println("찍먹state:" + state);
+		System.out.println("찍먹no:" + deal_number);
+		System.out.println("찍먹state:" + state);
 		return mav;
 	}
 	
-	@RequestMapping("dealUpdate.do")
-	public String update(DealBoard_DTO dto) {
-		//System.out.println("넘어오는가?찍먹1: " + dto);
-		//System.out.println("getDeal_number넘어오는가?찍먹1: " + dto.getDeal_number());
-		service.update(dto);
-		//System.out.println("넘어오는가?찍먹2: " + dto);
-		return "redirect:deal_listAll.do";
-	}
+	
+	
 	
 	
 	
