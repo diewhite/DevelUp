@@ -38,7 +38,7 @@ function selectChange(){
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>계정관리</h1>
+                <h1>회원관리</h1>
             </div>
         </div>
         <!-- //title -->
@@ -49,7 +49,7 @@ function selectChange(){
       <input type="hidden" value=" ">
       <div class="cont-box-inner">
         <div class="title">
-          <h3 class="h4">신규계정추가</h3>
+          <h3 class="h4">회원등록</h3>
         </div>
         <div class="tbl grid-layout grid2">
           <div class="grid-item">

@@ -19,11 +19,11 @@
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/cmpt.css">
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/layout.css">
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/sub.css">
-
 <!--jquery -->
 <script src="/ongo/common/js/jquery/jquery-3.3.1.min.js"></script>
 <script src="/ongo/common/js/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="/ongo/common/js/bootstrap/toastr.min.js"></script>
+
 <!-- common -->
 <script src="/ongo/common/js/common.js"></script>
 

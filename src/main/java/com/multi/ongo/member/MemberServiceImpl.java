@@ -20,33 +20,33 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public int insert(MemberDTO dto) {//등록
-		return 0;
+	public int insert(MemberDTO joininsert) {//등록
+		return memberdao.insert(joininsert);
 	}
 
 	@Override
-	public List<MemberDTO> memberlist() { // 전체리스트
-		return null;
+	public List<MemberDTO> joinlist() { // 전체리스트
+		return memberdao.joinlist();
 	}
 
 	@Override
-	public MemberDTO memberIdRead(String id) { //읽기
-		return null;
+	public MemberDTO memberIdRead(String joinread) { //읽기
+		return memberdao.memberIdRead(joinread);
 	}
 
 	@Override
-	public int delete(String id) { //삭제
-		return 0;
+	public int delete(String joindeleteid) { //삭제
+		return memberdao.delete(joindeleteid);
 	}
 
 	@Override
-	public int update(MemberDTO dto) {  //수정
-		return 0;
+	public int update(MemberDTO joinupdate) {  //수정
+		return memberdao.update(joinupdate);
 	}
 
 	@Override
-	public MemberDTO login(MemberDTO idInfo) { //로그인
-		return null;
+	public MemberDTO login(MemberDTO loginidInfo) { //로그인
+		return memberdao.login(loginidInfo);
 	}
 	
 	

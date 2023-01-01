@@ -14,9 +14,18 @@
       </ul>
       <ul class="top_menu_right justify-content-end">
  
-			
-            <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
+		
+			<!-- c 콜론 이게 jstl -->
+			<!--  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
+              <li><a href="/ongo/member/logout"><i class="las la-unlock"></i>로그아웃</a></li> -->
+			<c:choose>
+			 <c:when test="${user==null}">
+          	  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
+          	 </c:when>
+          	 <c:otherwise>
               <li><a href="/ongo/member/logout"><i class="las la-unlock"></i>로그아웃</a></li>
+             </c:otherwise>
+            </c:choose>  
             <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
 
           <li>
@@ -96,7 +105,7 @@
           </li>
        
           <li>
-           <!--  원본 <a id="siTitle" href="#" onmouseover="menuover(this);" onclick="location.href='mypage.html'"><span >나의온고</span></a> -->
+          
            <!-- test1 view-config = /myongopage  href="/myongopage" -->
            <!-- test2 view-config = /myongopage  href="/ongo/myongopage" --> 
             <a id="siTitle" href="/ongo/myongopage" onmouseover="menuover(this);"><span >나의온고</span></a>
@@ -106,29 +115,14 @@
               </div>
               <div class="dep2_right" onmouseleave="menuout();">
               
-             <!-- 수정할부분 -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#">거래내역</a></span>
-                  <ul class="dep2_link">
+                <span class="dep2_tit" ><a href="#">거래내역</a></span>
+                 <ul class="dep2_link">
                     <li><a href="#">거래현황 </a></li>
-                  </ul>
-                   <ul class="dep2_link">
                     <li><a href="/ongo/history/historylist">경매내역</a></li>
-                  </ul>
-                   <ul class="dep2_link">
                     <li><a href="/ongo/history/historylist">중고거래내역</a></li>
-                  </ul>                 
-              
-        
                 </div>
                 
-              <!-- 원본 
-                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="/ongo/history/historylist">거래내역</a></span>
-                  <ul class="dep2_link">
-                    <li><a href="#none" onclick="location.href='board.html'">거래현황</a></li>
-                  </ul>
-                </div> -->
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >결제내역</a></span>
                   <ul class="dep2_link">
@@ -161,16 +155,16 @@
               </div>
               <div class="dep2_right" onmouseleave="menuout();">
                <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#">계정관리</a></span>
+                  <span class="dep2_tit" ><a href="#">회원관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/member/memberboard.do">계정관리</a></li>
+                    <li><a href="/ongo/member/memberboard.do">회원목록</a></li>
                   </ul>
                 </div>
                 
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#">서비스관리</a></span>
+                  <span class="dep2_tit" ><a href="#">게시판관리</a></span>
                   <ul class="dep2_link">
-                    <li ><a href="/ongo/member/memberserviceboard.do">서비스관리</a></li>
+                    <li ><a href="/ongo/member/memberserviceboard.do">게시물통합관리</a></li>
                   </ul>
                 </div>
               </div>
@@ -275,18 +269,17 @@
                 <h2>관리자</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="/ongo/member/memberboard.do">계정관리</span></a>
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="/ongo/member/memberboard.do">회원관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >계정관리</a></li>
+                      <li ><a href="#" >회원목록</a></li>
                     </ul>
                   </div>
-                  <!-- 
                   <div class="sitemap_depth2">
-                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">서비스관리</span></a>
+                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">게시판관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="/ongo/member/memberserviceboard.do" >서비스관리</a></li>
+                      <li ><a href="/ongo/member/memberserviceboard.do" >게시물통합관리</a></li>
                     </ul>
-                  </div> -->
+                  </div>
                 </div>
               </div>
             </div>

@@ -16,34 +16,35 @@ public class MemberDAOImpl implements MemberDAO{
 		super();
 		this.sqlSession = sqlSession;
 	}
-	@Override
-	public int insert(MemberDTO dto) { //등록
-		return 0;
+	@Override //MemberDTO 참조형식 
+	public int insert(MemberDTO joininsert) { //등록
+		return sqlSession.insert("com.multi.ongo.member.write", joininsert);// <insert id="write" parameterType="memberP"> 에서 id="여기이름"
 	}
 
 	@Override
-	public List<MemberDTO> memberlist() {  // 전체리스트
-		return null;
+	public List<MemberDTO> joinlist() {  // 전체리스트
+		return sqlSession.selectList("com.multi.ongo.member.selectall");
 	}
 
 	@Override
-	public MemberDTO memberIdRead(String id) {  //읽기
-		return null;
+	public MemberDTO memberIdRead(String joinread) {  //읽기
+		return sqlSession.selectOne("com.multi.ongo.member.idRead",joinread);
 	}
 
 	@Override
-	public int delete(String id) {  //삭제
-		return 0;
+	public int delete(String joindeleteid) {  //삭제
+		return sqlSession.delete("com.multi.ongo.member.idDelete",joindeleteid);
 	}
 
 	@Override
-	public int update(MemberDTO dto) { //수정
-		return 0;
+	public int update(MemberDTO joinupdate) { //수정
+		return sqlSession.update("com.multi.ongo.member.idUpdate",joinupdate);
 	}
 
 	@Override
-	public MemberDTO login(MemberDTO idInfo) { //로그인 
-		return null;
+	public MemberDTO login(MemberDTO loginidInfo) { //로그인 
+		MemberDTO login = sqlSession.selectOne("com.multi.ongo.member.login",loginidInfo);
+		return login;
 	}
 
 }

@@ -9,7 +9,7 @@
        <!-- title -->
        <div class="sub_top">
            <div class="container">
-               <h1>계정관리</h1>
+               <h1>회원목록</h1>
            </div>
        </div>
        <!-- //title -->
@@ -23,10 +23,18 @@
                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
                        </div>
-                      <div class="d-grid d-md-flex justify-content-md-end">
-                       <button class="btn btn-outline-primary me-md-2" type="button"">권한적용</button>
-                      <button class="btn btn-outline-danger me-md-2" type="button"">회원삭제</button>
-                    <button class="btn btn-outline-success me-md-2" type="button"><i class="las la-file-excel"></i> 엑셀</button>
+                      <div class="form_box d-grid d-md-flex justify-content-md-end"> 
+                       <button class="btn btn-outline-warning me-md-2" type="button">쪽지발송</button>
+                       <button class="btn btn-outline-primary me-md-2" type="button">등급적용</button>
+                       <button class="btn btn-outline-danger me-md-2" type="button">회원삭제</button>
+                       <button class="btn btn-outline-success me-md-2" type="button"><i class="las la-file-excel"></i> 엑셀</button>
+                       <fieldset>
+	                       <div class="input-group">
+		                       <input type="text" class="form-control" name=" " title="검색어 입력" placeholder="이름검색" >
+		                       <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+	                        </div >
+                       </fieldset>
+                       
                		 </div>
                    </div>
                    </div>
@@ -54,7 +62,7 @@
                                    <th scope="col">주소</th>
                                    <th scope="col">휴대폰번호</th>
                                    <th scope="col">이메일</th>
-                                   <th scope="col">권한</th>
+                                   <th scope="col">회원등급</th>
                                    <th scope="col">가입일</th>
                                    <th scope="col">상태</th>
                                </tr>
@@ -77,7 +85,7 @@
                                <td data-before="주소">서울특별시 강남구 삼성로111길</td>
                                <td data-before="휴대폰번호">010-1234-1234</td>
                                <td data-before="이메일">psjsub1@gmail.com</td>
-                               <td data-before="권한">
+                               <td data-before="등급">
                                	<div class="select">
                                    <label class="visually-hidden" for="srchSelect">검색 구분</label>
                                    <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
@@ -122,7 +130,7 @@
                            </tbody>
                        </table>
                          <div class="text-right">
-                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberwrite.do'">사용자입력</button>
+                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberwrite.do'">회원등록</button>
                        </div>
 
                        <!-- 페이지네이션 -->

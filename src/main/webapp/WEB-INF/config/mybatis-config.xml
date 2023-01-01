@@ -3,8 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!--  Mybatis 연동을 통하여 Oracle 데이터를 스프링 프로젝트를 사용하기 위함. -->
 	<typeAliases>
-		<typeAlias type="com.multi.ongo.member.MemberDTO" alias="member"/>
+		<typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/>
 		<typeAlias type="com.multi.ongo.deal.DealBoard_DTO" alias="dealDTO"/>
 		<typeAlias type="com.multi.ongo.note.NoteDTO" alias="note"/>
 	</typeAliases>
