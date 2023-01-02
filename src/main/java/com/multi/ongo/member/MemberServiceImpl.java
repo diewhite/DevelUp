@@ -21,6 +21,11 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int insert(MemberDTO joininsert) {//등록
+		if(joininsert.getMember_id().equals("admin")) {//관리자계정이면 role =>1,사용자계정이면 role=>2
+			joininsert.setMember_role("1"); //관리자계정이면 role변수를 1로 셋팅 - setter메소드를 호출해서 셋팅하기
+		}else {
+			joininsert.setMember_role("2");
+		}
 		return memberdao.insert(joininsert);
 	}
 

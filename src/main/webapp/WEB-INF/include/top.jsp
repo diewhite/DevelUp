@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head></head>
 <body>
@@ -13,20 +14,19 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
- 
-		
-			<!-- c 콜론 이게 jstl -->
-			<!--  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
-              <li><a href="/ongo/member/logout"><i class="las la-unlock"></i>로그아웃</a></li> -->
+ 		
+			<!-- c 콜론 이게 jstl 상단에 태그 달아줄것-->
 			<c:choose>
 			 <c:when test="${user==null}">
           	  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
+          	  <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
           	 </c:when>
           	 <c:otherwise>
-              <li><a href="/ongo/member/logout"><i class="las la-unlock"></i>로그아웃</a></li>
+          	  <span>${user.member_name}님</span>
+              <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
             </c:choose>  
-            <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
+           
 
           <li>
           <!-- 정렬 맞추기 위함 -->

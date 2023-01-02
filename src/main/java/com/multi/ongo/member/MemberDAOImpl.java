@@ -18,7 +18,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	@Override //MemberDTO 참조형식 
 	public int insert(MemberDTO joininsert) { //등록
-		return sqlSession.insert("com.multi.ongo.member.write", joininsert);// <insert id="write" parameterType="memberP"> 에서 id="여기이름"
+		return sqlSession.insert("com.multi.ongo.member.write", joininsert);// <insert id="write" parameterType="memberP"> 에서 id="여기이름" 을 가져다쓴다
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,20 +24,6 @@ public class MemberController {
 			}
 	
 		/*
-		@RequestMapping(value="/member/login",method = RequestMethod.GET)
-		public ModelAndView main() {
-		ModelAndView loginf = new ModelAndView();
-		loginf.setViewName("member/login");
-		return loginf;
-		}
-		
-		@RequestMapping(value = "/board/write.do",method = RequestMethod.POST)
-	public String write(BoardDTO board) {
-		System.out.println("board=>"+board);
-		service.insert(board);
-		return "redirect:/board/list.do";
-	}
-		
 			
 			//서비스 겟방식으로 로그인뷰 보기
 			@RequestMapping(value="member/login",method = RequestMethod.GET)
@@ -51,34 +38,53 @@ public class MemberController {
 			}
 			
 		*/
+
+			
+		//서비스 겟방식으로 로그인뷰 보기
+			@RequestMapping(value="/member/login.do",method = RequestMethod.GET)
+			public String empservicewritePage() {
+				return "member/login";
+			}
 			
 		// 로그인
-		@RequestMapping(value="/member/login.do") 
+		@RequestMapping(value="/member/login.do",method = RequestMethod.POST) 
 		public ModelAndView login(MemberDTO loginId, HttpServletRequest request) { //loginId 닉네임 ,
-			ModelAndView mav = new ModelAndView();
+			//System.out.println(loginId.toString());
+			ModelAndView viewName = new ModelAndView();
 			MemberDTO user = service.login(loginId);
+			//System.out.println(user);
 			String view = "";
 			if(user !=null) {
 				HttpSession session = request.getSession();
-				view = "redirect:index";
+				session.setAttribute("user", user); //컨트롤러에서 저장해준 "user"라는 이름으로 저장된 객체 top.jsp에서 꺼내쓰기 위함
+				view = "redirect:/index";
 			}else {
 				view = "/member/login";
 			}
-			mav.setViewName(view);
-			return mav;
+			viewName.setViewName(view);
+			System.out.println(user);
+			return viewName;
+		}
+
+		//erp파일에 있던거
+		@RequestMapping("/member/logout.do")
+		public String logout(SessionStatus status) {
+		//System.out.println("스프링내부 객체인 SessionStatus를 이용해서 로그아웃 처리하기");
+		status.setComplete();//세션에 있는 user객체를 제거하는 작업
+		return "redirect:/index.do";
 		}
 		
-		//로그아웃
-		@RequestMapping("member/logout.do")
-		public String logout(HttpSession session) {
-			if(session != null) {
-				session.invalidate();
-			}
-			return "index";
-		} 
-		
-			
-			
+		/*로그아웃
+				@RequestMapping("/member/logout.do")
+				public String logout(HttpSession session) {
+					System.out.println("logout");
+					if(session != null) {
+						session.invalidate();
+					}
+					System.out.println("logout~~~~");
+					return "redirect:/index";
+				} 
+		*/
 			
 		@RequestMapping(value="/member/findid",method = RequestMethod.GET)
 		public String findID() {

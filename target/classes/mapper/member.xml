@@ -43,9 +43,12 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         	where id = #{id}
         </update>
            
+           관리자계정 = 인설트가 아니라 업데이트로 처리
+           회원삭제시 = 1 = 삭제 0= 살아있다
+           
 -->
 	 	
-        <select id="login" resultType="memberP" parameterType="memberP"> <!-- 로그인 -->
+        <select id="login" resultType="memberP" parameterType="memberP"> <!-- 로그인 login이라는 이름은 mapper에 정의된 이름 -->
         	select * from member2 
         	where member_id = #{member_id} and member_pw = #{member_pw}
         </select>

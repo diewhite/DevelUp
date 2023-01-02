@@ -323,21 +323,20 @@
                       <form id="frmUsr" action="#" method="post">
                         <input type="hidden" id="USR_TP" name="TP" value="USR">
                         <div class="input-group">
-                          <label for="USR_ID" class="form-label visually-hidden">아이디</label>
-                          <input type="text" class="form-control" id="USR_ID" name="ID" placeholder="아이디를 입력해주세요."
+                          <label class="form-label visually-hidden">아이디</label>
+                          <input type="text" class="form-control"placeholder="아이디를 입력해주세요."
                             value="">
                         </div>
                         <div class="input-group">
                           <label for="PW" class="form-label visually-hidden">비밀번호</label>
-                          <input type="password" class="form-control" id="PW" name="PW" placeholder="비밀번호를 입력해주세요."
+                          <input type="password" class="form-control" name="PW" placeholder="비밀번호를 입력해주세요."
                             value="">
                         </div>
                         <div class="form-check">
                           <input type="checkbox" name="remember" id="remember" class="form-check-input">
                           <label for="remember" class="form-check-label"><span class="checkbox"></span>아이디저장</label>
                         </div>
-                        <li style="  list-style: none;">
-                        <button onclick="location.href='/ongo/member/login.do'" type="button" class="btn btn-primary">로그인</button>
+                        <button type="submit" class="btn btn-primary">로그인</button>
                         <div class="text-center login_bottom">
                           <span><a href="/ongo/member/findid.do">아이디찾기</a></span>
                           <span><a href="/ongo/member/findpass.do">비밀번호찾기</a></span>

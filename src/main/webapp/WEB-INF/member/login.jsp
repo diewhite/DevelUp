@@ -20,21 +20,21 @@
     <div class="tab-content">
         <div class="login_wrap">
           <div class="login_section all">
-            <form id="frmUsr" action="#" method="post" onsubmit="return checkUsrSubmit()">
-              <input type="hidden" id="USR_TP" name="TP" value="USR">
+            <form action="/ongo/member/login.do" method="post" >
+              <input type="hidden"  value=" ">
               <div class="input-group">
-                <label for="USR_ID" class="form-label">아이디</label>
-                <input type="text" class="form-control" id="USR_ID" name="ID" placeholder="아이디를 입력해주세요." value="">
+                <label class="form-label">아이디</label>
+                <input type="text" class="form-control"name="member_id" placeholder="아이디를 입력해주세요." value="">
               </div>
               <div class="input-group">
                 <label for="PW" class="form-label">비밀번호</label>
-                <input type="password" class="form-control" id="PW" name="PW" placeholder="비밀번호를 입력해주세요." value="">
+                <input type="password" class="form-control" name="member_pw" placeholder="비밀번호를 입력해주세요." value="">
               </div>
               <div class="form-check">
-                <input type="checkbox" name="remember" id="remember" class="form-check-input">
+                <input type="checkbox" name="remember" class="form-check-input">
                 <label for="remember" class="form-check-label"><span class="checkbox"></span>아이디저장</label>
               </div>
-              <button onclick="location.href='/ongo/index.do'" type="submit" class="btn btn-primary btn-full">로그인</button>
+              <button type="submit" class="btn btn-primary btn-full">로그인</button>
               <div class="text-center login_bottom">
                 <span><a href="/ongo/member/findid.do">아이디찾기</a></span>
                 <span><a href="/ongo/member/pass.do">비밀번호찾기</a></span>

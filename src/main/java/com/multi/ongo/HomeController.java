@@ -8,10 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 		@RequestMapping("/index")
-		public ModelAndView main() {
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("index");
-			return mav;
+		public String main() {
+			System.out.println("index");
+			return "index";
 		}
 
 		
