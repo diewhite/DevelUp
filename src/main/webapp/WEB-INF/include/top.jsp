@@ -99,7 +99,7 @@
            <!--  원본 <a id="siTitle" href="#" onmouseover="menuover(this);" onclick="location.href='mypage.html'"><span >나의온고</span></a> -->
            <!-- test1 view-config = /myongopage  href="/myongopage" -->
            <!-- test2 view-config = /myongopage  href="/ongo/myongopage" --> 
-            <a id="siTitle" href="/ongo/myongopage" onmouseover="menuover(this);"><span >나의온고</span></a>
+            <a id="siTitle" href="/ongo/history/myongopage" onmouseover="menuover(this);"><span >나의온고</span></a>
             <div class="dep2_wrap">
               <div class="dep2_left">
                 <span>나의온고</span>

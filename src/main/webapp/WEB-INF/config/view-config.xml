@@ -7,5 +7,5 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<view-controller path="/deal_Register" view-name="deal_Register"/> 
-	<view-controller path="/myongopage" view-name="myongopage"/> 
+	
 </beans:beans>

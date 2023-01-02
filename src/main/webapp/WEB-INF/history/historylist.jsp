@@ -4,16 +4,7 @@
 <style type="text/css"> 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-}
-body{
-    background-color: #f3f3f3;
-}
+
 #starred{
     box-shadow: 3px 3px 10px #b5b5b5;
 }
