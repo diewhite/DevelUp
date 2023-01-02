@@ -96,10 +96,8 @@
           </li>
        
           <li>
-           <!--  원본 <a id="siTitle" href="#" onmouseover="menuover(this);" onclick="location.href='mypage.html'"><span >나의온고</span></a> -->
-           <!-- test1 view-config = /myongopage  href="/myongopage" -->
-           <!-- test2 view-config = /myongopage  href="/ongo/myongopage" --> 
-            <a id="siTitle" href="/ongo/history/myongopage" onmouseover="menuover(this);"><span >나의온고</span></a>
+           
+            <a id="siTitle" href="/ongo/history/myongo" onmouseover="menuover(this);"><span >나의온고</span></a>
             <div class="dep2_wrap">
               <div class="dep2_left">
                 <span>나의온고</span>
@@ -111,11 +109,7 @@
                   <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
                     <li><a href="#">거래현황 </a></li>
-                  </ul>
-                   <ul class="dep2_link">
                     <li><a href="/ongo/history/historylist">경매내역</a></li>
-                  </ul>
-                   <ul class="dep2_link">
                     <li><a href="/ongo/history/historylist">중고거래내역</a></li>
                   </ul>                 
               

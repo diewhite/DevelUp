@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
 <head>
-<style type="text/css"> 
-
-
-</style>
+<style type="text/css"> </style>
 <script type="text/javascript"> </script>
 </head>
 <body>
 <!-- content -->
-<div class="contents">
- <!-- title -->
-	     <div class="sub_top">
-	     <div class="container">
-	         <h1>나의온고</h1>
-	     </div>
-		 </div>
-        <!-- //title -->
-		<div class="my_info">
-			<ul >
+<div id="contents">
+    <!-- title -->
+    <div class="sub_top">
+        <div class="container">
+            <h1>나의 온고</h1>
+        </div>
+    </div>
+    <!-- //title -->
+    
+    <!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
+
+<div class="my_info">
+			<ul>
 				<li><a href="/member/edit_step1.php">회원등급<span>{{$회원등급}}</span></a></li>
 				<li class="dn{{$적립금사용유무}}"><a href="/mypage/milage.php">적립금<span>{{$회원보유적립금액}}</span></a></li>
 				<li class="dn{{$예치금사용유무}}"><a href="/mypage/emoney.php">예치금<span>{{$회원보유예치금액}}</span></a></li>
@@ -62,7 +62,7 @@
 						<li><a href="/mypage/wish_list.php" class="underline">관심상품</a></li>
 						<li><a href="/shop/click_prd.php" class="underline">최근 본 상품</a></li>
 					</ul>
-				</td>
+				</td> 
 				<td>
 					<ul>
 						<li><a href="/mypage/order_list.php" class="underline">주문내역</a></li>
@@ -86,7 +86,9 @@
 		</tbody>
 	</table>
 </div>
-
+    
+   
+    
     <!--====== // </div> container=====-->
 
 <!-- //contents -->
