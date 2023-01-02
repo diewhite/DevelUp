@@ -2,42 +2,18 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <style type="text/css">
 
- body {
- 	 flex-direction:row
-     background-color: #f9f9fa
- }
-
- .flex {
-     -webkit-box-flex: 1;
-     -ms-flex: 1 1 auto;
-     flex: 1 1 auto
- }
-
- @media (max-width:991.98px) {
-     .padding {
-         padding: 1.5rem
-     }
- }
-
- @media (max-width:767.98px) {
-     .padding {
-         padding: 1rem
-     }
- }
-
  .padding {
-     padding: 5rem
+     padding: 3rem
  }
 
  .stretch-card {
-     display: -webkit-flex;
-     display: flex;
-     -webkit-align-items: stretch;
+     display: flex;  
      align-items: stretch;
-     -webkit-justify-content: stretch;
-     justify-content: stretch
+     justify-content: stretch;
  }
 
  .grid-margin {
@@ -48,28 +24,31 @@
      position: relative;
      display: flex;
      flex-direction: column;
-     min-width: 0;
+     min-width: 15em;
      word-wrap: break-word;
      background-color: #fff;
      background-clip: border-box;
      border: 1px solid #d2d2dc;
      border-radius: 2rem;
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+     margin-left: 30px;
  }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
  .card .card-body {
      padding: 1.25rem 1.75rem
+     
  }
 
  .card-body {
      flex: 1 1 auto;
      padding: 1.25rem
+   
  }
 
  .card .card-title {
-     color: #000000;
+     color: #1B3C88;
      margin-bottom: 0.625rem;
      text-transform: capitalize;
      font-size: 40px;
@@ -80,12 +59,6 @@
      margin-bottom: .875rem;
      font-weight: 400;
      color: #76838f
- }
-
- p {
-     font-size: 0.875rem;
-     margin-bottom: .5rem;
-     line-height: 1.5rem
  }
 
  .myongotable thead th,
@@ -115,10 +88,23 @@
     border-radius: 10rem;
 }
 
-.las la-shopping-bag:before{
-	content: "xf290"";
-	font-weight: 48px;
+p {
+     font-size: 0.875rem;
+     margin-bottom: .5rem;
+     line-height: 1.5rem
+ }
+
+
+i {
+	font-size: 30px;	
+	color: #666;
 }
+
+.link {
+	font-size: 17px;
+}
+
+
 </style>
 <script type="text/javascript">
 	
@@ -140,34 +126,79 @@
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container justify-content-center">
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
+            <div class="col-md-auto grid-margin stretch-card">
+            <!-- 거래내역 카드 -->
+              <div class="card" OnClick="location.href ='#'" style="cursor:pointer;" >
                 <div class="card-body">
-                  <h2 class="card-title"> <i class="las la-shopping-bag la-2x"></i>거래내역</h2>
+                  <h2 class="card-title"><i class="far fa-store"></i> 거래내역 </h2>
                   <p class="card-description">나의 거래내역을 확인하세요</p>
                   <div class="template-demo">
                     <table class="myongotable mb-0">
-                      <thead>
-                        <tr>
-                         
-                        
-                        
-                        
-                        </tr>
-                      </thead>
                       <tbody>
                         <tr>
-                          <td class="pl-0">거래 현황 </td>
-                         
+                          <td class="pl-0"><a class="link" href="#">거래 현황 </a></td>                  
                         </tr>
                         <tr>
-                          <td class="pl-0">경매거래내역</td>
-                         
+                          <td class="pl-0"><a class="link" href="#">경매거래내역</a></td>
                         </tr>
                         <tr>
-                          <td class="pl-0">중고거래내역</td>
+                          <td class="pl-0"><a class="link" href="#">중고거래내역</a></td>
                         </tr>
-                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+             <!-- 결제내역 카드 -->
+             <div class="card" OnClick="location.href ='#'" style="cursor:pointer;">
+                <div class="card-body">
+                  <h2 class="card-title"> <i class="far fa-credit-card"></i> 결제내역</h2>
+                  <p class="card-description">나의 결제내역을 확인하세요</p>
+                  <div class="template-demo">
+                    <table class="myongotable mb-0">
+                      <tbody>
+                        <tr>
+                          <td class="pl-0"><a class="link" href="#">구매내역</a></td>                  
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+               <!-- 나의정보 카드 -->
+             <div class="card" OnClick="location.href ='#'" style="cursor:pointer;">
+                <div class="card-body" >
+                  <h2 class="card-title"> <i class="far fa-user"></i> 나의 정보</h2>
+                  <p class="card-description">나의 정보을 확인하세요</p>
+                  <div class="template-demo">
+                    <table class="myongotable mb-0">
+                      <tbody>
+                        <tr>
+                          <td class="pl-0"><a class="link" href="#">나의정보수정</a></td>                  
+                        </tr>
+                        <tr>
+                          <td class="pl-0"><a class="link" href="#">####</a></td>                  
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- 쪽지함 카드 -->
+             <div class="card" OnClick="location.href ='#'" style="cursor:pointer;">
+                <div class="card-body">
+                  <h2 class="card-title"><i class="far fa-comments"></i> 쪽지함</h2>
+                  <p class="card-description">쪽지함</p>
+                  <div class="template-demo">
+                    <table class="myongotable mb-0">
+                      <tbody>
+                        <tr>
+                          <td class="pl-0"><a class="link" href="#">보낸쪽지함</a></td>                  
+                        </tr>
+                        <tr>
+                          <td class="pl-0"><a class="link" href="#">받은쪽지함</a></td>                  
+                        </tr>
                       </tbody>
                     </table>
                   </div>
