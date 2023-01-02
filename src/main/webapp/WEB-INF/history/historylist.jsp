@@ -3,6 +3,9 @@
 <head>
 <style type="text/css"> 
 
+input {
+	margin-left: -1px;
+}
  
 </style>
 <script type="text/javascript"> </script>
@@ -37,7 +40,7 @@
 					        <div class="relative">
 					          <input type="text" class="h-14 w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none">
 					          <div class="absolute top-4 left-3 right-3">
-					            <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+					            <i class="far fa-search text-gray-400 z-20 hover:text-gray-500"></i>
 							 </div> 
 					        </div>			        
 					 	</div>
@@ -87,6 +90,94 @@
 						          </div>
 						        </td>
 						       <td data-before="글번호">1</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                           <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">2</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                            <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">3</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                            <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">4</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                             <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">5</td>
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
