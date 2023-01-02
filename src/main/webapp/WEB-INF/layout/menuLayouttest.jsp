@@ -31,15 +31,13 @@
 </head>
 <body>
 <div>
-	<div>
+	
 		<tiles:insertAttribute name="top"></tiles:insertAttribute>
-	</div>
-	<div class="col-sm-3">
+	 
 		<tiles:insertAttribute name="menu"></tiles:insertAttribute>
-	</div>
-	<div class="col-sm-8" style="height: 800px;">
+		
 		<tiles:insertAttribute name="content"></tiles:insertAttribute>
-	</div>
+		
 </div>
 </body>
 </html>

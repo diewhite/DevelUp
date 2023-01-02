@@ -8,7 +8,7 @@
  		<put-attribute name="content" value="/WEB-INF/history/historylist.jsp"></put-attribute>
  	</definition>
  	
- 	<definition name="history/myongo" extends="indexTemplate">
+ 	<definition name="myongo/home" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/myongo.jsp"></put-attribute>
  	</definition>
  
