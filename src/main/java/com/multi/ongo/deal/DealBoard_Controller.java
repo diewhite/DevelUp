@@ -37,7 +37,7 @@ public class DealBoard_Controller {
 //		System.out.println("pro_price : " + dto.getProduct_price());
 //		System.out.println("board_title : " + dto.getBoard_title());
 //		System.out.println("pro_name : " + dto.getProduct_name());
-//		System.out.println("board_content : " + dto.getBoard_content());
+		System.out.println("board_content : " + dto.getBoard_content());
 //		System.out.println("hits : " + dto.getHits());
 //		System.out.println("writeDate : " + dto.getWrite_date());
 //		System.out.println("deal_no : " + dto.getDeal_number());
