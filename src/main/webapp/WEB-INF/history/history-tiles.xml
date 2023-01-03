@@ -3,7 +3,16 @@
      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        
  <tiles-definitions>
-
+	<!-- 메뉴레이아웃 템플릿 -->
+	<definition name="menuTemplate" template="/WEB-INF/history/menuLayout.jsp">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="menu" value="/WEB-INF/history/myongo_menu.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+	
+	<definition name="history/myongo" extends="menuTemplate"></definition>
+	
  	<definition name="history/historylist" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historylist.jsp"></put-attribute>
  	</definition>

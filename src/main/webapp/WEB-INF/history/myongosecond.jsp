@@ -122,11 +122,11 @@
 }
 
 .table-header-title {
-	width: 37%;
+	width: 35%;
 }
 
 .table-header {
-	width: 10;
+	width: 16%;
 }
 
 
@@ -145,7 +145,7 @@
 		<div class="sub_top">
 			<div class="container">
 				<h1>반갑습니다. user_id님!</h1>
-				<h4>user_id님의 회원 등급은 일반회원입니다.</h4>
+				<h5>user_id님의 회원 등급은 일반회원입니다.</h5>
 			</div>
 		</div>
 		<!-- //title -->
