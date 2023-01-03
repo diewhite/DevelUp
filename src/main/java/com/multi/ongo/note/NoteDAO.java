@@ -9,4 +9,6 @@ public interface NoteDAO {
 	public List<NoteDTO> receiveList(String id);
 	//보낸쪽지함
 	public List<NoteDTO> sendList(String id);
+	//쪽지보내기
+	public int sendNote(NoteDTO note);
 }
