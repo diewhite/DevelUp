@@ -7,18 +7,14 @@
 	url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap')
 	;
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	list-style: none;
-	font-family: 'Montserrat', sans-serif
+
+#contents {
+	min-height: 600px;
+	margin: auto;
+
 }
 
-body {
-	padding: 10px
 }
-
 .topnav {
 	background-color: #ffff;
 	overflow: hidden
@@ -46,34 +42,6 @@ body {
 	border-bottom: 3px solid #1B3C88;
 }
 
-form.example input[type=text] {
-	padding: 10px;
-	font-size: 17px;
-	border: 1px solid grey;
-	float: left;
-	width: 90%;
-	height: 36px;
-	background: #fff
-}
-
-form.example input[type=text]:focus {
-	outline: none
-}
-
-form.example button {
-	float: left;
-	width: 10%;
-	height: 36px;
-	padding: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	background: #4c4c96;
-	color: white;
-	font-size: 14px;
-	border: 1px solid grey;
-	border-left: none;
-	cursor: pointer
-}
 
 .navbar-toggler:focus {
 	box-shadow: none;
@@ -85,15 +53,6 @@ form.example button {
 	font-size: 10px
 }
 
-form.example button:hover {
-	background: #0b7dda
-}
-
-form.example::after {
-	content: "";
-	clear: both;
-	display: table
-}
 
 .container .table-responsive {
 	margin: 20px auto;
@@ -134,7 +93,7 @@ form.example::after {
 	font-weight: 600;
 }
 
-.bg-bdark {
+.blue-bold {
 	color: #4c4c96;
 	font-weight: 600
 }
@@ -143,9 +102,6 @@ form.example::after {
 	color: white
 }
 
-.fas.fa-bars {
-	color: white
-}
 
 #navbar2 {
 	width: 80%
@@ -157,38 +113,23 @@ form.example::after {
 	background-color: #4f4f8a
 }
 
-ul#navbar-items li {
-	color: #b6b5b5;
-	padding: 15px 25px;
-	font-weight: 600;
-	text-transform: uppercase;
-	font-size: 10px;
-	display: flex;
-	align-items: center
-}
-
-ul li .fas {
-	font-size: 16px
-}
-
-ul#navbar-items li:hover {
-	background-color: #21214e;
-	color: white
-}
-
-ul li:hover .fas {
-	color: #f7910c
-}
-
 #topnavbar {
 	width: 80%
 }
 
-
-
-.example {
-	width: 50%
+.list_button {
+	padding-left: 10px;
 }
+
+.table-header-title {
+	width: 37%;
+}
+
+.table-header {
+	width: 10;
+}
+
+
 
 
 </style>
@@ -203,7 +144,7 @@ ul li:hover .fas {
 		<!-- title -->
 		<div class="sub_top">
 			<div class="container">
-				<h1>반갑습니다. user_id님</h1>
+				<h1>반갑습니다. user_id님!</h1>
 				<h4>user_id님의 회원 등급은 일반회원입니다.</h4>
 			</div>
 		</div>
@@ -213,87 +154,54 @@ ul li:hover .fas {
 
 		<!-- 거래현황 -->
 
-		<div class=""></div>
 
 
-		<!-- 경매내역list -->
 
+
+
+
+	
+
+
+<!-- =========경매내역list========= -->
+		
+<div class="container">
 		<div class="px-0 bg-light">
-			
 			</div>
 			<div class="d-md-flex">
 				<div id="topnavbar">
 					<div class="topnav mb-2">
 						<div class="d-flex px-1">
-							<h3> 중고거래내역</h3>
-							<a href="#home" class="active">판매</a> 
-							<a href="#news">구매</a>
+							<h3> 경매내역</h3>
+							<div class="list_button">
+								<a href="#home" class="active">판매</a> 
+								<a href="#news">구매</a>
+							</div>
+							
 						</div>
 					</div>
 					<div class="table-responsive px-2">
 						<table class="table table-borderless">
 							<thead>
 								<tr>
-									<th scope="col">번호</th>
-									<th scope="col">(사진)</th>
-									<th scope="col">제목</th>
-									<th scope="col">가격</th>
-									<th scope="col">구매자</th>
-									<th scope="col">날짜</th>
-									<th scope="col">거래상태</th>
-									
+									<th class="table-header" scope="col">번호</th>
+									<th class="table-header" scope="col">제품 사진</th>
+									<th class="table-header-title" scope="col">제목</th>
+									<th class="table-header" scope="col">가격</th>
+									<th class="table-header" scope="col">구매자</th>
+									<th class="table-header" scope="col">날짜</th>
+									<th class="table-header" scope="col">거래상태</th>	
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td><span class="gray-bold">235</span></td>
-									<td><span class="image"><img alt="#" src="#">이미지</span></td>
-									<td><span class="title"><a href="#">제목</a></span></td>
-									<td><span class="bg-bdark">15,000원 </td>
-									<td><span class="bg-bdark"><a href="#">yoonhee0312</a></span></td>
-									<td class="date">2023년 1월 3일</span></td>
-									<td class="text-center"><span class="fas fa-check">test</span></td>
-									
-								</tr>
-								<tr>
-									<td><span class="gray-bold">236</span></td>
-									<td><span class="bg-bdark">BCE<span class="ps-1">LOANS</span></span></td>
-									<td><span class="gray-bold">1298</span></td>
-									<td><span class="bg-bdark">Secure<span>Trading</span></span></td>
-									<td><span class="bg-bdark">GBP</span></td>
-									<td class="text-center px-0"><span class="fas fa-check"></span></td>
-									<td class="text-center"><span class="fas fa-check"></span></td>
-									
-								</tr>
-								<tr>
-									<td><span class="gray-bold">237</span></td>
-									<td><span class="bg-bdark">CDE<span class="ps-1">LOANS</span></span></td>
-									<td><span class="gray-bold">1313</span></td>
-									<td><span class="bg-bdark">Secure<span>Trading</span></span></td>
-									<td><span class="bg-bdark">GBP</span></td>
-									<td class="text-center px-0"><span class="fas fa-times"></span></td>
-									<td class="text-center"><span class="fas fa-check"></span></td>
-									
-								</tr>
-								<tr>
-									<td><span class="gray-bold">235</span></td>
-									<td><span class="bg-bdark">DEF<span class="ps-1">LOANS</span></span></td>
-									<td><span class="gray-bold">1323</span></td>
-									<td><span class="bg-bdark">Secure<span>Trading</span></span></td>
-									<td><span class="bg-bdark">GBP</span></td>
-									<td class="text-center px-0"><span class="fas fa-times"></span></td>
-									<td class="text-center"><span class="fas fa-check"></span></td>
-									
-								</tr>
-								<tr>
-									<td><span class="gray-bold">235</span></td>
-									<td><span class="bg-bdark">FEG<span class="ps-1">LOANS</span></span></td>
-									<td><span class="gray-bold">1443</span></td>
-									<td><span class="bg-bdark">Secure<span>Trading</span></span></td>
-									<td><span class="bg-bdark">GBP</span></td>
-									<td class="text-center px-0"><span class="fas fa-times"></span></td>
-									<td class="text-center"><span class="fas fa-check"></span></td>
-									
+									<td><span class="gray-bold">1</span></td>
+									<td><img alt="" src="#"></td>
+									<td><span class="blue-bold"><a href="#">상태좋은 아이폰14pro 팝니다</a></span></td>
+									<td><span class="blue-bold">15,000원</span> </td>
+									<td><span class="blue-bold"><a href="#">yoonhee0312</a></span></td>
+									<td>2023년 1월 3일</td>
+									<td>판매중</td>
 								</tr>
 							</tbody>
 						</table>
@@ -301,10 +209,57 @@ ul li:hover .fas {
 				</div>
 			</div>
 		</div>
-
+</div>
 	
 
-	<!-- 중고거래내역list -->
+<!-- =========중고거래내역list========= -->
+
+<div class="container">
+		<div class="px-0 bg-light">
+			</div>
+			<div class="d-md-flex">
+				<div id="topnavbar">
+					<div class="topnav mb-2">
+						<div class="d-flex px-1">
+							<h3> 중고거래내역</h3>
+							<div class="list_button">
+								<a href="#home" class="active">판매</a> 
+								<a href="#news">구매</a>
+							</div>
+							
+						</div>
+					</div>
+					<div class="table-responsive px-2">
+						<table class="table table-borderless">
+							<thead>
+								<tr>
+									<th class="table-header" scope="col">번호</th>
+									<th class="table-header" scope="col">제품 사진</th>
+									<th class="table-header-title" scope="col">제목</th>
+									<th class="table-header" scope="col">가격</th>
+									<th class="table-header" scope="col">구매자</th>
+									<th class="table-header" scope="col">날짜</th>
+									<th class="table-header" scope="col">거래상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span class="gray-bold">1</span></td>
+									<td><img alt="" src="#"></td>
+									<td><span class="blue-bold"><a href="#">상태좋은 아이폰14pro 팝니다</a></span></td>
+									<td><span class="blue-bold">15,000원</span> </td>
+									<td><span class="blue-bold"><a href="#">yoonhee0312</a></span></td>
+									<td>2023년 1월 3일</td>
+									<td>판매중</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+	
 
 
 
