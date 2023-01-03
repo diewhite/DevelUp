@@ -67,66 +67,42 @@
                                    <th scope="col">상태</th>
                                </tr>
                            </thead>
-                           <tbody id="ksicList">
+                           <tbody >
+                           <c:forEach var="member" items="${joinlist}">
                              <tr class="notice">
                                <td data-before="체크박스">
 					           <div class="form-check">
 						            <label class="form-check-label">
 						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
-						          
 						            </label>
 						          </div>
 						        </td>
-						        <td data-before="회원번호">1</td>
-                               <td data-before="이름">박소정</td>
+						        <td data-before="회원번호">${member.member_no}</td>
+                               <td data-before="이름">${member.member_name}</td>
                                <td data-before="아이디" >
-                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
+								<!-- JSP요청 컨트롤러로 전달할 파라미터들=> ? member_id=${member.member_id}&state=READ 
+								 member_id => 파라미터 이름 , =${member.member_id} => 파라미터에 연결시켜주고 컨트롤러로 보낼 값
+								 => member라는 어트리뷰트에 정의된 멤버변수인 member_id라는 변수명을 찾아서 매핑
+								-->
+                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do?
+                              			 member_id=${member.member_id}&state=READ'">${member.member_id}</button>
                                </td>
-                               <td data-before="주소">서울특별시 강남구 삼성로111길</td>
-                               <td data-before="휴대폰번호">010-1234-1234</td>
-                               <td data-before="이메일">psjsub1@gmail.com</td>
-                               <td data-before="등급">
+                               <td data-before="주소">${member.member_addr1}</td>
+                               <td data-before="휴대폰번호">${member.member_phone}</td>
+                               <td data-before="이메일">${member.member_email}</td>
+                               <td data-before="등급" name="member_role" >
                                	<div class="select">
-                                   <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                   <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
+                                   <label class="visually-hidden" >회원등급</label>
+                                   <select class="form-select" title="회원등급" >
                                        <option value="">일반</option>
                                        <option value="" selected>관리자</option>
                                    </select>
                                 </div>
                                 </td>
-                              <td data-before="가입일">22-12-19</td>
-                               <td data-before="가입일">가입</td>
+                              <td data-before="가입일">${member.member_date}</td>
+                               <td data-before="가입상태">${member.member_sign}</td>
                              </tr>
-                                <tr class="notice">
-                               <td data-before="체크박스">
-					           <div class="form-check">
-						            <label class="form-check-label">
-						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
-						          
-						            </label>
-						          </div>
-						        </td>
-						        <td data-before="회원번호">1</td>
-                               <td data-before="이름">박소정</td>
-                               <td data-before="아이디" >
-                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
-                               </td>
-                               <td data-before="주소">서울특별시 강남구 삼성로111길</td>
-                               <td data-before="휴대폰번호">010-1234-1234</td>
-                               <td data-before="이메일">psjsub1@gmail.com</td>
-                               <td data-before="권한">
-                               	<div class="select">
-                                   <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                   <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                       <option value="">일반</option>
-                                       <option value="">관리자</option>
-                                   </select>
-                                </div>
-                                </td>
-                              <td data-before="가입일">22-12-19</td>
-                               <td data-before="가입일">탈퇴</td>
-                             </tr>
-                            
+                            </c:forEach>
                            </tbody>
                        </table>
                          <div class="text-right">

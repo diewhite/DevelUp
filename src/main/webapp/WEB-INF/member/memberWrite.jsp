@@ -45,7 +45,7 @@ function selectChange(){
 
         <!-- 게시판 -->
        <div class="container">
-  			 <form id="saveForm" name="saveForm">
+  			 <form name=" " action="/ongo/member/memberwrite" method="post">
       <input type="hidden" value=" ">
       <div class="cont-box-inner">
         <div class="title">
@@ -163,7 +163,7 @@ function selectChange(){
     
   	</div>
 	<div class="btn-area flex-row">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard.do'">등록</button>
+       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberwrite.do'">회원등록</button>
         <button class="btn btn-outline-secondary btn-large" type="button"  onclick="history.back()">취소</button>
       </div>
     </div><!-- // content -->

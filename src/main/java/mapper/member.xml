@@ -16,17 +16,6 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
 => mybatis-config.xml에서 보았듯이 MemberDTO 객체에 담기고 그걸 alias 에 담아서 가져온 후 resultType에 넣어준다
   => <typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/> alias="패키지 이름지정"
   
-     
-     <insert id="write" parameterType="memberP">등록 
-                insert into member2
-                values(#{member_id},member_no.nextval,#{member_pw},#{member_addr1},#{member_addr2}
-                ,#{zipcode},#{member_phone},#{member_email},#{member_role},sysdate,#{member_sign}
-        </insert>
-       
-        <select id="selectall" resultType="memberP">전체리스트
-                select * from member2
-                order by no desc
-        </select>
         
         <select id="idRead" resultType="memberP" parameterType="String"> 읽기 
         	select * from member2
@@ -46,13 +35,35 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
            관리자계정 = 인설트가 아니라 업데이트로 처리
            회원삭제시 = 1 = 삭제 0= 살아있다
            
--->
-	 	
-        <select id="login" resultType="memberP" parameterType="memberP"> <!-- 로그인 login이라는 이름은 mapper에 정의된 이름 -->
+-->		
+        
+         <!-- 로그인 : login이라는 이름은 mapper에 정의된 이름 -->
+        <select id="login" resultType="memberP" parameterType="memberP">
         	select * from member2 
         	where member_id = #{member_id} and member_pw = #{member_pw}
         </select>
+        
+       <!-- 관리자-회원목록-회원등록 -->
+        <insert id="memberwrite" parameterType="memberP">
+             insert into member2
+             values(member_no.nextval,#{member_name},#{member_phone} ,#{member_id},#{member_pw}, 
+             #{zipcode},#{member_addr1},#{member_addr2},#{member_email}
+        </insert>
 	
-	 
+	 	
+		<!-- 관리자- 회원목록 - 전체리스트 -->
+		<select id="selectall" resultType="memberP">
+                select * from member2
+                order by no desc
+        </select>
+		
+		<!-- 로그인-회원가입-등록 -->
+	 	<insert id="write" parameterType="memberP">
+             insert into member2
+             values( #{member_id},member_no.nextval,#{member_pw},#{member_name},
+             #{member_addr1},#{member_addr2},#{zipcode}, #{member_phone},
+             #{member_email},#{member_role},sysdate, #{member_sign} 
+             )
+        </insert>
 	
   </mapper>

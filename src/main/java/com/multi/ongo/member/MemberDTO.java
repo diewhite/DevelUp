@@ -11,7 +11,12 @@ public class MemberDTO {
 	private String member_addr2; // 주소 = 상세주소
 	private String zipcode; //우편번호
 	private String member_phone; //휴대폰번호
-	private String member_email; //이메일주소
+	private String phone1; //010
+	private String phone2; //1111
+	private String phone3; //2222
+	private String member_email; //이메일
+	private String email1; //psj
+	private String email2; //@naver.com
 	private String member_role; //회원권한 (일반/관리자) 1 or 99
 	private Date member_date; // 가입일
 	private String member_sign; //가입상태
@@ -24,14 +29,7 @@ public class MemberDTO {
 	
 	
 	
-	@Override
-	public String toString() {
-		return "MemberDTO [member_id=" + member_id + ", member_no=" + member_no + ", member_pw=" + member_pw
-				+ ", member_name=" + member_name + ", member_addr1=" + member_addr1 + ", member_addr2=" + member_addr2
-				+ ", zipcode=" + zipcode + ", member_phone=" + member_phone + ", member_email=" + member_email
-				+ ", member_role=" + member_role + ", member_date=" + member_date + ", member_sign=" + member_sign
-				+ "]";
-	}
+
 
 
 
@@ -53,6 +51,58 @@ public class MemberDTO {
 		this.member_sign = member_sign;
 		
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "MemberDTO [member_id=" + member_id + ", member_no=" + member_no + ", member_pw=" + member_pw
+				+ ", member_name=" + member_name + ", member_addr1=" + member_addr1 + ", member_addr2=" + member_addr2
+				+ ", zipcode=" + zipcode + ", member_phone=" + member_phone + ", phone1=" + phone1 + ", phone2="
+				+ phone2 + ", phone3=" + phone3 + ", member_email=" + member_email + ", email1=" + email1 + ", email2="
+				+ email2 + ", member_role=" + member_role + ", member_date=" + member_date + ", member_sign="
+				+ member_sign + "]";
+	}
+
+	public String getPhone1() {
+		return phone1;
+	}
+
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
+	}
+
+	public String getPhone2() {
+		return phone2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+
+	public String getPhone3() {
+		return phone3;
+	}
+
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+
+	public String getEmail1() {
+		return email1;
+	}
+
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
 	public String getMember_id() {
 		return member_id;
 	}

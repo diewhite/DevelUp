@@ -22,7 +22,7 @@
           	  <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
           	 </c:when>
           	 <c:otherwise>
-          	  <span>${user.member_name}님</span>
+          	  <li><i class="las la-user"></i><b>${user.member_name}</b>&nbsp;님</li>
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
             </c:choose>  
