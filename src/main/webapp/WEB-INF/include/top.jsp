@@ -295,6 +295,7 @@
 </div>
 <!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
+<form action="/ongo/mypage/note/sendnote" method="post">
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-body">
@@ -307,7 +308,8 @@
                     <label for="IUY_CLSS_NM">수신자</label>
                     <div class="tbl-basic-td">
                         <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM"><textarea class="grid-input" role="textbox" id="receive_id" name="HOFS_INTR_MTRL_CNTS" title="수신자" maxlength="500" rows="1"></textarea></span>
+                            <span id="IUY_CLSS_NM"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1"></textarea></span>
+                            <input type="text" hidden="true" id="send_id" name="send_id" value="Yeona1231">
                         </div>
                     </div>
                     </div>
@@ -316,7 +318,7 @@
                         <div class="tbl-basic-td">
                         <div class="input-wrap w100">
                             <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="send_id" name="HOFS_INTR_MTRL_CNTS" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
+                            <textarea class="grid-input" role="textbox" id="content" name="content" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
                           </div>
                         </div>
                         </div>
@@ -324,7 +326,7 @@
                 </div>
             </div>
             <div class="btn-area">
-              <button type="button" class="btn btn-warning text-white btn-large"  data-bs-dismiss="modal" aria-label="Close">전송</button>
+              <button type="submit" class="btn btn-warning text-white btn-large"  data-bs-dismiss="modal" aria-label="Close">전송</button>
             </div>
             <!-- 닫기버튼 -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -334,6 +336,7 @@
         </div>
     </div>
     </div>
+    </form>
 </div>
 <!-- //modal -->
 

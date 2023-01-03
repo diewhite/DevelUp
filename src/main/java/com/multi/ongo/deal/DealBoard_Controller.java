@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -37,12 +38,12 @@ public class DealBoard_Controller {
 //		System.out.println("pro_price : " + dto.getProduct_price());
 //		System.out.println("board_title : " + dto.getBoard_title());
 //		System.out.println("pro_name : " + dto.getProduct_name());
-//		System.out.println("board_content : " + dto.getBoard_content());
+		System.out.println("board_content : " + dto.getBoard_content());
 //		System.out.println("hits : " + dto.getHits());
 //		System.out.println("writeDate : " + dto.getWrite_date());
 //		System.out.println("deal_no : " + dto.getDeal_number());
 		service.writeProd(dto);
-		return "redirect:deal_listAll.do";
+		return "index";
 		
 		
 	}
@@ -85,12 +86,20 @@ public class DealBoard_Controller {
 		return "redirect:deal_listAll.do";
 	}
 	
+	@RequestMapping("dealDelete.do")
+	public String dealDelete(String id) {
+		service.dealDelete(id);
+		return "redirect:deal_listAll.do";
+	}
 	
 	
-	
-	
-	
-	
+//	/@ResponseBody는 웹페이지를 응답하지않고 response body에 String을 추가해서 response하겠다는 의미
+	@RequestMapping("getString")  
+	@ResponseBody
+	public String responseString() {
+		return "json";
+	}
+
 	
 	
 	

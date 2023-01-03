@@ -1,13 +1,11 @@
 package com.multi.ongo.note;
 
-import java.sql.Date;
-
 public class NoteDTO {
 	private int no;
 	private String send_id;
 	private String receive_id;
-	private Date send_time;
-	private Date read_time;
+	private String send_time;
+	private String read_time;
 	private String content;
 	private int read_chk;
 	
@@ -15,7 +13,14 @@ public class NoteDTO {
 		
 	}
 	
-	public NoteDTO(int no, String send_id, String receive_id, Date send_time, Date read_time, String content,
+	public NoteDTO(String send_id, String receive_id, String content) {
+		super();
+		this.send_id = send_id;
+		this.receive_id = receive_id;
+		this.content = content;
+	}
+
+	public NoteDTO(int no, String send_id, String receive_id, String send_time, String read_time, String content,
 			int read_chk) {
 		super();
 		this.no = no;
@@ -44,16 +49,16 @@ public class NoteDTO {
 	public void setReceive_id(String receive_id) {
 		this.receive_id = receive_id;
 	}
-	public Date getSend_time() {
+	public String getSend_time() {
 		return send_time;
 	}
-	public void setSend_time(Date send_time) {
+	public void setSend_time(String send_time) {
 		this.send_time = send_time;
 	}
-	public Date getRead_time() {
+	public String getRead_time() {
 		return read_time;
 	}
-	public void setRead_time(Date read_time) {
+	public void setRead_time(String read_time) {
 		this.read_time = read_time;
 	}
 	public String getContent() {

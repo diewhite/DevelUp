@@ -22,11 +22,18 @@ public class NoteDAOImpl implements NoteDAO {
 
 	@Override
 	public List<NoteDTO> receiveList(String id) {
-		return sqlsession.selectList("com.multi.ongo.note.receivelist",id);
+		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",id);
+		System.out.println(notelist);
+		return notelist;
 	}
 
 	@Override
 	public List<NoteDTO> sendList(String id) {
 		return sqlsession.selectList("com.multi.ongo.note.sendlist",id);
+	}
+
+	@Override
+	public int sendNote(NoteDTO note) {
+		return sqlsession.insert("com.multi.ongo.note.sendnote",note); 
 	}
 }

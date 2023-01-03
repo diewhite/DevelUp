@@ -38,4 +38,9 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		return dao.update(dto);
 	}
 
+	@Override
+	public int dealDelete(String id) {
+		return dao.dealDelete(id);
+	}
+
 }

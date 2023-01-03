@@ -16,4 +16,6 @@ public interface DealBoard_Service {
 	//중고거래 게시글 업데이트(수정)
 	int update(DealBoard_DTO dto);
 		
+	//중고거래 게시글 삭제
+	int dealDelete(String id);
 }

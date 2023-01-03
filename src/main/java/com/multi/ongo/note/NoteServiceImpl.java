@@ -27,4 +27,9 @@ public class NoteServiceImpl implements NoteService {
 	public List<NoteDTO> sendList(String id) {
 		return dao.sendList(id);
 	}
+
+	@Override
+	public int sendNote(NoteDTO note) {
+		return dao.sendNote(note);
+	}
 }
