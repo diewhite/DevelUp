@@ -8,11 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -90,11 +87,13 @@ public class MemberController {
 		
 		
 		*/
-			
+		
+		//아이디찾기
 		@RequestMapping(value="/member/findid",method = RequestMethod.GET)
 		public String findID() {
 			return "member/findid";
 		}
+		//비밀번호찾기
 		@RequestMapping(value="/member/findpass",method = RequestMethod.GET)
 		public String findpass() {
 			return "member/pass";
@@ -119,7 +118,7 @@ public class MemberController {
 			return "member/join3";
 		}
 		
-		//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST 
+		//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST ㅌㅌ
 		//public String list(BoardDTO board,String id)여기서 매개변수는 board나 id를 매개변수라 한다.
 		@RequestMapping(value="/member/join3",method = RequestMethod.POST)
 		public String join3(MemberDTO joininsert) {

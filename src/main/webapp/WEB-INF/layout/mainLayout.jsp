@@ -24,7 +24,7 @@
         <ul class="nav nav-tabs" id="introTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="intro1-tab" data-bs-toggle="tab" data-bs-target="#intro1" type="button"
-              role="tab" aria-controls="intro1" aria-selected="true">업체목록</button>
+              role="tab" aria-controls="intro1" aria-selected="true">협력업체</button>
           </li>
            <li class="nav-item" role="presentation">
             <button class="nav-link" id="intro1-tab" data-bs-toggle="tab" data-bs-target="#intro2" type="button"

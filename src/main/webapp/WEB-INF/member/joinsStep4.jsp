@@ -53,7 +53,7 @@ function fnLogin(){
           <div class="login_section all">
               <h3 class="text-center blue">가입 완료</h3>
               <p class="text-center">회원가입이 완료되었습니다. 서비스 이용을 위해 로그인해주세요.</p>
-              <p class="text-center"><img src="ongo/images/joinsuccess.png" alt=""></p>
+              <p class="text-center"><img src="/ongo/images/joinsuccess.png" alt=""></p>
               <div class="btn-area">
                   <button type="button" class="btn btn-primary btn-large me-md-2" onclick="fnLogin()">로그인</button>
                   <button type="button" class="btn btn-outline-secondary btn-large" onclick="fnHome()">홈으로 이동</button>

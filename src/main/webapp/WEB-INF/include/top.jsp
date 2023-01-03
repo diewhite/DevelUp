@@ -93,19 +93,21 @@
                     <li><a href="#" onclick="location.href='404.html'">새상품</a></li>
                   </ul>
                 </div>
-                
-                <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >업체리스트</a></span>
-                  <ul class="dep2_link">
-                    <li ><a href="#" onclick="location.href='companylist.html'">업체리스트</a></li>
-                  </ul>
-                </div>
+               
               </div>
             </div>
           </li>
-       
           <li>
-          
+           <a id="siTitle" href="/ongo/companylist" ><span >협력업체</span></a>
+          </li>
+    <!-- ${sessionScope.user!=null } 세션에 저장된 user가 공백이 아니면
+즉,로그인되어 있는 상황에서만 마이페이지 또는 관리자 페이지가 출력될 수 있도록 if문을 생성한 다음에, -->
+  <c:if test="${sessionScope.user!=null }">  
+ <!-- ${sessionScope.user.member_role=='1' } 세션에 저장된 member_role 값이 '1' 이면
+관리자가 아니라는 의미임으로 일반 유저입니다. 일반 유저라면 메뉴에 '마이페이지'가 생성됩니다.  --> 
+    <c:if test="${sessionScope.user.member_role=='1' }">  
+          <li>
+      
            <!-- test1 view-config = /myongopage  href="/myongopage" -->
            <!-- test2 view-config = /myongopage  href="/ongo/myongopage" --> 
             <a id="siTitle" href="/ongo/myongopage" onmouseover="menuover(this);"><span >나의온고</span></a>
@@ -145,8 +147,11 @@
                 </div>
               </div>
             </div>
-          </li>
-
+      </li>
+ </c:if>
+  <!-- ${sessionScope.user.member_role=='99'  } 세션에 저장된 member_role 값이 '99' 이면
+관리자입니다.  관리자로 로그인하면 메뉴에 '어드민페이지'가 생성됩니다.  --> 
+<c:if test="${sessionScope.user.member_role=='99'  }">
           <li>
             <a id="siTitle" href="/ongo/member/memberboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
             <div class="dep2_wrap">
@@ -170,8 +175,8 @@
               </div>
             </div>
           </li>
-
-       
+</c:if>
+    </c:if>  
         </ul>
       </div>
       <div class="util d-flex justify-content-end">
@@ -234,6 +239,17 @@
                   </div>
                 </div>
               </div>
+              <div class="sitemap_li d-flex">
+                <h2>업체</h2>
+                <div class="sitemap_depth2_wrap">
+                  <div class="sitemap_depth2">
+                    <a href="/ongo/companylist" class="sitemap_depth2_tit" ><span>협력업체</span></a>
+                  </div>
+              	</div>
+              </div>
+  <c:if test="${sessionScope.user!=null }">  
+ <!-- 세션에 저장된 member_role 값이 '1' 이면일반 유저라면 메뉴에 '마이페이지'가 생성  --> 
+    <c:if test="${sessionScope.user.member_role=='1' }">  
              <div class="sitemap_li d-flex">
                 <h2>나의온고</h2>
                 <div class="sitemap_depth2_wrap">
@@ -265,7 +281,10 @@
                   </div>
                 </div>
               </div>
-                <div class="sitemap_li d-flex">
+              </c:if>
+                <!-- 세션에 저장된 member_role 값이 '99' 이면 관리자 --> 
+<c:if test="${sessionScope.user.member_role=='99'  }">
+             <div class="sitemap_li d-flex">
                 <h2>관리자</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
@@ -282,6 +301,8 @@
                   </div>
                 </div>
               </div>
+       </c:if>
+       </c:if>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <i class="las la-times"></i>
