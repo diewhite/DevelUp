@@ -30,7 +30,11 @@
 		where deal_number=#{deal_number}
 	</update>
 	
-	
+	<!--중고거래 게시글_삭제  -->
+	<delete id="dealDelete" parameterType="String">
+		delete from deal_table where id=#{id}
+	</delete>
+		
 	
 	
 	
