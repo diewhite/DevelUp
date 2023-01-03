@@ -9,7 +9,7 @@
  	</definition>
  	
  	<definition name="myongo/home" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/history/myongo.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
  	</definition>
  
  </tiles-definitions>
