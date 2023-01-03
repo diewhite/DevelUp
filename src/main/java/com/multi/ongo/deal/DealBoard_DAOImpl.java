@@ -44,6 +44,13 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	public int update(DealBoard_DTO dto) {
 		return sqlSession.update("com.multi.ongo.deal.dealUpdate", dto);
 	}
+
+
+
+	@Override
+	public int dealDelete(String id) {
+		return sqlSession.delete("com.multi.ongo.deal.dealDelete", id);
+	}
 	
 	
 	
