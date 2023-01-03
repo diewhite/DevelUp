@@ -1,9 +1,10 @@
 package com.multi.ongo.member;
 import java.sql.Date;
 
+// 컬럼명을 정의해 놓은것 = 멤버변수 라고 한다
 public class MemberDTO {
-	private String member_id; //회원아이디 primary key
-	private int member_no; //회원번호
+	private String member_id; //회원아이디 primary key 
+	private int member_no; //회원번호 시퀀스
 	private String member_pw; // 비밀번호
 	private String member_name; //이름
 	private String member_addr1; // 주소 = 도로명주소
@@ -11,12 +12,16 @@ public class MemberDTO {
 	private String zipcode; //우편번호
 	private String member_phone; //휴대폰번호
 	private String member_email; //이메일주소
-	private String member_role; //회원권한 (일반/관리자)
+	private String member_role; //회원권한 (일반/관리자) 1 or 99
 	private Date member_date; // 가입일
 	private String member_sign; //가입상태
 	public MemberDTO() {
 		
 	}
+	
+	//member.xml에서 업데이트를추가로 만들경우 생성자 생성 = 우클릭 > 소스 > 유징필드 순서가 중요함
+	
+	
 	
 	
 	@Override
@@ -27,6 +32,7 @@ public class MemberDTO {
 				+ ", member_role=" + member_role + ", member_date=" + member_date + ", member_sign=" + member_sign
 				+ "]";
 	}
+
 
 
 	public MemberDTO(String member_id, int member_no, String member_pw, String member_name, String member_addr1,

@@ -4,22 +4,22 @@ import java.util.List;
 
 public interface MemberDAO {
 	//등록
-	int insert(MemberDTO dto);
+	int insert(MemberDTO joininsert);
 		
 	//전체리스트
-	List<MemberDTO> memberlist();
+	List<MemberDTO> joinlist();
 	
 	//회원 상세조회
-	MemberDTO memberIdRead(String id);
+	MemberDTO memberIdRead(String joinread);
 	
 	//회원 삭제
-	int delete(String id);
+	int delete(String joindeleteid);
 	
 	//회원 업데이트
-	int update(MemberDTO dto);
+	int update(MemberDTO joinupdate);
 	
 	//로그인
-	MemberDTO login(MemberDTO idInfo);
+	MemberDTO login(MemberDTO loginidInfo);
 	
 	
 	

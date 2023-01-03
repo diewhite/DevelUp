@@ -3,161 +3,13 @@
 <head>
 <style type="text/css"> 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
+input {
+	margin-left: -1px;
+	
+.searchbox {
+	
 }
-body{
-    background-color: #f3f3f3;
-}
-#starred{
-    box-shadow: 3px 3px 10px #b5b5b5;
-}
-.table div.text-muted{
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-    margin-top: 0.3rem;
-}
-.icons{
-    object-fit: contain;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-}
-.graph img{
-    object-fit: contain;
-    width: 40px;
-    height: 50px;
-    transform: scale(2) rotateY(45deg);
-}
-.graph .dot{
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    position: absolute;
-    background-color: blue;
-    box-shadow: 1px 1px 1px #a5a5a5;
-    top: 25px;
-}
-.graph .dot:after{
-    background-color: #fff;
-    content: '$9,999.00';
-    font-weight: 600;
-    font-size: 0.7rem;
-    position: absolute;
-    top: -25px;
-    left: -20px;
-    box-shadow: 1px 1px 2px #a5a5a5;
-    border-radius: 2px;
-}
-.font-weight-bold{
-    font-size: 1.3rem;
-    
-}
-#ethereum{
-    transform: scale(2) rotateY(45deg) rotateX(180deg);
-}
-#ripple{
-    transform: scale(2) rotateY(10deg) rotateX(20deg);
-}
-#eos{
-    transform: scale(2) rotateY(50deg) rotateX(190deg);
-}
-
-
-
-/* utility classes */
-.table tr td{
-    border: none;
-}
-.red{
-    color: #ff2f2f;
-    font-weight: 700;
-}
-.green{
-    color: #1cbb1c;
-    font-weight: 700;
-}
-.labels,.graph{
-    position: relative;
-}
-.green-label{
-    background-color: #00b300;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.7rem;
-}
-.orange-label{
-    background-color: #ffa500;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.7rem;
-}
-.border-right{
-    transform: scale(0.6);
-    border-right: 1px solid black!important;
-}
-.box{
-    transform: scale(1.5);
-    background-color: #dbe2ff;
-}
-#top .table tbody tr{
-    border-bottom: 1px solid #ddd;
-}
-#top .table tbody tr:last-child{
-    border: none;
-}
-select{
-    background-color: inherit;
-    padding: 8px;
-    border-radius: 5px;
-    color: #444;
-    border: 1px solid #444;
-    outline-color: #00f;
-}
-.text-white{
-    background-color: rgb(43, 159, 226);
-    border-radius: 50%;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 3px;
-}
-a:hover{
-    text-decoration: none;
-}
-a:hover .text-white{
-    background-color: rgb(20, 92, 187);
-}
-
-/* Scrollbars */
-::-webkit-scrollbar{
-    width: 10px;
-    height: 4px;
-}
-::-webkit-scrollbar-thumb{
-    background: linear-gradient(45deg,#999,#777);
-    border-radius: 10px;
-    
-}
-
-/* media Queries */
-@media(max-width:379px){
-    .d-lg-flex .h3{
-        font-size: 1.4rem;
-    }
-}
-@media(max-width:352px){
-    #plat{
-        margin-top: 10px;
-    }
-}
-
+ 
 </style>
 <script type="text/javascript"> </script>
 </head>
@@ -167,340 +19,209 @@ a:hover .text-white{
     <!-- title -->
     <div class="sub_top">
         <div class="container">
-            <h1>거래내역</h1>
+            <h1>중고거래내역</h1>
         </div>
     </div>
     <!-- //title -->
     
     <!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
-    
-   <div class="container mt-5">
-        <div class="h3 text-muted">My Favorite</div>
-        <div id="starred" class="bg-white px-2 pt-1 mt-2">
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex mt-2 border-right">
-                                    <div class="box p-2 rounded">
-                                        <span class="fas fa-star text-primary px-1"></span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Name</div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="https://www.freepnglogos.com/uploads/bitcoin-png/bitcoin-all-about-bitcoins-9.png"
-                                                alt="" class="icons">
-                                        </div>
-                                        <b class="pl-2">Bitcoin</b>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Market cap</div>
-                                    <div><b>$146,169,768.00</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Price</div>
-                                    <div><b>$8,536.79</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Volume</div>
-                                        <div class="green-label mx-1 px-1 rounded">74</div>
-                                    </div>
-                                    <div><b>$7,576,878.89</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Change</div>
-                                        <div class="orange-label mx-1 px-1 rounded">20%</div>
-                                    </div>
-                                    <div><b class="red">-1.22%</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="graph">
-                                    <img src="https://freepngimg.com/thumb/stock_market/25650-5-stock-market-graph-up-transparent-background.png"
-                                        alt="">
-                                    <div class="dot"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="d-lg-flex align-items-lg-center py-4">
-            <div class="h3 text-muted">Top Cryptocurrency Prices</div>
-            <div class="ml-auto">
-                <select name="industry" id="industry" class="mx-lg-3 mr-md-4">
-                    <option value="" hidden selected>Choose Industry</option>
-                    <option value="dark">Dark Net</option>
-                </select>
-                <select name="plat" id="plat">
-                    <option value="" hidden selected>Choose Platform</option>
-                    <option value="darkweb">Dark Web</option>
-                </select>
-            </div>
-        </div>
-        <div id="top">
-            <div class="bg-white table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex mt-2 border-right">
-                                    <div class="box p-2 rounded">
-                                        <span class="text-primary px-2 font-weight-bold">01</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Name</div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="https://freepngimg.com/thumb/bitcoin/59703-classic-bitcoin-virtual-cryptocurrency-currency-ethereum.png"
-                                                alt="" class="icons">
-                                        </div>
-                                        <b class="pl-2">Ethereum</b>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Market cap</div>
-                                    <div><b>$146,169,768.00</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Price</div>
-                                    <div><b>$8,536.79</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Volume</div>
-                                        <div class="green-label mx-1 px-1 rounded">74</div>
-                                    </div>
-                                    <div><b>$7,576,878.89</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Change</div>
-                                        <div class="orange-label mx-1 px-1 rounded">20%</div>
-                                    </div>
-                                    <div><b class="red">-0.18%</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="graph">
-                                    <img src="https://freepngimg.com/thumb/stock_market/25650-5-stock-market-graph-up-transparent-background.png"
-                                        alt="" id="ethereum">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex mt-2 border-right">
-                                    <div class="box p-2 rounded">
-                                        <span class="text-primary px-1 font-weight-bold">02</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Name</div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="https://freepngimg.com/thumb/bitcoin/59526-cryptocurrency-badge-bitcoin-gold-png-file-hd-thumb.png"
-                                                alt="" class="icons">
-                                        </div>
-                                        <b class="pl-2">Bitcoin cash</b>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Market cap</div>
-                                    <div><b>$446,569,768.00</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Price</div>
-                                    <div><b>$8,836.79</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Volume</div>
-                                        <div class="green-label mx-1 px-1 rounded">74</div>
-                                    </div>
-                                    <div><b>$7,576,878.89</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Change</div>
-                                        <div class="orange-label mx-1 px-1 rounded">20%</div>
-                                    </div>
-                                    <div><b class="green">+4.00%</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="graph">
-                                    <img src="https://freepngimg.com/thumb/stock_market/25650-5-stock-market-graph-up-transparent-background.png"
-                                        alt="">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex mt-2 border-right">
-                                    <div class="box p-2 rounded">
-                                        <span class="text-primary px-1 font-weight-bold">03</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Name</div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="https://freepngimg.com/thumb/bitcoin/59549-cryptocurrency-money-bitcoin-gold-cash-free-photo-png-thumb.png"
-                                                alt="" class="icons">
-                                        </div>
-                                        <b class="pl-2">Ripple</b>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Market cap</div>
-                                    <div><b>$56,169,768.00</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Price</div>
-                                    <div><b>$5,536.79</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Volume</div>
-                                        <div class="green-label mx-1 px-1 rounded">74</div>
-                                    </div>
-                                    <div><b>$17,576,878.89</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Change</div>
-                                        <div class="orange-label mx-1 px-1 rounded">20%</div>
-                                    </div>
-                                    <div><b class="green">+1.71%</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="graph">
-                                    <img src="https://freepngimg.com/thumb/stock_market/25650-5-stock-market-graph-up-transparent-background.png"
-                                        alt="" id="ripple">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex mt-2 border-right">
-                                    <div class="box p-2 rounded">
-                                        <span class="text-primary px-1 font-weight-bold">04</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Name</div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="https://freepngimg.com/thumb/bitcoin/59842-cryptocurrency-bitfinex-bitcoin-exchange-png-download-free-thumb.png"
-                                                alt="" class="icons">
-                                        </div>
-                                        <b class="pl-2">EOS</b>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Market cap</div>
-                                    <div><b>$12,169,768.00</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="text-muted">Price</div>
-                                    <div><b>$14.79</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Volume</div>
-                                        <div class="green-label mx-1 px-1 rounded">74</div>
-                                    </div>
-                                    <div><b>$76,878.89</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center labels">
-                                        <div class="text-muted">Change</div>
-                                        <div class="orange-label mx-1 px-1 rounded">20%</div>
-                                    </div>
-                                    <div><b class="red">-5.86%</b></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="graph">
-                                    <img src="https://freepngimg.com/thumb/stock_market/25650-5-stock-market-graph-up-transparent-background.png"
-                                        alt="" id="eos">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center py-2">
-            <div>
-                <a href="#">Load more <span class="text-white">26</span></a>
-            </div>
-        </div>
-    </div>
-    
-    <!--====== // </div> container=====-->
+ 
+     <div class="container"> 
 
-</div><!-- //contents -->
+
+               <div class="board_list">
+                   <div class="board_info d-flex">
+                       <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
+                           건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
+                       </div>
+                       
+                        <!-- =======검색창 시작======= -->
+                        
+                      <div class="d-grid d-md-flex justify-content-md-end">
+					  <div class=" bg-gray-200">  
+					 	<div class="container h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8">
+					        <div class="relative">
+					          <input type="text" class="h-14 w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none">
+					        </div>			        
+					 	</div>
+					 </div>                       
+                     <button class="btn btn-outline-primary me-md-4" type="button"">검색</button>
+               		 </div>
+                  </div>
+             </div>
+             		 <!-- =======검색창======= -->
+             		   
+             		 <!-- ======= 게시판 테이블 시작 ======= -->
+                   <div class="board">
+                       <table class="table">
+                           <caption>게시판 목록</caption>
+                           <colgroup>
+                               <col width="5%">	<!-- 체크박스 -->
+                               <col width="6%"> <!-- 글번호 -->
+                               <col width="8%"> <!-- 작성날짜 -->
+                               <col width="10%"> <!-- 상품명 -->
+                               <col width="20%"> <!-- 제목 -->
+                               <col width="*"> <!-- 상품가격 -->
+                               <col width="*"> <!-- 거래유형 -->
+                               <col width="9%"> <!-- 판매자 -->
+                               <col width="10%"> <!-- 거래상태 -->
+                           </colgroup>
+                          
+                           <thead>
+                               <tr> 
+                              	<th><input type="checkbox" name=" "  class="form-check-input" onclick="fnChk()"></th>
+                                   <th scope="col">글번호</th>
+                                   <th scope="col">작성날짜</th>
+                                   <th scope="col">상품명</th>
+                                   <th scope="col">제 목</th>                                   
+                                   <th scope="col">상품가격</th>
+                                   <th scope="col">거래유형</th>
+                                   <th scope="col">판매자</th>
+                                   <th scope="col">거래상태</th>                                  
+                               </tr>
+                           </thead>
+                           <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">1</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                           <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">2</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                            <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">3</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                            <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">4</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                             <tbody id="ksicList">
+                             <tr class="notice">
+                               <td data-before="체크박스">
+					           <div class="form-check">
+						            <label class="form-check-label">
+						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
+						            </label>
+						          </div>
+						        </td>
+						       <td data-before="글번호">5</td>
+                               <td data-before="작성날짜">22-12-19</td>
+                               <td data-before="상품명">에어팟</td>
+                               <td data-before="제목">
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               <td data-before="상품가격">150,000원</td>
+                               <td data-before="거래유형">판매/구매</td>
+                               <td data-before="판매자 " >
+                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               </td>
+                               <td data-before="거래상태">판매중</td>
+                             </tr>
+                           </tbody>
+                       </table>
+                    <!-- ======= 게시판 테이블 끝 ======= -->
+
+                       <!-- 페이지네이션 -->
+                       <div class="pagination">
+                         <input type="hidden" id="PAGE" name="PAGE" value="1">
+                         <input type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
+                         <input type="hidden" id="START_INDEX" name="START_INDEX" value="">
+                         <input type="hidden" id="END_INDEX" name="END_INDEX" value="">
+                           <li class="page-item arr">
+                             <a class="page-link" href="javascript:fnMovePage(1, fnSearch, 'pagination');" aria-label="Previous">
+                               <span class="visually-hidden">처음으로</span>
+                               <span aria-hidden="true"><i class="las la-angle-double-left"></i></span>
+                             </a>
+                           </li>
+                           <li class="page-item active">
+                             <a class="page-link" href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a>
+                           </li>
+                           <li class="page-item arr">
+                             <a class="page-link" href="javascript:fnMovePage(1, fnSearch, 'pagination');" aria-label="NextEnd">
+                               <span class="visually-hidden">다음으로</span>
+                               <span aria-hidden="true"><i class="las la-angle-double-right"></i></span>
+                             </a>
+                           </li>
+                       </div>
+                       <!-- //페이지네이션 -->
+                   </div>
+         
+               </div>
+           
+ 		</div><!-- // container-->
+ 
 
 <!-- Footer -->
 <jsp:include page="../include/footer.jsp"/>
