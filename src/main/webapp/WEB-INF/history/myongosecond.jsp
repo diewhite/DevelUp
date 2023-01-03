@@ -247,11 +247,11 @@ ul li:hover .fas {
 							<tbody>
 								<tr>
 									<td><span class="gray-bold">235</span></td>
-									<td><span class="image">ABC<span class="ps-1">LOANS</span></span></td>
-									<td><span class="title"><a href="#">제목</a></td>
+									<td><span class="image"><img alt="#" src="#">이미지</span></td>
+									<td><span class="title"><a href="#">제목</a></span></td>
 									<td><span class="bg-bdark">15,000원 </td>
 									<td><span class="bg-bdark"><a href="#">yoonhee0312</a></span></td>
-									<td class="text-center px-0">2023년 1월 3일</span></td>
+									<td class="date">2023년 1월 3일</span></td>
 									<td class="text-center"><span class="fas fa-check">test</span></td>
 									
 								</tr>
