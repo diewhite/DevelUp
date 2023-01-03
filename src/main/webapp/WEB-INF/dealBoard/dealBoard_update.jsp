@@ -177,6 +177,9 @@
 				<button type="submit" class="btn btn-primary btn-large">수정완료</button>
 			<!-- 	<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealUpdate.do'">수정완료</button> -->
 			</div>
+			<div class="btn-area">
+					<button class="btn btn-primary btn-danger btn-large" type="button" onclick="location.href='dealDelete.do?id=${dealRead.id}'">삭제</button>
+			</div>	
 					
 				</form>
 			</div>
