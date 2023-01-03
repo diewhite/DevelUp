@@ -26,15 +26,28 @@ public class NoteController {
 	//받은쪽지함
 	@RequestMapping(value = "/mypage/note/receivebox")
 	public String receiveList(String id, Model model){
-//		List<NoteDTO> notelist = service.receiveList(id);
-//		model.addAttribute("notelist", notelist);
+		List<NoteDTO> notelist = service.receiveList(id);
+		model.addAttribute("notelist", notelist);
 		return "mypage/note/receivebox";
 	}
 	//보낸쪽지함
 	@RequestMapping(value = "/mypage/note/sendbox")
 	public String sendList(String id, Model model){
-//		List<NoteDTO> notelist = service.sendList(id);
-//		model.addAttribute("notelist", notelist);
+		List<NoteDTO> notelist = service.sendList(id);
+		model.addAttribute("notelist", notelist);
 		return "mypage/note/sendbox";
+	}
+	//쪽지보내기
+	@RequestMapping(value = "/mypage/note/sendnote")
+	public String sendNote(NoteDTO note) {
+		System.out.println(note);
+		service.sendNote(note);
+		return "redirect:/mypage/note/sendbox?id=Yeona1231";
+	}
+	//쪽지읽기(Ajax)
+	@RequestMapping(value = "/mypage/note/ajax_readnote")
+	@ResponseBody
+	public NoteDTO readNote(NoteDTO note) {
+		return null;
 	}
 }

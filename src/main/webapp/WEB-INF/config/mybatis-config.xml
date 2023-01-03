@@ -11,5 +11,6 @@
 	<mappers>
 		<mapper resource="mapper/member.xml"/>
 		<mapper resource="mapper/deal.xml"/>
+		<mapper resource="mapper/note.xml"/>
 	</mappers>
 </configuration>
