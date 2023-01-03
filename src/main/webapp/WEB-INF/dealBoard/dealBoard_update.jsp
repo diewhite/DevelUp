@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
-<head> </head>
+<head>
+<script type="text/javascript">
+	//구분 저장공유
+	$(document).ready(function(){ //자바스크립트가 실행되면
+		data = "${dealRead.dealType}" 
+		$("#dealType").val(data).attr("selected", "selected"); //// 
+	  //  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
+	});
+	
+	//상품카테고리 저장공유
+	$(document).ready(function(){ //자바스크립트가 실행되면
+		data = "${dealRead.product_category}" 
+		$("#product_category").val(data).attr("selected", "selected"); //// 
+	  //  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
+	});
+	
+	
+	
+</script>
+
+ </head>
 <body>
 <!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 

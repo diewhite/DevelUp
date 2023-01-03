@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
-<head> </head>
+<head> 
+<script type="text/javascript">
+	//구분 저장공유
+	$(document).ready(function(){ //자바스크립트가 실행되면
+		data = "${dealRead.dealType}" 
+		$("#dealType").val(data).attr("selected", "selected"); //// 
+	  //  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
+	});
+	//상품카테고리 저장공유
+	$(document).ready(function(){ //자바스크립트가 실행되면
+		data = "${dealRead.product_category}" 
+		$("#product_category").val(data).attr("selected", "selected"); //// 
+	  //  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
+	});
+	
+	
+	
+	
+</script>
+
+</head>
 <body>
 <!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
@@ -41,7 +61,7 @@
 					</div> -->
 							
 					
-					
+					<%-- 
 					<div class="cont-box-inner">
 						<div class="tbl grid-layout grid2">
 							<div class="grid-item colspan2">
@@ -51,14 +71,34 @@
 										${dealRead.dealType}
 									</div>
 								</div>
+							</div> --%>
+							
+							<div class="cont-box-inner">
+					<div class="tbl grid-layout grid2">
+						<div class="grid-item colspan2">
+							<label for="select_target_1">구분</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w20">
+									<select class="form-select grid-input" title="게시판"
+										id="dealType" name="dealType">
+										<option value="중고">중고</option>
+										<option value="나눔">나눔</option>
+									</select>
+								</div>
 							</div>
+						</div>
+							
+							
+							
+							
+							
 							
 							<div class="grid-item colspan2">
 								<label for="select_target_1" >상품카테고리</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w20">
-									${dealRead.product_category}
-										<!-- <select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
+									
+										<select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
 											<option value="디지털&가전">디지털&가전</option>
 											<option value="가구&인테리어">가구&인테리어</option>
 											<option value="유아동">유아동</option>
@@ -73,7 +113,7 @@
 											<option value="반려동물용품">반려동물용품</option>
 											<option value="도서&티켓&음반">도서&티켓&음반</option>
 											<option value="기타">기타</option>
-										</select> -->
+										</select>
 									</div>
 								</div>
 							</div>
