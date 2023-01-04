@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
-<head> </head>
+<head>
+</head>
 <body>
-<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 <!-- content -->
 <div id="contents">
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>서비스관리</h1>
+                <h1>게시물통합관리</h1>
             </div>
         </div>
         <!-- //title -->
@@ -26,24 +26,24 @@
 
                 <div class="board_list">
                     <div class="board_info d-flex">
-                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
-                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
-                        </div>
+                        <div class="total">총 게시판수(<strong class="blue" id="totalCount">9</strong>)</div>
                         <div class="form_box">
-
+                        <div class="tbl-basic-td">
+           			</div>
+           			
+           		
                             <fieldset>
                                 <legend class="visually-hidden">검색</legend>
                                 <div class="input-group">
                                     <div class="select">
                                         <label class="visually-hidden" for="srchSelect">검색 구분</label>
                                         <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                            <option value="ALL">전체</option>
-                                            <option value="NTC_MATT_TTL">제목</option>
-                                            <option value="NTC_MATT_CNTS">내용</option>
-                                            <option value="EMP_NM">작성자</option>
+                                            <option value="ALL">전체게시판</option>
+                                            <option value=" ">진행중경매</option>
+                                            <option value=" ">중고거래</option>
                                         </select>
                                     </div>
-                                    <input type="text" class="form-control" name="SCH_KEY_WORD" id="SCH_KEY_WORD" title="검색어 입력" placeholder="검색어를 입력하세요." onkeyup="enterkey()">
+                                    <input type="text" class="form-control" name=" " title="검색어 입력" placeholder="글제목 입력" >
                                     <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
                                 </div>
                             </fieldset>
@@ -55,62 +55,49 @@
                             <caption>게시판 목록</caption>
                             <colgroup>
                                 <col style="width:10%">
-                                <col style="width:20%">
-                                <col style="width:60%">
                                 <col style="width:10%">
-                                <col style="width:20%">
+                                <col style="width:30%">
+                                <col style="width:10%">
+                                <col style="width:15%">
+                                <col style="width:15%">
                                 <col style="width:10%">
                                 <col style="width:10%">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th scope="col">번호</th>
-                                    <th scope="col">지역</th>
+                                    <th scope="col">게시판명</th>
                                     <th scope="col">제목</th>
-                                    <th scope="col">담당자</th>
+                                    <th scope="col">작성자</th>
                                     <th scope="col">작성일</th>
-                                    <th scope="col">파일</th>
+                                    <th scope="col">작성시간</th>
                                     <th scope="col">조회</th>
+                                    <th scope="col">삭제</th>
                                 </tr>
                             </thead>
                             <tbody id="ksicList">
                               <tr class="notice">
                                 <td data-before="번호"><div><img src="/ongo/images/noti-icon.png" alt="공지"></div></td>
-                                <td data-before="지역">서울</td>
+                                <td data-before="게시판명" >진행중경매</td>
                                 <td data-before="제목"><a href="#" onclick="location.href='/ongo/member/memberserviceread.do'">경매진행성공</a></td>
-                                <td data-before="담당자">유인선</td><td data-before="작성일">2022-11-15</td>
-                                <td data-before="파일"><i class="las la-file-alt"></i></td>
+                                <td data-before="작성자">유인선</td>
+                                <td data-before="작성일">2022-11-15</td>
+                                <td data-before="작성시간">11:445:25</td>
                                 <td data-before="조회">189</td>
+                                <td data-before="삭제"><button type="button" class="board_label red" title="회원삭제">삭제</button> </td>
                               </tr>
+                             
                               <tr class="notice">
                                 <td data-before="번호">2</td>
-                                <td data-before="지역">대구</td>
+                                <td data-before="게시판명">중고거래</td>
                                 <td data-before="제목"><a href="#">마감안내</a></td>
                                 <td data-before="담당자">시스템관리자</td>
                                 <td data-before="작성일">2022-10-24</td>
-                                <td data-before="파일"></td>
+                                <td data-before="작성시간">11:445:25</td>
                                 <td data-before="조회">323</td>
+                                <td data-before="삭제"><button type="button" class="board_label red" title="회원삭제">삭제</button> </td>
                               </tr>
-                              <tr class="notice">
-                                <td data-before="번호">2</td>
-                                <td data-before="지역">대구</td>
-                                <td data-before="제목"><a href="#">마감안내</a></td>
-                                <td data-before="담당자">시스템관리자</td>
-                                <td data-before="파일"><div>
-                                  <button type="button" class="board_label yellow" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지발송</button></div>
-                                </td>
-                                <td data-before="작성일">2022-10-24</td>
-                                <td data-before="조회">323</td>
-                              </tr>
-                              <tr class="notice">
-                                <td data-before="번호">1</td>
-                                <td data-before="지역">전주</td>
-                                <td data-before="제목"><a href="#">공지 및 신규 마감안내</a></td>
-                                <td data-before="담당자">시스템관리자</td>
-                                <td data-before="작성일">2022-10-24</td>
-                                <td data-before="파일"><i class="las la-file-alt"></i></td>
-                                <td data-before="조회">323</td>
-                              </tr>
+                           
                             </tbody>
                         </table>
                           <div class="text-right">
