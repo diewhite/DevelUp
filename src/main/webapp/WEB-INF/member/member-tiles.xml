@@ -57,8 +57,8 @@
  		<put-attribute name="content" value="/WEB-INF/member/memberServiceWrite.jsp"></put-attribute>
  	</definition>
  	
- 	<!-- 업체리스트 -->
- 	 <definition name="member/companylist" extends="indexTemplate">
+ 	<!-- 협력업체리스트 -->
+ 		<definition name="member/companylist" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/companylist.jsp"></put-attribute>
  	</definition>
  	
