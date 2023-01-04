@@ -2,48 +2,74 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.multi.ongo.member">
-	<select id="test" resultType="member" parameterType="member">
-	</select>
-	<!-- psj
+  <mapper namespace="com.multi.ongo.member"> <!-- mapper는 namespace="내가 사용한 패키지명"-->
+	<!--  Mybatis 연동을 통하여 Oracle 데이터를 스프링 프로젝트를 사용하기 위함.
+	
 C : 크리에이트- 만든다는 의미 (insert문)
 L : 리스트-전체목록뿌리기 (조건없는 select문)
 R : 리드-읽기 (select문) primary 키로 조건을 주는 경우
 U : 업데이트-수정(update문)
 D : 삭제 (delete문)
-	
-		<insert id="write" parameterType="dto">
-                insert into ongo 
-                values(ongo_no.nextval,#{id},#{pass},#{name},#{tel},#{addr},#{email},1,sysdate)
+
+ parameterType="자바에서 String또는int 값이 들어올거라는것을 인지시켜 주는 역할"
+resultType="select 된 데이터를 반환할 (그릇)정의"
+=> mybatis-config.xml에서 보았듯이 MemberDTO 객체에 담기고 그걸 alias 에 담아서 가져온 후 resultType에 넣어준다
+  => <typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/> alias="패키지 이름지정"
+  
+          
+
+           
+        관리자페이지-회원등록
+        <insert id="memberwrite" parameterType="memberP">
+             insert into member2
+             values(member_no.nextval,#{member_id},#{member_name},
+              #{member_addr1},#{member_phone},#{member_email},sysdate ,#{member_sign} 
         </insert>
-       
-        <select id="selectall" resultType="dto">
-                select * from ongo
-                order by no desc
-        </select>
         
-        <select id="idRead" resultType="dto" parameterType="String">
-        	select * from ongo 
+        <select id="idRead" resultType="memberP" parameterType="String"> 읽기 
+        	select * from member2
         	where id=#{id}
         </select>
         
-        <delete id="idDelete" parameterType="String">
-        	delete from ongo where id = #{id}
+        <delete id="idDelete" parameterType="String"> 삭제
+        	delete from member2 where id = #{id}
         </delete>
         
-        <update id="idUpdate" parameterType="dto">
-        	update ongo
+        <update id="idUpdate" parameterType="memberP"> 수정
+        	update member2
         	set pass = #{pass}, name = #{name}, tel = #{tel}, addr = #{addr}, email = #{email}
         	where id = #{id}
         </update>
+           
+           관리자계정 = 인설트가 아니라 업데이트로 처리
+           회원삭제시 = 1 = 삭제 0= 살아있다
+           
+-->		
+        
+         <!-- 로그인 : login이라는 이름은 mapper에 정의된 이름 -->
+        <select id="login" resultType="memberP" parameterType="memberP">
+        	select * from member2 
+        	where member_id = #{member_id} and member_pw = #{member_pw}
+        </select>
+      
+		<!-- 회원가입-입력 / 관리자페이지-회원입력 통합 -->
+	 	<insert id="joinwrite" parameterType="memberP">
+             insert into member2
+             values(member_no.nextval, #{member_id},#{member_pw},#{member_name},
+             #{zipcode},#{member_addr1},#{member_addr2}, #{member_phone},
+             #{member_email},#{member_role},sysdate, #{member_sign} 
+             )
+        </insert>
+        
+        <!-- 관리자페이지-회원목록리스트 -->
+		<select id="selectall" resultType="memberP">
+                select * from member2
+                order by member_no desc
+        </select>
+   
         
        
-       
-        <select id="login" resultType="dto" parameterType="dto">
-        	select * from ongo 
-        	where id = #{id} and pass = #{pass}
-        </select>
-	 -->
-	 
+        
+     
 	
   </mapper>

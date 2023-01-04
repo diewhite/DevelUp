@@ -1,32 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head> </head>
 <body>
-<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 <!-- content -->
 <div id="contents">
        <!-- title -->
        <div class="sub_top">
            <div class="container">
-               <h1>계정관리</h1>
+               <h1>회원목록</h1>
            </div>
        </div>
        <!-- //title -->
 
   <!-- container -->
   <div class="container"> 
-         
-
+	
                <div class="board_list">
                    <div class="board_info d-flex">
                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
                        </div>
-                      <div class="d-grid d-md-flex justify-content-md-end">
-                       <button class="btn btn-outline-primary me-md-2" type="button"">권한적용</button>
-                      <button class="btn btn-outline-danger me-md-2" type="button"">회원삭제</button>
-                    <button class="btn btn-outline-success me-md-2" type="button"><i class="las la-file-excel"></i> 엑셀</button>
+                      <div class="form_box d-grid d-md-flex justify-content-md-end"> 
+                       <button class="btn btn-outline-warning me-md-2" type="button">쪽지발송</button>
+                       <button class="btn btn-outline-danger me-md-2" type="button">회원삭제</button>
+                       <button class="btn btn-outline-success me-md-2" type="button"><i class="las la-file-excel"></i> 엑셀</button>
+                       <fieldset>
+	                       <div class="input-group">
+		                       <input type="text" class="form-control" name=" " title="검색어 입력" placeholder="이름검색" >
+		                       <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+	                        </div >
+                       </fieldset>
+                       
                		 </div>
                    </div>
                    </div>
@@ -41,7 +47,6 @@
                                <col width="20%">
                                <col width="*">
                                <col width="*">
-                               <col width="9%">
                                <col width="10%">
                                <col width="5%">
                            </colgroup>
@@ -54,75 +59,41 @@
                                    <th scope="col">주소</th>
                                    <th scope="col">휴대폰번호</th>
                                    <th scope="col">이메일</th>
-                                   <th scope="col">권한</th>
                                    <th scope="col">가입일</th>
                                    <th scope="col">상태</th>
                                </tr>
                            </thead>
-                           <tbody id="ksicList">
+                           <tbody >
+                           <c:forEach var="memberR" items="${memberlist}">
                              <tr class="notice">
                                <td data-before="체크박스">
 					           <div class="form-check">
 						            <label class="form-check-label">
 						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
-						          
 						            </label>
 						          </div>
 						        </td>
-						        <td data-before="회원번호">1</td>
-                               <td data-before="이름">박소정</td>
+						        <td data-before="회원번호">${memberR.member_no}</td>
+                               <td data-before="이름">${memberR.member_name}</td>
                                <td data-before="아이디" >
-                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
+								<!-- JSP요청 컨트롤러로 전달할 파라미터들=> ? member_id=${member.member_id}&state=READ 
+								 member_id => 파라미터 이름 , =${member.member_id} => 파라미터에 연결시켜주고 컨트롤러로 보낼 값
+								 => member라는 어트리뷰트에 정의된 멤버변수인 member_id라는 변수명을 찾아서 매핑
+								-->
+                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do?
+                              			 member_id=${memberR.member_id}&state=READ'">${memberR.member_id}</button>
                                </td>
-                               <td data-before="주소">서울특별시 강남구 삼성로111길</td>
-                               <td data-before="휴대폰번호">010-1234-1234</td>
-                               <td data-before="이메일">psjsub1@gmail.com</td>
-                               <td data-before="권한">
-                               	<div class="select">
-                                   <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                   <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                       <option value="">일반</option>
-                                       <option value="" selected>관리자</option>
-                                   </select>
-                                </div>
-                                </td>
-                              <td data-before="가입일">22-12-19</td>
-                               <td data-before="가입일">가입</td>
+                               <td data-before="주소">${memberR.member_addr1}</td>
+                               <td data-before="휴대폰번호">${memberR.member_phone}</td>
+                               <td data-before="이메일">${memberR.member_email}</td>
+                              <td data-before="가입일">${memberR.member_date}</td>
+                               <td data-before="가입상태">${memberR.member_sign}</td>
                              </tr>
-                                <tr class="notice">
-                               <td data-before="체크박스">
-					           <div class="form-check">
-						            <label class="form-check-label">
-						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
-						          
-						            </label>
-						          </div>
-						        </td>
-						        <td data-before="회원번호">1</td>
-                               <td data-before="이름">박소정</td>
-                               <td data-before="아이디" >
-                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do'">TEAM1</button>
-                               </td>
-                               <td data-before="주소">서울특별시 강남구 삼성로111길</td>
-                               <td data-before="휴대폰번호">010-1234-1234</td>
-                               <td data-before="이메일">psjsub1@gmail.com</td>
-                               <td data-before="권한">
-                               	<div class="select">
-                                   <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                   <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                       <option value="">일반</option>
-                                       <option value="">관리자</option>
-                                   </select>
-                                </div>
-                                </td>
-                              <td data-before="가입일">22-12-19</td>
-                               <td data-before="가입일">탈퇴</td>
-                             </tr>
-                            
+                            </c:forEach>
                            </tbody>
                        </table>
                          <div class="text-right">
-                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberwrite.do'">사용자입력</button>
+                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberwrite.do'">회원등록</button>
                        </div>
 
                        <!-- 페이지네이션 -->
@@ -149,14 +120,14 @@
                        </div>
                        <!-- //페이지네이션 -->
                    </div>
-
-                   <!-- 문의사항 -->
+</form>
+                   <!-- 주의 -->
                    <div class="survey">
                        <ul class="survey_info d-flex dot_list">
                            <li><strong class=" ">주의</strong><span>함부로 회원 삭제 하지 마세요</span></li>
                        </ul>
                    </div>
-                   <!-- //문의사항 -->
+                   <!-- //주의-->
                </div>
            
  		</div><!-- // container-->

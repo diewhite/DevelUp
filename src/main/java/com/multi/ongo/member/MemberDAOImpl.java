@@ -8,22 +8,24 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO{
-
+	//mybatis의 핵심 클래스인 SqlSession을 이용해서 sql문이 실행
 	SqlSession sqlSession;
 	
-	@Autowired
+	@Autowired //오토와이어트 : 자동으로 적용 받을수 있게 처리
 	public MemberDAOImpl(SqlSession sqlSession) {
 		super();
 		this.sqlSession = sqlSession;
 	}
 	@Override //MemberDTO 참조형식 
-	public int insert(MemberDTO joininsert) { //등록
-		return sqlSession.insert("com.multi.ongo.member.write", joininsert);// <insert id="write" parameterType="memberP"> 에서 id="여기이름" 을 가져다쓴다
+	public int insert(MemberDTO joininsert) { //회원가입 - 등록
+		//System.out.println("DAO회원가입확인중"+joininsert);
+		return sqlSession.insert("com.multi.ongo.member.joinwrite", joininsert);// <insert id="write" parameterType="memberP"> 에서 id="여기이름" 을 가져다쓴다
 	}
 
 	@Override
-	public List<MemberDTO> joinlist() {  // 전체리스트
+	public List<MemberDTO> joinlist() {  // 관리자> 회원목록> 전체리스트
 		return sqlSession.selectList("com.multi.ongo.member.selectall");
+		
 	}
 
 	@Override
