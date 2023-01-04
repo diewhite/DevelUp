@@ -83,6 +83,7 @@
 #navbar {
 	width: 20%;
 	background-color: #21214e !important;
+	
 	height: 50px;
 	border: none
 }
