@@ -98,12 +98,7 @@
         <li>
    <a id="siTitle" href="/ongo/companylist" ><span >협력업체</span></a>
           </li>
-    <!-- ${sessionScope.user!=null } 세션에 저장된 user가 공백이 아니면
-즉,로그인되어 있는 상황에서만 마이페이지 또는 관리자 페이지가 출력될 수 있도록 if문을 생성한 다음에, -->
-  <c:if test="${sessionScope.user!=null }">  
- <!-- ${sessionScope.user.member_role=='1' } 세션에 저장된 member_role 값이 '1' 이면
-관리자가 아니라는 의미임으로 일반 유저입니다. 일반 유저라면 메뉴에 '마이페이지'가 생성됩니다.  --> 
-    <c:if test="${sessionScope.user.member_role=='1' }">  
+ 
           <li>
             <a id="siTitle" href="/ongo/history/myongo" onmouseover="menuover(this);"><span >나의온고</span></a>
             <div class="dep2_wrap">
@@ -154,10 +149,6 @@
               </div>
             </div>
           </li>
-</c:if>
-  <!-- ${sessionScope.user.member_role=='99'  } 세션에 저장된 member_role 값이 '99' 이면
-관리자입니다.  관리자로 로그인하면 메뉴에 '어드민페이지'가 생성됩니다.  --> 
-<c:if test="${sessionScope.user.member_role=='99'  }">
     <li>
             <a id="siTitle" href="/ongo/member/memberboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
             <div class="dep2_wrap">
@@ -181,9 +172,7 @@
               </div>
             </div>
           </li>
-</c:if>
-    </c:if>  
-       
+ 
         </ul>
       </div>
       <div class="util d-flex justify-content-end">
