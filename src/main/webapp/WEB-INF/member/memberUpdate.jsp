@@ -38,7 +38,7 @@ function selectChange(){
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>계정관리</h1>
+                <h1>회원정보</h1>
             </div>
         </div>
         <!-- //title -->
@@ -85,7 +85,7 @@ function selectChange(){
               </div>
             </div>
           </div>
-          <div class="grid-item colspan2">
+          <div class="grid-item">
             <label for="HOFS_ADDR">아이디<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
@@ -94,6 +94,17 @@ function selectChange(){
             
             </div>
           </div>
+	        <div class="grid-item">
+	            <label for="HOFS_ADDR">회원등급</label>
+	            <div class="tbl-basic-td">
+	              <div class="input-wrap">
+	                 <select class="form-select grid-input" name="" title="등급" >
+              <option value="">일반</option><option value="">관리자</option>
+              </select>
+	              </div>
+	            
+	            </div>
+	          </div>
        
           <div class="grid-item colspan2">
             <label for="ENPWD">비밀번호<em class="org-txt asterisk" title="필수">*</em></label>
