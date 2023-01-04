@@ -34,25 +34,25 @@ overflow: hidden;
 						전체 <strong class="blue" id="totalCount">9</strong> 건 (페이지 <strong
 							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
 					</div>
-					<div class="form_box">
-
-                            <fieldset>
-                                <legend class="visually-hidden">검색</legend>
-                                <div class="input-group">
-                                    <div class="select">
-                                        <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                        <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                            <option value="ALL">전체</option>
-                                            <option value="NTC_MATT_CNTS">내용</option>
-                                            <option value="EMP_NM">보낸사람</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" class="form-control" name="SCH_KEY_WORD" id="SCH_KEY_WORD" title="검색어 입력" placeholder="검색어를 입력하세요." onkeyup="enterkey()">
-                                    <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
-                                </div>
-                            </fieldset>
-
-                        </div>
+						<form action="/ongo/mypage/note/searchSendBox" method="post">
+							<div class="form_box">
+		                        <fieldset>
+		                            <legend class="visually-hidden">검색</legend>
+		                            <div class="input-group">
+		                                <div class="select">
+		                                    <label class="visually-hidden" for="category">검색 구분</label>
+		                                    <select class="form-select" id="category" title="검색구분선택" name="category">
+		                                        <option value="content">내용</option>
+		                                        <option value="receive_id">받는사람</option>
+		                                    </select>
+		                                </div>
+		                                <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요.">
+		                                <input type="text" hidden="true" name="send_id" value="Yeona1231">
+		                                <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		               </form>		                    
 				</div>
 			</div>
 			<div class="board">

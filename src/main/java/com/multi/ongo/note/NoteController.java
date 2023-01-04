@@ -50,4 +50,18 @@ public class NoteController {
 	public NoteDTO readNote(NoteDTO note) {
 		return null;
 	}
+	//보낸쪽지함 검색
+	@RequestMapping(value = "/mypage/note/searchSendBox")
+	public String searchSendBox(String category, String keyword, String send_id, Model model) {
+		List<NoteDTO> notelist = service.searchSendBox(category,keyword,send_id);
+		model.addAttribute("notelist", notelist);
+		return "mypage/note/sendbox";
+	}
+	//받은쪽지함 검색
+	@RequestMapping(value = "/mypage/note/searchReceiveBox")
+	public String searchReceiveBox(String category, String keyword, String receive_id, Model model) {
+		List<NoteDTO> notelist = service.searchReceiveBox(category,keyword,receive_id);
+		model.addAttribute("notelist", notelist);
+		return "mypage/note/receivebox";
+	}
 }
