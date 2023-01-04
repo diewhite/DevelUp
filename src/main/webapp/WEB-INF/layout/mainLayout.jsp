@@ -24,7 +24,7 @@
         <ul class="nav nav-tabs" id="introTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="intro1-tab" data-bs-toggle="tab" data-bs-target="#intro1" type="button"
-              role="tab" aria-controls="intro1" aria-selected="true">업체목록</button>
+              role="tab" aria-controls="intro1" aria-selected="true">협력업체</button>
           </li>
            <li class="nav-item" role="presentation">
             <button class="nav-link" id="intro1-tab" data-bs-toggle="tab" data-bs-target="#intro2" type="button"
@@ -268,7 +268,7 @@
       <div class="guide">
         <div class="title_box white">
           <h2>처음이용자안내</h2>
-          <p class="gray_tt">본인의 사업장이 위치해 있는곳의 이용현황 사례를 확인하세요.</p>
+          <p class="gray_tt">본인이 위치해 있는곳의<br/> 이용현황 사례를 확인하세요.</p>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -309,45 +309,16 @@
         
           
             <div class="title_box white">
-              <h2>로그인</h2>
-              <ul class="nav nav-tabs" id="Login" role="tablist">
-                <li class="nav-item" role="presentation">
-                </li>
+              <h2>폐가전 무료 수거 방법</h2>
+              <ul class="nav-tabs" >
               </ul>
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="normal"
-                  aria-labelledby="normal-tab">
-                 
-                  <div class="login_wrap">
-                    <div class="login_section">
-                      <form id="frmUsr" action="#" method="post">
-                        <input type="hidden" id="USR_TP" name="TP" value="USR">
-                        <div class="input-group">
-                          <label for="USR_ID" class="form-label visually-hidden">아이디</label>
-                          <input type="text" class="form-control" id="USR_ID" name="ID" placeholder="아이디를 입력해주세요."
-                            value="">
-                        </div>
-                        <div class="input-group">
-                          <label for="PW" class="form-label visually-hidden">비밀번호</label>
-                          <input type="password" class="form-control" id="PW" name="PW" placeholder="비밀번호를 입력해주세요."
-                            value="">
-                        </div>
-                        <div class="form-check">
-                          <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                          <label for="remember" class="form-check-label"><span class="checkbox"></span>아이디저장</label>
-                        </div>
-                        <li style="  list-style: none;">
-                        <button onclick="location.href='/ongo/member/login.do'" type="button" class="btn btn-primary">로그인</button>
-                        <div class="text-center login_bottom">
-                          <span><a href="/ongo/member/findid.do">아이디찾기</a></span>
-                          <span><a href="/ongo/member/findpass.do">비밀번호찾기</a></span>
-                          <span><a href="/ongo/member/join1.do" class="blue">회원가입</a></span>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-               
+              <div class="mt-3 text-white">
+              <p>한국전자제품 <a href="www.15990903.or.kr" target="_blank" class="text-white">자원순환공제조합 </a>에서 <br/>
+              운영하는 폐가전 무상방문수거 서비스를 이용할 수 있습니다.<br/><br/>
+               폐가전 무료배출은 먼저 인터넷과 모바일, 콜센터
+               <br/>(전국 1599-0903)를 통해서 폐가전제품 배출 예약은 간단히 할 수 있습니다.<br/><br/>
+               콜센터 운영시간은 평일 8시부터 18시이고 휴무일은 매주 토일요일 근로자의날, 설 추석 연휴, 신정, 공휴일 처리불가
+               </p>
               </div>
             </div>
           
