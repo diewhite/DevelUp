@@ -21,19 +21,10 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int insert(MemberDTO joininsert) {//등록
-		String phone = joininsert.getPhone1()+joininsert.getPhone2()+joininsert.getPhone3();
-		String email = joininsert.getEmail1()+joininsert.getEmail2();
-		//phone을 member_phone에 셋팅
-		joininsert.setMember_phone(phone);
-		//email을 member_email에 셋팅
-		joininsert.setMember_email(email);
-		//회원가입 상태 - 가입/탈퇴
-		joininsert.setMember_sign("1");
-		if(joininsert.getMember_id().equals("admin")) {//관리자계정이면 role =>99,사용자계정이면 role=>1
-			//멤버롤셋팅
-			joininsert.setMember_role("99"); //관리자계정이면 role변수를 2로 셋팅 - setter메소드를 호출해서 셋팅하기
+		if(joininsert.getMember_id().equals("admin")) {//관리자계정이면 role =>1,사용자계정이면 role=>2
+			joininsert.setMember_role("1"); //관리자계정이면 role변수를 1로 셋팅 - setter메소드를 호출해서 셋팅하기
 		}else {
-			joininsert.setMember_role("1");
+			joininsert.setMember_role("2");
 		}
 		return memberdao.insert(joininsert);
 	}

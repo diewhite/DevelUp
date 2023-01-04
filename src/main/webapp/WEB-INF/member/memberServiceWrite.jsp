@@ -9,7 +9,7 @@
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>관리자글쓰기</h1>
+                <h1>글쓰기</h1>
             </div>
         </div>
         <!-- //title -->
@@ -23,15 +23,15 @@
         
         <div class="tbl grid-layout grid2">
           <div class="grid-item colspan2">
-            <label for="select_target_1">공지사항</label>
+            <label for="select_target_1">지역</label>
             <div class="tbl-basic-td">
-              <div class="input-wrap" >
-                <div class="form-check">
-               
-		            <label class="form-check-label">
-		              <input type="checkbox" class="form-check-input"><span class="">&nbsp;공지사항 등록</span>
-		            </label>
-		          </div>
+              <div class="input-wrap w30" >
+                <select class="form-select grid-input"  title="옵션선택">
+                 <option value="01">서울</option>
+                 <option value="02">경기도</option>
+                 <option value="03">인천</option>
+                 <option value="04">전주</option>
+                </select>
               </div>
             </div>
           </div>

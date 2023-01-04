@@ -1,8 +1,6 @@
 package com.multi.ongo.note;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,7 @@ public class NoteDAOImpl implements NoteDAO {
 	@Override
 	public List<NoteDTO> receiveList(String id) {
 		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",id);
+		System.out.println(notelist);
 		return notelist;
 	}
 
@@ -36,23 +35,5 @@ public class NoteDAOImpl implements NoteDAO {
 	@Override
 	public int sendNote(NoteDTO note) {
 		return sqlsession.insert("com.multi.ongo.note.sendnote",note); 
-	}
-
-	@Override
-	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("category", category);
-		map.put("keyword", keyword);
-		map.put("send_id", send_id);
-		return sqlsession.selectList("com.multi.ongo.note.searchsendbox", map);
-	}
-
-	@Override
-	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("category", category);
-		map.put("keyword", keyword);
-		map.put("receive_id", receive_id);
-		return sqlsession.selectList("com.multi.ongo.note.searchreceivebox", map);
 	}
 }

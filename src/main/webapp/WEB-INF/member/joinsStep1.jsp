@@ -3,6 +3,7 @@
 <head>
 
 <script>
+fnIdCheck
 function fnNext(){
   const agree1 = document.getElementById('agree1').checked;
   const agree2 = document.getElementById('agree2').checked;

@@ -38,18 +38,18 @@ function selectChange(){
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-                <h1>회원관리</h1>
+                <h1>계정관리</h1>
             </div>
         </div>
         <!-- //title -->
 
         <!-- 게시판 -->
        <div class="container">
-  			 <form name=" " action="/ongo/member/memberwrite" method="post">
+  			 <form id="saveForm" name="saveForm">
       <input type="hidden" value=" ">
       <div class="cont-box-inner">
         <div class="title">
-          <h3 class="h4">회원등록</h3>
+          <h3 class="h4">신규계정추가</h3>
         </div>
         <div class="tbl grid-layout grid2">
           <div class="grid-item">
@@ -163,7 +163,7 @@ function selectChange(){
     
   	</div>
 	<div class="btn-area flex-row">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberwrite.do'">회원등록</button>
+       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard.do'">등록</button>
         <button class="btn btn-outline-secondary btn-large" type="button"  onclick="history.back()">취소</button>
       </div>
     </div><!-- // content -->
