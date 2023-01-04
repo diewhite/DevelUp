@@ -6,6 +6,7 @@ public interface MemberService {
 
 	//등록
     int insert(MemberDTO joininsert);
+    
     //전체리스트 
     List<MemberDTO> joinlist();
 

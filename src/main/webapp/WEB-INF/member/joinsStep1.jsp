@@ -3,7 +3,6 @@
 <head>
 
 <script>
-fnIdCheck
 function fnNext(){
   const agree1 = document.getElementById('agree1').checked;
   const agree2 = document.getElementById('agree2').checked;
@@ -157,7 +156,7 @@ function fnAgree(){
       </div>
       <div class="btn-area">
           <button class="btn btn-primary btn-large" type="button" onclick="fnNext()">동의합니다.</button>
-          <button class="btn btn-outline-secondary btn-large" type="button" onclick="history.back()">동의하지 않습니다.</button>
+          <button class="btn btn-outline-secondary btn-large" type="button" onclick="location.href='/ongo/index'">동의하지 않습니다.</button>
       </div>
     </form>
   </div>
