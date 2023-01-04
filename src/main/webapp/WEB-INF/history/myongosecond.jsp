@@ -170,15 +170,120 @@
 		<!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
 
 		<!-- 거래현황 -->
+<!-- 게시판 -->
+        <div class="container">
+          <div class="cont-box-inner board_list">
+            <div class="board_info d-flex">
+              <div class="align-items-end">
+                <h2 class="h4 verticalM">경매거래현황</h2>
+              </div>
+              <div class="d-grid d-md-flex justify-content-md-end">   
+                  <button class="btn btn-primary btn-small" onclick="fnExcel();" type="button">경매구매내역</button>
+                  
+                   <button class="btn btn-primary btn-small" onclick="fnExcel();" type="button">경매판매내역</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table bg-table">
+                <caption>경매거래현황</caption>
+                <colgroup>
+                  
+                </colgroup>
+            <thead>
+              <tr>
+                <th class="blue-bg border-bottom " colspan="5">경매판매</th>
+                <th  class="border-bottom" colspan="5">경매구매</th>
+              </tr>
+                <tr>
+                  <th class="blue-bg board ">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+              </tr>
+            </thead>
+            <tbody>
+                 <tr>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                    <td >1</td>
+                  <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                </tr>
+             
+            </tbody>
+              </table>
+             </div>
+            </div><!--//cont-box-inner-->
+ 
 
 
+        <div class="cont-box-inner board_list">
+            <div class="board_info d-flex">
+              <div class="align-items-end">
+                <h2 class="h4 verticalM">일반거래현황</h2>
+              </div>
+              <div class="d-grid d-md-flex justify-content-md-end">   
+                  <button class="btn btn-primary btn-small" onclick="fnExcel();" type="button">일반판매내역</button>
+                  <button class="btn btn-primary btn-small" onclick="fnExcel();" type="button">일반구매내역</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table bg-table">
+                <caption>일반거래현황</caption>
+                <colgroup>
+                  
+                </colgroup>
+            <thead>
+              <tr>
+                <th class="blue-bg border-bottom " colspan="5">판매현황</th>
+                <th  class="border-bottom" colspan="5">구매현황</th>
+              </tr>
+                <tr>
+                  <th class="blue-bg board ">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="blue-bg board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+                  <th class="board">구분</th>
+              </tr>
+            </thead>
+            <tbody>
+                 <tr>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                    <td >1</td>
+                  <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                   <td >1</td>
+                </tr>
+             
+            </tbody>
+              </table>
+             </div>
+            </div>
+          </div>
+          <!--//cont-box-inner-->
 
-
-
-
-
-	
-
+         </div><!--//container-->
 
 <!-- =========경매내역list========= -->
 		
