@@ -29,6 +29,8 @@
 hr {
 	color : --darkgray-color;
 	width: 80%;
+	
+	
 }
 
  </style>
@@ -42,25 +44,25 @@ hr {
 		<div class="side_list"> 
 		<!-- 경매 -->
 			<div class="sidebox">
-				<h4>경매내역</h4>	
+				<h5>경매내역</h5>	
 				<a href="#"	class="list-group-item">판매내역</a> 
 				<a href="#" class="list-group-item">구매내역</a>
 			</div>
 			<!-- 중고거래 -->
 			<div class="sidebox">
-				<h4>중고거래내역</h4>
+				<h5>중고거래내역</h5>
 				<a href="#"	class="list-group-item">판매내역</a> 
 				<a href="#" class="list-group-item">구매내역</a>
 			</div>
 			<!-- 나의 정보 -->
 			<div class="sidebox">
-				<h4>나의 정보</h4>
+				<h5>나의 정보</h5>
 				<a href="#"	class="list-group-item">정보수정</a> 
 				<a href="#" class="list-group-item">탈퇴하기</a>
 			</div>
 			<!-- 쪽지함 -->
 			<div class="sidebox">
-				<h4>쪽지함</h4>
+				<h5>쪽지함</h5>
 				<a href="#"	class="list-group-item">받은 쪽지</a> 
 				<a href="#" class="list-group-item">보낸 쪽지</a>
 			</div>
