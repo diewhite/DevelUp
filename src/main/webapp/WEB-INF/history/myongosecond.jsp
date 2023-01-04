@@ -11,8 +11,8 @@
 #contents {
 	min-height: 600px;
 	margin: auto;
-
 }
+
 
 }
 .topnav {
@@ -41,7 +41,6 @@
 	color: black;
 	border-bottom: 3px solid #1B3C88;
 }
-
 
 .navbar-toggler:focus {
 	box-shadow: none;
@@ -129,8 +128,26 @@
 	width: 16%;
 }
 
+.btndiv {
+	float: right;
+}
 
+.btn {
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #7a7a7a;
+  font-size: 15px;
+  background: #ffffff;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
 
+.btn:hover {
+  background: #e0e0e0;
+  text-decoration: none;
+}
 
 </style>
 <script type="text/javascript">
@@ -177,11 +194,13 @@
 								<a href="#home" class="active">판매</a> 
 								<a href="#news">구매</a>
 							</div>
-							
 						</div>
 					</div>
 					<div class="table-responsive px-2">
 						<table class="table table-borderless">
+							<div class="btndiv" >
+								<button class="btn"> + 더보기 </button>
+							</div>
 							<thead>
 								<tr>
 									<th class="table-header" scope="col">번호</th>
@@ -197,7 +216,7 @@
 								<tr>
 									<td><span class="gray-bold">1</span></td>
 									<td><img alt="" src="#"></td>
-									<td><span class="blue-bold"><a href="#">상태좋은 아이폰14pro 팝니다</a></span></td>
+									<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태좋은 아이폰14pro 팝니다</a></span></td>
 									<td><span class="blue-bold">15,000원</span> </td>
 									<td><span class="blue-bold"><a href="#">yoonhee0312</a></span></td>
 									<td>2023년 1월 3일</td>
