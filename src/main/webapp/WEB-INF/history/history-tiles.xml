@@ -3,6 +3,7 @@
      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        
  <tiles-definitions>
+ 
 	<!-- 메뉴레이아웃 템플릿 -->
 	<definition name="menuTemplate" template="/WEB-INF/history/menuLayout.jsp">
  		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
@@ -10,15 +11,24 @@
  		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
-	
+ 	
+	<!-- 나의 온고 첫화면 -->
 	<definition name="history/myongo" extends="menuTemplate"></definition>
 	
+	<!-- 거래내역 list 페이지 -->
  	<definition name="history/historylist" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historylist.jsp"></put-attribute>
  	</definition>
  	
+ 	<!-- 내역 상세 페이지 -->
+	<definition name="history/joonggo_detail" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/history/historyDetail.jsp"></put-attribute>
+ 	</definition> 	
+ 	
+<!--  	
+ 	나의온고 첫페이지 이전 타일즈 (나중에 문제 없는거 보고 삭제 예정)
  	<definition name="myongo/home" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
  	</definition>
- 
+  -->
  </tiles-definitions>

@@ -25,6 +25,12 @@ public class ProductHistoryController {
 		return mav;
 	}
 	
-	
+	//중고내역 상세페이지
+	@RequestMapping("/history/joongodetail")
+	public ModelAndView joongodetail () {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("history/joonggo_detail");
+		return mav;
+	}
 	
 }
