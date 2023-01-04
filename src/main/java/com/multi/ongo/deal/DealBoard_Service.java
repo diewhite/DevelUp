@@ -18,4 +18,7 @@ public interface DealBoard_Service {
 		
 	//중고거래 게시글 삭제
 	int dealDelete(String id);
+	
+	//하단검색
+	List<DealBoard_DTO> searchData(String tag, String searchData);
 }

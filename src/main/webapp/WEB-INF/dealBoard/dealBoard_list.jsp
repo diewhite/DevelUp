@@ -112,7 +112,7 @@
 		
 		
 		
-		<div class="grid-item colspan2">
+	<!-- 	<div class="grid-item colspan2">
 							<label for="HOFS_DTADR">검색</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w50">
@@ -120,10 +120,24 @@
 								    <button class="btn btn-primary btn-small" type="button" onclick="location.href='/ongo/dealRegister'"> 검색</button>
 								</div>
 							</div>
+						</div> -->
+		
+			<form action="/ongo/serarchData.do" method="post" >
+				<div class="grid-item colspan2">
+					<div class="tbl-basic-td">
+						<div class="input-wrap w20" style=" float: left; width: 10%;">
+							<select class="form-select grid-input" id="tag" name="tag">
+								<option value="product_name">상품명</option>
+								<option value="board_title">제목</option>
+								<option value="id">작성자</option>
+								<option value="write_date">작성일</option>
+							</select>
 						</div>
-		
-		
-	</div>
+						<input type="text" name="searchData" id="searchData" class="grid-input" style="float: left; width: 25%;"/> 
+						<input type="submit" value="검색" class="btn btn-primary btn-medium" style=" float: left; width: 5%;">
+					</div>
+				</div>
+			</form>
   
   
   <div class="btn-area">
