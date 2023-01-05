@@ -66,14 +66,14 @@
 
 .table thead tr th {
 	height: 40px;
-	font-size: 15px;
+	font-size: 20px;
 	color: #868585;
 	padding: 10px 10px
 }
 
 .table tbody tr td {
 	height: 40px;
-	font-size: 14px;
+	font-size: 17px;
 	padding: 10px 10px
 }
 
@@ -230,7 +230,7 @@
 					<div id="topnavbar">
 					<div class="topnav d-flex  mb-2">
 								<div class="me-auto ">
-									<h3>경매내역</h3>
+									<h3>중고거래내역</h3>
 									<div class="list_button">
 										<a href="#home" class="active">판매</a> <a href="#news">구매</a>
 									</div>

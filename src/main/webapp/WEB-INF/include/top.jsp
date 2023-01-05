@@ -111,25 +111,14 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#">거래현황 </a></li>
                     <li><a href="/ongo/history/historylist">경매내역</a></li>
                     <li><a href="/ongo/history/historylist">중고거래내역</a></li>
                   </ul>                 
-              
-        
                 </div>
-                
-              <!-- 원본 
-                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="/ongo/history/historylist">거래내역</a></span>
-                  <ul class="dep2_link">
-                    <li><a href="#none" onclick="location.href='board.html'">거래현황</a></li>
-                  </ul>
-                </div> -->
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >결제내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='prepare.html'">구매내역</a></li>
+                    <li><a href="#" onclick="location.href='prepare.html'">결제내역조회</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
@@ -236,12 +225,43 @@
                 </div>
               </div>
               <div class="sitemap_li d-flex">
-                <h2>업체</h2>
+                <h2>협력업체</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
                     <a href="/ongo/companylist" class="sitemap_depth2_tit" ><span>협력업체</span></a>
                   </div>
               	</div>
+              </div>
+			  <div class="sitemap_li d-flex">
+                <h2>나의온고</h2>
+                <div class="sitemap_depth2_wrap">
+                  <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">거래내역</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >경매내역</a></li>
+                     <li ><a href="#" >중고거래내역</a></li>
+                    </ul>
+                  </div>
+                  <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">결제내역</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >결제내역조회</a></li>
+                    </ul>
+                  </div>
+                  <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">나의정보</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >정보수정</a></li>
+                    </ul>
+                  </div>
+                   <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">쪽지함</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >받은쪽지함</a></li>
+                     <li ><a href="#" >보낸쪽지함</a></li> 
+                    </ul>
+                  </div>
+                </div>
               </div>
          <c:if test="${sessionScope.user!=null }">  
  <!-- 세션에 저장된 member_role 값이 '1' 이면일반 유저라면 메뉴에 '마이페이지'가 생성  --> 
