@@ -24,7 +24,6 @@ public class MemberServiceImpl implements MemberService{
 		String phone = joininsert.getPhone1()+"-"+joininsert.getPhone2()+"-"+joininsert.getPhone3();
 		String email = "";
 		joininsert.setMember_phone(phone);//phone을 member_phone에 셋팅
-		
 		joininsert.setMember_sign("가입");//회원가입 상태 - 가입/탈퇴
 		if(joininsert.getEmail2().equals("directly")) {//equals (비교) admin 관리자 계정이면 role =>99,사용자계정이면 role=>1
 			//멤버롤셋팅
@@ -35,12 +34,6 @@ public class MemberServiceImpl implements MemberService{
 		joininsert.setMember_email(email);//email을 member_email에 셋팅
 		return memberdao.insert(joininsert);
 	}
-	/*아이디 중복체크
-	public int nickCheck(String nickname) throws Exception {
-		int result = MemberDAO.nickCheck(nickname);
-		return result;
-	}*/ 
-
 	@Override
 	public List<MemberDTO> joinlist() {  // 관리자> 회원목록> 전체리스트
 		return memberdao.joinlist();
