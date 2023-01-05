@@ -71,8 +71,8 @@
 		
 		<div class="btn-area flex-row">
 	       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard'">목록</button>
-	        <button class="btn btn-success btn-large text-white" type="button" onclick="location.href='/ongo/emp/empserviceupdate.do'">수정</button>
-	        <button class="btn btn-outline-danger btn-large" type="button" onclick="location.href='/ongo/emp/empservice.do'">삭제</button>
+	        <button class="btn btn-outline-success btn-large " type="button" onclick="location.href='/ongo/member/memberupdate.do'">수정</button>
+	        <button class="btn btn-outline-danger btn-large" type="button" onclick="location.href='/ongo/member/memberservice.do'">삭제</button>
       </div>
 	</form>
   </div> <!-- // container-->

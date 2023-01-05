@@ -175,7 +175,7 @@ $(function() {
 						</div>
 						
 					
-		       <div class="grid-item colspan2">
+		    <div class="grid-item colspan2">
             <label for="USR_EMADR">이메일주소<em class="org-txt asterisk" title="필수">*</em></label>
             <input type="hidden" id="USR_EMADR" name="USR_EMADR">
             <div class="tbl-basic-td">
