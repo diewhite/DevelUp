@@ -154,10 +154,8 @@
 	<div id="contents">
 		<!-- title -->
 		<div class="sub_top">
-			<div class="container">
 				<h1>반갑습니다. user_id님!</h1>
 				<h5>user_id님의 회원 등급은 일반회원입니다.</h5>
-			</div>
 		</div>
 		<!-- //title -->
 
@@ -180,10 +178,9 @@
 
 		<!-- =========경매내역list========= -->
 
-		<div class="container">
+	
 			<div class="px-0 bg-light"></div>
-				<div class="d-md-flex">
-					<div id="topnavbar">
+				
 						<div class="topnav d-flex  mb-2">
 							<div class="me-auto ">
 								<h3>경매내역</h3>
@@ -215,7 +212,13 @@
 										<td><span class="blue-bold"><a
 												href="/ongo/history/joongodetail">상태좋은 아이폰14pro 팝니다</a></span></td>
 										<td><span class="blue-bold">15,000원</span></td>
-										<td><span class="blue-bold"><a href="#">yoonhee0312</a></span></td>
+										<td><span class="blue-bold">
+											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									           user_id
+									        </a>
+									          <ul class="dropdown-menu">
+									            <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+									            <li><a class="dropdown-item" href="#">회원정보보기</a></li></a></span></td>
 										<td>2023년 1월 3일</td>
 										<td>판매중</td>
 									</tr>
@@ -223,11 +226,10 @@
 							</table>
 						</div>
 					</div>
-				</div>
+			
 		<!-- =========중고거래내역list========= -->
 			<div class="px-0 bg-light"></div>
-				<div class="d-md-flex">
-					<div id="topnavbar">
+				
 					<div class="topnav d-flex  mb-2">
 								<div class="me-auto ">
 									<h3>중고거래내역</h3>
@@ -267,15 +269,13 @@
 							</table>
 						</div>
 					</div>
-				</div>
-		</div>
-
+		
 
 	<!--====== // </div> container=====-->
 
 
 	<!-- //contents -->
-	</div>
+
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->

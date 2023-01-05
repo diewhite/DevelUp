@@ -38,7 +38,7 @@ hr {
 <body>
 
 	 <div class="container">
-            <h1 class="menu-header">나의 온고</h1>
+            <h1 class="h3 mt-5">나의 온고</h1>
             <hr> 
 		<div class="side_list"> 
 		<!-- 경매 -->
