@@ -16,13 +16,21 @@ public class DetailController {
 	}
 	
 	//경매내역 상세페이지
-		
+	
 	@RequestMapping("/detail/detailDetail")
-		public ModelAndView detatilDetail() {
+	public ModelAndView detatilDetail() {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("detail/detailDetail");
 			return mav;
+	}
 		
+	//결제 상세내역
+	@RequestMapping("/payment2/PayParticulars")
+		public ModelAndView	PayParticulars() {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("payment2/PayParticulars");
+			return mav;
+			
 	
 		
 	
