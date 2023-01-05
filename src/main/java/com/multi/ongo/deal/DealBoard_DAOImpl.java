@@ -62,7 +62,13 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 		map.put("searchData", searchData);
 		return sqlSession.selectList("com.multi.ongo.deal.searchData", map);
 	}
-	
+
+
+	//중고거래 거래구분선택
+	@Override
+	public List<DealBoard_DTO> DealType(String dealType) {
+		return sqlSession.selectList("com.multi.ongo.deal.dealTypeSearch", dealType);
+	}
 	
 	
 	

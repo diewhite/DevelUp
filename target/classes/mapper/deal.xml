@@ -17,6 +17,17 @@
 		order by deal_number desc
 	</select>
 	
+	<!--중고거래 거래타입 검색  -->
+	<select id="dealTypeSearch" resultType="dealDTO" parameterType="String">
+		select * from deal_table
+		where dealType = #{dealType}
+	</select>
+	
+	
+	
+	
+	
+	
 	<!--중고거래 게시글_ 읽기-->
 	<select id="dealRead" resultType="dealDTO" parameterType="int">
 		select * from deal_table

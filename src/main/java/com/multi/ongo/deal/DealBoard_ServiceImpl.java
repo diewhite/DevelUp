@@ -38,14 +38,35 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		return dao.update(dto);
 	}
 
+	//중고거래 게시글 삭제
 	@Override
 	public int dealDelete(String id) {
 		return dao.dealDelete(id);
 	}
 
+	
+	//중고거래 게시글 하단검색
 	@Override
 	public List<DealBoard_DTO> searchData(String tag, String searchData) {
 		return dao.searchData(tag, searchData);
+	}
+
+	
+	//중고거래 거래구분선택
+	@Override
+	public List<DealBoard_DTO> DealType(String dealType) {
+		List<DealBoard_DTO> list = null;
+		if(dealType != null) {
+			if(dealType.equals("all")) {
+				list = dao.boardlist();
+			}else {
+				list = dao.DealType(dealType);
+			}
+		}
+			return list;
+		
+			
+			
 	}
 
 }

@@ -11,6 +11,21 @@
 	cursor:pointer; 
 	}
 </style>
+
+
+<script type="text/javascript">
+	var type = "${dealType}"
+	$(document).ready(function () {
+		$("#dealType").val(type).attr("selected","selected");
+		$("#dealType").change(function () {
+			location.href="/ongo/deal_listAll.do?dealType="+$(this).val()
+		})
+	})
+
+
+</script>
+
+
 </head>
 <body>
 <!-- 이 아래부터  content부분 부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
@@ -23,8 +38,21 @@
             <div class="container">
                 <h1>중고거래</h1>
                 <span class="blue">보다 더 · 당신의 일상과 가깝게</span>
+                
+   						<div class="form_box d-grid d-md-flex justify-content-md-end" >
+   						
+							<select class="form-select grid-input" id="dealType" name="dealType" >
+								<option value="all">전체</option>
+								<option value="중고">중고</option>
+								<option value="나눔">나눔</option>
+							</select>
+						</div>
             </div>
         </div>
+        
+        
+        
+        
         <!-- //title -->
         
      <!--    
@@ -43,21 +71,6 @@
          -->
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <div class="sub_top">
-            <div class="container">
-                <input type="radio" value="중고" >중고
-				<input type="radio" value="나눔">나눔
-            </div>
-        </div>
         
 	
 	

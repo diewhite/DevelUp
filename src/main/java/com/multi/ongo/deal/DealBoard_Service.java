@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface DealBoard_Service {
 	
+	
 	//거래등록
 	public int writeProd(DealBoard_DTO dto);
 		 
@@ -21,4 +22,11 @@ public interface DealBoard_Service {
 	
 	//하단검색
 	List<DealBoard_DTO> searchData(String tag, String searchData);
+	
+	//중고거래시글 타입
+	List<DealBoard_DTO> DealType(String dealType);
+		
+		
+		
+	
 }
