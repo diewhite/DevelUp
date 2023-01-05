@@ -111,8 +111,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#">거래현황 </a></li>
-                    <li><a href="/ongo/history/historylist">경매내역</a></li>
+                    <li><a href="/ongo/history/myongo">거래현황 </a></li>
+                    <li><a href="/ongo/detail/detaillist">경매내역</a></li>
                     <li><a href="/ongo/history/historylist">중고거래내역</a></li>
                   </ul>                 
               

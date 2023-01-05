@@ -350,7 +350,7 @@
 							<div class="list_button">
 								<a href="#home" class="active">판매</a> 
 								<a href="#news">구매</a>
-							</div>s
+							</div>
 							
 						</div>
 					</div>

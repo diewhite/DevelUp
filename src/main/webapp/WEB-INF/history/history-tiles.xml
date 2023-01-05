@@ -8,7 +8,7 @@
 	<definition name="menuTemplate" template="/WEB-INF/history/menuLayout.jsp">
  		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
  		<put-attribute name="menu" value="/WEB-INF/history/myongo_menu.jsp"></put-attribute>
- 		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/history/myongo.jsp"></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
  	
@@ -25,10 +25,4 @@
  		<put-attribute name="content" value="/WEB-INF/history/historyDetail.jsp"></put-attribute>
  	</definition> 	
  	
-<!--  	
- 	나의온고 첫페이지 이전 타일즈 (나중에 문제 없는거 보고 삭제 예정)
- 	<definition name="myongo/home" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
- 	</definition>
-  -->
  </tiles-definitions>

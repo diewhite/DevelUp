@@ -17,22 +17,16 @@ public class MemberDTO {
 	private String member_email; //이메일
 	private String email1; //psj
 	private String email2; //@naver.com
+	private String email99;//이메일주소 직접입력값
 	private String member_role; //회원권한 (일반/관리자) 1 or 99
 	private Date member_date; // 가입일
-	private String member_sign; //가입상태
+	private String member_sign; //가입상태 (가입/삭제)
 	public MemberDTO() {
 		
 	}
 	
-	//member.xml에서 업데이트를추가로 만들경우 생성자 생성 = 우클릭 > 소스 > 유징필드 순서가 중요함
-	
-	
-	
-	
-
-
-
-
+	//member.xml에서 업데이트를추가로 만들경우 생성자 생성 = 우클릭 > 소스 > 유징필드 순서가 중요함!!
+	//전체 생성자 
 	public MemberDTO(int member_no, String member_id, String member_pw, String member_name, String zipcode,String member_addr1,
 			String member_addr2,  String member_phone, String member_email, String member_role,
 			Date member_date, String member_sign) {
@@ -51,19 +45,27 @@ public class MemberDTO {
 		this.member_sign = member_sign;
 		
 	}
-	
-	
 
+	
 	@Override
 	public String toString() {
 		return "MemberDTO [member_no=" + member_no + ", member_id=" + member_id + ", member_pw=" + member_pw
 				+ ", member_name=" + member_name + ", zipcode=" + zipcode + ", member_addr1=" + member_addr1
 				+ ", member_addr2=" + member_addr2 + ", member_phone=" + member_phone + ", phone1=" + phone1
 				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", member_email=" + member_email + ", email1=" + email1
-				+ ", email2=" + email2 + ", member_role=" + member_role + ", member_date=" + member_date
-				+ ", member_sign=" + member_sign + "]";
+				+ ", email2=" + email2 + ", email99=" + email99 + ", member_role=" + member_role + ", member_date="
+				+ member_date + ", member_sign=" + member_sign + "]";
 	}
 
+	public String getEmail99() {
+		return email99;
+	}
+
+	public void setEmail99(String email99) {
+		this.email99 = email99;
+	}
+
+	
 	public String getPhone1() {
 		return phone1;
 	}

@@ -43,4 +43,9 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		return dao.dealDelete(id);
 	}
 
+	@Override
+	public List<DealBoard_DTO> searchData(String tag, String searchData) {
+		return dao.searchData(tag, searchData);
+	}
+
 }

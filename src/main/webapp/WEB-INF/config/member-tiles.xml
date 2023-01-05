@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+         
+ <tiles-definitions>	
+ 	
+ 	<definition name="member/login" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/login.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/findid" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/findID.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/pass" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/findPass.jsp"></put-attribute>
+ 	</definition>
+ 	
+<!-- 회원가입 -->
+ 	 <definition name="member/join1" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep1.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/join2" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep2.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/join3" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep3.jsp"></put-attribute>
+ 	</definition>
+ 	 <definition name="member/join4" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/joinsStep4.jsp"></put-attribute>
+ 	</definition>
+ 	
+ <!-- 계정관리-->
+ 	<definition name="member/memberboard" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberBoard.jsp"></put-attribute>
+ 	</definition>
+ 	 	<definition name="member/memberread" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberRead.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberupdate" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberUpdate.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberwrite" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberWrite.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	
+ <!-- 서비스관리 -->
+ 	<definition name="member/memberserviceboard" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceBoard.jsp"></put-attribute>
+ 	</definition>
+ 	 	<definition name="member/memberserviceread" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceRead.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberserviceupdate" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceUpdate.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="member/memberservicewrite" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/memberServiceWrite.jsp"></put-attribute>
+ 	</definition>
+ 	
+ </tiles-definitions>

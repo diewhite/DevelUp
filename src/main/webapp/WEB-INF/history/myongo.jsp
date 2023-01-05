@@ -2,125 +2,146 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <style type="text/css">
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap')
+	;
 
- .padding {
-     padding: 3rem
- }
-
- .stretch-card {
-     display: flex;  
-     align-items: stretch;
-     justify-content: stretch;
- }
-
- .grid-margin {
-     margin-bottom: 1.875rem
- }
-
- .card {
-     position: relative;
-     display: flex;
-     flex-direction: column;
-     min-width: 15em;
-     word-wrap: break-word;
-     background-color: #fff;
-     background-clip: border-box;
-     border: 1px solid #d2d2dc;
-     border-radius: 2rem;
-     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-     margin-left: 30px;
- }
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
- .card .card-body {
-     padding: 1.25rem 1.75rem
-     
- }
-
- .card-body {
-     flex: 1 1 auto;
-     padding: 1.25rem
-   
- }
-
- .card .card-title {
-     color: #1B3C88;
-     margin-bottom: 0.625rem;
-     text-transform: capitalize;
-     font-size: 40px;
-     font-weight: 500
- }
-
- .card .card-description {
-     margin-bottom: .875rem;
-     font-weight: 400;
-     color: #76838f
- }
-
- .myongotable thead th,
- .jsgrid .jsgrid-table thead th {
-     border-top: 0;
-     border-bottom-width: 1px;
-     font-weight: 500;
-     font-size: .875rem;
-     text-transform: uppercase
- }
-
- .myongotable td,
- .jsgrid .jsgrid-table td {
-     font-size: 0.875rem;
-     padding: .875rem 0.9375rem
- }
-
- .badge {
-     border-radius: 0;
-     font-size: 12px;
-     line-height: 1;
-     padding: .375rem .5625rem;
-     font-weight: normal
- }
- 
- .badge.badge-pill {
-    border-radius: 10rem;
+#contents {
+	min-height: 600px;
+	margin: auto;
 }
 
-
-p {
-     font-size: 0.875rem;
-     line-height: 1.5rem
- }
-
-
-i {
-	font-size: 30px;	
-	color: #666;
+}
+.topnav {
+	background-color: #ffff;
+	overflow: hidden
 }
 
-.link {
-	font-size: 17px;
+.topnav a {
+	float: left;
+	display: block;
+	color: #8d8b8b;
+	font-weight: 800;
+	font-size: 18px;
+	text-transform: uppercase;
+	padding: 10px;
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
 }
 
-.head_text {
-	font-family: 'ptd';
-	font-size: 17px;
-	text-align: center;
-	font-weight: 400;
-    color: #gray;
-	
+.topnav a:hover {
+	color: black;
+	border-bottom: 3px solid #1B3C88;
 }
 
-hr{
-	
-	width : 50%;
-	border: 0;
-	height: 1px;
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-	margin-left : auto;
-	margin-right : auto;
+.topnav .active {
+	color: black;
+	border-bottom: 3px solid #1B3C88;
+}
+
+.navbar-toggler:focus {
+	box-shadow: none;
+	outline: none;
+	border: none
+}
+
+::placeholder {
+	font-size: 10px
+}
+
+.container .table-responsive {
+	margin: 20px auto;
+	overflow-x: auto
+}
+
+.container .table-responsive::-webkit-scrollbar {
+	height: 5px
+}
+
+.container .table-responsive::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background-image: linear-gradient(to right, #5D7ECD, #0C91E6)
+}
+
+.table thead tr th {
+	height: 40px;
+	font-size: 15px;
+	color: #868585;
+	padding: 10px 10px
+}
+
+.table tbody tr td {
+	height: 40px;
+	font-size: 14px;
+	padding: 10px 10px
+}
+
+#navbar {
+	width: 20%;
+	background-color: #21214e !important;
+	height: 50px;
+	border: none
+}
+
+.gray-bold .title {
+	color: #6E6E6E;
+	font-weight: 600;
+}
+
+.blue-bold {
+	color: #4c4c96;
+	font-weight: 600
+}
+
+#navbar a {
+	color: white
+}
+
+#navbar2 {
+	width: 80%
+}
+
+#navbar-items {
+	width: 20%;
+	height: 500px;
+	background-color: #4f4f8a
+}
+
+#topnavbar {
+	width: 80%
+}
+
+.list_button {
+	padding-left: 10px;
+}
+
+.table-header-title {
+	width: 35%;
+}
+
+.table-header {
+	width: 16%;
+}
+
+.btndiv {
+	float: right;
+}
+
+.btn {
+	-webkit-border-radius: 3;
+	-moz-border-radius: 3;
+	border-radius: 3px;
+	color: #7a7a7a;
+	font-size: 15px;
+	background: #ffffff;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background: #e0e0e0;
+	text-decoration: none;
 }
 </style>
 <script type="text/javascript">
@@ -128,119 +149,133 @@ hr{
 </script>
 </head>
 <body>
+
 	<!-- content -->
 	<div id="contents">
 		<!-- title -->
 		<div class="sub_top">
 			<div class="container">
-	            <h1>나의 온고</h1> 
+				<h1>반갑습니다. user_id님!</h1>
+				<h5>user_id님의 회원 등급은 일반회원입니다.</h5>
 			</div>
-			
 		</div>
 		<!-- //title -->
 
 		<!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
-	<hr>
-	<div >
-	<p class="head_text"> 안녕하세요, user_name 님 
-	<br> 나의 온고에서 거래 및 결제 내역을 조회/관리하고 계정 비밀번호와 청구 주소 편집할 수 있습니다. </p>
-	<hr>
-	</div>
-	<div class="page-content page-container" id="page-content">
-	    <div class="padding">
-	        <div class="row container justify-content-center">
-	            <div class="col-md-auto grid-margin stretch-card">
-	            <!-- 거래내역 카드 -->
-	              <div class="card" OnClick="location.href ='#'" style="cursor:pointer;" >
-	                <div class="card-body">
-	                  <h2 class="card-title"><i class="far fa-store"></i> 거래내역 </h2>
-	                  <p class="card-description">거래 게시글 조회 및 관리</p>
-	                  <div class="template-demo">
-	                    <table class="myongotable mb-0">
-	                      <tbody>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">거래 현황 </a></td>                  
-	                        </tr>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">경매거래내역</a></td>
-	                        </tr>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">중고거래내역</a></td>
-	                        </tr>
-	                      </tbody>
-	                    </table>
-	                  </div>
-	                </div>
-	              </div>
-	             <!-- 결제내역 카드 -->
-	             <div class="card" OnClick="location.href ='#'" style="cursor:pointer;">
-	                <div class="card-body">
-	                  <h2 class="card-title"> <i class="far fa-credit-card"></i> 결제내역</h2>
-	                  <p class="card-description">거래 확정 후 결제 및 결제 내역 조회</p>
-	                  <div class="template-demo">
-	                    <table class="myongotable mb-0">
-	                      <tbody>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">구매내역</a></td>                  
-	                        </tr>
-	                       
-	                      </tbody>
-	                    </table>
-	                  </div>
-	                </div>
-	              </div>
-	               <!-- 나의정보 카드 -->
-	             <div class="card" OnClick="location.href ='#'" style="cursor:pointer;">
-	                <div class="card-body" >
-	                  <h2 class="card-title"> <i class="far fa-user"></i> 나의 정보</h2>
-	                  <p class="card-description">내 정보 수정하기</p>
-	                  <div class="template-demo">
-	                    <table class="myongotable mb-0">
-	                      <tbody>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">나의정보수정</a></td>                  
-	                        </tr>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">####</a></td>                  
-	                        </tr>
-	                      </tbody>
-	                    </table>
-	                  </div>
-	                </div>
-	              </div>
-	              <!-- 쪽지함 카드 -->
-	             <div class="card" OnClick="location.href ='#'" style="cursor:pointer;">
-	                <div class="card-body">
-	                  <h2 class="card-title"><i class="far fa-comments"></i> 쪽지함</h2>
-	                  <p class="card-description">쪽지 조회 및 발송</p>
-	                  <div class="template-demo">
-	                    <table class="myongotable mb-0">
-	                      <tbody>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">보낸쪽지함</a></td>                  
-	                        </tr>
-	                        <tr>
-	                          <td class="pl-0"><a class="link" href="#">받은쪽지함</a></td>                  
-	                        </tr>
-	                      </tbody>
-	                    </table>
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	
+
+		<!-- 거래현황 -->
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+		<!-- =========경매내역list========= -->
+
+		<div class="container">
+			<div class="px-0 bg-light"></div>
+				<div class="d-md-flex">
+					<div id="topnavbar">
+						<div class="topnav d-flex  mb-2">
+							<div class="me-auto ">
+								<h3>경매내역</h3>
+								<div class="list_button">
+									<a href="#home" class="active">판매</a> <a href="#news">구매</a>
+								</div>
+							</div>
+							<div class="btndiv ">
+								<button class="btn" d-flex="" justify-content-end="">+ 더보기</button>
+							</div>
+						</div>
+						<div class="table-responsive px-2">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<th class="table-header" scope="col">번호</th>
+										<th class="table-header" scope="col">제품 사진</th>
+										<th class="table-header-title" scope="col">제목</th>
+										<th class="table-header" scope="col">가격</th>
+										<th class="table-header" scope="col">구매자</th>
+										<th class="table-header" scope="col">날짜</th>
+										<th class="table-header" scope="col">거래상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span class="gray-bold">1</span></td>
+										<td><img alt="" src="#"></td>
+										<td><span class="blue-bold"><a
+												href="/ongo/history/joongodetail">상태좋은 아이폰14pro 팝니다</a></span></td>
+										<td><span class="blue-bold">15,000원</span></td>
+										<td><span class="blue-bold"><a href="#">yoonhee0312</a></span></td>
+										<td>2023년 1월 3일</td>
+										<td>판매중</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+		<!-- =========중고거래내역list========= -->
+			<div class="px-0 bg-light"></div>
+				<div class="d-md-flex">
+					<div id="topnavbar">
+					<div class="topnav d-flex  mb-2">
+								<div class="me-auto ">
+									<h3>경매내역</h3>
+									<div class="list_button">
+										<a href="#home" class="active">판매</a> <a href="#news">구매</a>
+									</div>
+								</div>
+								<div class="btndiv ">
+									<button class="btn" d-flex="" justify-content-end="">+ 더보기</button>
+								</div>
+							</div>
+						<div class="table-responsive px-2">
+							<table class="table table-borderless">
+								<thead>
+									<tr>
+										<th class="table-header" scope="col">번호</th>
+										<th class="table-header" scope="col">제품 사진</th>
+										<th class="table-header-title" scope="col">제목</th>
+										<th class="table-header" scope="col">가격</th>
+										<th class="table-header" scope="col">구매자</th>
+										<th class="table-header" scope="col">날짜</th>
+										<th class="table-header" scope="col">거래상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span class="gray-bold">1</span></td>
+										<td><img alt="" src="#"></td>
+										<td><span class="blue-bold"><a href="#">상태좋은
+													아이폰14pro 팝니다</a></span></td>
+										<td><span class="blue-bold">15,000원</span></td>
+										<td><span class="blue-bold"><a href="#">yoonhee0312</a></span></td>
+										<td>2023년 1월 3일</td>
+										<td>판매중</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+		</div>
 
 
 	<!--====== // </div> container=====-->
 
-</div>	<!-- //contents -->
 
+	<!-- //contents -->
+	</div>
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
