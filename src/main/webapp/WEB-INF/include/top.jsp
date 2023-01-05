@@ -72,7 +72,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_listAll.do" onmouseover="menuover(this);" ><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -111,8 +111,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#">거래현황 </a></li>
-                    <li><a href="/ongo/history/historylist">경매내역</a></li>
+                    <li><a href="/ongo/history/myongo">거래현황 </a></li>
+                    <li><a href="/ongo/detail/detaillist">경매내역</a></li>
                     <li><a href="/ongo/history/historylist">중고거래내역</a></li>
                   </ul>                 
               

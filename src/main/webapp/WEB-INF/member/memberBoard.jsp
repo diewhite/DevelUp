@@ -76,12 +76,18 @@
 						        <td data-before="회원번호">${memberR.member_no}</td>
                                <td data-before="이름">${memberR.member_name}</td>
                                <td data-before="아이디" >
-								<!-- JSP요청 컨트롤러로 전달할 파라미터들=> ? member_id=${member.member_id}&state=READ 
+								<!-- 
+								 <button type="submit" class="blue" 
+								 onclick="location.href='/ongo/member/memberupdate.do?member_no=${member.member_id}&state=READ'">
+								 ${member.member_id}</button>
+								 ==========설명
+								JSP요청 컨트롤러로 전달할 파라미터들=> ? member_id=${member.member_id}&state=READ 
 								 member_id => 파라미터 이름 , =${member.member_id} => 파라미터에 연결시켜주고 컨트롤러로 보낼 값
 								 => member라는 어트리뷰트에 정의된 멤버변수인 member_id라는 변수명을 찾아서 매핑
 								-->
-                              	 <button type="text" class="blue" onclick="location.href='/ongo/member/memberupdate.do?
-                              			 member_id=${memberR.member_id}&state=READ'">${memberR.member_id}</button>
+                              	 <button type="button" class="blue" 
+                              	 onclick="location.href='/ongo/member/memberread.do?member_id=${memberR.member_id}&state=READ'">
+                              	 ${memberR.member_id}</button>
                                </td>
                                <td data-before="주소">${memberR.member_addr1}</td>
                                <td data-before="휴대폰번호">${memberR.member_phone}</td>
@@ -93,7 +99,7 @@
                            </tbody>
                        </table>
                          <div class="text-right">
-                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/memberwrite.do'">회원등록</button>
+                         <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/join3?state=ADMIN'">회원등록</button>
                        </div>
 
                        <!-- 페이지네이션 -->

@@ -17,11 +17,13 @@ public class MemberDAOImpl implements MemberDAO{
 		this.sqlSession = sqlSession;
 	}
 	@Override //MemberDTO 참조형식 
-	public int insert(MemberDTO joininsert) { //회원가입 - 등록
+	public int insert(MemberDTO joininsert) { //회원가입>정보등록
 		//System.out.println("DAO회원가입확인중"+joininsert);
-		return sqlSession.insert("com.multi.ongo.member.joinwrite", joininsert);// <insert id="write" parameterType="memberP"> 에서 id="여기이름" 을 가져다쓴다
+		return sqlSession.insert("com.multi.ongo.member.joinwrite", joininsert);
+		// <insert id="joinwrite" parameterType="memberP"> 에서 id="여기이름" 을 member.xml 에서가져다쓴다
 	}
-
+	
+	
 	@Override
 	public List<MemberDTO> joinlist() {  // 관리자> 회원목록> 전체리스트
 		return sqlSession.selectList("com.multi.ongo.member.selectall");
@@ -29,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public MemberDTO memberIdRead(String joinread) {  //읽기
+	public MemberDTO memberIdRead(String joinread) {  // 관리자> 회원목록> 전체리스트>상세보기
 		return sqlSession.selectOne("com.multi.ongo.member.idRead",joinread);
 	}
 
