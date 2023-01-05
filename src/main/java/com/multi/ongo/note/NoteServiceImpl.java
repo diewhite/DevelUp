@@ -32,4 +32,19 @@ public class NoteServiceImpl implements NoteService {
 	public int sendNote(NoteDTO note) {
 		return dao.sendNote(note);
 	}
+
+	@Override
+	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id) {
+		return dao.searchSendBox(category, keyword, send_id);
+	}
+
+	@Override
+	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id) {
+		return dao.searchReceiveBox(category, keyword, receive_id);
+	}
+
+	@Override
+	public int deleteNote(String no) {
+		return dao.deleteNote(no);
+	}
 }

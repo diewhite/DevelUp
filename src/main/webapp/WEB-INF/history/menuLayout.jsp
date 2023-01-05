@@ -37,10 +37,10 @@
 		<tiles:insertAttribute name="top"></tiles:insertAttribute>
 	</div>
 	<div class="row">
-		<div class="col-lg-3 col-sm-3">
+		<div class="col-lg-2 col-sm-10">
 			<tiles:insertAttribute name="menu"></tiles:insertAttribute>
 		</div>
-		<div class="col-lg-9 col-sm-9">
+		<div class="col-lg-10 col-sm-12 px-5">
 			<tiles:insertAttribute name="content"></tiles:insertAttribute>
 		</div>
 	</div>

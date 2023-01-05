@@ -34,25 +34,25 @@ overflow: hidden;
 						전체 <strong class="blue" id="totalCount">9</strong> 건 (페이지 <strong
 							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
 					</div>
-					<div class="form_box">
-
-                            <fieldset>
-                                <legend class="visually-hidden">검색</legend>
-                                <div class="input-group">
-                                    <div class="select">
-                                        <label class="visually-hidden" for="srchSelect">검색 구분</label>
-                                        <select class="form-select" id="srchSelect" title="검색구분선택" name="srchSelect">
-                                            <option value="ALL">전체</option>
-                                            <option value="NTC_MATT_CNTS">내용</option>
-                                            <option value="EMP_NM">보낸사람</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" class="form-control" name="SCH_KEY_WORD" id="SCH_KEY_WORD" title="검색어 입력" placeholder="검색어를 입력하세요." onkeyup="enterkey()">
-                                    <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
-                                </div>
-                            </fieldset>
-
-                        </div>
+						<form action="/ongo/mypage/note/searchSendBox" method="post">
+							<div class="form_box">
+		                        <fieldset>
+		                            <legend class="visually-hidden">검색</legend>
+		                            <div class="input-group">
+		                                <div class="select">
+		                                    <label class="visually-hidden" for="category">검색 구분</label>
+		                                    <select class="form-select" id="category" title="검색구분선택" name="category">
+		                                        <option value="content">내용</option>
+		                                        <option value="receive_id">받는사람</option>
+		                                    </select>
+		                                </div>
+		                                <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요.">
+		                                <input type="text" hidden="true" name="send_id" value=${user.member_id }>
+		                                <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		               </form>		                    
 				</div>
 			</div>
 			<div class="board">
@@ -133,15 +133,12 @@ overflow: hidden;
 								${note.content }</a>
 							</td>
 							<td>${note.send_time }</td>
-							<td>삭제</td>
+							<td id="deletenote"><a href="/ongo/mypage/note/deleteNote?no=${note.no }&page=send">삭제</a></td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
-				<div class="text-right">
-					<button type="button" class="btn btn-primary btn-large">
-					<a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</button>
-				</div>
+
 
 				<!-- 페이지네이션 -->
 				<div class="pagination">
@@ -173,54 +170,7 @@ overflow: hidden;
 	</div>
 	<!-- // contents -->
 
-	<!-- modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="Modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="modal-tit">
-						<h2 class="h3">쪽지</h2>
-					</div>
-					<div class="modal-con">
-						<div class="tbl grid-layout grid1">
-							<div class="grid-item">
-								<label for="IUY_CLSS_NM">수신자</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										<span id="IUY_CLSS_NM">닉네임</span>
-									</div>
-								</div>
-							</div>
-							<div class="grid-item">
-								<label for="IUY_CLSS_CNTS">내용적기</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										<div class="input-wrap w100">
-											<textarea class="grid-input" role="textbox"
-												id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS"
-												title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">전송</button>
-					</div>
-					<!-- 닫기버튼 -->
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close">
-						<i class="las la-times"></i>
-					</button>
-					<!-- //닫기버튼 -->
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //modal -->
+
 	<!-- send note modal -->
 	<div class="modal fade" id="sendModal" tabindex="-1"
 		aria-labelledby="Modal" aria-hidden="true">
@@ -254,10 +204,7 @@ overflow: hidden;
 							</div>
 						</div>
 					</div>
-					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">전송</button>
-					</div>
+
 					<!-- 닫기버튼 -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close">

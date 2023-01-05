@@ -29,6 +29,8 @@
 
       return true;
     }
+    
+    //아이디저장
 
     window.onload = function () {
       var userInputId = getCookie("userInputId");
@@ -82,6 +84,7 @@
         }
       }
     }
+
 
 </script>         
 </head>

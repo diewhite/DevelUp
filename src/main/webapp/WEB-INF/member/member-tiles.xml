@@ -38,9 +38,6 @@
  	<definition name="member/memberupdate" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/memberUpdate.jsp"></put-attribute>
  	</definition>
- 	<definition name="member/memberwrite" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/member/memberWrite.jsp"></put-attribute>
- 	</definition>
  	
  	
  <!-- 서비스관리 -->

@@ -8,7 +8,7 @@ function fnNext(){
   const agree2 = document.getElementById('agree2').checked;
 
   if(agree1 && agree2){
-    location.href = '/ongo/member/join3.do';
+    location.href = '/ongo/member/join3.do?state=USER';
   }else{
     toastr.warning("온고 회원약관 또는 개인정보 수집 이용약관이 동의되지 않았습니다.")
   }
@@ -156,7 +156,7 @@ function fnAgree(){
       </div>
       <div class="btn-area">
           <button class="btn btn-primary btn-large" type="button" onclick="fnNext()">동의합니다.</button>
-          <button class="btn btn-outline-secondary btn-large" type="button" onclick="history.back()">동의하지 않습니다.</button>
+          <button class="btn btn-outline-secondary btn-large" type="button" onclick="location.href='/ongo/index'">동의하지 않습니다.</button>
       </div>
     </form>
   </div>

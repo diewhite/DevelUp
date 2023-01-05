@@ -62,7 +62,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_listAll.do" onmouseover="menuover(this);" ><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -88,12 +88,7 @@
         <li>
    <a id="siTitle" href="/ongo/companylist" ><span >협력업체</span></a>
           </li>
-    <!-- ${sessionScope.user!=null } 세션에 저장된 user가 공백이 아니면
-즉,로그인되어 있는 상황에서만 마이페이지 또는 관리자 페이지가 출력될 수 있도록 if문을 생성한 다음에, -->
-  <c:if test="${sessionScope.user!=null }">  
- <!-- ${sessionScope.user.member_role=='1' } 세션에 저장된 member_role 값이 '1' 이면
-관리자가 아니라는 의미임으로 일반 유저입니다. 일반 유저라면 메뉴에 '마이페이지'가 생성됩니다.  --> 
-    <c:if test="${sessionScope.user.member_role=='1' }">  
+ 
           <li>
             <a id="siTitle" href="/ongo/history/myongo" onmouseover="menuover(this);"><span >나의온고</span></a>
             <div class="dep2_wrap">
@@ -106,25 +101,14 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">거래내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#">거래현황 </a></li>
                     <li><a href="/ongo/history/historylist">경매내역</a></li>
                     <li><a href="/ongo/history/historylist">중고거래내역</a></li>
                   </ul>                 
-              
-        
                 </div>
-                
-              <!-- 원본 
-                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="/ongo/history/historylist">거래내역</a></span>
-                  <ul class="dep2_link">
-                    <li><a href="#none" onclick="location.href='board.html'">거래현황</a></li>
-                  </ul>
-                </div> -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >결제내역</a></span>
+                  <span class="dep2_tit" ><a href="/ongo/payment/paymentlist">결제내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='prepare.html'">구매내역</a></li>
+                    <li><a href="/ongo/paymentlist">결제내역조회</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
@@ -137,17 +121,13 @@
                   <span class="dep2_tit" ><a href="#" >쪽지함</a></span>
                   <ul class="dep2_link">
                     <li><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=Yeona1231'">받은쪽지함</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=Yeona1231'">보낸쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=${user.member_id}'">받은쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=${user.member_id}'">보낸쪽지함</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-</c:if>
-  <!-- ${sessionScope.user.member_role=='99'  } 세션에 저장된 member_role 값이 '99' 이면
-관리자입니다.  관리자로 로그인하면 메뉴에 '어드민페이지'가 생성됩니다.  --> 
-<c:if test="${sessionScope.user.member_role=='99'  }">
     <li>
             <a id="siTitle" href="/ongo/member/memberboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
             <div class="dep2_wrap">
@@ -171,9 +151,7 @@
               </div>
             </div>
           </li>
-</c:if>
-    </c:if>  
-       
+ 
         </ul>
       </div>
       <div class="util d-flex justify-content-end">
@@ -232,12 +210,43 @@
                 </div>
               </div>
               <div class="sitemap_li d-flex">
-                <h2>업체</h2>
+                <h2>협력업체</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
                     <a href="/ongo/companylist" class="sitemap_depth2_tit" ><span>협력업체</span></a>
                   </div>
               	</div>
+              </div>
+			  <div class="sitemap_li d-flex">
+                <h2>나의온고</h2>
+                <div class="sitemap_depth2_wrap">
+                  <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">거래내역</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >경매내역</a></li>
+                     <li ><a href="#" >중고거래내역</a></li>
+                    </ul>
+                  </div>
+                  <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">결제내역</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >결제내역조회</a></li>
+                    </ul>
+                  </div>
+                  <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">나의정보</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >정보수정</a></li>
+                    </ul>
+                  </div>
+                   <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">쪽지함</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+                     <li ><a href="#" >받은쪽지함</a></li>
+                     <li ><a href="#" >보낸쪽지함</a></li> 
+                    </ul>
+                  </div>
+                </div>
               </div>
          <c:if test="${sessionScope.user!=null }">  
  <!-- 세션에 저장된 member_role 값이 '1' 이면일반 유저라면 메뉴에 '마이페이지'가 생성  --> 
@@ -268,8 +277,8 @@
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
                     <ul class="sitemap_depth3 dot_list">
                       <li ><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                      <li ><a href="/ongo/mypage/note/receivebox?id=Yeona1231" >받은쪽지함</a></li>
-                      <li ><a href="/ongo/mypage/note/sendbox?id=Yeona1231" >보낸쪽지함</a></li>
+                      <li ><a href="/ongo/mypage/note/receivebox?id=${user.member_id}" >받은쪽지함</a></li>
+                      <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li>
                     </ul>
                   </div>
                 </div>
@@ -321,8 +330,8 @@
                     <label for="IUY_CLSS_NM">수신자</label>
                     <div class="tbl-basic-td">
                         <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1"></textarea></span>
-                            <input type="text" hidden="true" id="send_id" name="send_id" value="Yeona1231">
+                            <span id="receive_id"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
+                            <input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
                         </div>
                     </div>
                     </div>
@@ -331,7 +340,7 @@
                         <div class="tbl-basic-td">
                         <div class="input-wrap w100">
                             <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="content" name="content" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
+                            <textarea class="grid-input" role="textbox" id="content" name="content" title="쪽지내용 입력" maxlength="500" rows="5" required="required"></textarea>
                           </div>
                         </div>
                         </div>
