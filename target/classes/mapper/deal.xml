@@ -59,12 +59,29 @@
 			<if test="tag == 'id' and searchData != ''">
 				id like '%' || #{searchData} || '%'
 			</if>
+			<if test="tag == 'id' and searchData != ''">
+			</if>
 			<if test="tag == 'write_date' and searchData != ''">
-				
 				 <![CDATA[
 					write_date <= #{searchData} 
 				]]> 
 			</if>
+			<if test="tag == 'product_name' and searchData == ''">
+				product_name like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'board_title' and searchData == ''">
+				board_title like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'id' and searchData == ''">
+				id like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'write_date' and searchData == ''">
+				id like '%' || #{searchData} || '%'
+				<!--  <![CDATA[
+					write_date <= #{searchData} 
+				]]>  -->
+			</if>
+			order by deal_number desc
 		</where>
 	</select>
 	
