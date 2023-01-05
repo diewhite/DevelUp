@@ -20,6 +20,45 @@
 	
 </script>
 
+<style>
+      .modal2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: none;
+
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal2.show {
+        display: block;
+      }
+
+      .modal2_body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+		text-align:left;
+        width: 200px;
+        height: auto;
+
+        padding: 5px;
+
+        text-align: center;
+
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+        transform: translateX(-50%) translateY(-50%);
+      }
+    </style>
+
+
 </head>
 <body>
 <!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
@@ -143,6 +182,56 @@
 								</div>
 							</div>
 							
+							
+								<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">작성자</label>
+								<div class="tbl-basic-td">
+									<div class="col-md-8" >
+										<input type="button" id="modal2-open" value="${dealRead.id}" style="border: 0em;">
+									</div>
+								</div>
+							</div>
+							
+							
+				<!--모달 --------------------------------------------------------- -->
+							
+							<div class="modal2" id="modal2">
+					<div class="modal2_body">
+						<ul>
+							<li><a href="" onclick="location.href='#'">쪽지보내기</a></li>
+							<li><a href="" onclick="location.href='#'">회원정보보기</a></li>
+							<li><a href="" onclick="location.href='#'">거래내역보기</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<script type="text/javascript">
+					 const body = document.querySelector('body');
+				      const modal2 = document.querySelector('.modal2');
+				      //const btnOpenPopup = document.querySelector('.btn-open-popup');
+				      const btnOpenPopup = document.querySelector('#modal2-open');
+
+				      btnOpenPopup.addEventListener('click', () => {
+				        modal2.classList.toggle('show');
+
+				        if (modal2.classList.contains('show')) {
+				          body.style.overflow = 'hidden';
+				        }
+				      });
+
+				      modal2.addEventListener('click', (event) => {
+				        if (event.target === modal2) {
+				          modal2.classList.toggle('show');
+
+				          if (!modal2.classList.contains('show')) {
+				            body.style.overflow = 'auto';
+				          }
+				        }
+				      });
+				</script>
+							
+							
+							<!-- --------------------------------------------------------- -->
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">상품명</label>
 								<div class="tbl-basic-td">

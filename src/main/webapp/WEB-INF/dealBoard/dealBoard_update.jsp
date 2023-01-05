@@ -132,6 +132,23 @@
 								</div>
 							</div>
 							
+							
+							
+							<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">작성자</label>
+								<div class="tbl-basic-td">
+									<div class="input-wrap w100">
+										${dealRead.id}
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">상품명</label>
 								<div class="tbl-basic-td">
