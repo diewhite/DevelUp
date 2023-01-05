@@ -47,7 +47,7 @@ overflow: hidden;
 	                                        </select>
 	                                    </div>
 	                                    <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요.">
-	                                    <input type="text" hidden="true" name="receive_id" value="Yeona1231">
+	                                    <input type="text" hidden="true" name="receive_id" value="${user.member_id }">
 	                                    <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
 	                                </div>
 	                            </fieldset>
@@ -133,16 +133,13 @@ overflow: hidden;
 								${note.content }</a>
 							</td>
 							<td id="send_time">${note.send_time }</td>
-							<td>삭제</td>
+							<td id="deletenote"><a href="/ongo/mypage/note/deleteNote?no=${note.no }&page=receive">삭제</a></td>
 							<td hidden="true">${note.read_chk }</td>							
 						</tr>
  						</c:forEach>
 					</tbody>
 				</table>
-				<div class="text-right">
-					<button type="button" class="btn btn-primary btn-large">
-					<a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</button>
-				</div>
+
 
 				<!-- 페이지네이션 -->
 				<div class="pagination">
@@ -175,51 +172,54 @@ overflow: hidden;
 	<!-- // contents -->
 
 	<!-- modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
+	<div class="modal fade" id="replyModal" tabindex="-1"
 		aria-labelledby="Modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="modal-tit">
-						<h2 class="h3">쪽지</h2>
-					</div>
-					<div class="modal-con">
-						<div class="tbl grid-layout grid1">
-							<div class="grid-item">
-								<label for="IUY_CLSS_NM">수신자</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										<span id="IUY_CLSS_NM">닉네임</span>
+		<form action="/ongo/mypage/note/sendnote" method="post">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="modal-tit">
+							<h2 class="h3">쪽지</h2>
+						</div>
+						<div class="modal-con">
+							<div class="tbl grid-layout grid1">
+								<div class="grid-item">
+									<label for="IUY_CLSS_NM">수신자</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required"></textarea></span>
+											<input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="grid-item">
-								<label for="IUY_CLSS_CNTS">내용적기</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
+								<div class="grid-item">
+									<label for="IUY_CLSS_CNTS">내용적기</label>
+									<div class="tbl-basic-td">
 										<div class="input-wrap w100">
-											<textarea class="grid-input" role="textbox"
-												id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS"
-												title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
+											<div class="input-wrap w100">
+												<textarea class="grid-input" role="textbox"
+													id="content" name="content"
+													title="쪽지내용 입력" maxlength="500" rows="5" required="required"></textarea>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="btn-area">
+							<button type="submit" class="btn btn-warning text-white btn-large"
+								data-bs-dismiss="modal" aria-label="Close">전송</button>
+						</div>
+						<!-- 닫기버튼 -->
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close">
+							<i class="las la-times"></i>
+						</button>
+						<!-- //닫기버튼 -->
 					</div>
-					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">전송</button>
-					</div>
-					<!-- 닫기버튼 -->
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close">
-						<i class="las la-times"></i>
-					</button>
-					<!-- //닫기버튼 -->
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 	<!-- //modal -->
 	<!-- read note modal -->
@@ -263,7 +263,8 @@ overflow: hidden;
 					</div>
 					<div class="btn-area">
 						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">전송</button>
+							data-bs-dismiss="modal" aria-label="Close">
+							<a href="#" title="답장하기 팝업" data-bs-toggle="modal" data-bs-target="#replyModal">답장하기</a></button>
 					</div>
 					<!-- 닫기버튼 -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -287,7 +288,9 @@ overflow: hidden;
 			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML;
 			document.getElementById("readModal_readchk").innerHTML = row_td[6].innerHTML;
 			document.getElementById("readModal_no").innerHTML = row_td[1].innerHTML;
+			document.getElementById("reply_receive_id").innerHTML = row_td[2].innerHTML;
 		}
+		
 	</script>
 </body>
 </html>
