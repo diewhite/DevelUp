@@ -72,7 +72,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_listAll.do" onmouseover="menuover(this);" ><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -131,8 +131,8 @@
                   <span class="dep2_tit" ><a href="#" >쪽지함</a></span>
                   <ul class="dep2_link">
                     <li><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=Yeona1231'">받은쪽지함</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=Yeona1231'">보낸쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=${user.member_id}'">받은쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=${user.member_id}'">보낸쪽지함</a></li>
                   </ul>
                 </div>
               </div>
@@ -292,8 +292,8 @@
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
                     <ul class="sitemap_depth3 dot_list">
                       <li ><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                      <li ><a href="/ongo/mypage/note/receivebox?id=Yeona1231" >받은쪽지함</a></li>
-                      <li ><a href="/ongo/mypage/note/sendbox?id=Yeona1231" >보낸쪽지함</a></li>
+                      <li ><a href="/ongo/mypage/note/receivebox?id=${user.member_id}" >받은쪽지함</a></li>
+                      <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li>
                     </ul>
                   </div>
                 </div>
@@ -345,8 +345,8 @@
                     <label for="IUY_CLSS_NM">수신자</label>
                     <div class="tbl-basic-td">
                         <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1"></textarea></span>
-                            <input type="text" hidden="true" id="send_id" name="send_id" value="Yeona1231">
+                            <span id="receive_id"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
+                            <input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
                         </div>
                     </div>
                     </div>
@@ -355,7 +355,7 @@
                         <div class="tbl-basic-td">
                         <div class="input-wrap w100">
                             <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="content" name="content" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
+                            <textarea class="grid-input" role="textbox" id="content" name="content" title="쪽지내용 입력" maxlength="500" rows="5" required="required"></textarea>
                           </div>
                         </div>
                         </div>

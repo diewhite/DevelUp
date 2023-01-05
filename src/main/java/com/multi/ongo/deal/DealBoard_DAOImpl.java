@@ -1,7 +1,8 @@
 package com.multi.ongo.deal;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,19 +40,35 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	}
 
 
-
+	//중고거래 게시글수정
 	@Override
 	public int update(DealBoard_DTO dto) {
 		return sqlSession.update("com.multi.ongo.deal.dealUpdate", dto);
 	}
 
 
-
+	//중고거래 게시글삭제
 	@Override
 	public int dealDelete(String id) {
 		return sqlSession.delete("com.multi.ongo.deal.dealDelete", id);
 	}
-	
+
+
+	//중고거래 게시글검색(상품명,제목,작성자,작성일)
+	@Override
+	public List<DealBoard_DTO> searchData(String tag, String searchData) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("tag", tag);
+		map.put("searchData", searchData);
+		return sqlSession.selectList("com.multi.ongo.deal.searchData", map);
+	}
+
+
+	//중고거래 거래구분선택
+	@Override
+	public List<DealBoard_DTO> DealType(String dealType) {
+		return sqlSession.selectList("com.multi.ongo.deal.dealTypeSearch", dealType);
+	}
 	
 	
 	

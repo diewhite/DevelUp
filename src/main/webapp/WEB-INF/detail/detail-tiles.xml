@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+     
+     
+ 	<tiles-definitions>
+ 	
+ 		<!-- 경매내역 list페이지 -->
+		<definition name="detail/detaillist" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/detail/detaillist.jsp"></put-attribute>
+ 		</definition>
+ 		
+ 		<!-- 경매 내역 상세 페이지 -->
+	<definition name="detail/detailDetail" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/detail/detailDetail.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	<!-- 결제 상세페이지 -->
+ 	<definition name="payment2/PayParticulars" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/payment2/PayParticulars.jsp"></put-attribute>
+ 	</definition> 	
+ 	
+ 	
+	 </tiles-definitions>
+

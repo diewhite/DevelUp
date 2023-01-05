@@ -42,4 +42,9 @@ public class NoteServiceImpl implements NoteService {
 	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id) {
 		return dao.searchReceiveBox(category, keyword, receive_id);
 	}
+
+	@Override
+	public int deleteNote(String no) {
+		return dao.deleteNote(no);
+	}
 }

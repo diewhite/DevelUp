@@ -17,6 +17,17 @@
 		order by deal_number desc
 	</select>
 	
+	<!--중고거래 거래타입 검색  -->
+	<select id="dealTypeSearch" resultType="dealDTO" parameterType="String">
+		select * from deal_table
+		where dealType = #{dealType}
+	</select>
+	
+	
+	
+	
+	
+	
 	<!--중고거래 게시글_ 읽기-->
 	<select id="dealRead" resultType="dealDTO" parameterType="int">
 		select * from deal_table
@@ -35,8 +46,27 @@
 		delete from deal_table where id=#{id}
 	</delete>
 		
-	
-	
+	<!-- 하단검색 -->
+	<select id="searchData" parameterType="Map" resultType="dealDTO">
+		select * from deal_table
+		<where>
+			<if test="tag == 'product_name' and searchData != ''">
+				product_name like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'board_title' and searchData != ''">
+				board_title like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'id' and searchData != ''">
+				id like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'write_date' and searchData != ''">
+				
+				 <![CDATA[
+					write_date <= #{searchData} 
+				]]> 
+			</if>
+		</where>
+	</select>
 	
 	
 	

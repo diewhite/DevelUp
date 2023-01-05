@@ -20,21 +20,20 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public int insert(MemberDTO joininsert) {//등록
-		String phone = joininsert.getPhone1()+joininsert.getPhone2()+joininsert.getPhone3();
-		String email = joininsert.getEmail1()+joininsert.getEmail2();
+	public int insert(MemberDTO joininsert) {//회원가입 -등록
+		String phone = joininsert.getPhone1()+"-"+joininsert.getPhone2()+"-"+joininsert.getPhone3();
+		String email = "";
 		joininsert.setMember_phone(phone);//phone을 member_phone에 셋팅
-		joininsert.setMember_email(email);//email을 member_email에 셋팅
 		joininsert.setMember_sign("가입");//회원가입 상태 - 가입/탈퇴
-		if(joininsert.getMember_id().equals("admin")) {//admin 관리자 계정이면 role =>99,사용자계정이면 role=>1
+		if(joininsert.getEmail2().equals("directly")) {//equals (비교) admin 관리자 계정이면 role =>99,사용자계정이면 role=>1
 			//멤버롤셋팅
-			joininsert.setMember_role("99"); //관리자계정이면 role변수를 99로 셋팅 - setter메소드를 호출해서 셋팅하기
+			email = joininsert.getEmail1()+"@"+joininsert.getEmail99(); //관리자계정이면 role변수를 99로 셋팅 - setter메소드를 호출해서 셋팅하기
 		}else {
-			joininsert.setMember_role("1");
+			email = joininsert.getEmail1()+"@"+joininsert.getEmail2();
 		}
+		joininsert.setMember_email(email);//email을 member_email에 셋팅
 		return memberdao.insert(joininsert);
 	}
-
 	@Override
 	public List<MemberDTO> joinlist() {  // 관리자> 회원목록> 전체리스트
 		return memberdao.joinlist();

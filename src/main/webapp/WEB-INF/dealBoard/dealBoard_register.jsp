@@ -17,43 +17,41 @@
 </head>
 <body>
 	<script>
-		$(document)
-				.ready(
-						function() {
-							$('#summernote')
-									.summernote(
-											{
-												placeholder : '입력 바랍니다.',
-												tabsize : 4,
-												height : 500,
-												lang: "ko-KR",
-												toolbar : [
-														[ 'style', [ 'style' ] ],
-														[
-																'font',
-																[
-																		'bold',
-																		'underline',
-																		'clear' ] ],
-														[ 'color', [ 'color' ] ],
-														[
-																'para',
-																[ 'ul', 'ol',
-																		'paragraph' ] ],
-														[ 'table', [ 'table' ] ],
-														[
-																'insert',
-																[
-																		'link',
-																		'picture',
-																		'video' ] ],
-														[
-																'view',
-																[
-																		'fullscreen',
-																		'codeview',
-																		'help' ] ] ]
-											});
+		$(document).ready(
+			function() {
+				$('#summernote').summernote(
+					{
+						placeholder : '입력 바랍니다.',
+						tabsize : 4,
+						height : 500,
+						lang: "ko-KR",
+						toolbar : [
+								[ 'style', [ 'style' ] ],
+								[
+										'font',
+										[
+												'bold',
+												'underline',
+												'clear' ] ],
+								[ 'color', [ 'color' ] ],
+								[
+										'para',
+										[ 'ul', 'ol',
+												'paragraph' ] ],
+								[ 'table', [ 'table' ] ],
+								[
+										'insert',
+										[
+												'link',
+												'picture',
+												'video' ] ],
+								[
+										'view',
+										[
+												'fullscreen',
+												'codeview',
+												'help' ] ] ]
+					});
 						})
 		/* $(function() {
 			$('#board_content').summernote({

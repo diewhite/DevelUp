@@ -1,60 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-
+<style type="text/css">
+input:invalid {
+  border: 1px solid red;
+}
+</style>
 <script>
 /* 개인회원 로그인 */
 function checkUsrSubmit() {
   var ID = $('#saveForm #USR_NM');
-  var PW = $('#saveForm #ENPWD');
-  var PONE = $('#saveForm #USR_MBTN_3');
   if (!ID.val()) {
     alert('ID를 입력하세요.');
     ID.focus();
     return false;
   }
-
-  if (!PW.val()) {
-	    alert('비밀번호를 입력하세요.');
-	    PW.focus();
-	    return false;
-	  }
-  if (!PONE.val()) {
-	    alert('휴대폰를 입력하세요.');
-	    PONE.focus();
-	    return false;
-	  }
 }
 
-
-	//비밀번호
-  const ENPWD = document.getElementById('ENPWD').value;
-  //비밀번호 확인
-  const ENPWD2 = document.getElementById('ENPWD2').value;
-  
-  let CHECK = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&^()-_=+~<>])[A-Za-z\d$@!%*#?&^()-_=+~<>]{9,20}$/;
-
-  if(!CHECK.test(ENPWD)) {
-    document.getElementById('ENPWD').focus();
-    toastr.warning("비밀번호는 영문+숫자+특수기호($@!%*#?&^()-_=+~<>) 9자리 이상, 20자리 이하로 구성하여야 합니다.");
-    return;
-  }
-   
-  if(ENPWD != ENPWD2){
-    document.getElementById('ENPWD').focus();
-    toastr.warning("비밀번호가 일치하지 않습니다.");
-    return;
-  }
-
-}
+$(function(){
+	$('#ENPWD2').blur(function(){
+	   if($('#ENPWD').val() != $('#ENPWD2').val()){
+	    	if($('#ENPWD2').val()!=''){
+		    alert("비밀번호가 일치하지 않습니다.");
+	    	    $('#ENPWD2').val('');
+	          $('#ENPWD2').focus();
+	       }
+	    }
+	})  	   
+});
+//이메일
+$(function() {
+    $('#select_target_3').change(function() {
+        if ($('#select_target_3').val() == 'directly') {
+            $('#USR_EMADR_2').attr("disabled", false);
+            $('#USR_EMADR_2').val("");
+            $('#USR_EMADR_2').focus();
+        } else {
+            $('#USR_EMADR_2').val($('#select_target_3').val());
+        }
+    })
+});
 
 
 </script>
+
+				
+   
+          
 </head>
 <body>
-
+ 
 	<!-- content -->
 	<div id="contents">
+
 
 		<!-- title -->
 		<div class="sub_top center">
@@ -82,7 +80,7 @@ function checkUsrSubmit() {
 		</div>
 		<!-- //title -->
 	<div class="container">
-	<form id="saveForm" name="saveForm" action="/ongo/member/join3"	method="POST"  onsubmit="return checkUsrSubmit()">
+	<form id="saveForm" name="saveForm" action="/ongo/member/join3?state=${state}"	method="POST"  onsubmit="return checkUsrSubmit()">
       <input type="hidden" id="PSLF_AHTN_INFO_KEYV" name="PSLF_AHTN_INFO_KEYV">
       <div class="cont-box-inner">
         <div class="title">
@@ -100,9 +98,9 @@ function checkUsrSubmit() {
           </div>
           <div class="grid-item">
             <label for="USR_MBTN">휴대전화번호<em class="org-txt asterisk" title="필수">*</em></label>
-            <input type="hidden" id="USR_MBTN" name="USR_MBTN">
+            <input type="hidden"  name="USR_MBTN">
             <div class="tbl-basic-td">
-              <div class="input-wrap w30" id="select_target_1">
+              <div class="input-wrap w30">
 				<select class="form-select grid-input" id="USR_MBTN_1" name="phone1" data-col="USR_MBTN_1" title="휴대전화번호" >
 					<option value="">선택</option>
 					<option value="010">010</option>
@@ -115,11 +113,11 @@ function checkUsrSubmit() {
 			</div>
               -
               <div class="input-wrap w30">
-                <input class="grid-input" type="text" role="textbox" id="USR_MBTN_2" name="phone2" maxlength="4" title="휴대전화번호 앞자리 입력" >
+                <input class="grid-input" type="text" name="phone2" maxlength="4" pattern="[0-9]+" title="휴대전화번호 앞자리 입력" >
               </div>
               -
               <div class="input-wrap w30">
-                <input class="grid-input" type="text" role="textbox" id="USR_MBTN_3" name="phone3" maxlength="4" title="휴대전화번호 뒷자리 입력" >
+                <input class="grid-input" type="text" name="phone3" maxlength="4" pattern="[0-9]+" title="휴대전화번호 뒷자리 입력" >
               </div>
             </div>
           </div>
@@ -175,25 +173,27 @@ function checkUsrSubmit() {
 							</div>
 
 						</div>
-          <div class="grid-item colspan2">
+						
+					
+		    <div class="grid-item colspan2">
             <label for="USR_EMADR">이메일주소<em class="org-txt asterisk" title="필수">*</em></label>
             <input type="hidden" id="USR_EMADR" name="USR_EMADR">
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_1" n name="email1" maxlength="10" title="이메일주소 입력">
+                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_1" name="email1" maxlength="10" title="이메일주소 입력">
               </div>
-              @
+         		@
               <div class="input-wrap">
-                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_2" name="USR_EMADR_2" title="이메일주소 입력" disabled>
+                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_2" name="email99" title="이메일주소 입력" disabled>
               </div>
-              <div class="input-wrap w20" id="select_target_3">
-					<select class="form-select grid-input" id="" name="email2" data-col="" title="이메일" onchange="selectChange(this);">
+              <div class="input-wrap w20" >
+					<select class="form-select grid-input" id="select_target_3" name="email2" data-col="" title="이메일" >
 						<option value=" ">이메일선택</option>
-						<option value="@naver.com">naver.com</option>
-							<option value="@hanmail.net">hanmail.net</option>
-							<option value="@gmail.com">gmail.com</option>
-							<option value="@nate.com">nate.com</option>
-							<option value="">직접입력하기</option>
+						<option value="naver.com">naver.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="nate.com">nate.com</option>
+							<option value="directly">직접입력하기</option>
 					</select>
 				</div>
              </div>

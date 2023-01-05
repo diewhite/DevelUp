@@ -15,4 +15,6 @@ public interface NoteDAO {
 	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id);
 	//받은쪽지함 검색
 	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id);
+	//쪽지 삭제
+	public int deleteNote(String no);
 }
