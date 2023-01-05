@@ -4,8 +4,11 @@ import java.util.List;
 
 public interface MemberService {
 
-	//등록
+	//회원가입 (db에처리)
     int insert(MemberDTO joininsert);
+
+    //아이디 중복체크
+   // int nickCheck(String nickname) throws Exception;
     
     //전체리스트 
     List<MemberDTO> joinlist();
