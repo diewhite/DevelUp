@@ -47,7 +47,7 @@ overflow: hidden;
 		                                    </select>
 		                                </div>
 		                                <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요.">
-		                                <input type="text" hidden="true" name="send_id" value="Yeona1231">
+		                                <input type="text" hidden="true" name="send_id" value=${user.member_id }>
 		                                <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
 		                            </div>
 		                        </fieldset>
@@ -133,15 +133,12 @@ overflow: hidden;
 								${note.content }</a>
 							</td>
 							<td>${note.send_time }</td>
-							<td>삭제</td>
+							<td id="deletenote"><a href="/ongo/mypage/note/deleteNote?no=${note.no }&page=send">삭제</a></td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
-				<div class="text-right">
-					<button type="button" class="btn btn-primary btn-large">
-					<a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</button>
-				</div>
+
 
 				<!-- 페이지네이션 -->
 				<div class="pagination">
@@ -173,54 +170,7 @@ overflow: hidden;
 	</div>
 	<!-- // contents -->
 
-	<!-- modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="Modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="modal-tit">
-						<h2 class="h3">쪽지</h2>
-					</div>
-					<div class="modal-con">
-						<div class="tbl grid-layout grid1">
-							<div class="grid-item">
-								<label for="IUY_CLSS_NM">수신자</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										<span id="IUY_CLSS_NM">닉네임</span>
-									</div>
-								</div>
-							</div>
-							<div class="grid-item">
-								<label for="IUY_CLSS_CNTS">내용적기</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										<div class="input-wrap w100">
-											<textarea class="grid-input" role="textbox"
-												id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS"
-												title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">전송</button>
-					</div>
-					<!-- 닫기버튼 -->
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close">
-						<i class="las la-times"></i>
-					</button>
-					<!-- //닫기버튼 -->
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //modal -->
+
 	<!-- send note modal -->
 	<div class="modal fade" id="sendModal" tabindex="-1"
 		aria-labelledby="Modal" aria-hidden="true">
@@ -254,10 +204,7 @@ overflow: hidden;
 							</div>
 						</div>
 					</div>
-					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">전송</button>
-					</div>
+
 					<!-- 닫기버튼 -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close">

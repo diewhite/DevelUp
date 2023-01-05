@@ -6,8 +6,9 @@
 input {
 	margin-left: -1px;
 	
-.searchbox {
-	
+}
+.search-filter {
+	margin-right: 15px;
 }
  
 </style>
@@ -41,14 +42,22 @@ input {
 					  <div class=" bg-gray-200">  
 					 	<div class="container h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8">
 					        <div class="relative">
-					          <input type="text" class="h-14 w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none">
+					        	<div class="search-filter">
+					        		<select>
+					        			<option>상품명</option>
+					        			<option>제목</option>
+					        		</select>
+					        	</div>
+					        	<input type="text" class="h-14 w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none">
 					        </div>			        
 					 	</div>
 					 </div>                       
-                     <button class="btn btn-outline-primary me-md-4" type="button"">검색</button>
+                     <button class="btn btn-outline-primary me-md-4" type="button">검색</button>
                		 </div>
                   </div>
-             </div>
+             </div> 
+
+             
              		 <!-- =======검색창======= -->
              		   
              		 <!-- ======= 게시판 테이블 시작 ======= -->
@@ -71,13 +80,30 @@ input {
                                <tr> 
                               	<th><input type="checkbox" name=" "  class="form-check-input" onclick="fnChk()"></th>
                                    <th scope="col">글번호</th>
-                                   <th scope="col">작성날짜</th>
+                                   <th scope="col">작성일
+                                   	<select name="writedate">
+                                   		<option value="">오래된 순</option>
+                                   		<option value="">최근 순</option>
+                                   	</select>
+                                   </th>
                                    <th scope="col">상품명</th>
                                    <th scope="col">제 목</th>                                   
-                                   <th scope="col">상품가격</th>
-                                   <th scope="col">거래유형</th>
+                                   <th scope="col">상품가격
+                                   		<select>
+                                   			<option></option>
+                                   		</select>
+                                   </th>
+                                   <th scope="col">거래유형
+                                   		<select>
+                                   			<option></option>
+                                   		</select>
+                                   </th>
                                    <th scope="col">판매자</th>
-                                   <th scope="col">거래상태</th>                                  
+                                   <th scope="col">거래상태
+                                   		<select>
+                                   			<option></option>
+                                   		</select>
+                                   </th>                                  
                                </tr>
                            </thead>
                            <tbody id="ksicList">
@@ -93,11 +119,13 @@ input {
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/history/joongodetail">에어팟 팝니다</a></td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               		<a href="#">user_id
+                               			<select></select>
+                               		</a> 
                                </td>
                                <td data-before="거래상태">판매중</td>
                              </tr>
@@ -111,15 +139,17 @@ input {
 						            </label>
 						          </div>
 						        </td>
-						       <td data-before="글번호">2</td>
+						     <td data-before="글번호">1</td>
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/history/joongodetail">에어팟 팝니다</a></td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               		<a href="#">user_id
+                               			<select></select>
+                               		</a> 
                                </td>
                                <td data-before="거래상태">판매중</td>
                              </tr>
@@ -133,15 +163,17 @@ input {
 						            </label>
 						          </div>
 						        </td>
-						       <td data-before="글번호">3</td>
+						  <td data-before="글번호">1</td>
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/history/joongodetail">에어팟 팝니다</a></td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               		<a href="#">user_id
+                               			<select></select>
+                               		</a> 
                                </td>
                                <td data-before="거래상태">판매중</td>
                              </tr>
@@ -155,15 +187,17 @@ input {
 						            </label>
 						          </div>
 						        </td>
-						       <td data-before="글번호">4</td>
+						      <td data-before="글번호">1</td>
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/history/joongodetail">에어팟 팝니다</a></td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               		<a href="#">user_id
+                               			<select></select>
+                               		</a> 
                                </td>
                                <td data-before="거래상태">판매중</td>
                              </tr>
@@ -177,15 +211,17 @@ input {
 						            </label>
 						          </div>
 						        </td>
-						       <td data-before="글번호">5</td>
+						     <td data-before="글번호">1</td>
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/history/joongodetail">에어팟 팝니다</a></td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
-                               		<a href="#" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">user_id</a> 
+                               		<a href="#">user_id
+                               			<select></select>
+                               		</a> 
                                </td>
                                <td data-before="거래상태">판매중</td>
                              </tr>

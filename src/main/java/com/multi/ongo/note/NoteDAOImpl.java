@@ -55,4 +55,9 @@ public class NoteDAOImpl implements NoteDAO {
 		map.put("receive_id", receive_id);
 		return sqlsession.selectList("com.multi.ongo.note.searchreceivebox", map);
 	}
+
+	@Override
+	public int deleteNote(String no) {
+		return sqlsession.delete("com.multi.ongo.note.deletenote", no);
+	}
 }

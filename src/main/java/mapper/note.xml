@@ -19,10 +19,13 @@
   		select * from note
   		<where>
   			<if test="category=='content' and keyword!=''">
-  				send_id=#{send_id} and content like '%' || #{keyword} || '%'
+  				send_id=#{send_id} and content like '%' || #{keyword} || '%' order by no desc
   			</if>
   			<if test="category=='receive_id' and keyword!=''">
-  				send_id=#{send_id} and receive_id like '%' || #{keyword} || '%'
+  				send_id=#{send_id} and receive_id like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  			<if test="keyword==''">
+	  			send_id=#{send_id} order by no desc
   			</if>
   		</where>
   	</select>
@@ -30,12 +33,18 @@
   	 	select * from note
   		<where>
   			<if test="category=='content' and keyword!=''">
-  				receive_id=#{receive_id} and content like '%' || #{keyword} || '%'
+  				receive_id=#{receive_id} and content like '%' || #{keyword} || '%' order by no desc
   			</if>
   			<if test="category=='send_id' and keyword!=''">
-  				receive_id=#{receive_id} and send_id like '%' || #{keyword} || '%'
+  				receive_id=#{receive_id} and send_id like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  			<if test="keyword==''">
+  				receive_id=#{receive_id} order by no desc
   			</if>
   		</where>
   	</select>
+  	<delete id="deletenote" parameterType="String">
+  		delete from note where no = #{no}
+  	</delete>
   </mapper>
   
