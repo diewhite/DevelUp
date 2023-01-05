@@ -22,23 +22,6 @@ public class MemberController {
 			super();
 			this.service = service;
 		}
-
-		/*
-			
-			//서비스 겟방식으로 로그인뷰 보기
-			@RequestMapping(value="member/login",method = RequestMethod.GET)
-			public String empservicewritePage() {
-				return "member/logout";
-			}
-			//포스트방식으로 글 등록
-			@RequestMapping(value = "member/logout",method = RequestMethod.POST)
-			public String write(MemberDTO board) {
-				//실제 db에 저장할때 호출되는 컨트롤러의 메소드
-				return "redirect:/index.do";
-			}
-			
-		*/
-
 			
 		//서비스 겟방식으로 로그인뷰 보기
 			@RequestMapping(value="/member/login.do",method = RequestMethod.GET)
@@ -46,7 +29,7 @@ public class MemberController {
 				return "member/login";
 			}
 			
-		// 로그인
+		// 로그인 - db로 값 넘겨주기 포스트
 		@RequestMapping(value="/member/login.do",method = RequestMethod.POST) 
 		public ModelAndView login(MemberDTO loginId, HttpServletRequest request) { //loginId 닉네임 ,
 			//System.out.println(loginId.toString());
@@ -66,28 +49,18 @@ public class MemberController {
 			return viewName;
 		}
 		
-		//로그아웃
+		//로그아웃 - 세션끊기 처리
 		@RequestMapping("/member/logout.do")
 		public String logout(HttpSession session) {
-			System.out.println("logout");
+			//System.out.println("logout");
 			if(session != null) {
 				session.invalidate();
 			}
-			System.out.println("logout~~~~");
+			//System.out.println("logout~~~~");
 			return "redirect:/index";
 		} 
 
-		/*//erp파일에 있던거
-		@RequestMapping("/member/logout.do")
-		public String logout(SessionStatus status) {
-		//System.out.println("스프링내부 객체인 SessionStatus를 이용해서 로그아웃 처리하기");
-		status.setComplete();//세션에 있는 user객체를 제거하는 작업
-		return "redirect:/index.do";
-		}
-		
-		
-		*/
-		
+	
 		//아이디찾기
 		@RequestMapping(value="/member/findid",method = RequestMethod.GET)
 		public String findID() {
@@ -113,71 +86,89 @@ public class MemberController {
 		
 		//회원가입 - 인설트 정보입력- 뷰 페이지 GET 
 		@RequestMapping(value="/member/join3",method = RequestMethod.GET)
-		public String join3_run(MemberDTO joinwrite,HttpSession session) {
+		public String join3_run(MemberDTO joinwrite,HttpSession session,String state,Model model) {
 			//System.out.println("등록되는지확인중++++"+joinwrite);
+			System.out.println("view=>"+state);
+			model.addAttribute("state", state);
 			return "member/join3";
 		}
 		
-		//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST ㅌㅌ
+		//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
 		//public String list(BoardDTO board,String id)여기서 매개변수는 board나 id를 매개변수라 한다.
 		@RequestMapping(value="/member/join3",method = RequestMethod.POST)
-		public String join3(MemberDTO joininsert) {
+		public String join3(MemberDTO joininsert,String state) {
 			System.out.println("가입테스트중"+joininsert);
+			System.out.println("state=>"+state);
+			String view = "";
+			if(state.equals("ADMIN")) {
+				view = "redirect:/member/memberboard";
+				System.out.println("드");
+			}else {
+				view = "redirect:/member/join4";
+			}
 			service.insert(joininsert);
-			return "redirect:/member/join4";
+			return view;
 		}
 	
 		@RequestMapping(value="/member/join4")
 		public String join4() {
 			return "member/join4";
 		}
-		/*
-
-			
-		//서비스 겟방식으로 뷰 보기
-		@RequestMapping(value="member/memberserviceboard",method = RequestMethod.GET)
-		public String empservicewritePage() {
-			return "member/memberservicewrite";
-		}
-		//포스트방식으로 글 등록
-		@RequestMapping(value = "member/memberservicewrite",method = RequestMethod.POST)
-		public String write(MemberDTO board) {
-			//실제 db에 저장할때 호출되는 컨트롤러의 메소드
-			return "redirect:/member/memberserviceboard";
-		}
-		 
-		 */
+	
 		
-		//관리자- 회원관리-목록보기
-		 @RequestMapping(value="member/memberboard")
+		//관리자> 회원목록> 전체리스트
+		 @RequestMapping(value="/member/memberboard")
 			public String member(Model model) {
 			 List<MemberDTO> memberlist = service.joinlist();
 			 System.out.println(memberlist);
 			 model.addAttribute("memberlist",memberlist);
 				return "member/memberboard";
 			}
+		 
+		 
+		
+		 /*
+		  * //관리자>회원목록>상세읽기
+			@RequestMapping(value="/member/memberread")
+			public String memberR(String member_id,String state,Model model) {
+				MemberDTO memberRead = service.memberIdRead(member_id);
+				model.addAttribute("memberRead",memberRead);
+				return "member/memberread";
+			}
 			
-			@RequestMapping(value="member/memberread")
+			 @RequestMapping(value="/member/memberread")
 			public String memberR() {
 				return "member/memberread";
 			}
-					
+		
+			*/
+		 //관리자>회원목록>상세읽기
+			@RequestMapping(value="/member/memberread.do")
+			public String memberR(String member_id,String state,Model model) {
+				System.out.println("member_id,state찍히는지 보는중"+member_id+state);
+				MemberDTO memberRead = service.memberIdRead(member_id);
+				model.addAttribute("memberRead",memberRead);
+				return "member/memberread";
+			}
+		
 			@RequestMapping(value="member/memberupdate")
 			public String memberU() {
 				return "member/memberupdate";
 			}
 			
-			//관리자- 회원등록-쓰기(인설트)
-			@RequestMapping(value="member/memberwrite",method = RequestMethod.GET)
-			public String memberC() {
+			
+			//관리자- 회원등록-쓰기(인설트)뷰 페이지 GET 
+			@RequestMapping(value="/member/memberwrite",method = RequestMethod.GET)
+			public String memberC(MemberDTO joinwrite,HttpSession session) {
+				System.out.println("회원등록-쓰기확인중++++"+joinwrite);
 				return "member/memberwrite";
 			}
 			
-			//관리자- 회원등록-쓰기(인설트)
-			@RequestMapping(value="member/memberwrite",method = RequestMethod.POST)
-			public String memberwrite(MemberDTO memberboard) {
-				System.out.println("회원등록중=>"+memberboard);
-				return "member/memberwrite";
+			//관리자- 회원등록-쓰기(인설트)db로 넘겨받는 페이지 POST
+			@RequestMapping(value="/member/memberwrite",method = RequestMethod.POST)
+			public String memberwrite(MemberDTO joininsert) {
+				System.out.println("회원등록중=>"+joininsert);
+				return "redirect:/member/memberboard";
 			}
 			
 		//게시판관리
