@@ -8,7 +8,7 @@ function fnNext(){
   const agree2 = document.getElementById('agree2').checked;
 
   if(agree1 && agree2){
-    location.href = '/ongo/member/join3.do';
+    location.href = '/ongo/member/join3.do?state=USER';
   }else{
     toastr.warning("온고 회원약관 또는 개인정보 수집 이용약관이 동의되지 않았습니다.")
   }
