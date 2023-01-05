@@ -116,9 +116,9 @@
                   </ul>                 
                 </div>
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >결제내역</a></span>
+                  <span class="dep2_tit" ><a href="/ongo/payment/paymentlist">결제내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='prepare.html'">결제내역조회</a></li>
+                    <li><a href="/ongo/paymentlist">결제내역조회</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
