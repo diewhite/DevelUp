@@ -3,31 +3,18 @@
 <head> 
 
 <script>
-function fnSave(){
-	location.href = '/ongo/member/join4.do';
-}
-
-function selectChange(){
-  const target = arguments[0];
-  
-  const emadr = document.getElementById('USR_EMADR_2');
-   
-  const selectValue = target.options[target.selectedIndex].value
-  const selectText = target.options[target.selectedIndex].text;
-  
-  if(selectValue == 99){
-    emadr.value = '';
-    emadr.disabled = false;
-  }else{
-    emadr.value = selectText;
-    emadr.disabled = true;
-  }
-}
-  //이메일
-  const emadr1 = document.getElementById('USR_EMADR_1').value;
-  const emadr2 = document.getElementById('USR_EMADR_2').value;
-  document.getElementById('USR_EMADR').value = emadr1 +'@'+emadr2;
-
+//이메일
+$(function() {
+    $('#select_target_3').change(function() {
+        if ($('#select_target_3').val() == 'directly') {
+            $('#USR_EMADR_2').attr("disabled", false);
+            $('#USR_EMADR_2').val("");
+            $('#USR_EMADR_2').focus();
+        } else {
+            $('#USR_EMADR_2').val($('#select_target_3').val());
+        }
+    })
+});
 </script>
 </head>
 <body>
@@ -45,138 +32,130 @@ function selectChange(){
 
         <!-- 게시판 -->
        <div class="container">
-  			 <form id="saveForm" name="saveForm">
+  	 <form  action="/ongo/member/join3?state=${state}" method="POST" >
       <input type="hidden" value=" ">
       <div class="cont-box-inner">
         <div class="title">
           <h3 class="h4">정보수정</h3>
         </div>
         <div class="tbl grid-layout grid2">
+        <div class="grid-item colspan2">
+		<label>회원번호</label>
+			<div class="tbl-basic-td">
+				<div class="input-wrap">d</div>
+			</div>
+		</div>
           <div class="grid-item">
             <label for="USR_NM">성명<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                 <input class="grid-input" type="text" title="이름">
+                 <input class="grid-input" type="text" name="member_name" title="이름">
               </div>
             </div>
           </div>
-          <div class="grid-item">
-            <label for="USR_MBTN">휴대전화번호</label>
-            <input type="hidden" name=" ">
+         <div class="grid-item">
+            <label for="USR_MBTN">휴대전화번호<em class="org-txt asterisk" title="필수">*</em></label>
+            <input type="hidden"  name="USR_MBTN">
             <div class="tbl-basic-td">
-              <div class="input-wrap w30" id="select_target_1">
-              <select class="form-select grid-input" title="휴대전화번호" >
-	              <option value="">선택</option>
-	              <option value="010">010</option>
-	              <option value="011">011</option>
-	              <option value="016">016</option>
-	              <option value="017">017</option>
-	              <option value="018">018</option>
-	              <option value="019">019</option>
-              </select>
+              <div class="input-wrap w30">
+				<select class="form-select grid-input" id="USR_MBTN_1" name="phone1" data-col="USR_MBTN_1" title="휴대전화번호" >
+					<option value="">선택</option>
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
+				</select>
+			</div>
+              -
+              <div class="input-wrap w30">
+                <input class="grid-input" type="text" name="phone2" maxlength="4" pattern="[0-9]+" title="휴대전화번호 앞자리 입력" >
               </div>
               -
               <div class="input-wrap w30">
-                <input class="grid-input" type="text" name=" " maxlength="4" title="휴대전화번호 앞자리 입력" >
-              </div>
-              -
-              <div class="input-wrap w30">
-                <input class="grid-input" type="text" name="" maxlength="4" title="휴대전화번호 뒷자리 입력">
+                <input class="grid-input" type="text" name="phone3" maxlength="4" pattern="[0-9]+" title="휴대전화번호 뒷자리 입력" >
               </div>
             </div>
           </div>
-          <div class="grid-item">
+           <div class="grid-item colspan2">
             <label for="HOFS_ADDR">아이디<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="text" maxlength="12" placeholder="아이디" title="아이디" disabled="">
+                <input class="grid-input" type="text" name="member_id" maxlength="12" title="아이디 입력" disabled>
               </div>
             
             </div>
           </div>
-	        <div class="grid-item">
-	            <label for="HOFS_ADDR">회원등급</label>
-	            <div class="tbl-basic-td">
-	              <div class="input-wrap">
-	                 <select class="form-select grid-input" name="" title="등급" >
-              <option value="">일반</option><option value="">관리자</option>
-              </select>
-	              </div>
-	            
-	            </div>
-	          </div>
-       
           <div class="grid-item colspan2">
             <label for="ENPWD">비밀번호<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="password"  id="ENPWD" name="ENPWD" placeholder="●●●●●"  title="비밀번호 입력" disabled="">
+                <input class="grid-input" type="password"  id="ENPWD"  name="member_pw"  placeholder="●●●●●"  title="비밀번호 입력" disabled="">
               </div>
                 <button type="button" class="btn btn-light" >비밀번호 초기화</button>
             </span></div>
           </div>
           
            <div class="grid-item colspan2">
-            <label for="HOFS_ADDR">주소</label>
-            <div class="tbl-basic-td">
-              <div class="input-wrap w10">
-                <input class="grid-input" type="text" title="우편번호">
-              </div>
-              <button type="button" class="btn btn-light" >우편번호 검색</button>
-               <div class="input-wrap">
-               <br>
-              </div>
-              <div class="">
-              <div class="input-wrap ">
-                <input class="grid-input" type="text" name=" " title="주소">
-              </div>
-              <div class="input-wrap">
-                <input class="grid-input" type="text" name=" " placeholder="상세주소를 입력해주세요.">
-              </div>
-               </div>
-             
-            </div>
-            
-          </div>
-          <div class="grid-item colspan2">
-            <label for="USR_EMADR">이메일주소</label>
+							<label for="HOFS_ADDR">주소</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w10">
+									<input class="grid-input" type="text" name="zipcode"
+										title="우편번호">
+								</div>
+								<button type="button" class="btn btn-light">우편번호 검색</button>
+								<div class="input-wrap">
+									<br>
+								</div>
+								<div class="">
+									<div class="input-wrap ">
+										<input class="grid-input" type="text" name="member_addr1"
+											title="주소">
+									</div>
+									<div class="input-wrap">
+										<input class="grid-input" type="text" name="member_addr2"
+											placeholder="상세주소를 입력해주세요.">
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+						
+       	    <div class="grid-item colspan2">
+            <label for="USR_EMADR">이메일주소<em class="org-txt asterisk" title="필수">*</em></label>
             <input type="hidden" id="USR_EMADR" name="USR_EMADR">
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_1" name="USR_EMADR_1" maxlength="10" title="이메일주소 입력">
+                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_1" name="email1" maxlength="10" title="이메일주소 입력">
               </div>
-              @
+         		@
               <div class="input-wrap">
-                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_2" name="USR_EMADR_2" title="이메일주소 입력" disabled="">
+                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_2" name="email99" title="이메일주소 입력" disabled>
               </div>
-              <div class="input-wrap w20" id="select_target_3">
-              <select class="form-select grid-input" id="" name="" data-col="" title="이메일" onchange="selectChange(this);">
-              <option value="01">이메일선택</option><option value="02">naver.com</option><option value="03">hanmail.net</option>
-              <option value="04">gmail.com</option><option value="05">nate.com</option><option value="99">직접입력하기</option>
-              </select></div>
-            </div>
+              <div class="input-wrap w20" >
+					<select class="form-select grid-input" id="select_target_3" name="email2" data-col="" title="이메일" >
+						<option value=" ">이메일선택</option>
+						<option value="naver.com">naver.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="nate.com">nate.com</option>
+							<option value="directly">직접입력하기</option>
+					</select>
+				</div>
+             </div>
           </div>
-          <div class="grid-item colspan2">
-            <label for="radio_target2">이메일 수신여부</label>
-            <div class="tbl-basic-td">
-              <div class="input-wrap " id="radio_target1">
-              <div class="form-check">
-              <input type="radio" class="form-check-input" checked="" value="Y" title="예" onchange="(this);">
-              <label class="form-check-label"><span class="radio"></span>예</label></div>
-              <div class="form-check"><input type="radio" class="form-check-input" value="N" title="아니요" onchange="(this);">
-              <label for=" " class="form-check-label"><span class="radio"></span>아니요</label>
-              </div></div>
-            </div>
-          </div>
+      
         </div>
-    
+    <div class="btn-area flex-row">
+       <button class="btn btn-success btn-large" type="button" onclick="location.href='/ongo/member/memberboard.do'">수정</button>
+        <button class="btn btn-outline-secondary btn-large" type="button"  onclick="location.href='/ongo/member/memberboard.do">취소</button>
+      </div>
     </form>
     
   	</div>
-	<div class="btn-area flex-row">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard.do'">수정</button>
-        <button class="btn btn-outline-secondary btn-large" type="button"  onclick="history.back()">취소</button>
-      </div>
+	
     </div><!-- // content -->
 
 <!-- Footer -->
