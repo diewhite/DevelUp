@@ -92,8 +92,7 @@ public class MemberController {
 			model.addAttribute("state", state);
 			return "member/join3";
 		}
-		
-		//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
+				//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
 		//public String list(BoardDTO board,String id)여기서 매개변수는 board나 id를 매개변수라 한다.
 		@RequestMapping(value="/member/join3",method = RequestMethod.POST)
 
