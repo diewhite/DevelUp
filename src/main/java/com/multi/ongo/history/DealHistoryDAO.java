@@ -1,5 +1,12 @@
 package com.multi.ongo.history;
 
-public interface ProductHistoryDAO {
+import java.util.List;
+
+import com.multi.ongo.deal.DealBoard_DTO;
+
+public interface DealHistoryDAO {
+	
+	//중고거래 판매내역 조회
+	List<DealBoard_DTO> sell_List();
 	
 }

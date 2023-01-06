@@ -268,9 +268,9 @@
 						<div class="table-responsive px-2">
 							<table class="table table-borderless">
 	                           <colgroup>
-	                               <col width="5%">	<!-- 번호 -->
-	                               <col width="10%"> <!-- 제품사진 -->
-	                               <col width="35%"> <!-- 제목 -->
+	                               <col width="10%">
+	                               <col width="*"> <!-- 제품사진 -->
+	                               <col width="33%"> <!-- 제목 -->
 	                               <col width="10%"> <!-- 가격 -->
 	                               <col width="10%"> <!-- 구매자 -->
 	                               <col width="*"> <!-- 날짜 -->
@@ -279,19 +279,21 @@
 								
 								<thead>
 									<tr>
-										<th class="table-header" scope="col">번호</th>
-										<th class="table-header" scope="col">제품 사진</th>
+										
+										<th class="table-header" scope="col">상품 사진</th>
+										<th class="table-header" scope="col">상품명</th>
 										<th class="table-header-title" scope="col">제목</th>
 										<th class="table-header" scope="col">가격</th>
-										<th class="table-header" scope="col">구매자</th>
-										<th class="table-header" scope="col">날짜</th>
+										<th class="table-header" scope="col">판매자</th>
+										<th class="table-header" scope="col">작성일</th>
 										<th class="table-header" scope="col">거래상태</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><span class="gray-bold">1</span></td>
+										
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
+										<td><span class="gray-bold">아이폰</span></td>
 										<td><span class="blue-bold"><a
 												href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
 										<td><span class="blue-bold">15,000원</span></td>
