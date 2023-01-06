@@ -15,6 +15,14 @@ public class DetailController {
 		return mav;
 	}
 	
+	//경매,일반거래 현황
+			@RequestMapping("/history/myongosecond")	// spring-config의 component-scan에 등록한 패키지 명 뒷부분 이어서 작성해야함 
+			public ModelAndView myongosecond () {
+				ModelAndView mav = new ModelAndView();
+				mav.setViewName("history/myongosecond");
+				return mav;
+			}
+	
 	//경매내역 상세페이지
 	
 	@RequestMapping("/detail/detailDetail")
