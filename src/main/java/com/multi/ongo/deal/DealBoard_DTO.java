@@ -15,6 +15,7 @@ public class DealBoard_DTO {
 	private Date write_date; //작성일  - 노쇼=  ★게시글등록시필요
 	private String list_photo; // 리스트사진  - ★게시글등록시필요
 	
+	
 	public DealBoard_DTO() {
 		
 	}

@@ -4,15 +4,12 @@
  
 <html>
 <head> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <style type="text/css">
 	.dataRow:hover{
 	background: #ddd;
 	cursor:pointer; 
 	}
 </style>
-
-
 <script type="text/javascript">
 	var type = "${dealType}"
 	$(document).ready(function () {
@@ -32,7 +29,6 @@
 
 
 <!-- content -->
-<div id="contents" >
          <!-- title -->
         <div class="sub_top">
             <div class="container">
@@ -47,7 +43,6 @@
 						</div>
             </div>
         </div>
-        
         
         
         
@@ -139,7 +134,7 @@
 						<div class="input-wrap w20" style=" float: left; width: 10%;">
 							<select class="form-select grid-input" id="tag" name="tag">
 								<option value="board_title">제목</option>
-								<option value="id">작성자</option>
+								<option value="member_id">작성자</option>
 								<option value="write_date">작성일</option>
 							</select>
 						</div>
