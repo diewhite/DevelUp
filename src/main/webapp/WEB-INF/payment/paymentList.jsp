@@ -1,262 +1,251 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
-<style type="text/css"> 
+<style type="text/css">
 
-body {
-    margin: 0;
-    font-size: .8125rem;
-    font-weight: 400;
-    line-height: 1.5385;
-    color: #333;
-    text-align: left;
-    background-color: #f5f5f5;
+.mb-3 {
+	font-size: 14px;
 }
 
-.text-center {
-	
+.mt-50 {
+	margin-top: 50px;
 }
 
-.mt-50{
-    margin-top: 50px;
-}
-.mb-50{
-    margin-bottom: 50px;
+.mb-50 {
+	margin-bottom: 50px;
 }
 
-
-.bg-teal-400 { 
-    background-color: #26a69a;
+.bg-teal-400 {
+	background-color: #26a69a;
 }
 
-a{
-    text-decoration: none !important;
+a {
+	text-decoration: none !important;
+}
+
+hr {
+	opacity: .20;
+}
+
+.product_img {
+	width: 150px;
+	height: 150px;
+}
+
+.card {
+	margin: 0 auto;
 }
 
 
-.fa {
-        color: red;
+
+.board_view_file {
+	display: table;
+	width: 100%;
+	border-top: 1px solid var(- -line-color);
+	border-bottom: 1px solid var(- -line-color);
 }
 
+
+
+
+
+
+
+
+
+
+.board_view_file .file_left {
+	display: table-cell;
+	color: #000;
+	font-weight: 600;
+	font-size: 1.125rem;
+	width: 15%;
+	padding: 0 20px;
+	background: #f6f6f6;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.file_list {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	padding: 20px 30px;
+	width: 85%;
+}
 </style>
-<script type="text/javascript"> </script>
+<script type="text/javascript">
+	
+</script>
 </head>
 <body>
-<!-- content -->
-<div id="contents">
-    <!-- title -->
-    <div class="sub_top">
-        <div class="container">
-            <h1>결제내역조회</h1>
-        </div>
-    </div>
-    <!-- //title -->
-    
-    <!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
-  
-<div class="container  justify-content-center mt-50 mb-50">
-            
-        <div class="row">
-           <div class="col-md-10">
-            
-                <div class="card card-body">
-                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                <div class="me-2 mb-3 mb-lg-0">
-                                    
-                                        <img src="https://i.imgur.com/5Aqgz7o.jpg" width="150" height="150" alt="">
-                                   
-                                </div>
+	<!-- content -->
+	<div id="contents">
+		<!-- title -->
+		<div class="sub_top">
+			<div class="container">
+				<h1>결제내역조회</h1>
+			</div>
+		</div>
+		<!-- //title -->
 
-                                <div class="media-body">
-                                    <h6 class="media-title font-weight-semibold">
-                                        <a href="#" data-abc="true">Apple iPhone XR (Red, 128 GB)</a>
-                                    </h6>
+		<!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
+		<!-- 결제내역 필터링 -->
+		<div class="container">
+			<div class="board_view_file" id="fileList">
+				<div class="file_left">조회기간</div>
+				<ul class="file_list" id="fileListArea">
+					<li>
+						<button type="button">일주일</button>
+						<button type="button">1개월</button>
+						<button type="button">3개월</button>
+						<button type="button">6개월</button>
+					</li>
+				</ul>
+			</div>
+			<div class="board_view_file" id="fileList">
+				<div class="file_left">진행상태</div>
+				<ul class="file_list" id="fileListArea">
+					<li>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value=""
+								id="flexCheckDefault"> <label class="form-check-label"
+								for="flexCheckDefault"> 결제대기 </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value=""
+								id="flexCheckChecked" checked> <label
+								class="form-check-label" for="flexCheckChecked"> 결제완료 </label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="board_view_file" id="fileList">
+				<div class="file_left">상품명 검색</div>
+				<ul class="file_list" id="fileListArea">
+					<input type="text">
+				</ul>
+			</div>
+		</div>
 
-                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
-                                    </ul>
+		<!-- //필터링 끝 -->
+		<div class="container  justify-content-center mt-50 mb-50">
+			<div class="container">
+				<div class="board_info d-flex mb-3">
+					<div class="total">
+						전체 <strong class="blue" id="totalCount"> 9</strong> 건
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="card card-body">
+						<div
+							class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+							<div class="col-2 mt-3" style="float: left;">
+								<img class="product_img" src="https://i.imgur.com/5Aqgz7o.jpg"
+									alt="">
+							</div>
+							<div class="col-5 ms-4 mt-3 text-start" style="float: left;">
+								<h5 class="media-title font-weight-semibold">
+									<a href="#" data-abc="true">아이폰 14프로 팝니다</a>
+								</h5>
+								<ul class="list-inline list-inline-dotted mt-2 mb-3 mb-lg-2">
+									<li class="list-inline-item">중고거래</li>
+									<li class="list-inline-item">|</li>
+									<li class="list-inline-item">2023년 1월 6일</li>
+								</ul>
+								<div>
+									<h5>
+										<a href="#"> user_id </a>
+									</h5>
+								</div>
+								<hr>
+								<p class="mb-3">
+									결제가 완료되었습니다. <br> 구매확정 이후 상품에 관해 궁금한 점과 배송에 대한 문의는 판매자에게
+									문의해주세요.
+								</p>
+							</div>
+							<div class="col-2 mt-5 text-center" style="float: left;">
+								<div class="mt-4 ms-5">
+									<h4>결제완료</h4>
+								</div>
+							</div>
 
-                                    <p class="mb-3">128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 7MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+							<div class="col-2 ms-5 mt-5 text-center" style="float: left;">
+								<h3 class="mb-0 font-weight-semibold">700,000원</h3>
+								<button type="button" class="btn btn-warning mt-2 text-white">
+									<i class="icon-cart-add mr-2"></i> 구매확정
+								</button>
+								<button type="button" class="btn btn-warning mt-2 text-white">
+									<i class="icon-cart-add mr-2"></i> 후기쓰기
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                                    <ul class="list-inline list-inline-dotted mb-0">
-                                        <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile point</a></li>
-                                        <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>
-                                    </ul>
-                                </div>
+		<div class="container  justify-content-center mt-50 mb-50">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="card card-body">
+						<div
+							class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+							<div class="col-2 mt-3" style="float: left;">
+								<img class="product_img" src="https://i.imgur.com/5Aqgz7o.jpg"
+									alt="">
+							</div>
+							<div class="col-5 ms-4 mt-3 text-start" style="float: left;">
+								<h5 class="media-title font-weight-semibold">
+									<a href="#" data-abc="true">아이폰 14프로 팝니다</a>
+								</h5>
+								<ul class="list-inline list-inline-dotted mt-2 mb-3 mb-lg-2">
+									<li class="list-inline-item">중고거래</li>
+									<li class="list-inline-item">|</li>
+									<li class="list-inline-item">2023년 1월 6일</li>
+								</ul>
+								<div>
+									<h5>
+										<a href="#"> user_id </a>
+									</h5>
+								</div>
+								<hr>
+								<p class="mb-3">
+									결제가 완료되었습니다. <br> 구매확정 이후 상품에 관해 궁금한 점과 배송에 대한 문의는 판매자에게
+									문의해주세요.
+								</p>
+							</div>
+							<div class="col-2 mt-5 text-center" style="float: left;">
+								<div class="mt-4 ms-5">
+									<h4>결제대기</h4>
+								</div>
+							</div>
 
-                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                                    <h3 class="mb-0 font-weight-semibold">$459.99</h3>
-
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
-                                    </div>
-
-                                    <div class="text-muted">1985 reviews</div>
-
-                                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    <div class="card card-body mt-3">
-                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                <div class="mr-2 mb-3 mb-lg-0">
-                                    
-                                        <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
-                                   
-                                </div>
-
-                                <div class="media-body">
-                                    <h6 class="media-title font-weight-semibold">
-                                        <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
-                                    </h6>
-
-                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
-                                    </ul>
-
-                                    <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
-
-                                    <ul class="list-inline list-inline-dotted mb-0">
-                                        <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile junction</a></li>
-                                        <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                                    <h3 class="mb-0 font-weight-semibold">$612.99</h3>
-
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
-                                    </div>
-
-                                    <div class="text-muted">2349 reviews</div>
-
-                                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Add to cart</button>
-                                </div>
-                            </div>
-                        </div>    
-
-
-
-
-
-                        <div class="card card-body mt-3">
-                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                <div class="mr-2 mb-3 mb-lg-0">
-                                    
-                                        <img src="https://i.imgur.com/5Aqgz7o.jpg" width="150" height="150" alt="">
-                                   
-                                </div>
-
-                                <div class="media-body">
-                                    <h6 class="media-title font-weight-semibold">
-                                        <a href="#" data-abc="true">Apple iPhone XR (Red, 128 GB)</a>
-                                    </h6>
-
-                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
-                                    </ul>
-
-                                    <p class="mb-3">128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 7MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
-
-                                    <ul class="list-inline list-inline-dotted mb-0">
-                                        <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile point</a></li>
-                                        <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                                    <h3 class="mb-0 font-weight-semibold">$459.99</h3>
-
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
-                                    </div>
-
-                                    <div class="text-muted">1985 reviews</div>
-
-                                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                         <div class="card card-body mt-3">
-                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                <div class="mr-2 mb-3 mb-lg-0">
-                                    
-                                        <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
-                                   
-                                </div>
-
-                                <div class="media-body">
-                                    <h6 class="media-title font-weight-semibold">
-                                        <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
-                                    </h6>
-
-                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
-                                    </ul>
-
-                                    <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
-
-                                    <ul class="list-inline list-inline-dotted mb-0">
-                                        <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile junction</a></li>
-                                        <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                                    <h3 class="mb-0 font-weight-semibold">$612.99</h3>
-
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
-                                    </div>
-
-                                    <div class="text-muted">2349 reviews</div>
-
-                                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Add to cart</button>
-                                </div>
-                            </div>
-                        </div> 
-                        
+							<div class="col-2 ms-5 mt-5 text-center" style="float: left;">
+								<h3 class="mb-0 font-weight-semibold">700,000원</h3>
+								<button type="button" class="btn btn-warning mt-2 text-white">
+									<i class="icon-cart-add mr-2"></i> 구매확정
+								</button>
+								<button type="button" class="btn btn-warning mt-2 text-white">
+									<i class="icon-cart-add mr-2"></i> 후기쓰기
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-                             
-        </div>                     
-        </div>
-    </div>
-    
-    <!--====== // </div> container=====-->
 
-</div><!-- //contents -->
+		<!--====== // </div> container=====-->
 
-<!-- Footer -->
-<jsp:include page="../include/footer.jsp"/>
-<!-- //Footer -->
+	</div>
+	<!-- //contents -->
+
+	<!-- Footer -->
+	<jsp:include page="../include/footer.jsp" />
+	<!-- //Footer -->
 </body>
 </html>

@@ -44,6 +44,9 @@
 			<tiles:insertAttribute name="content"></tiles:insertAttribute>
 		</div>
 	</div>
+	<div>
+		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+	</div>
 </div>
 
 </body>
