@@ -6,7 +6,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProductHistoryController {
-
 	
 	// 나의온고 click 시 보이는 화면
 		@RequestMapping("/history/myongo")	// spring-config의 component-scan에 등록한 패키지 명 뒷부분 이어서 작성해야함 
