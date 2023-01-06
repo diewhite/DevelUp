@@ -19,7 +19,7 @@ public interface DealBoard_DAO {
 	
 	
 	//중고거래 게시글 삭제
-	int dealDelete(String id);
+	int dealDelete(String member_id);
 	
 	//하단검색
 		List<DealBoard_DTO> searchData(String tag, String searchData);

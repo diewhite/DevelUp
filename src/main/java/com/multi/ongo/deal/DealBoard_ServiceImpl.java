@@ -40,8 +40,8 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 
 	//중고거래 게시글 삭제
 	@Override
-	public int dealDelete(String id) {
-		return dao.dealDelete(id);
+	public int dealDelete(String member_id) {
+		return dao.dealDelete(member_id);
 	}
 
 	

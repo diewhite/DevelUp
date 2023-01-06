@@ -22,6 +22,7 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 
 	//중고거래등록
 	public int writeProd(DealBoard_DTO dto) {
+		System.out.println("등록 daoImpl : " +dto);
 		return sqlSession.insert("com.multi.ongo.deal.deal_write", dto);
 	}
 
@@ -43,14 +44,15 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	//중고거래 게시글수정
 	@Override
 	public int update(DealBoard_DTO dto) {
+		System.out.println("dto 수정 : " +dto);
 		return sqlSession.update("com.multi.ongo.deal.dealUpdate", dto);
 	}
 
 
 	//중고거래 게시글삭제
 	@Override
-	public int dealDelete(String id) {
-		return sqlSession.delete("com.multi.ongo.deal.dealDelete", id);
+	public int dealDelete(String member_id) {
+		return sqlSession.delete("com.multi.ongo.deal.dealDelete", member_id);
 	}
 
 

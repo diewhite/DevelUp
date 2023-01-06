@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
 	//구분 저장공유
 	$(document).ready(function(){ //자바스크립트가 실행되면
@@ -138,7 +141,7 @@
 								<label for="HOFS_DTADR">작성자</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										${dealRead.id}
+										<input type="hidden"  class="input-wrap w100" id="member_id" name="member_id" value="${user.member_id}">${user.member_id}
 									</div>
 								</div>
 							</div>
@@ -149,7 +152,7 @@
 							
 							
 							
-							<div class="grid-item colspan2">
+					<%-- 		<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">상품명</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
@@ -158,7 +161,7 @@
 											title="product_name" id="product_name" name="product_name"> -->
 									</div>
 								</div>
-							</div>
+							</div> --%>
 							
 							
 							
@@ -191,14 +194,16 @@
 								</div>
 							</div>
 
-						<!-- 	<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">첨부파일</label>
+				<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">대표사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input type="file" class="form-control" id="customFile" />
+									${dealRead.list_photo}
+										<!-- <input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/> -->
 									</div>
 								</div>
-							</div> -->
+							</div> 
+
 
 						</div>
 					</div>

@@ -94,7 +94,7 @@
 
 
 				<!-- 로그인시스템 생성전 임시필요 -->
-				<div class="cont-box-inner">
+		<!-- 		<div class="cont-box-inner">
 					<div class="tbl grid-layout grid2">
 						<div class="grid-item colspan2">
 							<label for="HOFS_DTADR">임시아이디(작성자)</label>
@@ -106,8 +106,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- // 로그인시스템 생성전 임시필요 -->
+				</div> -->
 
 
 
@@ -117,8 +116,7 @@
 							<label for="select_target_1">구분</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w20">
-									<select class="form-select grid-input" title="게시판"
-										id="dealType" name="dealType">
+									<select class="form-select grid-input" title="게시판" id="dealType" name="dealType">
 										<option value="중고">중고</option>
 										<!--used  sharing-->
 										<option value="나눔">나눔</option>
@@ -175,8 +173,18 @@
 								</div>
 							</div>
 						</div>
-
+						
 						<div class="grid-item colspan2">
+							<label for="HOFS_DTADR">작성자</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w100">
+									<%-- <p class="grid-input" type="text" title="board_title" id="member_id" name="member_id">${user.member_id}</p> --%>
+									<input type="hidden"  class="input-wrap w100" id="member_id" name="member_id" value="${user.member_id}">${user.member_id}
+								</div>
+							</div>
+						</div>
+
+			<!-- 			<div class="grid-item colspan2">
 							<label for="HOFS_DTADR">상품명</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
@@ -184,7 +192,7 @@
 										title="product_name" id="product_name" name="product_name">
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 
 
@@ -223,14 +231,16 @@
 							</div>
 						</div>
 					</div>
-					<!-- 	<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">첨부파일</label>
+					
+					
+							<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">대표사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input type="file" class="form-control" id="customFile" />
+										<input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/>
 									</div>
 								</div>
-							</div> -->
+							</div> 
 
 
 
