@@ -17,6 +17,23 @@ function checkUsrSubmit() {
   }
 }
 
+function test() {
+    var p1 = document.getElementById('ENPWD1').value;
+    var p2 = document.getElementById('ENPWD2').value;
+    
+    if(p1.length < 6) {
+            alert('입력한 글자가 6글자 이상이어야 합니다.');
+            return false;
+        }
+        
+        if( p1 != p2 ) {
+          alert("비밀번호불일치");
+          return false;
+        } else{
+          alert("비밀번호가 일치합니다");
+          return true;
+        }
+  }
 $(function(){
 	$('#ENPWD2').blur(function(){
 	   if($('#ENPWD').val() != $('#ENPWD2').val()){
@@ -24,10 +41,12 @@ $(function(){
 		    alert("비밀번호가 일치하지 않습니다.");
 	    	    $('#ENPWD2').val('');
 	          $('#ENPWD2').focus();
+	       
 	       }
-	    }
 	})  	   
 });
+
+
 //이메일
 $(function() {
     $('#select_target_3').change(function() {
@@ -63,10 +82,10 @@ $(function() {
 						<p class="stepicon"></p>
 						<h2 class="steptt">약관동의</h2>
 					</li>
-					<li>
-						<p class="stepicon"></p>
-						<p class="steptt">인증서 확인</p>
-					</li>
+				   <li>
+                 <!-- <p class="stepicon"></p>
+                  <p class="steptt">인증서 확인</p>
+              </li> -->
 					<li class="on" title="선택됨">
 						<p class="stepicon"></p>
 						<h2 class="steptt">정보입력</h2>

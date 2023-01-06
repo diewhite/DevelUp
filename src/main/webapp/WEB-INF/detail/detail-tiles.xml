@@ -10,6 +10,11 @@
  		<put-attribute name="content" value="/WEB-INF/detail/detaillist.jsp"></put-attribute>
  		</definition>
  		
+ 	<!-- 경매,일반내역 상세페이지 -->
+ 		<definition name="history/myongosecond" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/history/myongosecond.jsp"></put-attribute>
+ 	</definition> 
+ 		
  		<!-- 경매 내역 상세 페이지 -->
 	<definition name="detail/detailDetail" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/detail/detailDetail.jsp"></put-attribute>

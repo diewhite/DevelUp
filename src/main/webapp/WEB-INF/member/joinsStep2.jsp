@@ -15,7 +15,7 @@
 					<p class="stepicon"></p>
 					<h2 class="steptt">약관동의</h2>
 				</li>
-			    <li>
+			     <li>
                   <p class="stepicon"></p>
                   <p class="steptt">인증서 확인</p>
               </li>

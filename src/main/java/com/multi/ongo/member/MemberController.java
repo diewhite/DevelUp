@@ -10,11 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
-@SessionAttributes("user")
 public class MemberController {
 		
 		MemberService service;
@@ -24,7 +23,9 @@ public class MemberController {
 			super();
 			this.service = service;
 		}
-			
+
+//========================================================= 로그인
+		
 		//서비스 겟방식으로 로그인뷰 보기
 			@RequestMapping(value="/member/login.do",method = RequestMethod.GET)
 			public String empservicewritePage() {
@@ -94,17 +95,16 @@ public class MemberController {
 			model.addAttribute("state", state);
 			return "member/join3";
 		}
-				//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
+		//회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
 		//public String list(BoardDTO board,String id)여기서 매개변수는 board나 id를 매개변수라 한다.
 		@RequestMapping(value="/member/join3",method = RequestMethod.POST)
-
 		public String join3(MemberDTO joininsert,String state) {
 			//System.out.println("가입테스트중"+joininsert);
 			//System.out.println("state=>"+state);
 			String view = "";
 			if(state.equals("ADMIN")) {
 				view = "redirect:/member/memberboard";
-				//System.out.println("드");
+				//System.out.println("");
 			}else {
 				view = "redirect:/member/join4";
 			}
@@ -117,31 +117,50 @@ public class MemberController {
 			return "member/join4";
 		}
 
+//=========================================================관리자 > 회원목록
 		
 		//관리자> 회원목록> 전체리스트
 		 @RequestMapping(value="/member/memberboard")
 			public String member(Model model) {
 			 List<MemberDTO> memberlist = service.joinlist();
-			 System.out.println(memberlist);
+			 //System.out.println(memberlist);
 			 model.addAttribute("memberlist",memberlist);
 				return "member/memberboard";
 			}
 		 
-		 
-		
 		 //관리자>회원목록>상세읽기
-			@RequestMapping(value="/member/memberread.do")
+			@RequestMapping(value="/member/memberread")
 			public String memberR(String member_id,String state,Model model) {
 				//System.out.println("member_id,state찍히는지 보는중"+member_id+state);
 				MemberDTO memberRead = service.memberIdRead(member_id);
-				model.addAttribute("memberRead",memberRead);
-				return "member/memberread";
+				String view = "";
+				if(state.equals("READ")) {
+					view = "member/memberread";
+				}else {
+					view = "member/memberupdate" ;
+				}
+				model.addAttribute("memberRU",memberRead); //memberRU 이게 어트리뷰트
+			     System.out.println("memberRead : " +memberRead);
+				return view; 
 			}
-		
-			@RequestMapping(value="member/memberupdate")
-			public String memberU() {
-				return "member/memberupdate";
+
+			//관리자>회원목록>상세읽기> 실제 업데이트 기능처리 수정
+			@RequestMapping(value="/member/memberupdate")
+			public String memberU(MemberDTO joinupdate) {
+				System.out.println("회원목록 업데이트=>"+joinupdate);
+				int result = service.update(joinupdate);
+				return "redirect:/member/memberboard";
 			}
+			
+			//관리자>회원목록>삭제 delete
+			 @RequestMapping(value="/member/memberdelete")
+			public String memberD(String member_id) {
+				 //System.out.println("삭제처리확인"+member_id);
+				 int result = service.delete(member_id);
+				return "redirect:/member/memberboard";
+			}
+	
+//=========================================================관리자 > 게시물관리
 			
 		//게시판관리
 		 @RequestMapping(value="member/memberserviceboard")

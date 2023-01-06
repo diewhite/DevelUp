@@ -18,7 +18,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	@Override //MemberDTO 참조형식 
 	public int insert(MemberDTO joininsert) { //회원가입>정보등록
-		//System.out.println("DAO회원가입확인중"+joininsert);
+		System.out.println("DAO회원가입확인중"+joininsert);
 		return sqlSession.insert("com.multi.ongo.member.joinwrite", joininsert);
 		// <insert id="joinwrite" parameterType="memberP"> 에서 id="여기이름" 을 member.xml 에서가져다쓴다
 	}
@@ -42,6 +42,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public int update(MemberDTO joinupdate) { //수정
+		//System.out.println("업데이트확인중"+joinupdate);
 		return sqlSession.update("com.multi.ongo.member.idUpdate",joinupdate);
 	}
 
