@@ -4,7 +4,7 @@
        
  <tiles-definitions>
  
-	<!-- 메뉴레이아웃 템플릿 -->
+	<!-- 사이드 메뉴 레이아웃 템플릿 -->
 	<definition name="menuTemplate" template="/WEB-INF/history/menuLayout.jsp">
  		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
  		<put-attribute name="menu" value="/WEB-INF/history/myongo_menu.jsp"></put-attribute>
@@ -16,12 +16,12 @@
 	<definition name="history/myongo" extends="menuTemplate"></definition>
 	
 	<!-- 거래내역 list 페이지 -->
- 	<definition name="history/historylist" extends="indexTemplate">
+ 	<definition name="history/historylist" extends="menuTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historylist.jsp"></put-attribute>
  	</definition>
  	
  	<!-- 내역 상세 페이지 -->
-	<definition name="history/joonggo_detail" extends="indexTemplate">
+	<definition name="history/joonggo_detail" extends="menuTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historyDetail.jsp"></put-attribute>
  	</definition> 	
  	
