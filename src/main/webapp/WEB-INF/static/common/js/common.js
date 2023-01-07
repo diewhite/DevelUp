@@ -29,7 +29,7 @@ window.onload = async function() {
   const codeSearch = [{ COM_GRUP_CD_ID: 'BRTH_JRRN_DIV_CD' },{ COM_GRUP_CD_ID: 'ENPR_SHPE_CD' },{ COM_GRUP_CD_ID: 'AREA_CD' },{ COM_GRUP_CD_ID: 'MBTN_CD' },{ COM_GRUP_CD_ID: 'EM_CD' },{ COM_GRUP_CD_ID: 'TEC_FLD_CD' }];
   fnGetCode(codeSearch, fnCodeCallback);
 
-  document.getElementById('PSLF_AHTN_INFO_KEYV').value = ''
+  document.getElementById('PSLF_AHTN_INFO_KEYV').value = '';
   const bzno = '';
   document.getElementById('BZNO_1').value = bzno.substr(0,3);
   document.getElementById('BZNO_2').value = bzno.substr(3,2);

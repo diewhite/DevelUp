@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <html>
 <head> </head>
 <body>
@@ -53,14 +56,21 @@
             </div>
           </div>
           <div class="grid-item colspan2">
-            <label for="HOFS_DTADR">금액</label>
+            <label for="HOFS_DTADR">경매</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w30 me-4">
-                <input class="grid-input" type="text"  maxlength="50" title="금액"> 
+              <div> 시작가   </div>
+              <input class="bid-st" type="text"  maxlength="50" title="시작가"> 
+               <div> 최소가   </div>
+                <input class="bid-min" type="text"  maxlength="50" title="최소가"> 
+            
               </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" value=" ">
-                <label class="form-check-label"><span class="radio"></span>나눔</label>
+              <div>
+            <p >
+                
+<input type="datetime-local" class="start-date">  ~  <input type="datetime-local" class="end-date">
+            </p>
+        
               </div>
             </div>
           </div>
@@ -88,7 +98,7 @@
       </div>
     </form>
   </div><div class="btn-area">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='board.html'">글쓰기</button>
+       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/auction/auction'">글쓰기</button>
       </div>
     </div>
 <!-- // content -->

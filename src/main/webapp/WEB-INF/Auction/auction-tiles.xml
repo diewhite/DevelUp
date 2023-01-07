@@ -6,5 +6,11 @@
  	<definition name="auctionBoard" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/Auction/Auction.jsp"></put-attribute>
  	</definition>
- 	
+ 	 	<definition name="auctionWrite" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/Auction/AuctionWrite.jsp"></put-attribute>
+ 	</definition>
+ 
+ 	 	<definition name="auctionWriteBoard" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/Auction/Auction.jsp"></put-attribute>
+ 	</definition>
  </tiles-definitions>
