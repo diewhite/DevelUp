@@ -29,7 +29,6 @@ public class DealHistoryController {
 	@RequestMapping("/history/historylist")
 	public ModelAndView historylist () {
 		ModelAndView mav = new ModelAndView();
-
 //		List<DealBoard_DTO> sellList = service.
 
 		mav.setViewName("history/historylist");
