@@ -21,24 +21,22 @@ public class NoteController {
 		super();
 		this.service = service;
 	}
-	//쪽지함에서 쪽지 리스트 요청
-//	@RequestMapping(value = "/mypage/ajax_notelist", produces = "application/json;charset=utf-8")
-//	@ResponseBody
-//	public List<NoteDTO> ajax_list(String id) {
-//		return service.findById(id); 
-//	}
 	//받은쪽지함
 	@RequestMapping(value = "/mypage/note/receivebox")
 	public String receiveList(String id, Model model){
 		List<NoteDTO> notelist = service.receiveList(id);
+		int count = notelist.size();
 		model.addAttribute("notelist", notelist);
+		model.addAttribute("count", count);
 		return "mypage/note/receivebox";
 	}
 	//보낸쪽지함
 	@RequestMapping(value = "/mypage/note/sendbox")
 	public String sendList(String id, Model model){
 		List<NoteDTO> notelist = service.sendList(id);
+		int count = notelist.size();
 		model.addAttribute("notelist", notelist);
+		model.addAttribute("count", count);
 		return "mypage/note/sendbox";
 	}
 	//쪽지보내기
@@ -49,10 +47,11 @@ public class NoteController {
 		return "redirect:/mypage/note/sendbox?id="+user.getMember_id();
 	}
 	//쪽지읽기(Ajax)
-	@RequestMapping(value = "/mypage/note/ajax_readnote")
+	@RequestMapping(value = "/mypage/note/ajax_readcheck")
 	@ResponseBody
-	public NoteDTO readNote(NoteDTO note) {
-		return null;
+	public int readNote(String no) {
+		service.readCheck(no);
+		return 0;
 	}
 	//보낸쪽지함 검색
 	@RequestMapping(value = "/mypage/note/searchSendBox")

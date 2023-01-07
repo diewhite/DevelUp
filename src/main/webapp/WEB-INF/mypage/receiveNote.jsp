@@ -31,8 +31,8 @@ overflow: hidden;
 			<div class="board_list">
 				<div class="board_info d-flex">
 					<div class="total">
-						전체 <strong class="blue" id="totalCount">9</strong> 건 (페이지 <strong
-							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
+						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
+							class="blue" id="nowPage"></strong>/<span id="resultPage"></span>)
 					</div>
 						<form action="/ongo/mypage/note/searchReceiveBox" method="post">
 							<div class="form_box">
@@ -143,8 +143,8 @@ overflow: hidden;
 
 				<!-- 페이지네이션 -->
 				<div class="pagination">
-					<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
-						type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
+					<input type="hidden" id="page" name="page" value="1"> <input
+						type="hidden" id="per_page" name="per_page" value="5">
 					<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
 					<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
 					<li class="page-item arr"><a class="page-link"
@@ -253,11 +253,11 @@ overflow: hidden;
 									</div>
 								</div>
 							</div>
-							<div hidden="true" class="input-wrap w100">
-								<span id="readModal_no"></span>
+							<div class="input-wrap w100">
+								<span hidden="true" id="readModal_no"></span>
 							</div>
-							<div hidden="true" class="input-wrap w100">
-								<span id="readModal_readchk"></span>
+							<div class="input-wrap w100">
+								<span hidden="true" id="readModal_readchk"></span>
 							</div>
 						</div>
 					</div>
@@ -289,8 +289,21 @@ overflow: hidden;
 			document.getElementById("readModal_readchk").innerHTML = row_td[6].innerHTML;
 			document.getElementById("readModal_no").innerHTML = row_td[1].innerHTML;
 			document.getElementById("reply_receive_id").innerHTML = row_td[2].innerHTML;
-		}
-		
+			var no = {"no":document.getElementById("readModal_no").textContent}
+			if(document.getElementById("readModal_readchk").textContent==0){
+				$.ajax({
+					url : "/ongo/mypage/note/ajax_readcheck",
+					type : "get",
+					data : no,
+					success : function(data){
+					},//end success
+					error : function(obj,msg,statusMsg){
+						alert("오류발생"+statusMsg);
+					}//end error
+				})//end ajax
+			}//end if
+		}//end function modalData
+				
 	</script>
 </body>
 </html>
