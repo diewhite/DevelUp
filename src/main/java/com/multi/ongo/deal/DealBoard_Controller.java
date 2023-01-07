@@ -42,7 +42,7 @@ public class DealBoard_Controller {
 //		System.out.println("writeDate : " + dto.getWrite_date());
 //		System.out.println("deal_no : " + dto.getDeal_number());
 		service.writeProd(dto);
-		return "index";
+		return "redirect:/deal_listAll.do?dealType=all";
 		
 		
 	}
@@ -102,11 +102,12 @@ public class DealBoard_Controller {
 	}
 	
 	
+	
 	//중고거래 게시글 삭제
 	@RequestMapping("dealDelete.do")
-	public String dealDelete(String id) {
-		service.dealDelete(id);
-		return "redirect:deal_listAll.do";
+	public String dealDelete(int deal_number) {
+		service.dealDelete(deal_number);
+		return "redirect:/deal_listAll.do?dealType=all";
 	}
 	
 	//하단검색

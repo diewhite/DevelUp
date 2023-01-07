@@ -43,8 +43,9 @@
 	</update>
 	
 	<!--중고거래 게시글_삭제  -->
-	<delete id="dealDelete" parameterType="String">
-		delete from deal_table2 where member_id=#{member_id}
+	<delete id="dealDelete" parameterType="int">
+		delete from deal_table2 
+		where deal_number=#{deal_number}
 	</delete>
 		
 	<!-- 하단검색 -->

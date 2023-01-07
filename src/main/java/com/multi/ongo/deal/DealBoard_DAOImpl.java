@@ -51,8 +51,8 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 
 	//중고거래 게시글삭제
 	@Override
-	public int dealDelete(String member_id) {
-		return sqlSession.delete("com.multi.ongo.deal.dealDelete", member_id);
+	public int dealDelete(int deal_number) {
+		return sqlSession.delete("com.multi.ongo.deal.dealDelete", deal_number);
 	}
 
 
