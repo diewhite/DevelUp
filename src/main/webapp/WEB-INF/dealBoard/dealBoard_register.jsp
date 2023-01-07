@@ -252,7 +252,7 @@
 
 					<div class="btn-area">
 						<button class="btn btn-primary btn-large" type="button"
-							onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
+							onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
 					</div>
 			</form>
 		</div>
