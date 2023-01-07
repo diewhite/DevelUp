@@ -66,21 +66,22 @@
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
-                <span>거래</span>
+                <span>중고거래</span>
               </div>
               <div class="dep2_right" onmouseleave="menuout();">
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >중고</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='prepare.html'">중고상품</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/deal_listAll.do?dealType=중고'">중고</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/deal_listAll.do?dealType=나눔'">나눔</a></li>
                   </ul>
                 </div>
-                <div class="dep2_right_li">
+                <!-- <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >거래</a></span>
                   <ul class="dep2_link">
                     <li><a href="#" onclick="location.href='404.html'">새상품</a></li>
                   </ul>
-                </div>
+                </div> -->
                 
               </div>
             </div>
@@ -197,16 +198,16 @@
                 <h2>거래</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">중고</span></a>
-                    <ul class="sitemap_depth3 dot_list">
+                    <a href="/ongo/deal_listAll.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
+                    <!-- <ul class="sitemap_depth3 dot_list">
                      <li ><a href="#" >중고상품</a></li>
-                    </ul>
+                    </ul> -->
                   </div>
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">일반</span></a>
-                    <ul class="sitemap_depth3 dot_list">
+                    <a href="/ongo/deal_listAll.do?dealType=나눔" class="sitemap_depth2_tit" ><span onclick="">나눔</span></a>
+                    <!-- <ul class="sitemap_depth3 dot_list">
                      <li ><a href="#" >새상품</a></li>
-                    </ul>
+                    </ul> -->
                   </div>
                 </div>
               </div>
