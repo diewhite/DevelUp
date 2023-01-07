@@ -116,6 +116,14 @@
 	padding-left: 10px;
 }
 
+.table-header-title {
+	width: 35%;
+}
+
+.table-header {
+	width: 16%;
+}
+
 .btndiv {
 	float: right;
 }
@@ -136,6 +144,7 @@
 	text-decoration: none;
 }
 
+
 .dropdown-menu {
 	width: 10%;
 	border: 1px solid #000;
@@ -146,6 +155,7 @@
 	max-height: 300px;
 	overflow-y: auto;
 }
+
 </style>
 <script type="text/javascript">
 	
@@ -461,13 +471,16 @@
 		</div>
 	</div>
 
+
 	<!--====== // </div> container=====-->
 
 
 	<!-- //contents -->
 
+
 	<%-- 	<!-- Footer -->
+
 	<jsp:include page="../include/footer.jsp" />
-	<!-- //Footer --> --%>
+	<!-- //Footer -->
 </body>
 </html>
