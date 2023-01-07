@@ -1,6 +1,9 @@
 package com.multi.ongo.member;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 //mybatis의 SqlSessio을 이용해서 작업
 public interface MemberDAO {
 	// 회원가입- 등록(db에처리)
@@ -22,6 +25,7 @@ public interface MemberDAO {
 	
 	//로그인
 	MemberDTO login(MemberDTO loginidInfo);
+	
 
 	//제목으로 검색
 	//List<MemberDTO> search(String data);

@@ -7,33 +7,22 @@ input:invalid {
 }
 </style>
 <script>
-/* 개인회원 로그인 */
 function checkUsrSubmit() {
-  var ID = $('#saveForm #USR_NM');
-  if (!ID.val()) {
-    alert('ID를 입력하세요.');
-    ID.focus();
-    return false;
-  }
-}
+	  var ID = $('#saveForm #USR_NM');
+	  var PW = $('#saveForm #ENPWD');
+	  if (!ID.val()) {
+	    alert('ID를 입력하세요.');
+	    ID.focus();
+	    return false;
+	  }
 
-function test() {
-    var p1 = document.getElementById('ENPWD1').value;
-    var p2 = document.getElementById('ENPWD2').value;
-    
-    if(p1.length < 6) {
-            alert('입력한 글자가 6글자 이상이어야 합니다.');
-            return false;
-        }
-        
-        if( p1 != p2 ) {
-          alert("비밀번호불일치");
-          return false;
-        } else{
-          alert("비밀번호가 일치합니다");
-          return true;
-        }
-  }
+	  if (!PW.val()) {
+		    alert('비밀번호를 입력하세요.');
+		    PW.focus();
+		    return false;
+		  }
+
+	}
 $(function(){
 	$('#ENPWD2').blur(function(){
 	   if($('#ENPWD').val() != $('#ENPWD2').val()){
@@ -41,12 +30,10 @@ $(function(){
 		    alert("비밀번호가 일치하지 않습니다.");
 	    	    $('#ENPWD2').val('');
 	          $('#ENPWD2').focus();
-	       
 	       }
+	    }
 	})  	   
 });
-
-
 //이메일
 $(function() {
     $('#select_target_3').change(function() {
@@ -61,11 +48,51 @@ $(function() {
 });
 
 
-</script>
+</script><script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-				
-   
-          
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailAddress").focus();
+            }
+        }).open();
+    }
+</script>
 </head>
 <body>
  
@@ -155,7 +182,7 @@ $(function() {
               <div class="input-wrap">
                 <input class="grid-input" type="password" role="textbox" id="ENPWD" name="member_pw" maxlength="20" title="비밀번호 입력">
               </div>
-              <span>영문,숫자,특수문자($@!%*#?&^()-_=+~<>) 조합으로 입력해주세요.(9자리 이상, 20자리 이하)<span></span>
+              <span>(4자리 이상, 20자리 이하)<span></span>
             </div>
           </div>
           <div class="grid-item colspan2">
@@ -171,20 +198,22 @@ $(function() {
 							<label for="HOFS_ADDR">주소</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w10">
-									<input class="grid-input" type="text" name="zipcode"
+									<input  id="postcode" class="grid-input" type="text" name="zipcode"
 										title="우편번호">
-								</div>
-								<button type="button" class="btn btn-light">우편번호 검색</button>
+								</div> 
+								<button type="button" class="btn btn-light"  onclick="execDaumPostcode()" >우편번호 검색</button>
 								<div class="input-wrap">
+								
+				
 									<br>
 								</div>
 								<div class="">
 									<div class="input-wrap ">
-										<input class="grid-input" type="text" name="member_addr1"
+										<input id="address" class="grid-input" type="text" name="member_addr1"
 											title="주소">
 									</div>
 									<div class="input-wrap">
-										<input class="grid-input" type="text" name="member_addr2"
+										<input  id="detailAddress" class="grid-input" type="text" name="member_addr2"
 											placeholder="상세주소를 입력해주세요.">
 									</div>
 								</div>
@@ -233,6 +262,7 @@ $(function() {
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
+
 
 </body>
 </html>
