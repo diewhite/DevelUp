@@ -47,18 +47,8 @@
       <!--nav-->
       <div id="gnb" class="d-flex justify-content-center">
         <ul class="dep1">
-        
-        
           <li>
              <a id="siTitle" href="/ongo/auction/auctionBoard" onmouseover="menuover(this);" ><span >경매</span></a>
-            <div class="dep2_wrap ">
-              <div class="dep2_left">
-                <span>경매</span>
-              </div>
-              <div class="dep2_right" onmouseleave="menuout();">
-             
-                </div>
-            </div>
           </li>
 
           <li>
@@ -186,10 +176,8 @@
                 <h2>경매</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">중고</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >중고상품</a></li>
-                    </ul>
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">경매</span></a>
+                   
                   </div>
              
                 </div>

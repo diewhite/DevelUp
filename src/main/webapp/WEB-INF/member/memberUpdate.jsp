@@ -136,7 +136,7 @@ $(function() {
         </div>
     <div class="btn-area flex-row">
        <button class="btn btn-success btn-large" type="submit" >수정</button>
-        <button class="btn btn-outline-secondary btn-large" type="button"  onclick="location.href='/ongo/member/memberboard.do">취소</button>
+        <button class="btn btn-outline-secondary btn-large" type="button"  onclick="location.href='/ongo/member/memberboard'">취소</button>
       </div>
     </form>
    

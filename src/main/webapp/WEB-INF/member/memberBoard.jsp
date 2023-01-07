@@ -6,13 +6,17 @@
 .dropdown-menu {  width:10%;}
 </style>
 <script type="text/javascript">
-function removeCheck() {
-	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-	     document.removefrm.submit();
-	 }else{   //취소
-	     return false;
-	 }
+	
+function removeCheck(url){
+	var answer;
+	//페이지를 이동하기 전에 confirm()을 사용해 다시 한번 확인한다.
+	//확인을 선택하면 answer에  true, 취소를 선택하면 false 값이 들어간다.
+	answer = confirm("데이터를 삭제하시겠습니까?");
+	//확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
+	if(answer == true){
+		location = url;
 	}
+}
 </script>
  </head>
 <body>
@@ -100,8 +104,8 @@ function removeCheck() {
                                <td data-before="이메일">${memberR.member_email}</td>
                               <td data-before="가입일">${memberR.member_date}</td>
                                <td data-before="가입상태">${memberR.member_sign}</td>
-                               <td data-before="삭제"><button type="button"
-                               onclick="location.href='/ongo/member/memberdelete?member_id=${memberR.member_id}'" class="board_label red" title="회원삭제">삭제</button> </td>
+                               <td data-before="삭제"><button type="button" class="board_label red" title="회원삭제"
+                                onclick="javascript:removeCheck('/ongo/member/memberdelete?member_id=${memberR.member_id}')">삭제</button> </td>
                              </tr>
                             </c:forEach>
                            </tbody>
