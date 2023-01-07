@@ -14,11 +14,6 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public List<NoteDTO> findById(String id) {
-		return dao.findById(id);
-	}
-
-	@Override
 	public List<NoteDTO> receiveList(String id) {
 		return dao.receiveList(id);
 	}
@@ -46,5 +41,10 @@ public class NoteServiceImpl implements NoteService {
 	@Override
 	public int deleteNote(String no) {
 		return dao.deleteNote(no);
+	}
+
+	@Override
+	public int readCheck(String no) {
+		return dao.readCheck(no);
 	}
 }

@@ -242,8 +242,9 @@
                    <div class="sitemap_depth2">
                     <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">쪽지함</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                     <li ><a href="#" >받은쪽지함</a></li>
-                     <li ><a href="#" >보낸쪽지함</a></li> 
+                     <li ><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
+                     <li ><a href="/ongo/mypage/note/receivebox?id=${user.member_id}" >받은쪽지함</a></li>
+                     <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li> 
                     </ul>
                   </div>
                 </div>
