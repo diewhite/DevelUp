@@ -15,14 +15,15 @@
 	<!-- 나의 온고 첫화면 -->
 	<definition name="history/myongo" extends="menuTemplate"></definition>
 	
-	<!-- 거래내역 list 페이지 -->
+	<!-- 중고거래내역 list 페이지 -->
  	<definition name="history/historylist" extends="menuTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historylist.jsp"></put-attribute>
  	</definition>
  	
- 	<!-- 내역 상세 페이지 -->
+ 	<!-- 중고거래내역 상세 페이지 -->
 	<definition name="history/joonggo_detail" extends="menuTemplate">
  		<put-attribute name="content" value="/WEB-INF/history/historyDetail.jsp"></put-attribute>
  	</definition> 	
+ 	
  	
  </tiles-definitions>

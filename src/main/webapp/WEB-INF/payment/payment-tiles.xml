@@ -4,7 +4,7 @@
 <tiles-definitions>     
  
  	<!-- 결제내역 list -->
- 	<definition name="payment/paymentlist" extends="indexTemplate">
+ 	<definition name="payment/paymentlist" extends="menuTemplate">
  		<put-attribute name="content" value="/WEB-INF/payment/paymentList.jsp"></put-attribute>
  	</definition>
 
