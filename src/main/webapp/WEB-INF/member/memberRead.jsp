@@ -17,62 +17,71 @@
 
   <!-- container -->
   <div class="container">
-  <!--
-    /ongo/member/memberread.do?state=UPDATE&member_id=${board.member_no } 
- 
-    -->
-      <form action="/ongo/member/memberread?state=UPDATE&member_id=${board.member_no }" method="POST" >
+
+      <form action="/ongo/member/memberread?state=UPDATE&member_id=${memberRU.member_id}" method="POST" >
 		<input type="hidden">
 		<div class="cont-box-inner">
 			<div class="title">
 				<h3 class="h4">회원상세</h3>
 			</div>
 			<div class="tbl grid-layout grid2">
-			<div class="grid-item colspan2">
+			<div class="grid-item">
 					<label>회원번호</label>
 					<div class="tbl-basic-td">
-						<div class="input-wrap">${memberRead.member_no}</div>
+						<div class="input-wrap">${memberRU.member_no}</div>
 					</div>
 				</div>
-				<div class="grid-item">
-					<label>성명<em class="org-txt asterisk" title="필수">*</em></label>
+				<div class="grid-item ">
+					<label>가입일</label>
 					<div class="tbl-basic-td">
-						<div class="input-wrap">${memberRead.member_name}</div>
-					</div>
-				</div>
-				<div class="grid-item">
-					<label >휴대전화번호<em class="org-txt asterisk" title="필수">*</em></label>
-					<div class="tbl-basic-td">
-						<div class="input-wrap">${memberRead.member_phone}</div>
-					</div>
-						
-				</div>
-				<div class="grid-item colspan2">
-					<label >아이디<em class="org-txt asterisk" title="필수">*</em></label>
-					<div class="tbl-basic-td">
-						<div class="input-wrap">${memberRead.member_id}</div>
+						<div class="input-wrap">${memberRU.member_date}</div>
 					</div>
 				</div>
 				
-			
+				<div class="grid-item ">
+					<label>성명<em class="org-txt asterisk" title="필수">*</em></label>
+					<div class="tbl-basic-td">
+						<div class="input-wrap">${memberRU.member_name}</div>
+					</div>
+				</div>
+				<div class="grid-item ">
+					<label >휴대전화번호<em class="org-txt asterisk" title="필수">*</em></label>
+					<div class="tbl-basic-td">
+						<div class="input-wrap">${memberRU.member_phone}</div>
+					</div>
+						
+				</div>
+				<div class="grid-item ">
+					<label >아이디<em class="org-txt asterisk" title="필수">*</em></label>
+					<div class="tbl-basic-td">
+						<div class="input-wrap">${memberRU.member_id}</div>
+					</div>
+				</div>
+					<div class="grid-item ">
+					<label>가입상태</label>
+					<div class="tbl-basic-td">
+						<div class="input-wrap">${memberRU.member_sign}</div>
+					</div>
+				</div>
 				<div class="grid-item colspan2">
 					<label for="HOFS_ADDR">주소</label>
 					<div class="tbl-basic-td">
-						<div class="input-wrap">${memberRead.member_addr1}</div>
+						<div class="input-wrap">${memberRU.member_addr1}</div>
 					</div>
 				</div>
 				<div class="grid-item colspan2">
-					<label for="USR_EMADR">이메일주소<em class="org-txt asterisk" title="필수">*</em></label>
+					<label for="USR_EMADR">이메일주소<em class="org-txt" title="필수">*</em></label>
 					<div class="tbl-basic-td">
-						<div class="input-wrap">${memberRead.member_email}</div>
+						<div class="input-wrap">${memberRU.member_email}</div>
 					</div>
 				</div>
+			
 				</div>
-		
+     
 		<div class="btn-area flex-row">
 	       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard'">목록</button>
-	        <button class="btn btn-outline-success btn-large " type="button" onclick="location.href='/ongo/member/memberupdate.do'">수정</button>
-	        <button class="btn btn-outline-danger btn-large" type="button" onclick="location.href='/ongo/member/memberservice.do'">삭제</button>
+	        <button class="btn btn-outline-success btn-large " type="submit" >수정</button>
+	        <button class="btn btn-outline-danger btn-large" type="button" onclick="location.href='/ongo/member/memberdelete?member_id=${memberR.member_id}'">삭제</button>
       </div>
 	</form>
   </div> <!-- // container-->

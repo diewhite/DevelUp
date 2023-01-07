@@ -93,7 +93,7 @@ input {
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="/ongo/detail/detailDetail" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/detail/detailDetail">에어팟 팝니다</td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
@@ -115,7 +115,7 @@ input {
                       		    <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="/ongo/detail/detailDetail" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/detail/detailDetail">에어팟 팝니다</td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
@@ -137,7 +137,7 @@ input {
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="/ongo/detail/detailDetail" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/detail/detailDetail">에어팟 팝니다</td>
                                <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
@@ -159,7 +159,7 @@ input {
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="/ongo/detail/detailDetail" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/detail/detailDetail" >에어팟 팝니다</td>
                                 <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >
@@ -181,7 +181,7 @@ input {
                                <td data-before="작성날짜">22-12-19</td>
                                <td data-before="상품명">에어팟</td>
                                <td data-before="제목">
-                               		<a href="/ongo/detail/detailDetail" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" style="color: #0174DF">에어팟 팝니다</td>
+                               		<a href="/ongo/detail/detailDetail">에어팟 팝니다</td>
                               <td data-before="상품가격">150,000원</td>
                                <td data-before="거래유형">판매/구매</td>
                                <td data-before="판매자 " >

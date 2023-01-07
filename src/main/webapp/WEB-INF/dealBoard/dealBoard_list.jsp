@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
  
 <html>
@@ -11,8 +10,6 @@
 	cursor:pointer; 
 	}
 </style>
-
-
 <script type="text/javascript">
 	var type = "${dealType}"
 	$(document).ready(function () {
@@ -32,15 +29,12 @@
 
 
 <!-- content -->
-<div id="contents" >
          <!-- title -->
         <div class="sub_top">
             <div class="container">
                 <h1>중고거래</h1>
                 <span class="blue">보다 더 · 당신의 일상과 가깝게</span>
-                
    						<div class="form_box d-grid d-md-flex justify-content-md-end" >
-   						
 							<select class="form-select grid-input" id="dealType" name="dealType" >
 								<option value="all">전체</option>
 								<option value="중고">중고</option>
@@ -49,7 +43,6 @@
 						</div>
             </div>
         </div>
-        
         
         
         
@@ -102,7 +95,7 @@
 							<td>${board.board_title }</td>		
 							<td><fmt:formatNumber value="${board.product_price}" pattern="#,###원"/></td>							
 							<td>${board.hits }</td>							
-							<td>${board.id }</td>		
+							<td>${board.member_id }</td>		
 							<td>${board.write_date }</td>
 						</tr>
 					</c:forEach>
@@ -140,9 +133,8 @@
 					<div class="tbl-basic-td">
 						<div class="input-wrap w20" style=" float: left; width: 10%;">
 							<select class="form-select grid-input" id="tag" name="tag">
-								<option value="product_name">상품명</option>
 								<option value="board_title">제목</option>
-								<option value="id">작성자</option>
+								<option value="member_id">작성자</option>
 								<option value="write_date">작성일</option>
 							</select>
 						</div>
