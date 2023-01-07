@@ -1,18 +1,22 @@
 package com.multi.ongo.note;
 
 public class NoteDTO {
-	private int no;
+	private String no;
 	private String send_id;
 	private String receive_id;
 	private String send_time;
 	private String read_time;
 	private String content;
 	private int read_chk;
+	private String count;
 	
 	public NoteDTO() {
 		
 	}
-	
+	public NoteDTO(String count) {
+		super();
+		this.count = count;
+	}
 	public NoteDTO(String send_id, String receive_id, String content) {
 		super();
 		this.send_id = send_id;
@@ -20,7 +24,7 @@ public class NoteDTO {
 		this.content = content;
 	}
 
-	public NoteDTO(int no, String send_id, String receive_id, String send_time, String read_time, String content,
+	public NoteDTO(String no, String send_id, String receive_id, String send_time, String read_time, String content,
 			int read_chk) {
 		super();
 		this.no = no;
@@ -31,10 +35,10 @@ public class NoteDTO {
 		this.content = content;
 		this.read_chk = read_chk;
 	}
-	public int getNo() {
+	public String getNo() {
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(String no) {
 		this.no = no;
 	}
 	public String getSend_id() {
@@ -73,12 +77,18 @@ public class NoteDTO {
 	public void setRead_chk(int read_chk) {
 		this.read_chk = read_chk;
 	}
-
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+	
 	@Override
 	public String toString() {
 		return "NoteDTO [no=" + no + ", send_id=" + send_id + ", receive_id=" + receive_id + ", send_time=" + send_time
-				+ ", read_time=" + read_time + ", content=" + content + ", read_chk=" + read_chk + "]";
+				+ ", read_time=" + read_time + ", content=" + content + ", read_chk=" + read_chk + ", count=" + count
+				+ "]";
 	}
-	
-	
+
 }

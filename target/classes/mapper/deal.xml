@@ -7,19 +7,20 @@
 	
 	<!--중고거래_등록  -->
 	<insert id="deal_write" parameterType="dealDTO">
-		insert into deal_table
-		values(#{id}, #{dealType}, #{product_category}, '판매중', #{product_price}, #{board_title}, #{product_name}, #{board_content}, 0, sysdate, deal_no.nextval)
+		insert into deal_table2
+		values(deal_no2.nextval, #{member_id}, #{dealType}, #{product_category}, 
+		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate, #{list_photo})
 	</insert>
 	
 	<!--중고거래 게시글_전체조회  -->
 	<select id="selectAll" resultType="dealDTO">
-		select * from deal_table
+		select * from deal_table2
 		order by deal_number desc
 	</select>
 	
 	<!--중고거래 거래타입 검색  -->
 	<select id="dealTypeSearch" resultType="dealDTO" parameterType="String">
-		select * from deal_table
+		select * from deal_table2
 		where dealType = #{dealType}
 	</select>
 	
@@ -30,41 +31,57 @@
 	
 	<!--중고거래 게시글_ 읽기-->
 	<select id="dealRead" resultType="dealDTO" parameterType="int">
-		select * from deal_table
+		select * from deal_table2
 		where deal_number=#{deal_number}
 	</select>
 	
 	<!--중고거래 게시글_ 업데이트(수정)-->
 	<update id="dealUpdate" parameterType="dealDTO">
-		update deal_table
-		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title}, product_name=#{product_name}, product_price=#{product_price}, board_content=#{board_content}
-		where deal_number=#{deal_number}
+		update deal_table2
+		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}, list_photo=#{list_photo}
+		where deal_number = #{deal_number}
 	</update>
 	
 	<!--중고거래 게시글_삭제  -->
 	<delete id="dealDelete" parameterType="String">
-		delete from deal_table where id=#{id}
+		delete from deal_table2 where member_id=#{member_id}
 	</delete>
 		
 	<!-- 하단검색 -->
 	<select id="searchData" parameterType="Map" resultType="dealDTO">
-		select * from deal_table
+		select * from deal_table2
 		<where>
-			<if test="tag == 'product_name' and searchData != ''">
-				product_name like '%' || #{searchData} || '%'
-			</if>
 			<if test="tag == 'board_title' and searchData != ''">
 				board_title like '%' || #{searchData} || '%'
 			</if>
-			<if test="tag == 'id' and searchData != ''">
-				id like '%' || #{searchData} || '%'
+			<if test="tag == 'member_id' and searchData != ''">
+				member_id like '%' || #{searchData} || '%'
 			</if>
 			<if test="tag == 'write_date' and searchData != ''">
-				
+				write_date like '%' || #{searchData} || '%'
+			</if>
+			
+			<if test="tag == 'id' and searchData != ''">
+			</if>
+			
+			<if test="tag == 'write_date' and searchData != ''">
 				 <![CDATA[
-					write_date <= #{searchData} 
+					write_date2 <= #{searchData} 
 				]]> 
 			</if>
+			<if test="tag == 'board_title' and searchData == ''">
+				board_title like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'member_id' and searchData == ''">
+				member_id like '%' || #{searchData} || '%'
+			</if>
+			<if test="tag == 'write_date' and searchData == ''">
+				write_date like '%' || #{searchData} || '%'
+				<!--  <![CDATA[
+					write_date <= #{searchData} 
+				]]>  -->
+			</if>
+			order by deal_number desc
 		</where>
 	</select>
 	
