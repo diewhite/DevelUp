@@ -29,7 +29,7 @@
                         <i class="las la-balance-scale-right"></i>
                         <label class="visually-hidden" for="">추천경매</label>
                         <select class="form-select" name="" id="" title="추천경매 선택" >
-                          <option value="">전체</option>
+                          <option value="">전체2134243232</option>
                           <option value=" " selected>추천경매</option>
                           <option value=" ">인기경매</option>
                         </select>
@@ -49,6 +49,7 @@
                       <button type="button" class="btn btn-search" onclick="javascript:fnSearch();"><i class="las la-search"></i> 검색</button>
                     </div>
                   </fieldset>
+                </div>
                 </div>
                 
           <div class="board_list">
@@ -86,9 +87,9 @@
                         </div>
                         <div class="mt-2">
                           <ul class="company_list">
-                            <li><strong>상품명</strong><span>전라북도 전주시 송천동 33길</span></li>
-                            <li><strong>크기</strong><span>가로:112cm세로:100cm옆면:13cm</span></li>
-                            <li><strong>특이사항</strong><span>우측 옆 까짐</span></li>
+                            <li><strong>시작가</strong><span>1100원</span></li>
+                            <li><strong>입찰내역</strong><span>30000원</span></li>
+                            <li><strong>현재입찰가</strong><span>40000원</span></li>
                           </ul>
                         </div>
                         <div class="cart-button mt-3 px-2 text-center">
@@ -116,9 +117,10 @@
                         </div>
                         <div class="mt-2">
                           <ul class="company_list">
-                            <li><strong>상품명</strong><span>전라북도 전주시 송천동 33길</span></li>
-                            <li><strong>크기</strong><span>가로:112cm세로:100cm옆면:13cm</span></li>
-                            <li><strong>특이사항</strong><span>우측 옆 까짐</span></li>
+                            <li><strong>시작가</strong><span>11000원</span></li>
+                            <li><strong>입찰내역</strong><span>13000원</span></li>
+                            <li><strong>현재입찰가</strong><span>20000원</span></li>
+                          
                           </ul>
                         </div>
                         <div class="cart-button mt-3 px-2 text-center">
@@ -129,7 +131,7 @@
 
                 </div><!-- //row-->
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-large" onclick="location.href='AuctionWrite.html'">글쓰기</button>
+                    <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/auction/auctionwrite'">글쓰기</button>
                 </div>
                 <!-- 페이지네이션 -->
                 <nav aria-label="Page navigation" id="pageNav">
