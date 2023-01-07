@@ -1,24 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head> 
-<script type="text/javascript">
+
+	<script type="text/javascript">
 	//구분 저장공유
-	$(document).ready(function(){ //자바스크립트가 실행되면
+	$(document).ready(function(){ 
 		data = "${dealRead.dealType}" 
-		$("#dealType").val(data).attr("selected", "selected"); //// 
-	  //  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
+		$("#dealType").val(data).attr("selected", "selected"); 
 	});
 	//상품카테고리 저장공유
-	$(document).ready(function(){ //자바스크립트가 실행되면
+	$(document).ready(function(){ 
 		data = "${dealRead.product_category}" 
-		$("#product_category").val(data).attr("selected", "selected"); //// 
-	  //  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
+		$("#product_category").val(data).attr("selected", "selected"); 
 	});
-	
-	
-	
-	
 </script>
+
+<style>
+      .modal2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: none;
+
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal2.show {
+        display: block;
+      }
+
+      .modal2_body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+		text-align:left;
+        width: 200px;
+        height: auto;
+
+        padding: 5px;
+
+        text-align: center;
+
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+        transform: translateX(-50%) translateY(-50%);
+      }
+    </style>
+
 
 </head>
 <body>
@@ -36,7 +71,7 @@
 
         <!-- 게시판 -->
         <div class="container">
-            <form  action="/ongo/dealRead.do?deal_number=${dealRead.deal_number}&id=${id}&state=UPDATE" method="post">
+            <form  action="/ongo/dealRead.do?deal_number=${dealRead.deal_number}&state=UPDATE" method="post">
                 <input type="hidden" name="countPerPage" id="countPerPage" value="10">
                 <input type="hidden" name="zon" id="zon" value="">
 
@@ -60,18 +95,7 @@
 							</div>
 					</div> -->
 							
-					
-					<%-- 
-					<div class="cont-box-inner">
-						<div class="tbl grid-layout grid2">
-							<div class="grid-item colspan2">
-								<label for="select_target_1">구분</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w20">
-										${dealRead.dealType}
-									</div>
-								</div>
-							</div> --%>
+				
 							
 							<div class="cont-box-inner">
 					<div class="tbl grid-layout grid2">
@@ -79,8 +103,7 @@
 							<label for="select_target_1">구분</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w20">
-									<select class="form-select grid-input" title="게시판"
-										id="dealType" name="dealType">
+									<select class="form-select grid-input" id="dealType" name="dealType" >
 										<option value="중고">중고</option>
 										<option value="나눔">나눔</option>
 									</select>
@@ -143,7 +166,58 @@
 								</div>
 							</div>
 							
-							<div class="grid-item colspan2">
+							
+								<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">작성자</label>
+								<div class="tbl-basic-td">
+									<div class="col-md-8" >
+										<input type="button" id="modal2-open" value="${dealRead.member_id}" style="border: 0em;">
+										<%-- <div class="col-md-8">${dealRead.member_id}</div> --%>
+									</div>
+								</div>
+							</div>
+							
+							
+				<!--모달 --------------------------------------------------------- -->
+							
+							<div class="modal2" id="modal2">
+					<div class="modal2_body">
+						<ul>
+							<li><a href="" onclick="location.href='#'">쪽지보내기</a></li>
+							<li><a href="" onclick="location.href='#'">회원정보보기</a></li>
+							<li><a href="" onclick="location.href='#'">거래내역보기</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<script type="text/javascript">
+					 const body = document.querySelector('body');
+				      const modal2 = document.querySelector('.modal2');
+				      //const btnOpenPopup = document.querySelector('.btn-open-popup');
+				      const btnOpenPopup = document.querySelector('#modal2-open');
+
+				      btnOpenPopup.addEventListener('click', () => {
+				        modal2.classList.toggle('show');
+
+				        if (modal2.classList.contains('show')) {
+				          body.style.overflow = 'hidden';
+				        }
+				      });
+
+				      modal2.addEventListener('click', (event) => {
+				        if (event.target === modal2) {
+				          modal2.classList.toggle('show');
+
+				          if (!modal2.classList.contains('show')) {
+				            body.style.overflow = 'auto';
+				          }
+				        }
+				      });
+				</script>
+							
+							
+							<!-- --------------------------------------------------------- -->
+						<%-- 	<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">상품명</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
@@ -153,7 +227,7 @@
 									</div>
 								</div>
 							</div>
-							
+							 --%>
 							
 							
 							
@@ -185,14 +259,15 @@
 								</div>
 							</div>
 
-						<!-- 	<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">첨부파일</label>
+							<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">대표사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input type="file" class="form-control" id="customFile" />
+									${dealRead.list_photo}
+										<!-- <input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/> -->
 									</div>
 								</div>
-							</div> -->
+							</div> 
 
 						</div>
 					</div>

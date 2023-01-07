@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>  
+ 	<!-- 중고거래관련 -->
+ 	<definition name="dealBoard" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="dealRegister" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_register.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="deallistAll" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="dealBoardRead" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_read.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	<definition name="dealBoardUpdate" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_update.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
+ 	
+</tiles-definitions>
