@@ -191,28 +191,32 @@
     <div class="invoice overflow-auto">
         <div style="">
             <header>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="row">
+                <div class="col-md-9">
                         <div>주문번호 :2042-122123</div> 
                         <div>거래일자 :23.01.06 </div>
                         
                     </div>
+                    <div class="col-md-3">
+            		<p><button class="btn btn-outline-primary me-md-4"  disabled="disabled">경매내역이동</button></p>
+                </div>
                 </div>
             </header>
             <main>
                  <div class="row">
-                    <div class="col-xs-6 col-md-4">
-                            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR6NbjHprfrQQnPnli8KD6Twz0f83FurA6s2trUKBBnwEfcci59kOrPEV2tGgAG1T0Qr879b6pPOw&usqp=CAc"  width=auto, height=200px/>
-                        </div>
-                         <div class="col-xs-6 col-sm-4"></div>
-						<div class="col-xs-6 col-md-4">
-                        <h1 class="invoice-id">제목아이폰팝니다</h1>
-                        <div class="order-id">판매자 : ㅇㅇㅇ</div>
-                        <div class="date">낙찰일자 : 23.01.0</div>
-                        <div >낙찰가 : 670,000</div>
-                        
+                  <div class="col-md-2">
+                            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR6NbjHprfrQQnPnli8KD6Twz0f83FurA6s2trUKBBnwEfcci59kOrPEV2tGgAG1T0Qr879b6pPOw&usqp=CAc"  width=auto, height=100px/>
                     </div>
-                </div>
+                 <div class="col-md-7">
+                        <h1 class="invoice-id">A급 아이폰팝니다.</h1>
+                 </div>
+                 <div class="col-md-3">
+                        <div class="order-id">아이폰 14 512GB</div>
+                        <div class="order-id">user_2</div>
+                        <div class="date">낙찰일자 : 23.01.06</div>
+                        
+                  </div>
+             
                 <table border="0" cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
@@ -231,7 +235,7 @@
                         <tr>
                             <td class="qty">2 stuks</td>
                             <td class="product-name"><h3>
-                            CAT bouwmachine - graafmachine sleutel contactsleutel (003)
+                            아이폰 14 512GB
                             </h3>
                             </td>
                             <td class="product id">SBC03</td>
@@ -253,17 +257,18 @@
                         </tr>
                         <tr>
                             <td colspan="3"></td>
-                            <td colspan="2">Verzending en Verwerking PostNL Briefpost - Nederland</td>
+                            <td colspan="2">금액</td>
                             <td>€ 1.65</td>
                             <td>€ 0.35</td>
                             <td>€ 2.00</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
-                            <td colspan="2">GRAND TOTAL</td>
+                            <td colspan="2">주문금액</td>
+                            <td></td>
+                            <td></td>
                             <td>$6,500.00</td>
-                            <td>$6,500.00</td>
-                            <td>$6,500.00</td>
+                           
                         </tr>
                     </tfoot>
                 </table>
