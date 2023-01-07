@@ -28,7 +28,7 @@
 <!-- 이 아래부터  content부분 부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 
-<!-- content -->
+<!-- content   -->
          <!-- title -->
         <div class="sub_top">
             <div class="container">
@@ -70,7 +70,7 @@
 	
         <!-- 게시판 -->
     <div class="container">
-		<table class="table">
+	<%-- 	<table class="table">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -82,6 +82,7 @@
 					<th>조회수</th>
 					<th>작성자</th>
 					<th>작성일</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -101,6 +102,67 @@
 					</c:forEach>
 			</tbody>
 		</table>
+		 --%>
+		<table class="table table-borderless">
+	                           <colgroup>
+	                               
+	                               <col width="50"> <!-- 제품사진 -->
+	                               <col width="50%"> <!-- 제목 -->
+	                               <col width="10%"> <!-- 가격 -->
+	                               <col width="10%"> <!-- 작성일 -->
+	                               <col width="10%"> <!-- 조회수 -->                          
+	                               <col width="10%"> <!-- 거래상태 -->                          
+	                           </colgroup>								
+								<thead>
+									<tr>
+										<th class="table-header" scope="col">상품 사진</th>
+										<th class="table-header-title" scope="col">제목</th>
+										<th class="table-header" scope="col">가격</th>
+										<th class="table-header" scope="col">작성일</th>
+										<th class="table-header" scope="col">조회수</th>
+										<th class="table-header" scope="col">거래상태</th>
+									</tr>
+								</thead>
+								<tbody>
+								<c:forEach var = "board" items="${listall}">
+									<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" class="dataRow">
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50">${board.list_photo }</td>
+										<td><span class="gray-bold">${board.board_title }</span></td>
+										<td><span class="blue-bold"><fmt:formatNumber value="${board.product_price}" pattern="#,###원"/></span></td>
+										
+										
+									<%-- 	<td><span class="blue-bold">
+											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									           ${board.member_id }
+									        </a>
+									        <ul class="dropdown-menu">
+									            <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+									            <li><a class="dropdown-item" href="#">회원정보보기</a></li>
+									        </ul>
+									     </span></td>  --%>
+										
+										<td><span class="blue-bold">${board.write_date }</span></td>
+										<td><span class="blue-bold">${board.hits }</span></td>
+										<td><span class="blue-bold">${board.product_state }</span></td>
+									</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		<nav aria-label="Page navigation example">
@@ -128,21 +190,59 @@
 							</div>
 						</div> -->
 		
-			<form action="/ongo/serarchData.do" method="post" >
+			<!-- <form action="/ongo/serarchData.do" method="post" >
 				<div class="grid-item colspan2">
 					<div class="tbl-basic-td">
-						<div class="input-wrap w20" style=" float: left; width: 10%;">
+						<div class="input-wrap w20">
 							<select class="form-select grid-input" id="tag" name="tag">
 								<option value="board_title">제목</option>
 								<option value="member_id">작성자</option>
 								<option value="write_date">작성일</option>
 							</select>
 						</div>
-						<input type="text" name="searchData" id="searchData" class="grid-input" style="float: left; width: 25%;"/> 
-						<input type="submit" value="검색" class="btn btn-primary btn-medium" style=" float: left; width: 5%;">
+						<input type="text" name="searchData" id="searchData" class="grid-input"/> 
+						<input type="submit" value="검색" class="btn btn-primary btn-medium" >
 					</div>
 				</div>
-			</form>
+			</form> -->
+  
+  
+  
+  <div class="board_list">
+				<!-- <div class="board_info d-flex">
+					<div class="total">
+						전체 <strong class="blue" id="totalCount">9</strong> 건 (페이지 <strong
+							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
+					</div> -->
+						<form action="/ongo/serarchData.do" method="post">
+							<div class="form_box">
+	                            <fieldset>
+	                                <legend class="visually-hidden">검색</legend>
+	                                <div class="input-group">
+	                                    <div class="select">
+	                                        <label class="visually-hidden" for="category">검색 구분</label>
+	                                        <select class="form-select" id="tag" name="tag" title="검색구분선택" style="height: 50px;">
+	                                            <option value="board_title">제목</option>
+												<option value="member_id">작성자</option>
+												<option value="write_date">작성일</option>
+	                                        </select>
+	                                    </div>
+	                                    <input type="text" class="form-control" name="searchData" id="searchData" title="검색어 입력" placeholder="검색어를 입력하세요.">
+	                                    <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+	                                </div>
+	                            </fieldset>
+	                        </div>
+                        </form>
+				</div>
+			</div>
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <div class="btn-area">
