@@ -17,17 +17,15 @@
     
     <!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
     
-      
+   
 <div class="container">
     <form id="ef610102">
-      <!-- 현재 탭 표시 -->
-      <h2 class="visually-hidden">공지사항</h2>
-      <!-- //현재 탭 표시 -->
+ 
 
       <div class="board_view">
         <div class="board">
           <div class="board_view_head">
-            <h3 class="board_view_tit" id="NTC_MATT_TTL" name="NTC_MATT_TTL" title="공지사항제목">경매진행성공</h3>
+            <h3 class="board_view_tit" id="NTC_MATT_TTL" name="NTC_MATT_TTL" title="공지사항제목">제목</h3>
             <dl>
               <dt>작성일</dt>
               <dd id="FRST_REGT_DTM" name="FRST_REGT_DTM">2022-11-15</dd>

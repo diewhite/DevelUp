@@ -35,11 +35,7 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         	delete from member2 where id = #{id}
         </delete>
         
-        <update id="idUpdate" parameterType="memberP"> 수정
-        	update member2
-        	set pass = #{pass}, name = #{name}, tel = #{tel}, addr = #{addr}, email = #{email}
-        	where id = #{id}
-        </update>
+      
            
            관리자계정 = 인설트가 아니라 업데이트로 처리
            회원삭제시 = 1 = 삭제 0= 살아있다
@@ -61,28 +57,37 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
              insert into member2
              values(member_no.nextval, #{member_id},#{member_pw},#{member_name},
              #{zipcode},#{member_addr1},#{member_addr2}, #{member_phone},
-             #{member_email},#{member_role},sysdate, #{member_sign}
+             #{member_email},'1',sysdate, #{member_sign}
              )
         </insert>
         
         
-        <!-- 관리자페이지>회원목록리스트 -->
+        <!-- 관리자 >회원목록리스트 -->
 		<select id="selectall" resultType="memberP">
                 select * from member2
                 order by member_no desc
         </select>
    
-         <!-- 관리자페이지>회원목록리스트> 상세읽기 -->
+         <!-- 관리자 >회원목록리스트> 상세읽기 -->
 	    <select id="idRead" resultType="memberP" parameterType="String"> 
 	        	select * from member2
 	        	where member_id = #{member_id}
 	     </select>
+	     
+	    <!-- 관리자> 삭제-->
+     	 <delete id="idDelete" parameterType="String">
+        	delete from member2 
+        	where member_id = #{member_id}
+        </delete>
 
-		   <!-- 관리자페이지>회원정보수정 -->
+		 <!-- 관리자 >회원정보수정 -->
      	<update id="idUpdate" parameterType="memberP"> 
         	update member2
-        	set member_name = #{member_name}, tel = #{tel}, addr = #{addr}, email = #{email}
+        	set member_pw=#{member_pw}, member_name=#{member_name},
+        	zipcode=#{zipcode}, member_addr1=#{member_addr1}, member_addr2=#{member_addr2},member_phone=#{member_phone},
+        	 member_email=#{member_email}
         	where member_id = #{member_id}
         </update>
+      
 	
   </mapper>

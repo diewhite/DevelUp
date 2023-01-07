@@ -18,11 +18,6 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public List<NoteDTO> findById(String id) {
-		return sqlsession.selectList("com.multi.ongo.note.findbyid", id); 
-	}
-
-	@Override
 	public List<NoteDTO> receiveList(String id) {
 		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",id);
 		return notelist;
@@ -60,4 +55,10 @@ public class NoteDAOImpl implements NoteDAO {
 	public int deleteNote(String no) {
 		return sqlsession.delete("com.multi.ongo.note.deletenote", no);
 	}
+
+	@Override
+	public int readCheck(String no) {
+		return sqlsession.update("com.multi.ongo.note.readcheck", no);
+	}
+
 }

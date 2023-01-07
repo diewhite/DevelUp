@@ -22,7 +22,7 @@ public class MemberDTO {
 	private Date member_date; // 가입일
 	private String member_sign; //가입상태 (가입/삭제)
 	public MemberDTO() {
-		
+       
 	}
 	
 	//member.xml에서 업데이트를추가로 만들경우 생성자 생성 = 우클릭 > 소스 > 유징필드 순서가 중요함!!
