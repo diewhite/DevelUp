@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head> 
 
@@ -21,19 +22,14 @@
         position: absolute;
         top: 0;
         left: 0;
-
         width: 100%;
         height: 100%;
-
         display: none;
-
         background-color: rgba(0, 0, 0, 0.4);
       }
-
       .modal2.show {
         display: block;
       }
-
       .modal2_body {
         position: absolute;
         top: 50%;
@@ -41,15 +37,11 @@
 		text-align:left;
         width: 200px;
         height: auto;
-
         padding: 5px;
-
         text-align: center;
-
         background-color: rgb(255, 255, 255);
         border-radius: 10px;
         box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
         transform: translateX(-50%) translateY(-50%);
       }
     </style>
@@ -167,6 +159,23 @@
 							</div>
 							
 							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 								<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">작성자</label>
 								<div class="tbl-basic-td">
@@ -176,6 +185,27 @@
 									</div>
 								</div>
 							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 							
 				<!--모달 --------------------------------------------------------- -->
@@ -195,19 +225,15 @@
 				      const modal2 = document.querySelector('.modal2');
 				      //const btnOpenPopup = document.querySelector('.btn-open-popup');
 				      const btnOpenPopup = document.querySelector('#modal2-open');
-
 				      btnOpenPopup.addEventListener('click', () => {
 				        modal2.classList.toggle('show');
-
 				        if (modal2.classList.contains('show')) {
 				          body.style.overflow = 'hidden';
 				        }
 				      });
-
 				      modal2.addEventListener('click', (event) => {
 				        if (event.target === modal2) {
 				          modal2.classList.toggle('show');
-
 				          if (!modal2.classList.contains('show')) {
 				            body.style.overflow = 'auto';
 				          }
@@ -235,7 +261,10 @@
 								<label for="HOFS_DTADR">금액</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w30 me-4">
-										${dealRead.product_price}
+									
+									
+									<span class="blue-bold"><fmt:formatNumber  pattern="#,###원">
+										${dealRead.product_price}</fmt:formatNumber></span>
 										<!-- <input class="grid-input" type="number" maxlength="50"
 											title="product_price" id="product_price" name="product_price"> -->
 									</div>
@@ -276,7 +305,7 @@
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
 					</div> -->
 			<div class="btn-area">
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
+				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
 				<button class="btn btn-primary btn-large" type="button" onclick="location.href='#'">거래요청</button>
 			</div>
 			

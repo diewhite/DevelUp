@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DealBoard_ServiceImpl implements DealBoard_Service {
 
+	
 	DealBoard_DAO dao;
 	
 	@Autowired
