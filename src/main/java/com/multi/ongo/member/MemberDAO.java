@@ -2,10 +2,6 @@ package com.multi.ongo.member;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
-import com.multi.ongo.deal.DealBoard_DTO;
 //mybatis의 SqlSessio을 이용해서 작업
 public interface MemberDAO {
 	// 회원가입- 등록(db에처리)

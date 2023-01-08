@@ -43,7 +43,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public int update(MemberDTO joinupdate) { //수정
-		//System.out.println("업데이트확인중"+joinupdate);
+		System.out.println("업데이트확인중 dao인풀"+joinupdate);
 		return sqlSession.update("com.multi.ongo.member.idUpdate",joinupdate);
 	}
 	

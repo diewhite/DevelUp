@@ -10,13 +10,13 @@ public class MemberDTO {
 	private String zipcode; //우편번호
 	private String member_addr1; // 주소 = 도로명주소
 	private String member_addr2; // 주소 = 상세주소
-	private String member_phone; //휴대폰번호
-	private String phone1; //010
-	private String phone2; //1111
-	private String phone3; //2222
-	private String member_email; //이메일
-	private String email1; //psj
-	private String email2; //@naver.com
+	private String member_phone; //휴대폰번호 phone1+phone2+phone3 = 합치기 member_phone
+	private String phone1; //010 input박스 쪼개기
+	private String phone2; //1111 input박스 쪼개기
+	private String phone3; //2222 input박스 쪼개기
+	private String member_email; //이메일 email1+email2 = 합치기member_email
+	private String email1; //psj  input박스 쪼개기
+	private String email2; //@naver.com input박스 쪼개기
 	private String email99;//이메일주소 직접입력값
 	private String member_role; //회원권한 (일반/관리자) 1 or 99
 	private Date member_date; // 가입일
