@@ -63,7 +63,7 @@ function removeCheck(url){
             <label for="USR_NM">성명<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="text" name="member_name" title="이름" value="${userRU.member_name}" disabled>
+                <input class="grid-input" type="text" name="member_name" title="이름" value="${memberRU.member_name}" disabled>
               </div>
             </div>
           </div>
@@ -96,7 +96,8 @@ function removeCheck(url){
             <label for="HOFS_ADDR">아이디<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="text" role="textbox" id="USER_ID" name="member_id" maxlength="12" title="아이디 입력" disabled>
+                <input class="grid-input" type="text" role="textbox" id="USER_ID" 
+                name="member_id" maxlength="12" title="아이디 입력"  value="${memberRU.member_id}"  disabled>
               </div>
             </div>
           </div>
@@ -123,28 +124,25 @@ function removeCheck(url){
 							<label for="HOFS_ADDR">주소</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w10">
-									<input  value="${userRU.zipcode}"
+									<input  value="${memberRU.zipcode}"
 									class="grid-input" type="text" name="zipcode"title="우편번호">
 								</div> 
 								<button type="button" class="btn btn-light" onclick="execDaumPostcode()">우편번호 검색</button>
 								<div class="input-wrap">
-								
 				
 									<br>
 								</div>
 								<div class="">
 									<div class="input-wrap ">
-										<input class="grid-input" value="${userRU.member_addr1}"
+										<input class="grid-input" value="${memberRU.member_addr1}"
 										type="text" name="member_addr1"	title="주소">
 									</div>
 									<div class="input-wrap">
-											<input class="grid-input" value="${userRU.member_addr2}"
+											<input class="grid-input" value="${memberRU.member_addr2}"
 										type="text" name="member_addr2" placeholder="상세주소를 입력해주세요.">
 									</div>
 								</div>
-
 							</div>
-
 						</div>
 						
 					
@@ -153,7 +151,7 @@ function removeCheck(url){
             <input type="hidden" id="USR_EMADR" name="USR_EMADR">
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" value="${userR.member_email}"
+                <input class="grid-input" value="${memberRU.member_email}"
                 type="text" role="textbox" id="USR_EMADR_1" name="email1" maxlength="10" title="이메일주소 입력">
               </div>
          		@
@@ -176,7 +174,7 @@ function removeCheck(url){
         </div>
       </div>
       <div class="btn-area">
-      <button class="btn btn-outline-secondary btn-large" type="submit">회원탈퇴</button>
+      <button class="btn btn-outline-secondary btn-large" type="button">회원탈퇴</button>
 			<button class="btn btn-outline-primary btn-large" type="submit">수정</button>
 		</div>
     </form>

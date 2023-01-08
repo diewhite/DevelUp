@@ -54,6 +54,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int update(MemberDTO joinupdate) {  //수정
+		System.out.println("업데이트처리 서비스인풀"+joinupdate);
 		return memberdao.update(joinupdate);
 	}
 		

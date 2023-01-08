@@ -139,6 +139,12 @@
                     <li ><a href="/ongo/member/memberserviceboard.do">게시물통합관리</a></li>
                   </ul>
                 </div>
+                <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#">쪽지함</a></span>
+                  <ul class="dep2_link">
+                    <li ><a href="#">보낸쪽지함</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
  </c:if>
@@ -258,6 +264,13 @@
 		                      <li ><a href="/ongo/member/memberserviceboard.do" >게시물통합관리</a></li>
 		                    </ul>
 		                  </div>
+		                   <div class="sitemap_depth2">
+		                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
+		                    <ul class="sitemap_depth3 dot_list">
+		                      <li ><a href="#" >보낸쪽지함</a></li>
+		                    </ul>
+		                  </div>
+		                  
 		                </div>
 		              </div>
 		       </c:if>

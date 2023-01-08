@@ -66,7 +66,6 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
 		select * from member2 where member_name like '%' || #{member_name} || '%' 
 	</select>
 
-
 		 <!-- 관리자 >회원정보수정 -->
      	<update id="idUpdate" parameterType="memberP"> 
         	update member2

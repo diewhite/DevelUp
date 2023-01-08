@@ -2,8 +2,6 @@ package com.multi.ongo.member;
 
 import java.util.List;
 
-import com.multi.ongo.deal.DealBoard_DTO;
-
 public interface MemberService {
 
 	//회원가입 (db에처리)
