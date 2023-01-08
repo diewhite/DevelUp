@@ -297,7 +297,7 @@
               <label for="srchWord2" class="form-label visually-hidden">중고거래 검색</label>
               <input type="text" class="form-control service_sch" name="srchWord" id="srchWord2" title="단어 입력"
                 placeholder="단어 입력">
-              <button type="button" class="btn btn-search" onclick="fnSearchKsic();"><span
+              <button id="srchWord2-btn" type="button" class="btn btn-search" onclick="fnSearchKsic();"><span
                   class="visually-hidden">검색</span></button>
             </div>
           </div>
@@ -458,6 +458,15 @@
     </div>
     </div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#srchWord2-btn").on("click", function () {
+			location.href="serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
+		})
+		
+	})
+	
+</script>
 <!-- //modal -->
   
 </body>

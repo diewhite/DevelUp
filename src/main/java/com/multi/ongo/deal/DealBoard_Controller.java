@@ -43,7 +43,7 @@ public class DealBoard_Controller {
 //		System.out.println("deal_no : " + dto.getDeal_number());
 		service.writeProd(dto);
 		return "redirect:/deal_listAll.do?dealType=all";
-		
+				
 		
 	}
 	
@@ -72,6 +72,9 @@ public class DealBoard_Controller {
 //		//System.out.println("listall 찍기체크2 : " + listall);
 //		return mav;
 //	}
+	
+	
+	
 	
 	//중고거래게시글 읽기
 	@RequestMapping("dealRead.do")
@@ -113,6 +116,7 @@ public class DealBoard_Controller {
 	//하단검색
 	@RequestMapping("serarchData.do")
 	public ModelAndView dataSearch(String tag, String searchData) {
+		//System.out.println("tag : " + tag + ",   searchData값 : " +  searchData);
 		ModelAndView mav = new ModelAndView("deallistAll");
 		List<DealBoard_DTO> listall = service.searchData(tag, searchData);
 		mav.addObject("listall", listall);
