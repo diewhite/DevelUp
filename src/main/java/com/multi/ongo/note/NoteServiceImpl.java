@@ -14,13 +14,13 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public List<NoteDTO> receiveList(String id) {
-		return dao.receiveList(id);
+	public List<NoteDTO> receiveList(String id, int perpage, int page) {
+		return dao.receiveList(id,perpage,page);
 	}
 
 	@Override
-	public List<NoteDTO> sendList(String id) {
-		return dao.sendList(id);
+	public List<NoteDTO> sendList(String id, int perpage, int page) {
+		return dao.sendList(id,perpage,page);
 	}
 
 	@Override
@@ -46,5 +46,15 @@ public class NoteServiceImpl implements NoteService {
 	@Override
 	public int readCheck(String no) {
 		return dao.readCheck(no);
+	}
+
+	@Override
+	public NoteDTO receiveNoteCnt(String id) {
+		return dao.receiveNoteCnt(id);
+	}
+
+	@Override
+	public NoteDTO sendNoteCnt(String id) {
+		return dao.sendNoteCnt(id);
 	}
 }
