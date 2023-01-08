@@ -16,12 +16,21 @@ public class DealHistoryServiceImpl implements DealHistoryService {
 		super();
 		this.dao = dao;
 	}
+
 	
 	//중고거래 판매내역 조회 
+//	@Override
+//	public ListList<DealHistoryDTO> sell_List(String member_id) {
+//		return dao.sell_List(member_id);
+//	}
+	
+	//중고거래 판매내역 조회 (test용)
 	@Override
-	public List<DealBoard_DTO> sell_List() {
+	public List<DealHistoryDTO> sell_List() {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.sell_List();
 	}
-
+	
+	
+	
 }

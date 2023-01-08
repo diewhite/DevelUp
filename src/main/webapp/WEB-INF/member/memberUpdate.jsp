@@ -73,9 +73,8 @@ $(function() {
            <div class="grid-item">
             <label for="HOFS_ADDR">아이디<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
-              <div class="input-wrap">
-                ${memberRU.member_id}
-              </div>
+             <input class="grid-input" value="  ${memberRU.member_id}" 
+                type="text" name="member_id"title="아이디" disabled>
             
             </div>
           </div>
@@ -121,22 +120,22 @@ $(function() {
 
 						</div>
 						
-       	    <div class="grid-item colspan2">
+       	 		    <div class="grid-item colspan2">
             <label for="USR_EMADR">이메일주소<em class="org-txt asterisk" title="필수">*</em></label>
-            <input type="hidden"  id="USR_EMADR" name="USR_EMADR">
+            <input type="hidden" id="USR_EMADR" name="USR_EMADR">
             <div class="tbl-basic-td">
               <div class="input-wrap">
                 <input class="grid-input" value="${memberRU.member_email}"
-                type="text" role="textbox" id="USR_EMADR_1" name="email1" maxlength="10" title="이메일주소 입력">
+                type="text" role="textbox" id="USR_EMADR_1" name="member_email" maxlength="10" title="이메일주소 입력">
               </div>
-         		
              </div>
           </div>
+          
       
         </div>
     <div class="btn-area flex-row">
        <button class="btn btn-success btn-large" type="submit" >수정</button>
-        <button class="btn btn-outline-secondary btn-large" type="button"  onclick="location.href='/ongo/member/memberboard.do">취소</button>
+        <button class="btn btn-outline-secondary btn-large" type="button"  onclick="location.href='/ongo/member/memberboard'">취소</button>
       </div>
     </form>
    

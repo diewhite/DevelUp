@@ -1,7 +1,6 @@
 package com.multi.ongo.member;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 
 @Controller
 public class MemberController {
@@ -159,7 +157,18 @@ public class MemberController {
 				 int result = service.delete(member_id);
 				return "redirect:/member/memberboard";
 			}
-	
+		
+			 
+		//관리자>회원목록>검색
+		@RequestMapping(value = "member/mbsearch")
+		public String Msearch(String mbnamesearch, Model model) {
+			List<MemberDTO> memberlist = service.msearch(mbnamesearch);
+			System.out.println(memberlist);
+			model.addAttribute("memberlist", memberlist);
+			return "member/memberboard";
+		}
+			
+		
 //=========================================================관리자 > 게시물관리
 			
 		//게시판관리
@@ -182,5 +191,42 @@ public class MemberController {
 			return "member/memberservicewrite";
 		}
 
+//=============나의온고> user 정보수정
+		/*	
+	
+//쪽지보내기 >규민님 참고
+	
+
+		@RequestMapping(value="/member/usermypage")
+		public String userMypage() {
+			return "member/usermypage";
+		}
 		
+		 
+
+			//관리자>회원목록>상세읽기> 실제 업데이트 기능처리 수정
+			@RequestMapping(value="/member/memberupdate")
+			public String memberU(MemberDTO joinupdate) {
+				System.out.println("회원목록 업데이트=>"+joinupdate);
+				int result = service.update(joinupdate);
+				return "redirect:/member/memberboard";
+			}
+		@RequestMapping(value = "/mypage/note/sendnote")
+	public String sendNote(NoteDTO note, HttpSession session) {
+		service.sendNote(note);
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		return "redirect:/mypage/note/sendbox?id="+user.getMember_id();
+	}
+		
+	}*/
+
+		//나의온고> user 정보수정
+		@RequestMapping(value = "/member/usermypage")
+		public String userU(HttpSession session,Model model) {
+			MemberDTO memberRead = (MemberDTO)session.getAttribute("user"); // 세션정보 불러오기, user를 memberRead에 저장
+		 	//service.memberIdRead(memberRead); //
+			model.addAttribute("memberRU", memberRead);
+			return "/member/usermypage"; // member_id 멤버매게변수명
+		}
+
 }

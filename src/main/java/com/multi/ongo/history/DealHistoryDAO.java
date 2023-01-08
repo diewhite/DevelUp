@@ -6,7 +6,10 @@ import com.multi.ongo.deal.DealBoard_DTO;
 
 public interface DealHistoryDAO {
 	
-	//중고거래 판매내역 조회
-	List<DealBoard_DTO> sell_List();
+	//중고거래 판매내역 조회 (id 받아와서)
+//	ListList<DealHistoryDTO> sell_List(String member_id);
+	
+	//중고거래 판매내역 조회 (test용)
+	List<DealHistoryDTO> sell_List();
 	
 }

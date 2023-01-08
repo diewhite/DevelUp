@@ -43,20 +43,23 @@ hr {
 		<div class="side_list"> 
 		<!-- 경매 -->
 			<div class="sidebox">
-				<h5>경매내역</h5>	
-				<a href="#"	class="list-group-item">판매내역</a> 
-				<a href="#" class="list-group-item">구매내역</a>
+				<h5>경매관리</h5>	
+				<a href="#"	class="list-group-item">판매관리</a> 
+				<a href="#" class="list-group-item">구매관리</a>
+				<a href="#" class="list-group-item">거래내역조회</a>
 			</div>
 			<!-- 중고거래 -->
 			<div class="sidebox">
-				<h5>중고거래내역</h5>
+				<h5>중고거래관리</h5>
 				<a href="#"	class="list-group-item">판매내역</a> 
 				<a href="#" class="list-group-item">구매내역</a>
+				<a href="#" class="list-group-item">거래내역조회</a>
 			</div>
 			<!-- 결제내역 -->
 			<div class="sidebox">
 				<h5>결제내역</h5>
 				<a href="#"	class="list-group-item">결제내역조회</a> 	
+				<a href="#"	class="list-group-item">결제상세내역</a> 		
 			</div>
 			<!-- 나의 정보 -->
 			<div class="sidebox">

@@ -1,10 +1,10 @@
 package com.multi.ongo.member;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class MemberDAOImpl implements MemberDAO{
@@ -32,6 +32,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public MemberDTO memberIdRead(String joinread) {  // 관리자> 회원목록> 전체리스트>상세보기
+
 		return sqlSession.selectOne("com.multi.ongo.member.idRead",joinread);
 	}
 
@@ -42,8 +43,14 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public int update(MemberDTO joinupdate) { //수정
-		//System.out.println("업데이트확인중"+joinupdate);
+		System.out.println("업데이트확인중 dao인풀"+joinupdate);
 		return sqlSession.update("com.multi.ongo.member.idUpdate",joinupdate);
+	}
+	
+	@Override
+	public List<MemberDTO> msearch(String membersearch) {// 관리자> 회원목록> 전체리스트> 이름검색
+		return sqlSession.selectList("com.multi.ongo.member.nameSearch",membersearch);
+		
 	}
 
 	@Override
@@ -51,5 +58,7 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberDTO login = sqlSession.selectOne("com.multi.ongo.member.login",loginidInfo);
 		return login;
 	}
+	
+	
 
 }

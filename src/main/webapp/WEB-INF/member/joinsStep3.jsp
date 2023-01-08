@@ -6,66 +6,26 @@ input:invalid {
   border: 1px solid red;
 }
 </style>
-<script>
-/* 개인회원 로그인 */
+<script type="text/javascript">
 function checkUsrSubmit() {
-  var ID = $('#saveForm #USR_NM');
-  if (!ID.val()) {
-    alert('ID를 입력하세요.');
-    ID.focus();
-    return false;
-  }
-}
+	  var ID = $('#saveForm #USR_NM');
+	  var PW = $('#saveForm #ENPWD');
+	  if (!ID.val()) {
+	    alert('ID를 입력하세요.');
+	    ID.focus();
+	    return false;
+	  }
 
-function test() {
-    var p1 = document.getElementById('ENPWD1').value;
-    var p2 = document.getElementById('ENPWD2').value;
-    
-    if(p1.length < 6) {
-            alert('입력한 글자가 6글자 이상이어야 합니다.');
-            return false;
-        }
-        
-        if( p1 != p2 ) {
-          alert("비밀번호불일치");
-          return false;
-        } else{
-          alert("비밀번호가 일치합니다");
-          return true;
-        }
-  }
-$(function(){
-	$('#ENPWD2').blur(function(){
-	   if($('#ENPWD').val() != $('#ENPWD2').val()){
-	    	if($('#ENPWD2').val()!=''){
-		    alert("비밀번호가 일치하지 않습니다.");
-	    	    $('#ENPWD2').val('');
-	          $('#ENPWD2').focus();
-	       
-	       }
-	})  	   
-});
+	  if (!PW.val()) {
+		    alert('비밀번호를 입력하세요.');
+		    PW.focus();
+		    return false;
+		  }
 
-
-//이메일
-$(function() {
-    $('#select_target_3').change(function() {
-        if ($('#select_target_3').val() == 'directly') {
-            $('#USR_EMADR_2').attr("disabled", false);
-            $('#USR_EMADR_2').val("");
-            $('#USR_EMADR_2').focus();
-        } else {
-            $('#USR_EMADR_2').val($('#select_target_3').val());
-        }
-    })
-});
-
-
+	}
 </script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-				
-   
-          
 </head>
 <body>
  
@@ -155,7 +115,7 @@ $(function() {
               <div class="input-wrap">
                 <input class="grid-input" type="password" role="textbox" id="ENPWD" name="member_pw" maxlength="20" title="비밀번호 입력">
               </div>
-              <span>영문,숫자,특수문자($@!%*#?&^()-_=+~<>) 조합으로 입력해주세요.(9자리 이상, 20자리 이하)<span></span>
+              <span>(4자리 이상, 20자리 이하)<span></span>
             </div>
           </div>
           <div class="grid-item colspan2">
@@ -171,20 +131,22 @@ $(function() {
 							<label for="HOFS_ADDR">주소</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w10">
-									<input class="grid-input" type="text" name="zipcode"
+									<input  id="postcode" class="grid-input" type="text" name="zipcode"
 										title="우편번호">
-								</div>
-								<button type="button" class="btn btn-light">우편번호 검색</button>
+								</div> 
+								<button type="button" class="btn btn-light"  onclick="execDaumPostcode()" >우편번호 검색</button>
 								<div class="input-wrap">
+								
+				
 									<br>
 								</div>
 								<div class="">
 									<div class="input-wrap ">
-										<input class="grid-input" type="text" name="member_addr1"
+										<input id="address" class="grid-input" type="text" name="member_addr1"
 											title="주소">
 									</div>
 									<div class="input-wrap">
-										<input class="grid-input" type="text" name="member_addr2"
+										<input  id="detailAddress" class="grid-input" type="text" name="member_addr2"
 											placeholder="상세주소를 입력해주세요.">
 									</div>
 								</div>
@@ -233,6 +195,7 @@ $(function() {
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
+
 
 </body>
 </html>

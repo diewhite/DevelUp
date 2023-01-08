@@ -17,12 +17,20 @@ public class DealHistoryDAOImpl implements DealHistoryDAO {
 		super();
 		this.sqlsession = sqlsession;
 	}
-
-	//중고거래 판매내역 조회 
+	
+	//중고거래 판매내역 조회 (id받아와서)
+//	@Override
+//	public List<DealHistoryDTO> sell_List(String member_id) {
+//		return sqlsession.selectList("com.multi.ongo.dealhistory.sell_list", member_id);
+//	}
+	
+	//중고거래 판매내역 조회 (test용)
 	@Override
-	public List<DealBoard_DTO> sell_List() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DealHistoryDTO> sell_List() { 
+		return sqlsession.selectList("com.multi.ongo.dealhistory.sell_list");
 	}
+
+
+	
 
 }

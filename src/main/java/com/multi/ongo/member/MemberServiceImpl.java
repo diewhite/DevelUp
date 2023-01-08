@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 // @Service 어노테이션 꼭 붙여줘야 스프링에서 이녀석이 Service 역할을 하는 녀석이구나!! 하고 인식
 //Controller 는 넘어온 요청을 처리하기 위해 Service 를 호출한다.
 // 블로그 내용 참조 https://onlyformylittlefox.tistory.com/13
@@ -53,10 +54,15 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int update(MemberDTO joinupdate) {  //수정
+		System.out.println("업데이트처리 서비스인풀"+joinupdate);
 		return memberdao.update(joinupdate);
 	}
 		
 
+	public List<MemberDTO> msearch(String membersearch) { //이름검색
+		return memberdao.msearch(membersearch);
+	}
+	
 	@Override
 	public MemberDTO login(MemberDTO loginidInfo) { //로그인
 		return memberdao.login(loginidInfo);

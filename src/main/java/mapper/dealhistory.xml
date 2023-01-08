@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.multi.ongo.deal">
-	
+  <mapper namespace="com.multi.ongo.dealhistory">
 	
 	<!--중고거래 판매내역 조회  -->
-	<select id="sell_historylist" resultType="dealDTO" >
-		select * from deal_table where id='park'
+	<select id="sell_list" resultType="dealhistoryDTO">
+		select * from deal_table2 
+		where member_id='park'
+		order by write_date desc
 	</select>
-	
-	
+
 
   </mapper>
