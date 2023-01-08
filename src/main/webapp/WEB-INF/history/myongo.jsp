@@ -144,7 +144,6 @@
 	text-decoration: none;
 }
 
-
 .dropdown-menu {
 	width: 10%;
 	border: 1px solid #000;
@@ -155,6 +154,37 @@
 	max-height: 300px;
 	overflow-y: auto;
 }
+
+	/* 소정님 css */
+
+.nav {  margin-bottom: 0px;padding-left: 10px;}
+.nav-tabs {
+    border-bottom: 1px solid #fff;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+
+    border-color:#fff;
+    font-weight: 900;
+
+    color: black;
+    border-bottom: 3px solid #1B3C88  !important;
+}
+
+    .nav .nav-item .nav-link {
+    width: 100%;
+    height: 51px;
+       font-size: 18px;
+       
+    background: #fff;
+    border-color: #fff;
+    border-bottom-color: #fff;
+ 
+}
+.nav .nav-item .nav-link {
+ 
+}
+
+/* //소정님 css */
 
 </style>
 <script type="text/javascript">
@@ -299,10 +329,20 @@
 			<div class="auction_history">
 				<div class="topnav d-flex  mb-2">
 					<div class="me-auto ">
-						<h3>경매내역</h3>
-						<div class="list_button">
-							<a href="#home" class="active">판매</a> <a href="#news">구매</a>
-						</div>
+						<!-- 탭메뉴 -->
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link show active" id="normal-tab"
+									data-bs-toggle="tab" data-bs-target="#normal" type="button"
+									role="tab" aria-controls="normal" aria-selected="true">판매</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="corp-tab" data-bs-toggle="tab"
+									data-bs-target="#corp" type="button" role="tab"
+									aria-controls="corp" aria-selected="false">구매</button>
+							</li>
+						</ul>
+						<!-- 텝메뉴 -->
 					</div>
 					<div class="btndiv">
 						<button class="btn" d-flex="" justify-content-end=""
@@ -310,177 +350,271 @@
 							더보기</button>
 					</div>
 				</div>
-				<div class="table-responsive px-2">
-					<table class="table table-borderless">
-						<colgroup>
-							<col width="5%">
-							<!-- 번호 -->
-							<col width="10%">
-							<!-- 제품사진 -->
-							<col width="35%">
-							<!-- 제목 -->
-							<col width="10%">
-							<!-- 가격 -->
-							<col width="10%">
-							<!-- 구매자 -->
-							<col width="*">
-							<!-- 날짜 -->
-							<col width="*">
-							<!-- 거래상태 -->
-						</colgroup>
-						<thead>
-							<tr>
-								<th class="table-header" scope="col">번호</th>
-								<th class="table-header" scope="col">제품 사진</th>
-								<th class="table-header-title" scope="col">제목</th>
-								<th class="table-header" scope="col">가격</th>
-								<th class="table-header" scope="col">구매자</th>
-								<th class="table-header" scope="col">날짜</th>
-								<th class="table-header" scope="col">거래상태</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span class="gray-bold">1</span></td>
-								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-									width="50" height="50"></td>
-								<td><span class="blue-bold"><a
-										href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-								<td><span class="blue-bold">15,000원</span></td>
-								<td><span class="blue-bold"> <a
-										class="nav-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> user_id </a>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-											<li><a class="dropdown-item" href="#">회원정보보기</a></li>
-										</ul>
-								</span></td>
-								<td>2023년 1월 3일</td>
-								<td>판매중</td>
-							</tr>
-							<tr>
-								<td><span class="gray-bold">1</span></td>
-								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-									width="50" height="50"></td>
-								<td><span class="blue-bold"><a
-										href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-								<td><span class="blue-bold">15,000원</span></td>
-								<td><span class="blue-bold"> <a
-										class="nav-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> user_id </a>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-											<li><a class="dropdown-item" href="#">회원정보보기</a></li>
-										</ul>
-								</span></td>
-								<td>2023년 1월 3일</td>
-								<td>판매중</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+				<!--텝메뉴 내용 들어갑니다~~ -->
+				<div class="tab-content">
+					<!--판매 -->
+					<div class="tab-pane fade active show" id="normal" role="tabpanel"
+						aria-labelledby="normal-tab">
 
-			<!-- =========중고거래내역list========= -->
-			
-			<div class="deal_history">
-				<div class="topnav d-flex  mb-2">
-					<div class="me-auto ">
-						<h3>중고거래내역</h3>
-						<div class="list_button">
-							<a href="#home" class="active">판매</a> <a href="#news">구매</a>
+						<div class="table-responsive px-2">
+							<table class="table table-borderless">
+								<colgroup>
+									<col width="5%">
+									<!-- 번호 -->
+									<col width="10%">
+									<!-- 제품사진 -->
+									<col width="35%">
+									<!-- 제목 -->
+									<col width="10%">
+									<!-- 가격 -->
+									<col width="10%">
+									<!-- 구매자 -->
+									<col width="*">
+									<!-- 날짜 -->
+									<col width="*">
+									<!-- 거래상태 -->
+								</colgroup>
+								<thead>
+									<tr>
+										<th class="table-header" scope="col">번호</th>
+										<th class="table-header" scope="col">제품 사진</th>
+										<th class="table-header-title" scope="col">제목</th>
+										<th class="table-header" scope="col">가격</th>
+										<th class="table-header" scope="col">구매자</th>
+										<th class="table-header" scope="col">날짜</th>
+										<th class="table-header" scope="col">거래상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span class="gray-bold">1</span></td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td>
+										<td><span class="blue-bold"><a
+												href="/ongo/history/dealDetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+										<td><span class="blue-bold">15,000원</span></td>
+										<td><span class="blue-bold"> <a
+												class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> user_id
+											</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+													<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+												</ul>
+										</span></td>
+										<td>2023년 1월 3일</td>
+										<td>판매중</td>
+									</tr>
+									<tr>
+										<td><span class="gray-bold">1</span></td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td>
+										<td><span class="blue-bold"><a
+												href="/ongo/history/dealDetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+										<td><span class="blue-bold">15,000원</span></td>
+										<td><span class="blue-bold"> <a
+												class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> user_id
+											</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+													<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+												</ul>
+										</span></td>
+										<td>2023년 1월 3일</td>
+										<td>판매중</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 구매 -->
+						<div class="tab-pane fade" id="corp" role="tabpanel"
+							aria-labelledby="corp-tab">
+							<table class="table table-borderless">
+								<colgroup>
+									<col width="5%">
+									<!-- 번호 -->
+									<col width="10%">
+									<!-- 제품사진 -->
+									<col width="35%">
+									<!-- 제목 -->
+									<col width="10%">
+									<!-- 가격 -->
+									<col width="10%">
+									<!-- 구매자 -->
+									<col width="*">
+									<!-- 날짜 -->
+									<col width="*">
+									<!-- 거래상태 -->
+								</colgroup>
+								<thead>
+									<tr>
+										<th class="table-header" scope="col">번호</th>
+										<th class="table-header" scope="col">제품 사진</th>
+										<th class="table-header-title" scope="col">제목</th>
+										<th class="table-header" scope="col">가격</th>
+										<th class="table-header" scope="col">구매자</th>
+										<th class="table-header" scope="col">날짜</th>
+										<th class="table-header" scope="col">거래상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span class="gray-bold">1</span></td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td>
+										<td><span class="blue-bold"><a
+												href="/ongo/history/dealDetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+										<td><span class="blue-bold">15,000원</span></td>
+										<td><span class="blue-bold"> 
+										<a class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> user_id
+											</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+													<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+												</ul>
+										</span></td>
+										<td>2023년 1월 3일</td>
+										<td>판매중</td>
+									</tr>
+									<tr>
+										<td><span class="gray-bold">1</span></td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td>
+										<td><span class="blue-bold"><a
+												href="/ongo/history/dealDetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+										<td><span class="blue-bold">15,000원</span></td>
+										<td><span class="blue-bold"> <a
+												class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> user_id
+											</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+													<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+												</ul>
+										</span></td>
+										<td>2023년 1월 3일</td>
+										<td>판매중</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
-					<div class="btndiv">
-						<button class="btn" d-flex="" justify-content-end=""
-							onclick="location.href='/ongo/history/historylist' ">+
-							더보기</button>
+				</div>
+				<!-- //탭메뉴 끝 -->
+
+				<!-- =========중고거래내역list========= -->
+
+				<div class="deal_history">
+					<div class="topnav d-flex  mb-2">
+						<div class="me-auto ">
+							<h3>중고거래내역</h3>
+							<div class="list_button">
+								<a href="#home" class="active">판매</a> <a href="#news">구매</a>
+							</div>
+						</div>
+						<div class="btndiv">
+							<button class="btn" d-flex="" justify-content-end=""
+								onclick="location.href='/ongo/history/historylist' ">+
+								더보기</button>
+						</div>
+					</div>
+					<div class="table-responsive px-2">
+						<table class="table table-borderless">
+							<colgroup>
+								<col width="10%">
+								<!-- 제품사진 -->
+								<col width="10%">
+								<!-- 상품명 -->
+								<col width="33%">
+								<!-- 제목 -->
+								<col width="10%">
+								<!-- 가격 -->
+								<col width="*">
+								<!-- 구매자 -->
+								<col width="13%">
+								<!-- 작성일 -->
+								<col width="*%">
+								<!-- 거래상태 -->
+
+							</colgroup>
+
+							<thead>
+								<tr>
+									<th class="table-header" scope="col">상품 사진</th>
+									<th class="table-header" scope="col">상품명</th>
+									<th class="table-header-title" scope="col">제목</th>
+									<th class="table-header" scope="col">가격</th>
+									<th class="table-header" scope="col">판매자</th>
+									<th class="table-header" scope="col">작성일</th>
+									<th class="table-header" scope="col">거래상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+
+									<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+										width="50" height="50"></td>
+									<td><span class="gray-bold">아이폰</span></td>
+									<td><span class="blue-bold"><a
+											href="/ongo/history/dealDetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+									<td><span class="blue-bold">15,000원</span></td>
+									<td><span class="blue-bold"> <a
+											class="nav-link dropdown-toggle" href="#" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false"> user_id
+										</a>
+											<ul class="dropdown-menu">
+												<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+												<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+											</ul>
+									</span></td>
+
+									<td>2023-01-06</td>
+									<td>판매중</td>
+								</tr>
+								<tr>
+
+									<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+										width="50" height="50"></td>
+									<td><span class="gray-bold">아이폰</span></td>
+									<td><span class="blue-bold"><a
+											href="/ongo/history/dealDetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+									<td><span class="blue-bold">15,000원</span></td>
+									<td><span class="blue-bold"> <a
+											class="nav-link dropdown-toggle" href="#" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false"> user_id
+										</a>
+											<ul class="dropdown-menu">
+												<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+												<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+											</ul>
+									</span></td>
+									<td>2023-01-06</td>
+									<td>판매중</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<div class="table-responsive px-2">
-					<table class="table table-borderless">
-						<colgroup>
-							<col width="10%">	<!-- 제품사진 -->
-							<col width="10%">	<!-- 상품명 -->
-							<col width="33%">	<!-- 제목 -->
-							<col width="10%">	<!-- 가격 -->
-							<col width="*">	<!-- 구매자 -->
-							<col width="13%">		<!-- 작성일 -->
-							<col width="*%">		<!-- 거래상태 -->
-						
-						</colgroup>
 
-						<thead>
-							<tr>
-								<th class="table-header" scope="col">상품 사진</th>
-								<th class="table-header" scope="col">상품명</th>
-								<th class="table-header-title" scope="col">제목</th>
-								<th class="table-header" scope="col">가격</th>
-								<th class="table-header" scope="col">판매자</th>
-								<th class="table-header" scope="col">작성일</th>
-								<th class="table-header" scope="col">거래상태</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
+				<!-- ========= 중고거래내역list끝 ========= -->
 
-								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-									width="50" height="50"></td>
-								<td><span class="gray-bold">아이폰</span></td>
-								<td><span class="blue-bold"><a
-										href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-								<td><span class="blue-bold">15,000원</span></td>
-								<td><span class="blue-bold"> <a
-										class="nav-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> user_id </a>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-											<li><a class="dropdown-item" href="#">회원정보보기</a></li>
-										</ul>
-								</span></td>
-
-								<td>2023-01-06</td>
-								<td>판매중</td>
-							</tr>
-							<tr>
-
-								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-									width="50" height="50"></td>
-								<td><span class="gray-bold">아이폰</span></td>
-								<td><span class="blue-bold"><a
-										href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-								<td><span class="blue-bold">15,000원</span></td>
-								<td><span class="blue-bold"> <a
-										class="nav-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> user_id </a>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-											<li><a class="dropdown-item" href="#">회원정보보기</a></li>
-										</ul>
-								</span></td>
-								<td>2023-01-06</td>
-								<td>판매중</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
 			</div>
-
-			<!-- ========= 중고거래내역list끝 ========= -->
-
 		</div>
-	</div>
 
 
-	<!--====== // </div> container=====-->
+		<!--====== // </div> container=====-->
 
 
-	<!-- //contents -->
+		<!-- //contents -->
+
 
 
 	<!-- Footer -->
 
+
 	<jsp:include page="../include/footer.jsp" />
-	<!-- //Footer -->
+	//Footer -->
 </body>
 </html>
