@@ -18,14 +18,22 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public List<NoteDTO> receiveList(String id) {
-		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",id);
+	public List<NoteDTO> receiveList(String id,int perpage,int page) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("perpage",String.valueOf(perpage));
+		map.put("page", String.valueOf(page));
+		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",map);
 		return notelist;
 	}
 
 	@Override
-	public List<NoteDTO> sendList(String id) {
-		return sqlsession.selectList("com.multi.ongo.note.sendlist",id);
+	public List<NoteDTO> sendList(String id, int perpage, int page) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("perpage",String.valueOf(perpage));
+		map.put("page", String.valueOf(page));
+		return sqlsession.selectList("com.multi.ongo.note.sendlist",map);
 	}
 
 	@Override
@@ -59,6 +67,16 @@ public class NoteDAOImpl implements NoteDAO {
 	@Override
 	public int readCheck(String no) {
 		return sqlsession.update("com.multi.ongo.note.readcheck", no);
+	}
+
+	@Override
+	public NoteDTO receiveNoteCnt(String id) {
+		return sqlsession.selectOne("com.multi.ongo.note.receivenotecnt", id);
+	}
+
+	@Override
+	public NoteDTO sendNoteCnt(String id) {
+		return sqlsession.selectOne("com.multi.ongo.note.sendnotecnt", id);
 	}
 
 }

@@ -610,7 +610,9 @@
 		<!-- //contents -->
 
 
-		<!-- Footer 
+
+	<!-- Footer -->
+
 
 	<jsp:include page="../include/footer.jsp" />
 	//Footer -->

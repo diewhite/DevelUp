@@ -11,7 +11,6 @@
 		$("#dealType").val(data).attr("selected", "selected");
 		//  #category은 #은 태그내 id를말함 //  어트리뷰트명, 어트리뷰트 속성
 	});
-
 	//상품카테고리 저장공유
 	$(document).ready(function() { //자바스크립트가 실행되면
 		data = "${dealRead.product_category}"
@@ -51,9 +50,7 @@
 							<label for="select_target_1">구분</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w20">
-									<%-- <input type="text" class="form-control" id="dealType" name="dealType" value="${dealRead.dealType}"> --%>
-									<select class="form-select grid-input" title="게시판"
-										id="dealType" name="dealType">
+									<select class="form-select grid-input" title="게시판" id="dealType" name="dealType">
 										<option value="중고">중고</option>
 										<!--used  sharing-->
 										<option value="나눔">나눔</option>
@@ -66,9 +63,7 @@
 							<label for="select_target_1">상품카테고리</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w20">
-									<%-- <input type="text" class="form-control" id="product_category" name="product_category" value="${dealRead.product_category}"> --%>
-									<select class="form-select grid-input" title="게시판"
-										id="product_category" name="product_category">
+									<select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
 										<option value="디지털&가전">디지털&가전</option>
 										<option value="가구&인테리어">가구&인테리어</option>
 										<option value="유아동">유아동</option>
@@ -106,9 +101,7 @@
 							<label for="HOFS_DTADR">제목</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
-									<input type="text" class="form-control" title="board_title"
-										id="board_title" name="board_title"
-										value="${dealRead.board_title}">
+									<input type="text" class="form-control" title="board_title" id="board_title" name="board_title" value="${dealRead.board_title}">
 									<!-- <input class="grid-input" type="text" maxlength="500"
 											title="board_title" id="board_title" name="board_title"> -->
 								</div>
@@ -121,8 +114,7 @@
 							<label for="HOFS_DTADR">작성자</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
-									<input type="hidden" class="input-wrap w100" id="member_id"
-										name="member_id" value="${dealRead.member_id}">${dealRead.member_id}
+									<input type="hidden" class="input-wrap w100" id="member_id" name="member_id" value="${dealRead.member_id}">${dealRead.member_id}
 								</div>
 							</div>
 						</div>
@@ -139,8 +131,7 @@
 							<label for="HOFS_DTADR">금액</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w30 me-4">
-									<input type="text" class="form-control" id="product_price"
-										name="product_price" value="${dealRead.product_price}">
+									<input type="text" class="form-control" id="product_price" name="product_price" value="${dealRead.product_price}">
 									<!-- <input class="grid-input" type="number" maxlength="50"
 											title="product_price" id="product_price" name="product_price"> -->
 								</div>
@@ -156,8 +147,7 @@
 							<label for="HOFS_INTR_MTRL_CNTS">내용</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
-									<input type="text" class="form-control" id="board_content"
-										name="board_content" value="${dealRead.board_content}">
+									<input type="text" class="form-control" id="board_content" name="board_content" value="${dealRead.board_content}">
 									<!-- <textarea class="grid-input" role="textbox"
 											id="board_content" name="board_content"
 											title="board_content" maxlength="1000" rows="5"></textarea> -->
@@ -169,8 +159,7 @@
 							<label for="HOFS_DTADR">대표사진</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
-									<input type="file" class="form-control" id="list_photo"
-										Name="list_photo" value="${dealRead.list_photo}" />
+									<input type="file" class="form-control" id="list_photo" Name="list_photo" value="${dealRead.list_photo}" />
 								</div>
 								<!-- <input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/> -->
 							</div>
@@ -185,13 +174,12 @@
 
 		<div class="btn-area">
 			<button class="btn btn-primary btn-large" type="button"
-				onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
+				onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
 			<button type="submit" class="btn btn-primary btn-large">수정완료</button>
 			<!-- 	<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealUpdate.do'">수정완료</button> -->
 		</div>
 		<div class="btn-area">
-			<button class="btn btn-primary btn-danger btn-large" type="button"
-				onclick="location.href='dealDelete.do?id=${dealRead.id}'">삭제</button>
+			<button class="btn btn-primary btn-danger btn-large" type="button" onclick="location.href='dealDelete.do?member_id=${dealRead.member_id}'">삭제</button>
 		</div>
 
 	</div>

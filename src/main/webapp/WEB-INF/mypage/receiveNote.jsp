@@ -32,7 +32,7 @@ overflow: hidden;
 				<div class="board_info d-flex">
 					<div class="total">
 						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
-							class="blue" id="nowPage"></strong>/<span id="resultPage"></span>)
+							class="blue" id="nowpage">${page }</strong>/<span id="endpage">${endpage }</span>)
 					</div>
 						<form action="/ongo/mypage/note/searchReceiveBox" method="post">
 							<div class="form_box">
@@ -153,8 +153,21 @@ overflow: hidden;
 							<span aria-hidden="true"><i
 								class="las la-angle-double-left"></i></span>
 					</a></li>
-					<li class="page-item active"><a class="page-link"
-						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+					
+					<c:forEach begin="1" end="${endpage }" var="p" >
+						<c:choose>
+							<c:when test="${p==page }">
+								<li class="page-item active"><a class="page-link"
+								href="/ongo/mypage/note/receivebox?id=${user.member_id }&page=${p}&perpage=5">${p }</a></li>
+							</c:when>
+							<c:when test="${p!=page }">
+								<li class="page-item active"><a class="page-link"
+								href="/ongo/mypage/note/receivebox?id=${user.member_id }&page=${p}&perpage=5"><b>${p }</b></a></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<!-- <li class="page-item active"><a class="page-link"
+						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li> -->
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>

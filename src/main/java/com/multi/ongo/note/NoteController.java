@@ -23,20 +23,36 @@ public class NoteController {
 	}
 	//받은쪽지함
 	@RequestMapping(value = "/mypage/note/receivebox")
-	public String receiveList(String id, Model model){
-		List<NoteDTO> notelist = service.receiveList(id);
-		int count = notelist.size();
+	public String receiveList(String id, String perpage, String page, Model model){
+		if(perpage==null&&page==null) {
+			perpage="5";
+			page="1";
+		}
+		List<NoteDTO> notelist = service.receiveList(id,Integer.parseInt(perpage),Integer.parseInt(page));
+		NoteDTO receiveNoteCnt = service.receiveNoteCnt(id);
+		int count = Integer.parseInt(receiveNoteCnt.getCount());
+		int endpage = (int)Math.ceil((double)count/Integer.parseInt(perpage));
 		model.addAttribute("notelist", notelist);
 		model.addAttribute("count", count);
+		model.addAttribute("endpage", endpage);
+		model.addAttribute("page",page);
 		return "mypage/note/receivebox";
 	}
 	//보낸쪽지함
 	@RequestMapping(value = "/mypage/note/sendbox")
-	public String sendList(String id, Model model){
-		List<NoteDTO> notelist = service.sendList(id);
-		int count = notelist.size();
+	public String sendList(String id, String perpage, String page, Model model){
+		if(perpage==null&&page==null) {
+			perpage="5";
+			page="1";
+		}
+		List<NoteDTO> notelist = service.sendList(id,Integer.parseInt(perpage),Integer.parseInt(page));
+		NoteDTO sendNoteCnt = service.sendNoteCnt(id);
+		int count = Integer.parseInt(sendNoteCnt.getCount());
+		int endpage = (int)Math.ceil((double)count/Integer.parseInt(perpage));		
 		model.addAttribute("notelist", notelist);
 		model.addAttribute("count", count);
+		model.addAttribute("endpage", endpage);
+		model.addAttribute("page",page);
 		return "mypage/note/sendbox";
 	}
 	//쪽지보내기

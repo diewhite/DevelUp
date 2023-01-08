@@ -25,6 +25,10 @@ public class MemberDTO {
        
 	}
 	
+	//====================
+
+		//=================
+		    
 	//member.xml에서 업데이트를추가로 만들경우 생성자 생성 = 우클릭 > 소스 > 유징필드 순서가 중요함!!
 	//전체 생성자 
 	public MemberDTO(int member_no, String member_id, String member_pw, String member_name, String zipcode,String member_addr1,

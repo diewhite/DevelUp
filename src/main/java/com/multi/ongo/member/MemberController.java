@@ -1,7 +1,6 @@
 package com.multi.ongo.member;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 
 @Controller
 public class MemberController {
@@ -159,7 +157,18 @@ public class MemberController {
 				 int result = service.delete(member_id);
 				return "redirect:/member/memberboard";
 			}
-	
+		
+			 
+		//관리자>회원목록>검색
+		@RequestMapping(value = "member/mbsearch")
+		public String Msearch(String mbnamesearch, Model model) {
+			List<MemberDTO> memberlist = service.msearch(mbnamesearch);
+			System.out.println(memberlist);
+			model.addAttribute("memberlist", memberlist);
+			return "member/memberboard";
+		}
+			
+		
 //=========================================================관리자 > 게시물관리
 			
 		//게시판관리
@@ -182,5 +191,23 @@ public class MemberController {
 			return "member/memberservicewrite";
 		}
 
+//=============나의온고> user 정보수정
+		/*	
+			@RequestMapping(value="/member/usermypage")
+		public String userMypage() {
+			return "member/usermypage";
+		}
 		
+				@RequestMapping(value="/member/usermypage")
+		public String userU(MemberDTO board) {
+			System.out.println(board+"-----------업데이트---------------------");
+			int result = service.update(board);
+			return "redirect:/member/usermypage";
+		}
+		
+	}*/
+
+
+		
+
 }
