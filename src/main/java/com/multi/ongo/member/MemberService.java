@@ -2,6 +2,8 @@ package com.multi.ongo.member;
 
 import java.util.List;
 
+import com.multi.ongo.deal.DealBoard_DTO;
+
 public interface MemberService {
 
 	//회원가입 (db에처리)
@@ -22,15 +24,21 @@ public interface MemberService {
     //회원 업데이트
     int update(MemberDTO joinupdate);
 
+
+  //게시글 이름으로 검색하기 
+  		List<MemberDTO> msearch(String membersearch);
+  		
     //로그인
     MemberDTO login(MemberDTO loginidInfo);
+
+
+    
+    //
+
+    
 
 }
 
 /*
-
-스프링의 약속
-왜 인트가 들어가? 마지막에서 결과가 나오는게 인트가 나오기 때문에
-반환값 인트로 해놔서 인트로 나온다 
-
+스프링의 약속 마지막에서 결과가 나오는게 인트가 나오기 때문에 반환값 인트
  */

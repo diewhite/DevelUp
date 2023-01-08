@@ -10,7 +10,7 @@
     <!-- title -->
     <div class="sub_top">
         <div class="container">
-            <h1>업체현황</h1>
+            <h1>협력업체</h1>
         </div>
     </div>
     <!-- //title -->
@@ -21,30 +21,11 @@
             <input type="hidden" name="countPerPage" id="countPerPage" value="10">
             <input type="hidden" name="zon" id="zon" value="">
             <input type="hidden" name="dstr" id="dstr" value="">
-            <div class="board_list allow">
-                <div class="form_box filter">
-                    <fieldset>
-                        <div class="input-group">
-                           
-                            <input type="text" class="form-control" name="SCH_KEY_WORD" id="SCH_KEY_WORD" title="검색어 입력" placeholder="업체명을 입력하세요.">
-                        </div>
-                        <button type="button" class="btn btn-search btn-big" onclick="fnSearch();"><i class="las la-search"></i> 검색</button>
-                    </fieldset>
-                </div>
-                
+          
           <div class="board_list">
             <div class="board_info d-flex">
                 <div class="total">전체 <strong class="blue" id="totalCount">6</strong>건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="totalPage">1</span>)</div>
-                <div class="d-grid d-md-flex justify-content-md-end">
-                   <div class="select">
-                      <select class="form-select" title="50개 보기">
-                        <option value="">30개 보기</option>
-                        <option value=" " selected>50개 보기</option>
-                        <option value=" ">100개 보기</option>
-                        <option value=" ">150개 보기</option>
-                      </select>
-                  </div>
-                </div>
+             
             </div>
             <div class="board" id="boardList">
              <div class="card">
@@ -111,9 +92,9 @@
                     <div class="card-text">
                       <ul class="company_list">
                         <li><strong>주소</strong><span>서울특별시 강남구 삼성로111길</span></li>
-                        <li><strong>문의</strong><span>02-123-1234</span></li>
+                        <li><strong>문의</strong><span>010-9963-996</span></li>
                         <li><strong>거래품목</strong><span>#폐가전#가구#플라스틱</span></li>
-                        <li><strong>견적</strong><span>psjsub1@gmail.com</span></li>
+                        <li><strong>견적</strong><span>psjjava@gmail.com</span></li>
                       </ul>
                     </div>
                   </div>

@@ -22,7 +22,7 @@ function removeCheck(url){
 <body>
 
 <!-- content -->
-<div id="contents">
+<div id="contents" >
        <!-- title -->
        <div class="sub_top">
            <div class="container">
@@ -30,6 +30,7 @@ function removeCheck(url){
            </div>
        </div>
        <!-- //title -->
+
 
   <!-- container -->
   <div class="container"> 
@@ -39,19 +40,23 @@ function removeCheck(url){
                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
                        </div>
-                      <div class="form_box justify-content-md-end"> 
+                      <div class="form_box justify-content-md-end">
+                      
+                        
+                      <form action="/ongo/member/mbsearch" method="post">
                        <fieldset>
-	                       <div class="input-group">
-		                       <input type="text" class="form-control" name=" " title="검색어 입력" placeholder="이름검색" >
-		                       <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+	                       <div class="input-group"> 
+		                       <input type="text" class="form-control"  name="mbnamesearch" title="검색어 입력" placeholder="이름검색" >
+		                       <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
 	                        </div >
                        </fieldset>
-                       
+                      </form>
+                         
                		 </div>
                    </div>
                    </div>
                    <div class="board">
-                       <table class="table">
+                       <table class="table"  id="example" >
                            <caption>게시판 목록</caption>
                            <colgroup>
                               <col width="8%">
@@ -114,8 +119,9 @@ function removeCheck(url){
                          <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/join3?state=ADMIN'">회원등록</button>
                        </div>
 
-                       <!-- 페이지네이션 -->
-                       <div class="pagination">
+                       <!-- 페이지네이션
+               
+                       <div id="pagination" class="pagination">
                          <input type="hidden" id="PAGE" name="PAGE" value="1">
                          <input type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
                          <input type="hidden" id="START_INDEX" name="START_INDEX" value="">
@@ -135,7 +141,8 @@ function removeCheck(url){
                                <span aria-hidden="true"><i class="las la-angle-double-right"></i></span>
                              </a>
                            </li>
-                       </div>
+                       </div>  -->
+              
                        <!-- //페이지네이션 -->
                    </div>
 </form>
