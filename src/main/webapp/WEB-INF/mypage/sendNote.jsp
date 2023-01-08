@@ -32,7 +32,7 @@ overflow: hidden;
 				<div class="board_info d-flex">
 					<div class="total">
 						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
-							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
+							class="blue" id="nowpage">${page }</strong>/<span id="endpage">${endpage }</span>)
 					</div>
 						<form action="/ongo/mypage/note/searchSendBox" method="post">
 							<div class="form_box">
@@ -57,7 +57,7 @@ overflow: hidden;
 			</div>
 			<div class="board">
 				<table class="table">
-					<caption>받은쪽지 목록</caption>
+					<caption>보낸쪽지 목록</caption>
 					<colgroup>
 						<col width="5%">
 						<col width="10%">
@@ -142,18 +142,32 @@ overflow: hidden;
 
 				<!-- 페이지네이션 -->
 				<div class="pagination">
-					<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
-						type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
-					<input type="hidden" id="START_INDEX" name="START_INDEX" value="1">
-					<input type="hidden" id="END_INDEX" name="END_INDEX" value="5">
+					<input type="hidden" id="page" name="page" value="1"> <input
+						type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="">
+					<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
+					<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="Previous"> <span class="visually-hidden">처음으로</span>
 							<span aria-hidden="true"><i
 								class="las la-angle-double-left"></i></span>
 					</a></li>
-					<li class="page-item active"><a class="page-link"
-						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+					
+					<c:forEach begin="1" end="${endpage }" var="p" >
+						<c:choose>
+							<c:when test="${p==page }">
+								<li class="page-item active"><a class="page-link"
+								href="/ongo/mypage/note/sendbox?id=${user.member_id }&page=${p}&perpage=5">${p }</a></li>
+							</c:when>
+							<c:when test="${p!=page }">
+								<li class="page-item active"><a class="page-link"
+								href="/ongo/mypage/note/sendbox?id=${user.member_id }&page=${p}&perpage=5"><b>${p }</b></a></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					
+					<!-- <li class="page-item active"><a class="page-link"
+						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li> -->
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>
