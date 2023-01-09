@@ -38,14 +38,6 @@ public class DealHistoryDTO {
 		this.list_photo = list_photo;
 	}
 	
-	//판매내역 list 
-	public DealHistoryDTO (String list_photo, String board_title, int product_price, Date write_date, String product_state) {
-		this.list_photo=list_photo;
-		this.board_title=board_title;
-		this.product_price=product_price;
-		this.write_date=write_date;
-		this.product_state=product_state;
-	}
 	
 
 	@Override
