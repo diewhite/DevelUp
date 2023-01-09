@@ -88,7 +88,7 @@ function removeCheck(url){
                            </thead>
                            <tbody >
                            <c:forEach var="memberR" items="${memberlist}">
-                             <tr class="notice">
+                             <tr class="notice" onclick="modalData(this)">
 						        <td data-before="회원번호">${memberR.member_no}</td>
                                <td data-before="이름">${memberR.member_name}</td>
                                <td data-before="아이디" >
@@ -101,10 +101,10 @@ function removeCheck(url){
 								 member_id => 파라미터 이름 , =${member.member_id} => 파라미터에 연결시켜주고 컨트롤러로 보낼 값
 								 => member라는 어트리뷰트에 정의된 멤버변수인 member_id라는 변수명을 찾아서 매핑
 								-->
-                              	 <button type="button" class="blue nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"	>
+                              	 <button type="button" class="blue nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id=receive_id_board>
                               	 ${memberR.member_id}</button>
                               	 <ul class="dropdown-menu">
-								    <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+								    <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#adminNoteModal" id=sendnote>쪽지보내기</a></li>
 								    <li><a class="dropdown-item" href="/ongo/member/memberread.do?member_id=${memberR.member_id}&state=READ">회원정보보기</a></li>
 								</ul>
                                </td>
@@ -162,52 +162,69 @@ function removeCheck(url){
  		</div><!-- // container-->
    </div><!-- // contents -->
 
- <!-- modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="modal-tit">
-                <h2 class="h3">쪽지</h2>
-            </div>
-            <div class="modal-con">
-                <div class="tbl grid-layout grid1">
-                    <div class="grid-item">
-                    <label for="IUY_CLSS_NM">수신자</label>
-                    <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM">닉네임</span>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="grid-item">
-                        <label for="IUY_CLSS_CNTS">내용적기</label>
-                        <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-                          </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-area">
-              <button type="button" class="btn btn-warning text-white btn-large"  data-bs-dismiss="modal" aria-label="Close">전송</button>
-            </div>
-            <!-- 닫기버튼 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                <i class="las la-times"></i>
-            </button>
-            <!-- //닫기버튼 -->
-        </div>
-    </div>
-    </div>
-</div>
-<!-- //modal -->
+	<!-- modal -->
+	<div class="modal fade" id="adminNoteModal" tabindex="-1"
+		aria-labelledby="Modal" aria-hidden="true">
+		<form action="/ongo/mypage/note/sendnote" method="post">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="modal-tit">
+							<h2 class="h3">쪽지</h2>
+						</div>
+						<div class="modal-con">
+							<div class="tbl grid-layout grid1">
+								<div class="grid-item">
+									<label for="IUY_CLSS_NM">수신자</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required"></textarea></span>
+											<input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<label for="IUY_CLSS_CNTS">내용적기</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<div class="input-wrap w100">
+												<textarea class="grid-input" role="textbox"
+													id="content" name="content"
+													title="쪽지내용 입력" maxlength="500" rows="5" required="required"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="btn-area">
+							<button type="submit" class="btn btn-warning text-white btn-large"
+								data-bs-dismiss="modal" aria-label="Close">전송</button>
+						</div>
+						<!-- 닫기버튼 -->
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close">
+							<i class="las la-times"></i>
+						</button>
+						<!-- //닫기버튼 -->
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- //modal -->
 
 <!-- Footer -->
 <jsp:include page="../include/footer.jsp"/>
 <!-- //Footer -->
+<script type="text/javascript">
+	function modalData(clicked_element){
+		var row_td = clicked_element.getElementsByTagName("td");
+		var row_btn = clicked_element.getElementsByTagName("button");
+		var receive_id = row_btn[0].textContent;
+		$("#reply_receive_id").html(receive_id.trim());
+	}
+
+</script>
 </body>
 </html>
