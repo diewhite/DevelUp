@@ -71,16 +71,40 @@ public class NoteController {
 	}
 	//보낸쪽지함 검색
 	@RequestMapping(value = "/mypage/note/searchSendBox")
-	public String searchSendBox(String category, String keyword, String send_id, Model model) {
-		List<NoteDTO> notelist = service.searchSendBox(category,keyword,send_id);
+	public String searchSendBox(String category, String keyword, String send_id, String perpage, String page, Model model) {
+		if(perpage==null&&page==null) {
+			perpage="5";
+			page="1";
+		}
+		NoteDTO searchSendCnt = service.sendSearchCnt(send_id, category, keyword);
+		int count = Integer.parseInt(searchSendCnt.getCount());
+		int endpage = (int)Math.ceil((double)count/Integer.parseInt(perpage));
+		List<NoteDTO> notelist = service.searchSendBox(category,keyword,send_id,Integer.parseInt(perpage),Integer.parseInt(page));
 		model.addAttribute("notelist", notelist);
+		model.addAttribute("count", count);
+		model.addAttribute("endpage", endpage);
+		model.addAttribute("page",page);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("category", category);
 		return "mypage/note/sendbox";
 	}
 	//받은쪽지함 검색
 	@RequestMapping(value = "/mypage/note/searchReceiveBox")
-	public String searchReceiveBox(String category, String keyword, String receive_id, Model model) {
-		List<NoteDTO> notelist = service.searchReceiveBox(category,keyword,receive_id);
+	public String searchReceiveBox(String category, String keyword, String receive_id, String perpage, String page, Model model) {
+		if(perpage==null&&page==null) {
+			perpage="5";
+			page="1";
+		}
+		NoteDTO searchReceiveCnt = service.receiveSearchCnt(receive_id, category, keyword);
+		int count = Integer.parseInt(searchReceiveCnt.getCount());
+		int endpage = (int)Math.ceil((double)count/Integer.parseInt(perpage));
+		List<NoteDTO> notelist = service.searchReceiveBox(category,keyword,receive_id,Integer.parseInt(perpage),Integer.parseInt(page));
 		model.addAttribute("notelist", notelist);
+		model.addAttribute("count", count);
+		model.addAttribute("endpage", endpage);
+		model.addAttribute("page",page);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("category", category);
 		return "mypage/note/receivebox";
 	}
 	//쪽지삭제
