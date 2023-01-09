@@ -85,16 +85,23 @@
               
              <!-- 수정할부분 -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#">거래내역</a></span>
+                  <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/detail/detaillist">경매내역</a></li>
-                    <li><a href="/ongo/history/historylist">중고거래내역</a></li>
+                    <li><a href="#">판매관리</a></li>
+                    <li><a href="#">구매관리</a></li>
                   </ul>                 
                 </div>
                 <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#">중고거래관리</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+                    <li><a href="#">구매관리</a></li> 
+                  </ul>
+                </div>
+                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="/ongo/payment/paymentlist">결제내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/paymentlist">결제내역조회</a></li>
+                    <li><a href="/ongo/payment/paymentlist">결제내역조회</a></li>
                      <li ><a href="/ongo/payment2/PayParticulars" >결제내역상세</a></li>
                   </ul>
                 </div>
@@ -220,15 +227,24 @@
                 <h2>나의온고</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">거래조회</span></a>
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">경매관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >거래조회</a></li>
+                        <li><a href="#">판매관리</a></li>
+                   	 	<li><a href="#">구매관리</a></li>   
                     </ul>
                   </div>
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">구매내역</span></a>
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">중고거래관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >구매내역</a></li>
+	                   <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+	                   <li><a href="#">구매관리</a></li> 
+                    </ul>
+                  </div>
+                 <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">결제내역</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+	                    <li><a href="/ongo/payment/paymentlist">결제내역조회</a></li>
+                    	<li ><a href="/ongo/payment2/PayParticulars" >결제내역상세</a></li>
                     </ul>
                   </div>
                   <div class="sitemap_depth2">

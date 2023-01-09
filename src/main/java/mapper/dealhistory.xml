@@ -4,12 +4,25 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.deal">
 	
+	<!--중고거래 판매내역 조회  -->
+	<!-- <select id="sell_list" resultType="dealDTO">
+		select * from deal_table2 
+		where member_id='park'
+	</select> -->
 	
 	<!--중고거래 판매내역 조회  -->
-	<select id="sell_historylist" resultType="dealDTO" >
-		select * from deal_table where id='park'
+	<select id="sell_list" resultType="dealDTO" parameterType="String">
+		select * from deal_table2 
+		where member_id=#{member_id} 
 	</select>
 	
-	
+	<!-- 판매내역조회 : 구매요청 id 표현하기 -->
+	<select id="purchase_req" resultType="dealDTO" parameterType="int">
+		select d.*, h.* 
+		from deal_table2 d, dealhistory h
+		where d.deal_no=h.deal_no
 
+	
+	</select>
+	
   </mapper>

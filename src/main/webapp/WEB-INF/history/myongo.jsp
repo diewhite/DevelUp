@@ -600,6 +600,10 @@
 
 				<!-- ========= 중고거래내역list끝 ========= -->
 
+		</div>
+
+				<!-- ========= 중고거래내역list끝 ========= -->
+
 			</div>
 		</div>
 
@@ -609,12 +613,11 @@
 
 		<!-- //contents -->
 
-
-
 	<!-- Footer -->
 
+		<!-- Footer
 
 	<jsp:include page="../include/footer.jsp" />
-	//Footer -->
+	//Footer -->  
 </body>
 </html>
