@@ -16,7 +16,7 @@
 		$("#product_category").val(data).attr("selected", "selected"); 
 	});
 </script>
-
+<!-- 
 <style>
       .modal2 {
         position: absolute;
@@ -44,7 +44,7 @@
         box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
         transform: translateX(-50%) translateY(-50%);
       }
-    </style>
+    </style> -->
 
 
 </head>
@@ -175,13 +175,33 @@
 							
 							
 							
-							
+							<%-- 원본
 								<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">작성자</label>
 								<div class="tbl-basic-td">
 									<div class="col-md-8" >
 										<input type="button" id="modal2-open" value="${dealRead.member_id}" style="border: 0em;">
-										<%-- <div class="col-md-8">${dealRead.member_id}</div> --%>
+										<div class="col-md-8">${dealRead.member_id}</div>
+									</div>
+								</div>
+							</div>
+							 --%>
+							
+							
+							
+							<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">작성자</label>
+								<div class="tbl-basic-td">
+									<div class="col-md-8" >
+									<%-- 	<input type="button" id="modal2-open" value="${dealRead.member_id}" style="border: 0em;"> --%>
+										<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+									          ${dealRead.member_id}
+									        </a>
+									        <ul class="dropdown-menu" style="width: 100px;">
+									            <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+									            <li><a class="dropdown-item" href="#">회원정보보기</a></li>
+									            <li><a class="dropdown-item" href="#">거래내역보기</a></li>
+									        </ul>
 									</div>
 								</div>
 							</div>
@@ -204,11 +224,10 @@
 							
 							
 							
+							<!-- 
 							
 							
-							
-							
-				<!--모달 --------------------------------------------------------- -->
+				모달 ---------------------------------------------------------
 							
 							<div class="modal2" id="modal2">
 					<div class="modal2_body">
@@ -240,7 +259,7 @@
 				        }
 				      });
 				</script>
-							
+							 -->
 							
 							<!-- --------------------------------------------------------- -->
 						<%-- 	<div class="grid-item colspan2">

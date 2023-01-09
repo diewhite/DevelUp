@@ -30,37 +30,35 @@
   	</insert>
   	<select id="searchsendbox" resultType="note" parameterType="Map">
   		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk
-  		from note
-  		<where>
-  			send_id=#{send_id}
-  			<if test="category=='content' and keyword!=''">
-  				and content like '%' || #{keyword} || '%' order by no desc
-  			</if>
-  			<if test="category=='receive_id' and keyword!=''">
-  				and receive_id like '%' || #{keyword} || '%' order by no desc
-  			</if>
-  			<if test="keyword==''">
-  				order by no desc
-  			</if>
-  		</where>
-		
-  		
+  		from (select rownum as num, n1.*
+			  from note n1
+			  <where>
+			  n1.send_id=#{send_id}
+			  <if test="category=='content' and keyword!=''">
+			  and n1.content like '%' || #{keyword} || '%'
+			  </if>
+			  <if test="category=='receive_id' and keyword!=''">
+			  and n1.receive_id like '%' || #{keyword} || '%'
+			  </if>
+			  </where>
+			  order by n1.no desc)
+			  where num between <![CDATA[(((#{page}-1)*#{perpage})+1) and (#{page}*#{perpage})]]>
   	</select>
   	 <select id="searchreceivebox" resultType="note" parameterType="Map">
   		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk
-  		from note
-  		<where>
-  			receive_id=#{receive_id}
-  			<if test="category=='content' and keyword!=''">
-  				and content like '%' || #{keyword} || '%' order by no desc
-  			</if>
-  			<if test="category=='send_id' and keyword!=''">
-  				and send_id like '%' || #{keyword} || '%' order by no desc
-  			</if>
-  			<if test="keyword==''">
-  				order by no desc
-  			</if>
-  		</where>
+  		from (select rownum as num, n1.*
+			  from note n1
+			  <where>
+			  n1.receive_id=#{receive_id}
+			  <if test="category=='content' and keyword!=''">
+			  and n1.content like '%' || #{keyword} || '%'
+			  </if>
+			  <if test="category=='send_id' and keyword!=''">
+			  and n1.send_id like '%' || #{keyword} || '%'
+			  </if>
+			  </where>
+			  order by n1.no desc)
+			  where num between <![CDATA[(((#{page}-1)*#{perpage})+1) and (#{page}*#{perpage})]]>
   	</select>
   	<delete id="deletenote" parameterType="String">
   		delete from note where no = #{no}
@@ -73,6 +71,30 @@
   	</select>
   	<select id="sendnotecnt" resultType="note" parameterType="String">
   		select count(no) as count from note where send_id=#{id}
+  	</select>
+  	<select id="searchreceivecnt" resultType="note" parameterType="Map">
+  		select count(no) as count from note
+  		<where>
+  			receive_id=#{receive_id}
+			<if test="category=='content' and keyword!=''">
+  				and content like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  			<if test="category=='send_id' and keyword!=''">
+  				and send_id like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  		</where>
+  	</select>
+  	<select id="searchsendcnt" resultType="note" parameterType="Map">
+  		select count(no) as count from note
+  		<where>
+  			send_id=#{send_id}
+			<if test="category=='content' and keyword!=''">
+  				and content like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  			<if test="category=='receive_id' and keyword!=''">
+  				and receive_id like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  		</where>
   	</select>
   </mapper>
   

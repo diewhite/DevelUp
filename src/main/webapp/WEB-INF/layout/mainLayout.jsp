@@ -206,26 +206,47 @@
            
             </div>
           </div>
+          
+          
+          
+          
           <div class="tab-pane fade" id="intro3" aria-labelledby="intro3-tab">
             <div id="intro3slider" class="carousel carousel-dark introslider" data-bs-ride="carousel"
               data-bs-interval="10000000">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <h3>
-                    에어컨
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
+                  <h3 id="board_title">에어컨
+                    <a href=# class="btn btn-small" target="_blank"  title="새창">상세보기<i class="las la-external-link-alt"></i></a>
                   </h3>
                   <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
-                    <li><span class="introlist_tit">크기</span><span class="introlist_txt">10평</span></li>
+                    <li><span id="list_photo" class="introlist_tit">사진</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
+                  </ul>
+                  <ul class="introlist">
+                    <li><span id="product_price" class="introlist_tit">가격</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
+                    <li><span id="board_content" class="introlist_tit">내용</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
                   </ul>
                   <div class="introlink">
                     <span><a href="#">거래요청</a></span>
-                    <span><a href="#">배달요청</a></span>
                     <span><a href="#">쪽지보내기</a></span>
                   </div>
                 </div>
+              
+              <script type="text/javascript">
+              
+              
+              </script>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
                 <div class="carousel-item">
                   <h3>
                     토스터기 나눔
@@ -241,6 +262,12 @@
                     <span><a href="#">쪽지보내기</a></span>
                   </div>
                 </div>
+                
+                
+                
+                
+                
+                
                 
                 
               </div>
@@ -296,7 +323,7 @@
               <label for="srchWord2" class="form-label visually-hidden">중고거래 검색</label>
               <input type="text" class="form-control service_sch" name="srchWord" id="srchWord2" title="단어 입력"
                 placeholder="단어 입력">
-              <button type="button" class="btn btn-search" onclick="fnSearchKsic();"><span
+              <button id="srchWord2-btn" type="button" class="btn btn-search" onclick="fnSearchKsic();"><span
                   class="visually-hidden">검색</span></button>
             </div>
           </div>
@@ -457,6 +484,15 @@
     </div>
     </div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#srchWord2-btn").on("click", function () {
+			location.href="serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
+		})
+		
+	})
+	
+</script>
 <!-- //modal -->
   
 </body>
