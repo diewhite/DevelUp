@@ -142,7 +142,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">쪽지함</a></span>
                   <ul class="dep2_link">
-                    <li ><a href="#">보낸쪽지함</a></li>
+                    <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}">보낸쪽지함</a></li>
                   </ul>
                 </div>
               </div>
@@ -267,7 +267,7 @@
 		                   <div class="sitemap_depth2">
 		                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
 		                    <ul class="sitemap_depth3 dot_list">
-		                      <li ><a href="#" >보낸쪽지함</a></li>
+		                      <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li>
 		                    </ul>
 		                  </div>
 		                  
@@ -300,7 +300,7 @@
                     <label for="IUY_CLSS_NM">수신자</label>
                     <div class="tbl-basic-td">
                         <div class="input-wrap w100">
-                            <span id="receive_id"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
+                            <span><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
                             <input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
                         </div>
                     </div>

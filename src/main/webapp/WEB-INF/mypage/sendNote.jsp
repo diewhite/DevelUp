@@ -261,7 +261,7 @@ overflow: hidden;
 			var row_td = clicked_element.getElementsByTagName("td");
 			var row_a = clicked_element.getElementsByTagName("a");
 			document.getElementById("sendModal_receive_id").innerHTML = row_td[2].innerHTML;
-			document.getElementById("sendModal_content").innerHTML = row_a[0].innerHTML;
+			document.getElementById("sendModal_content").innerHTML = row_a[0].innerHTML.trim();
 		}
 		
 		function selectPage(){
