@@ -6,4 +6,4 @@
 == 카카오 주소 API # https://devofroad.tistory.com/42
 == 페이징 처리  #    https://po9357.github.io/spring/2019-05-28-Board_Paging/
 == 아이디 중복체크 #  https://sincerity.tistory.com/342
-== 
+== W3C html,css,부트스트랩,자바스크립트 참조 # https://www.w3schools.com/bootstrap5/bootstrap_modal.php

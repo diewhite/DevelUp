@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <style type="text/css"> </style>
@@ -21,22 +20,24 @@ function checkUsrSubmit() {
 
 	}
 
-function removeCheck(url){
-	var answer;
-	//페이지를 이동하기 전에 confirm()을 사용해 다시 한번 확인한다.
-	//확인을 선택하면 answer에  true, 취소를 선택하면 false 값이 들어간다.
-	answer = confirm("정말 탈퇴 하시겠습니까?");
-	//확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
-	if(answer == true){
-		location = url;
-	}
+function removeCheck(){
+	var remove;
+	remove =  toastr.warning("현재 탈퇴 서비스를 제공하고 있지 않습니다.");
 }
-</script>
 
+$(document).ready(function () {
+	var type = "${memberRU.phone1}"
+	var type2 = "${memberRU.email2}"
+	//	alert(type)
+	//alert(type+","+type.length)
+	$("#user_phone").val(type).attr("selected","selected");
+	$("#select_target_3").val(type2).attr("selected","selected");
+	$("#USR_EMADR_2").val(type2);
+})
+</script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-
 
 
 <!-- content -->
@@ -50,8 +51,8 @@ function removeCheck(url){
         <!-- //title -->
 
         <!-- 게시판 -->
-        <div class="container">
-	<form id="saveForm" name="saveForm" action="/ongo/member/usermypage" method="POST">
+ <div class="container">
+	<form action="/ongo/member/usermypage" method="POST">
       <input type="hidden" id="PSLF_AHTN_INFO_KEYV" name="PSLF_AHTN_INFO_KEYV">
       <div class="cont-box-inner">
         <div class="title">
@@ -63,16 +64,16 @@ function removeCheck(url){
             <label for="USR_NM">성명<em class="org-txt asterisk" title="필수">*</em></label>
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" type="text" name="member_name" title="이름" value="${memberRU.member_name}" disabled>
+                <input class="grid-input" type="text" name="member_name" title="이름" value="${user.member_name}" disabled>
               </div>
             </div>
           </div>
-          <div class="grid-item">
+ <div class="grid-item">
             <label for="USR_MBTN">휴대전화번호<em class="org-txt asterisk" title="필수">*</em></label>
-            <input type="hidden" name="USR_MBTN">
+            <input type="hidden"  name="USR_MBTN">
             <div class="tbl-basic-td">
               <div class="input-wrap w30">
-				<select class="form-select grid-input" id="USR_MBTN_1" name="phone1" data-col="USR_MBTN_1" title="휴대전화번호">
+				<select class="form-select grid-input" id="user_phone" name="phone1" data-col="USR_MBTN_1" title="휴대전화번호" >
 					<option value="">선택</option>
 					<option value="010">010</option>
 					<option value="011">011</option>
@@ -84,11 +85,11 @@ function removeCheck(url){
 			</div>
               -
               <div class="input-wrap w30">
-                <input class="grid-input" type="text" name="phone2" maxlength="4" pattern="[0-9]+" title="휴대전화번호 앞자리 입력">
+                <input class="grid-input" type="text" name="phone2"  value="${user.phone2}"maxlength="4" pattern="[0-9]+" title="휴대전화번호 앞자리 입력" >
               </div>
               -
               <div class="input-wrap w30">
-                <input class="grid-input" type="text" name="phone3" maxlength="4" pattern="[0-9]+" title="휴대전화번호 뒷자리 입력">
+                <input class="grid-input" type="text" name="phone3"  value="${user.phone3}"maxlength="4" pattern="[0-9]+" title="휴대전화번호 뒷자리 입력" >
               </div>
             </div>
           </div>
@@ -97,7 +98,7 @@ function removeCheck(url){
             <div class="tbl-basic-td">
               <div class="input-wrap">
                 <input class="grid-input" type="text" role="textbox" id="USER_ID" 
-                name="member_id" maxlength="12" title="아이디 입력"  value="${memberRU.member_id}"  disabled>
+                name="member_id" maxlength="12" title="아이디 입력"  value="${user.member_id}"  disabled>
               </div>
             </div>
           </div>
@@ -106,7 +107,7 @@ function removeCheck(url){
             <div class="tbl-basic-td">
               <div class="input-wrap">
                 <input class="grid-input" type="password" role="textbox" id="ENPWD"
-                 value="${memberRU.member_pw}" id="ENPWD"  name="member_pw"  maxlength="20" title="비밀번호 입력">
+                 value="${user.member_pw}" id="ENPWD"  name="member_pw"  maxlength="20" title="비밀번호 입력">
               </div>
               <span>(4자리 이상, 20자리 이하)<span></span>
             </span></div>
@@ -124,7 +125,7 @@ function removeCheck(url){
 							<label for="HOFS_ADDR">주소</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w10">
-									<input  value="${memberRU.zipcode}"
+									<input  value="${user.zipcode}"
 									class="grid-input" type="text" name="zipcode"title="우편번호">
 								</div> 
 								<button type="button" class="btn btn-light" onclick="execDaumPostcode()">우편번호 검색</button>
@@ -134,11 +135,11 @@ function removeCheck(url){
 								</div>
 								<div class="">
 									<div class="input-wrap ">
-										<input class="grid-input" value="${memberRU.member_addr1}"
+										<input class="grid-input" value="${user.member_addr1}"
 										type="text" name="member_addr1"	title="주소">
 									</div>
 									<div class="input-wrap">
-											<input class="grid-input" value="${memberRU.member_addr2}"
+											<input class="grid-input" value="${user.member_addr2}"
 										type="text" name="member_addr2" placeholder="상세주소를 입력해주세요.">
 									</div>
 								</div>
@@ -146,21 +147,20 @@ function removeCheck(url){
 						</div>
 						
 					
-		    <div class="grid-item colspan2">
+	 <div class="grid-item colspan2">
             <label for="USR_EMADR">이메일주소<em class="org-txt asterisk" title="필수">*</em></label>
             <input type="hidden" id="USR_EMADR" name="USR_EMADR">
             <div class="tbl-basic-td">
               <div class="input-wrap">
-                <input class="grid-input" value="${memberRU.member_email}"
-                type="text" role="textbox" id="USR_EMADR_1" name="email1" maxlength="10" title="이메일주소 입력">
+                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_1" value="${user.email1}" name="email1" maxlength="10" title="이메일주소 입력">
               </div>
          		@
               <div class="input-wrap">
-                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_2" name="email99" title="이메일주소 입력" disabled="">
+                <input class="grid-input" type="text" role="textbox" id="USR_EMADR_2" value="${user.email99}" name="email99" title="이메일주소 입력" disabled>
               </div>
-              <div class="input-wrap w20">
-					<select class="form-select grid-input" id="select_target_3" name="email2" data-col="" title="이메일">
-						<option value=" ">이메일선택</option>
+              <div class="input-wrap w20" >
+					<select class="form-select grid-input" id="select_target_3" name="email2" data-col="" title="이메일" >
+						<option value="" selected>이메일선택</option>
 						<option value="naver.com">naver.com</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="gmail.com">gmail.com</option>
@@ -174,7 +174,8 @@ function removeCheck(url){
         </div>
       </div>
       <div class="btn-area">
-      <button class="btn btn-outline-secondary btn-large" type="button">회원탈퇴</button>
+      <button type="button" class="btn btn-outline-secondary btn-large" title="회원삭제"
+                                onclick="removeCheck()">회원탈퇴</button>
 			<button class="btn btn-outline-primary btn-large" type="submit">수정</button>
 		</div>
     </form>
