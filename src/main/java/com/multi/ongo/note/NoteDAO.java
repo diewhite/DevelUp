@@ -12,13 +12,17 @@ public interface NoteDAO {
 	//읽음처리
 	public int readCheck(String no);
 	//보낸쪽지함 검색
-	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id);
+	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id, int perpage, int page);
 	//받은쪽지함 검색
-	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id);
+	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id, int perpage, int page);
 	//쪽지 삭제
 	public int deleteNote(String no);
 	//받은쪽지함 총 수량
 	public NoteDTO receiveNoteCnt(String id);
 	//보낸쪽지함 총 수량
 	public NoteDTO sendNoteCnt(String id);
+	//받은쪽지함 검색 총 수량
+	public NoteDTO receiveSearchCnt(String receive_id, String category, String keyword);
+	//보낸쪽지함 검색 총 수량
+	public NoteDTO sendSearchCnt(String send_id, String category, String keyword);
 }
