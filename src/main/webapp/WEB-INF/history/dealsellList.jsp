@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+
 <style type="text/css">
 input {
 	margin-left: -1px;
@@ -129,82 +130,64 @@ input {
 
 /* 조회테이블 css 끝 */
 
-/* 구매요청 아코디언 테이블 css 시작 */
-/* html, body {
-	font-family: Helvetica, Arial, sans-serif;
-	margin: 0;
-}
-
-.panel-faq-container {
-	margin-bottom: -16px;
-}
-
-.panel-faq-title {
+.showdata {
 	color: #0d6efd;
-	cursor: pointer;
 }
 
-.panel-faq-answer {
-	height: 0;
-	overflow: hidden;
-	/* 변화가 시작되는 쪽에다가 transition 적용해준다 0 -> 300px 
-  왜? 닫기 버튼을 누를 때 변화가 티남 */
-	transition: all 1s;
-}
-
-#btn-all-close {
-	margin-bottom: 10px;
-	background-color: #726996;
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	padding: 10px 25px;
-	float: right;
-}
-
-#btn-all-close:hover {
-	background-color: yellow;
-	color: #000;
-	transition: all 0.35s;
-}
-
-.active {
-	display: block;
-	/* 높이를 정해줘야지만 transition이 적용됨 */
-	height: 200px;
-}
-
-/* 구매요청 아코디언 테이블 css 끝 */ */
 </style>
-<script type="text/javascript">
-	
-/* 
-window.onload = () => {
-	  // panel-faq-container
-	  const panelFaqContainer = document.querySelectorAll(".panel-faq-container"); // NodeList 객체
-	  
-	  // panel-faq-answer
-	  let panelFaqAnswer = document.querySelectorAll(".panel-faq-answer");
 
-	  // btn-all-close
-	  const btnAllClose = document.querySelector("#btn-all-close");
-	  
-	  // 반복문 순회하면서 해당 FAQ제목 클릭시 콜백 처리
-	  for( let i=0; i < panelFaqContainer.length; i++ ) {
-	    panelFaqContainer[i].addEventListener('click', function() { // 클릭시 처리할 일
-	      // FAQ 제목 클릭시 -> 본문이 보이게끔 -> active 클래스 추가
-	      panelFaqAnswer[i].classList.toggle('active');
-	    });
-	  };
-	  
-	  btnAllClose.addEventListener('click', function() {
-	    // 버튼 클릭시 처리할 일  
-	    for(let i=0; i < panelFaqAnswer.length; i++) {
-	        panelFaqAnswer[i].classList.remove('active');
-	    };
-	  });
-	}
-	 */
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	/* 	$(".showdata").on("click",function(){
+			//alert("ok")
+			$(this).closest("tr").next().toggle()
+			//보기버튼과 가장 가까운 tr태그를 찾아서 그 태그의 다음 태그를 선택    
+			reqtr = $(this).closest("tr").next()
+			num = reqtr.attr("id")//중고거래 게시글 번호 
+			datanode = $(reqtr).children().find(".reqdata")
+			//ajax요청결과를 datanode에 출력하기
+			$(datanode).html("<h4>data</h4>")
+			//alert(num)
+			//ajax요청
+			//거래신청한 사용자 보기 
+			//요청패스, 파라미터 
+		}) */
+		
+		$(".showdata").on("click", function () {
+			$(this).closest("tr").next().toggle()	
+			//this = 버튼이 있는 td 		toggle()=선택한 요소가 보이면 보이지않게, 보이지않으면 보이게 함 						
+			// 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
+			reqtr = $(this).closest("tr").next()
+			//	= 거래요청 tr  
+			num = reqtr.attr("id")
+			//	= 거래요청 tr의 id의 속성 값 = 게시글 번호 
+			datanode = $(reqtr).children().find(".reqdata")
+												// = ajax를 통해 가져올 데이터가 출력될 부분  
+			// 거래요청 tr의 자식 노드 중 reqdate 라는 클래스명을 가진 자식노드 찾음 
+			$(datanode).html(num+"<span>번 게시글</span>")
+			/* alert(num) */
+			
+			$.ajax({
+				url:"/ongo/history/dealReq",	
+				type: "get",
+				date: num,
+				success: function(data){
+					alert(data)
+					$(".reqdata").html("<li>data.req_id</li>") 
+				},
+				error: function (obj, msg, statusMSG) {
+					alert("오류발생"+obj+msg+statusMSG)
+				}
+				
+			})
+			
+			
+		})
+		
+	})
+	
 	
 </script>
 </head>
@@ -216,9 +199,9 @@ window.onload = () => {
 			<div class="sub_top">
 				<h1>판매관리</h1>
 			</div>
-		<!-- //title -->
+			<!-- //title -->
 
-	
+
 
 			<!-- =======탭메뉴 시작======= -->
 
@@ -246,87 +229,7 @@ window.onload = () => {
 
 			<!-- =======탭 메뉴 끝======= -->
 
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button
-        class="accordion-button"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#collapseOne"
-        aria-expanded="true"
-        aria-controls="collapseOne"
-      >
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is hidden by default,
-        until the collapse plugin adds the appropriate classes that we use to style each
-        element. These classes control the overall appearance, as well as the showing and
-        hiding via CSS transitions. You can modify any of this with custom CSS or
-        overriding our default variables. It's also worth noting that just about any HTML
-        can go within the <strong>.accordion-body</strong>, though the transition does
-        limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button
-        class="accordion-button collapsed"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#collapseTwo"
-        aria-expanded="false"
-        aria-controls="collapseTwo"
-      >
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-mdb-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by
-        default, until the collapse plugin adds the appropriate classes that we use to
-        style each element. These classes control the overall appearance, as well as the
-        showing and hiding via CSS transitions. You can modify any of this with custom CSS
-        or overriding our default variables. It's also worth noting that just about any
-        HTML can go within the <strong>.accordion-body</strong>, though the transition
-        does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button
-        class="accordion-button collapsed"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#collapseThree"
-        aria-expanded="false"
-        aria-controls="collapseThree"
-      >
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-mdb-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default,
-        until the collapse plugin adds the appropriate classes that we use to style each
-        element. These classes control the overall appearance, as well as the showing and
-        hiding via CSS transitions. You can modify any of this with custom CSS or
-        overriding our default variables. It's also worth noting that just about any HTML
-        can go within the <strong>.accordion-body</strong>, though the transition does
-        limit overflow.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-			<!-- 조회 테이블 -->
+			<!-- 조회 테이블 시작 -->
 			<div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
 					<tbody>
@@ -397,7 +300,7 @@ window.onload = () => {
 					</tbody>
 				</table>
 			</div>
-			<!--// 조회 테이블 -->
+			<!-- 조회 테이블 끝 -->
 
 
 
@@ -423,113 +326,111 @@ window.onload = () => {
 
 				<div class="tab-pane fade active show" id="first" role="tabpanel"
 					aria-labelledby="first-tab">
-
 					<div class="table-responsive px-2">
-					
-					<!-- 아코디언 test 시작  -->
-					
-					<table class="table table-borderless table-hover">
-					<colgroup>
-						<col width="5%">
-						<!-- 구분 -->
-						<col width="10%">
-						<!-- 상품사진 -->
-						<col width="30%">
-						<!-- 제 목 -->
-						<col width="10%">
-						<!-- 가격 -->
-						<col width="10%">
-						<!-- 구매요청 -->
-						<col width="*">
-						<!-- 요청날짜 -->
-						<col width="*">
-						<!-- 작성날짜 -->
-						<col width="*">
-						<!-- 거래상태 -->
-						<col width="*">
-						<!-- 결제여부 -->
-					</colgroup>
-					<thead>
-						<tr>
-							<th class="table-header" scope="col">구분</th>
-							<th class="table-header" scope="col">상품사진</th>
-							<th class="table-header-title" scope="col">제 목</th>
-							<th class="table-header" scope="col">가격</th>
-							<th class="table-header" scope="col">구매요청</th>
-							<th class="table-header" scope="col">요청날짜</th>
-							<th class="table-header" scope="col">작성날짜</th>
-							<th class="table-header" scope="col">거래상태</th>
-							<th class="table-header" scope="col">결제여부</th>
-						</tr>
-					</thead>
-					<tbody class="text-center">
-						<c:forEach var="sellList" items="${sellList }">
-							<tr>
-								<td>${sellList.dealType }</td>
-								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-									width="50" height="50"></td>
-								<td><a
-									href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'"">${sellList.board_title}</a></td>
-								<td><fmt:formatNumber value="${sellList.product_price}"
-										pattern="#,###원" /></td>
-								<td><a class="btn btn-primary" data-mdb-toggle="collapse"
-									href="#collapseExample" role="button" aria-expanded="false"
-									aria-controls="collapseExample"> 구매요청 <strong>2</strong>건
-								</a>
-									<div class="collapse mt-3" id="collapseExample">
-										<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua. Ut enim ad minim veniam, quis nostrud
-											exercitation ullamco laboris nisi ut aliquip ex ea commodo
-											consequat. Duis aute irure dolor in reprehenderit in
-											voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> -->
-										<table class="accordion-tab">
-											<colgroup>
-												<col width="5%">
-												<!-- 번호 -->
-												<col width="10%">
-												<!-- 요청id -->
-												<col width="20%">
-												<!-- 요청날짜&시간 -->
-												<col width="*">
-												<!-- 쪽지보내기 버튼 -->
-												<col width="*">
-												<!-- 거래하기 버튼 -->
-											</colgroup>
-											<thead>
-												<tr>
-													<th scope="col">번호</th>
-													<th scope="col">요청ID</th>
-													<th scope="col">날짜</th>
-													<th scope="col">쪽지</th>
-													<th scope="col">거래하기</th>
-												</tr>
-											</thead>
-											<tbody>
+						<table class="table table-borderless table-hover">
+							<colgroup>
+								<col width="5%">
+								<!-- 구분 -->
+								<col width="10%">
+								<!-- 상품사진 -->
+								<col width="30%">
+								<!-- 제 목 -->
+								<col width="10%">
+								<!-- 가격 -->
+								<col width="10%">
+								<!-- 구매요청 -->
+								<col width="*">
+								<!-- 작성날짜 -->
+								<col width="*">
+								<!-- 거래상태 -->
+								<col width="*">
+								<!-- 결제여부 -->
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="table-header" scope="col">구분</th>
+									<th class="table-header" scope="col">상품사진</th>
+									<th class="table-header-title" scope="col">제 목</th>
+									<th class="table-header" scope="col">가격</th>
+									<th class="table-header" scope="col">구매요청</th>
+									<th class="table-header" scope="col">작성날짜</th>
+									<th class="table-header" scope="col">거래상태</th>
+									<th class="table-header" scope="col">결제여부</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+
+								<c:forEach var="sellList" items="${sellList }">
+
+									<tr>
+										<td>${sellList.dealType }</td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td>
+										<td><a
+											href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'"">${sellList.board_title}</a></td>
+										<td><fmt:formatNumber value="${sellList.product_price}"
+												pattern="#,###원" /></td>
+										<td>
+											<button class="showdata" >요청ID보기</button>											
+										</td>
+										<td>${sellList.write_date }</td>
+										<td>${sellList.product_state }</td>
+										<td>-</td>
+									</tr>
+									
+									<tr id="${sellList.deal_number}" style="display: none;">
+										<td colspan="8">	
+											<table >
+												<colgroup>
+													<col width="10%">
+													<!-- 번호 -->
+													<col width="20%">
+													<!-- 요청id -->
+													<col width="20%">
+													<!-- 요청날짜&시간 -->
+													<col width="*">
+													<!-- 쪽지보내기 버튼 -->
+													<col width="*">
+													<!-- 거래하기 버튼 -->
+												</colgroup>
+												<thead hidden="">
 													<tr>
-														<td>1</td>
+														<th scope="col">번호</th>
+														<th scope="col">요청ID</th>
+														<th scope="col">날짜</th>
+														<th scope="col">쪽지</th>
+														<th scope="col">거래하기</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td colspan="5">
+															<div class="reqdata"><!--Ajax를 통해 실제 가져온 데이터가 출력될 곳  --></div>
+														</td>
+													<%-- <c:forEach var="" items=""> --%>
+														<!-- <td>1</td>
 														<td>yoon</td>
-														<td>2023-01-09 </br> 13:05:54
+														<td>2023-01-09 <br> 13:05:54
 														</td>
 														<td><button>쪽지보내기</button></td>
-														<td><button>거래하기</button></td>
+														<td><button>거래하기</button></td> -->
+												<%-- 	</c:forEach> --%>
 													</tr>
-											</tbody>
-										</table>
-									</div>
-								</td>
-								<td>${sellList.write_date }</td>
-								<td>${sellList.write_date }</td>
-								<td>${sellList.product_state }</td>
-								<td>-</td>
-							</tr>
-							</c:forEach> 
-							<!-- sellList  -->
-					</tbody>
-				</table>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+				
+								</c:forEach>
+								<!-- sellList  -->
 
-				
-				
+
+
+							</tbody>
+						</table>
+
+
+
 						<!-- 페이지네이션 시작 -->
 						<div class="pagination">
 							<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
@@ -556,11 +457,11 @@ window.onload = () => {
 					</div>
 				</div>
 				<!-- 판매중 끝   -->
-					
-					
-					<!-- 아코디언 test 끝  -->
-					
-<%-- 						<table class="table table-borderless">
+
+
+				<!-- 아코디언 test 끝  -->
+
+				<%-- 						<table class="table table-borderless">
 							<colgroup>
 								<col width="5%">	<!-- 구분 -->							
 								<col width="10%">	<!-- 상품사진 -->						
@@ -838,7 +739,7 @@ window.onload = () => {
 	<!-- //contents -->
 
 	<!-- Footer -->
-<%-- 	<jsp:include page="../include/footer.jsp" /> --%>
+	<%-- 	<jsp:include page="../include/footer.jsp" /> --%>
 	<!-- //Footer -->
 </body>
 </html>

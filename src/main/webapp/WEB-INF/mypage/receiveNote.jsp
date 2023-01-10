@@ -214,7 +214,7 @@ overflow: hidden;
 									<label for="IUY_CLSS_NM">수신자</label>
 									<div class="tbl-basic-td">
 										<div class="input-wrap w100">
-											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required"></textarea></span>
+											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required" ></textarea></span>
 											<input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
 										</div>
 									</div>
@@ -315,6 +315,7 @@ overflow: hidden;
 			} else if ("${param.keyword}"==""){
 				$("#category").val("content");
 			}
+			
 		});
 		
 
@@ -322,7 +323,7 @@ overflow: hidden;
 			var row_td = clicked_element.getElementsByTagName("td");
 			var row_a = clicked_element.getElementsByTagName("a");
 			document.getElementById("readModal_send_id").innerHTML = row_td[2].innerHTML;
-			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML;
+			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML.trim();
 			document.getElementById("readModal_readchk").innerHTML = row_td[6].innerHTML;
 			document.getElementById("readModal_no").innerHTML = row_td[1].innerHTML;
 			document.getElementById("reply_receive_id").innerHTML = row_td[2].innerHTML;
