@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -124,8 +125,19 @@ public class DealBoard_Controller {
 	}
 
 	
+	//중고거래시글 타입-메인 [ajax]
 	
 	
+	@RequestMapping(value = "/dealType_main.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<DealBoard_DTO> dealType_main(String dealType){
+		System.out.println("ajax인입 매개변수 체크 : " + dealType);
+		List<DealBoard_DTO> ajaxlist = service.dealType_main(dealType);
+		System.out.println("ajax 통신 체크 : " + ajaxlist);
+		return ajaxlist;
+		
+		
+	}
 	
 	
 	
