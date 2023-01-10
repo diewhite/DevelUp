@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head> 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/main.css">
 </head>
 <body>
@@ -213,9 +215,86 @@
           <div class="tab-pane fade" id="intro3" aria-labelledby="intro3-tab">
             <div id="intro3slider" class="carousel carousel-dark introslider" data-bs-ride="carousel"
               data-bs-interval="10000000">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <h3 id="board_title">에어컨
+              <div class="carousel-inner" id="carousel-inner">
+              
+              
+              
+              <script type="text/javascript">
+              	$(document).ready(function () {
+              		$("#intro2-tab").click(function () {
+						dealType = "all";
+						/* $(this).attr("class", "active"); //클래스속성에 active속성부여  */
+					$.ajax({
+						url: "/ongo/dealType_main.do",
+						type: "get",
+						data:{
+							"dealType": dealType,
+						},
+						success: function(ajaxlist) {
+							mydata = "";
+							for (var i = 0; i < ajaxlist.length; i++) {
+								// active가 안되어있어서 결과가 안나왔었음!!
+							 if(i==0){
+								 data = 
+									
+									 "<div class='carousel-item active'  id='deal-item'>"+
+										"<h3> "+
+						                  
+						                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' target='_blank'"+
+						                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
+						                  "</h3>"+
+						                  "<h3>제목 : " + ajaxlist[i].board_title +  "</h3>"+
+						                  "<ul class='introlist'>"+
+						                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
+						                  "</ul>"+
+						                  "<div class='introlink'>"+
+						                  "<span><a href='#'>거래요청</a></span>"+
+						                  "<span><a href='#'>쪽지보내기</a></span>"+
+						                  "</div>"+
+						                "</div>"
+							 }else{
+								data =  
+									"<div class='carousel-item'  id='deal-item'>"+
+									"<h3> "+
+					                  
+					                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' target='_blank'"+
+					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
+					                  "</h3>"+
+					                  "<h3>제목 : " + ajaxlist[i].board_title +  "</h3>"+
+					                  "<ul class='introlist'>"+
+					                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
+					                  "</ul>"+
+					                  "<div class='introlink'>"+
+					                  "<span><a href='#'>거래요청</a></span>"+
+					                  "<span><a href='#'>쪽지보내기</a></span>"+
+					                  "</div>"+
+					                "</div>"
+							 }
+							 mydata = mydata +data;
+							}
+							
+							$("#carousel-inner").html(mydata); 
+							
+							
+						},
+							error: function (a,b,c) {
+								alert(c)
+							}
+						})//end ajax
+					})//end clcick
+              	}) //end ready
+              		/* $("#deal-item"). */
+              
+              </script>
+              
+              
+              
+              
+              
+              
+              <!--__________________________________________________ -->
+                <div class="carousel-item active" id="deal-item">
+                  <h3 id="main_board_title">에어컨
                     <a href=# class="btn btn-small" target="_blank"  title="새창">상세보기<i class="las la-external-link-alt"></i></a>
                   </h3>
                   <ul class="introlist">
@@ -231,23 +310,11 @@
                   </div>
                 </div>
               
-              <script type="text/javascript">
+            
               
-              
-              </script>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-                <div class="carousel-item">
+                            
+              <!--__________________________________________________ -->
+                <div class="carousel-item" id="deal-item">
                   <h3>
                     토스터기 나눔
                     <a href=# class="btn btn-small" target="_blank"
@@ -262,7 +329,7 @@
                     <span><a href="#">쪽지보내기</a></span>
                   </div>
                 </div>
-                
+                <!--__________________________________________________ -->
                 
                 
                 

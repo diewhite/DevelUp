@@ -67,4 +67,17 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 			return list;
 	}
 
+	@Override
+	public List<DealBoard_DTO> dealType_main(String dealType) {
+		List<DealBoard_DTO> list = null;
+		if(dealType != null) {
+			if(dealType.equals("all")) {
+				list = dao.boardlist();
+			}else {
+				list = dao.dealType_list(dealType);
+			}
+		}
+			return list;
+	}
+
 }

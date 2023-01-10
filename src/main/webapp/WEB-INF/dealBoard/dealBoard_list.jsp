@@ -15,7 +15,7 @@
 	$(document).ready(function () {
 		$("#dealType").val(type).attr("selected","selected");
 		$("#dealType").change(function () {
-			location.href="/ongo/deal_listAll.do?dealType="+$(this).val()
+			location.href="/ongo/deal_listAll.do?dealType="+encodeURI($(this).val());
 		})
 	})
 

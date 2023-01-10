@@ -28,6 +28,8 @@ public interface DealBoard_Service {
 	List<DealBoard_DTO> dealType_list(String dealType);
 		
 		
-		
+	//중고거래시글 타입-메인
+		List<DealBoard_DTO> dealType_main(String dealType);
+	
 	
 }
