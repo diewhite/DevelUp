@@ -3,25 +3,25 @@ package com.multi.ongo.auction;
 import java.sql.Date;
 
 public class AuctionBoard_DTO {
-	private int auction_number ;       // °æ¸Å¹øÈ£(°Ô½Ã±Û¹øÈ£)
-	private String member_id;               //ÀÛ¼ºÀÚ
-	private String auction_category;     //»óÇ°Ä«Å×°í¸®
-	private String auction_state;       //°æ¸Å»óÅÂ(ÀÔÂûÁß,°æ¸Å¿Ï·á
-	private String auction_title;	//°æ¸ÅÁ¦¸ñ
-	private int hits ;	//Á¶È¸¼ö
-	private Date write_date ;	//ÀÛ¼ºÀÏ+°æ¸Å½ÃÀÛ½Ã°£
-	private String board_content;	//°æ¸Å³»¿ë
-	private String list_photo ;	//ÀÛ¼º»çÁø
-	private String min_price ; // °æ¸Å ÃÖ¼Ò°¡
-	private String start_price ;	//½ÃÀÛ°¡
-	private String end_price;	//³«Âû°¡
-	private String add_user1 ;	//ÀÔÂûÀÚ id1
-	private String  add_price1 ;//ÀÔÂû±İ¾×1
-	private String add_time1 ;	//ÀÔÂûµî·Ï ½Ã°£
-	private String add_user2 ;//³«ÂûÀÚ id2
-	private String add_price2;	//ÀÔÂû±İ¾×2
-	private String add_time2 ;	//ÀÔÂûµî·Ï ½Ã°£
-	private Date end_date ;		//¸¶°¨ÀÏ(24½Ã°£)
+	private int auction_number ;      // ê±°ë˜ë²ˆí˜¸  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+	private String member_id;           //ìœ ì €ì•„ì´ë””  - â˜…ê²Œì‹œê¸€ë“±ë¡ë¶ˆí•„ìš” ì´ë¯¸ë¡œê·¸ì¸
+	private String auction_category;      //ìƒí’ˆì¹´í…Œê³ ë¦¬(ë””ì§€í„¸ê¸°ê¸°,ì˜ë¥˜ ë“±ë“±)  - 
+	private String auction_state;      // ìƒí’ˆìƒíƒœ(ì…ì°°ì¤‘,ê²½ë§¤ì™„ë£Œ )  - ë…¸
+	private String auction_title;	// ì œëª©  
+	private int hits ;	; // ì¡°íšŒìˆ˜	
+	private Date write_date ;	//ì‘ì„±ì¼  -
+	private String board_content;	//ë‚´ìš©
+	private String list_photo ;	 // ë¦¬ìŠ¤íŠ¸ì‚¬ì§„  
+	private String min_price ;  // ê²½ë§¤ ìµœì†Œê°€ - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+
+	private String start_price ;	 // ê²½ë§¤ì‹œì‘ê°€ê²©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+	private String add_user1 ;	//ì…ì°°ìid 1
+	private String  add_price1 ;//ì…ì°°ê¸ˆì•¡ 1
+	private String add_time1 ;	//ì…ì°°ì‹œê°„ 1
+	private String add_user2 ;//ì…ì°°ìid 2
+	private String add_price2;	//ì…ì°°ê¸ˆì•¡ 2
+	private String add_time2 ;	//ì…ì°°ì‹œê°„ 2
+	private Date end_date ;		//ê²½ë§¤ì¢…ë£Œì‹œê°„(24ì‹œê°„)
 	
 	public AuctionBoard_DTO(){
 		
