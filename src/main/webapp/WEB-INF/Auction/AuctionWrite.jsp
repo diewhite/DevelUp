@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <html>
 <head> </head>
 <body>
@@ -26,12 +29,12 @@
         
         <div class="tbl grid-layout grid2">
           <div class="grid-item colspan2">
-            <label for="select_target_1">게시판 선택</label>
+            <label for="select_target_1">카테고리</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w20">
-                <select class="form-select grid-input"title="게시판">
-                 <option value="01">중고상품</option>
-                 <option value="02">새상품</option>
+                <select class="form-select grid-input"title="카테고리">
+                 <option value="01">자동차</option>
+                 <option value="02">핸드폰</option>
                 </select>
               </div>
             </div>
@@ -41,8 +44,8 @@
             <div class="tbl-basic-td">
               <div class="input-wrap w20">
                 <select class="form-select grid-input"title="상태">
-                 <option value="01">판매중</option>
-                 <option value="02">판매완료</option>
+                 <option value="01">경매진행중</option>
+                 <option value="02">경매완료</option>
                 </select>
               </div>
             </div>
@@ -60,18 +63,12 @@
             <div class="tbl-basic-td">
               <div class="input-wrap w30 me-4">
               <div> 시작가   </div>
-              <input class="bid-st" type="text"  maxlength="50" title="시작가"> 
+              <input class="bid-start" type="text"  maxlength="50" title="시작가"> 
                <div> 최소가   </div>
                 <input class="bid-min" type="text"  maxlength="50" title="최소가"> 
             
               </div>
-              <div>
-            <p >
-                
-<input type="datetime-local" class="start-date">  ~  <input type="datetime-local" class="end-date">
-            </p>
-        
-              </div>
+       
             </div>
           </div>
          
@@ -146,7 +143,7 @@
     </div>
 </div>
 <!-- //modal -->
-
+<
 
 </body>
 </html>
