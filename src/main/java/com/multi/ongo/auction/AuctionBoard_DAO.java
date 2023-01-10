@@ -4,20 +4,26 @@ import java.util.List;
 
 public interface AuctionBoard_DAO {
 	
-	//ì¤‘ê³ ê±°ë˜?“±ë¡?
+	
+	//Áß°í°Å·¡µî·Ï
 	public int writeProd(AuctionBoard_DTO dto);
 	 
-	//ì¤‘ê³ ê±°ë˜ ? „ì²´ì¡°?šŒ
+	//Áß°í°Å·¡ ÀüÃ¼Á¶È¸
 	public List<AuctionBoard_DTO> boardlist();
 	
-	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸??½ê¸?
-	public AuctionBoard_DTO auctionRead(int auction_number);
+	//Áß°í°Å·¡ °Ô½Ã±ÛÀĞ±â
+	public AuctionBoard_DTO dealRead(int deal_number);
 
 	
-	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸? ?—…?°?´?Š¸(?ˆ˜? •)
+	//Áß°í°Å·¡ °Ô½Ã±Û ¾÷µ¥ÀÌÆ®(¼öÁ¤)
 	int update(AuctionBoard_DTO dto);
 	
 	
-	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸? ?‚­? œ
-	int auctionDelete(String id);
-}
+	//Áß°í°Å·¡ °Ô½Ã±Û »èÁ¦
+	int dealDelete(String member_id);
+	
+	//ÇÏ´Ü°Ë»ö
+		List<DealBoard_DTO> searchData(String tag, String searchData);
+		
+	//Áß°í°Å·¡ °Å·¡±¸ºĞ¼±ÅÃ
+	public List<DealBoard_DTO> dealType_list(String dealType);	

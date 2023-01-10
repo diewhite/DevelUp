@@ -3,163 +3,138 @@ package com.multi.ongo.deal;
 import java.sql.Date;
 
 public class DealBoard_DTO {
-	private String id;  //ìœ ì €ì•„ì´ë””  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private String dealType;    // ì¤‘ê³ ê±°ë˜êµ¬ë¶„( ì¤‘ê³ ê±°ë˜,ë‚˜ëˆ”)  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private String product_category;  //ìƒí’ˆì¹´í…Œê³ ë¦¬(ë””ì§€í„¸ê¸°ê¸°,ì˜ë¥˜ ë“±ë“±)  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private String product_state; // ìƒí’ˆìƒíƒœ(íŒë§¤ì¤‘,ê±°ë˜ì§„í–‰ì¤‘, ì™„ë£Œ )  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private int product_price; // ìƒí’ˆê°€ê²©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private String board_title; // ì œëª©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private String product_name; //ìƒí’ˆëª…  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private String board_content; // ë‚´ìš©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private int hits; // ì¡°íšŒìˆ˜	ë…¸ì‡¼=  
-	private Date write_date; //ì‘ì„±ì¼  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	private int deal_number; // ê±°ë˜ë²ˆí˜¸  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
-	
-	
+	public class DealBoard_DTO {
+		private int deal_number; // °Å·¡¹øÈ£  - ³ë¼î=  ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private String member_id;  //À¯Àú¾ÆÀÌµğ  - ¡Ú°Ô½Ã±Ûµî·ÏºÒÇÊ¿ä ÀÌ¹Ì·Î±×ÀÎ
+		private String dealType;    // Áß°í°Å·¡±¸ºĞ( Áß°í°Å·¡,³ª´®)  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private String product_category;  //»óÇ°Ä«Å×°í¸®(µğÁöÅĞ±â±â,ÀÇ·ù µîµî)  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private String product_state; // »óÇ°»óÅÂ(ÆÇ¸ÅÁß,°Å·¡ÁøÇàÁß, ¿Ï·á )  - ³ë¼î=  ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private String board_title; // Á¦¸ñ  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private int product_price; // »óÇ°°¡°İ  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private String board_content; // ³»¿ë  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private int hits; // Á¶È¸¼ö	³ë¼î=  
+		private Date write_date; //ÀÛ¼ºÀÏ  - ³ë¼î=  ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private String list_photo; // ¸®½ºÆ®»çÁø  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		
+
 	public DealBoard_DTO() {
 		
 	}
 
-
-	public DealBoard_DTO(String id, String dealType, String product_category, String product_state, int product_price,
-			String board_title, String product_name, String board_content, int hits, Date write_date, int deal_number) {
+	public DealBoard_DTO(int deal_number, String member_id, String dealType, String product_category,
+			String product_state, String board_title, int product_price, String board_content, int hits,
+			Date write_date, String list_photo) {
 		super();
-		this.id = id; //ì•„ì´ë””
-		this.dealType = dealType; // ê±°ë˜êµ¬ë¶„
-		this.product_category = product_category; // ìƒí’ˆì¹´í…Œê³ ë¦¬
-		this.product_state = product_state; //ìƒí’ˆìƒíƒœ(ì§„í–‰ì¤‘ë“±) íˆë“ 
-		this.product_price = product_price; //ìƒí’ˆê°€ê²©
-		this.board_title = board_title; // ê²Œì‹œê¸€ì œëª©
-		this.product_name = product_name; //ìƒí’ˆëª…
-		this.board_content = board_content; //ê²Œì‹œê¸€ë‚´ìš©
-		this.hits = hits; // ì¡°íšŒìˆ˜
-		this.write_date = write_date; //ì‘ì„±ì¼ ë§µí¼ì—ì„œ
-		this.deal_number = deal_number; // ê²Œì‹œë²ˆí˜¸ ë§µí¼ì—ì„œ(ì‹œí€€ìŠ¤)
+		this.deal_number = deal_number;
+		this.member_id = member_id;
+		this.dealType = dealType;
+		this.product_category = product_category;
+		this.product_state = product_state;
+		this.board_title = board_title;
+		this.product_price = product_price;
+		this.board_content = board_content;
+		this.hits = hits;
+		this.write_date = write_date;
+		this.list_photo = list_photo;
 	}
-	
-
-
-
 
 	@Override
 	public String toString() {
-		return "DealBoard_DTO [id=" + id + ", dealType=" + dealType + ", product_category=" + product_category
-				+ ", product_state=" + product_state + ", product_price=" + product_price + ", board_title="
-				+ board_title + ", product_name=" + product_name + ", board_content=" + board_content + ", hits=" + hits
-				+ ", write_date=" + write_date + ", deal_number=" + deal_number + "]";
+		return "DealBoard_DTO [deal_number=" + deal_number + ", member_id=" + member_id + ", dealType=" + dealType
+				+ ", product_category=" + product_category + ", product_state=" + product_state + ", board_title="
+				+ board_title + ", product_price=" + product_price + ", board_content=" + board_content + ", hits="
+				+ hits + ", write_date=" + write_date + ", list_photo=" + list_photo + "]";
 	}
-
-
-	public String getId() {
-		return id;
-	}
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-	public String getDealType() {
-		return dealType;
-	}
-
-
-	public void setDealType(String dealType) {
-		this.dealType = dealType;
-	}
-
-
-	public String getProduct_category() {
-		return product_category;
-	}
-
-
-	public void setProduct_category(String product_category) {
-		this.product_category = product_category;
-	}
-
-
-	public String getProduct_state() {
-		return product_state;
-	}
-
-
-	public void setProduct_state(String product_state) {
-		this.product_state = product_state;
-	}
-
-
-	public int getProduct_price() {
-		return product_price;
-	}
-
-
-	public void setProduct_price(int product_price) {
-		this.product_price = product_price;
-	}
-
-
-	public String getBoard_title() {
-		return board_title;
-	}
-
-
-	public void setBoard_title(String board_title) {
-		this.board_title = board_title;
-	}
-
-
-	public String getProduct_name() {
-		return product_name;
-	}
-
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-
-
-	public String getBoard_content() {
-		return board_content;
-	}
-
-
-	public void setBoard_content(String board_content) {
-		this.board_content = board_content;
-	}
-
-
-	public int getHits() {
-		return hits;
-	}
-
-
-	public void setHits(int hits) {
-		this.hits = hits;
-	}
-
-
-	public Date getWrite_date() {
-		return write_date;
-	}
-
-
-	public void setWrite_date(Date write_date) {
-		this.write_date = write_date;
-	}
-
 
 	public int getDeal_number() {
 		return deal_number;
 	}
 
-
 	public void setDeal_number(int deal_number) {
 		this.deal_number = deal_number;
 	}
-	
-	
+
+	public String getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+
+	public String getDealType() {
+		return dealType;
+	}
+
+	public void setDealType(String dealType) {
+		this.dealType = dealType;
+	}
+
+	public String getProduct_category() {
+		return product_category;
+	}
+
+	public void setProduct_category(String product_category) {
+		this.product_category = product_category;
+	}
+
+	public String getProduct_state() {
+		return product_state;
+	}
+
+	public void setProduct_state(String product_state) {
+		this.product_state = product_state;
+	}
+
+	public String getBoard_title() {
+		return board_title;
+	}
+
+	public void setBoard_title(String board_title) {
+		this.board_title = board_title;
+	}
+
+	public int getProduct_price() {
+		return product_price;
+	}
+
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
+	}
+
+	public String getBoard_content() {
+		return board_content;
+	}
+
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
+	}
+
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+
+	public Date getWrite_date() {
+		return write_date;
+	}
+
+	public void setWrite_date(Date write_date) {
+		this.write_date = write_date;
+	}
+
+	public String getList_photo() {
+		return list_photo;
+	}
+
+	public void setList_photo(String list_photo) {
+		this.list_photo = list_photo;
+	}
+
+
 	
 	
 	

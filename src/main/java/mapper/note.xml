@@ -3,10 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.note">
-  	<select id="findbyid" resultType="note" parameterType="String">
-  		select * from note where receive_id = #{id}
-  	</select>
   	<select id="receivelist" resultType="note" parameterType="String">
+  		<!-- <![CDATA[
+  		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk 
+		from (select rownum as num, n1.*
+			  from note n1
+			  where n1.receive_id=#{id}
+			  order by n1.no desc)
+		where num between (((#{page}-1)*#{per_page})+1) and (#{page}*#{per_page})
+		]]> -->
   		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk from note where receive_id = #{id} order by no desc
   	</select>
   	<select id="sendlist" resultType="note" parameterType="String">
@@ -46,5 +51,11 @@
   	<delete id="deletenote" parameterType="String">
   		delete from note where no = #{no}
   	</delete>
+  	<update id="readcheck" parameterType="String">
+  		update note set read_time = sysdate, read_chk = 1 where no = #{no}
+  	</update>
+  	<select id="receivelistcnt" resultType="note" parameterType="String">
+  		select count(no) as count from note where receive_id=#{id}
+  	</select>
   </mapper>
   

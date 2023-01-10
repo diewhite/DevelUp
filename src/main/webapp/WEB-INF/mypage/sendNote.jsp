@@ -31,7 +31,7 @@ overflow: hidden;
 			<div class="board_list">
 				<div class="board_info d-flex">
 					<div class="total">
-						전체 <strong class="blue" id="totalCount">9</strong> 건 (페이지 <strong
+						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
 							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
 					</div>
 						<form action="/ongo/mypage/note/searchSendBox" method="post">
@@ -144,8 +144,8 @@ overflow: hidden;
 				<div class="pagination">
 					<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
 						type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
-					<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
-					<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
+					<input type="hidden" id="START_INDEX" name="START_INDEX" value="1">
+					<input type="hidden" id="END_INDEX" name="END_INDEX" value="5">
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="Previous"> <span class="visually-hidden">처음으로</span>

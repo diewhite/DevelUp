@@ -1,7 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head> </head>
+<head>
+<style type="text/css">
+.dropdown-menu {  width:10%;}
+</style>
+<script type="text/javascript">
+function removeCheck() {
+	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	     document.removefrm.submit();
+	 }else{   //취소
+	     return false;
+	 }
+	}
+</script>
+ </head>
 <body>
 
 <!-- content -->
@@ -22,10 +35,7 @@
                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
                        </div>
-                      <div class="form_box d-grid d-md-flex justify-content-md-end"> 
-                       <button class="btn btn-outline-warning me-md-2" type="button">쪽지발송</button>
-                       <button class="btn btn-outline-danger me-md-2" type="button">회원삭제</button>
-                       <button class="btn btn-outline-success me-md-2" type="button"><i class="las la-file-excel"></i> 엑셀</button>
+                      <div class="form_box justify-content-md-end"> 
                        <fieldset>
 	                       <div class="input-group">
 		                       <input type="text" class="form-control" name=" " title="검색어 입력" placeholder="이름검색" >
@@ -40,39 +50,32 @@
                        <table class="table">
                            <caption>게시판 목록</caption>
                            <colgroup>
-                              <col width="5%">
-                              <col width="6%">
+                              <col width="8%">
+                              <col width="8%">
+                               <col width="8%">
+                                <col width="20%">
+                               <col width="*">
+                               <col width="*">
+                               <col width="*">
                                <col width="6%">
-                                <col width="6%">
-                               <col width="20%">
-                               <col width="*">
-                               <col width="*">
                                <col width="10%">
-                               <col width="5%">
                            </colgroup>
                            <thead>
                                <tr> 
-                              	<th><input type="checkbox" name=" "  class="form-check-input" onclick="fnChk()"></th>
                                    <th scope="col">회원번호</th>
-                                   <th scope="col">이름</th>
+                                   <th scope="col">성명</th>
                                    <th scope="col">아이디</th>
                                    <th scope="col">주소</th>
                                    <th scope="col">휴대폰번호</th>
                                    <th scope="col">이메일</th>
                                    <th scope="col">가입일</th>
                                    <th scope="col">상태</th>
+                                   <th scope="col">삭제</th>
                                </tr>
                            </thead>
                            <tbody >
                            <c:forEach var="memberR" items="${memberlist}">
                              <tr class="notice">
-                               <td data-before="체크박스">
-					           <div class="form-check">
-						            <label class="form-check-label">
-						              <input type="checkbox" name="remember" id="remember" class="form-check-input" onclick="fnChk()">
-						            </label>
-						          </div>
-						        </td>
 						        <td data-before="회원번호">${memberR.member_no}</td>
                                <td data-before="이름">${memberR.member_name}</td>
                                <td data-before="아이디" >
@@ -85,15 +88,20 @@
 								 member_id => 파라미터 이름 , =${member.member_id} => 파라미터에 연결시켜주고 컨트롤러로 보낼 값
 								 => member라는 어트리뷰트에 정의된 멤버변수인 member_id라는 변수명을 찾아서 매핑
 								-->
-                              	 <button type="button" class="blue" 
-                              	 onclick="location.href='/ongo/member/memberread.do?member_id=${memberR.member_id}&state=READ'">
+                              	 <button type="button" class="blue nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"	>
                               	 ${memberR.member_id}</button>
+                              	 <ul class="dropdown-menu">
+								    <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+								    <li><a class="dropdown-item" href="/ongo/member/memberread.do?member_id=${memberR.member_id}&state=READ">회원정보보기</a></li>
+								</ul>
                                </td>
                                <td data-before="주소">${memberR.member_addr1}</td>
                                <td data-before="휴대폰번호">${memberR.member_phone}</td>
                                <td data-before="이메일">${memberR.member_email}</td>
                               <td data-before="가입일">${memberR.member_date}</td>
                                <td data-before="가입상태">${memberR.member_sign}</td>
+                               <td data-before="삭제"><button type="button"
+                               onclick="location.href='/ongo/member/memberdelete?member_id=${memberR.member_id}'" class="board_label red" title="회원삭제">삭제</button> </td>
                              </tr>
                             </c:forEach>
                            </tbody>

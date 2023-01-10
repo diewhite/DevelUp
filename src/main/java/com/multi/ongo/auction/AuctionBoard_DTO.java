@@ -3,167 +3,152 @@ package com.multi.ongo.auction;
 import java.sql.Date;
 
 public class AuctionBoard_DTO {
-	private String id;  //?œ ???•„?´?””  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private String dealType;    // ì¤‘ê³ ê±°ë˜êµ¬ë¶„( ì¤‘ê³ ê±°ë˜,?‚˜?ˆ”)  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private String product_category;  //?ƒ?’ˆì¹´í…Œê³ ë¦¬(?””ì§??„¸ê¸°ê¸°,?˜ë¥? ?“±?“±)  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private String product_state; // ?ƒ?’ˆ?ƒ?ƒœ(?Œë§¤ì¤‘,ê±°ë˜ì§„í–‰ì¤?, ?™„ë£? )  - ?…¸?‡¼=  ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private int product_price; // ?ƒ?’ˆê°?ê²?  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private String board_title; // ? œëª?  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private String product_name; //?ƒ?’ˆëª?  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private String board_content; // ?‚´?š©  - ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private int hits; // ì¡°íšŒ?ˆ˜	?…¸?‡¼=  
-	private Date write_date; //?‘?„±?¼  - ?…¸?‡¼=  ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
-	private int deal_number; // ê±°ë˜ë²ˆí˜¸  - ?…¸?‡¼=  ?˜…ê²Œì‹œê¸??“±ë¡ì‹œ?•„?š”
+	private int auction_number ;       // °æ¸Å¹øÈ£(°Ô½Ã±Û¹øÈ£)
+	private String member_id;               //ÀÛ¼ºÀÚ
+	private String auction_category;     //»óÇ°Ä«Å×°í¸®
+	private String auction_state;       //°æ¸Å»óÅÂ(ÀÔÂûÁß,°æ¸Å¿Ï·á
+	private String auction_title;	//°æ¸ÅÁ¦¸ñ
+	private int hits ;	//Á¶È¸¼ö
+	private Date write_date ;	//ÀÛ¼ºÀÏ+°æ¸Å½ÃÀÛ½Ã°£
+	private String board_content;	//°æ¸Å³»¿ë
+	private String list_photo ;	//ÀÛ¼º»çÁø
+	private String min_price ; // °æ¸Å ÃÖ¼Ò°¡
+	private String start_price ;	//½ÃÀÛ°¡
+	private String end_price;	//³«Âû°¡
+	private String add_user1 ;	//ÀÔÂûÀÚ id1
+	private String  add_price1 ;//ÀÔÂû±İ¾×1
+	private String add_time1 ;	//ÀÔÂûµî·Ï ½Ã°£
+	private String add_user2 ;//³«ÂûÀÚ id2
+	private String add_price2;	//ÀÔÂû±İ¾×2
+	private String add_time2 ;	//ÀÔÂûµî·Ï ½Ã°£
+	private Date end_date ;		//¸¶°¨ÀÏ(24½Ã°£)
 	
-	
-	public AuctionBoard_DTO() {
+	public AuctionBoard_DTO(){
 		
 	}
-
-
-	public AuctionBoard_DTO(String id, String dealType, String product_category, String product_state, int product_price,
-			String board_title, String product_name, String board_content, int hits, Date write_date, int deal_number) {
-		super();
-		this.id = id; //?•„?´?””
-		this.dealType = dealType; // ê±°ë˜êµ¬ë¶„
-		this.product_category = product_category; // ?ƒ?’ˆì¹´í…Œê³ ë¦¬
-		this.product_state = product_state; //?ƒ?’ˆ?ƒ?ƒœ(ì§„í–‰ì¤‘ë“±) ?ˆ?“ 
-		this.product_price = product_price; //?ƒ?’ˆê°?ê²?
-		this.board_title = board_title; // ê²Œì‹œê¸?? œëª?
-		this.product_name = product_name; //?ƒ?’ˆëª?
-		this.board_content = board_content; //ê²Œì‹œê¸??‚´?š©
-		this.hits = hits; // ì¡°íšŒ?ˆ˜
-		this.write_date = write_date; //?‘?„±?¼ ë§µí¼?—?„œ
-		this.deal_number = deal_number; // ê²Œì‹œë²ˆí˜¸ ë§µí¼?—?„œ(?‹œ???Š¤)
-	}
+}
+   
 	
-
-
-
-
-	@Override
-	public String toString() {
-		return "DealBoard_DTO [id=" + id + ", dealType=" + dealType + ", product_category=" + product_category
-				+ ", product_state=" + product_state + ", product_price=" + product_price + ", board_title="
-				+ board_title + ", product_name=" + product_name + ", board_content=" + board_content + ", hits=" + hits
-				+ ", write_date=" + write_date + ", deal_number=" + deal_number + "]";
+	
+	
+	
+	
+	
+	public int getAuction_number() {
+		return auction_number;
 	}
-
-
-	public String getId() {
-		return id;
+	public void setAuction_number(int auction_number) {
+		this.auction_number = auction_number;
 	}
-
-
-	public void setId(String id) {
-		this.id = id;
+	public String getMember_id() {
+		return member_id;
 	}
-
-
-	public String getDealType() {
-		return dealType;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
-
-
-	public void setDealType(String dealType) {
-		this.dealType = dealType;
+	public String getAuction_category() {
+		return auction_category;
 	}
-
-
-	public String getProduct_category() {
-		return product_category;
+	public void setAuction_category(String auction_category) {
+		this.auction_category = auction_category;
 	}
-
-
-	public void setProduct_category(String product_category) {
-		this.product_category = product_category;
+	public String getAuction_state() {
+		return auction_state;
 	}
-
-
-	public String getProduct_state() {
-		return product_state;
+	public void setAuction_state(String auction_state) {
+		this.auction_state = auction_state;
 	}
-
-
-	public void setProduct_state(String product_state) {
-		this.product_state = product_state;
+	public String getAuction_title() {
+		return auction_title;
 	}
-
-
-	public int getProduct_price() {
-		return product_price;
+	public void setAuction_title(String auction_title) {
+		this.auction_title = auction_title;
 	}
-
-
-	public void setProduct_price(int product_price) {
-		this.product_price = product_price;
-	}
-
-
-	public String getBoard_title() {
-		return board_title;
-	}
-
-
-	public void setBoard_title(String board_title) {
-		this.board_title = board_title;
-	}
-
-
-	public String getProduct_name() {
-		return product_name;
-	}
-
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-
-
-	public String getBoard_content() {
-		return board_content;
-	}
-
-
-	public void setBoard_content(String board_content) {
-		this.board_content = board_content;
-	}
-
-
 	public int getHits() {
 		return hits;
 	}
-
-
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-
-
 	public Date getWrite_date() {
 		return write_date;
 	}
-
-
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
 	}
-
-
-	public int getDeal_number() {
-		return deal_number;
+	public String getBoard_content() {
+		return board_content;
 	}
-
-
-	public void setDeal_number(int deal_number) {
-		this.deal_number = deal_number;
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
+	}
+	public String getList_photo() {
+		return list_photo;
+	}
+	public void setList_photo(String list_photo) {
+		this.list_photo = list_photo;
+	}
+	public String getMin_price() {
+		return min_price;
+	}
+	public void setMin_price(String min_price) {
+		this.min_price = min_price;
+	}
+	public String getStart_price() {
+		return start_price;
+	}
+	public void setStart_price(String start_price) {
+		this.start_price = start_price;
+	}
+	public String getEnd_price() {
+		return end_price;
+	}
+	public void setEnd_price(String end_price) {
+		this.end_price = end_price;
+	}
+	public String getAdd_user1() {
+		return add_user1;
+	}
+	public void setAdd_user1(String add_user1) {
+		this.add_user1 = add_user1;
+	}
+	public String getAdd_price1() {
+		return add_price1;
+	}
+	public void setAdd_price1(String add_price1) {
+		this.add_price1 = add_price1;
+	}
+	public String getAdd_time1() {
+		return add_time1;
+	}
+	public void setAdd_time1(String add_time1) {
+		this.add_time1 = add_time1;
+	}
+	public String getAdd_user2() {
+		return add_user2;
+	}
+	public void setAdd_user2(String add_user2) {
+		this.add_user2 = add_user2;
+	}
+	public String getAdd_price2() {
+		return add_price2;
+	}
+	public void setAdd_price2(String add_price2) {
+		this.add_price2 = add_price2;
+	}
+	public String getAdd_time2() {
+		return add_time2;
+	}
+	public void setAdd_time2(String add_time2) {
+		this.add_time2 = add_time2;
+	}
+	public Date getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(Date end_date) {
+		this.end_date = end_date;
 	}
 	
+
+		
 	
-	
-	
-	
-	
-	
-	
-}
