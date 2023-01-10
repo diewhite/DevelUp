@@ -124,30 +124,30 @@ function checkUsrSubmit() {
             </div>
           </div>
           
-           <div class="grid-item colspan2">
+    	<div class="grid-item colspan2">
 							<label for="HOFS_ADDR">주소</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w10">
-									<input  value="${memberRU.zipcode}"
-									class="grid-input" type="text" name="zipcode"title="우편번호">
+									<input value="${memberRU.zipcode}" class="grid-input" type="text"
+										name="zipcode" title="우편번호">
 								</div>
-								<button type="button" class="btn btn-light"  onclick="execDaumPostcode()">우편번호 검색</button>
+								<button type="button" class="btn btn-light"
+									onclick="execDaumPostcode()">우편번호 검색</button>
 								<div class="input-wrap">
+
 									<br>
 								</div>
 								<div class="">
 									<div class="input-wrap ">
 										<input class="grid-input" value="${memberRU.member_addr1}"
-										type="text" name="member_addr1"	title="주소">
+											type="text" name="member_addr1" title="주소">
 									</div>
 									<div class="input-wrap">
 										<input class="grid-input" value="${memberRU.member_addr2}"
-										type="text" name="member_addr2" placeholder="상세주소를 입력해주세요.">
+											type="text" name="member_addr2" placeholder="상세주소를 입력해주세요.">
 									</div>
 								</div>
-
 							</div>
-
 						</div>
 						
        	  <div class="grid-item colspan2">

@@ -23,6 +23,10 @@ function checkUsrSubmit() {
 		  }
 
 	}
+function fnIdCheck(){
+	var remove;
+	remove =  toastr.warning("중복확인 서비스를 제공하고 있지 않습니다.");
+}
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -183,7 +187,7 @@ function checkUsrSubmit() {
         </div>
       </div>
       <div class="btn-area">
-			<button class="btn btn-outline-primary btn-large" type="submit">등록하기</button>
+			<button class="btn btn-outline-primary btn-large" type="submit">가입하기</button>
 		</div>
     </form>
 		</div>
