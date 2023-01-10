@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -205,5 +206,13 @@ public class MemberController {
 			//MemberDTO memberRead = (MemberDTO)session.getAttribute("user"); // 세션정보 불러오기, user를 memberRead에 저장
 			//model.addAttribute("memberRU", memberRead);
 			return "member/usermypage"; // member_id 멤버매게변수명
+		}
+		
+//=============거래게시판> 회원정보보기
+		@RequestMapping(value = "/member/ajax_memberread")
+		@ResponseBody
+		public MemberDTO ajax_memberR(String member_id) {
+			MemberDTO userinfo = service.memberIdRead(member_id);
+			return userinfo;
 		}
 }
