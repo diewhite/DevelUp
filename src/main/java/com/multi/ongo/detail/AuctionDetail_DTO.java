@@ -56,6 +56,7 @@ public class AuctionDetail_DTO {
 	}
 
 	
+	
 	//Generate getters and setters
 	public void setAuction_number(int auction_number) {
 		this.auction_number = auction_number;
