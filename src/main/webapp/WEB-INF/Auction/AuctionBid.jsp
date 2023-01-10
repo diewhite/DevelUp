@@ -16,7 +16,7 @@
 <body >
 <div class="modal-content" >
 	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal"></button>
+		<button type="button" data-bs-toggle="modal" data-bs-target="#myModal"></button>
 		<h4 class="modal-title" ><strong >입찰하기</strong></h4>
 	</div>
 
@@ -97,5 +97,6 @@
 		</div>
 	</div>
 </div>
+
 </body>
 </html>
