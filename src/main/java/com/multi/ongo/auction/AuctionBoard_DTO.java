@@ -26,7 +26,7 @@ public class AuctionBoard_DTO {
 	public AuctionBoard_DTO(){
 		
 	}
-}
+
    
 	
 	
@@ -100,12 +100,7 @@ public class AuctionBoard_DTO {
 	public void setStart_price(String start_price) {
 		this.start_price = start_price;
 	}
-	public String getEnd_price() {
-		return end_price;
-	}
-	public void setEnd_price(String end_price) {
-		this.end_price = end_price;
-	}
+
 	public String getAdd_user1() {
 		return add_user1;
 	}
@@ -149,6 +144,6 @@ public class AuctionBoard_DTO {
 		this.end_date = end_date;
 	}
 	
-
+}
 		
 	
