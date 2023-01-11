@@ -111,7 +111,7 @@
                   <span class="dep2_tit" ><a href="/ongo/member/usermypage" >마이페이지</a></span>
                   <ul class="dep2_link">
                     <li>
-                    <a href="/ongo/member/usermypage?member_id=${user.member_id}">정보수정</a></li>
+                    <a href="/ongo/member/usermypage?user_id=${user.member_id}">정보수정</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">

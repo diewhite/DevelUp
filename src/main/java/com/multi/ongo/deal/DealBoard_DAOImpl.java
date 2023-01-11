@@ -71,6 +71,13 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	public List<DealBoard_DTO> dealType_list(String dealType) {
 		return sqlSession.selectList("com.multi.ongo.deal.dealTypeSearch", dealType);
 	}
+
+
+
+	@Override
+	public List<DealBoard_DTO> dealType_main(String dealType) {
+		return sqlSession.selectList("com.multi.ongo.deal.main_dealcategory", dealType);
+	}
 	
 	
 	

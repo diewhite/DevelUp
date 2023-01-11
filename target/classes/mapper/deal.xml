@@ -87,6 +87,22 @@
 			order by write_date desc
 	</select>
 	
+	<!--//메인화면 거래배너리스트  -->
+	<select id="main_dealcategory"  resultType="dealDTO" parameterType="String">
+		select board_title,
+		       write_date
+ 		 from (
+		       select board_title,
+		       write_date,
+               DENSE_RANK() OVER(ORDER BY write_date DESC) as rnk
+          	   FROM deal_table2
+		       )
+		       <![CDATA[
+		       where rnk <= 3;
+				]]>  
+	</select>
+	
+	
 	
 	
   </mapper>

@@ -15,24 +15,24 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		this.dao = dao;
 	}
 
-	//중고거래?���?
+	//중고거래
 	@Override
 	public int writeProd(AuctionBoard_DTO dto) {
 		return dao.writeProd(dto);
 	}
 
-	//중고거래 ?��체조?��
+	//중고거래
 	@Override
 	public List<AuctionBoard_DTO> boardlist() {
 		return dao.boardlist();
 	}
 	
-	//중고거래 게시�??���?
+	//중고거래 게시
 	@Override
 	public AuctionBoard_DTO dealRead(int auction_number) {
 		return dao.auctionRead(auction_number);
 	}
-	//중고거래 게시�??��?��
+	//중고거래 게시
 	@Override
 	public int update(AuctionBoard_DTO dto) {
 		return dao.update(dto);

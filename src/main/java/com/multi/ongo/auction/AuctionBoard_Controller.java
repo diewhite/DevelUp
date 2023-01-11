@@ -24,4 +24,15 @@ public class AuctionBoard_Controller {
 	
 		}
 	
+	@RequestMapping("/auction/auctionbid") 
+	public String auctionBid() {
+		return "auctionBid";
+	
+		}
+	@RequestMapping("/auction/auctionRead") 
+	public String auctionRead() {
+		return "auctionRead";
+	
+		}
+	
 }

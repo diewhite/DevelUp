@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <html>
-<head> </head>
+<head> 
+<style type="text/css">
+.right{ float: right;margin-left:300px }
+.ri{text-align: right;}
+
+</style>
+
+
+</head>
 <body>
 <!-- 이 아래부터  content부분부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
@@ -27,11 +35,11 @@
                     <div class="input-group">
                       <div class="select">
                         <i class="las la-balance-scale-right"></i>
-                        <label class="visually-hidden" for="">추천경매</label>
-                        <select class="form-select" name="" id="" title="추천경매 선택" >
-                          <option value="">전체2134243232</option>
-                          <option value=" " selected>추천경매</option>
-                          <option value=" ">인기경매</option>
+                        <label class="visually-hidden" for="">카테고리</label>
+                        <select class="form-select" name="" id="" title="카테고리" >
+                          <option value="">자동차</option>
+                          <option value=" " selected>고물</option>
+                          <option value=" ">핸드폰</option>
                         </select>
                       </div>
                       <!--
@@ -69,15 +77,15 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 
                   <div class=""><!--col -->
-                      <div class="auction-card">
-                        <span class="auction-label1">추천</span>
+                      <div class="auction-card"  >
+                        <span class="auction-label1">고물</span>
                         <div class="auction-img-main ">
                           <ul>
                             <li >
-                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg" ></li>
+                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead'"></li>
                           </ul>
                         </div>
-                        <div class="thumbnail text-center">
+                        <div class="thumbnail text-center" >
                           <img onclick="change_image(this)" src="https://i.imgur.com/oLXMXVW.jpg">
                           <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CW/2212CW3YKJU_0.jpg">
                           <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CE/2212CEX3IIL_0.jpg">
@@ -87,20 +95,20 @@
                         </div>
                         <div class="mt-2">
                           <ul class="company_list">
-                            <li><strong>시작가</strong><span>1100원</span></li>
-                            <li><strong>입찰내역</strong><span>30000원</span></li>
-                            <li><strong>현재입찰가</strong><span>40000원</span></li>
+                    		<h3><a onclick="location.href='/ongo/auction/auctionRead'">진짜같은 짝퉁</a></h3>
+                            <li><strong>현재가격</strong><span>40000원</span>
+                            		<ol> 남은시간 20:30 </ol>
+                            </li>
+                          
                           </ul>
                         </div>
-                        <div class="cart-button mt-3 px-2 text-center">
-                          <button class="btn btn-outline-secondary ">입찰하기</button>
-                        </div>
+                    
                       </div><!-- // auction-card -->
                   </div><!-- // col -->
 
                    <div class=""><!--col -->
                       <div class="auction-card">
-                        <span class="auction-label2">인기</span>
+                        <span class="auction-label2">부동산</span>
                         <div class="auction-img-main ">
                           <ul>
                             <li >
@@ -117,14 +125,13 @@
                         </div>
                         <div class="mt-2">
                           <ul class="company_list">
-                            <li><strong>시작가</strong><span>11000원</span></li>
-                            <li><strong>입찰내역</strong><span>13000원</span></li>
-                            <li><strong>현재입찰가</strong><span>20000원</span></li>
-                          
+                     		 <h3>로스앤젤로스땅팔아요</h3>
+                            <li><strong>최종입찰가</strong><span>20000원</span>
+                            
+                            </li>
+                        
                           </ul>
-                        </div>
-                        <div class="cart-button mt-3 px-2 text-center">
-                          <button class="btn btn-outline-secondary ">입찰하기</button>
+                  
                         </div>
                       </div><!-- // auction-card -->
                   </div><!-- // col -->

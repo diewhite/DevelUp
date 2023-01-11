@@ -55,6 +55,7 @@ public class MemberServiceImpl implements MemberService{
 		String[] ArrayStr =email.split("@");
 		memberread.setEmail1(ArrayStr[0]); 
 		memberread.setEmail2(ArrayStr[1]); 
+		memberread.setEmail99(ArrayStr[1]); 
 		//System.out.println("서비스인풀 읽기 찍는중"+memberread);
 		//스플릿끝
 		return memberread;
@@ -67,6 +68,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int update(MemberDTO joinupdate) {  //수정
+		System.out.println("서비스인풀 윗라인 업데이트 찍는중"+joinupdate);
 		String phone = joinupdate.getPhone1()+"-"+joinupdate.getPhone2()+"-"+joinupdate.getPhone3();
 		String email = "";
 		joinupdate.setMember_phone(phone);//phone을 member_phone에 셋팅
@@ -91,7 +93,6 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDTO login(MemberDTO loginidInfo) { //로그인
 		return memberdao.login(loginidInfo);
 	}
-	
 	
 	
 	

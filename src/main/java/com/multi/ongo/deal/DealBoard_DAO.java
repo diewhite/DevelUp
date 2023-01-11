@@ -27,7 +27,8 @@ public interface DealBoard_DAO {
 	//중고거래 거래구분선택
 	public List<DealBoard_DTO> dealType_list(String dealType);	
 		
-		
+	//중고거래시글 타입-메인
+		List<DealBoard_DTO> dealType_main(String dealType);
 		
 		
 		
