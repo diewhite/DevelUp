@@ -199,7 +199,7 @@ function removeCheck(url){
 						</div>
 						<div class="btn-area">
 							<button type="submit" class="btn btn-warning text-white btn-large"
-								data-bs-dismiss="modal" aria-label="Close">전송</button>
+								data-bs-dismiss="modal" aria-label="Close" onclick="sendNote()">전송</button>
 						</div>
 						<!-- 닫기버튼 -->
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
