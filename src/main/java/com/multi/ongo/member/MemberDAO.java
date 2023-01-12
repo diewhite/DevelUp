@@ -22,6 +22,15 @@ public interface MemberDAO {
 	//회원 업데이트(db에처리)
 	int update(MemberDTO joinupdate);
 	
+    //아이디 찾기(db에처리)
+    MemberDTO findId(MemberDTO userInfo);
+    
+    //비밀번호 찾기(db에처리)
+    MemberDTO findPass(MemberDTO userInfo);
+    
+    //비밀번호 변경(db에처리)
+    int passModi(MemberDTO userInfo);
+	
 	//로그인
 	MemberDTO login(MemberDTO loginidInfo);
 	

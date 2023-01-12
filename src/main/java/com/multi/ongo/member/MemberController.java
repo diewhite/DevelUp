@@ -62,16 +62,47 @@ public class MemberController {
 		return "redirect:/index";
 	}
 
-	// 아이디찾기
+	// 아이디찾기(페이지처리)
 	@RequestMapping(value = "/member/findid", method = RequestMethod.GET)
 	public String findID() {
 		return "member/findid";
 	}
+	
+	// 아이디찾기(ajax)
+	@RequestMapping(value = "/member/ajax_findid")
+	@ResponseBody
+	public String ajax_findId(MemberDTO userInfo) {
+		String userId = "";
+		MemberDTO userData = service.findId(userInfo);
+		if(userData!=null) {
+			userId = userData.getMember_id();
+		}
+		return userId;
+	}
 
-	// 비밀번호찾기
-	@RequestMapping(value = "/member/findpass", method = RequestMethod.GET)
+	// 비밀번호찾기(페이지처리)
+	@RequestMapping(value = "/member/pass", method = RequestMethod.GET)
 	public String findpass() {
 		return "member/pass";
+	}
+	
+	// 비밀번호찾기(ajax)
+	@RequestMapping(value = "/member/ajax_findpass")
+	@ResponseBody
+	public String ajax_findpass(MemberDTO userInfo) {
+		String userId = "";
+		MemberDTO userData = service.findPass(userInfo);
+		if(userData!=null) {
+			userId = userData.getMember_id();
+		}
+		return userId;
+	}
+
+	//비밀번호 변경
+	@RequestMapping(value = "/member/passupdate")
+	public String passUpdate(MemberDTO userInfo) {
+		service.passModi(userInfo);
+		return "redirect:/member/login.do";
 	}
 
 	// 회원가입 - 약관동의
