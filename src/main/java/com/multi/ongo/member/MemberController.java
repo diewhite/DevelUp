@@ -117,7 +117,24 @@ public class MemberController {
 		return "member/join4"; 
 	}
 
+	// 회원가입 - 아이디 중복 체크
+	@RequestMapping(value = "/member/ajax_idcheck")
+	@ResponseBody
+	public String ajax_idcheck(String member_id) {
+		String userId = "";
+		MemberDTO user = service.idCheck(member_id);
+		if(user!=null) {
+			userId = user.getMember_id();
+		}
+		return userId;
+	}
 	
+	// 회원탈퇴
+	@RequestMapping(value = "/member/unsign")
+	public String unsign(String member_id) {
+		service.unsign(member_id);
+		return "redirect:/member/logout.do";
+	}
 	
 //=========================================================관리자 > 회원목록
 
