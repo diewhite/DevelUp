@@ -1,6 +1,9 @@
 package com.multi.ongo.history;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +21,32 @@ public class DealHistoryDAOImpl implements DealHistoryDAO {
 		this.sqlsession = sqlsession;
 	}
 	
-	//중고거래 판매내역 조회 (dealhistoryDTO)
+	//중고거래 판매내역 > 판매중 list 
 	@Override
-	public List<DealHistoryDTO> sell_List2(String member_id) {
-		return sqlsession.selectList("com.multi.ongo.dealhistory.sell_list", member_id);
-	}
-	
-	//중고거래 판매내역 조회 (dealboardDTO)
+	public List<DealBoard_DTO> sell_List(String member_id, String product_state) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("member_id", member_id);
+		map.put("product_state", product_state);
+		List<DealBoard_DTO> list = sqlsession.selectList("com.multi.ongo.deal.dealselectAll", map);
+		System.out.println("=============list ==========="+list);
+		return list;
+		}	
+
+	//중고거래 판매내역 > 판매중 list > 거래요청 유저 정보 list 
 	@Override
-	public List<DealBoard_DTO> sell_List() { 
-		return sqlsession.selectList("com.multi.ongo.deal.selectAll");
+	public List<DealRequestDTO> dealreqinfo(int deal_number) {
+
+		return sqlsession.selectList("com.multi.ongo.dealreq.deal_req", deal_number);
 	}
 
+	
+
+
+	
+	
+	
+	
+	
 
 	
 

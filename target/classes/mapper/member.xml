@@ -32,6 +32,9 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         </select>
         
         <!-- 아이디중복체크 -->
+        <select id="idcheck" resultType="memberP" parameterType="String">
+        	select * from member2 where member_id = #{member_id}
+        </select>
  
 		<!-- 회원가입-입력 / 탈퇴시 : 업데이트 명령어로 처리 member_sign 컬럼값을 가입에서 탈퇴-->
 	 	<insert id="joinwrite" parameterType="memberP">
@@ -42,6 +45,10 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
              )
         </insert>
         
+        <!-- 회원 탈퇴 -->
+        <update id="unsign">
+        	update member2 set member_sign = '탈퇴' where member_id = #{member_id}
+        </update>
         
         <!-- 관리자 >회원목록리스트 -->
 		<select id="selectall" resultType="memberP">

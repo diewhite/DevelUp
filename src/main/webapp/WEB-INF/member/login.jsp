@@ -85,7 +85,14 @@
       }
     }
 
-
+    function removeCheck1(){
+    	var remove;
+    	remove =  toastr.warning("아이디 찾기 서비스를 제공하고 있지 않습니다.");
+    }
+    function removeCheck2(){
+    	var remove;
+    	remove =  toastr.warning("비밀번호 찾기 서비스를 제공하고 있지 않습니다.");
+    }
 </script>         
 </head>
 <body>
@@ -126,9 +133,9 @@
               </div>
               <button type="submit" class="btn btn-primary btn-full">로그인</button>
               <div class="text-center login_bottom">
-                 <span><a href="/ongo/member/findid.do">아이디찾기</a></span>
-                <span><a href="/ongo/member/pass.do">비밀번호찾기</a></span>
-                <span><a href="/ongo/member/join1.do" class="blue">회원가입</a></span>
+                 <span><a href="#"  onclick="removeCheck1()">아이디찾기</a></span>
+                <span><a href="#"  onclick="removeCheck2()">비밀번호찾기</a></span>
+                <span><a href="/ongo/member/join1.do" class="blue" >회원가입</a></span>
               </div>
             </form>
             

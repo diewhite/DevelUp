@@ -4,18 +4,18 @@ import java.util.List;
 
 public interface AuctionBoard_Service {
 	
-	//ê±°ë˜?“±ë¡?
+	//ê±°ë˜
 	public int writeProd(AuctionBoard_DTO dto);
 		 
-	//ì¤‘ê³ ê±°ë˜ ? „ì²´ì¡°?šŒ
+	//ì¤‘ê³ ê±°ë˜
 	public List<AuctionBoard_DTO> boardlist();
 
-	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸??½ê¸?
+	//ì¤‘ê³ ê±°ë˜
 		public AuctionBoard_DTO dealRead(int deal_number);
 
-	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸? ?—…?°?´?Š¸(?ˆ˜? •)
+	//ì¤‘ê³ ê±°ë˜
 	int update(AuctionBoard_DTO dto);
 		
-	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸? ?‚­? œ
+	//ì¤‘ê³ ê±°ë˜ ê²Œì‹œï¿½? ?ï¿½ï¿½?ï¿½ï¿½
 	int auctionDelete(String id);
 }

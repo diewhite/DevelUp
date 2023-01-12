@@ -43,8 +43,22 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberDTO memberIdRead(String joinread) { //읽기
-	
-		return memberdao.memberIdRead(joinread);
+		MemberDTO memberread = memberdao.memberIdRead(joinread);
+		//스플릿 추가 
+		String phone = memberread.getMember_phone();
+		String[] split =phone.split("-");
+		memberread.setPhone1(split[0]);
+		memberread.setPhone2(split[1]);
+		memberread.setPhone3(split[2]);
+		
+		String email = memberread.getMember_email();
+		String[] ArrayStr =email.split("@");
+		memberread.setEmail1(ArrayStr[0]); 
+		memberread.setEmail2(ArrayStr[1]); 
+		memberread.setEmail99(ArrayStr[1]); 
+		//System.out.println("서비스인풀 읽기 찍는중"+memberread);
+		//스플릿끝
+		return memberread;
 	}
 
 	@Override
@@ -54,7 +68,19 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int update(MemberDTO joinupdate) {  //수정
-		System.out.println("업데이트처리 서비스인풀"+joinupdate);
+		System.out.println("서비스인풀 윗라인 업데이트 찍는중"+joinupdate);
+		String phone = joinupdate.getPhone1()+"-"+joinupdate.getPhone2()+"-"+joinupdate.getPhone3();
+		String email = "";
+		joinupdate.setMember_phone(phone);//phone을 member_phone에 셋팅
+		joinupdate.setMember_sign("가입");//회원가입 상태 - 가입/탈퇴
+		if(joinupdate.getEmail2().equals("directly")) {//equals (비교) 직접입력이면 role =>99,직접입력아니면 role=>1
+			//멤버롤셋팅
+			email = joinupdate.getEmail1()+"@"+joinupdate.getEmail99(); //directly가 이메일직접입력이면 role변수를 99로 셋팅 - setter메소드를 호출해서 셋팅하기
+		}else {
+			email = joinupdate.getEmail1()+"@"+joinupdate.getEmail2();
+		}
+		joinupdate.setMember_email(email);//email을 member_email에 셋팅
+		System.out.println("서비스인풀 업데이트 찍는중"+joinupdate);
 		return memberdao.update(joinupdate);
 	}
 		
@@ -67,7 +93,16 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDTO login(MemberDTO loginidInfo) { //로그인
 		return memberdao.login(loginidInfo);
 	}
-	
+
+	@Override
+	public MemberDTO idCheck(String member_id) { //아이디중복검사
+		return memberdao.idCheck(member_id);
+	}
+
+	@Override
+	public int unsign(String member_id) {
+		return memberdao.unsign(member_id);
+	}
 	
 	
 	

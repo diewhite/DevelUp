@@ -191,15 +191,15 @@
 							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">작성자</label>
-								<div class="tbl-basic-td">
+								<div class="tbl-basic-td" onclick="modalData(this)">
 									<div class="col-md-8" >
 									<%-- 	<input type="button" id="modal2-open" value="${dealRead.member_id}" style="border: 0em;"> --%>
 										<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
 									          ${dealRead.member_id}
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
-									            <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-									            <li><a class="dropdown-item" href="#">회원정보보기</a></li>
+									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
+									            <li><a class="dropdown-item" href="#" title="회원정보 팝업" data-bs-toggle="modal" data-bs-target="#userInfoModal" id=userinfo>회원정보보기</a></li>
 									            <li><a class="dropdown-item" href="#">거래내역보기</a></li>
 									        </ul>
 									</div>
@@ -342,12 +342,135 @@
 			</div>
 		</div>
 
+	<!-- send note modal -->
+	<div class="modal fade" id="sendNoteModal" tabindex="-1"
+		aria-labelledby="Modal" aria-hidden="true">
+		<form action="/ongo/mypage/note/sendnote" method="post">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="modal-tit">
+							<h2 class="h3">쪽지</h2>
+						</div>
+						<div class="modal-con">
+							<div class="tbl grid-layout grid1">
+								<div class="grid-item">
+									<label for="IUY_CLSS_NM">수신자</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required"></textarea></span>
+											<input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<label for="IUY_CLSS_CNTS">내용적기</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<div class="input-wrap w100">
+												<textarea class="grid-input" role="textbox"
+													id="content" name="content"
+													title="쪽지내용 입력" maxlength="500" rows="5" required="required"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="btn-area">
+							<button type="submit" class="btn btn-warning text-white btn-large"
+								data-bs-dismiss="modal" aria-label="Close" onclick="sendNote()">전송</button>
+						</div>
+						<!-- 닫기버튼 -->
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close">
+							<i class="las la-times"></i>
+						</button>
+						<!-- //닫기버튼 -->
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- //send note modal -->
 
-
+	<!-- user info modal -->
+	<div class="modal fade" id="userInfoModal" tabindex="-1"
+		aria-labelledby="Modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="modal-tit">
+						<h2 class="h3">회원정보</h2>
+					</div>
+					<div class="modal-con">
+						<div class="tbl grid-layout grid1">
+							<div class="grid-item">
+								<label for="IUY_CLSS_NM">ID</label>
+								<div class="tbl-basic-td">
+									<div class="input-wrap w100">
+										<span id="member_id"></span>
+									</div>
+								</div>
+							</div>
+							<div class="grid-item">
+								<label for="IUY_CLSS_CNTS">E-mail</label>
+								<div class="tbl-basic-td">
+									<div class="input-wrap w100">
+										<span id="member_email"></span>
+									</div>
+								</div>
+							</div>
+							<div class="grid-item">
+								<label for="IUY_CLSS_CNTS">가입날짜</label>
+								<div class="tbl-basic-td">
+									<div class="input-wrap w100">
+										<span id="member_date"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 닫기버튼 -->
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close">
+						<i class="las la-times"></i>
+					</button>
+					<!-- //닫기버튼 -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //user info modal -->
 
 
 <!-- Footer -->
 <jsp:include page="../include/footer.jsp"/>
 <!-- //Footer -->
+<script type="text/javascript">
+	//prepare data when popup menu on ID
+	function modalData(clicked_element){
+		//get and set to data for note
+		var row_a = clicked_element.getElementsByTagName("a");
+		var receive_id = (row_a[0].textContent).trim();
+		var id = {"member_id":receive_id};
+		$("#reply_receive_id").html(receive_id);
+		
+		$.ajax({
+			url : "/ongo/member/ajax_memberread",
+			type : "get",
+			data : id,
+			success : function(data){
+				//data transfer to user info in modal
+				$("#member_id").html(data.member_id);
+				$("#member_email").html(data.member_email);
+				$("#member_date").html(data.member_date);
+			},
+			error : function(obj,msg,statusMsg){
+				alert("오류발생:"+statusMsg);
+			}//end error
+		})//end ajax
+	}//end modalData
+</script>
 </body>
 </html>

@@ -14,8 +14,10 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
- 
+
+		
 			<!-- c 콜론 이게 jstl 상단에 태그 달아줄것-->
+			<span class="badge rounded-pill bg-primary" id="unreadCheck"></span>
 			<c:choose>
 			 <c:when test="${user==null}">
           	  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
@@ -26,10 +28,6 @@
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
             </c:choose>  
-          <li>
-          <!-- 정렬 맞추기 위함 -->
-          <button type="button" class="banner_close d-none"><i class="las la-angle-up"></i></button>
-        </li>
       </ul>
     </div>
   </div>
@@ -94,7 +92,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">중고거래관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+                    <li><a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중">판매관리</a></li>
                     <li><a href="#">구매관리</a></li> 
                   </ul>
                 </div>
@@ -108,7 +106,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="/ongo/member/usermypage" >마이페이지</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/member/usermypage" >정보수정</a></li>
+                    <li>
+                    <a href="/ongo/member/usermypage?user_id=${user.member_id}">정보수정</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
@@ -149,7 +148,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">쪽지함</a></span>
                   <ul class="dep2_link">
-                    <li ><a href="#">보낸쪽지함</a></li>
+                    <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}">보낸쪽지함</a></li>
                   </ul>
                 </div>
               </div>
@@ -233,10 +232,11 @@
                    	 	<li><a href="#">구매관리</a></li>   
                     </ul>
                   </div>
+                  
                   <div class="sitemap_depth2">
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">중고거래관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-	                   <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+	                   <li><a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중">판매관리</a></li>
 	                   <li><a href="#">구매관리</a></li> 
                     </ul>
                   </div>
@@ -283,7 +283,7 @@
 		                   <div class="sitemap_depth2">
 		                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
 		                    <ul class="sitemap_depth3 dot_list">
-		                      <li ><a href="#" >보낸쪽지함</a></li>
+		                      <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li>
 		                    </ul>
 		                  </div>
 		                  
@@ -303,7 +303,7 @@
 </div>
 <!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-<form action="/ongo/mypage/note/sendnote" method="post">
+<form name="valid_form" method="post" onsubmit="return validate_user_id()">
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-body">
@@ -316,7 +316,7 @@
                     <label for="IUY_CLSS_NM">수신자</label>
                     <div class="tbl-basic-td">
                         <div class="input-wrap w100">
-                            <span id="receive_id"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
+                            <span><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
                             <input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
                         </div>
                     </div>
@@ -347,7 +347,66 @@
     </form>
 </div>
 <!-- //modal -->
+<script type="text/javascript">
+	var socket = "";
+	var receive_id = "";
+	$(document).ready(function(){
+		if(${sessionScope.user!=null }){
+			receive_id = {"receive_id":"${user.member_id }"}
+			connect();
+			unreadCheck();
+		}//end if
+	})//end document.ready.function
+	
+	function connect(){
+		var ws = new WebSocket("ws://localhost:8088/ongo/myHandler");
+		socket = ws;
+		ws.onopen = function(){
+			console.log('Info : connection opened.!');
+			sendNote();
+		}
+		
+		ws.onmessage = function (event){
+			unreadCheck();
+		}//end on message
 
+		ws.onclose = function (event) {console.log('Info : connection closed.!')}
+		
+		ws.onerror = function (err) {console.log('Error :',err)}
+	}
+
+	function validate_user_id(){
+		var valid_id = $("#receive_id").val(); 
+		if(valid_id.toLowerCase()=='admin'){
+			alert("관리자는 발신 전용 입니다.");
+			return false;
+		} else {
+			document.valid_form.action="/ongo/mypage/note/sendnote";
+		}
+	}//end validate_user_id
+	
+	function sendNote(){
+		socket.send("new message");
+	}
+	
+	function unreadCheck(){
+		$.ajax({
+			url : "/ongo/mypage/note/ajax_checkNewNote",
+			type : "get",
+			data : receive_id,
+			success : function(data){
+				if(data>0){
+					$("#unreadCheck").html("Unread Message "+data);
+				} else {
+					$("#unreadCheck").html("");
+				}
+			},//end success
+			error : function(obj,msg,statusMsg){
+				alert("오류발생"+statusMsg);
+			}//end error
+		})//end ajax
+	}
+</script>
 
 </body>
 </html>

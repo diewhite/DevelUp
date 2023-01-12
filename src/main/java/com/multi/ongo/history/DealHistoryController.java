@@ -1,13 +1,18 @@
 package com.multi.ongo.history;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.multi.ongo.deal.DealBoard_DTO;
@@ -34,38 +39,43 @@ public class DealHistoryController {
 		}
 		
 	
-	// 중고거래내역 list 
-	@RequestMapping("/history/dealHistoryList")
-	public ModelAndView historylist ( ) {
-		ModelAndView mav = new ModelAndView("history/dealHistoryList");
-//		List<DealHistoryDTO> sellList = service.sell_List();
-//		System.out.println("판매거래내역=>"+sellList);
-//		mav.addObject("sellList", sellList);
-		return mav;
+	
 		
-	}
-	
-	
-	//중고내역 상세페이지
-	@RequestMapping("/history/joongodetail")
-	public ModelAndView joongodetail () {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("history/joonggo_detail");
-		return mav;
-	}
-	
-	//판매관리 
-	
-	//중고거래 판매관리 (dealboardDTO로 테스트)
-		@RequestMapping("/history/dealsellList")
-		public ModelAndView dealsellList (String member_id) {
-			System.out.println("아이디 받아왔나?"+member_id);
-			ModelAndView mav = new ModelAndView("history/dealsellList");
-//			List<DealHistoryDTO> sellList = service.sell_List2(member_id);
-			List<DealBoard_DTO> sellList = service.sell_List();
-			System.out.println("판매거래내역=>"+sellList);
-			mav.addObject("sellList", sellList);
+		//중고내역 상세페이지 
+		@RequestMapping("/history/joongodetail")
+		public ModelAndView joongodetail () {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("history/joonggo_detail");
 			return mav;
 		}
+	
+
+		//중고거래 판매내역 > 판매중 list 
+		@RequestMapping("/history/dealsellList")	
+		public ModelAndView dealsellList (String member_id, String product_state) {
+			System.out.println("데이터 넘어오는지 확인:"+member_id+product_state);
+			ModelAndView mav = new ModelAndView("history/dealsellList");
+			List<DealBoard_DTO> sellList = service.sell_List(member_id, product_state);
+			mav.addObject("sellList", sellList);
+				
+			return mav;
+			}
+		
+		
+	 
+	
+		
+		//중고거래 판매관리 > 거래요청 > 응답 타입 : arraylist 
+		@RequestMapping(value = "/history/dealReq", produces ="application/json;charset=utf-8")
+		@ResponseBody
+		public List<DealRequestDTO> dealreqinfo(int deal_number) {
+			System.out.println("ajax로 넘어온 deal_number : "+deal_number);
+			List<DealRequestDTO> reqinfo = service.dealreqinfo(deal_number);
+			System.out.println("거래요청한 유저 정보 : "+reqinfo);
+			
+			return null;
+		}
+		
+		
 	
 }

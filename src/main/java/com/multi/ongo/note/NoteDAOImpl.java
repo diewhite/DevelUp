@@ -101,4 +101,9 @@ public class NoteDAOImpl implements NoteDAO {
 		return sqlsession.selectOne("com.multi.ongo.note.searchsendcnt", map);
 	}
 
+	@Override
+	public NoteDTO checkNewNote(String receive_id) {
+		return sqlsession.selectOne("com.multi.ongo.note.checknewnote", receive_id);
+	}
+
 }
