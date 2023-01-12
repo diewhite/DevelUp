@@ -28,10 +28,6 @@
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
             </c:choose>  
-          <li>
-          <!-- 정렬 맞추기 위함 -->
-          <button type="button" class="banner_close d-none"><i class="las la-angle-up"></i></button>
-        </li>
       </ul>
     </div>
   </div>
