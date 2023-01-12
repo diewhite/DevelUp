@@ -58,5 +58,13 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberDTO login = sqlSession.selectOne("com.multi.ongo.member.login",loginidInfo);
 		return login;
 	}
+	@Override
+	public MemberDTO idCheck(String member_id) { //아이디중복검사
+		return sqlSession.selectOne("com.multi.ongo.member.idcheck",member_id);
+	}
+	@Override
+	public int unsign(String member_id) {
+		return sqlSession.update("com.multi.ongo.member.unsign", member_id);
+	}
 	
 }
