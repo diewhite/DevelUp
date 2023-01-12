@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.multi.ongo.deal">
+	
+	<!-- 탭메뉴 별로 테이블 조회 (판매중/판매종료/거래진행중) -->
+	<select id="dealselectAll" parameterType="Map" resultType="dealDTO">
+		select * from deal_table2 
+		where member_id=#{member_id}	<!-- 내가 쓴 글만 조회하기 위한 조건 (어디서 어떻게 받아야하지?) -->
+		and product_state=#{product_state}	<!-- 탭메뉴 클릭 시 컨트롤러로 넘어오는 거래상태 -->
+	</select>
+	
+	<!-- 조회한 페이지 전체 갯수 -->
+	<select id="pageTotal" resultType="int" parameterType="String">
+		select count(deal_number) as count from deal_table2
+		where member_id = #{member_id}
+		<!-- and product_state = #{product_state}  -->
+	</select>
+	
+	
+	
+	
+
+	
+
+	
+	
+  </mapper>
