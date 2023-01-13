@@ -9,6 +9,9 @@ white-space:nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 }
+.new{display: flex;justify-content: center;}
+.new span{ background-color: #ffc107;   border-radius: 50%; height: 30px; width: 30px;  align-items: center;justify-content: center; display: flex;
+font-weight:800;    font-size:0.3rem !important; color:#fff}
 </style>
 </head>
 <body>
@@ -57,21 +60,19 @@ overflow: hidden;
 				<table class="table">
 					<caption>받은쪽지 목록</caption>
 					<colgroup>
-						<col width="5%">
 						<col width="10%">
 						<col width="15%">
 						<col width="*%">
+						<col width="20%">
 						<col width="10%">
-						<col width="5%">
 					</colgroup>
 					<thead>
 						<tr>
-							<th><input type="checkbox" name=" " class="form-check-input"
-								onclick="fnChk()"></th>
 							<th scope="col">번호</th>
 							<th scope="col">보낸사람</th>
 							<th scope="col">내용</th>
 							<th scope="col">보낸시간</th>
+							<th scope="col">삭제</th>
 						</tr>
 					</thead>
 					<tbody id="ksicList">
@@ -115,23 +116,20 @@ overflow: hidden;
  							-->
  						<c:forEach var="note" items="${notelist }">
 						<tr onclick="modalData(this)" class="notice">
-						<td data-before="체크박스">
-							<div class="form-check">
-								<label class="form-check-label"> <input type="checkbox"
-									name="remember" id="remember" class="form-check-input"
-									onclick="fnChk()">
-								</label>
-							</div>
-						</td>
- 							<td id="no">${note.no }</td>
- 							<td id="send_id">${note.send_id }</td>
- 							<td id="content" class="notetitle">
+							<td data-before="쪽지번호" id="no">
+								<div>${note.no }</div>
+								<div class="new" style=""><span class="" style="">New</span></div>
+							</td>
+ 							<td data-before="보낸사람" id="send_id">${note.send_id }</td>
+ 							<td data-before="쪽지내용" id="content" class="notetitle">
 								<a href="#" title="쪽지읽기 팝업" data-bs-toggle="modal"
 								 data-bs-target="#readModal">
 								${note.content }</a>
 							</td>
-							<td id="send_time">${note.send_time }</td>
-							<td id="deletenote"><a href="/ongo/mypage/note/deleteNote?no=${note.no }&page=receive">삭제</a></td>
+							<td data-before="시간" id="send_time">${note.send_time }</td>
+							<td data-before="삭제" id="deletenote">
+							<a class="board_label red text-white" href="/ongo/mypage/note/deleteNote?no=${note.no }&page=receive" style="width:0%;">삭제</a>
+							</td>
 							<td hidden="true">${note.read_chk }</td>							
 						</tr>
  						</c:forEach>
@@ -287,10 +285,8 @@ overflow: hidden;
 						</div>
 					</div>
 					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">
-							<a href="#" title="답장하기 팝업" data-bs-toggle="modal" data-bs-target="#replyModal">답장하기</a></button>
-					</div>
+						<a href="#" class="btn btn-warning text-white btn-large" title="답장하기 팝업" 
+						data-bs-toggle="modal" data-bs-target="#replyModal">답장하기</a>
 					<!-- 닫기버튼 -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close">
@@ -300,6 +296,7 @@ overflow: hidden;
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- //modal -->
 	<!-- Footer -->
