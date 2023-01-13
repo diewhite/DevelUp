@@ -167,7 +167,7 @@ public class MemberController {
 		return "redirect:/member/logout.do";
 	}
 	
-//=========================================================관리자 > 회원목록
+//========================================================= 관리자 > 회원목록
 
 	// 관리자> 회원목록> 전체리스트
 	@RequestMapping(value = "/member/memberboard")
@@ -219,7 +219,7 @@ public class MemberController {
 		return "member/memberboard";
 	}
 
-//=========================================================관리자 > 게시물관리
+//========================================================= 관리자 > 게시물관리
 
 	// 게시판관리
 	@RequestMapping(value = "member/memberserviceboard")
@@ -243,25 +243,11 @@ public class MemberController {
 	}
 
 	
-	//=============나의온고> user 정보수정 // 세션에서 가져오면된다.. 
-//get =:>  디비에 데이터 가져올 때
-// post => 디비에 데이터 집어넣을 때 (생성)
-// put => 디비에 데이터를 덮어씌워 버릴때 (update)
-// patch => 디비에 데이터 일부를 덮었씌울 때 (update)
-// delete => 삭제
-//	RESTful API -> 우리 이렇게 개발하자 방법론.
-
-//=============거래게시판> 회원정보보기
-		@RequestMapping(value = "/member/ajax_memberread")
-		@ResponseBody
-		public MemberDTO ajax_memberR(String member_id) {
-			MemberDTO userinfo = service.memberIdRead(member_id);
-			return userinfo;
-		}
+//========================================================= 나의온고> 마이페이지 정보수정
 		
 	// 나의온고> user 정보수정 뷰
 	@RequestMapping(value = "/member/usermypage",method = RequestMethod.GET)
-//  top에 있는 <a href="/ongo/member/usermypage?member_id=${user.member_id}">정보수정</a></li> => ?member_id=$ 파라미터명과 같아야 한다
+	//top에 있는 <a href="/ongo/member/usermypage?member_id=${user.member_id}">정보수정</a></li> => ?member_id=$ 파라미터명과 같아야 한다
 	public String userU(String user_id,Model usermodel) { 
 		MemberDTO userRead = service.memberIdRead(user_id);
 		usermodel.addAttribute("userMode", userRead); // memberRU 이게 어트리뷰트
@@ -274,7 +260,19 @@ public class MemberController {
 	public String userU(MemberDTO uUpdate) { // userU => 메소드명 , MemberDTO => 매개변수타입 
 		System.out.println("]여기는 컨트롤러 업데이트수정:" + uUpdate);
 		int result = service.update(uUpdate); //int result  >> 추후에 회원정보에 프로필사진이 추가되었을 경우, 트랜잭션처리를위해서 이렇게 남겨놓음.
-		
 		return "redirect:/index"; // member_id 멤버매게변수명
 	}
+
+//========================================================= 거래 > 게시판읽기 > 회원정보보기	
+	
+	// dealboard > 상세페이지 > 회원아이디 클릭 > 회원정보보기
+	@RequestMapping(value = "/member/ajax_memberread")
+	@ResponseBody
+	public MemberDTO ajax_memberR(String member_id) {
+		MemberDTO userinfo = service.memberIdRead(member_id);
+		return userinfo;
+	}
+
+	
+	
 }

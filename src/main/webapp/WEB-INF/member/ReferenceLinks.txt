@@ -4,16 +4,42 @@
 
 == 부트스트랩 v5.1 # https://getbootstrap.com/docs/5.1/getting-started/introduction/
 == 카카오 주소 API # https://devofroad.tistory.com/42
-== 규민님 페이징 처리  #    https://po9357.github.io/spring/2019-05-28-Board_Paging/
+== 규민님 페이징 처리  # https://po9357.github.io/spring/2019-05-28-Board_Paging/
 == 아이디 중복체크 #  https://sincerity.tistory.com/342
+== 아이디 쿠키 저장 # https://chobopark.tistory.com/203 
 == W3C html,css,부트스트랩,자바스크립트 참조 # https://www.w3schools.com/bootstrap5/bootstrap_modal.php
 
 
 ++++++++++++++++++++
+ get set 개념
++++++++++++++
+//get =:>  디비에 데이터 가져올 때
+// post => 디비에 데이터 집어넣을 때 (생성)
+// put => 디비에 데이터를 덮어씌워 버릴때 (update)
+// patch => 디비에 데이터 일부를 덮었씌울 때 (update)
+// delete => 삭제
+//	RESTful API -> 우리 이렇게 개발하자 방법론.
+
+C : 크리에이트- 만든다는 의미 (insert문)
+L : 리스트-전체목록뿌리기 (조건없는 select문)
+R : 리드-읽기 (select문) primary 키로 조건을 주는 경우
+U : 업데이트-수정(update문)
+D : 삭제 (delete문)
+
+++++++++++++++++++++
  Ajax - XMLHttpRequest라는 객체를 이용해서 하는 비동기 통신
 +++++++++++++
-
-	$.ajax({}) 를 이용하여 ajax 통신
-	
-
-[매개변수]
+Ajax(Asynchronous Javascript and XML)
+  - XMLHttpRequest라는 객체를 이용해서 비동기통신
+  
+  
+1. $.ajax()를 이용해서 ajax통신
+  - jQuery의 메소드를 정의할 때 매개변수를 설정하는 방법은 json표기법으로 정의
+  
+  [매개변수]
+  url : ajax로 요청할 path
+  type : 요청방식 - get or post
+  data : 서버로 전송할 데이터 - 서버로 보내서 처리할 데이터가 여러개이면 json의 형식으로 처리
+  dataType : ajax처리 결과에 대한 타입 -text,json
+  success : 서버와 통신이 성공했을때 호출되는 함수
+  error : 서버와의 통신이 실패했을때 호출되는 함수
