@@ -6,7 +6,7 @@
 	
 	
 	<!-- 판매내역조회 : 구매요청 id 표현하기 -->
-	<select id="deal_req" resultType="dealReqDTO" parameterType="Int">
+	<select id="deal_req" resultType="dealReqDTO" parameterType="Map">
 		select h.deal_number, h.req_id, h.req_time		<!-- DB에서 가져와서  뿌릴 데이터  -->
 		from deal_table2 d,dealhistory h		
 		where d.deal_number=h.deal_number	

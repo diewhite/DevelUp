@@ -25,7 +25,7 @@ public class DealBoard_Controller {
 		
 	}
 	
-	//중고거래 등록페이지 config-view처리
+	//중고거래 등록페이지 config-view처리 
 	
 	
 	// 중고거래 게시글등록

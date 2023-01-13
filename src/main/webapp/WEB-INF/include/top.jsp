@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head></head>
+<head>
+<style type="text/css">
+
+/*쪽지 top*/
+.notenew{position: absolute; transform: scale(.7);transform-origin: top right; right: 11px; margin-top: -0.20rem; color: #fff; 
+		background-color: #dc3545; display: inline-block; padding: 0.25em 0.4em;font-size:85%; font-weight: 700; line-height: 1; border-radius: 0.35rem; }
+</style>
+</head>
 <body>
 
 <!-- header -->
@@ -14,7 +21,7 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
- 
+		<!-- 규민님 쪽지소켓 <span class="badge rounded-pill bg-primary" id="unreadCheck"></span> -->
 			<!-- c 콜론 이게 jstl 상단에 태그 달아줄것-->
 			<c:choose>
 			 <c:when test="${user==null}">
@@ -22,14 +29,11 @@
           	  <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
           	 </c:when>
           	 <c:otherwise>
+          	 <li><i class="las la-envelope" ></i><span class="notenew">4</span></li>
           	  <li><i class="las la-user"></i><b>${user.member_name}</b>&nbsp;님</li>
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
             </c:choose>  
-          <li>
-          <!-- 정렬 맞추기 위함 -->
-          <button type="button" class="banner_close d-none"><i class="las la-angle-up"></i></button>
-        </li>
       </ul>
     </div>
   </div>
@@ -94,7 +98,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">중고거래관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+                    <li><a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중">판매관리</a></li>
                     <li><a href="#">구매관리</a></li> 
                   </ul>
                 </div>
@@ -234,10 +238,11 @@
                    	 	<li><a href="#">구매관리</a></li>   
                     </ul>
                   </div>
+                  
                   <div class="sitemap_depth2">
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">중고거래관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-	                   <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+	                   <li><a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중">판매관리</a></li>
 	                   <li><a href="#">구매관리</a></li> 
                     </ul>
                   </div>
@@ -304,7 +309,7 @@
 </div>
 <!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-<form action="/ongo/mypage/note/sendnote" method="post">
+<form name="valid_form" method="post" onsubmit="return validate_user_id()">
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-body">
@@ -348,7 +353,66 @@
     </form>
 </div>
 <!-- //modal -->
+<script type="text/javascript">
+	var socket = "";
+	var receive_id = "";
+	$(document).ready(function(){
+		if(${sessionScope.user!=null }){
+			receive_id = {"receive_id":"${user.member_id }"}
+			connect();
+			unreadCheck();
+		}//end if
+	})//end document.ready.function
+	
+	function connect(){
+		var ws = new WebSocket("ws://localhost:8088/ongo/myHandler");
+		socket = ws;
+		ws.onopen = function(){
+			console.log('Info : connection opened.!');
+			sendNote();
+		}
+		
+		ws.onmessage = function (event){
+			unreadCheck();
+		}//end on message
 
+		ws.onclose = function (event) {console.log('Info : connection closed.!')}
+		
+		ws.onerror = function (err) {console.log('Error :',err)}
+	}
+
+	function validate_user_id(){
+		var valid_id = $("#receive_id").val(); 
+		if(valid_id.toLowerCase()=='admin'){
+			alert("관리자는 발신 전용 입니다.");
+			return false;
+		} else {
+			document.valid_form.action="/ongo/mypage/note/sendnote";
+		}
+	}//end validate_user_id
+	
+	function sendNote(){
+		socket.send("new message");
+	}
+	
+	function unreadCheck(){
+		$.ajax({
+			url : "/ongo/mypage/note/ajax_checkNewNote",
+			type : "get",
+			data : receive_id,
+			success : function(data){
+				if(data>0){
+					$("#unreadCheck").html("Message "+data+"건");
+				} else {
+					$("#unreadCheck").html("");
+				}
+			},//end success
+			error : function(obj,msg,statusMsg){
+				alert("오류발생"+statusMsg);
+			}//end error
+		})//end ajax
+	}
+</script>
 
 </body>
 </html>

@@ -1,7 +1,22 @@
 package com.multi.ongo.auction;
 
+import java.util.List;
+
 
 
 public interface AuctionBoard_DAO {
+	//게시글 등록
+	public int AuctionProd(AuctionBoard_DTO dto);
 	
+	
+	
+	// 전체조회
+	public List<AuctionBoard_DTO> boardlist();
+	
+	// 게시글읽기
+	public auctionBoard_DTO auctionlist(int auction_number);
+
+	
+	//게시글수정
+	int update(AuctionBoard_DTO dto);
 }

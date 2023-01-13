@@ -22,7 +22,7 @@
 
         <!-- 게시판 -->
        <div class="container">
-    <form id="saveForm" name="saveForm">
+    <form action="/ongo/auctionWrite.do?auction_number=${auctionWrite.auction_number}" method="post">
       <input type="hidden" value="">
       <input type="hidden">
       <div class="cont-box-inner">
@@ -62,7 +62,7 @@
           <div class="grid-item colspan2">
             <label for="select_target_1">상태</label>
             <div class="tbl-basic-td">
-              <div class="input-wrap w20">
+              <div class="input-wrap w20" name="auction_state">
                 <select class="form-select grid-input"title="상태">
                  <option value="01">경매진행중</option>
                  <option value="02">경매완료</option>
@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="grid-item colspan2">
-            <label for="HOFS_DTADR" id="auction_title" >제목</label>
+            <label for="HOFS_DTADR" id="auction_title" name="auction_title">제목</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
                 <input class="grid-input" type="text"  maxlength="50" title="타이틀">
@@ -83,9 +83,9 @@
             <div class="tbl-basic-td">
               <div class="input-wrap w30 me-4">
               <div> 시작가   </div>
-              <input id="start_price" class="bid-start" type="text"  maxlength="50" title="시작가"> 
+              <input id="start_price" name="start_price" class="bid-start" type="text"  maxlength="50" title="시작가"> 
                <div> 최소가   </div>
-                <input id="min_price" class="bid-min" type="text"  maxlength="50" title="최소가"> 
+                <input id="min_price" name="min_price" class="bid-min" type="text"  maxlength="50" title="최소가"> 
             
               </div>
        
@@ -97,7 +97,7 @@
             <label for="HOFS_INTR_MTRL_CNTS">내용</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
-                <textarea id="board_content" class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
+                <textarea id="board_content" name="board_content" class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
               </div>
             </div>
           </div>
@@ -106,18 +106,22 @@
             <label for="HOFS_DTADR">첨부파일</label>
             <div id="list_photo" class="tbl-basic-td">
               <div class="input-wrap w100">
-                  <input type="file" class="form-control" id="list_photo" value="${AuctionRead.list_photo}"/>
+                  <input type="file" class="form-control" id="list_photo" name="list_photo" value="${AuctionRead.list_photo}"/>
               </div>
             </div>
           </div>
-        
+     
         </div>
       </div>
-    </form>
-  </div><div class="btn-area">
+   
+  			<div class="btn-area">
        <button class="btn btn-primary btn-large" type="submit" onclick="location.href='/ongo/auction/auction'">글쓰기</button>
       </div>
-    </div>
+        </form>
+        </div>
+        </div>
+ 
+   
 <!-- // content -->
 
  <!-- modal -->
@@ -163,7 +167,6 @@
     </div>
 </div>
 <!-- //modal -->
-<
 
 </body>
 </html>
