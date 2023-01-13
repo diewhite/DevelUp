@@ -9,7 +9,8 @@ white-space:nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 }
-.new{display: flex;justify-content: center;}
+.new{position: absolute;justify-content: center;transform: scale(.7);color: #fff;background-color: #dc3545;
+	display: inline-block; padding: 0.25em 0.4em;font-size:85%; font-weight: 700; line-height: 1; border-radius: 0.35rem; }
 .new span{ background-color: #ffc107;   border-radius: 50%; height: 30px; width: 30px;  align-items: center;justify-content: center; display: flex;
 font-weight:800;    font-size:0.3rem !important; color:#fff}
 </style>
@@ -117,8 +118,14 @@ font-weight:800;    font-size:0.3rem !important; color:#fff}
  						<c:forEach var="note" items="${notelist }">
 						<tr onclick="modalData(this)" class="notice">
 							<td data-before="쪽지번호" id="no">
-								<div>${note.no }</div>
-								<div class="new" style=""><span class="" style="">New</span></div>
+								<c:choose>
+									<c:when test="${note.read_chk==0 }">
+										<div>${note.no }<span id="newtag" class="new" style="">New</span></div>
+									</c:when>
+									<c:otherwise>
+										<div>${note.no }<span id="newtag" class="new" style="" hidden="hidden">New</span></div>
+									</c:otherwise>
+								</c:choose>
 							</td>
  							<td data-before="보낸사람" id="send_id">${note.send_id }</td>
  							<td data-before="쪽지내용" id="content" class="notetitle">
@@ -316,11 +323,12 @@ font-weight:800;    font-size:0.3rem !important; color:#fff}
 		function modalData(clicked_element){
 			var row_td = clicked_element.getElementsByTagName("td");
 			var row_a = clicked_element.getElementsByTagName("a");
-			document.getElementById("readModal_send_id").innerHTML = row_td[2].innerHTML;
+			var row_div = clicked_element.getElementsByTagName("div");
+			document.getElementById("readModal_send_id").innerHTML = row_td[1].innerHTML;
 			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML.trim();
-			document.getElementById("readModal_readchk").innerHTML = row_td[6].innerHTML;
-			document.getElementById("readModal_no").innerHTML = row_td[1].innerHTML;
-			document.getElementById("reply_receive_id").innerHTML = row_td[2].innerHTML;
+			document.getElementById("readModal_readchk").innerHTML = row_td[5].innerHTML;
+			document.getElementById("readModal_no").innerHTML = row_div[0].innerHTML.replace("New", "");
+			document.getElementById("reply_receive_id").innerHTML = row_td[1].innerHTML;
 			var no = {"no":document.getElementById("readModal_no").textContent}
 			if(document.getElementById("readModal_readchk").textContent==0){
 				$.ajax({
@@ -354,6 +362,12 @@ font-weight:800;    font-size:0.3rem !important; color:#fff}
 				document.valid_reply_form.action="/ongo/mypage/note/sendnote";
 			}
 		}//end validate_reply_user_id
+		
+ 		$("#readModal").on('hidden.bs.modal', function (e) {
+ 			if($("#replyModal.show").length==0){
+ 				location.href='/ongo/mypage/note/receivebox?id=${user.member_id}';
+ 			}
+		});
 	</script>
 </body>
 </html>

@@ -29,7 +29,7 @@
           	  <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
           	 </c:when>
           	 <c:otherwise>
-          	 <li><i class="las la-envelope" ></i><span class="notenew">4</span></li>
+          	  <li><i class="las la-envelope"></i><span id="unreadCheck" class="notenew" hidden="hidden"></span></li>
           	  <li><i class="las la-user"></i><b>${user.member_name}</b>&nbsp;님</li>
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
@@ -402,8 +402,10 @@
 			data : receive_id,
 			success : function(data){
 				if(data>0){
-					$("#unreadCheck").html("Message "+data+"건");
+					$("#unreadCheck").removeAttr("hidden");
+					$("#unreadCheck").html(data);
 				} else {
+					$("#unreadCheck").attr("hidden", "hidden");
 					$("#unreadCheck").html("");
 				}
 			},//end success
