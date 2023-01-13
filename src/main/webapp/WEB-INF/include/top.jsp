@@ -56,7 +56,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >중고거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -144,13 +144,13 @@
                     <li><a href="/ongo/member/memberboard.do">회원목록</a></li>
                   </ul>
                 </div>
-                
+                <!-- 
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">게시판관리</a></span>
                   <ul class="dep2_link">
                     <li ><a href="/ongo/member/memberserviceboard.do">게시물통합관리</a></li>
                   </ul>
-                </div>
+                </div> -->
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">쪽지함</a></span>
                   <ul class="dep2_link">
@@ -200,7 +200,7 @@
                 </div>
               </div>
               <div class="sitemap_li d-flex">
-                <h2>거래</h2>
+                <h2>중고거래</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
                     <a href="/ongo/deal_listAll.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
@@ -280,12 +280,13 @@
 		                      <li ><a href="#" >회원목록</a></li>
 		                    </ul>
 		                  </div>
+		                  <!-- 
 		                  <div class="sitemap_depth2">
 		                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">게시판관리</span></a>
 		                    <ul class="sitemap_depth3 dot_list">
 		                      <li ><a href="/ongo/member/memberserviceboard.do" >게시물통합관리</a></li>
 		                    </ul>
-		                  </div>
+		                  </div> -->
 		                   <div class="sitemap_depth2">
 		                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
 		                    <ul class="sitemap_depth3 dot_list">
