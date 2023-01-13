@@ -70,39 +70,6 @@
 	
         <!-- 게시판 -->
     <div class="container">
-	<%-- 	<table class="table">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>구분</th>
-					<th>카테고리</th>
-					<th>상태</th>
-					<th>제목</th>
-					<th>가격</th>
-					<th>조회수</th>
-					<th>작성자</th>
-					<th>작성일</th>
-					
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var = "board" items="${listall}">
-						
-						<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" class="dataRow">
-							<td>${board.deal_number }</td>
-							<td>${board.dealType}</td>
-							<td>${board.product_category }</td>
-							<td>${board.product_state }</td>
-							<td>${board.board_title }</td>		
-							<td><fmt:formatNumber value="${board.product_price}" pattern="#,###원"/></td>							
-							<td>${board.hits }</td>							
-							<td>${board.member_id }</td>		
-							<td>${board.write_date }</td>
-						</tr>
-					</c:forEach>
-			</tbody>
-		</table>
-		 --%>
 		<table class="table table-borderless">
 	                           <colgroup>
 	                               

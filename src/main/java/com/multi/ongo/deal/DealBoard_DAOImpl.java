@@ -74,10 +74,19 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 
 
 
-	@Override
+	@Override //카테고리구분
 	public List<DealBoard_DTO> dealType_main(String dealType) {
 		return sqlSession.selectList("com.multi.ongo.deal.main_dealcategory", dealType);
 	}
+
+
+
+	@Override   // 조회
+	public int hits_update(int deal_number) {
+		return sqlSession.update("com.multi.ongo.deal.hits_update", deal_number);
+	}
+	
+	
 	
 	
 	

@@ -4,6 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.deal">
 	
+	<!-- 조회수 -->
+	<update id="hits_update" parameterType="int">
+		update deal_table2
+		set hits = hits+1
+		where deal_number = #{deal_number}
+	</update> 
+	
 	
 	<!--중고거래_등록  -->
 	<insert id="deal_write" parameterType="dealDTO">
