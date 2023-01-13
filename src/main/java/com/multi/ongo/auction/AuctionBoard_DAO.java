@@ -8,13 +8,14 @@ public interface AuctionBoard_DAO {
 	//게시글 등록
 	public int AuctionProd(AuctionBoard_DTO dto);
 	
-	
+	//게시글읽기
+	public AuctionBoard_DTO auctionRead(int auction_no);
 	
 	// 전체조회
 	public List<AuctionBoard_DTO> boardlist();
 	
 	// 게시글읽기
-	public auctionBoard_DTO auctionlist(int auction_number);
+	public AuctionBoard_DTO auctionlist(int auction_number);
 
 	
 	//게시글수정

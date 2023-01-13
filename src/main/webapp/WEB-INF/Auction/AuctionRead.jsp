@@ -81,9 +81,7 @@
 	                  <label >등록자</label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
-	                      akd123 
-	                      <p>(닉네임)</p>
-	                    
+	                      ${board.member_id }	                    
 	                    </div>
 	                  </div>
 	                </div>
@@ -94,8 +92,7 @@
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
 	                      <select class="form-select grid-input"title="카테고리">
-	                       <option value="01">자동차</option>
-	                       <option value="02">핸드폰</option>
+	                       <option value="${board.auction_category }">${board.auction_category }</option>
 	                      </select>
 	                    </div>
 	                  </div>
@@ -104,8 +101,7 @@
 	                  <label >상태</label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
-	                      경매진행중
-	                    
+	                    	${board.auction_state }
 	                    </div>
 	                  </div>
 	                </div>
@@ -114,7 +110,6 @@
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
 	                      남은시간 21시간35분
-	                    
 	                    </div>
 	                  </div>
 	                </div>
@@ -123,14 +118,14 @@
 	                  <label for="HOFS_DTADR">경매</label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w30 me-4">
-	                    <div> 시작가: 5000원  </div>
+	                    <div> 시작가: <span>${board.start_price }</span>원  </div>
 	                    <p class="gray">입찰내역: 7000원 </p> 
 	                    <p class="gray">입찰내역: 11000원 </p> 
 	                    <p class="gray">입찰내역: 13000원 </p> 
 	                   
 	                    
 	                     <p class="blue">현재입찰가: 16000원 </p> 
-	                     <p>최소가: 1000원 </p> 
+	                     <p>최소가: ${board.min_price }원 </p> 
 	                   
 	                   
 	                  
@@ -142,7 +137,7 @@
 	                <div class="grid-item colspan2">
 	                  <label for="HOFS_INTR_MTRL_CNTS">내용</label>
 	                  <div class="tbl-basic-td">
-	                    		너무너무 별로에요
+	                    		${board.board_content }
 	                    </div>
 	               
 	                </div>
