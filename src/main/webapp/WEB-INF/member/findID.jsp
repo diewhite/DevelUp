@@ -16,6 +16,7 @@
 				success : function(data){
 					if(data!=""){
 						$("#usrId").html(data);
+						$("#div1").css("display","none");
 						$("#div2").css("display","block");
 					} else {
 						$("#usrId").html("");
@@ -41,8 +42,8 @@
     </div>
     <!-- //title -->
 
-	<div class="login_container container" id="div1">
-        <div class="tab-content">
+	<div class="login_container container" >
+        <div class="tab-content" id="div1">
             <div class="tab-pane fade show active" id="normal" role="tabpanel" aria-labelledby="normal-tab">    
                 <h2 class="visually-hidden">일반회원</h2>       
                 <div class="login_wrap">
