@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head> 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	//구분 저장공유
 	$(document).ready(function(){ 
@@ -15,6 +15,24 @@
 		data = "${dealRead.product_category}" 
 		$("#product_category").val(data).attr("selected", "selected"); 
 	});
+	//거래요청버튼 클릭 시 
+	$(document).ready(function(){ 
+	$("#dealreq-btn").on("click", function() {
+		var seller_id="${dealRead.member_id}"
+		var req_id="${user.member_id}"
+		var deal_number="${dealRead.deal_number}"
+		alert("거래요청이 완료되었습니다. 구매관리 페이지로 이동합니다. ");
+		
+		 location.href="/ongo/history/dealreq?seller_id="+seller_id+"&req_id="+req_id+"&deal_number="+deal_number;
+				 
+		 })
+	});
+	
+	
+	
+	
+	
+	
 </script>
 <!-- 
 <style>
@@ -326,7 +344,9 @@
 					</div> -->
 			<div class="btn-area">
 				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='#'">거래요청</button>
+				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" onclick="location.href='/ongo/history/dealreq?
+				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'"   >거래요청</button>
+																					
 			</div>
 			
 		<c:choose>
