@@ -44,7 +44,6 @@
 
       $("#USR_ID").val(userInputId);
 
-
       var err = '';
       if (err) { //로그인 실패 메세지 발생
         if (err === 'user_not_found') {
@@ -85,19 +84,9 @@
       }
     }
 
-    function removeCheck1(){
-    	var remove;
-    	remove =  toastr.warning("아이디 찾기 서비스를 제공하고 있지 않습니다.");
-    }
-    function removeCheck2(){
-    	var remove;
-    	remove =  toastr.warning("비밀번호 찾기 서비스를 제공하고 있지 않습니다.");
-    }
 </script>         
 </head>
 <body>
-<!-- js쿠키아이디 저장 블로그참조 https://chobopark.tistory.com/203 -->
-
 <!-- content -->
 <div id="contents">
   <!-- title -->
