@@ -215,7 +215,7 @@ input:invalid {
         </div>
       </div>
       <div class="btn-area">
-			<button class="btn btn-outline-primary btn-large" type="submit" id="submitbtn" disabled="disabled">가입하기</button>
+			<button class="btn btn-outline-primary btn-large" type="submit" id="submitbtn" >가입하기</button>
 		</div>
     </form>
 		</div>

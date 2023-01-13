@@ -9,9 +9,44 @@ import org.springframework.stereotype.Repository;
 
 import com.multi.ongo.deal.DealBoard_DTO;
 @Repository
-public abstract class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
+public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
 // <mapper namespace="com.multi.ongo.deal">
 	SqlSession sqlSession;
+	
+	@Autowired
+	public AuctionBoard_DAOImpl(SqlSession sqlSession) {
+	super();
+	this.sqlSession = sqlSession;
+}
+
+	@Override
+	public int AuctionProd(AuctionBoard_DTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public AuctionBoard_DTO auctionRead(int auction_no) {
+		return sqlSession.selectOne("com.multi.ongo.auction.read", auction_no);
+	}
+
+	@Override
+	public List<AuctionBoard_DTO> boardlist() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AuctionBoard_DTO auctionlist(int auction_number) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int update(AuctionBoard_DTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 	

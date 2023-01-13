@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class AuctionBoard_DTO {
 	private int auction_number;
-	private String   member_id;
+	private String member_id;
 	private String auction_category;
 	private String auction_state ;
 	private String auction_title;
@@ -20,10 +20,29 @@ public class AuctionBoard_DTO {
 	//기본생성자
 	public AuctionBoard_DTO() {
 	}
+	
+	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
+			String auction_title, int hits, Date write_date, String board_content, String list_photo, int min_price,
+			int start_price, int end_price, int end_date) {
+		super();
+		this.auction_number = auction_number;
+		this.member_id = member_id;
+		this.auction_category = auction_category;
+		this.auction_state = auction_state;
+		this.auction_title = auction_title;
+		this.hits = hits;
+		this.write_date = write_date;
+		this.board_content = board_content;
+		this.list_photo = list_photo;
+		this.min_price = min_price;
+		this.start_price = start_price;
+		this.end_price = end_price;
+		this.end_date = end_date;
+	}
 
-	
-	
-	
+
+
+
 	@Override
 	public String toString() {
 		return "AuctionBoard_DTO [auction_number=" + auction_number + ", member_id=" + member_id + ", auction_category="
