@@ -4,24 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.member"> <!-- mapper는 namespace="내가 사용한 패키지명"-->
 	<!--  Mybatis 연동을 통하여 Oracle 데이터를 스프링 프로젝트를 사용하기 위함.
-	
-C : 크리에이트- 만든다는 의미 (insert문)
-L : 리스트-전체목록뿌리기 (조건없는 select문)
-R : 리드-읽기 (select문) primary 키로 조건을 주는 경우
-U : 업데이트-수정(update문)
-D : 삭제 (delete문)
-
  parameterType="자바에서 String또는int 값이 들어올거라는것을 인지시켜 주는 역할"
 resultType="select 된 데이터를 반환할 (그릇)정의"
 => mybatis-config.xml에서 보았듯이 MemberDTO 객체에 담기고 그걸 alias 에 담아서 가져온 후 resultType에 넣어준다
   => <typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/> alias="패키지 이름지정"
     
-           관리자계정 = 인설트가 아니라 업데이트로 처리
-           회원삭제시 = 1 = 삭제 0= 살아있다
-           
-                      <select id="nameSearch" resultType="memberP" parameterType="String" >
-		select * from member2 where member_name like  '%' || #{member_name} || '%'
-		</select>
+  관리자계정 = 인설트가 아니라 업데이트로 처리
+  회원삭제시 = 1 = 삭제 0= 살아있다
         
 -->		
         
@@ -29,6 +18,7 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         <select id="login" resultType="memberP" parameterType="memberP">
         	select * from member2 
         	where member_id = #{member_id} and member_pw = #{member_pw}
+        		and member_sign = '가입'
         </select>
         
         <!-- 아이디중복체크 -->
@@ -48,6 +38,21 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         <!-- 회원 탈퇴 -->
         <update id="unsign">
         	update member2 set member_sign = '탈퇴' where member_id = #{member_id}
+        </update>
+        
+        <!-- 회원 아이디 찾기 -->
+        <select id="findid" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_phone = #{member_phone} and member_email = #{member_email}
+        </select>
+        
+        <!-- 회원 비밀번호 찾기 -->
+        <select id="findpass" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_id = #{member_id} and member_email = #{member_email}
+        </select>
+        
+        <!-- 회원 비밀번호 수정 -->
+        <update id="passmodi">
+        	update member2 set member_pw = #{member_pw} where member_id = #{member_id}
         </update>
         
         <!-- 관리자 >회원목록리스트 -->

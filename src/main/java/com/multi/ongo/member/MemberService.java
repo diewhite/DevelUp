@@ -22,6 +22,14 @@ public interface MemberService {
     //회원 업데이트
     int update(MemberDTO joinupdate);
 
+    //아이디 찾기
+    MemberDTO findId(MemberDTO userInfo);
+    
+    //비밀번호 찾기
+    MemberDTO findPass(MemberDTO userInfo);
+    
+    //비밀번호 변경
+    int passModi(MemberDTO userInfo);
 
     //게시글 이름으로 검색하기 
   	List<MemberDTO> msearch(String membersearch);

@@ -337,6 +337,7 @@
 
 						</div>
 					</div>
+				
 					
 					<!-- <div class="btn-area">
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
@@ -348,17 +349,20 @@
 																					
 			</div>
 			
-					
-					
+		<c:choose>
+		<c:when test="${user.member_id==dealRead.member_id}">
 			<div class="btn-area">
-				
-				
 				<button type="submit" class="btn btn-success btn-large">수정</button>
-				
-				<%-- <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealRead.do?deal_number=${dealRead.deal_number}&state=UPDATE'">글수정</button> --%>
 			</div>
+			</form>
+		</c:when>	
+			<c:otherwise>
+			</c:otherwise>				
 				
-				</form>
+		</c:choose>	
+		
+		
+						
 			</div>
 		</div>
 

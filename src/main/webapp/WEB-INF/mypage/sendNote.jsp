@@ -57,21 +57,19 @@ overflow: hidden;
 				<table class="table">
 					<caption>보낸쪽지 목록</caption>
 					<colgroup>
-						<col width="5%">
 						<col width="10%">
-						<col width="10%">
+						<col width="15%">
 						<col width="*%">
+						<col width="20%">
 						<col width="10%">
-						<col width="5%">
 					</colgroup>
 					<thead>
 						<tr>
-							<th><input type="checkbox" name=" " class="form-check-input"
-								onclick="fnChk()"></th>
 							<th scope="col">번호</th>
 							<th scope="col">받는사람</th>
 							<th scope="col">내용</th>
 							<th scope="col">보낸시간</th>
+							<th scope="col">삭제</th>
 						</tr>
 					</thead>
 					<tbody id="ksicList">
@@ -115,23 +113,19 @@ overflow: hidden;
  							-->
 					<c:forEach var="note" items="${notelist }">
 						<tr onclick="modalData(this)" class="notice">
-						<td data-before="체크박스">
-							<div class="form-check">
-								<label class="form-check-label"> <input type="checkbox"
-									name="remember" id="remember" class="form-check-input"
-									onclick="fnChk()">
-								</label>
-							</div>
-						</td>
- 							<td>${note.no }</td>
- 							<td>${note.receive_id }</td>
- 							<td class="notetitle">
+ 							<td data-before="쪽지번호">${note.no }</td>
+ 							<td data-before="받는사람">${note.receive_id }</td>
+ 							<td data-before="내용" class="notetitle">
 								<a href="#" title="쪽지읽기 팝업" data-bs-toggle="modal"
 								 data-bs-target="#sendModal">
 								${note.content }</a>
 							</td>
-							<td>${note.send_time }</td>
-							<td id="deletenote"><a href="/ongo/mypage/note/deleteNote?no=${note.no }&page=send">삭제</a></td>
+							<td data-before="보낸시간">${note.send_time }</td>
+							<td data-before="삭제" id="deletenote">
+							<a class="board_label red text-white" href="/ongo/mypage/note/deleteNote?no=${note.no }&page=send"
+							style="width:0%;"
+							>삭제</a>
+							</td>
 						</tr>
 					</c:forEach>
 					</tbody>

@@ -15,79 +15,39 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
 	
 	@Autowired
 	public AuctionBoard_DAOImpl(SqlSession sqlSession) {
-		super();
-		this.sqlSession = sqlSession;
-	}
-
-
-
-	//중고거래
-	public int writeProd(AuctionBoard_DTO dto) {
-		return sqlSession.insert("com.multi.ongo.deal.auction_write", dto);
-	}
-
-
-	//중고거래
-	@Override
-	public List<AuctionBoard_DTO> boardlist() {
-		return sqlSession.selectList("com.multi.ongo.auction.selectAll");
-	}
-
-
-	//중고거래 게시
-	@Override
-	public AuctionBoard_DTO auctionRead(int deal_number) {
-		return sqlSession.selectOne("com.multi.ongo.deal.auctionRead", deal_number);
-	}
-
-
+	super();
+	this.sqlSession = sqlSession;
+}
 
 	@Override
-	public int update(AuctionBoard_DTO dto) {
-		return sqlSession.update("com.multi.ongo.auction.auctionUpdate", dto);
-	}
-
-
-
-	@Override
-	public int auctionDelete(String id) {
-		return sqlSession.delete("com.multi.ongo.auction.auctionDelete", id);
-	}
-
-
-
-	@Override
-	public AuctionBoard_DTO dealRead(int deal_number) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public int dealDelete(String member_id) {
+	public int AuctionProd(AuctionBoard_DTO dto) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-
+	@Override
+	public AuctionBoard_DTO auctionRead(int auction_no) {
+		return sqlSession.selectOne("com.multi.ongo.auction.read", auction_no);
+	}
 
 	@Override
-	public List<DealBoard_DTO> searchData(String tag, String searchData) {
+	public List<AuctionBoard_DTO> boardlist() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
 	@Override
-	public List<DealBoard_DTO> dealType_list(String dealType) {
+	public AuctionBoard_DTO auctionlist(int auction_number) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int update(AuctionBoard_DTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
-	
-	
-	
+
 	
 }

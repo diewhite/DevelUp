@@ -17,7 +17,7 @@
     <!-- title -->
     <div class="sub_top">
         <div class="container">
-            <h1>중고경매</h1>
+            <h1>경매</h1>
         </div>
     </div>
     <!-- //title -->
@@ -127,6 +127,7 @@
                           <ul class="company_list">
                      		 <h3>로스앤젤로스땅팔아요</h3>
                             <li><strong>최종입찰가</strong><span>20000원</span>
+                            <div><a href="/ongo/auction/auctionRead?status=READ&auction_no=1">1번째 게시물</a></div>
                             
                             </li>
                         

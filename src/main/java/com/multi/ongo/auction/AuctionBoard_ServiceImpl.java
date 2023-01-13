@@ -1,5 +1,6 @@
 package com.multi.ongo.auction;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,32 +16,34 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		this.dao = dao;
 	}
 
-	//중고거래
 	@Override
 	public int writeProd(AuctionBoard_DTO dto) {
-		return dao.writeProd(dto);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	//중고거래
 	@Override
 	public List<AuctionBoard_DTO> boardlist() {
-		return dao.boardlist();
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	//중고거래 게시
+
 	@Override
-	public AuctionBoard_DTO dealRead(int auction_number) {
-		return dao.auctionRead(auction_number);
+	public AuctionBoard_DTO auctionRead(int auction_no) {
+		return dao.auctionRead(auction_no);
 	}
-	//중고거래 게시
+
 	@Override
 	public int update(AuctionBoard_DTO dto) {
-		return dao.update(dto);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int auctionDelete(String id) {
-		return dao.auctionDelete(id);
+		// TODO Auto-generated method stub
+		return 0;
 	}
-
+	
+	
 }

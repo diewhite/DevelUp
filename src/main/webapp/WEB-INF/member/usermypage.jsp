@@ -22,11 +22,6 @@
 
 	}
 
-	/* function removeCheck() {
-		var remove;
-		remove = toastr.warning("현재 탈퇴 서비스를 제공하고 있지 않습니다.");
-	} */
-
 
 	$(document).ready(function () {
 		var type = "${userMode.phone1}"

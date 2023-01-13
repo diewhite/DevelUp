@@ -10,8 +10,8 @@ public interface AuctionBoard_Service {
 	//중고거래
 	public List<AuctionBoard_DTO> boardlist();
 
-	//중고거래
-		public AuctionBoard_DTO dealRead(int deal_number);
+	//게시글읽기
+	public AuctionBoard_DTO auctionRead(int auction_no);
 
 	//중고거래
 	int update(AuctionBoard_DTO dto);
