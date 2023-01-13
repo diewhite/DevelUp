@@ -1,8 +1,8 @@
-package com.multi.ongo.auction;
+package com.multi.ongo.detail;
 
 import java.sql.Date;
 
-public class AuctionBoard_DTO {
+public class AuctionDetail_DTO {
 	private int auction_number; // 거래번호
 	private String member_id;  //유저아이디
 	private String auction_category;    // 경매카테고리
@@ -19,12 +19,12 @@ public class AuctionBoard_DTO {
 	private Date end_date; //마감일(24시간)
 	
 	//기본생성자
-	public AuctionBoard_DTO() {
+	public AuctionDetail_DTO() {
 	}
 	
 	//생성자 (generate constructor using fields)
 	
-	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
+	public AuctionDetail_DTO(int auction_number, String member_id, String auction_category, String auction_state,
 			String auction_title, Date write_date, String board_content, String list_photo, int start_price,
 			String add_user1, int add_price, int add_time1, int hits, Date end_date) {
 		super();

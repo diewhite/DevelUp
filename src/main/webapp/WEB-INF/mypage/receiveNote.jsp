@@ -32,9 +32,9 @@ overflow: hidden;
 				<div class="board_info d-flex">
 					<div class="total">
 						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
-							class="blue" id="nowPage"></strong>/<span id="resultPage"></span>)
+							class="blue" id="nowpage">${page }</strong>/<span id="endpage">${endpage }</span>)
 					</div>
-						<form action="/ongo/mypage/note/searchReceiveBox" method="post">
+						<!-- <form action="/ongo/mypage/note/searchReceiveBox" method="post"> -->
 							<div class="form_box">
 	                            <fieldset>
 	                                <legend class="visually-hidden">검색</legend>
@@ -42,17 +42,17 @@ overflow: hidden;
 	                                    <div class="select">
 	                                        <label class="visually-hidden" for="category">검색 구분</label>
 	                                        <select class="form-select" id="category" title="검색구분선택" name="category">
-	                                            <option value="content">내용</option>
-	                                            <option value="send_id">보낸사람</option>
+	  		                                        <option value="content">내용</option>
+		                                            <option value="send_id">보낸사람</option>
 	                                        </select>
 	                                    </div>
-	                                    <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요.">
+                                   		<input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요." value="${keyword }">	                                    	
 	                                    <input type="text" hidden="true" name="receive_id" value="${user.member_id }">
-	                                    <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+	                                    <button type="button" class="btn btn-search" onclick="selectPage()"><i class="las la-search"></i> 검색</button>
 	                                </div>
 	                            </fieldset>
 	                        </div>
-                        </form>
+                        <!-- </form> -->
 				</div>
 			</div>
 			<div class="board">
@@ -153,8 +153,35 @@ overflow: hidden;
 							<span aria-hidden="true"><i
 								class="las la-angle-double-left"></i></span>
 					</a></li>
-					<li class="page-item active"><a class="page-link"
-						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+					
+					<c:forEach begin="1" end="${endpage }" var="p" >
+						<c:if test="${keyword==null }">
+							<c:choose>
+								<c:when test="${p==page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/receivebox?id=${user.member_id }&page=${p}&perpage=5">${p }</a></li>
+								</c:when>
+								<c:when test="${p!=page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/receivebox?id=${user.member_id }&page=${p}&perpage=5"><b>${p }</b></a></li>
+								</c:when>
+							</c:choose>
+						</c:if>
+						<c:if test="${keyword!=null }">
+							<c:choose>
+								<c:when test="${p==page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/searchReceiveBox?receive_id=${user.member_id }&category=${category}&keyword=${keyword}&page=${p}&perpage=5">${p }</a></li>
+								</c:when>
+								<c:when test="${p!=page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/searchReceiveBox?receive_id=${user.member_id }&category=${category}&keyword=${keyword}&page=${p}&perpage=5"><b>${p }</b></a></li>
+								</c:when>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+					<!-- <li class="page-item active"><a class="page-link"
+						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li> -->
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>
@@ -187,7 +214,7 @@ overflow: hidden;
 									<label for="IUY_CLSS_NM">수신자</label>
 									<div class="tbl-basic-td">
 										<div class="input-wrap w100">
-											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required"></textarea></span>
+											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required" ></textarea></span>
 											<input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
 										</div>
 									</div>
@@ -281,11 +308,22 @@ overflow: hidden;
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			var read_cate = "${param.category}";
+			if("${param.keyword}"!=""){
+				$("#category").val(read_cate);
+			} else if ("${param.keyword}"==""){
+				$("#category").val("content");
+			}
+			
+		});
+		
+
 		function modalData(clicked_element){
 			var row_td = clicked_element.getElementsByTagName("td");
 			var row_a = clicked_element.getElementsByTagName("a");
 			document.getElementById("readModal_send_id").innerHTML = row_td[2].innerHTML;
-			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML;
+			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML.trim();
 			document.getElementById("readModal_readchk").innerHTML = row_td[6].innerHTML;
 			document.getElementById("readModal_no").innerHTML = row_td[1].innerHTML;
 			document.getElementById("reply_receive_id").innerHTML = row_td[2].innerHTML;
@@ -303,7 +341,14 @@ overflow: hidden;
 				})//end ajax
 			}//end if
 		}//end function modalData
-				
+		
+		function selectPage(){
+			if($("#keyword").val()==""){
+				location.href = "/ongo/mypage/note/receivebox?id=${user.member_id}";
+			} else if($("#keyword").val()!="") {
+				location.href = "/ongo/mypage/note/searchReceiveBox?category="+$("#category").val()+"&receive_id=${user.member_id}&keyword="+$("#keyword").val();
+			}
+		}//end selectPage
 	</script>
 </body>
 </html>

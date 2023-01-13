@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -42,8 +43,8 @@ public class DealBoard_Controller {
 //		System.out.println("writeDate : " + dto.getWrite_date());
 //		System.out.println("deal_no : " + dto.getDeal_number());
 		service.writeProd(dto);
-		return "index";
-		
+		return "redirect:/deal_listAll.do?dealType=all";
+				
 		
 	}
 	
@@ -72,6 +73,9 @@ public class DealBoard_Controller {
 //		//System.out.println("listall 찍기체크2 : " + listall);
 //		return mav;
 //	}
+	
+	
+	
 	
 	//중고거래게시글 읽기
 	@RequestMapping("dealRead.do")
@@ -102,16 +106,18 @@ public class DealBoard_Controller {
 	}
 	
 	
+	
 	//중고거래 게시글 삭제
 	@RequestMapping("dealDelete.do")
-	public String dealDelete(String id) {
-		service.dealDelete(id);
-		return "redirect:deal_listAll.do";
+	public String dealDelete(int deal_number) {
+		service.dealDelete(deal_number);
+		return "redirect:/deal_listAll.do?dealType=all";
 	}
 	
 	//하단검색
 	@RequestMapping("serarchData.do")
 	public ModelAndView dataSearch(String tag, String searchData) {
+		//System.out.println("tag : " + tag + ",   searchData값 : " +  searchData);
 		ModelAndView mav = new ModelAndView("deallistAll");
 		List<DealBoard_DTO> listall = service.searchData(tag, searchData);
 		mav.addObject("listall", listall);
@@ -119,8 +125,19 @@ public class DealBoard_Controller {
 	}
 
 	
+	//중고거래시글 타입-메인 [ajax]
 	
 	
+	@RequestMapping(value = "/dealType_main.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<DealBoard_DTO> dealType_main(String dealType){
+		System.out.println("ajax인입 매개변수 체크 : " + dealType);
+		List<DealBoard_DTO> ajaxlist = service.dealType_main(dealType);
+		System.out.println("ajax 통신 체크 : " + ajaxlist);
+		return ajaxlist;
+		
+		
+	}
 	
 	
 	

@@ -3,18 +3,17 @@ package com.multi.ongo.deal;
 import java.sql.Date;
 
 public class DealBoard_DTO {
-	public class DealBoard_DTO {
-		private int deal_number; // °Å·¡¹øÈ£  - ³ë¼î=  ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private String member_id;  //À¯Àú¾ÆÀÌµğ  - ¡Ú°Ô½Ã±Ûµî·ÏºÒÇÊ¿ä ÀÌ¹Ì·Î±×ÀÎ
-		private String dealType;    // Áß°í°Å·¡±¸ºĞ( Áß°í°Å·¡,³ª´®)  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private String product_category;  //»óÇ°Ä«Å×°í¸®(µğÁöÅĞ±â±â,ÀÇ·ù µîµî)  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private String product_state; // »óÇ°»óÅÂ(ÆÇ¸ÅÁß,°Å·¡ÁøÇàÁß, ¿Ï·á )  - ³ë¼î=  ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private String board_title; // Á¦¸ñ  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private int product_price; // »óÇ°°¡°İ  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private String board_content; // ³»¿ë  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private int hits; // Á¶È¸¼ö	³ë¼î=  
-		private Date write_date; //ÀÛ¼ºÀÏ  - ³ë¼î=  ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
-		private String list_photo; // ¸®½ºÆ®»çÁø  - ¡Ú°Ô½Ã±Ûµî·Ï½ÃÇÊ¿ä
+		private int deal_number; // ê±°ë˜ë²ˆí˜¸  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private String member_id;  //ìœ ì €ì•„ì´ë””  - â˜…ê²Œì‹œê¸€ë“±ë¡ë¶ˆí•„ìš” ì´ë¯¸ë¡œê·¸ì¸
+		private String dealType;    // ì¤‘ê³ ê±°ë˜êµ¬ë¶„( ì¤‘ê³ ê±°ë˜,ë‚˜ëˆ”)  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private String product_category;  //ìƒí’ˆì¹´í…Œê³ ë¦¬(ë””ì§€í„¸ê¸°ê¸°,ì˜ë¥˜ ë“±ë“±)  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private String product_state; // ìƒí’ˆìƒíƒœ(íŒë§¤ì¤‘,ê±°ë˜ì§„í–‰ì¤‘, ì™„ë£Œ )  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private String board_title; // ì œëª©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private int product_price; // ìƒí’ˆê°€ê²©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private String board_content; // ë‚´ìš©  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private int hits; // ì¡°íšŒìˆ˜	ë…¸ì‡¼=  
+		private Date write_date; //ì‘ì„±ì¼  - ë…¸ì‡¼=  â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
+		private String list_photo; // ë¦¬ìŠ¤íŠ¸ì‚¬ì§„  - â˜…ê²Œì‹œê¸€ë“±ë¡ì‹œí•„ìš”
 		
 
 	public DealBoard_DTO() {
@@ -134,11 +133,4 @@ public class DealBoard_DTO {
 		this.list_photo = list_photo;
 	}
 
-
-	
-	
-	
-	
-	
-	
 }

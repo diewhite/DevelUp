@@ -55,8 +55,13 @@
  	</definition>
  	
  	<!-- 협력업체리스트 -->
- 		<definition name="member/companylist" extends="indexTemplate">
+ 	<definition name="member/companylist" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/member/companylist.jsp"></put-attribute>
+ 	</definition>
+ 	
+ 	<!-- 나의온고 > 정보수정 -->
+ 	<definition name="member/usermypage" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/member/usermypage.jsp"></put-attribute>
  	</definition>
  	
  </tiles-definitions>

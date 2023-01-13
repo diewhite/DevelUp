@@ -32,32 +32,30 @@ overflow: hidden;
 				<div class="board_info d-flex">
 					<div class="total">
 						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
-							class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
+							class="blue" id="nowpage">${page }</strong>/<span id="endpage">${endpage }</span>)
 					</div>
-						<form action="/ongo/mypage/note/searchSendBox" method="post">
-							<div class="form_box">
-		                        <fieldset>
-		                            <legend class="visually-hidden">검색</legend>
-		                            <div class="input-group">
-		                                <div class="select">
-		                                    <label class="visually-hidden" for="category">검색 구분</label>
-		                                    <select class="form-select" id="category" title="검색구분선택" name="category">
-		                                        <option value="content">내용</option>
-		                                        <option value="receive_id">받는사람</option>
-		                                    </select>
-		                                </div>
-		                                <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요.">
-		                                <input type="text" hidden="true" name="send_id" value=${user.member_id }>
-		                                <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
-		                            </div>
-		                        </fieldset>
-		                    </div>
-		               </form>		                    
+						<div class="form_box">
+	                        <fieldset>
+	                            <legend class="visually-hidden">검색</legend>
+	                            <div class="input-group">
+	                                <div class="select">
+	                                    <label class="visually-hidden" for="category">검색 구분</label>
+	                                    <select class="form-select" id="category" title="검색구분선택" name="category">
+	                                        <option value="content">내용</option>
+	                                        <option value="receive_id">받는사람</option>
+	                                    </select>
+	                                </div>
+	                                <input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요." value="${keyword }">
+	                                <input type="text" hidden="true" name="send_id" value=${user.member_id }>
+	                                <button type="button" class="btn btn-search" onclick="selectPage()"><i class="las la-search"></i> 검색</button>
+	                            </div>
+	                        </fieldset>
+	                    </div>
 				</div>
 			</div>
 			<div class="board">
 				<table class="table">
-					<caption>받은쪽지 목록</caption>
+					<caption>보낸쪽지 목록</caption>
 					<colgroup>
 						<col width="5%">
 						<col width="10%">
@@ -142,18 +140,46 @@ overflow: hidden;
 
 				<!-- 페이지네이션 -->
 				<div class="pagination">
-					<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
-						type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
-					<input type="hidden" id="START_INDEX" name="START_INDEX" value="1">
-					<input type="hidden" id="END_INDEX" name="END_INDEX" value="5">
+					<input type="hidden" id="page" name="page" value="1"> <input
+						type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="">
+					<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
+					<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="Previous"> <span class="visually-hidden">처음으로</span>
 							<span aria-hidden="true"><i
 								class="las la-angle-double-left"></i></span>
 					</a></li>
-					<li class="page-item active"><a class="page-link"
-						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+					
+					<c:forEach begin="1" end="${endpage }" var="p" >
+						<c:if test="${keyword==null }">
+							<c:choose>
+								<c:when test="${p==page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/sendbox?id=${user.member_id }&page=${p}&perpage=5">${p }</a></li>
+								</c:when>
+								<c:when test="${p!=page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/sendbox?id=${user.member_id }&page=${p}&perpage=5"><b>${p }</b></a></li>
+								</c:when>
+							</c:choose>
+						</c:if>
+						<c:if test="${keyword!=null }">
+							<c:choose>
+								<c:when test="${p==page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/searchSendBox?send_id=${user.member_id }&category=${category }&keyword=${keyword }&page=${p}&perpage=5">${p }</a></li>
+								</c:when>
+								<c:when test="${p!=page }">
+									<li class="page-item active"><a class="page-link"
+									href="/ongo/mypage/note/searchSendBox?send_id=${user.member_id }&category=${category }&keyword=${keyword }&page=${p}&perpage=5"><b>${p }</b></a></li>
+								</c:when>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+					
+					<!-- <li class="page-item active"><a class="page-link"
+						href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li> -->
 					<li class="page-item arr"><a class="page-link"
 						href="javascript:fnMovePage(1, fnSearch, 'pagination');"
 						aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>
@@ -222,12 +248,29 @@ overflow: hidden;
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			var read_cate = "${param.category}";
+			if("${param.keyword}"!=""){
+				$("#category").val(read_cate);
+			} else if ("${param.keyword}"==""){
+				$("#category").val("content");
+			}
+		});
+		
 		function modalData(clicked_element){
 			var row_td = clicked_element.getElementsByTagName("td");
 			var row_a = clicked_element.getElementsByTagName("a");
 			document.getElementById("sendModal_receive_id").innerHTML = row_td[2].innerHTML;
-			document.getElementById("sendModal_content").innerHTML = row_a[0].innerHTML;
+			document.getElementById("sendModal_content").innerHTML = row_a[0].innerHTML.trim();
 		}
+		
+		function selectPage(){
+			if($("#keyword").val()==""){
+				location.href = "/ongo/mypage/note/sendbox?id=${user.member_id}";
+			} else if($("#keyword").val()!="") {
+				location.href = "/ongo/mypage/note/searchSendBox?category="+$("#category").val()+"&send_id=${user.member_id}&keyword="+$("#keyword").val();
+			}
+		}//end selectPage
 	</script>
 </body>
 </html>

@@ -15,7 +15,7 @@
 	$(document).ready(function () {
 		$("#dealType").val(type).attr("selected","selected");
 		$("#dealType").change(function () {
-			location.href="/ongo/deal_listAll.do?dealType="+$(this).val()
+			location.href="/ongo/deal_listAll.do?dealType="+encodeURI($(this).val());
 		})
 	})
 
@@ -106,18 +106,22 @@
 		<table class="table table-borderless">
 	                           <colgroup>
 	                               
-	                               <col width="50"> <!-- 제품사진 -->
+	                               <col width="10%"> <!-- 구분 -->
+	                               <col width="20%"> <!-- 제품사진 -->
 	                               <col width="50%"> <!-- 제목 -->
-	                               <col width="10%"> <!-- 가격 -->
-	                               <col width="10%"> <!-- 작성일 -->
-	                               <col width="10%"> <!-- 조회수 -->                          
+	                               <col width="15%"> <!-- 가격 -->
+	                               <col width="10%"> <!-- 작성자 -->
+	                               <col width="15%"> <!-- 작성일 -->
+	                               <col width="8%"> <!-- 조회수 -->                          
 	                               <col width="10%"> <!-- 거래상태 -->                          
 	                           </colgroup>								
 								<thead>
 									<tr>
+										<th class="table-header" scope="col">구분</th>
 										<th class="table-header" scope="col">상품 사진</th>
 										<th class="table-header-title" scope="col">제목</th>
 										<th class="table-header" scope="col">가격</th>
+										<th class="table-header" scope="col">작성자</th>
 										<th class="table-header" scope="col">작성일</th>
 										<th class="table-header" scope="col">조회수</th>
 										<th class="table-header" scope="col">거래상태</th>
@@ -126,21 +130,11 @@
 								<tbody>
 								<c:forEach var = "board" items="${listall}">
 									<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" class="dataRow">
+										<td><span class="gray-bold">${board.dealType }</span></td>
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50">${board.list_photo }</td>
 										<td><span class="gray-bold">${board.board_title }</span></td>
 										<td><span class="blue-bold"><fmt:formatNumber value="${board.product_price}" pattern="#,###원"/></span></td>
-										
-										
-									<%-- 	<td><span class="blue-bold">
-											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									           ${board.member_id }
-									        </a>
-									        <ul class="dropdown-menu">
-									            <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-									            <li><a class="dropdown-item" href="#">회원정보보기</a></li>
-									        </ul>
-									     </span></td>  --%>
-										
+										<td><span class="blue-bold">${board.member_id }</span></td>
 										<td><span class="blue-bold">${board.write_date }</span></td>
 										<td><span class="blue-bold">${board.hits }</span></td>
 										<td><span class="blue-bold">${board.product_state }</span></td>
@@ -148,6 +142,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							
 		
 		
 		
@@ -160,12 +155,31 @@
 		
 		
 		
+		<div class="pagination">
+             <input type="hidden" id="PAGE" name="PAGE" value="1">
+             <input type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
+             <input type="hidden" id="START_INDEX" name="START_INDEX" value="">
+             <input type="hidden" id="END_INDEX" name="END_INDEX" value="">
+               <li class="page-item arr">
+                 <a class="page-link" href="javascript:fnMovePage(1, fnSearch, 'pagination');" aria-label="Previous">
+                   <span class="visually-hidden">처음으로</span>
+                   <span aria-hidden="true"><i class="las la-angle-double-left"></i></span>
+                 </a>
+               </li>
+               <li class="page-item active">
+               	<a class="page-link" href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+               <li class="page-item arr">
+               		<a class="page-link" href="javascript:fnMovePage(1, fnSearch, 'pagination');" aria-label="NextEnd">
+                   <span class="visually-hidden">다음으로</span>
+                   <span aria-hidden="true"><i class="las la-angle-double-right"></i></span>
+                 </a>
+               </li>
+           </div>
+
 		
 		
 		
-		
-		
-		<nav aria-label="Page navigation example">
+		<!-- <nav aria-label="Page navigation example">
 		  <ul class="pagination">
 		    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
 		    <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -173,7 +187,7 @@
 		    <li class="page-item"><a class="page-link" href="#">3</a></li>
 		    <li class="page-item"><a class="page-link" href="#">Next</a></li>
 		  </ul>
-		</nav>
+		</nav> -->
 		
 		
 		
@@ -206,7 +220,7 @@
 				</div>
 			</form> -->
   
-  
+  <br/><br/>
   
   <div class="board_list">
 				<!-- <div class="board_info d-flex">

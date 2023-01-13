@@ -8,11 +8,13 @@
 		<typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/>
 		<typeAlias type="com.multi.ongo.deal.DealBoard_DTO" alias="dealDTO"/>
 		<typeAlias type="com.multi.ongo.note.NoteDTO" alias="note"/>
+		<typeAlias type="com.multi.ongo.history.DealRequestDTO" alias="dealReqDTO"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/member.xml"/>
 		<mapper resource="mapper/deal.xml"/>
 		<mapper resource="mapper/note.xml"/>
+		<mapper resource="mapper/dealrequest.xml"/>
 	</mappers>
 </configuration>

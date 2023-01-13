@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head> 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/main.css">
 </head>
 <body>
@@ -42,14 +44,13 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <h3>소정자원
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
+                    <a href="/ongo/companylist" class="btn btn-small">상세보기<i class="las la-external-link-alt"></i></a>
                   </h3>
                   <ul class="introlist">
                     <li><span class="introlist_tit">주소</span><span class="introlist_txt">서울특별시 강남구 삼성로111길</span></li>
                     <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#폐가전#가구#플라스틱</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">02-123-1234</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">psjsub1@gmail.com</span></li>
+                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">010-9963-996</span></li>
+                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">psjjava@gmail.com</span></li>
                   </ul>
                   <div class="introlink">
                     <span><a href="#">거래요청</a></span>
@@ -207,27 +208,113 @@
            
             </div>
           </div>
+          
+          
+          
+          
           <div class="tab-pane fade" id="intro3" aria-labelledby="intro3-tab">
             <div id="intro3slider" class="carousel carousel-dark introslider" data-bs-ride="carousel"
               data-bs-interval="10000000">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <h3>
-                    에어컨
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
+              <div class="carousel-inner" id="carousel-inner">
+              
+              
+              
+              <script type="text/javascript">
+              	$(document).ready(function () {
+              		$("#intro2-tab").click(function () {
+						dealType = "all";
+						/* $(this).attr("class", "active"); //클래스속성에 active속성부여  */
+					$.ajax({
+						url: "/ongo/dealType_main.do",
+						type: "get",
+						data:{
+							"dealType": dealType,
+						},
+						success: function(ajaxlist) {
+							mydata = "";
+							for (var i = 0; i < ajaxlist.length; i++) {
+								// active가 안되어있어서 결과가 안나왔었음!!
+							 if(i==0){
+								 data = 
+									
+									 "<div class='carousel-item active'  id='deal-item'>"+
+										"<h3> "+
+						                  
+						                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' target='_blank'"+
+						                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
+						                  "</h3>"+
+						                  "<h3>제목 : " + ajaxlist[i].board_title +  "</h3>"+
+						                  "<ul class='introlist'>"+
+						                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
+						                  "</ul>"+
+						                  "<div class='introlink'>"+
+						                  "<span><a href='#'>거래요청</a></span>"+
+						                  "<span><a href='#'>쪽지보내기</a></span>"+
+						                  "</div>"+
+						                "</div>"
+							 }else{
+								data =  
+									"<div class='carousel-item'  id='deal-item'>"+
+									"<h3> "+
+					                  
+					                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' target='_blank'"+
+					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
+					                  "</h3>"+
+					                  "<h3>제목 : " + ajaxlist[i].board_title +  "</h3>"+
+					                  "<ul class='introlist'>"+
+					                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
+					                  "</ul>"+
+					                  "<div class='introlink'>"+
+					                  "<span><a href='#'>거래요청</a></span>"+
+					                  "<span><a href='#'>쪽지보내기</a></span>"+
+					                  "</div>"+
+					                "</div>"
+							 }
+							 mydata = mydata +data;
+							}
+							
+							$("#carousel-inner").html(mydata); 
+							
+							
+						},
+							error: function (a,b,c) {
+								alert(c)
+							}
+						})//end ajax
+					})//end clcick
+              	}) //end ready
+              		/* $("#deal-item"). */
+              
+              </script>
+              
+              
+              
+              
+              
+              
+              <!--__________________________________________________ -->
+                <div class="carousel-item active" id="deal-item">
+                  <h3 id="main_board_title">에어컨
+                    <a href=# class="btn btn-small" target="_blank"  title="새창">상세보기<i class="las la-external-link-alt"></i></a>
                   </h3>
                   <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
-                    <li><span class="introlist_tit">크기</span><span class="introlist_txt">10평</span></li>
+                    <li><span id="list_photo" class="introlist_tit">사진</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
+                  </ul>
+                  <ul class="introlist">
+                    <li><span id="product_price" class="introlist_tit">가격</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
+                    <li><span id="board_content" class="introlist_tit">내용</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
                   </ul>
                   <div class="introlink">
                     <span><a href="#">거래요청</a></span>
-                    <span><a href="#">배달요청</a></span>
                     <span><a href="#">쪽지보내기</a></span>
                   </div>
                 </div>
-                <div class="carousel-item">
+              
+            
+              
+                            
+              <!--__________________________________________________ -->
+                <div class="carousel-item" id="deal-item">
                   <h3>
                     토스터기 나눔
                     <a href=# class="btn btn-small" target="_blank"
@@ -242,6 +329,12 @@
                     <span><a href="#">쪽지보내기</a></span>
                   </div>
                 </div>
+                <!--__________________________________________________ -->
+                
+                
+                
+                
+                
                 
                 
               </div>
@@ -267,8 +360,8 @@
       <!-- 처음이용자 안내 -->
       <div class="guide">
         <div class="title_box white">
-          <h2>처음이용자안내</h2>
-          <p class="gray_tt">본인이 위치해 있는곳의<br/> 이용현황 사례를 확인하세요.</p>
+          <h2>결제안내</h2>
+          <p class="gray_tt">온고결제가 아닌 개인 거래시<br/>발생하는 금융사기 조심하세요.</p>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -297,7 +390,7 @@
               <label for="srchWord2" class="form-label visually-hidden">중고거래 검색</label>
               <input type="text" class="form-control service_sch" name="srchWord" id="srchWord2" title="단어 입력"
                 placeholder="단어 입력">
-              <button type="button" class="btn btn-search" onclick="fnSearchKsic();"><span
+              <button id="srchWord2-btn" type="button" class="btn btn-search" onclick="fnSearchKsic();"><span
                   class="visually-hidden">검색</span></button>
             </div>
           </div>
@@ -458,6 +551,15 @@
     </div>
     </div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#srchWord2-btn").on("click", function () {
+			location.href="serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
+		})
+		
+	})
+	
+</script>
 <!-- //modal -->
   
 </body>

@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head> </head>
+<head> 
+
+<script type="text/javascript">
+	
+function removeCheck(url){
+	var answer;
+	//페이지를 이동하기 전에 confirm()을 사용해 다시 한번 확인한다.
+	//확인을 선택하면 answer에  true, 취소를 선택하면 false 값이 들어간다.
+	answer = confirm("데이터를 삭제하시겠습니까?");
+	//확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
+	if(answer == true){
+		location = url;
+	}
+}
+</script>
+</head>
 <body>
 <!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
@@ -67,6 +82,7 @@
 					<label for="HOFS_ADDR">주소</label>
 					<div class="tbl-basic-td">
 						<div class="input-wrap">${memberRU.member_addr1}</div>
+						<div class="input-wrap">${memberRU.member_addr2}</div>
 					</div>
 				</div>
 				<div class="grid-item colspan2">
@@ -81,7 +97,8 @@
 		<div class="btn-area flex-row">
 	       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/member/memberboard'">목록</button>
 	        <button class="btn btn-outline-success btn-large " type="submit" >수정</button>
-	        <button class="btn btn-outline-danger btn-large" type="button" onclick="location.href='/ongo/member/memberdelete?member_id=${memberR.member_id}'">삭제</button>
+	        <button class="btn btn-outline-danger btn-large" type="button"  title="회원삭제"
+                                onclick="javascript:removeCheck('/ongo/member/memberdelete?member_id=${memberRU.member_id}')">삭제</button> 
       </div>
 	</form>
   </div> <!-- // container-->

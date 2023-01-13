@@ -6,19 +6,27 @@
 .dropdown-menu {  width:10%;}
 </style>
 <script type="text/javascript">
-function removeCheck() {
-	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-	     document.removefrm.submit();
-	 }else{   //취소
-	     return false;
-	 }
+	
+function removeCheck(url){
+	var answer;
+	//페이지를 이동하기 전에 confirm()을 사용해 다시 한번 확인한다.
+	//확인을 선택하면 answer에  true, 취소를 선택하면 false 값이 들어간다.
+	answer = confirm("데이터를 삭제하시겠습니까?");
+	//확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
+	if(answer == true){
+		location = url;
 	}
+}
 </script>
  </head>
+ <!-- 
+ 		
+ 		
+  -->
 <body>
 
 <!-- content -->
-<div id="contents">
+<div id="contents" >
        <!-- title -->
        <div class="sub_top">
            <div class="container">
@@ -26,6 +34,7 @@ function removeCheck() {
            </div>
        </div>
        <!-- //title -->
+
 
   <!-- container -->
   <div class="container"> 
@@ -35,19 +44,23 @@ function removeCheck() {
                        <div class="total">전체 <strong class="blue" id="totalCount">9</strong>
                            건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="resultPage">1</span>)
                        </div>
-                      <div class="form_box justify-content-md-end"> 
+                      <div class="form_box justify-content-md-end">
+                      
+                        
+                      <form action="/ongo/member/mbsearch" method="post">
                        <fieldset>
-	                       <div class="input-group">
-		                       <input type="text" class="form-control" name=" " title="검색어 입력" placeholder="이름검색" >
-		                       <button type="button" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
+	                       <div class="input-group"> 
+		                       <input type="text" class="form-control"  name="mbnamesearch" title="검색어 입력" placeholder="이름검색" >
+		                       <button type="submit" class="btn btn-search" ><i class="las la-search"></i> 검색</button>
 	                        </div >
                        </fieldset>
-                       
+                      </form>
+                         
                		 </div>
                    </div>
                    </div>
                    <div class="board">
-                       <table class="table">
+                       <table class="table"  id="example" >
                            <caption>게시판 목록</caption>
                            <colgroup>
                               <col width="8%">
@@ -75,7 +88,7 @@ function removeCheck() {
                            </thead>
                            <tbody >
                            <c:forEach var="memberR" items="${memberlist}">
-                             <tr class="notice">
+                             <tr class="notice" onclick="modalData(this)">
 						        <td data-before="회원번호">${memberR.member_no}</td>
                                <td data-before="이름">${memberR.member_name}</td>
                                <td data-before="아이디" >
@@ -88,10 +101,10 @@ function removeCheck() {
 								 member_id => 파라미터 이름 , =${member.member_id} => 파라미터에 연결시켜주고 컨트롤러로 보낼 값
 								 => member라는 어트리뷰트에 정의된 멤버변수인 member_id라는 변수명을 찾아서 매핑
 								-->
-                              	 <button type="button" class="blue nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"	>
+                              	 <button type="button" class="blue nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id=receive_id_board>
                               	 ${memberR.member_id}</button>
                               	 <ul class="dropdown-menu">
-								    <li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+								    <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#adminNoteModal" id=sendnote>쪽지보내기</a></li>
 								    <li><a class="dropdown-item" href="/ongo/member/memberread.do?member_id=${memberR.member_id}&state=READ">회원정보보기</a></li>
 								</ul>
                                </td>
@@ -100,8 +113,8 @@ function removeCheck() {
                                <td data-before="이메일">${memberR.member_email}</td>
                               <td data-before="가입일">${memberR.member_date}</td>
                                <td data-before="가입상태">${memberR.member_sign}</td>
-                               <td data-before="삭제"><button type="button"
-                               onclick="location.href='/ongo/member/memberdelete?member_id=${memberR.member_id}'" class="board_label red" title="회원삭제">삭제</button> </td>
+                               <td data-before="삭제"><button type="button" class="board_label red" title="회원삭제"
+                                onclick="javascript:removeCheck('/ongo/member/memberdelete?member_id=${memberR.member_id}')">삭제</button> </td>
                              </tr>
                             </c:forEach>
                            </tbody>
@@ -110,8 +123,9 @@ function removeCheck() {
                          <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/member/join3?state=ADMIN'">회원등록</button>
                        </div>
 
-                       <!-- 페이지네이션 -->
-                       <div class="pagination">
+                       <!-- 페이지네이션
+               
+                       <div id="pagination" class="pagination">
                          <input type="hidden" id="PAGE" name="PAGE" value="1">
                          <input type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
                          <input type="hidden" id="START_INDEX" name="START_INDEX" value="">
@@ -131,7 +145,8 @@ function removeCheck() {
                                <span aria-hidden="true"><i class="las la-angle-double-right"></i></span>
                              </a>
                            </li>
-                       </div>
+                       </div>  -->
+              
                        <!-- //페이지네이션 -->
                    </div>
 </form>
@@ -147,52 +162,69 @@ function removeCheck() {
  		</div><!-- // container-->
    </div><!-- // contents -->
 
- <!-- modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="modal-tit">
-                <h2 class="h3">쪽지</h2>
-            </div>
-            <div class="modal-con">
-                <div class="tbl grid-layout grid1">
-                    <div class="grid-item">
-                    <label for="IUY_CLSS_NM">수신자</label>
-                    <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM">닉네임</span>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="grid-item">
-                        <label for="IUY_CLSS_CNTS">내용적기</label>
-                        <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-                          </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-area">
-              <button type="button" class="btn btn-warning text-white btn-large"  data-bs-dismiss="modal" aria-label="Close">전송</button>
-            </div>
-            <!-- 닫기버튼 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                <i class="las la-times"></i>
-            </button>
-            <!-- //닫기버튼 -->
-        </div>
-    </div>
-    </div>
-</div>
-<!-- //modal -->
+	<!-- modal -->
+	<div class="modal fade" id="adminNoteModal" tabindex="-1"
+		aria-labelledby="Modal" aria-hidden="true">
+		<form action="/ongo/mypage/note/sendnote" method="post">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="modal-tit">
+							<h2 class="h3">쪽지</h2>
+						</div>
+						<div class="modal-con">
+							<div class="tbl grid-layout grid1">
+								<div class="grid-item">
+									<label for="IUY_CLSS_NM">수신자</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<span><textarea class="grid-input" role="textbox" id="reply_receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" readonly="readonly" required="required"></textarea></span>
+											<input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<label for="IUY_CLSS_CNTS">내용적기</label>
+									<div class="tbl-basic-td">
+										<div class="input-wrap w100">
+											<div class="input-wrap w100">
+												<textarea class="grid-input" role="textbox"
+													id="content" name="content"
+													title="쪽지내용 입력" maxlength="500" rows="5" required="required"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="btn-area">
+							<button type="submit" class="btn btn-warning text-white btn-large"
+								data-bs-dismiss="modal" aria-label="Close">전송</button>
+						</div>
+						<!-- 닫기버튼 -->
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close">
+							<i class="las la-times"></i>
+						</button>
+						<!-- //닫기버튼 -->
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- //modal -->
 
 <!-- Footer -->
 <jsp:include page="../include/footer.jsp"/>
 <!-- //Footer -->
+<script type="text/javascript">
+	function modalData(clicked_element){
+		var row_td = clicked_element.getElementsByTagName("td");
+		var row_btn = clicked_element.getElementsByTagName("button");
+		var receive_id = row_btn[0].textContent;
+		$("#reply_receive_id").html(receive_id.trim());
+	}
+
+</script>
 </body>
 </html>

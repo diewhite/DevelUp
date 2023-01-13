@@ -5,17 +5,18 @@
 <style type="text/css">
 
 </style>
+<script>
 
+</script>
  </head>
 <body>
-<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 <!-- content -->
 <div id="contents">
     <!-- title -->
     <div class="sub_top center">
         <h1>아이디 찾기</h1>
-        <p>간편인증을 통하여 아이디 찾기를 진행 할 수 있습니다.</p>
+        <p>이메일과 핸드폰번호를 통하여 아이디 찾기를 진행 할 수 있습니다.</p>
     </div>
     <!-- //title -->
 
@@ -25,12 +26,16 @@
                 <h2 class="visually-hidden">일반회원</h2>       
                 <div class="login_wrap">
                         <div class="login_section all">
-                        <h3 class="text-center blue">간편 인증</h3>
-                        <p class="text-center">본인명의로 등록된 간편 인증을 진행합니다.</p>
-                        <div class="text-center"><img src="/ongo/images/idfind.png" alt=""></div>
-                        <button type="button" class="btn btn-primary btn-full" onclick="fnCheck()">간편 인증</button>
+                        <div class="input-group">
+			                <input type="text" class="form-control" id="USR_ID" name="member_id" placeholder="이메일을 입력해주세요." value="">
+			              </div>
+			                 <div class="input-group">
+			                <input type="text" class="form-control" id="USR_ID" name="member_id" placeholder="핸드폰번호를 입력해주세요." value="">
+			              </div>
+                        <button type="button" class="btn btn-primary btn-full" onclick="fnCheck()">아이디 찾기</button>
                     </div>
-                </div>
+                    
+             
             </div>
         </div>
     </div>   

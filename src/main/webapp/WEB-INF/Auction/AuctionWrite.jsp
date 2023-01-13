@@ -32,10 +32,30 @@
             <label for="select_target_1">카테고리</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w20">
-                <select class="form-select grid-input"title="카테고리">
-                 <option value="01">자동차</option>
-                 <option value="02">핸드폰</option>
-                </select>
+              <div class="grid-item colspan2">
+							<label for="select_target_1">상품카테고리</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w20">
+									<select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
+										<option value="디지털&가전">디지털&가전</option>
+										<option value="가구&인테리어">가구&인테리어</option>
+										<option value="유아동">유아동</option>
+										<option value="생활&가공식품">생활&가공식품</option>
+										<option value="레져&스포츠">레져&스포츠</option>
+										<option value="여성잡화">여성잡화</option>
+										<option value="여성의류">여성의류</option>
+										<option value="남성잡화">남성잡화</option>
+										<option value="남성의류">남성의류</option>
+										<option value="게임&취미">게임&취미</option>
+										<option value="뷰티&미용">뷰티&미용</option>
+										<option value="반려동물용품">반려동물용품</option>
+										<option value="도서&티켓&음반">도서&티켓&음반</option>
+										<option value="기타">기타</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
               </div>
             </div>
           </div>
@@ -51,7 +71,7 @@
             </div>
           </div>
           <div class="grid-item colspan2">
-            <label for="HOFS_DTADR">제목</label>
+            <label for="HOFS_DTADR" id="auction_title" >제목</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
                 <input class="grid-input" type="text"  maxlength="50" title="타이틀">
@@ -59,13 +79,13 @@
             </div>
           </div>
           <div class="grid-item colspan2">
-            <label for="HOFS_DTADR">경매</label>
+            <label for="HOFS_DTADR" >경매</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w30 me-4">
               <div> 시작가   </div>
-              <input class="bid-start" type="text"  maxlength="50" title="시작가"> 
+              <input id="start_price" class="bid-start" type="text"  maxlength="50" title="시작가"> 
                <div> 최소가   </div>
-                <input class="bid-min" type="text"  maxlength="50" title="최소가"> 
+                <input id="min_price" class="bid-min" type="text"  maxlength="50" title="최소가"> 
             
               </div>
        
@@ -77,16 +97,16 @@
             <label for="HOFS_INTR_MTRL_CNTS">내용</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
-                <textarea class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
+                <textarea id="board_content" class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
               </div>
             </div>
           </div>
         
           <div class="grid-item colspan2">
             <label for="HOFS_DTADR">첨부파일</label>
-            <div class="tbl-basic-td">
+            <div id="list_photo" class="tbl-basic-td">
               <div class="input-wrap w100">
-                  <input type="file" class="form-control" id="customFile" />
+                  <input type="file" class="form-control" id="list_photo" value="${AuctionRead.list_photo}"/>
               </div>
             </div>
           </div>
@@ -95,7 +115,7 @@
       </div>
     </form>
   </div><div class="btn-area">
-       <button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/auction/auction'">글쓰기</button>
+       <button class="btn btn-primary btn-large" type="submit" onclick="location.href='/ongo/auction/auction'">글쓰기</button>
       </div>
     </div>
 <!-- // content -->

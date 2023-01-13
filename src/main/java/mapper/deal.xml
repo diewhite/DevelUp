@@ -15,13 +15,14 @@
 	<!--중고거래 게시글_전체조회  -->
 	<select id="selectAll" resultType="dealDTO">
 		select * from deal_table2
-		order by deal_number desc
+		order by write_date desc
 	</select>
 	
 	<!--중고거래 거래타입 검색  -->
 	<select id="dealTypeSearch" resultType="dealDTO" parameterType="String">
 		select * from deal_table2
 		where dealType = #{dealType}
+		order by write_date desc
 	</select>
 	
 	
@@ -43,8 +44,9 @@
 	</update>
 	
 	<!--중고거래 게시글_삭제  -->
-	<delete id="dealDelete" parameterType="String">
-		delete from deal_table2 where member_id=#{member_id}
+	<delete id="dealDelete" parameterType="int">
+		delete from deal_table2 
+		where deal_number=#{deal_number}
 	</delete>
 		
 	<!-- 하단검색 -->
@@ -81,9 +83,25 @@
 					write_date <= #{searchData} 
 				]]>  -->
 			</if>
-			order by deal_number desc
 		</where>
+			order by write_date desc
 	</select>
+	
+	<!--//메인화면 거래배너리스트  -->
+	<select id="main_dealcategory"  resultType="dealDTO" parameterType="String">
+		select board_title,
+		       write_date
+ 		 from (
+		       select board_title,
+		       write_date,
+               DENSE_RANK() OVER(ORDER BY write_date DESC) as rnk
+          	   FROM deal_table2
+		       )
+		       <![CDATA[
+		       where rnk <= 3;
+				]]>  
+	</select>
+	
 	
 	
 	

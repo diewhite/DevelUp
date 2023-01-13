@@ -18,14 +18,22 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public List<NoteDTO> receiveList(String id) {
-		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",id);
+	public List<NoteDTO> receiveList(String id,int perpage,int page) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("perpage",String.valueOf(perpage));
+		map.put("page", String.valueOf(page));
+		List<NoteDTO> notelist = sqlsession.selectList("com.multi.ongo.note.receivelist",map);
 		return notelist;
 	}
 
 	@Override
-	public List<NoteDTO> sendList(String id) {
-		return sqlsession.selectList("com.multi.ongo.note.sendlist",id);
+	public List<NoteDTO> sendList(String id, int perpage, int page) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("perpage",String.valueOf(perpage));
+		map.put("page", String.valueOf(page));
+		return sqlsession.selectList("com.multi.ongo.note.sendlist",map);
 	}
 
 	@Override
@@ -34,20 +42,24 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id) {
+	public List<NoteDTO> searchSendBox(String category, String keyword, String send_id, int perpage, int page) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("category", category);
 		map.put("keyword", keyword);
 		map.put("send_id", send_id);
+		map.put("perpage",String.valueOf(perpage));
+		map.put("page", String.valueOf(page));
 		return sqlsession.selectList("com.multi.ongo.note.searchsendbox", map);
 	}
 
 	@Override
-	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id) {
+	public List<NoteDTO> searchReceiveBox(String category, String keyword, String receive_id, int perpage, int page) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("category", category);
 		map.put("keyword", keyword);
 		map.put("receive_id", receive_id);
+		map.put("perpage",String.valueOf(perpage));
+		map.put("page", String.valueOf(page));
 		return sqlsession.selectList("com.multi.ongo.note.searchreceivebox", map);
 	}
 
@@ -59,6 +71,34 @@ public class NoteDAOImpl implements NoteDAO {
 	@Override
 	public int readCheck(String no) {
 		return sqlsession.update("com.multi.ongo.note.readcheck", no);
+	}
+
+	@Override
+	public NoteDTO receiveNoteCnt(String id) {
+		return sqlsession.selectOne("com.multi.ongo.note.receivenotecnt", id);
+	}
+
+	@Override
+	public NoteDTO sendNoteCnt(String id) {
+		return sqlsession.selectOne("com.multi.ongo.note.sendnotecnt", id);
+	}
+
+	@Override
+	public NoteDTO receiveSearchCnt(String receive_id, String category, String keyword) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("category", category);
+		map.put("keyword", keyword);
+		map.put("receive_id", receive_id);
+		return sqlsession.selectOne("com.multi.ongo.note.searchreceivecnt", map);
+	}
+
+	@Override
+	public NoteDTO sendSearchCnt(String send_id, String category, String keyword) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("category", category);
+		map.put("keyword", keyword);
+		map.put("send_id", send_id);
+		return sqlsession.selectOne("com.multi.ongo.note.searchsendcnt", map);
 	}
 
 }

@@ -47,18 +47,8 @@
       <!--nav-->
       <div id="gnb" class="d-flex justify-content-center">
         <ul class="dep1">
-        
-        
           <li>
              <a id="siTitle" href="/ongo/auction/auctionBoard" onmouseover="menuover(this);" ><span >경매</span></a>
-            <div class="dep2_wrap ">
-              <div class="dep2_left">
-                <span>경매</span>
-              </div>
-              <div class="dep2_right" onmouseleave="menuout();">
-             
-                </div>
-            </div>
           </li>
 
           <li>
@@ -76,12 +66,6 @@
                     <li><a href="#" onclick="location.href='/ongo/deal_listAll.do?dealType=나눔'">나눔</a></li>
                   </ul>
                 </div>
-                <!-- <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >거래</a></span>
-                  <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='404.html'">새상품</a></li>
-                  </ul>
-                </div> -->
                 
               </div>
             </div>
@@ -89,7 +73,8 @@
         <li>
    <a id="siTitle" href="/ongo/companylist" ><span >협력업체</span></a>
           </li>
- 
+  <c:if test="${sessionScope.user!=null }">  
+    <c:if test="${sessionScope.user.member_role=='1' }">  
           <li>
             <a id="siTitle" href="/ongo/history/myongo" onmouseover="menuover(this);"><span >나의온고</span></a>
             <div class="dep2_wrap">
@@ -100,23 +85,31 @@
               
              <!-- 수정할부분 -->
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#">거래내역</a></span>
+                  <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/detail/detaillist">경매내역</a></li>
-                    <li><a href="/ongo/history/historylist">중고거래내역</a></li>
+                    <li><a href="#">판매관리</a></li>
+                    <li><a href="#">구매관리</a></li>
                   </ul>                 
                 </div>
                 <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#">중고거래관리</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+                    <li><a href="#">구매관리</a></li> 
+                  </ul>
+                </div>
+                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="/ongo/payment/paymentlist">결제내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/paymentlist">결제내역조회</a></li>
+                    <li><a href="/ongo/payment/paymentlist">결제내역조회</a></li>
                      <li ><a href="/ongo/payment2/PayParticulars" >결제내역상세</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
-                  <span class="dep2_tit" ><a href="#" >나의정보</a></span>
+                  <span class="dep2_tit" ><a href="/ongo/member/usermypage" >마이페이지</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#none" onclick="location.href='404.html'">정보수정</a></li>
+                    <li>
+                    <a href="/ongo/member/usermypage?user_id=${user.member_id}">정보수정</a></li>
                   </ul>
                 </div>
                 <div class="dep2_right_li">
@@ -131,6 +124,10 @@
             </div>
           </li>
     <li>
+    </c:if>
+
+<c:if test="${sessionScope.user.member_role=='99'  }">
+  <li>
             <a id="siTitle" href="/ongo/member/memberboard.do" onmouseover="menuover(this);"><span >관리자</span></a>
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -150,10 +147,16 @@
                     <li ><a href="/ongo/member/memberserviceboard.do">게시물통합관리</a></li>
                   </ul>
                 </div>
+                <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#">쪽지함</a></span>
+                  <ul class="dep2_link">
+                    <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}">보낸쪽지함</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </li>
- 
+ </c:if>
+ </c:if>
         </ul>
       </div>
       <div class="util d-flex justify-content-end">
@@ -186,10 +189,8 @@
                 <h2>경매</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">중고</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >중고상품</a></li>
-                    </ul>
+                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">경매</span></a>
+                   
                   </div>
              
                 </div>
@@ -219,57 +220,32 @@
                   </div>
               	</div>
               </div>
-			  <div class="sitemap_li d-flex">
-                <h2>나의온고</h2>
-                <div class="sitemap_depth2_wrap">
-                  <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">거래내역</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                     <li ><a href="#" >경매내역</a></li>
-                     <li ><a href="#" >중고거래내역</a></li>
-                    </ul>
-                  </div>
-                  <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">결제내역</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                     <li ><a href="#" >결제내역조회</a></li>
-                     <li ><a href="#" >결제내역상세</a></li>
-                     
-                    </ul>
-                  </div>
-                  <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">나의정보</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                     <li ><a href="#" >정보수정</a></li>
-                    </ul>
-                  </div>
-                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit" ><span onclick="pageMove(this, true)">쪽지함</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                     <li ><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
-                     <li ><a href="/ongo/mypage/note/receivebox?id=${user.member_id}" >받은쪽지함</a></li>
-                     <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li> 
-                    </ul>
-                  </div>
-                </div>
-              </div>
-         <c:if test="${sessionScope.user!=null }">  
+
+  <c:if test="${sessionScope.user!=null }">  
  <!-- 세션에 저장된 member_role 값이 '1' 이면일반 유저라면 메뉴에 '마이페이지'가 생성  --> 
-    <c:if test="${sessionScope.user.member_role=='1' }">       
-              
-             <div class="sitemap_li d-flex">
+    <c:if test="${sessionScope.user.member_role=='1' }">    
+          <div class="sitemap_li d-flex">
                 <h2>나의온고</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">거래조회</span></a>
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">경매관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >거래조회</a></li>
+                        <li><a href="#">판매관리</a></li>
+                   	 	<li><a href="#">구매관리</a></li>   
                     </ul>
                   </div>
                   <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">구매내역</span></a>
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">중고거래관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >구매내역</a></li>
+	                   <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+	                   <li><a href="#">구매관리</a></li> 
+                    </ul>
+                  </div>
+                 <div class="sitemap_depth2">
+                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">결제내역</span></a>
+                    <ul class="sitemap_depth3 dot_list">
+	                    <li><a href="/ongo/payment/paymentlist">결제내역조회</a></li>
+                    	<li ><a href="/ongo/payment2/PayParticulars" >결제내역상세</a></li>
                     </ul>
                   </div>
                   <div class="sitemap_depth2">
@@ -287,29 +263,35 @@
                     </ul>
                   </div>
                 </div>
-              </div>
-     </c:if>
-   <!-- 세션에 저장된 member_role 값이 '99' 이면 관리자 --> 
-<c:if test="${sessionScope.user.member_role=='99'  }">
-             <div class="sitemap_li d-flex">
-                <h2>관리자</h2>
-                <div class="sitemap_depth2_wrap">
-                  <div class="sitemap_depth2">
-                    <a href="#" class="sitemap_depth2_tit"><span onclick="/ongo/member/memberboard.do">회원관리</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="#" >회원목록</a></li>
-                    </ul>
-                  </div>
-                  <div class="sitemap_depth2">
-                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">게시판관리</span></a>
-                    <ul class="sitemap_depth3 dot_list">
-                      <li ><a href="/ongo/member/memberserviceboard.do" >게시물통합관리</a></li>
-                    </ul>
-                  </div>
                 </div>
-              </div>
-       </c:if>
-       </c:if>
+</c:if>
+		<c:if test="${sessionScope.user.member_role=='99'  }">
+		             <div class="sitemap_li d-flex">
+		                <h2>관리자</h2>
+		                <div class="sitemap_depth2_wrap">
+		                  <div class="sitemap_depth2">
+		                    <a href="#" class="sitemap_depth2_tit"><span onclick="/ongo/member/memberboard.do">회원관리</span></a>
+		                    <ul class="sitemap_depth3 dot_list">
+		                      <li ><a href="#" >회원목록</a></li>
+		                    </ul>
+		                  </div>
+		                  <div class="sitemap_depth2">
+		                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">게시판관리</span></a>
+		                    <ul class="sitemap_depth3 dot_list">
+		                      <li ><a href="/ongo/member/memberserviceboard.do" >게시물통합관리</a></li>
+		                    </ul>
+		                  </div>
+		                   <div class="sitemap_depth2">
+		                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
+		                    <ul class="sitemap_depth3 dot_list">
+		                      <li ><a href="/ongo/mypage/note/sendbox?id=${user.member_id}" >보낸쪽지함</a></li>
+		                    </ul>
+		                  </div>
+		                  
+		                </div>
+		              </div>
+		       </c:if>
+   </c:if>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <i class="las la-times"></i>
@@ -335,7 +317,7 @@
                     <label for="IUY_CLSS_NM">수신자</label>
                     <div class="tbl-basic-td">
                         <div class="input-wrap w100">
-                            <span id="receive_id"><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
+                            <span><textarea class="grid-input" role="textbox" id="receive_id" name="receive_id" title="수신자" maxlength="500" rows="1" required="required"></textarea></span>
                             <input type="text" hidden="true" id="send_id" name="send_id" value="${user.member_id}">
                         </div>
                     </div>
@@ -366,7 +348,6 @@
     </form>
 </div>
 <!-- //modal -->
-
 
 
 </body>

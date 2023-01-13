@@ -4,6 +4,8 @@
 <head>
 <style type="text/css">
 
+
+
 .mb-3 {
 	font-size: 14px;
 }
@@ -45,14 +47,6 @@ hr {
 	border-top: 1px solid var(- -line-color);
 	border-bottom: 1px solid var(- -line-color);
 }
-
-
-
-
-
-
-
-
 
 
 .board_view_file .file_left {
@@ -127,10 +121,10 @@ hr {
 					<input type="text">
 				</ul>
 			</div>
-		</div>
+	 	</div>
 
 		<!-- //필터링 끝 -->
-		<div class="container  justify-content-center mt-50 mb-50">
+		<div class="justify-content-center mt-50 mb-50">
 			<div class="container">
 				<div class="board_info d-flex mb-3">
 					<div class="total">
@@ -186,7 +180,7 @@ hr {
 			</div>
 		</div>
 
-		<div class="container  justify-content-center mt-50 mb-50">
+		<div class="justify-content-center mt-50 mb-50">
 			<div class="container">
 				<div class="col-md-12">
 					<div class="card card-body">
@@ -236,16 +230,16 @@ hr {
 				</div>
 			</div>
 		</div>
-
+</div>
 
 
 		<!--====== // </div> container=====-->
 
-	</div>
+<!-- 	</div> -->
 	<!-- //contents -->
 
 	<!-- Footer -->
-	<jsp:include page="../include/footer.jsp" />
+	<jsp:include page="../include/footer.jsp" /> 
 	<!-- //Footer -->
 </body>
 </html>

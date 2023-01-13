@@ -179,7 +179,7 @@
 			<!-- 	<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealUpdate.do'">수정완료</button> -->
 		</div>
 		<div class="btn-area">
-			<button class="btn btn-primary btn-danger btn-large" type="button" onclick="location.href='dealDelete.do?member_id=${dealRead.member_id}'">삭제</button>
+			<button class="btn btn-primary btn-danger btn-large" type="button" onclick="location.href='dealDelete.do?deal_number=${dealRead.deal_number}'">삭제</button>
 		</div>
 
 	</div>
