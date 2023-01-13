@@ -9,21 +9,22 @@ public class AuctionBoard_DTO {
 	private String auction_state ;
 	private String auction_title;
 	private int hits ;
-	Date write_date ;
+	private Date write_date ;
 	private String board_content ;
 	private String list_photo ;
-	private int min_price;
-	private int start_price ;
-	private int end_price ;
-	private int end_date;
+	private String min_price;
+	private String start_price ;
+	private String end_price ;
+	private Date end_date;
 	
 	//기본생성자
 	public AuctionBoard_DTO() {
+		super();
 	}
-	
+
 	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
-			String auction_title, int hits, Date write_date, String board_content, String list_photo, int min_price,
-			int start_price, int end_price, int end_date) {
+			String auction_title, int hits, Date write_date, String board_content, String list_photo, String min_price,
+			String start_price, String end_price, Date end_date) {
 		super();
 		this.auction_number = auction_number;
 		this.member_id = member_id;
@@ -39,21 +40,6 @@ public class AuctionBoard_DTO {
 		this.end_price = end_price;
 		this.end_date = end_date;
 	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "AuctionBoard_DTO [auction_number=" + auction_number + ", member_id=" + member_id + ", auction_category="
-				+ auction_category + ", auction_state=" + auction_state + ", auction_title=" + auction_title + ", hits="
-				+ hits + ", write_date=" + write_date + ", board_content=" + board_content + ", list_photo="
-				+ list_photo + ", min_price=" + min_price + ", start_price=" + start_price + ", end_price=" + end_price
-				+ ", end_date=" + end_date + "]";
-	}
-
-
-
 
 	public int getAuction_number() {
 		return auction_number;
@@ -127,41 +113,46 @@ public class AuctionBoard_DTO {
 		this.list_photo = list_photo;
 	}
 
-	public int getMin_price() {
+	public String getMin_price() {
 		return min_price;
 	}
 
-	public void setMin_price(int min_price) {
+	public void setMin_price(String min_price) {
 		this.min_price = min_price;
 	}
 
-	public int getStart_price() {
+	public String getStart_price() {
 		return start_price;
 	}
 
-	public void setStart_price(int start_price) {
+	public void setStart_price(String start_price) {
 		this.start_price = start_price;
 	}
 
-	public int getEnd_price() {
+	public String getEnd_price() {
 		return end_price;
 	}
 
-	public void setEnd_price(int end_price) {
+	public void setEnd_price(String end_price) {
 		this.end_price = end_price;
 	}
 
-	public int getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(int end_date) {
+	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
+
+	@Override
+	public String toString() {
+		return "AuctionBoard_DTO [auction_number=" + auction_number + ", member_id=" + member_id + ", auction_category="
+				+ auction_category + ", auction_state=" + auction_state + ", auction_title=" + auction_title + ", hits="
+				+ hits + ", write_date=" + write_date + ", board_content=" + board_content + ", list_photo="
+				+ list_photo + ", min_price=" + min_price + ", start_price=" + start_price + ", end_price=" + end_price
+				+ ", end_date=" + end_date + "]";
+	}
 	
-	
-	
-	
-	
-	
+
 }
