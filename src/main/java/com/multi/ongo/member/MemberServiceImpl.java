@@ -93,6 +93,16 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDTO login(MemberDTO loginidInfo) { //로그인
 		return memberdao.login(loginidInfo);
 	}
+
+	@Override
+	public MemberDTO idCheck(String member_id) { //아이디중복검사
+		return memberdao.idCheck(member_id);
+	}
+
+	@Override
+	public int unsign(String member_id) {
+		return memberdao.unsign(member_id);
+	}
 	
 	
 	

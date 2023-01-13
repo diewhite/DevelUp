@@ -6,7 +6,9 @@ import java.util.List;
 public interface MemberDAO {
 	// 회원가입- 등록(db에처리)
 	int insert(MemberDTO joininsert);
-	//아이디 중복체크	int nickCheck(String member_id) throws Exception;
+
+	//아이디 중복체크
+	MemberDTO idCheck(String member_id);
 
 	//전체리스트목록보기 - 회원목록(db에처리)
 	List<MemberDTO> joinlist();
@@ -26,7 +28,8 @@ public interface MemberDAO {
 	//관리자> 이름으로 검색
 	List<MemberDTO> msearch(String membersearch);
 	
-	
+    //회원탈퇴
+    int unsign(String member_id);
 	
 }
 

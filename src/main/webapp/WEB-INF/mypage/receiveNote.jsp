@@ -34,25 +34,23 @@ overflow: hidden;
 						전체 <strong class="blue" id="totalCount">${count }</strong> 건 (페이지 <strong
 							class="blue" id="nowpage">${page }</strong>/<span id="endpage">${endpage }</span>)
 					</div>
-						<!-- <form action="/ongo/mypage/note/searchReceiveBox" method="post"> -->
-							<div class="form_box">
-	                            <fieldset>
-	                                <legend class="visually-hidden">검색</legend>
-	                                <div class="input-group">
-	                                    <div class="select">
-	                                        <label class="visually-hidden" for="category">검색 구분</label>
-	                                        <select class="form-select" id="category" title="검색구분선택" name="category">
-	  		                                        <option value="content">내용</option>
-		                                            <option value="send_id">보낸사람</option>
-	                                        </select>
-	                                    </div>
-                                   		<input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요." value="${keyword }">	                                    	
-	                                    <input type="text" hidden="true" name="receive_id" value="${user.member_id }">
-	                                    <button type="button" class="btn btn-search" onclick="selectPage()"><i class="las la-search"></i> 검색</button>
-	                                </div>
-	                            </fieldset>
-	                        </div>
-                        <!-- </form> -->
+						<div class="form_box">
+                            <fieldset>
+                                <legend class="visually-hidden">검색</legend>
+                                <div class="input-group">
+                                    <div class="select">
+                                        <label class="visually-hidden" for="category">검색 구분</label>
+                                        <select class="form-select" id="category" title="검색구분선택" name="category">
+  		                                        <option value="content">내용</option>
+	                                            <option value="send_id">보낸사람</option>
+                                        </select>
+                                    </div>
+                                  		<input type="text" class="form-control" name="keyword" id="keyword" title="검색어 입력" placeholder="검색어를 입력하세요." value="${keyword }">	                                    	
+                                    <input type="text" hidden="true" name="receive_id" value="${user.member_id }">
+                                    <button type="button" class="btn btn-search" onclick="selectPage()"><i class="las la-search"></i> 검색</button>
+                                </div>
+                            </fieldset>
+                        </div>
 				</div>
 			</div>
 			<div class="board">
@@ -201,7 +199,7 @@ overflow: hidden;
 	<!-- modal -->
 	<div class="modal fade" id="replyModal" tabindex="-1"
 		aria-labelledby="Modal" aria-hidden="true">
-		<form action="/ongo/mypage/note/sendnote" method="post">
+		<form name="valid_reply_form" method="post" onsubmit="return validate_reply_user_id()">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -235,7 +233,7 @@ overflow: hidden;
 						</div>
 						<div class="btn-area">
 							<button type="submit" class="btn btn-warning text-white btn-large"
-								data-bs-dismiss="modal" aria-label="Close">전송</button>
+								data-bs-dismiss="modal" aria-label="Close" onclick="sendNote()">전송</button>
 						</div>
 						<!-- 닫기버튼 -->
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -315,7 +313,6 @@ overflow: hidden;
 			} else if ("${param.keyword}"==""){
 				$("#category").val("content");
 			}
-			
 		});
 		
 
@@ -334,6 +331,7 @@ overflow: hidden;
 					type : "get",
 					data : no,
 					success : function(data){
+						sendNote();
 					},//end success
 					error : function(obj,msg,statusMsg){
 						alert("오류발생"+statusMsg);
@@ -349,6 +347,16 @@ overflow: hidden;
 				location.href = "/ongo/mypage/note/searchReceiveBox?category="+$("#category").val()+"&receive_id=${user.member_id}&keyword="+$("#keyword").val();
 			}
 		}//end selectPage
+		
+		function validate_reply_user_id(){
+			var valid_id = $("#reply_receive_id").val(); 
+			if(valid_id.toLowerCase()=='admin'){
+				alert("관리자는 발신 전용 입니다.");
+				return false;
+			} else {
+				document.valid_reply_form.action="/ongo/mypage/note/sendnote";
+			}
+		}//end validate_reply_user_id
 	</script>
 </body>
 </html>

@@ -93,5 +93,8 @@
   			</if>
   		</where>
   	</select>
+  	<select id="checknewnote" resultType="note" parameterType="String">
+  		select count(no) as count from note where receive_id=#{receive_id} and read_chk=0
+  	</select>
   </mapper>
   
