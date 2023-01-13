@@ -17,7 +17,7 @@
     <!-- title -->
     <div class="sub_top">
         <div class="container">
-            <h1>중고경매</h1>
+            <h1>경매</h1>
         </div>
     </div>
     <!-- //title -->
