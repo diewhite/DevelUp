@@ -133,8 +133,8 @@
               </div>
               <button type="submit" class="btn btn-primary btn-full">로그인</button>
               <div class="text-center login_bottom">
-                 <span><a href="#"  onclick="removeCheck1()">아이디찾기</a></span>
-                <span><a href="#"  onclick="removeCheck2()">비밀번호찾기</a></span>
+                 <span><a href="/ongo/member/findid" >아이디찾기</a></span>
+                <span><a href="/ongo/member/pass" >비밀번호찾기</a></span>
                 <span><a href="/ongo/member/join1.do" class="blue" >회원가입</a></span>
               </div>
             </form>

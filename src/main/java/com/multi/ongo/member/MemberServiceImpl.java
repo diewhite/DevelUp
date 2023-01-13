@@ -100,8 +100,23 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int unsign(String member_id) {
+	public int unsign(String member_id) { //회원탈퇴처리
 		return memberdao.unsign(member_id);
+	}
+
+	@Override
+	public MemberDTO findId(MemberDTO userInfo) { //아이디찾기
+		return memberdao.findId(userInfo);
+	}
+
+	@Override
+	public MemberDTO findPass(MemberDTO userInfo) { //비밀번호찾기
+		return memberdao.findPass(userInfo);
+	}
+
+	@Override
+	public int passModi(MemberDTO userInfo) { //비밀번호수정
+		return memberdao.passModi(userInfo);
 	}
 	
 	

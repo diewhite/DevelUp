@@ -50,6 +50,21 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         	update member2 set member_sign = '탈퇴' where member_id = #{member_id}
         </update>
         
+        <!-- 회원 아이디 찾기 -->
+        <select id="findid" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_phone = #{member_phone} and member_email = #{member_email}
+        </select>
+        
+        <!-- 회원 비밀번호 찾기 -->
+        <select id="findpass" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_id = #{member_id} and member_email = #{member_email}
+        </select>
+        
+        <!-- 회원 비밀번호 수정 -->
+        <update id="passmodi">
+        	update member2 set member_pw = #{member_pw} where member_id = #{member_id}
+        </update>
+        
         <!-- 관리자 >회원목록리스트 -->
 		<select id="selectall" resultType="memberP">
                 select * from member2
