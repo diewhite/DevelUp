@@ -80,4 +80,9 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 			return list;
 	}
 
+	@Override
+	public int hits_update(int deal_number) {
+		return dao.hits_update(deal_number);
+	}
+
 }

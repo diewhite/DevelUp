@@ -44,7 +44,6 @@
 
       $("#USR_ID").val(userInputId);
 
-
       var err = '';
       if (err) { //로그인 실패 메세지 발생
         if (err === 'user_not_found') {
@@ -85,19 +84,9 @@
       }
     }
 
-    function removeCheck1(){
-    	var remove;
-    	remove =  toastr.warning("아이디 찾기 서비스를 제공하고 있지 않습니다.");
-    }
-    function removeCheck2(){
-    	var remove;
-    	remove =  toastr.warning("비밀번호 찾기 서비스를 제공하고 있지 않습니다.");
-    }
 </script>         
 </head>
 <body>
-<!-- js쿠키아이디 저장 블로그참조 https://chobopark.tistory.com/203 -->
-
 <!-- content -->
 <div id="contents">
   <!-- title -->
@@ -133,8 +122,8 @@
               </div>
               <button type="submit" class="btn btn-primary btn-full">로그인</button>
               <div class="text-center login_bottom">
-                 <span><a href="#"  onclick="removeCheck1()">아이디찾기</a></span>
-                <span><a href="#"  onclick="removeCheck2()">비밀번호찾기</a></span>
+                 <span><a href="/ongo/member/findid" >아이디찾기</a></span>
+                <span><a href="/ongo/member/pass" >비밀번호찾기</a></span>
                 <span><a href="/ongo/member/join1.do" class="blue" >회원가입</a></span>
               </div>
             </form>

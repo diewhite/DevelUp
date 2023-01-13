@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head></head>
+<head>
+<style type="text/css">
+
+/*쪽지 top*/
+.notenew{position: absolute; transform: scale(.7);transform-origin: top right; right: 11px; margin-top: -0.20rem; color: #fff; 
+		background-color: #dc3545; display: inline-block; padding: 0.25em 0.4em;font-size:85%; font-weight: 700; line-height: 1; border-radius: 0.35rem; }
+</style>
+</head>
 <body>
 
 <!-- header -->
@@ -14,16 +21,15 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
-
-		
+		<!-- 규민님 쪽지소켓 <span class="badge rounded-pill bg-primary" id="unreadCheck"></span> -->
 			<!-- c 콜론 이게 jstl 상단에 태그 달아줄것-->
-			<span class="badge rounded-pill bg-primary" id="unreadCheck"></span>
 			<c:choose>
 			 <c:when test="${user==null}">
           	  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
           	  <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
           	 </c:when>
           	 <c:otherwise>
+          	  <li><i class="las la-envelope"></i><span id="unreadCheck" class="notenew" hidden="hidden"></span></li>
           	  <li><i class="las la-user"></i><b>${user.member_name}</b>&nbsp;님</li>
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
@@ -396,8 +402,10 @@
 			data : receive_id,
 			success : function(data){
 				if(data>0){
-					$("#unreadCheck").html("Unread Message "+data);
+					$("#unreadCheck").removeAttr("hidden");
+					$("#unreadCheck").html(data);
 				} else {
+					$("#unreadCheck").attr("hidden", "hidden");
 					$("#unreadCheck").html("");
 				}
 			},//end success

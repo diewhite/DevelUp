@@ -9,6 +9,10 @@ white-space:nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 }
+.new{position: absolute;justify-content: center;transform: scale(.7);color: #fff;background-color: #dc3545;
+	display: inline-block; padding: 0.25em 0.4em;font-size:85%; font-weight: 700; line-height: 1; border-radius: 0.35rem; }
+.new span{ background-color: #ffc107;   border-radius: 50%; height: 30px; width: 30px;  align-items: center;justify-content: center; display: flex;
+font-weight:800;    font-size:0.3rem !important; color:#fff}
 </style>
 </head>
 <body>
@@ -57,21 +61,19 @@ overflow: hidden;
 				<table class="table">
 					<caption>받은쪽지 목록</caption>
 					<colgroup>
-						<col width="5%">
 						<col width="10%">
 						<col width="15%">
 						<col width="*%">
+						<col width="20%">
 						<col width="10%">
-						<col width="5%">
 					</colgroup>
 					<thead>
 						<tr>
-							<th><input type="checkbox" name=" " class="form-check-input"
-								onclick="fnChk()"></th>
 							<th scope="col">번호</th>
 							<th scope="col">보낸사람</th>
 							<th scope="col">내용</th>
 							<th scope="col">보낸시간</th>
+							<th scope="col">삭제</th>
 						</tr>
 					</thead>
 					<tbody id="ksicList">
@@ -115,23 +117,26 @@ overflow: hidden;
  							-->
  						<c:forEach var="note" items="${notelist }">
 						<tr onclick="modalData(this)" class="notice">
-						<td data-before="체크박스">
-							<div class="form-check">
-								<label class="form-check-label"> <input type="checkbox"
-									name="remember" id="remember" class="form-check-input"
-									onclick="fnChk()">
-								</label>
-							</div>
-						</td>
- 							<td id="no">${note.no }</td>
- 							<td id="send_id">${note.send_id }</td>
- 							<td id="content" class="notetitle">
+							<td data-before="쪽지번호" id="no">
+								<c:choose>
+									<c:when test="${note.read_chk==0 }">
+										<div>${note.no }<span id="newtag" class="new" style="">New</span></div>
+									</c:when>
+									<c:otherwise>
+										<div>${note.no }<span id="newtag" class="new" style="" hidden="hidden">New</span></div>
+									</c:otherwise>
+								</c:choose>
+							</td>
+ 							<td data-before="보낸사람" id="send_id">${note.send_id }</td>
+ 							<td data-before="쪽지내용" id="content" class="notetitle">
 								<a href="#" title="쪽지읽기 팝업" data-bs-toggle="modal"
 								 data-bs-target="#readModal">
 								${note.content }</a>
 							</td>
-							<td id="send_time">${note.send_time }</td>
-							<td id="deletenote"><a href="/ongo/mypage/note/deleteNote?no=${note.no }&page=receive">삭제</a></td>
+							<td data-before="시간" id="send_time">${note.send_time }</td>
+							<td data-before="삭제" id="deletenote">
+							<a class="board_label red text-white" href="/ongo/mypage/note/deleteNote?no=${note.no }&page=receive" style="width:0%;">삭제</a>
+							</td>
 							<td hidden="true">${note.read_chk }</td>							
 						</tr>
  						</c:forEach>
@@ -287,10 +292,8 @@ overflow: hidden;
 						</div>
 					</div>
 					<div class="btn-area">
-						<button type="button" class="btn btn-warning text-white btn-large"
-							data-bs-dismiss="modal" aria-label="Close">
-							<a href="#" title="답장하기 팝업" data-bs-toggle="modal" data-bs-target="#replyModal">답장하기</a></button>
-					</div>
+						<a href="#" class="btn btn-warning text-white btn-large" title="답장하기 팝업" 
+						data-bs-toggle="modal" data-bs-target="#replyModal">답장하기</a>
 					<!-- 닫기버튼 -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close">
@@ -300,6 +303,7 @@ overflow: hidden;
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- //modal -->
 	<!-- Footer -->
@@ -319,11 +323,12 @@ overflow: hidden;
 		function modalData(clicked_element){
 			var row_td = clicked_element.getElementsByTagName("td");
 			var row_a = clicked_element.getElementsByTagName("a");
-			document.getElementById("readModal_send_id").innerHTML = row_td[2].innerHTML;
+			var row_div = clicked_element.getElementsByTagName("div");
+			document.getElementById("readModal_send_id").innerHTML = row_td[1].innerHTML;
 			document.getElementById("readModal_content").innerHTML = row_a[0].innerHTML.trim();
-			document.getElementById("readModal_readchk").innerHTML = row_td[6].innerHTML;
-			document.getElementById("readModal_no").innerHTML = row_td[1].innerHTML;
-			document.getElementById("reply_receive_id").innerHTML = row_td[2].innerHTML;
+			document.getElementById("readModal_readchk").innerHTML = row_td[5].innerHTML;
+			document.getElementById("readModal_no").innerHTML = row_div[0].innerHTML.replace("New", "");
+			document.getElementById("reply_receive_id").innerHTML = row_td[1].innerHTML;
 			var no = {"no":document.getElementById("readModal_no").textContent}
 			if(document.getElementById("readModal_readchk").textContent==0){
 				$.ajax({
@@ -357,6 +362,12 @@ overflow: hidden;
 				document.valid_reply_form.action="/ongo/mypage/note/sendnote";
 			}
 		}//end validate_reply_user_id
+		
+ 		$("#readModal").on('hidden.bs.modal', function (e) {
+ 			if($("#replyModal.show").length==0){
+ 				location.href='/ongo/mypage/note/receivebox?id=${user.member_id}';
+ 			}
+		});
 	</script>
 </body>
 </html>
