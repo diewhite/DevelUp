@@ -82,7 +82,10 @@ public class DealBoard_Controller {
 	public ModelAndView dealRead(int deal_number, String state) {
 		DealBoard_DTO dealRead = service.dealRead(deal_number);
 		String view = "";
-		if(state.equals("READ")) {			
+		if(state.equals("READ")) {	
+			System.out.println("조회수 처리전 : "+dealRead.getHits()+ "/______/매개변수확인" + deal_number);
+			service.hits_update(deal_number);//조회
+			System.out.println("조회수 처리후 : "+dealRead.getHits()  + "/______/매개변수확인" + deal_number);
 			view ="dealBoardRead";
 		}else {
 			System.out.println("컨트롤 업데이트 진입 : " + deal_number); //넘어감

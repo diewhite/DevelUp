@@ -319,7 +319,7 @@
 
 						</div>
 					</div>
-				</form>
+				
 					
 					<!-- <div class="btn-area">
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
@@ -334,6 +334,7 @@
 			<div class="btn-area">
 				<button type="submit" class="btn btn-success btn-large">수정</button>
 			</div>
+			</form>
 		</c:when>	
 			<c:otherwise>
 			</c:otherwise>				
