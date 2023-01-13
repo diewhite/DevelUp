@@ -39,7 +39,7 @@
 	        <!-- title -->
 	        <div class="sub_top" >
 	            <div class="container" >
-	                <h1 style="text-align:center;">새거같은 짝퉁팝니다.</h1>
+	                <h1 style="text-align:center;">${board.auction_title}</h1>
 	            </div>
 	        </div>
 
