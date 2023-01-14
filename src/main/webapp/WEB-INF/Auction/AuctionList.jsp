@@ -112,7 +112,7 @@
                         <div class="auction-img-main ">
                           <ul>
                             <li >
-                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead'"></li>
+                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead?auction_no=${boardlist.auction_number}'"></li>
                           </ul>
                         </div>
                         <div class="thumbnail text-center" >
