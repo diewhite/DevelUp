@@ -21,11 +21,22 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+//	@Override
+//	public List<AuctionBoard_DTO> boardlist() {
+//		return dao.boardlist();
+//	}
+//	
+	//경매 게시판 전체 조회 + 카테고리 조회 
 	@Override
-	public List<AuctionBoard_DTO> boardlist() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AuctionBoard_DTO> boardlist(String auction_category) {
+		List<AuctionBoard_DTO> list = null;
+		if(auction_category.equals("all")) {
+			list = dao.boardlist();
+		}else {
+			list = dao.findByCategory(auction_category);
+		}
+		return list;
 	}
 
 	@Override
