@@ -240,7 +240,7 @@
 									 "<div class='carousel-item active'  id='deal-item'>"+
 										"<h3> "+
 						                  
-						                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' target='_blank'"+
+						                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' "+
 						                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
 						                  "</h3>"+
 						                  "<h3>제목 : " + ajaxlist[i].board_title +  "</h3>"+
@@ -257,7 +257,7 @@
 									"<div class='carousel-item'  id='deal-item'>"+
 									"<h3> "+
 					                  
-					                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small' target='_blank'"+
+					                    "<a href='/ongo/dealRead.do?deal_number="+ ajaxlist[i].deal_number +"&state=READ' class='btn btn-small'"+
 					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
 					                  "</h3>"+
 					                  "<h3>제목 : " + ajaxlist[i].board_title +  "</h3>"+

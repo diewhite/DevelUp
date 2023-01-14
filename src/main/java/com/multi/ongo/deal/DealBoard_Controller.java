@@ -120,7 +120,7 @@ public class DealBoard_Controller {
 	//하단검색
 	@RequestMapping("serarchData.do")
 	public ModelAndView dataSearch(String tag, String searchData) {
-		//System.out.println("tag : " + tag + ",   searchData값 : " +  searchData);
+		System.out.println("tag : " + tag + ",   searchData값 : " +  searchData);
 		ModelAndView mav = new ModelAndView("deallistAll");
 		List<DealBoard_DTO> listall = service.searchData(tag, searchData);
 		mav.addObject("listall", listall);
