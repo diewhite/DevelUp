@@ -29,7 +29,34 @@
 .gray{color:gray;}
 .blue{color:blue;}
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		timer = setInterval('auction_time()',1000);
+	})//end document ready
+	
+	var startTime = new Date().getTime();
+	var endTime = new Date('${board.end_date}');
+	var remainTime = endTime - startTime;
+	var showRemain = "";
 
+	function auction_time(){
+		var hours = Math.floor((remainTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var miniutes = Math.floor((remainTime % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((remainTime % (1000 * 60)) / 1000);
+		
+		showRemain = hours + ":" + miniutes + ":" + seconds;
+		
+		document.getElementById("remainT").innerHTML = showRemain;
+		
+		if (remainTime<0){
+			clearInterval(timer);
+		} else {
+			remainTime = remainTime - 1000;
+		}
+	}
+	
+	
+</script>
 	
 	</head>
 	<body>
@@ -108,9 +135,7 @@
 	                 <div class="grid-item colspan2">
 	                  <label >남은시간</label>
 	                  <div class="tbl-basic-td">
-	                    <div class="input-wrap w20">
-	                      남은시간 21시간35분
-	                    </div>
+	                    <div class="input-wrap w20" id="remainT"></div>
 	                  </div>
 	                </div>
 	               
@@ -469,9 +494,6 @@ function btn(){
 
 		</div>
 	</div>
-
-
-
 
 	</body>
 	</html>

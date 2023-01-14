@@ -9,13 +9,13 @@ public class AuctionBoard_DTO {
 	private String auction_state ;
 	private String auction_title;
 	private int hits ;
-	private Date write_date ;
+	private String write_date ;
 	private String board_content ;
 	private String list_photo ;
 	private String min_price;
 	private String start_price ;
 	private String end_price ;
-	private Date end_date;
+	private String end_date;
 	
 	//기본생성자
 	public AuctionBoard_DTO() {
@@ -23,8 +23,8 @@ public class AuctionBoard_DTO {
 	}
 
 	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
-			String auction_title, int hits, Date write_date, String board_content, String list_photo, String min_price,
-			String start_price, String end_price, Date end_date) {
+			String auction_title, int hits, String write_date, String board_content, String list_photo, String min_price,
+			String start_price, String end_price, String end_date) {
 		super();
 		this.auction_number = auction_number;
 		this.member_id = member_id;
@@ -89,11 +89,11 @@ public class AuctionBoard_DTO {
 		this.hits = hits;
 	}
 
-	public Date getWrite_date() {
+	public String getWrite_date() {
 		return write_date;
 	}
 
-	public void setWrite_date(Date write_date) {
+	public void setWrite_date(String write_date) {
 		this.write_date = write_date;
 	}
 
@@ -137,11 +137,11 @@ public class AuctionBoard_DTO {
 		this.end_price = end_price;
 	}
 
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 
