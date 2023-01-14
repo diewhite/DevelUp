@@ -52,7 +52,7 @@
       <div id="gnb" class="d-flex justify-content-center">
         <ul class="dep1">
           <li>
-             <a id="siTitle" href="/ongo/auction/auctionBoard" onmouseover="menuover(this);" ><span >경매</span></a>
+             <a id="siTitle" href="/ongo/auction/auctionBoard?auction_category=all" onmouseover="menuover(this);" ><span >경매</span></a>
           </li>
 
           <li>

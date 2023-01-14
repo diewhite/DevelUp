@@ -3,8 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.auction">
-  	<select id="read" resultType="auctionDTO" parameterType="Int">
-  		select * from auction_table where auction_number = #{auction_no}
+  	<!-- <select id="read" resultType="auctionDTO" parameterType="Int">
+  		select * from auction_table 
+  		where auction_number = #{auction_no}
+	</select> -->
+	
+	<!-- 경매게시판 전체게시글 조회 -->
+	<select id="listAll" resultType="auctionDTO">
+		select * from auction_table 
+		order by write_date desc
+	</select>
+	
+	<!-- 경매게시판 카테고리 조회 -->
+	<select id="categorySelect" resultType="auctionDTO" parameterType="String">
+		select * from auction_table 
+		where auction_category=#{auction_category}
 	</select>
   </mapper>
   

@@ -32,10 +32,16 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
 
 	@Override
 	public List<AuctionBoard_DTO> boardlist() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("com.multi.ongo.auction.listAll");
 	}
 
+	@Override
+	public List<AuctionBoard_DTO> findByCategory(String auction_category) {
+		
+		return sqlSession.selectList("com.multi.ongo.auction.categorySelect", auction_category);
+	}
+
+	
 	@Override
 	public AuctionBoard_DTO auctionlist(int auction_number) {
 		// TODO Auto-generated method stub
