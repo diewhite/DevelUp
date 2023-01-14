@@ -62,9 +62,11 @@ public class AuctionBoard_Controller {
 	@RequestMapping("/auction/auctionRead") 
 	public String auctionRead(int auction_no, String status, Model model) {
 		String view = "";
-		AuctionBoard_DTO board = service.auctionRead(auction_no);
+		AuctionBoard_DTO board = service.auctionRead(auction_no);		
 		System.out.println("no:"+auction_no+",status:"+status);
-		model.addAttribute("board", board);
+		System.out.println("start:"+board.getWrite_date());
+		System.out.println("end:"+board.getEnd_date());
+		model.addAttribute("board", board);		
 		if(status.equals("READ")) {
 			view = "auctionRead";
 			System.out.println(board);
