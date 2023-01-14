@@ -7,8 +7,10 @@ public interface AuctionBoard_Service {
 	//거래
 	public int writeProd(AuctionBoard_DTO dto);
 		 
-	//중고거래
-	public List<AuctionBoard_DTO> boardlist();
+//	//중고거래
+	public List<AuctionBoard_DTO> boardlist(String auction_category);
+	
+//	List<AuctionBoard_DTO> boardlist();
 
 	//게시글읽기
 	public AuctionBoard_DTO auctionRead(int auction_no);
