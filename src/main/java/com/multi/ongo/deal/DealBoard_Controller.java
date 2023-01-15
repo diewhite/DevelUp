@@ -31,36 +31,22 @@ public class DealBoard_Controller {
 	// 중고거래 게시글등록
 	@RequestMapping("deal_Write.do")
 	public String dealWrite(DealBoard_DTO dto) {
-//		System.out.println("id : " + dto.getId());
-//		System.out.println("dealType : " + dto.getDealType());
-//		System.out.println("pro_category : " + dto.getProduct_category());
-//		System.out.println("pro_state : " + dto.getProduct_state());
-//		System.out.println("pro_price : " + dto.getProduct_price());
-//		System.out.println("board_title : " + dto.getBoard_title());
-//		System.out.println("pro_name : " + dto.getProduct_name());
-//   	System.out.println("board_content : " + dto.getBoard_content());
-//		System.out.println("hits : " + dto.getHits());
-//		System.out.println("writeDate : " + dto.getWrite_date());
-//		System.out.println("deal_no : " + dto.getDeal_number());
 		service.writeProd(dto);
-		return "redirect:/deal_listAll.do?dealType=all";
+		return "redirect:/deal_listAll2.do?dealType=all";
 				
 		
 	}
 	
 	
-	//중고거래게시글 타입별조회
-	@RequestMapping("deal_listAll.do")
+	//중고거래게시글 타입별조회(카테고리)
+	@RequestMapping("deal_listAll2.do")
 	public ModelAndView dealType_list(String dealType) {
-		ModelAndView mav = new ModelAndView("deallistAll");
+		ModelAndView mav = new ModelAndView("deallistAll2");
 		List<DealBoard_DTO> listall = service.dealType_list(dealType);
 		mav.addObject("dealType",dealType);
 		mav.addObject("listall",listall);
 		return mav;
 	}
-	
-	
-	
 	
 	
 	//중고거래게시글 전체리스트
@@ -105,7 +91,7 @@ public class DealBoard_Controller {
 		//System.out.println("getDeal_number넘어오는가?찍먹1: " + dto.getDeal_number());
 		service.update(dto);
 		//System.out.println("넘어오는가?찍먹2: " + dto);
-		return "redirect:deal_listAll.do";
+		return "redirect:deal_listAll2.do";
 	}
 	
 	
@@ -114,7 +100,7 @@ public class DealBoard_Controller {
 	@RequestMapping("dealDelete.do")
 	public String dealDelete(int deal_number) {
 		service.dealDelete(deal_number);
-		return "redirect:/deal_listAll.do?dealType=all";
+		return "redirect:/deal_listAll2.do?dealType=all";
 	}
 	
 	//하단검색
@@ -129,8 +115,6 @@ public class DealBoard_Controller {
 
 	
 	//중고거래시글 타입-메인 [ajax]
-	
-	
 	@RequestMapping(value = "/dealType_main.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public List<DealBoard_DTO> dealType_main(String dealType){

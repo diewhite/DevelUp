@@ -50,7 +50,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll2.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -60,8 +60,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >중고</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='/ongo/deal_listAll.do?dealType=중고'">중고</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/deal_listAll.do?dealType=나눔'">나눔</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/deal_listAll2.do?dealType=중고'">중고</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/deal_listAll2.do?dealType=나눔'">나눔</a></li>
                   </ul>
                 </div>
                 
@@ -197,13 +197,13 @@
                 <h2>거래</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="/ongo/deal_listAll.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
+                    <a href="/ongo/deal_listAll2.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
                     <!-- <ul class="sitemap_depth3 dot_list">
                      <li ><a href="#" >중고상품</a></li>
                     </ul> -->
                   </div>
                   <div class="sitemap_depth2">
-                    <a href="/ongo/deal_listAll.do?dealType=나눔" class="sitemap_depth2_tit" ><span onclick="">나눔</span></a>
+                    <a href="/ongo/deal_listAll2.do?dealType=나눔" class="sitemap_depth2_tit" ><span onclick="">나눔</span></a>
                     <!-- <ul class="sitemap_depth3 dot_list">
                      <li ><a href="#" >새상품</a></li>
                     </ul> -->
