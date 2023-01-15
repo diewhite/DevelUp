@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head></head>
+<head>
+<style type="text/css">
+
+/*쪽지 top*/
+.notenew{position: absolute; transform: scale(.7);transform-origin: top right; right: 11px; margin-top: -0.20rem; color: #fff; 
+		background-color: #dc3545; display: inline-block; padding: 0.25em 0.4em;font-size:85%; font-weight: 700; line-height: 1; border-radius: 0.35rem; }
+</style>
+</head>
 <body>
 
 <!-- header -->
@@ -14,16 +21,15 @@
         <li> TEAM Devel-Up(김규민,김윤희,김태원,박소정,손성민,최경민)</li>
       </ul>
       <ul class="top_menu_right justify-content-end">
-
-		
+		<!-- 규민님 쪽지소켓 <span class="badge rounded-pill bg-primary" id="unreadCheck"></span> -->
 			<!-- c 콜론 이게 jstl 상단에 태그 달아줄것-->
-			<span class="badge rounded-pill bg-primary" id="unreadCheck"></span>
 			<c:choose>
 			 <c:when test="${user==null}">
           	  <li><a href="/ongo/member/login.do"><i class="las la-unlock"></i> 로그인</a></li>
           	  <li><a href="/ongo/member/join1.do"><i class="las la-user"></i>회원가입</a></li>
           	 </c:when>
           	 <c:otherwise>
+          	  <li><i class="las la-envelope"></i><span id="unreadCheck" class="notenew" hidden="hidden"></span></li>
           	  <li><i class="las la-user"></i><b>${user.member_name}</b>&nbsp;님</li>
               <li><a href="/ongo/member/logout.do">로그아웃</a></li>
              </c:otherwise>
@@ -46,11 +52,15 @@
       <div id="gnb" class="d-flex justify-content-center">
         <ul class="dep1">
           <li>
-             <a id="siTitle" href="/ongo/auction/auctionBoard" onmouseover="menuover(this);" ><span >경매</span></a>
+             <a id="siTitle" href="/ongo/auction/auctionBoard?auction_category=all" onmouseover="menuover(this);" ><span >경매</span></a>
           </li>
 
           <li>
+<<<<<<< HEAD
             <a id="siTitle" href="/ongo/deal_listAll2.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
+=======
+            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >중고거래</span></a>
+>>>>>>> refs/heads/main
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -138,13 +148,13 @@
                     <li><a href="/ongo/member/memberboard.do">회원목록</a></li>
                   </ul>
                 </div>
-                
+                <!-- 
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">게시판관리</a></span>
                   <ul class="dep2_link">
                     <li ><a href="/ongo/member/memberserviceboard.do">게시물통합관리</a></li>
                   </ul>
-                </div>
+                </div> -->
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">쪽지함</a></span>
                   <ul class="dep2_link">
@@ -194,7 +204,7 @@
                 </div>
               </div>
               <div class="sitemap_li d-flex">
-                <h2>거래</h2>
+                <h2>중고거래</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
                     <a href="/ongo/deal_listAll2.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
@@ -274,12 +284,13 @@
 		                      <li ><a href="#" >회원목록</a></li>
 		                    </ul>
 		                  </div>
+		                  <!-- 
 		                  <div class="sitemap_depth2">
 		                    <a href="/ongo/member/memberserviceboard.do" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">게시판관리</span></a>
 		                    <ul class="sitemap_depth3 dot_list">
 		                      <li ><a href="/ongo/member/memberserviceboard.do" >게시물통합관리</a></li>
 		                    </ul>
-		                  </div>
+		                  </div> -->
 		                   <div class="sitemap_depth2">
 		                    <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">쪽지함</span></a>
 		                    <ul class="sitemap_depth3 dot_list">
@@ -396,8 +407,10 @@
 			data : receive_id,
 			success : function(data){
 				if(data>0){
-					$("#unreadCheck").html("Unread Message "+data);
+					$("#unreadCheck").removeAttr("hidden");
+					$("#unreadCheck").html(data);
 				} else {
+					$("#unreadCheck").attr("hidden", "hidden");
 					$("#unreadCheck").html("");
 				}
 			},//end success

@@ -34,7 +34,7 @@
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="intro2-tab" data-bs-toggle="tab" data-bs-target="#intro3" type="button"
-              role="tab" aria-controls="intro2" aria-selected="false">거래</button>
+              role="tab" aria-controls="intro2" aria-selected="false">중고거래</button>
           </li>
         </ul>
         <div class="tab-content">
