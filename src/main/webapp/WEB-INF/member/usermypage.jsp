@@ -22,11 +22,6 @@
 
 	}
 
-	function removeCheck() {
-		var remove;
-		remove = toastr.warning("현재 탈퇴 서비스를 제공하고 있지 않습니다.");
-	}
-
 
 	$(document).ready(function () {
 		var type = "${userMode.phone1}"
@@ -35,6 +30,15 @@
 		$("#select_target_3").val(type2).attr("selected","selected");
 		$("#USR_EMADR_2").val(type2);
 	})
+	
+	function unsign(){
+		var check = confirm("정말 탈퇴 하시겠습니까?");
+		if(check){
+			return location.href='/ongo/member/unsign?member_id=${userMode.member_id}';
+		}else{
+			return false;
+		}
+	}
 </script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -204,7 +208,7 @@
 				</div>
 				<div class="btn-area">
 					<button type="button" class="btn btn-outline-secondary btn-large"
-						title="회원삭제" onclick="removeCheck()">회원탈퇴</button>
+						title="회원탈퇴" onclick="return unsign()">회원탈퇴</button>
 					<button class="btn btn-outline-primary btn-large" type="submit">수정</button>
 				</div>
 			</form>

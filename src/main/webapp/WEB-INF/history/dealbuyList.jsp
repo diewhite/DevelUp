@@ -10,14 +10,14 @@
     <!-- title -->
     <div class="sub_top">
         <div class="container">
-            <h1>해당페이지 타이틀명</h1>
+            <h1>구매관리</h1>
         </div>
     </div>
     <!-- //title -->
     
     <!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
     
-    요기에 작업 할거 넣어주세요
+	<h2> 여기는 구매관리 페이지~~~~</h2>
     
     <!--====== // </div> container=====-->
 

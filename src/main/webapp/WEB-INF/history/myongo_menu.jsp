@@ -51,7 +51,7 @@ hr {
 			<!-- 중고거래 -->
 			<div class="sidebox">
 				<h5>중고거래관리</h5>
-				<a href="/ongo/history/dealsellList"	class="list-group-item">판매관리</a> 
+				<a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중"	class="list-group-item">판매관리</a> 
 				<a href="#" class="list-group-item">구매관리</a>
 			
 			</div>

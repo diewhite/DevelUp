@@ -29,7 +29,34 @@
 .gray{color:gray;}
 .blue{color:blue;}
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		timer = setInterval('auction_time()',1000);
+	})//end document ready
+	
+	var startTime = new Date().getTime();
+	var endTime = new Date('${board.end_date}');
+	var remainTime = endTime - startTime;
+	var showRemain = "";
 
+	function auction_time(){
+		var hours = Math.floor((remainTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var miniutes = Math.floor((remainTime % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((remainTime % (1000 * 60)) / 1000);
+		
+		showRemain = hours + ":" + miniutes + ":" + seconds;
+		
+		document.getElementById("remainT").innerHTML = showRemain;
+		
+		if (remainTime<0){
+			clearInterval(timer);
+		} else {
+			remainTime = remainTime - 1000;
+		}
+	}
+	
+	
+</script>
 	
 	</head>
 	<body>
@@ -39,7 +66,7 @@
 	        <!-- title -->
 	        <div class="sub_top" >
 	            <div class="container" >
-	                <h1 style="text-align:center;">새거같은 짝퉁팝니다.</h1>
+	                <h1 style="text-align:center;">${board.auction_title}</h1>
 	            </div>
 	        </div>
 
@@ -81,9 +108,7 @@
 	                  <label >등록자</label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
-	                      akd123 
-	                      <p>(닉네임)</p>
-	                    
+	                      ${board.member_id }	                    
 	                    </div>
 	                  </div>
 	                </div>
@@ -94,8 +119,7 @@
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
 	                      <select class="form-select grid-input"title="카테고리">
-	                       <option value="01">자동차</option>
-	                       <option value="02">핸드폰</option>
+	                       <option value="${board.auction_category }">${board.auction_category }</option>
 	                      </select>
 	                    </div>
 	                  </div>
@@ -104,18 +128,14 @@
 	                  <label >상태</label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
-	                      경매진행중
-	                    
+	                    	${board.auction_state }
 	                    </div>
 	                  </div>
 	                </div>
 	                 <div class="grid-item colspan2">
 	                  <label >남은시간</label>
 	                  <div class="tbl-basic-td">
-	                    <div class="input-wrap w20">
-	                      남은시간 21시간35분
-	                    
-	                    </div>
+	                    <div class="input-wrap w20" id="remainT"></div>
 	                  </div>
 	                </div>
 	               
@@ -123,14 +143,14 @@
 	                  <label for="HOFS_DTADR">경매</label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w30 me-4">
-	                    <div> 시작가: 5000원  </div>
+	                    <div> 시작가: <span>${board.start_price }</span>원  </div>
 	                    <p class="gray">입찰내역: 7000원 </p> 
 	                    <p class="gray">입찰내역: 11000원 </p> 
 	                    <p class="gray">입찰내역: 13000원 </p> 
 	                   
 	                    
 	                     <p class="blue">현재입찰가: 16000원 </p> 
-	                     <p>최소가: 1000원 </p> 
+	                     <p>최소가: ${board.min_price }원 </p> 
 	                   
 	                   
 	                  
@@ -142,7 +162,7 @@
 	                <div class="grid-item colspan2">
 	                  <label for="HOFS_INTR_MTRL_CNTS">내용</label>
 	                  <div class="tbl-basic-td">
-	                    		너무너무 별로에요
+	                    		${board.board_content }
 	                    </div>
 	               
 	                </div>
@@ -474,9 +494,6 @@ function btn(){
 
 		</div>
 	</div>
-
-
-
 
 	</body>
 	</html>

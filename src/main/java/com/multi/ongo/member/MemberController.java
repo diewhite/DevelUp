@@ -62,16 +62,47 @@ public class MemberController {
 		return "redirect:/index";
 	}
 
-	// 아이디찾기
+	// 아이디찾기(페이지처리)
 	@RequestMapping(value = "/member/findid", method = RequestMethod.GET)
 	public String findID() {
 		return "member/findid";
 	}
+	
+	// 아이디찾기(ajax)
+	@RequestMapping(value = "/member/ajax_findid")
+	@ResponseBody
+	public String ajax_findId(MemberDTO userInfo) {
+		String userId = "";
+		MemberDTO userData = service.findId(userInfo);
+		if(userData!=null) {
+			userId = userData.getMember_id();
+		}
+		return userId;
+	}
 
-	// 비밀번호찾기
-	@RequestMapping(value = "/member/findpass", method = RequestMethod.GET)
+	// 비밀번호찾기(페이지처리)
+	@RequestMapping(value = "/member/pass", method = RequestMethod.GET)
 	public String findpass() {
 		return "member/pass";
+	}
+	
+	// 비밀번호찾기(ajax)
+	@RequestMapping(value = "/member/ajax_findpass")
+	@ResponseBody
+	public String ajax_findpass(MemberDTO userInfo) {
+		String userId = "";
+		MemberDTO userData = service.findPass(userInfo);
+		if(userData!=null) {
+			userId = userData.getMember_id();
+		}
+		return userId;
+	}
+
+	//비밀번호 변경
+	@RequestMapping(value = "/member/passupdate")
+	public String passUpdate(MemberDTO userInfo) {
+		service.passModi(userInfo);
+		return "redirect:/member/login.do";
 	}
 
 	// 회원가입 - 약관동의
@@ -98,7 +129,7 @@ public class MemberController {
 	// 회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
 	// public String list(BoardDTO board,String id)여기서 매개변수는 board나 id를 매개변수라 한다.
 	@RequestMapping(value = "/member/join3", method = RequestMethod.POST)
-	public String join3(MemberDTO joininsert, String state) {
+	public String join3(MemberDTO joininsert, String state) { // joininsert 변수명 <<  state << 변수명이라한다
 		// System.out.println("가입테스트중"+joininsert);
 		// System.out.println("state=>"+state);
 		String view = "";
@@ -117,9 +148,26 @@ public class MemberController {
 		return "member/join4"; 
 	}
 
+	// 회원가입 - 아이디 중복 체크
+	@RequestMapping(value = "/member/ajax_idcheck")
+	@ResponseBody
+	public String ajax_idcheck(String member_id) {
+		String userId = "";
+		MemberDTO user = service.idCheck(member_id);
+		if(user!=null) {
+			userId = user.getMember_id();
+		}
+		return userId;
+	}
 	
+	// 회원탈퇴
+	@RequestMapping(value = "/member/unsign")
+	public String unsign(String member_id) {
+		service.unsign(member_id);
+		return "redirect:/member/logout.do";
+	}
 	
-//=========================================================관리자 > 회원목록
+//========================================================= 관리자 > 회원목록
 
 	// 관리자> 회원목록> 전체리스트
 	@RequestMapping(value = "/member/memberboard")
@@ -171,7 +219,7 @@ public class MemberController {
 		return "member/memberboard";
 	}
 
-//=========================================================관리자 > 게시물관리
+//========================================================= 관리자 > 게시물관리
 
 	// 게시판관리
 	@RequestMapping(value = "member/memberserviceboard")
@@ -195,25 +243,11 @@ public class MemberController {
 	}
 
 	
-	//=============나의온고> user 정보수정 // 세션에서 가져오면된다.. 
-//get =:>  디비에 데이터 가져올 때
-// post => 디비에 데이터 집어넣을 때 (생성)
-// put => 디비에 데이터를 덮어씌워 버릴때 (update)
-// patch => 디비에 데이터 일부를 덮었씌울 때 (update)
-// delete => 삭제
-//	RESTful API -> 우리 이렇게 개발하자 방법론.
-
-//=============거래게시판> 회원정보보기
-		@RequestMapping(value = "/member/ajax_memberread")
-		@ResponseBody
-		public MemberDTO ajax_memberR(String member_id) {
-			MemberDTO userinfo = service.memberIdRead(member_id);
-			return userinfo;
-		}
+//========================================================= 나의온고> 마이페이지 정보수정
 		
 	// 나의온고> user 정보수정 뷰
 	@RequestMapping(value = "/member/usermypage",method = RequestMethod.GET)
-//  top에 있는 <a href="/ongo/member/usermypage?member_id=${user.member_id}">정보수정</a></li> => ?member_id=$ 파라미터명과 같아야 한다
+	//top에 있는 <a href="/ongo/member/usermypage?member_id=${user.member_id}">정보수정</a></li> => ?member_id=$ 파라미터명과 같아야 한다
 	public String userU(String user_id,Model usermodel) { 
 		MemberDTO userRead = service.memberIdRead(user_id);
 		usermodel.addAttribute("userMode", userRead); // memberRU 이게 어트리뷰트
@@ -226,7 +260,19 @@ public class MemberController {
 	public String userU(MemberDTO uUpdate) { // userU => 메소드명 , MemberDTO => 매개변수타입 
 		System.out.println("]여기는 컨트롤러 업데이트수정:" + uUpdate);
 		int result = service.update(uUpdate); //int result  >> 추후에 회원정보에 프로필사진이 추가되었을 경우, 트랜잭션처리를위해서 이렇게 남겨놓음.
-		
 		return "redirect:/index"; // member_id 멤버매게변수명
 	}
+
+//========================================================= 거래 > 게시판읽기 > 회원정보보기	
+	
+	// dealboard > 상세페이지 > 회원아이디 클릭 > 회원정보보기
+	@RequestMapping(value = "/member/ajax_memberread")
+	@ResponseBody
+	public MemberDTO ajax_memberR(String member_id) {
+		MemberDTO userinfo = service.memberIdRead(member_id);
+		return userinfo;
+	}
+
+	
+	
 }

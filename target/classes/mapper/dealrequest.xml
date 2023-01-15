@@ -4,14 +4,29 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.dealreq">
 	
+	<!-- 구매자 : 거래요청하기 -->
+	<insert id="dealreq" parameterType="dealReqDTO" >
+		insert into dealreq values(
+		#{seller_id}, null, #{req_id}, to_date(sysdate, 'YYYY-MM-DD'), #{deal_number})
+	<!-- seller_id	buyer_id	req_id		req_time// @@시간포맷까지 포함해보기@@		글번호(FK) 	 -->
+	</insert>
 	
-	<!-- 판매내역조회 : 구매요청 id 표현하기 -->
-	<select id="deal_req" resultType="dealReqDTO" parameterType="Int">
-		select h.deal_number, h.req_id, h.req_time		<!-- DB에서 가져와서  뿌릴 데이터  -->
-		from deal_table2 d,dealhistory h		
-		where d.deal_number=h.deal_number	
-		and d.deal_number=#{deal_number}
 	
+	<!-- 판매중 list > 거래요청 유저 정보 list   -->
+	<select id="dealreqinfo" resultType="dealReqDTO" parameterType="int">
+		select r.*		<!-- DB에서 가져와서  뿌릴 데이터  -->
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number	
+		and r.deal_number=#{deal_number}
 	</select>
+
+	
+	<!-- '거래하기' 클릭 시 구매자 정보 update -->
+	<update id="choicebuyer" parameterType="Map">
+		update dealreq
+		set buyer_id=#{member_id} 
+		where deal_number=#{deal_number}
+	</update>
+	
 	
   </mapper>

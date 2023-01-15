@@ -7,26 +7,53 @@ input:invalid {
 }
 </style>
 <script type="text/javascript">
-function checkUsrSubmit() {
-	  var ID = $('#saveForm #USR_NM');
-	  var PW = $('#saveForm #ENPWD');
-	  if (!ID.val()) {
-	    alert('ID를 입력하세요.');
-	    ID.focus();
-	    return false;
-	  }
-
-	  if (!PW.val()) {
-		    alert('비밀번호를 입력하세요.');
-		    PW.focus();
+	function checkUsrSubmit() {
+		  var ID = $('#saveForm #USR_NM');
+		  var PW = $('#saveForm #ENPWD');
+		  if (!ID.val()) {
+		    alert('ID를 입력하세요.');
+		    ID.focus();
 		    return false;
 		  }
-
-	}
-function fnIdCheck(){
-	var remove;
-	remove =  toastr.warning("중복확인 서비스를 제공하고 있지 않습니다.");
-}
+	
+		  if (!PW.val()) {
+			    alert('비밀번호를 입력하세요.');
+			    PW.focus();
+			    return false;
+			  }
+	
+		}
+	
+	function idCheck(){
+//		var remove;
+//		remove =  toastr.warning("중복확인 서비스를 제공하고 있지 않습니다.");
+ 		var member_id = {"member_id" : $("#USER_ID").val()};
+ 		if($("#USER_ID").val()==""){
+ 			$("#confirmId").html("");
+			$("#submitbtn").attr("disabled", "disabled");
+ 			alert("ID를 입력하세요");
+ 		} else {
+ 			$.ajax({
+				url : "/ongo/member/ajax_idcheck",
+				type : "get",
+				data : member_id,
+				success : function(data){
+					if(data!=""){
+						$("#confirmId").css("color", "red");
+						$("#confirmId").html("사용불가능 한 아이디 입니다");
+						$("#submitbtn").attr("disabled", "disabled");
+					} else {
+						$("#confirmId").css("color", "green");
+						$("#confirmId").html("사용가능 한 아이디 입니다");
+						$("#submitbtn").removeAttr("disabled");
+					}
+				},//end success
+				error:function(obj,msg,statusMsg){
+					alert("오류발생",statusMsg);
+				}//end error
+			})//end ajax
+ 		}
+	}//end idCheck
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -110,7 +137,8 @@ function fnIdCheck(){
               <div class="input-wrap">
                 <input class="grid-input" type="text" role="textbox" id="USER_ID" name="member_id" maxlength="12" title="아이디 입력">
               </div>
-              <button type="button" class="btn btn-light" onclick="fnIdCheck();"><i class="las la-search"></i>중복확인</button>
+              <button type="button" class="btn btn-light" onclick="idCheck()"><i class="las la-search" ></i>중복확인</button>
+              <span id="confirmId"></span>
             </div>
           </div>
           <div class="grid-item colspan2">
@@ -187,7 +215,7 @@ function fnIdCheck(){
         </div>
       </div>
       <div class="btn-area">
-			<button class="btn btn-outline-primary btn-large" type="submit">가입하기</button>
+			<button class="btn btn-outline-primary btn-large" type="submit" id="submitbtn" >가입하기</button>
 		</div>
     </form>
 		</div>
@@ -199,6 +227,7 @@ function fnIdCheck(){
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
+
 
 
 </body>

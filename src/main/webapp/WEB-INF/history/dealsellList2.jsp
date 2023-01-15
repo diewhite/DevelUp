@@ -147,8 +147,8 @@ input {
 			console.log(product_state)
 			console.log(member_id)
 			
-		 location.href="/ongo/history/dealsellList?product_state="+product_state;  
-		
+		/*  location.href="/ongo/history/dealsellList?product_state="+product_state;  */
+			
 			
 			/*  $.ajax({
 				url : "/ongo//history/dealsellList",
@@ -309,7 +309,7 @@ input {
 							</td>
 						</tr>
 						<tr>
-							<th>검색어</th>
+							<th>키워드 검색</th>
 							<td>
 								<div class="form-inline">
 									<div class="form-group">
@@ -403,7 +403,7 @@ input {
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
 										<td><a
-											href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'"">${sellList.board_title}</a></td>
+											href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'">${sellList.board_title}</a></td>
 										<td><fmt:formatNumber value="${sellList.product_price}"
 												pattern="#,###원" /></td>
 										<td>
@@ -441,14 +441,12 @@ input {
 												<tbody>
 													<tr>
 														<td colspan="5" id="reqUserInfo">
-													
 															<div class="reqdata">
 															<!--Ajax를 통해 실제 가져온 데이터가 출력될 곳  -->
-															<sapn id="no"></sapn>
-															<sapn id="id"></sapn>
-															<sapn id="date"></sapn>
+															<sapn id="no">test </sapn>
+															<sapn id="id">tset</sapn>
+															<sapn id="date">test</sapn>
 															</div>
-														
 														</td>
 													<%-- <c:forEach var="" items=""> --%>
 														<!-- <td>1</td>
