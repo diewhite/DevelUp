@@ -56,11 +56,7 @@
           </li>
 
           <li>
-<<<<<<< HEAD
             <a id="siTitle" href="/ongo/deal_listAll2.do?dealType=all" onmouseover="menuover(this);" ><span >거래</span></a>
-=======
-            <a id="siTitle" href="/ongo/deal_listAll.do?dealType=all" onmouseover="menuover(this);" ><span >중고거래</span></a>
->>>>>>> refs/heads/main
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
