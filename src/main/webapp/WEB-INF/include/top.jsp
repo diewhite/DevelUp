@@ -87,7 +87,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#">판매관리</a></li>
+                    <li><a href="/ongo/detail/auctionsellList">판매관리</a></li>
                     <li><a href="#">구매관리</a></li>
                   </ul>                 
                 </div>
@@ -230,7 +230,7 @@
                   <div class="sitemap_depth2">
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">경매관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
-                        <li><a href="#">판매관리</a></li>
+                        <li><a href="/ongo/detail/auctionsellList">판매관리</a></li>
                    	 	<li><a href="#">구매관리</a></li>   
                     </ul>
                   </div>
