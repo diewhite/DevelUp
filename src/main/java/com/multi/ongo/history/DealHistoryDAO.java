@@ -22,11 +22,23 @@ public interface DealHistoryDAO {
 	List<DealRequestDTO> dealreqinfo (int deal_number);
 	
 	// [dealreq] 중고거래 판매내역 > 구매자 선택 > 구매자 정보 update
-	int choosebuyer (String member_id, int deal_number); 
+	int choosebuyer (DealRequestDTO dealreqDTO); 
 	
 	// [deal_table2] 중고거래판매내역 '거래하기' 클릭시 거래상태 변경 
 	int stateChange (int deal_number);
 	
 //	************* 구매 내역 *****************
+	
+	//구매내역 list 
+	List<DealRequestDTO> myreqlist (String member_id);
+	
+	//거래진행중 list 
+	List<DealRequestDTO> mydealList (String member_id);
+	
+	//구매완료(=판매완료) list
+	List<DealRequestDTO> purchaseList (String member_id);
+	
+	//구매확정 
+	int dealconfirm (int deal_number);
 	
 }

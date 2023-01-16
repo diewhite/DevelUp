@@ -21,7 +21,6 @@
 		var seller_id="${dealRead.member_id}"
 		var req_id="${user.member_id}"
 		var deal_number="${dealRead.deal_number}"
-		alert("거래요청이 완료되었습니다. 구매관리 페이지로 이동합니다. ");
 		
 		 location.href="/ongo/history/dealreq?seller_id="+seller_id+"&req_id="+req_id+"&deal_number="+deal_number;
 				 
@@ -344,9 +343,9 @@
 					</div> -->
 			<div class="btn-area">
 				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
-				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" onclick="location.href='/ongo/history/dealreq?
-				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'"   >거래요청</button>
-																					
+				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" >거래요청</button>
+											<!-- onclick="location.href='/ongo/history/dealreq?
+				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'" -->										
 			</div>
 			
 		<c:choose>

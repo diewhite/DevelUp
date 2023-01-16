@@ -98,8 +98,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">중고거래관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중">판매관리</a></li>
-                    <li><a href="#">구매관리</a></li> 
+                    <li><a href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state=all">판매관리</a></li>
+                    <li><a href="/ongo/history/dealbuyList?member_id=${user.member_id}&product_state=all">구매관리</a></li> 
                   </ul>
                 </div>
                  <div class="dep2_right_li">

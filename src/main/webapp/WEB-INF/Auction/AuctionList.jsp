@@ -13,7 +13,7 @@
 }
 </style>
 <script type="text/javascript">
-	var type = "${auction_category}"
+	var type = "${auction_category}" 
 	$(document).ready(function () {
 		$("#auction_category").val(type).attr("selected","selected");
 		$("#auction_category").change(function () {
