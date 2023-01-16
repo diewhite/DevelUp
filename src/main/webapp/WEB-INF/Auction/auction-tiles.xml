@@ -2,21 +2,23 @@
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        <tiles-definitions>
- 
+ 			<!--게시글조회  -->
  	<definition name="auctionBoard" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/Auction/AuctionList.jsp"></put-attribute>
  	</definition>
+ 		<!-- 글쓰러가기 -->
  	 	<definition name="auctionWrite" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/Auction/AuctionWrite.jsp"></put-attribute>
  	</definition>
- 
+ 			<!-- 글등록 -->
  	 	<definition name="auctionWriteBoard" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/Auction/Auction.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/Auction/AuctionList.jsp"></put-attribute>
  	</definition>
- 	
+ 		<!--입찰하기  -->
  	 	<definition name="auctionBid" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/Auction/AuctionBid.jsp"></put-attribute>
  	</definition>
+ 	<!--  -->
  	 	<definition name="auctionRead" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/Auction/AuctionRead.jsp"></put-attribute>
  	</definition>
