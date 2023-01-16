@@ -3,12 +3,12 @@ package com.multi.ongo.auction;
 import java.sql.Date;
 
 public class AuctionBoard_DTO {
-	private int auction_number;
-	private String member_id;
-	private String auction_category;
-	private String auction_state ;
-	private String auction_title;
-	private int hits ;
+	private int auction_number; //거래번호
+	private String member_id;		//글쓴사람id
+	private String auction_category;//카테고리
+	private String auction_state ;  //경매진행중,경매종료 표시
+	private String auction_title;	//제목
+	private int hits ;	//조회수
 	private String write_date ;
 	private String board_content ;
 	private String list_photo ;
