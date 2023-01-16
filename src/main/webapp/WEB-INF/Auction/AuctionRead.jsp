@@ -98,6 +98,10 @@
 	      <!-- 이 아래부터  content부분부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 	      <!-- content -->
+	      
+   					<div class="btn-area">
+						<button class="btn btn-primary btn-danger btn-large" type="button" onclick="location.href='/ongo/auction/auctionDelete?auction_number=${board.auction_number}'">삭제</button>
+					</div>
 	
 					<div class="col-sm-6">
 	             <div class="container">
@@ -491,6 +495,7 @@ function btn(){
 					<div class="modal-footer text-center">
 						<a href="#none" class="btn btn-blue btn-md" data-dismiss="modal" onclick="javascript:$(&quot;#modalGubun&quot;).val(&quot;&quot;);">확인</a>
 					</div>
+
 			</div>
 
 		</div>
