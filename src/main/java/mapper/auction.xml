@@ -36,7 +36,7 @@ auction_title,start_price,board_content,list_photo
 		 #{auction_title}, #{start_price}, #{board_content}, #{list_photo})
 		
 		</insert>
-  </mapper>
+
   
 
 	<!-- 경매게시판 글 삭제 -by태원 __________________________________________ -->

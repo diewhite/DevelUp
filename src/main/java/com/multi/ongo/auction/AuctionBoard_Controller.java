@@ -39,7 +39,7 @@ public class AuctionBoard_Controller {
 //	//경매 거래게시글 전체 리스트
 //	@RequestMapping("/auction/auctionlistAll")
 //	public ModelAndView listall() {
-//		ModelAndView mav = new ModelAndView("auctionBoard");
+//		ModelAndView mavx` = new ModelAndView("auctionBoard");
 //		List<AuctionBoard_DTO> boardlist = service.boardlist();
 //		mav.addObject("boardlist", boardlist);
 //		return mav;
@@ -80,12 +80,12 @@ public class AuctionBoard_Controller {
 		return "auctionBid";
 		}
     
-	//경매게시판 글 읽기
-	@RequestMapping("/auction/auctionRead") 
-	public String auctionRead(int auction_no, Model model) {
-		AuctionBoard_DTO board = service.auctionRead(auction_no);		
-		model.addAttribute("board", board);			
-	}
+//	//경매게시판 글 읽기
+//	@RequestMapping("/auction/auctionRead") 
+//	public String auctionRead(int auction_no, Model model) {
+//		AuctionBoard_DTO board = service.auctionRead(auction_no);		
+//		model.addAttribute("board", board);			
+//	}
 
 	// 경매게시판 글 읽기
 	@RequestMapping("/auction/auctionRead")
