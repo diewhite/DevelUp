@@ -67,15 +67,8 @@
 				member_id like '%' || #{searchData} || '%'
 			</if>
 			<if test="tag == 'write_date' and searchData != ''">
-				write_date like '%' || #{searchData} || '%'
-			</if>
-			
-			<if test="tag == 'id' and searchData != ''">
-			</if>
-			
-			<if test="tag == 'write_date' and searchData != ''">
 				 <![CDATA[
-					write_date2 <= #{searchData} 
+					write_date <= #{searchData} 
 				]]> 
 			</if>
 			<if test="tag == 'board_title' and searchData == ''">

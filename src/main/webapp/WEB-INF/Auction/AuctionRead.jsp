@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -29,7 +30,35 @@
 .gray{color:gray;}
 .blue{color:blue;}
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		timer = setInterval('auction_time()',1000);
+	})//end document ready
+	
+	var startTime = new Date().getTime();
+	var endTime = new Date('${board.end_date}');
+	var remainTime = endTime - startTime;
+	var showRemain = "";
 
+	function auction_time(){
+		var hours = Math.floor((remainTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var miniutes = Math.floor((remainTime % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((remainTime % (1000 * 60)) / 1000);
+		
+		showRemain = hours + ":" + miniutes + ":" + seconds;
+		
+		document.getElementById("remainT").innerHTML = showRemain;
+		console.log(showRemain);
+		if (remainTime<0){
+			clearInterval(timer);
+			document.getElementById("remainT").innerHTML = "경매종료";
+		} else {
+			remainTime = remainTime - 1000;
+		}
+	}
+	
+	
+</script>
 	
 	</head>
 	<body>
@@ -53,14 +82,7 @@
                               <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead'"></li>
                           </ul>
                         </div>
-                        <div class="thumbnail text-center" >
-                          <img onclick="change_image(this)" src="https://i.imgur.com/oLXMXVW.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CW/2212CW3YKJU_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CE/2212CEX3IIL_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/3C/22123C7QGIT_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/DS/2212DSIB9TP_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/FU/2212FU7MFTL_0.jpg">
-                       </div>
+                   
                        <div class="btn-area">
                        
        <button class="btn btn-primary btn-large" data-bs-toggle="modal" data-bs-target="#myModal"> 
@@ -70,6 +92,8 @@
 	      <!-- 이 아래부터  content부분부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
 	      <!-- content -->
+	      
+   					
 	
 					<div class="col-sm-6">
 	             <div class="container">
@@ -86,17 +110,7 @@
 	                  </div>
 	                </div>
 	              
-	              <div class="tbl grid-layout grid2">
-	                <div class="grid-item colspan2">
-	                  <label for="select_target_1">카테고리</label>
-	                  <div class="tbl-basic-td">
-	                    <div class="input-wrap w20">
-	                      <select class="form-select grid-input"title="카테고리">
-	                       <option value="${board.auction_category }">${board.auction_category }</option>
-	                      </select>
-	                    </div>
-	                  </div>
-	                </div>
+	             
 	                <div class="grid-item colspan2">
 	                  <label >상태</label>
 	                  <div class="tbl-basic-td">
@@ -108,9 +122,7 @@
 	                 <div class="grid-item colspan2">
 	                  <label >남은시간</label>
 	                  <div class="tbl-basic-td">
-	                    <div class="input-wrap w20">
-	                      남은시간 21시간35분
-	                    </div>
+	                    <div class="input-wrap w20" id="remainT"></div>
 	                  </div>
 	                </div>
 	               
@@ -158,7 +170,17 @@
 	          </div>
 	         </div>
 	      <!-- // content -->  
-
+	      
+	      <br/><br/>
+	      	<c:choose>
+	      		<c:when test="${user.member_id==board.member_id}">
+					<div class="btn-area">
+						<button class="btn btn-primary btn-danger btn-large" type="button" onclick="location.href='/ongo/auction/auctionDelete?auction_number=${board.auction_number}'">삭제</button>
+					</div>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>	
+			</c:choose> 
 	       <!-- modal -->
 	      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
 	          <div class="modal-dialog">
@@ -197,47 +219,9 @@
 	   
 
 	 <!-- modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-	    <div class="modal-dialog">
-	    <div class="modal-content">
-	        <div class="modal-body">
-	            <div class="modal-tit">
-	                <h2 class="h3">쪽지</h2>
-	            </div>
-	            <div class="modal-con">
-	                <div class="tbl grid-layout grid1">
-	                    <div class="grid-item">
-	                    <label for="IUY_CLSS_NM">수신자</label>
-	                    <div class="tbl-basic-td">
-	                        <div class="input-wrap w100">
-	                            <span id="IUY_CLSS_NM">닉네임</span>
-	                        </div>
-	                    </div>
-	                    </div>
-	                    <div class="grid-item">
-	                        <label for="IUY_CLSS_CNTS">내용적기</label>
-	                        <div class="tbl-basic-td">
-	                        <div class="input-wrap w100">
-	                            <div class="input-wrap w100">
-	                            <textarea class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-	                          </div>
-	                        </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	                <div class="btn-area">
-              <button class="btn btn-outline-primary"  data-bs-dismiss="modal" aria-label="Close">전송</button>
-            </div>
-	            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-	                <i class="las la-times"></i>
-	            </button>
-	            <!-- //닫기버튼 -->
-	        </div>
-	    </div>
-	    </div>
-	</div></div>
-	</div>
+		<!-- Footer -->
+	<jsp:include page="../include/footer.jsp" />
+	<!-- //Footer -->
 	</html>
     
 
@@ -264,15 +248,7 @@
                             <li >
                               <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead'"></li>
                           </ul>
-                        </div>
-                        <div class="thumbnail text-center" >
-                          <img onclick="change_image(this)" src="https://i.imgur.com/oLXMXVW.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CW/2212CW3YKJU_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CE/2212CEX3IIL_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/3C/22123C7QGIT_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/DS/2212DSIB9TP_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/FU/2212FU7MFTL_0.jpg">
-                       </div>
+                       
                        <div class="btn-area">
 			<div id="numBox" style="display:none;position:absolute"></div><table>
 				<tbody><tr>
@@ -292,15 +268,12 @@
 					    <span id="dvDeliveryB"><button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myinModal">입찰상세내역</button></span><span id="dvDeliveryMb"></span>
 					</td>
 				</tr>
-				<tr>
-					<th style="text-align:center;">최소가</th>
-					<td id="dvBidunit">2,000원</td>
-				</tr>
+			
 				<tr>
 					<th style="text-align:center;">현재가</th>
 					<td >
-						<strong class="fcBlue" id="bidCmoney">222,000원</strong>&nbsp;<button href="#none" class="skbor" id="reload_btn" onclick="bidPopObj.bidFormLoad();"style="width:70px;padding:4px;">새로고침</button>
-						<a href="#none" id="bidPlus" class="btn btn-gray" style="display:inline-block;min-width:70px;padding:4px;"><font style="color:red;font-weight:bold;">▲</font><span id="bidunitSpan">2,000</span></a>
+						<strong class="fcBlue" id="bidCmoney">222,000원</strong>
+						
 					</td>
 				</tr>
 				<tr>
@@ -310,8 +283,8 @@
 							<tbody><tr>
 								<td width="92%" align="left">
 									<div class="form-inline" id="bidmountDiv">
-										<input type="text" autocomplete="off" class="form-control wp80 dpInblock w100" style="padding:4px 4px;" id="bidmount" name="bidmount" maxlength="12" onkeyup="bidObj.bidInputUpKey();" onkeydown="bidObj.bidInputDownKey();">
-										<strong class="fcBlue" id="bidMoney">최소 224,000원</strong>
+										<input type="text" class="form-control wp80 dpInblock w100" style="padding:4px 4px;" id="bidmount" name="bidmount" maxlength="12" ">
+								
 									</div>
 								
 							</tr>	
@@ -465,13 +438,11 @@ function btn(){
 					<div class="modal-footer text-center">
 						<a href="#none" class="btn btn-blue btn-md" data-dismiss="modal" onclick="javascript:$(&quot;#modalGubun&quot;).val(&quot;&quot;);">확인</a>
 					</div>
+
 			</div>
 
 		</div>
 	</div>
-
-
-
 
 	</body>
 	</html>
