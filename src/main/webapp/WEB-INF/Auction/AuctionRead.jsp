@@ -50,6 +50,7 @@
 		
 		if (remainTime<0){
 			clearInterval(timer);
+			document.getElementById("remainT").innerHTML = "경매종료";
 		} else {
 			remainTime = remainTime - 1000;
 		}
