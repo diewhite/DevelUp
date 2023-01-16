@@ -29,5 +29,9 @@
  		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_update.jsp"></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
- 	
+ 		<definition name="deallistAll2" extends="indexTemplate">
+ 		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list2.jsp"></put-attribute>
+ 		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
+ 	</definition>
 </tiles-definitions>

@@ -22,6 +22,11 @@ public interface AuctionBoard_DAO {
 	
 	//게시글수정
 	int update(AuctionBoard_DTO dto);
-
 	
+	//경매시간 종료 된 항목 거래 종료로 업데이트
+	public int auctionStatus();
+	
+	//경매게시판 글 삭제 -by태원 __________________________________________
+		public int auctionDelete(int auction_number);
+		//______________________________________________________________
 }

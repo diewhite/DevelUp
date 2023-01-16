@@ -1,6 +1,5 @@
 package com.multi.ongo.auction;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +36,20 @@ public class AuctionBoard_Controller {
 		return "redirect:/auction_listAll.do?auction_state=all";
 	}
 
-	// 경매 거래게시글 전체 리스트
-	@RequestMapping("/auction/auctionlistAll")
-	public ModelAndView listall() {
+//	//경매 거래게시글 전체 리스트
+//	@RequestMapping("/auction/auctionlistAll")
+//	public ModelAndView listall() {
+//		ModelAndView mav = new ModelAndView("auctionBoard");
+//		List<AuctionBoard_DTO> boardlist = service.boardlist();
+//		mav.addObject("boardlist", boardlist);
+//		return mav;
+//	}
+	
+//	경매 거래게시글 카테고리 조회 
+	@RequestMapping("/auction/auctionBoard") 
+	public ModelAndView auctionList(String auction_category) {
+		service.auctionStatus();
+		System.out.println("auction_category가져왔나 테스트"+auction_category);
 		ModelAndView mav = new ModelAndView("auctionBoard");
 		List<AuctionBoard_DTO> boardlist = service.boardlist();
 		mav.addObject("boardlist", boardlist);
@@ -68,7 +78,13 @@ public class AuctionBoard_Controller {
 	@RequestMapping("/auction/auctionbid")
 	public String auctionBid() {
 		return "auctionBid";
-
+		}
+    
+	//경매게시판 글 읽기
+	@RequestMapping("/auction/auctionRead") 
+	public String auctionRead(int auction_no, Model model) {
+		AuctionBoard_DTO board = service.auctionRead(auction_no);		
+		model.addAttribute("board", board);			
 	}
 
 	// 경매게시판 글 읽기
@@ -80,5 +96,15 @@ public class AuctionBoard_Controller {
 		System.out.println("end:" + board.getEnd_date());
 		model.addAttribute("board", board);
 		return "auctionRead";
+		}
+	
+	
+	//경매게시판 글 삭제 -by태원 __________________________________________
+	@RequestMapping("/auction/auctionDelete")
+	public String auctionDelete(int auction_number) {
+		System.out.println("auction_number체크 : " + auction_number);
+		service.auctionDelete(auction_number);
+		return "redirect:/auction/auctionBoard?auction_category=all";
 	}
+	//________________________________________________________________
 }

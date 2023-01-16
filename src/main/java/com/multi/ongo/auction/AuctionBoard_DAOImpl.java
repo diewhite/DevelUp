@@ -53,4 +53,16 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 		return 0;
 	}
 
-}
+	//경매게시판 글 삭제 -by태원 __________________________________________
+	@Override
+	public int auctionDelete(int auction_number) {
+		return sqlSession.delete("com.multi.ongo.auction.auctionDelete", auction_number);
+	}
+	//________________________________________________________________
+
+	@Override
+	public int auctionStatus() {
+		return sqlSession.update("com.multi.ongo.auction.auctionStatus");
+	}
+
+}	

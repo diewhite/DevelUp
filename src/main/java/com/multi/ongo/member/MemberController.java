@@ -129,7 +129,7 @@ public class MemberController {
 	// 회원가입 - 인설트 정보입력 - db로 넘겨받는 페이지 POST
 	// public String list(BoardDTO board,String id)여기서 매개변수는 board나 id를 매개변수라 한다.
 	@RequestMapping(value = "/member/join3", method = RequestMethod.POST)
-	public String join3(MemberDTO joininsert, String state) {
+	public String join3(MemberDTO joininsert, String state) { // joininsert 변수명 <<  state << 변수명이라한다
 		// System.out.println("가입테스트중"+joininsert);
 		// System.out.println("state=>"+state);
 		String view = "";

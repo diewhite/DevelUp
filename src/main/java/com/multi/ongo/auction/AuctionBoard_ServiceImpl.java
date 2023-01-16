@@ -68,10 +68,20 @@ public abstract class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		return 0;
 	}
 
+	
+	
+	//경매게시판 글 삭제 -by태원 __________________________________________
 	@Override
-	public int auctionDelete(String id) {
-		// TODO Auto-generated method stub
+	public int auctionDelete(int auction_number) {
+		dao.auctionDelete(auction_number);
 		return 0;
+	}
+
+	//________________________________________________________________
+
+	@Override
+	public int auctionStatus() {
+		return dao.auctionStatus();
 	}
 
 }
