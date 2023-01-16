@@ -59,6 +59,11 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		return 0;
 	}
 	//________________________________________________________________
+
+	@Override
+	public int auctionStatus() {
+		return dao.auctionStatus();
+	}
 	
 	
 	
