@@ -18,6 +18,13 @@ public interface AuctionBoard_Service {
 	//중고거래
 	int update(AuctionBoard_DTO dto);
 		
-	//중고거래 게시�? ?��?��
-	int auctionDelete(String id);
+//	//중고거래 게시�? ?��?��
+//	int auctionDelete(String id);
+	
+	
+	
+	
+	//경매게시판 글 삭제 -by태원 __________________________________________
+	public int auctionDelete(int auction_number);
+	//______________________________________________________________
 }

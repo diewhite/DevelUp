@@ -70,4 +70,13 @@ public class AuctionBoard_Controller {
 		return "auctionRead";
 		}
 	
+	
+	//경매게시판 글 삭제 -by태원 __________________________________________
+	@RequestMapping("/auction/auctionDelete")
+	public String auctionDelete(int auction_number) {
+		System.out.println("auction_number체크 : " + auction_number);
+		service.auctionDelete(auction_number);
+		return "redirect:/auction/auctionBoard?auction_category=all";
+	}
+	//________________________________________________________________
 }
