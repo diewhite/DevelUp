@@ -65,4 +65,9 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
 	}
 	//________________________________________________________________
 
+	@Override
+	public int auctionStatus() {
+		return sqlSession.update("com.multi.ongo.auction.auctionStatus");
+	}
+
 }	

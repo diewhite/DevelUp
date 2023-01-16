@@ -48,7 +48,7 @@
 		showRemain = hours + ":" + miniutes + ":" + seconds;
 		
 		document.getElementById("remainT").innerHTML = showRemain;
-		
+		console.log(showRemain);
 		if (remainTime<0){
 			clearInterval(timer);
 			document.getElementById("remainT").innerHTML = "경매종료";

@@ -105,39 +105,42 @@
                  
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 					<c:forEach var="boardlist" items="${boardlist}"> 
-                  <div class="auctionboard"><!--col -->
-                      <%--     <c:forEach var="boardlist" items="${boardlist}"> --%>
-                      <div class="auction-card">
-                        <span class="auction-label1">${boardlist.auction_category }</span>
-                        <div class="auction-img-main ">
-                          <ul>
-                            <li >
-                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead?auction_no=${boardlist.auction_number}'"></li>
-                          </ul>
-                        </div>
-                        <div class="thumbnail text-center" >
-                          <img onclick="change_image(this)" src="https://i.imgur.com/oLXMXVW.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CW/2212CW3YKJU_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CE/2212CEX3IIL_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/3C/22123C7QGIT_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/DS/2212DSIB9TP_0.jpg">
-                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/FU/2212FU7MFTL_0.jpg">
-                        </div>
-                        <div class="mt-2">
-                          <ul class="company_list">
-                    		<h3><a onclick="location.href='/ongo/auction/auctionRead'">${boardlist.auction_title }</a></h3>
-                            <li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
-                            <li><strong>최종입찰가</strong><span>${boardlist.end_price }</span>
-                            <li><strong>남은시간 &nbsp &nbsp</strong><span>${boardlist.end_date }</span>
-                            		<!-- <ol> 남은시간 : - </ol> -->
-                            </li>
-                          
-                          </ul>
-                        </div>
-                   
-                      </div><!-- // auction-card -->
-                       
-                  </div><!-- // col -->
+					<c:if test="${boardlist.auction_state eq '입찰중'}">
+						<div class="auctionboard"><!--col -->
+	                      <%--     <c:forEach var="boardlist" items="${boardlist}"> --%>
+	                      <div class="auction-card">
+	                        <span class="auction-label1">${boardlist.auction_category }</span>
+	                        <div class="auction-img-main ">
+	                          <ul>
+	                            <li >
+	                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead?auction_no=${boardlist.auction_number}'"></li>
+	                          </ul>
+	                        </div>
+	                        <div class="thumbnail text-center" >
+	                          <img onclick="change_image(this)" src="https://i.imgur.com/oLXMXVW.jpg">
+	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CW/2212CW3YKJU_0.jpg">
+	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CE/2212CEX3IIL_0.jpg">
+	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/3C/22123C7QGIT_0.jpg">
+	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/DS/2212DSIB9TP_0.jpg">
+	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/FU/2212FU7MFTL_0.jpg">
+	                        </div>
+	                        <div class="mt-2">
+	                          <ul class="company_list">
+	                    		<h3><a onclick="location.href='/ongo/auction/auctionRead'">${boardlist.auction_title }</a></h3>
+	                            <li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
+	                            <li><strong>최종입찰가</strong><span>${boardlist.end_price }</span>
+	                            <li><strong>남은시간 &nbsp &nbsp</strong><span>${boardlist.end_date }</span>
+	                            		<!-- <ol> 남은시간 : - </ol> -->
+	                            </li>
+	                          
+	                          </ul>
+	                        </div>
+	                   
+	                      </div><!-- // auction-card -->
+	                       
+	                  </div><!-- // col -->
+					</c:if>
+                  
 
 <!--                두번째 게시물
 					<div class="">col
