@@ -13,13 +13,7 @@ import com.multi.ongo.auction.AuctionBoard_DAO;
 
 public class MyHandler extends TextWebSocketHandler{
 	List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
-	
-	@Autowired
-	public MyHandler() {
-		super();
-		this.sessions = new ArrayList<WebSocketSession>();
-	}
-	
+		
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		sessions.add(session);

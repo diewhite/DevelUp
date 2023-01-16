@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.multi.ongo.deal.DealBoard_DTO;
 
 @Service
-public abstract class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
+public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 	/**
 	 * 비지니스 로직에 관련된 코드를 여기다 작성
 	 */
