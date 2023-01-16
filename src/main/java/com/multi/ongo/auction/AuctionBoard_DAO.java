@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AuctionBoard_DAO {
 	//게시글 등록
-	public int AuctionProd(AuctionBoard_DTO dto);
+	public int writeProd(AuctionBoard_DTO dto);
 	
 	//게시글읽기
 	public AuctionBoard_DTO auctionRead(int auction_no);
@@ -19,8 +19,9 @@ public interface AuctionBoard_DAO {
 		
 	// 게시글읽기
 	public AuctionBoard_DTO auctionlist(int auction_number);
-
 	
 	//게시글수정
 	int update(AuctionBoard_DTO dto);
+
+	
 }

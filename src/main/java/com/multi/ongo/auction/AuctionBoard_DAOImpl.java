@@ -2,27 +2,27 @@ package com.multi.ongo.auction;
 
 import java.util.List;
 
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.multi.ongo.deal.DealBoard_DTO;
+
 @Repository
-public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
+public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 // <mapper namespace="com.multi.ongo.deal">
 	SqlSession sqlSession;
-	
+
+	// 글등록
+	public int writeProd(AuctionBoard_DTO dto) {
+		System.out.println("등록 daoImpl : " + dto);
+		return sqlSession.insert("com.multi.ongo.auction.auction_write", dto);
+	}
+
 	@Autowired
 	public AuctionBoard_DAOImpl(SqlSession sqlSession) {
-	super();
-	this.sqlSession = sqlSession;
-}
-
-	@Override
-	public int AuctionProd(AuctionBoard_DTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		super();
+		this.sqlSession = sqlSession;
 	}
 
 	@Override
@@ -37,11 +37,10 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
 
 	@Override
 	public List<AuctionBoard_DTO> findByCategory(String auction_category) {
-		
+
 		return sqlSession.selectList("com.multi.ongo.auction.categorySelect", auction_category);
 	}
 
-	
 	@Override
 	public AuctionBoard_DTO auctionlist(int auction_number) {
 		// TODO Auto-generated method stub
@@ -53,7 +52,5 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
 
-	
 }

@@ -19,5 +19,18 @@
 		select * from auction_table 
 		where auction_category=#{auction_category}
 	</select>
+	
+	<!-- 게시ㅣ글 작성 -->
+	<insert id="auction_write" parameterType="auctionDTO">
+	insert into auction_table
+	(AUCTION_NUMBE,
+member_id, 
+auction_state, 
+auction_title,start_price,board_content,list_photo
+)
+		values(auction_number.nextval, #{member_id}, #{auction_state}, 
+		 #{auction_title}, #{start_price}, #{board_content}, #{list_photo})
+		
+		</insert>
   </mapper>
   

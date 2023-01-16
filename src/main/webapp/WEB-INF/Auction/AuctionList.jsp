@@ -49,27 +49,7 @@
                 <div class="form_box filter">
                    <fieldset>
                     <legend class="visually-hidden">검색</legend>
-                    <div class="input-group">
-                      <div class="select">
-                        <i class="las la-balance-scale-right"></i>
-                        <label class="visually-hidden" for="">카테고리</label>
-                        <select class="form-select" id="auction_category" name="auction_category" title="카테고리" >
-                          <option value="all">전체</option>
-                          <option value="디지털&가전" selected>디지털&가전</option>
-                          <option value="유아동">유아동</option>
-                          <option value="생활&가공식품" selected>생활&가공식품</option>
-                          <option value="레져&스포츠">레져&스포츠</option>
-                          <option value="여성잡화" selected>여성잡화</option>
-                          <option value="여성의류">여성의류</option>
-                          <option value="남성잡화" selected>남성잡화</option>
-                          <option value="남성의류">남성의류</option> 
-                          <option value="게임&취미">게임&취미</option>
-                          <option value="뷰티&미용" selected>뷰티&미용</option>
-                          <option value="반려동물용품">반려동물용품</option>
-                          <option value="도서&티켓&음반" selected>도서&티켓&음반</option>
-                          <option value="기타">기타</option> 
-                        </select>
-                      </div>
+                   
                       <!--
                       <div class="select">
                         <i class="las la-gavel"></i>
@@ -174,7 +154,8 @@
                 </div><!-- //row-->
                
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/auction/auctionwrite'">글쓰기</button>
+                <!--글쓰러가는버튼  -->
+                    <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/auction/auctionwrite'">글쓰러가기</button>
                 </div>
                 <!-- 페이지네이션 -->
                 <nav aria-label="Page navigation" id="pageNav">

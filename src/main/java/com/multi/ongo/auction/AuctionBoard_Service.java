@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface AuctionBoard_Service {
 	
-	//거래
+	//글등록
 	public int writeProd(AuctionBoard_DTO dto);
 		 
 //	//중고거래
-	public List<AuctionBoard_DTO> boardlist(String auction_category);
+	public List<AuctionBoard_DTO> boardlist();
 	
 //	List<AuctionBoard_DTO> boardlist();
 
