@@ -38,9 +38,13 @@ public class DetailController {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("payment2/PayParticulars");
 			return mav;
-			
-	
-		
-	
 	}
+	
+	@RequestMapping("/detail/auctionsellList")
+	public ModelAndView auctionsellList() {
+	ModelAndView mav = new ModelAndView();
+	mav.setViewName("detail/auctionsellList");
+	return mav;
+			}
+	
 }
