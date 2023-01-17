@@ -205,7 +205,7 @@
 					
 					
 					
-							<div class="grid-item colspan2">
+		<!-- 					<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
@@ -213,19 +213,34 @@
 									</div>
 								</div>
 							</div> 
-	</div>
+						</div>
 					</div>
+ -->
+
+						<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">사진</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w100">
+										<input type="file" name="dealFiles" onchange="document.getElementById('dealFiles').src = window.URL.createObjectURL(this.files[0])" accept="dealUpload/*" multiple="multiple">
+										<img src="/ongo/images/myphoto.jpg" id="dealFiles" style="width: 100px">
+								</div>
+							</div>
+						</div>
+						
 
 
-					<div class="btn-area">
+
+
+
+
+
+					<div class="btn-area" >
 						<button class="btn btn-primary btn-large" type="reset">새로입력</button>
-						<input type="submit" value="게시글 등록"
-							class="btn btn-primary btn-large" />
-					</div>
-
-					<div class="btn-area">
 						<button class="btn btn-primary btn-large" type="button"
 							onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
+						<input type="submit" value="게시글 등록"
+							class="btn btn-primary btn-large" />
+					
 					</div>
 			</form>
 		</div>

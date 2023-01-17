@@ -37,7 +37,6 @@ public class FileUpload_Service {
 		return filedtolist;
 	}
 	
-	
 	// 클라이언트가 입력한 파일명을 중복되지 않고 식별할수 있도록 UUID사용 ( UUID란? 32자리 16진수로 표기 )
 	private String createStoreFileNmae(String originalFilename) {
 		//확장자명을 만들어주기위해추가

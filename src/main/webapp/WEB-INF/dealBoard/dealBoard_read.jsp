@@ -325,8 +325,7 @@
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<c:forEach var="file" items="${filedtolist}" >
-											<label for="HOFS_DTADR"><a href="/ggo/dealUpload/${file.storeFilename }">${file.originalFilename}</a></label><br/>
-										
+											<label for="HOFS_DTADR"><a href="/ongo/dealUpload/${file.storeFilename }">${file.originalFilename}</a></label><br/>
 										</c:forEach>
 									
 										
