@@ -13,7 +13,7 @@
 }
 </style>
 <script type="text/javascript">
-	var type = "${auction_category}"
+	var type = "${auction_category}" 
 	$(document).ready(function () {
 		$("#auction_category").val(type).attr("selected","selected");
 		$("#auction_category").change(function () {
@@ -42,44 +42,12 @@
     <!-- 게시판 -->
     <div class="container">
         <form id="searchForm" name="searchForm" onsubmit="return false;">
-            <input type="hidden" name="countPerPage" id="countPerPage" value="10">
-            <input type="hidden" name="zon" id="zon" value="">
-            <input type="hidden" name="dstr" id="dstr" value="">
-            <div class="board_list allow">
-                <div class="form_box filter">
-                   <fieldset>
-                    <legend class="visually-hidden">검색</legend>
-                   
-                      <!--
-                      <div class="select">
-                        <i class="las la-gavel"></i>
-                        <label class="visually-hidden" for="DSTR_SEQ">마감임박순</label>
-                        <select class="form-select" name="DSTR_SEQ" id="DSTR_SEQ" title="마감임박순">
-                          <option value="">전체</option>
-                          <option value=" " selected>마감임박순</option>
-                            <option value=" ">조회많은순</option>
-                            <option value=" ">조회적은순</option>
-                        </select>
-                      </div>-->
-                      <input type="text" class="form-control" name="SRCH_WORD" id="SRCH_WORD" title="검색어 입력" placeholder="검색어 입력하세요.">
-                      <button type="button" class="btn btn-search" onclick="javascript:fnSearch();"><i class="las la-search"></i> 검색</button>
-                    </div>
-                  </fieldset>
-                </div>
-                </div>
+
                 
           <div class="board_list">
             <div class="board_info d-flex">
                 <div class="total">전체 <strong class="blue" id="totalCount">4</strong>건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="totalPage">1</span>)</div>
-                <div class="d-grid d-md-flex justify-content-md-end">
-                   <div class="select">
-                      <select class="form-select" title="50개 보기">
-                        <option value=" " selected>50개 보기</option>
-                        <option value=" ">100개 보기</option>
-                        <option value=" ">150개 보기</option>
-                      </select>
-                  </div>
-                </div>
+              
             </div>
             <div >
                  
@@ -89,30 +57,29 @@
 						<div class="auctionboard"><!--col -->
 	                      <%--     <c:forEach var="boardlist" items="${boardlist}"> --%>
 	                      <div class="auction-card">
-	                        <span class="auction-label1">${boardlist.auction_category }</span>
 	                        <div class="auction-img-main ">
 	                          <ul>
 	                            <li >
-	                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  onclick="location.href='/ongo/auction/auctionRead?auction_no=${boardlist.auction_number}'"></li>
+	                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  
+	                              onclick="location.href='/ongo/auction/auctionRead?auction_no=${boardlist.auction_number}'"></li>
 	                          </ul>
 	                        </div>
-	                        <div class="thumbnail text-center" >
-	                          <img onclick="change_image(this)" src="https://i.imgur.com/oLXMXVW.jpg">
-	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CW/2212CW3YKJU_0.jpg">
-	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/CE/2212CEX3IIL_0.jpg">
-	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/3C/22123C7QGIT_0.jpg">
-	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/DS/2212DSIB9TP_0.jpg">
-	                          <img onclick="change_image(this)" src="http://www.kobay.co.kr/common_filesystem/web_auction/itemImages/22/12/FU/2212FU7MFTL_0.jpg">
-	                        </div>
+	                       
 	                        <div class="mt-2">
 	                          <ul class="company_list">
 	                    		<h3><a onclick="location.href='/ongo/auction/auctionRead'">${boardlist.auction_title }</a></h3>
-	                            <li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
-	                            <li><strong>최종입찰가</strong><span>${boardlist.end_price }</span>
-	                            <li><strong>남은시간 &nbsp &nbsp</strong><span>${boardlist.end_date }</span>
+	                            <li><strong>시작가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
+	                            <c:choose>
+	                            	<c:when test="${boardlist.current_price==null }">
+	                            		<li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>
+	                            	</c:when>
+	                            	<c:otherwise>
+	                            		<li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.current_price }</span>
+	                            	</c:otherwise>
+	                            </c:choose>
+	                            <li><strong>종료시간 &nbsp &nbsp</strong><span>${boardlist.end_date }</span>
 	                            		<!-- <ol> 남은시간 : - </ol> -->
 	                            </li>
-	                          
 	                          </ul>
 	                        </div>
 	                   
@@ -120,39 +87,6 @@
 	                       
 	                  </div><!-- // col -->
 					</c:if>
-                  
-
-<!--                두번째 게시물
-					<div class="">col
-                      <div class="auction-card">
-                        <span class="auction-label2">부동산</span>
-                        <div class="auction-img-main ">
-                          <ul>
-                            <li >
-                              <img id="auction-image" src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" ></li>
-                          </ul>
-                        </div>
-                        <div class="thumbnail text-center">
-                          <img onclick="change_image(this)" src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp">
-                          <img onclick="change_image(this)" src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp">
-                          <img onclick="change_image(this)" src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp">
-                          <img onclick="change_image(this)" src="https://mdbcdn.b-cdn.net/img/new/standard/city/045.webp">
-                          <img onclick="change_image(this)" src="https://mdbcdn.b-cdn.net/img/new/standard/city/046.webp">
-                          <img onclick="change_image(this)" src="https://mdbcdn.b-cdn.net/img/new/standard/city/047.webp">
-                        </div>
-                        <div class="mt-2">
-                          <ul class="company_list">
-                     		 <h3>로스앤젤로스땅팔아요</h3>
-                            <li><strong>최종입찰가</strong><span>20000원</span>
-                            <div><a href="/ongo/auction/auctionRead?status=READ&auction_no=1">1번째 게시물</a></div>
-                            
-                            </li>
-                        
-                          </ul>
-                  
-                        </div>
-                      </div>// auction-card
-                  </div>// col -->
  					</c:forEach>
                 </div><!-- //row-->
                

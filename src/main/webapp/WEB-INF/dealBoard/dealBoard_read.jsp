@@ -15,6 +15,25 @@
 		data = "${dealRead.product_category}" 
 		$("#product_category").val(data).attr("selected", "selected"); 
 	});
+
+	//거래요청버튼 클릭 시 
+	$(document).ready(function(){ 
+	$("#dealreq-btn").on("click", function() {
+		var seller_id="${dealRead.member_id}"
+		var req_id="${user.member_id}"
+		var deal_number="${dealRead.deal_number}"
+		
+		 location.href="/ongo/history/dealreq?seller_id="+seller_id+"&req_id="+req_id+"&deal_number="+deal_number;
+				 
+		 })
+	});
+	
+	
+	
+	
+	
+	
+
 </script>
 <!-- 
 <style>
@@ -325,8 +344,12 @@
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
 					</div> -->
 			<div class="btn-area">
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='#'">거래요청</button>
+
+				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
+				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" >거래요청</button>
+											<!-- onclick="location.href='/ongo/history/dealreq?
+				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'" -->										
+
 			</div>
 			
 		<c:choose>
