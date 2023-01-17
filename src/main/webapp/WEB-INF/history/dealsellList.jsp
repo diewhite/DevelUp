@@ -62,7 +62,7 @@ input {
 .nav .nav-item .nav-link {
 	width: 100%;
 	height: 51px;
-	font-size: 25px;
+	font-size: 18px;
 	background: #fff;
 	border-color: #fff;
 	border-bottom-color: #fff;
@@ -128,97 +128,66 @@ input {
 	float: left;
 }
 
+/* 조회테이블 css 끝 */
+
 .showdata {
 	color: #0d6efd;
 }
-/* 조회테이블 css 끝 */
-
 
 </style>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-		/* 거래상태별 게시글 조회  */
-	$(document).ready(function () {
-		$(".nav-link").click(function () {
-			var member_id = "${user.member_id}"
-			var product_state = $(this).attr('value');
-			console.log(product_state)
-			console.log(member_id)
-			
-		 location.href="/ongo/history/dealsellList?product_state="+product_state;  
-		
-			
-			/*  $.ajax({
-				url : "/ongo//history/dealsellList",
-				type : "get",
-				data : {
-					"value":value
-				},
-				success : function (value) {
-					alert(value)
-				},
-				error : function (a,b,c) {
-					alert(a,b,c)	
-				} // end error					
-			}) //end ajax  */
-		})	// end click function	
-	})  // end ready function  
-	
-		
-	
-	/* 판매중 게시글 조회 > 거래요청한 유저 정보보기 - ajax로 통신  */
 	$(document).ready(function(){
+	/* 	$(".showdata").on("click",function(){
+			//alert("ok")
+			$(this).closest("tr").next().toggle()
+			//보기버튼과 가장 가까운 tr태그를 찾아서 그 태그의 다음 태그를 선택    
+			reqtr = $(this).closest("tr").next()
+			num = reqtr.attr("id")//중고거래 게시글 번호 
+			datanode = $(reqtr).children().find(".reqdata")
+			//ajax요청결과를 datanode에 출력하기
+			$(datanode).html("<h4>data</h4>")
+			//alert(num)
+			//ajax요청
+			//거래신청한 사용자 보기 
+			//요청패스, 파라미터 
+		}) */
 		
 		$(".showdata").on("click", function () {
 			$(this).closest("tr").next().toggle()	
-			//보기버튼과 가장 가까운 tr태그를 찾아서 그 태그의 다음 태그를 선택 
-			/* alert("ok") */
 			//this = 버튼이 있는 td 		toggle()=선택한 요소가 보이면 보이지않게, 보이지않으면 보이게 함 						
 			// 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
 			reqtr = $(this).closest("tr").next()
 			//	= 거래요청 tr  
 			num = reqtr.attr("id")
-			/* alert(num) */
 			//	= 거래요청 tr의 id의 속성 값 = 게시글 번호 
 			datanode = $(reqtr).children().find(".reqdata")
 												// = ajax를 통해 가져올 데이터가 출력될 부분  
 			// 거래요청 tr의 자식 노드 중 reqdate 라는 클래스명을 가진 자식노드 찾음 
-			/* $(datanode).html(num+"<span>번 게시글</span>") */
-			//ajax요청결과를 datanode에 출력하기
-			 alert(num)
+			$(datanode).html(num+"<span>번 게시글</span>")
+			/* alert(num) */
 			
-		 	$.ajax({
-				url : "/ongo/history/dealReq",	
-				type : "get",
-				data :  {"deal_number":num},
-				success : function(num){
-				alert(num)
-				/* mynum = "";
-				for(i=0; i<num.length; i++){
-			
-				 for문 내에서 <li> 태그로 데이터 출력하기 - 실패  
-					mynum = mynum +
-					"<div class='reqdata'>"+
-					"<li>"+num[i].deal_number+"</li>"
-					"<li>"+num[i].req_id+"</li>"
-					"<li>"+num[i].req_time+"</li>"
-					+"</div>"
+			$.ajax({
+				url:"/ongo/history/dealReq",	
+				type: "get",
+				date: num,
+				success: function(data){
+					alert(data)
+					$(".reqdata").html("<li>data.req_id</li>") 
+				},
+				error: function (obj, msg, statusMSG) {
+					alert("오류발생"+obj+msg+statusMSG)
 				}
-				$("#reqUserInfo").empty();
-				$("#reqUserInfo").append(mynum)  */
-				}, 
-				error : function (a, b, c) {
-					alert("오류발생"+a+b+c)
-				}	//end error			
-			})	//end ajax					
-		})	//end click
-	}) //end ready 
-	 
-	
-	
+				
+			})
+			
+			
+		})
 		
+	})
+	
 	
 </script>
 </head>
@@ -232,28 +201,27 @@ input {
 			</div>
 			<!-- //title -->
 
-	
+
+
 			<!-- =======탭메뉴 시작======= -->
+
 			<div class="topnav">
 				<!-- 탭 메뉴 -->
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
 						<button class="nav-link show active" id="first-tab"
 							data-bs-toggle="tab" data-bs-target="#first" type="button"
-							role="tab" aria-controls="first" aria-selected="true" value="판매중" 
-							<%-- onclick="location.href='/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매중'" --%> >판매중</button>
+							role="tab" aria-controls="first" aria-selected="true">판매중</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="second-tab" data-bs-toggle="tab"
 							data-bs-target="#second" type="button" role="tab"
-							aria-controls="second" aria-selected="false" value="판매종료"
-							onclick="location.href='/ongo/history/dealsellList?member_id=${user.member_id}&product_state=판매종료'">판매종료</button>
+							aria-controls="second" aria-selected="false">판매종료</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="third-tab" data-bs-toggle="tab"
 							data-bs-target="#third" type="button" role="tab"
-							aria-controls="third" aria-selected="false" value="거래진행중"
-							onclick="location.href='/ongo/history/dealsellList?member_id=${user.member_id}&product_state=거래진행중'">거래진행중</button>
+							aria-controls="third" aria-selected="false">거래진행중</button>
 					</li>
 				</ul>
 				<!-- 텝메뉴 -->
@@ -340,18 +308,18 @@ input {
 
 			<div class="tab-content">
 
-				<!-- ======= 검색한 페이지 갯수 조회 ======= -->
+				<!-- ======= 전체 페이지 갯수 조회 ======= -->
 
 				<div class="board_list">
 					<div class="board_info d-flex">
 						<div class="total">
-							 &nbsp; 조회하신 조건에 대해 &nbsp; <strong class="blue" id="totalCount">
+							조회하신 조건에 대해 &nbsp; <strong class="blue" id="totalCount">
 								9</strong> 건 조회되었습니다.
 						</div>
 					</div>
 				</div>
 
-				<!-- ======= 검색한 페이지 갯수 조회 끝======= -->
+				<!-- ======= 전체 페이지 갯수 조회 끝======= -->
 
 
 				<!-- 판매중 시작 -->
@@ -361,8 +329,6 @@ input {
 					<div class="table-responsive px-2">
 						<table class="table table-borderless table-hover">
 							<colgroup>
-								<col width="5%">
-								<!-- 번호 -->
 								<col width="5%">
 								<!-- 구분 -->
 								<col width="10%">
@@ -382,7 +348,6 @@ input {
 							</colgroup>
 							<thead>
 								<tr>
-									<th class="table-header" scope="col">번호</th>
 									<th class="table-header" scope="col">구분</th>
 									<th class="table-header" scope="col">상품사진</th>
 									<th class="table-header-title" scope="col">제 목</th>
@@ -398,7 +363,6 @@ input {
 								<c:forEach var="sellList" items="${sellList }">
 
 									<tr>
-										<td>${sellList.deal_number }</td>
 										<td>${sellList.dealType }</td>
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
@@ -440,15 +404,8 @@ input {
 												</thead>
 												<tbody>
 													<tr>
-														<td colspan="5" id="reqUserInfo">
-													
-															<div class="reqdata">
-															<!--Ajax를 통해 실제 가져온 데이터가 출력될 곳  -->
-															<sapn id="no"></sapn>
-															<sapn id="id"></sapn>
-															<sapn id="date"></sapn>
-															</div>
-														
+														<td colspan="5">
+															<div class="reqdata"><!--Ajax를 통해 실제 가져온 데이터가 출력될 곳  --></div>
 														</td>
 													<%-- <c:forEach var="" items=""> --%>
 														<!-- <td>1</td>
@@ -502,95 +459,93 @@ input {
 				<!-- 판매중 끝   -->
 
 
-				
-				<!-- 거래진행중 시작  -->
-			
+				<!-- 아코디언 test 끝  -->
+
+				<%-- 						<table class="table table-borderless">
+							<colgroup>
+								<col width="5%">	<!-- 구분 -->							
+								<col width="10%">	<!-- 상품사진 -->						
+								<col width="30%">	<!-- 제 목 -->						
+								<col width="10%">	<!-- 가격 -->						
+								<col width="10%">	<!-- 구매요청 -->						
+								<col width="*">		<!-- 요청날짜 -->						
+								<col width="*">		<!-- 작성날짜 -->							
+								<col width="*">		<!-- 거래상태 -->							
+								<col width="*">		<!-- 결제여부 -->
+								
+
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="table-header" scope="col">구분</th>
+									<th class="table-header" scope="col">상품사진</th>
+									<th class="table-header-title" scope="col">제 목</th>
+									<th class="table-header" scope="col">가격</th>
+									<th class="table-header" scope="col">구매요청</th>
+									<th class="table-header" scope="col">요청날짜</th>
+									<th class="table-header" scope="col">작성날짜</th>
+									<th class="table-header" scope="col">거래상태</th>
+									<th class="table-header" scope="col">결제여부</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="sellList" items="${sellList }">
+									<tr>
+										<td>${sellList.dealType }</td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td>
+										<td><a
+												href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'"">${sellList.board_title}</a></td>
+										<td><fmt:formatNumber value="${sellList.product_price}" pattern="#,###원"/></td>
+										<td><a
+												class="id-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> user_id
+											</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+													<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+												</ul>
+										</td>
+										<td>${sellList.write_date }</td>
+										<td>${sellList.write_date }</td>
+										<td>${sellList.product_state }</td>
+										<td>-</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+						<!-- 페이지네이션 시작 -->
+						<div class="pagination">
+							<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
+								type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
+							<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
+							<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
+							<li class="page-item arr"><a class="page-link"
+								href="javascript:fnMovePage(1, fnSearch, 'pagination');"
+								aria-label="Previous"> <span class="visually-hidden">처음으로</span>
+									<span aria-hidden="true"><i
+										class="las la-angle-double-left"></i></span>
+							</a></li>
+							<li class="page-item active"><a class="page-link"
+								href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+							<li class="page-item arr"><a class="page-link"
+								href="javascript:fnMovePage(1, fnSearch, 'pagination');"
+								aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>
+									<span aria-hidden="true"><i
+										class="las la-angle-double-right"></i></span>
+							</a></li>
+						</div>
+						<!-- //페이지네이션  -->
+
+					</div>
+				</div>
+				<!-- 판매중 끝   -->
+ --%>
+				<!-- 판매종료 시작  -->
+
 				<div class="tab-pane fade" id="second" role="tabpanel"
 					aria-labelledby="second-tab">
-					<table class="table table-borderless">
-						<colgroup>
-							<col width="5%">
-							<!-- 구분 -->
-							<col width="10%">
-							<!-- 상품사진 -->
-							<col width="35%">
-							<!-- 제 목 -->
-							<col width="10%">
-							<!-- 가격 -->
-							<col width="10%">
-							<!-- 구매요청 -->
-							<col width="*">
-							<!-- 날짜 -->
-							<col width="*">
-							<!-- 거래상태 -->
-							<col width="*">
-							<!-- 결제여부 -->
-						</colgroup>
-						<thead>
-							<tr>
-								<th class="table-header" scope="col">구분</th>
-								<th class="table-header" scope="col">상품사진</th>
-								<th class="table-header-title" scope="col">제 목</th>
-								<th class="table-header" scope="col">가격</th>
-								<th class="table-header" scope="col">구매요청</th>
-								<th class="table-header" scope="col">날짜</th>
-								<th class="table-header" scope="col">거래상태</th>
-								<th class="table-header" scope="col">결제여부</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span class="gray-bold">1</span></td>
-								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-									width="50" height="50"></td>
-								<td><span class="blue-bold"><a
-										href="/ongo/history/dealDetail">거래진행중 탭메뉴 내용</a></span></td>
-								<td><span class="blue-bold">15,000원</span></td>
-								<td><span class="blue-bold"> <a
-										class="id-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> user_id </a>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
-											<li><a class="dropdown-item" href="#">회원정보보기</a></li>
-										</ul>
-								</span></td>
-								<td>2023년 1월 3일</td>
-								<td>판매중</td>
-								<td>-</td>
-							</tr>
-
-						</tbody>
-					</table>
-
-					<!-- 페이지네이션 시작 -->
-					<div class="pagination">
-						<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
-							type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
-						<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
-						<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
-						<li class="page-item arr"><a class="page-link"
-							href="javascript:fnMovePage(1, fnSearch, 'pagination');"
-							aria-label="Previous"> <span class="visually-hidden">처음으로</span>
-								<span aria-hidden="true"><i
-									class="las la-angle-double-left"></i></span>
-						</a></li>
-						<li class="page-item active"><a class="page-link"
-							href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
-						<li class="page-item arr"><a class="page-link"
-							href="javascript:fnMovePage(1, fnSearch, 'pagination');"
-							aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>
-								<span aria-hidden="true"><i
-									class="las la-angle-double-right"></i></span>
-						</a></li>
-					</div>
-					<!-- //페이지네이션  -->
-
-				</div>
-				<!-- 판매종료 끝 -->
-
-				<!--  판매종료 시작  -->
-				<div class="tab-pane fade" id="third" role="tabpanel"
-					aria-labelledby="third-tab">
 					<table class="table table-borderless">
 						<colgroup>
 							<col width="5%">
@@ -670,6 +625,90 @@ input {
 					<!-- //페이지네이션  -->
 
 				</div>
+				<!-- 판매종료 끝 -->
+
+				<!-- 거래진행중 시작  -->
+				<div class="tab-pane fade" id="third" role="tabpanel"
+					aria-labelledby="third-tab">
+					<table class="table table-borderless">
+						<colgroup>
+							<col width="5%">
+							<!-- 구분 -->
+							<col width="10%">
+							<!-- 상품사진 -->
+							<col width="35%">
+							<!-- 제 목 -->
+							<col width="10%">
+							<!-- 가격 -->
+							<col width="10%">
+							<!-- 구매요청 -->
+							<col width="*">
+							<!-- 날짜 -->
+							<col width="*">
+							<!-- 거래상태 -->
+							<col width="*">
+							<!-- 결제여부 -->
+						</colgroup>
+						<thead>
+							<tr>
+								<th class="table-header" scope="col">구분</th>
+								<th class="table-header" scope="col">상품사진</th>
+								<th class="table-header-title" scope="col">제 목</th>
+								<th class="table-header" scope="col">가격</th>
+								<th class="table-header" scope="col">구매요청</th>
+								<th class="table-header" scope="col">날짜</th>
+								<th class="table-header" scope="col">거래상태</th>
+								<th class="table-header" scope="col">결제여부</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span class="gray-bold">1</span></td>
+								<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+									width="50" height="50"></td>
+								<td><span class="blue-bold"><a
+										href="/ongo/history/dealDetail">거래진행중 탭메뉴 내용</a></span></td>
+								<td><span class="blue-bold">15,000원</span></td>
+								<td><span class="blue-bold"> <a
+										class="id-link dropdown-toggle" href="#" role="button"
+										data-bs-toggle="dropdown" aria-expanded="false"> user_id </a>
+										<ul class="dropdown-menu">
+											<li><a class="dropdown-item" href="#">쪽지보내기</a></li>
+											<li><a class="dropdown-item" href="#">회원정보보기</a></li>
+										</ul>
+								</span></td>
+								<td>2023년 1월 3일</td>
+								<td>판매중</td>
+								<td>-</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+					<!-- 페이지네이션 시작 -->
+					<div class="pagination">
+						<input type="hidden" id="PAGE" name="PAGE" value="1"> <input
+							type="hidden" id="CNT_PER_PAGE" name="CNT_PER_PAGE" value="10">
+						<input type="hidden" id="START_INDEX" name="START_INDEX" value="">
+						<input type="hidden" id="END_INDEX" name="END_INDEX" value="">
+						<li class="page-item arr"><a class="page-link"
+							href="javascript:fnMovePage(1, fnSearch, 'pagination');"
+							aria-label="Previous"> <span class="visually-hidden">처음으로</span>
+								<span aria-hidden="true"><i
+									class="las la-angle-double-left"></i></span>
+						</a></li>
+						<li class="page-item active"><a class="page-link"
+							href="javascript:fnMovePage(1, fnSearch, 'pagination');">1</a></li>
+						<li class="page-item arr"><a class="page-link"
+							href="javascript:fnMovePage(1, fnSearch, 'pagination');"
+							aria-label="NextEnd"> <span class="visually-hidden">다음으로</span>
+								<span aria-hidden="true"><i
+									class="las la-angle-double-right"></i></span>
+						</a></li>
+					</div>
+					<!-- //페이지네이션  -->
+
+				</div>
 				<!-- 거래진행중 끝  -->
 
 
@@ -700,7 +739,7 @@ input {
 	<!-- //contents -->
 
 	<!-- Footer -->
-		<jsp:include page="../include/footer.jsp" />
+	<%-- 	<jsp:include page="../include/footer.jsp" /> --%>
 	<!-- //Footer -->
 </body>
 </html>

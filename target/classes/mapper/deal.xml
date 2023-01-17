@@ -4,13 +4,6 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.deal">
 	
-	<!-- 조회수 -->
-	<update id="hits_update" parameterType="int">
-		update deal_table2
-		set hits = hits+1
-		where deal_number = #{deal_number}
-	</update> 
-	
 	
 	<!--중고거래_등록  -->
 	<insert id="deal_write" parameterType="dealDTO">
@@ -67,8 +60,15 @@
 				member_id like '%' || #{searchData} || '%'
 			</if>
 			<if test="tag == 'write_date' and searchData != ''">
+				write_date like '%' || #{searchData} || '%'
+			</if>
+			
+			<if test="tag == 'id' and searchData != ''">
+			</if>
+			
+			<if test="tag == 'write_date' and searchData != ''">
 				 <![CDATA[
-					write_date <= #{searchData} 
+					write_date2 <= #{searchData} 
 				]]> 
 			</if>
 			<if test="tag == 'board_title' and searchData == ''">

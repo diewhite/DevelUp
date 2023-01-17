@@ -30,8 +30,6 @@ public interface DealBoard_DAO {
 	//중고거래시글 타입-메인
 		List<DealBoard_DTO> dealType_main(String dealType);
 		
-	// 조회수
-	public int hits_update(int deal_number);
 		
 		
 		

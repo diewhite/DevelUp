@@ -1,27 +1,22 @@
 package com.multi.ongo.auction;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AuctionBoard_Controller {
-	AuctionBoard_Service service;
 
-	@Autowired
-	public AuctionBoard_Controller(AuctionBoard_Service service) {
-		super();
-		this.service = service;
+	@RequestMapping("/auction/auctionBoard") 
+	public String auctionPage() {
+		return "auctionBoard";
+
+		
 	}
 
-	// 글쓰러가기
-	@RequestMapping("/auction/auctionwrite")
+	@RequestMapping("/auction/auctionwrite") 
 	public String auctionWrite() {
 		return "auctionWrite";
+<<<<<<< HEAD
 	}
 
 	@RequestMapping("/auctionWrite.do") // get vs post
@@ -45,41 +40,22 @@ public class AuctionBoard_Controller {
 		mav.addObject("boardlist", boardlist);
 		return mav;
 	}
+=======
+>>>>>>> refs/heads/sungmin3
 	
-//	경매 거래게시글 카테고리 조회 
-	@RequestMapping("/auction/auctionBoard") 
-	public ModelAndView auctionList(String auction_category) {
-		service.auctionStatus();
-		System.out.println("auction_category가져왔나 테스트"+auction_category);
-		ModelAndView mav = new ModelAndView("auctionBoard");
-		List<AuctionBoard_DTO> boardlist = service.boardlist();
-		mav.addObject("boardlist", boardlist);
-		return mav;
-	}
-
-//	경매 거래게시글 카테고리 조회 
-//	@RequestMapping("/auction/auctionBoard") 
-//	public ModelAndView auctionList(String auction_category) {
-//		System.out.println("auction_category가져왔나 테스트"+auction_category);
-//		ModelAndView mav = new ModelAndView("auctionBoard");
-//		List<AuctionBoard_DTO> boardlist = service.boardlist(auction_category);
-//		System.out.println("auctionList테스트찍어보기"+boardlist);
-//		mav.addObject("auction_category", auction_category);
-//		mav.addObject("boardlist", boardlist);
-// 		return mav;
-//	}
-	// 글다쓰고 리스트로 나올때
-	@RequestMapping("/auction/auction")
+		}
+	@RequestMapping("/auction/auction") 
 	public String auctionWriteBoard() {
 		return "auctionWriteBoard";
-
-	}
-
-	// 경매 하기 및 상세페이지
-	@RequestMapping("/auction/auctionbid")
+	
+		}
+	
+	@RequestMapping("/auction/auctionbid") 
 	public String auctionBid() {
 		return "auctionBid";
+	
 		}
+<<<<<<< HEAD
     
 //	//경매게시판 글 읽기
 //	@RequestMapping("/auction/auctionRead") 
@@ -100,9 +76,15 @@ public class AuctionBoard_Controller {
 		}
 		model.addAttribute("bidList", bidList);
 		model.addAttribute("board", board);
+=======
+	@RequestMapping("/auction/auctionRead") 
+	public String auctionRead() {
+>>>>>>> refs/heads/sungmin3
 		return "auctionRead";
+	
 		}
 	
+<<<<<<< HEAD
 	
 	//경매게시판 글 삭제 -by태원 __________________________________________
 	@RequestMapping("/auction/auctionDelete")
@@ -121,4 +103,6 @@ public class AuctionBoard_Controller {
 		int auction_num = dto.getAuction_number();
 		return "redirect:/auction/auctionRead?auction_no="+auction_num;
 	}
+=======
+>>>>>>> refs/heads/sungmin3
 }

@@ -25,6 +25,4 @@ public interface NoteService {
 	public NoteDTO receiveSearchCnt(String receive_id, String category, String keyword);
 	//보낸쪽지함 검색 총 수량
 	public NoteDTO sendSearchCnt(String send_id, String category, String keyword);
-	//읽지 않은 쪽지 수량 확인
-	public NoteDTO checkNewNote(String receive_id);
 }

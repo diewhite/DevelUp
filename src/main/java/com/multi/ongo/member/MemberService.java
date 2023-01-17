@@ -7,8 +7,8 @@ public interface MemberService {
 	//회원가입 (db에처리)
     int insert(MemberDTO joininsert);
 
-	//아이디 중복체크
-	MemberDTO idCheck(String member_id);
+    //아이디 중복체크
+   // int nickCheck(String nickname) throws Exception;
     
     //전체리스트 
     List<MemberDTO> joinlist();
@@ -22,23 +22,14 @@ public interface MemberService {
     //회원 업데이트
     int update(MemberDTO joinupdate);
 
-    //아이디 찾기
-    MemberDTO findId(MemberDTO userInfo);
-    
-    //비밀번호 찾기
-    MemberDTO findPass(MemberDTO userInfo);
-    
-    //비밀번호 변경
-    int passModi(MemberDTO userInfo);
 
-    //게시글 이름으로 검색하기 
-  	List<MemberDTO> msearch(String membersearch);
+  //게시글 이름으로 검색하기 
+  		List<MemberDTO> msearch(String membersearch);
   		
     //로그인
     MemberDTO login(MemberDTO loginidInfo);
 
-    //회원탈퇴
-    int unsign(String member_id);
+
 }
 
 /*

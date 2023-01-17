@@ -120,12 +120,4 @@ public class NoteController {
 		}
 		return view;
 	}
-	//신규 쪽지 확인
-	@RequestMapping(value = "/mypage/note/ajax_checkNewNote")
-	@ResponseBody
-	public int ajax_checkNewNote(String receive_id) {
-		NoteDTO note = service.checkNewNote(receive_id);
-		int count = Integer.parseInt(note.getCount());
-		return count;
-	}
 }

@@ -67,9 +67,4 @@ public class NoteServiceImpl implements NoteService {
 	public NoteDTO sendSearchCnt(String send_id, String category, String keyword) {
 		return dao.sendSearchCnt(send_id, category, keyword);
 	}
-
-	@Override
-	public NoteDTO checkNewNote(String receive_id) {
-		return dao.checkNewNote(receive_id);
-	}
 }

@@ -14,21 +14,20 @@
  	
 	<!-- 나의 온고 첫화면 -->
 	<definition name="history/myongo" extends="menuTemplate"></definition>
+	
+	<!-- 중고거래내역 list 페이지 -->
+ 	<definition name="history/dealHistoryList" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/history/dealHistoryList.jsp"></put-attribute>
+ 	</definition>
  	
+ 	<!-- 중고거래내역 상세 페이지 -->
+	<definition name="history/dealDetail" extends="indexTemplate">
+ 		<put-attribute name="content" value="/WEB-INF/history/historyDetail.jsp"></put-attribute>
+ 	</definition> 	
  	
  	<!-- 중고거래 판매관리 페이지 -->
 	<definition name="history/dealsellList" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/history/dealsellList_ver3.jsp"></put-attribute>
- 	</definition> 	
- 	
- 	<!-- 중고거래 구매관리 페이지 -->
-	<definition name="history/dealbuyList" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/history/dealbuyList.jsp"></put-attribute>
- 	</definition> 	
- 	
- 	<!-- 중고거래 구매요청 완료 안내 페이지 -->
- 	<definition name="history/dealRequestChk" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/history/dealRequestChk.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/history/dealsellList.jsp"></put-attribute>
  	</definition> 	
  	
  	
