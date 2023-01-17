@@ -91,9 +91,13 @@ public class AuctionBoard_Controller {
 	@RequestMapping("/auction/auctionRead")
 	public String auctionRead(int auction_no, Model model) {
 		AuctionBoard_DTO board = service.auctionRead(auction_no);
-		System.out.println("no:" + auction_no);
-		System.out.println("start:" + board.getWrite_date());
-		System.out.println("end:" + board.getEnd_date());
+		List<AuctionBoard_DTO> bidList = service.bidList(auction_no);
+		if(bidList.size()==0) {
+			model.addAttribute("currPrice", 0);
+		}else {
+			model.addAttribute("currPrice", bidList.get(0).getAdd_price());
+		}
+		model.addAttribute("bidList", bidList);
 		model.addAttribute("board", board);
 		return "auctionRead";
 		}
@@ -107,4 +111,13 @@ public class AuctionBoard_Controller {
 		return "redirect:/auction/auctionBoard?auction_category=all";
 	}
 	//________________________________________________________________
+	
+	//경매게시판 입찰하기
+	@RequestMapping("/auction/bidding")
+	public String bidding(AuctionBoard_DTO dto) {
+		service.bidding(dto);
+		service.updatePrice(dto);
+		int auction_num = dto.getAuction_number();
+		return "redirect:/auction/auctionRead?auction_no="+auction_num;
+	}
 }

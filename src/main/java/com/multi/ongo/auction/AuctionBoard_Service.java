@@ -27,4 +27,13 @@ public interface AuctionBoard_Service {
 	//경매게시판 글 삭제 -by태원 __________________________________________
 	public int auctionDelete(int auction_number);
 	//______________________________________________________________
+	
+	//경매내역 조회
+	public List<AuctionBoard_DTO> bidList(int auction_no);
+	
+	//경매입찰
+	public int bidding(AuctionBoard_DTO dto);
+	
+	//현재가격 업데이트
+	public int updatePrice(AuctionBoard_DTO dto);
 }
