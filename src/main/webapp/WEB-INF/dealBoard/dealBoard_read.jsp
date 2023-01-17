@@ -87,7 +87,7 @@
                 <input type="hidden" name="zon" id="zon" value="">
 
                 <!-- 현재 탭 표시 -->
-                <h2 class="visually-hidden">중고</h2>
+                <h2 class="visually-hidden">중고거래</h2>
                 <!-- //현재 탭 표시 -->
 
 		
@@ -176,13 +176,7 @@
 									</div>
 								</div>
 							</div>
-							
-							
-							
-							
-							
-							
-							
+						
 							
 							
 							
@@ -327,11 +321,18 @@
 							</div>
 
 							<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">대표사진</label>
+								<label for="HOFS_DTADR">첨부파일</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-									${dealRead.list_photo}
-										<!-- <input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/> -->
+										<c:forEach items="${dealRead}" var="file">
+											<%-- <label for="HOFS_DTADR"><a href="">${file.originalfilename}</a></label><br/> --%>
+										
+										</c:forEach>
+									
+										파일1
+										<label for="HOFS_DTADR"><a href="">파일2</a></label><br/>
+										
+										
 									</div>
 								</div>
 							</div> 
@@ -339,6 +340,13 @@
 						</div>
 					</div>
 				
+				
+				
+					
+							
+							
+							
+							
 					
 					<!-- <div class="btn-area">
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />

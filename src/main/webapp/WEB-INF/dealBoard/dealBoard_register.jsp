@@ -209,7 +209,7 @@
 								<label for="HOFS_DTADR">사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input type="file" class="form-control" id="" Name="" value=""/>
+										<input type="file" class="form-control" id="dealFiles" Name="dealFiles" value="" multiple="multiple"/>
 									</div>
 								</div>
 							</div> 

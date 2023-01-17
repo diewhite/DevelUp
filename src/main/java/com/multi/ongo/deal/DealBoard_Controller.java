@@ -1,41 +1,64 @@
 package com.multi.ongo.deal;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 @Controller
 public class DealBoard_Controller {
 
 	DealBoard_Service service;
+	FileUpload_Service fileUploadService; 
 	
 	@Autowired
-	public DealBoard_Controller(DealBoard_Service service) {
+	public DealBoard_Controller(DealBoard_Service service, FileUpload_Service fileUploadService) {
 		super();
 		this.service = service;
+		this.fileUploadService=fileUploadService;
 	}
-
-	@RequestMapping("dealmain") //테스트
-	public String dealPage() {
-		return "deal_Register";
-		
-	}
-	
 	//중고거래 등록페이지 config-view처리 
 	
-	
-	// 중고거래 게시글등록
+	// 중고거래 게시글등록(+첨부파일)
 	@RequestMapping("deal_Write.do")
-	public String dealWrite(DealBoard_DTO dto) {
-		service.writeProd(dto);
-		return "redirect:/deal_listAll2.do?dealType=all";
-				
+	public String dealWrite(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
+		System.out.println("등록) dto__체크 : " + dto);
 		
+		// ① List<MultipartFile>정보를 추출하기
+		List<MultipartFile> files = dto.getDealFiles(); 
+		//System.out.println("List<MultipartFile> files___체크 : "+  files);
+		
+		// ② 업로드될 서버의 경로 ( 경로 추출을 위해 HttpSession필요)
+		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/dealUpload");
+		//spring이 제공하는 WebUtils 클래스. getRealPath메서드( ServletContext, Path )
+		//ServletContext객체란? 프로젝트의 context정보(path 등)를 가지고 있는 객체. Path(지정)
+		System.out.println("path __________체크 : " + path);
+		
+		// ③ FileUpload_Service 클래스를 호출해서 실제 서버에 등록되도록 작업
+		List<DealFile_DTO> filedtolist =  fileUploadService.uploadFiles(files, path);
+		
+		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장
+		service.insertFile(dto,filedtolist);
+		return "redirect:/deal_listAll2.do?dealType=all";
 	}
+	
+	
+	
+	// 중고거래 게시글등록(글만등록 원본)
+//	@RequestMapping("deal_Write.do")
+//	public String dealWrite(DealBoard_DTO dto) {
+//		service.writeProd(dto);
+//		return "redirect:/deal_listAll2.do?dealType=all";
+//	}
 	
 	
 	//중고거래게시글 타입별조회(카테고리)

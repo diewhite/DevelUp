@@ -298,7 +298,7 @@
                     <a href=# class="btn btn-small" target="_blank"  title="새창">상세보기<i class="las la-external-link-alt"></i></a>
                   </h3>
                   <ul class="introlist">
-                    <li><span id="list_photo" class="introlist_tit">사진</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
+                    <li><span id="" class="introlist_tit">사진</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
                   </ul>
                   <ul class="introlist">
                     <li><span id="product_price" class="introlist_tit">가격</span><span class="introlist_txt">경기도 안산시 상록구</span></li>
