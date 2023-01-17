@@ -324,14 +324,11 @@
 								<label for="HOFS_DTADR">첨부파일</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<c:forEach items="${dealRead}" var="file">
-											<%-- <label for="HOFS_DTADR"><a href="">${file.originalfilename}</a></label><br/> --%>
+										<c:forEach var="file" items="${filedtolist}" >
+											<label for="HOFS_DTADR"><a href="/ggo/dealUpload/${file.storeFilename }">${file.originalFilename}</a></label><br/>
 										
 										</c:forEach>
 									
-										파일1
-										<label for="HOFS_DTADR"><a href="">파일2</a></label><br/>
-										
 										
 									</div>
 								</div>
@@ -353,7 +350,7 @@
 					</div> -->
 			<div class="btn-area">
 
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
+				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
 				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" >거래요청</button>
 											<!-- onclick="location.href='/ongo/history/dealreq?
 				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'" -->										

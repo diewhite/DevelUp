@@ -34,6 +34,7 @@ public interface DealBoard_Service {
 	// 조회수
 		public int hits_update(int deal_number);
 	
+		
 	
 		
 	//중고거래글 등록 ( +첨부파일) DealBoard_DTO테이블과 DealFile_DTO테이블에 저장

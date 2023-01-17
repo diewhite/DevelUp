@@ -1,6 +1,5 @@
 package com.multi.ongo.deal;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -53,6 +52,7 @@ public class DealBoard_Controller {
 	
 	
 	
+	
 	// 중고거래 게시글등록(글만등록 원본)
 //	@RequestMapping("deal_Write.do")
 //	public String dealWrite(DealBoard_DTO dto) {
@@ -89,12 +89,16 @@ public class DealBoard_Controller {
 	//중고거래게시글 읽기
 	@RequestMapping("dealRead.do")
 	public ModelAndView dealRead(int deal_number, String state) {
+		
+		//첨부파일목록 불러오기 위하여작성
+		List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
+		 
 		DealBoard_DTO dealRead = service.dealRead(deal_number);
 		String view = "";
 		if(state.equals("READ")) {	
-			System.out.println("조회수 처리전 : "+dealRead.getHits()+ "/______/매개변수확인" + deal_number);
+			//System.out.println("조회수 처리전 : "+dealRead.getHits()+ "/______/매개변수확인" + deal_number);
 			service.hits_update(deal_number);//조회
-			System.out.println("조회수 처리후 : "+dealRead.getHits()  + "/______/매개변수확인" + deal_number);
+			//System.out.println("조회수 처리후 : "+dealRead.getHits()  + "/______/매개변수확인" + deal_number);
 			view ="dealBoardRead";
 		}else {
 			System.out.println("컨트롤 업데이트 진입 : " + deal_number); //넘어감
@@ -102,7 +106,8 @@ public class DealBoard_Controller {
 		}
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
-		System.out.println("컨트롤 공유 dealread 체크:" + dealRead);
+		mav.addObject("filedtolist",filedtolist); //파일첨부 결과 공유
+		//System.out.println("컨트롤 공유 dealread 체크:" + dealRead);
 		//System.out.println("찍먹state:" + state);
 		return mav;
 	}

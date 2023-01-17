@@ -5,6 +5,10 @@ public class DealFile_DTO {
 	private String originalFilename;
 	private String storeFilename;
 	
+	public DealFile_DTO() {
+		
+	}
+	
 	public DealFile_DTO(int deal_number, String originalFilename, String storeFilename) {
 		super();
 		this.deal_number = deal_number;
