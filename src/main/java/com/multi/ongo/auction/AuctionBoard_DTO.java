@@ -26,9 +26,9 @@ public class AuctionBoard_DTO {
 	}
 
 	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
-			String auction_title, String hits, String write_date, String board_content, String list_photo, String min_price,
-			String start_price, String end_price, Date end_date) {
-
+			String auction_title, String hits, String write_date, String board_content, String list_photo,
+			String min_price, String start_price, String end_price, String end_date, String current_price,
+			String add_user, int add_price, String add_time, String bid_count) {
 		super();
 		this.auction_number = auction_number;
 		this.member_id = member_id;
@@ -146,11 +146,11 @@ public class AuctionBoard_DTO {
 		this.end_price = end_price;
 	}
 
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 
@@ -203,4 +203,5 @@ public class AuctionBoard_DTO {
 				+ ", end_date=" + end_date + ", current_price=" + current_price + ", add_user=" + add_user
 				+ ", add_price=" + add_price + ", add_time=" + add_time + ", bid_count=" + bid_count + "]";
 	}
+	
 }
