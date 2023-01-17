@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.multi.ongo.auction">
+	
+	<!-- 경매 내역 메인 (전체) -->
+	<select id="saleAll" parameterType="String" resultType="auctionDTO">
+		select * from auction_table
+		where member_id=#{member_id}
+	
+	</select>
+	
+	<!-- 거래상태 별로 테이블 조회 (경+매중/경매종료/거래진행중) -->
+	<select id="auctdealselectState" parameterType="Map" resultType="auctionDTO">
+		select * from auction_table 
+		where member_id=#{member_id}	<!-- 내가 쓴 글만 조회하기 위한 조건 -->
+		and auction_state=#{auction_state}	<!-- 탭메뉴 클릭 시 컨트롤러로 넘어오는 거래상태 -->
+	</select>
+
+	<!-- '거래하기' 클릭 시 거래상태 변경  -->
+	<update id="stateChange" parameterType="int">
+		update auction_table 
+		set auction_state='거래진행중'
+		where auction_number=#{auction_number}
+	</update>
+
+	<!-- 탭메뉴 클릭시 조회되는 게시글 수 -->
+	<select id="pageTotal" parameterType="String">
+		select count(auction_number) as count from auction_table
+		where member_id = #{member_id}
+		and auction_state = #{auction_state} 
+	</select>
+	
+	<!-- ===================== 구매 관리 ======================== -->
+<!-- 	
+	  구매내역 메인(거래상태=all) 
+	 <select id="purchaseAll" resultType="dealDTO" parameterType="String">
+		select * 
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number
+		and r.req_id=#{member_id}
+	</select>
+	
+	구매내역 > 나의 구매요청 리스트 조회
+	<select id="myreqlist" resultType="dealDTO" parameterType="String">
+		select * 
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number
+		and d.product_state='판매중'
+		and r.req_id=#{member_id}
+	</select>
+
+	
+	 구매내역 > 거래진행중 리스트 조회
+	<select id="mydealList" resultType="dealDTO" parameterType="String">
+		select * 
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number
+		and d.product_state='거래진행중'
+		and r.buyer_id=#{member_id}
+	</select>
+	
+	구매 확정
+	<update id="dealconfirm" parameterType="int">
+		update deal_table2
+		set product_state='판매완료'
+		where deal_number=#{deal_number}
+	</update>	
+	
+	구매내역 > 구매완료(=판매완료) list
+	<select id="purchaseList" parameterType="String" resultType="dealDTO">
+		select *	
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number	
+		and d.product_state='판매완료'
+		and r.buyer_id=#{member_id}
+	</select>  
+
+ -->
+	
+	
+  </mapper>
