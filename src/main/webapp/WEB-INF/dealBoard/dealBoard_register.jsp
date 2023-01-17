@@ -226,7 +226,7 @@
 						</div>
 					</div>
 					
-					
+					<!-- 
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">대표사진</label>
 								<div class="tbl-basic-td">
@@ -236,7 +236,7 @@
 								</div>
 							</div> 
 
-
+ -->
 
 					<div class="btn-area">
 						<button class="btn btn-primary btn-large" type="reset">새로입력</button>
@@ -246,13 +246,10 @@
 
 					<div class="btn-area">
 						<button class="btn btn-primary btn-large" type="button"
-							onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
+							onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
 					</div>
 			</form>
 		</div>
-		<!-- <div class="btn-area">
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
-			</div>  -->
 	</div>
 
 

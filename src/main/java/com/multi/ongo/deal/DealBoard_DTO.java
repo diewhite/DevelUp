@@ -13,7 +13,6 @@ public class DealBoard_DTO {
 		private String board_content; // 내용  - ★게시글등록시필요
 		private int hits; // 조회수	노쇼=  
 		private Date write_date; //작성일  - 노쇼=  ★게시글등록시필요
-		private String list_photo; // 리스트사진  - ★게시글등록시필요
 		
 
 	public DealBoard_DTO() {
@@ -34,15 +33,16 @@ public class DealBoard_DTO {
 		this.board_content = board_content;
 		this.hits = hits;
 		this.write_date = write_date;
-		this.list_photo = list_photo;
+		//this.list_photo = list_photo;
 	}
+
 
 	@Override
 	public String toString() {
 		return "DealBoard_DTO [deal_number=" + deal_number + ", member_id=" + member_id + ", dealType=" + dealType
 				+ ", product_category=" + product_category + ", product_state=" + product_state + ", board_title="
 				+ board_title + ", product_price=" + product_price + ", board_content=" + board_content + ", hits="
-				+ hits + ", write_date=" + write_date + ", list_photo=" + list_photo + "]";
+				+ hits + ", write_date=" + write_date + "]";
 	}
 
 	public int getDeal_number() {
@@ -125,12 +125,5 @@ public class DealBoard_DTO {
 		this.write_date = write_date;
 	}
 
-	public String getList_photo() {
-		return list_photo;
-	}
-
-	public void setList_photo(String list_photo) {
-		this.list_photo = list_photo;
-	}
 
 }

@@ -16,7 +16,7 @@
 	<insert id="deal_write" parameterType="dealDTO">
 		insert into deal_table2
 		values(deal_no2.nextval, #{member_id}, #{dealType}, #{product_category}, 
-		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate, #{list_photo})
+		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate)
 	</insert>
 	
 	<!--중고거래 게시글_전체조회  -->
@@ -46,7 +46,7 @@
 	<!--중고거래 게시글_ 업데이트(수정)-->
 	<update id="dealUpdate" parameterType="dealDTO">
 		update deal_table2
-		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}, list_photo=#{list_photo}
+		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}
 		where deal_number = #{deal_number}
 	</update>
 	
