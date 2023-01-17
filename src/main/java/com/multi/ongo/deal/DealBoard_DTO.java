@@ -19,9 +19,11 @@ public class DealBoard_DTO {
 		
 	}
 
+
+
 	public DealBoard_DTO(int deal_number, String member_id, String dealType, String product_category,
 			String product_state, String board_title, int product_price, String board_content, int hits,
-			Date write_date, String list_photo) {
+			Date write_date) {
 		super();
 		this.deal_number = deal_number;
 		this.member_id = member_id;
@@ -33,8 +35,8 @@ public class DealBoard_DTO {
 		this.board_content = board_content;
 		this.hits = hits;
 		this.write_date = write_date;
-		//this.list_photo = list_photo;
 	}
+
 
 
 	@Override
