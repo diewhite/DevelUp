@@ -6,7 +6,7 @@ public class AuctionBoard_DTO {
 	private String auction_category;//카테고리
 	private String auction_state ;  //경매진행중,경매종료 표시
 	private String auction_title;	//제목
-	private int hits ;	//조회수
+	private String hits ;	//조회수
 	private String write_date ;
 	private String board_content ;
 	private String list_photo ;
@@ -26,9 +26,9 @@ public class AuctionBoard_DTO {
 	}
 
 	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
-			String auction_title, int hits, String write_date, String board_content, String list_photo,
-			String min_price, String start_price, String end_price, String end_date, String current_price,
-			String add_user, int add_price, String add_time, String bid_count) {
+			String auction_title, String hits, String write_date, String board_content, String list_photo, String min_price,
+			String start_price, String end_price, Date end_date) {
+
 		super();
 		this.auction_number = auction_number;
 		this.member_id = member_id;
@@ -90,11 +90,11 @@ public class AuctionBoard_DTO {
 		this.auction_title = auction_title;
 	}
 
-	public int getHits() {
+	public String getHits() {
 		return hits;
 	}
 
-	public void setHits(int hits) {
+	public void setHits(String hits) {
 		this.hits = hits;
 	}
 
@@ -146,11 +146,11 @@ public class AuctionBoard_DTO {
 		this.end_price = end_price;
 	}
 
-	public String getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(String end_date) {
+	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
 
