@@ -68,12 +68,18 @@
 	                        <div class="mt-2">
 	                          <ul class="company_list">
 	                    		<h3><a onclick="location.href='/ongo/auction/auctionRead'">${boardlist.auction_title }</a></h3>
-	                            <li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
-	                            <li><strong>최종입찰가</strong><span>${boardlist.end_price }</span>
-	                            <li><strong>남은시간 &nbsp &nbsp</strong><span>${boardlist.end_date }</span>
+	                            <li><strong>시작가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
+	                            <c:choose>
+	                            	<c:when test="${boardlist.current_price==null }">
+	                            		<li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>
+	                            	</c:when>
+	                            	<c:otherwise>
+	                            		<li><strong>현재가격 &nbsp &nbsp</strong><span>${boardlist.current_price }</span>
+	                            	</c:otherwise>
+	                            </c:choose>
+	                            <li><strong>종료시간 &nbsp &nbsp</strong><span>${boardlist.end_date }</span>
 	                            		<!-- <ol> 남은시간 : - </ol> -->
 	                            </li>
-	                          
 	                          </ul>
 	                        </div>
 	                   

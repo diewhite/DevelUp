@@ -38,7 +38,34 @@
 		}
 	}
 	
-	
+	function bidding(){
+		var startPrice = ${board.start_price};
+		var minPrice = ${board.min_price};
+		var minBid;
+		var currPrice = ${currPrice};
+		var bidInput = $("#bidding_price").val();
+		var bidPrice = 0;
+		var bidListSize = ${bidList.size()};
+
+		if(bidInput!=0){
+			bidPrice = bidInput;
+		}
+				
+		if(currPrice==0){
+			minBid = minPrice + startPrice; 
+		} else {
+			minBid = minPrice + currPrice;
+		}
+		if(bidInput<minBid){
+			alert("최저 입찰 금액은 "+minBid+"원 이상 입니다.");
+		}else{
+			if(confirm(bidInput+"원을 입찰 하시겠습니까?")){
+				location.href='/ongo/auction/bidding?add_price='+bidPrice+'&auction_number='+${board.auction_number}+'&add_user=${user.member_id}';
+			} else {
+				false;
+			}
+		}
+	}
 </script>
 	
 	</head>
@@ -107,7 +134,16 @@
 	                   <div class="grid-item colspan2">
 	                  <label >현재입찰가</label>
 	                  <div class="tbl-basic-td">
-	                    <div class="input-wrap blue" ><span>${board.start_price } </span> 원</div>
+	                    <div class="input-wrap blue" >
+	                    	<c:choose>
+	                    		<c:when test="${bidList.size() gt 0 }">
+	                    			<span>${bidList[0].add_price }</span>
+	                    		</c:when>
+	                    		<c:otherwise>
+	                    			<span>0</span>
+	                    		</c:otherwise>
+	                    	</c:choose>
+	                    원</div>
 	                  </div>
 	                </div>
 	                
@@ -128,7 +164,7 @@
 	                </div>
 	                  <div class="grid-item colspan2">
 	                  <label for="HOFS_INTR_MTRL_CNTS">입찰수</label>
-	                  <div class="tbl-basic-td">26건 
+	                  <div class="tbl-basic-td">${bidList.size() } 
 	                    </div>
 	                </div>
 	              </div>
@@ -140,16 +176,20 @@
 	      <!-- // content -->
 	      
 	      <div class="btn-area">
-					<button type="button" class="btn btn-outline-secondary btn-large" title="목록" onclick="#">목록</button>
-					<button class="btn btn-primary btn-large" type="button"  data-bs-toggle="modal" data-bs-target="#myModal">입찰하기</button>
-	                  <button  class="btn btn-outline-primary btn-large" data-bs-toggle="modal" data-bs-target="#listModal">입찰내역보기</button>
-					<c:choose>
-	      		<c:when test="${user.member_id==board.member_id}">  
-					<button class="btn btn-outline-danger btn-large" type="button"
-					 onclick="location.href='/ongo/auction/auctionDelete?auction_number=${board.auction_number}'">삭제</button>
-					 </c:when>
-			</c:choose> 
-				</div>
+				<button type="button" class="btn btn-outline-secondary btn-large" title="목록" onclick="location.href='/ongo/auction/auctionBoard?auction_category=all'">목록</button>
+				<c:choose>
+					<c:when test="${user.member_id!=board.member_id }">
+						<button class="btn btn-primary btn-large" type="button"  data-bs-toggle="modal" data-bs-target="#myModal">입찰하기</button>
+					</c:when>
+				</c:choose>
+                  <button  class="btn btn-outline-primary btn-large" data-bs-toggle="modal" data-bs-target="#listModal">입찰내역보기</button>
+				<c:choose>
+		      		<c:when test="${user.member_id==board.member_id}">  
+						<button class="btn btn-outline-danger btn-large" type="button"
+						 onclick="location.href='/ongo/auction/auctionDelete?auction_number=${board.auction_number}'">삭제</button>
+				 	</c:when>
+				</c:choose> 
+			</div>
 	</div>   
 </div>
 
@@ -178,14 +218,16 @@
 								<label for="IUY_CLSS_CNTS">입찰금액</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap  w100">
-						                <input class="grid-input" type="text"  name="member_name" title="입찰금액">
+										<input hidden="hidden" name="add_user" value=${user.member_id }>
+										<input hidden="hidden" name="add_auction_number" value=${board.auction_number }>
+						                <input class="grid-input" type="text" id="bidding_price" name="bidding_price" title="입찰금액">
 						              </div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="btn-area">
-						<button type="button" class="btn btn-primary btn-large" data-bs-dismiss="modal" aria-label="Close" onclick=" ">입찰하기</button>
+						<button type="button" class="btn btn-primary btn-large" data-bs-dismiss="modal" aria-label="Close" onclick="bidding()">입찰하기</button>
 					</div>
 					<!-- 닫기버튼 -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -197,6 +239,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<!-- //modal -->
 	
 <!-- 입찰내역보기 modal -->
@@ -213,7 +256,7 @@
             <div class="board_list">
                
                 <div class="board_info d-flex">
-                    <div class="total">전체 <strong class="blue" id="totalCount">5</strong>건 </div>
+                    <div class="total">전체 <strong class="blue" id="totalCount">${bidList.size() } </strong>건 </div>
                 </div>
                 <div class="board">
                    <table class="table" id="example">
@@ -231,14 +274,13 @@
                                </tr>
                            </thead>
                            <tbody>
-                           
-                             <tr >
-						      <td data-before="입찰자">아무개</td>
-                               <td data-before="입찰날짜">2021-12-22</td>
-                               <td data-before="입찰금액">30444원 </td>
+                             <c:forEach var="bid" items="${bidList }">
+                             <tr>
+                             	<td data-before="입찰자">${bid.add_user }</td>
+                             	<td data-before="입찰날짜">${bid.add_time }</td>
+                             	<td data-before="입찰금액">${bid.add_price }원 </td>
 							</tr>
-                            
-                            
+							</c:forEach>
                            </tbody>
                        </table>
               

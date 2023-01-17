@@ -6,8 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.multi.ongo.deal.DealBoard_DTO;
-
 @Repository
 public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 // <mapper namespace="com.multi.ongo.deal">
@@ -63,6 +61,21 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 	@Override
 	public int auctionStatus() {
 		return sqlSession.update("com.multi.ongo.auction.auctionStatus");
+	}
+
+	@Override
+	public List<AuctionBoard_DTO> bidList(int auction_no) {
+		return sqlSession.selectList("com.multi.ongo.auction.bidList", auction_no);
+	}
+
+	@Override
+	public int bidding(AuctionBoard_DTO dto) {
+		return sqlSession.insert("com.multi.ongo.auction.bidding", dto);
+	}
+
+	@Override
+	public int updatePrice(AuctionBoard_DTO dto) {
+		return sqlSession.update("com.multi.ongo.auction.updatePrice", dto);
 	}
 
 }	
