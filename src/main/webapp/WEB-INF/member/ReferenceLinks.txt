@@ -14,7 +14,7 @@
 == 규민님 페이징 처리  # https://po9357.github.io/spring/2019-05-28-Board_Paging/
 == 페이징처리 유튜브 태원님 # https://www.youtube.com/watch?v=KNAbTFYDHNU&list=PLE5Oosh5zKQfO_md_TwiITjwMhMnzcR2R&index=44&t=260s
 == 깃 스테이징에 파일 안올라갈 때 윤희님 # https://sowon-dev.github.io/2021/07/07/210708sts-icon-meaning/
-
+== MySQL-Oracle데이터 타입 비교 # https://arrkaize86.tistory.com/entry/MySQL-Oracle-%EA%B3%BC-%EB%B9%84%EA%B5%90
 
 ++++++++++++++++++++
 public 개념
