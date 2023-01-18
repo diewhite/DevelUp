@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -47,20 +47,7 @@
 												'help' ] ] ]
 					});
 						})
-		/* $(function() {
-			$('#board_content').summernote({
-				placeholder : '최대 500자 작성 가능합니다.',
-				height : 300,
-				lang : 'ko-KR',
-				callbacks : {
-					onImageUpload : function(files, editor, welEditable) {
-						for (var i = files.length - 1; i >= 0; i--) {
-							sendFile(files[i], this);
-						}
-					}
-				}
-			});
-		}); */
+		
 	</script>
 	<!-- 이 아래부터  content부분 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
 
@@ -76,11 +63,10 @@
 
 		<!-- 게시판 -->
 		<div class="container">
-			<form id="searchForm" name="searchForm" action="/ongo/deal_Write.do"
-				method="post">
-				<input type="hidden" name="countPerPage" id="countPerPage"
+			<form id="searchForm" name="searchForm" action="/ongo/deal_Write.do" method="post" enctype="multipart/form-data">
+				<!-- <input type="hidden" name="countPerPage" id="countPerPage"
 					value="10"> <input type="hidden" name="zon" id="zon"
-					value="">
+					value=""> -->
 
 				<!-- 현재 탭 표시 -->
 				<h2 class="visually-hidden">중고</h2>
@@ -212,47 +198,52 @@
 								<div class="input-wrap w100">
 
 									<textarea Name="board_content" class="grid-item colspan10" id="summernote" style="width: 100%;"></textarea>
-										<!-- <label for="HOFS_INTR_MTRL_CNTS">내용</label>
-										<div class="tbl-basic-td" id="summernote">
-									<div class="input-wrap w100" id="summernote">
-								
-									<textarea class="grid-input" role="textbox" id="summernote"
-										name="board_content" title="board_content" maxlength="1000"
-										rows="5"></textarea> -->
 
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 					
 					
-							<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">대표사진</label>
+					
+		<!-- 					<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-										<input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/>
+										<input type="file" class="form-control" id="dealFiles" Name="dealFiles" value="" multiple="multiple"/>
 									</div>
 								</div>
 							</div> 
+						</div>
+					</div>
+ -->
+
+						<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">첨부파일</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w100">
+										<input type="file" name="dealFiles" onchange="document.getElementById('dealFiles').src = window.URL.createObjectURL(this.files[0])" accept="dealUpload/*" multiple="multiple" style="float: left;">
+										<img src="/ongo/images/myphoto.png" id="dealFiles" style="width: 50px; float: left;"> 
+								</div>
+							</div>
+						</div>
+						
 
 
 
-					<div class="btn-area">
+
+
+
+
+					<div class="btn-area" >
 						<button class="btn btn-primary btn-large" type="reset">새로입력</button>
+						<button class="btn btn-primary btn-large" type="button"
+							onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
 						<input type="submit" value="게시글 등록"
 							class="btn btn-primary btn-large" />
-					</div>
-
-					<div class="btn-area">
-						<button class="btn btn-primary btn-large" type="button"
-							onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
+					
 					</div>
 			</form>
 		</div>
-		<!-- <div class="btn-area">
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do'">리스트</button>
-			</div>  -->
 	</div>
 
 

@@ -25,7 +25,7 @@ public class HomeController {
 			List<DealBoard_DTO> main_dealcategory = service.dealType_list("all");
 			mav.addObject("main_dealcategory", main_dealcategory);
 			mav.setViewName("index");
-			System.out.println("main_category체크 : " + main_dealcategory);
+			//System.out.println("main_category체크 : " + main_dealcategory);
 			return mav;
 		}
 

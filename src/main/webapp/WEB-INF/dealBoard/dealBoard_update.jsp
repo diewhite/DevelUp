@@ -159,9 +159,9 @@
 							<label for="HOFS_DTADR">대표사진</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
-									<input type="file" class="form-control" id="list_photo" Name="list_photo" value="${dealRead.list_photo}" />
+									<input type="file" class="form-control" id="" Name="" value="" />
 								</div>
-								<!-- <input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/> -->
+								<!-- <input type="file" class="form-control" id="" Name="" value=""/> -->
 							</div>
 						</div>
 					</div>
@@ -174,7 +174,7 @@
 
 		<div class="btn-area">
 			<button class="btn btn-primary btn-large" type="button"
-				onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
+				onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
 			<button type="submit" class="btn btn-primary btn-large">수정완료</button>
 			<!-- 	<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/dealUpdate.do'">수정완료</button> -->
 		</div>
