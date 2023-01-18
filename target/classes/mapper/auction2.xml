@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.ongo.auction">
+
+	<!--경매 판매내역 메인 (전체) -->
+	<select id= auctsaleAll" parameterType="String" resultType="auctionDTO">
+		select * from auction_table
+		where member_id=#{member_id}
+		
+		<!-- 거래상태 별로 테이블 조회 (판매중/판매종료/거래진행중) -->
+	<select id="auctselectState" parameterType="Map" resultType="auctionDTO">
+		select * from auction_table
+		where member_id=#{member_id}f
+		 `	<!-- 내가 쓴 글만 조회하기 위한 조건 -->
+		and auction_state=#{auction_state}	<!-- 탭메뉴 클릭 시 컨트롤러로 넘어오는 거래상태 -->
+	</select>
+	<!-- '거래하기' 클릭 시 거래상태 변경  -->
+	<update id="auctstateChange" parameterType="int">
+		update auction_table
+		set auction_state='경매진행중' 
+		where auction_number=#{auction_number}
+	</update>
+	<!-- 탭메뉴 클릭시 조회되는 게시글 수 -->
+	<select id="auctpageTotal" parameterType="String">
+		select count(auction_number) as count from auction_table
+		where member_id = #{member_id}
+		and auction_state = #{auction_state} 
+	</select>
+
+
