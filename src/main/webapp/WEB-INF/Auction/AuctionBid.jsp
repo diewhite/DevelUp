@@ -41,15 +41,12 @@
 					    <span id="dvDeliveryB"><button onclick=>입찰상세내역</button></span><span id="dvDeliveryMb"></span>
 					</td>
 				</tr>
-				<tr>
-					<th style="text-align:center;">최소가</th>
-					<td id="dvBidunit">2,000원</td>
-				</tr>
+		
 				<tr>
 					<th style="text-align:center;">현재가</th>
 					<td >
-						<strong class="fcBlue" id="bidCmoney">222,000원</strong>&nbsp;<button href="#none" class="skbor" id="reload_btn" onclick="bidPopObj.bidFormLoad();"style="width:70px;padding:4px;">새로고침</button>
-						<a href="#none" id="bidPlus" class="btn btn-gray" style="display:inline-block;min-width:70px;padding:4px;"><font style="color:red;font-weight:bold;">▲</font><span id="bidunitSpan">2,000</span></a>
+						<strong class="fcBlue" id="bidCmoney">222,000원</strong>&nbsp;
+				
 					</td>
 				</tr>
 				<tr>
@@ -60,7 +57,7 @@
 								<td width="92%" align="left">
 									<div class="form-inline" id="bidmountDiv">
 										<input type="text" autocomplete="off" class="form-control wp80 dpInblock w100" style="padding:4px 4px;" id="bidmount" name="bidmount" maxlength="12" onkeyup="bidObj.bidInputUpKey();" onkeydown="bidObj.bidInputDownKey();">
-										<strong class="fcBlue" id="bidMoney">최소 224,000원</strong>
+										
 									</div>
 								
 							</tr>	

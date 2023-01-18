@@ -9,61 +9,40 @@
 <head> </head>
 <body>
 <!-- 이 아래부터  content부분부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
-
+ <form action="/ongo/auctionWrite.do" method="post">
 <!-- content -->
 <div id="contents">
         <!-- title -->
         <div class="sub_top">
             <div class="container">
+          	
                 <h1>경매등록</h1>
             </div>
         </div>
         <!-- //title -->
-
         <!-- 게시판 -->
        <div class="container">
-    <form action="/ongo/auctionWrite.do?auction_number=${auctionWrite.auction_number}" method="post">
-      <input type="hidden" value="">
+   								<!-- 아이디 세션에서 가져와야함 -->
+   								<div class="grid-item colspan2">
+							<label for="HOFS_DTADR">작성자</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w100">
+								<label>${user.member_id}<input type="hidden" id="member_id" name="member_id" value="${user.member_id}">
+								</label>
+									</div>
+							</div>
+						</div>
+      <input type="hidden" >
       <input type="hidden">
       <div class="cont-box-inner">
         
         <div class="tbl grid-layout grid2">
-          <div class="grid-item colspan2">
-            <label for="select_target_1">카테고리</label>
-            <div class="tbl-basic-td">
-              <div class="input-wrap w20">
-              <div class="grid-item colspan2">
-							<label for="select_target_1">상품카테고리</label>
-							<div class="tbl-basic-td">
-								<div class="input-wrap w20">
-									<select class="form-select grid-input" title="게시판" id="product_category" name="product_category">
-										<option value="디지털&가전">디지털&가전</option>
-										<option value="가구&인테리어">가구&인테리어</option>
-										<option value="유아동">유아동</option>
-										<option value="생활&가공식품">생활&가공식품</option>
-										<option value="레져&스포츠">레져&스포츠</option>
-										<option value="여성잡화">여성잡화</option>
-										<option value="여성의류">여성의류</option>
-										<option value="남성잡화">남성잡화</option>
-										<option value="남성의류">남성의류</option>
-										<option value="게임&취미">게임&취미</option>
-										<option value="뷰티&미용">뷰티&미용</option>
-										<option value="반려동물용품">반려동물용품</option>
-										<option value="도서&티켓&음반">도서&티켓&음반</option>
-										<option value="기타">기타</option>
-									</select>
-								</div>
-							</div>
-						</div>
-
-              </div>
-            </div>
-          </div>
+        	
           <div class="grid-item colspan2">
             <label for="select_target_1">상태</label>
             <div class="tbl-basic-td">
-              <div class="input-wrap w20" name="auction_state">
-                <select class="form-select grid-input"title="상태">
+              <div class="input-wrap w20" >
+                <select class="form-select grid-input" title="상태" name="auction_state">
                  <option value="01">경매진행중</option>
                  <option value="02">경매완료</option>
                 </select>
@@ -71,12 +50,14 @@
             </div>
           </div>
           <div class="grid-item colspan2">
-            <label for="HOFS_DTADR" id="auction_title" name="auction_title">제목</label>
+            <label for="HOFS_DTADR" id="auction_title" >제목</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
-                <input class="grid-input" type="text"  maxlength="50" title="타이틀">
+                <input class="grid-input" type="text"  maxlength="50" title="타이틀" name="auction_title">
               </div>
             </div>
+          </div>
+          
           </div>
           <div class="grid-item colspan2">
             <label for="HOFS_DTADR" >경매</label>
@@ -84,20 +65,17 @@
               <div class="input-wrap w30 me-4">
               <div> 시작가   </div>
               <input id="start_price" name="start_price" class="bid-start" type="text"  maxlength="50" title="시작가"> 
-               <div> 최소가   </div>
-                <input id="min_price" name="min_price" class="bid-min" type="text"  maxlength="50" title="최소가"> 
-            
+              <h6 >!경고! 가격은 등록후 수정불가능합니다.</h6>
               </div>
-       
             </div>
           </div>
          
-        
+          
           <div class="grid-item colspan2">
-            <label for="HOFS_INTR_MTRL_CNTS">내용</label>
+            <label for="HOFS_INTR_MTRL_CNTS">사이즈(상세스펙)</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
-                <textarea id="board_content" name="board_content" class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
+                <textarea name="board_content" id="board_content"  class="grid-input" role="textbox"  maxlength="500" rows="5"></textarea>
               </div>
             </div>
           </div>
@@ -106,6 +84,7 @@
             <label for="HOFS_DTADR">첨부파일</label>
             <div id="list_photo" class="tbl-basic-td">
               <div class="input-wrap w100">
+              
                   <input type="file" class="form-control" id="list_photo" name="list_photo" value="${AuctionRead.list_photo}"/>
               </div>
             </div>
@@ -115,57 +94,20 @@
       </div>
    
   			<div class="btn-area">
-       <button class="btn btn-primary btn-large" type="submit" onclick="location.href='/ongo/auction/auction'">글쓰기</button>
+  			<!--글등록   -->
+       <button class="btn btn-primary btn-large" type="submit" onclick="location.href='/ongo/auction/auctionwrite'">글등록</button>
       </div>
-        </form>
+      
         </div>
-        </div>
- 
+      
+   </form>
    
 <!-- // content -->
 
  <!-- modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="modal-tit">
-                <h2 class="h3">쪽지</h2>
-            </div>
-            <div class="modal-con">
-                <div class="tbl grid-layout grid1">
-                    <div class="grid-item">
-                    <label for="IUY_CLSS_NM">수신자</label>
-                    <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <span id="IUY_CLSS_NM">닉네임</span>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="grid-item">
-                        <label for="IUY_CLSS_CNTS">내용적기</label>
-                        <div class="tbl-basic-td">
-                        <div class="input-wrap w100">
-                            <div class="input-wrap w100">
-                            <textarea class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="쪽지내용 입력" maxlength="500" rows="5"></textarea>
-                          </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-area">
-              <button type="button" class="btn btn-outline-primary"  data-bs-dismiss="modal" aria-label="Close">전송</button>
-            </div>
-            <!-- 닫기버튼 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                <i class="las la-times"></i>
-            </button>
-            <!-- //닫기버튼 -->
-        </div>
-    </div>
-    </div>
-</div>
+	<!-- Footer -->
+	<jsp:include page="../include/footer.jsp" />
+	<!-- //Footer -->
 <!-- //modal -->
 
 </body>

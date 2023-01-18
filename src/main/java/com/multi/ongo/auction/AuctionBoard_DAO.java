@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AuctionBoard_DAO {
 	//게시글 등록
-	public int AuctionProd(AuctionBoard_DTO dto);
+	public int writeProd(AuctionBoard_DTO dto);
 	
 	//게시글읽기
 	public AuctionBoard_DTO auctionRead(int auction_no);
@@ -19,8 +19,23 @@ public interface AuctionBoard_DAO {
 		
 	// 게시글읽기
 	public AuctionBoard_DTO auctionlist(int auction_number);
-
 	
 	//게시글수정
 	int update(AuctionBoard_DTO dto);
+	
+	//경매시간 종료 된 항목 거래 종료로 업데이트
+	public int auctionStatus();
+	
+	//경매게시판 글 삭제 -by태원 __________________________________________
+		public int auctionDelete(int auction_number);
+		//______________________________________________________________
+		
+	//경매내역 조회
+	public List<AuctionBoard_DTO> bidList(int auction_no);
+	
+	//경매입찰
+	public int bidding(AuctionBoard_DTO dto);
+	
+	//현재가격 업데이트
+	public int updatePrice(AuctionBoard_DTO dto);
 }
