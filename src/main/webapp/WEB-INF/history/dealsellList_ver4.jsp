@@ -60,6 +60,99 @@
 				for(i=0; i<data.length; i++){
 					
 					
+					////추가된 부분 시작 
+					var buyer_id = data[i].buyer_id
+					
+					
+					/* 거래상태가 '거래진행중'일 경우 */
+					if(${sellList.product_state } == '거래진행중'){
+							
+							/* 구매요청한 사람 = 구매자인 경우 */
+							if(data[i].req_id=buyer_id){
+								
+								payRequset = "";
+								
+								/* 	결제 요청 시 파라미터 넘길 url 작업해야함
+								var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}" */
+										
+								payRequset = 
+									"<tr ><td id='no'>"+data[i].deal_number
+										+"</td><td id='date'>"+data[i].req_time
+										+"</td><td id='id'>"+data[i].req_id
+										+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+										+"onclick='#'>쪽지보내기</button></td>"
+										+"<td id='deal-btn'><a class='payRequset' href='#'><button type='button' class='btn btn-warning'"
+										+">결제요청</button></td></tr>"
+											
+										$(".reqdata").append(payRequset); 
+										
+										${".payRequset"}.onclick().alert(data[i].req_id+"님에게 결제요청이 완료되었습니다.")
+										
+								
+										
+							/* 구매요청한 사람 =/= 구매자인 경우 */			
+							}else{
+								notBuyer = "";
+								
+								
+								notBuyer = 
+								"<tr ><td id='no'>"+data[i].deal_number
+									+"</td><td id='date'>"+data[i].req_time
+									+"</td><td id='id'>"+data[i].req_id
+									+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+									+"onclick='#'>쪽지보내기</button></td>"
+									+"<td id='deal-btn'><button type='button' class='btn btn-outline-secondary'"
+									+">거래불가</button></td></tr>"
+									
+									$(".reqdata").append(notBuyer); 
+									
+								
+							}
+							
+							/* sellingStatus = "";
+							
+							String url =  "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}" 
+								
+							sellingStatus = 
+								"<tr ><td id='no'>"+data[i].deal_number
+									+"</td><td id='date'>"+data[i].req_time
+									+"</td><td id='id'>"+data[i].req_id
+									+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+									+"onclick='#'>쪽지보내기</button></td>"
+									+"<td id='deal-btn'><a href='"+ url +"'><button type='button' class='btn btn-info dealbtn text-white'"
+									+">Cancel</button></a></td></tr>"
+									
+									$(".reqdata").append(sellingStatus) */
+						
+					/* 거래상태가 '판매중'일 경우 */
+					}else if (${sellList.product_state } == '판매중'){
+						
+					
+						requserinfo = "";
+						
+						var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}"
+								
+							userinfo = 
+							"<tr ><td id='no'>"+data[i].deal_number
+								+"</td><td id='date'>"+data[i].req_time
+								+"</td><td id='id'>"+data[i].req_id
+								+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+								+"onclick='#'>쪽지보내기</button></td>"
+								+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
+								+">거래하기</button></a></td></tr>"
+								
+								$(".reqdata").append(userinfo); 
+						
+					
+					/* 거래상태가 '판매종료'일 경우 */
+					}else{
+						
+						
+						
+					}
+					/////////추가된 부분 끝 
+				}
+			/*	for문 원본 
 			
 			userinfo = "";
 				
@@ -78,7 +171,7 @@
 					
 					
 					$(".reqdata").append(userinfo); 
- 					
+ 					*/
 				} 
 					
 				

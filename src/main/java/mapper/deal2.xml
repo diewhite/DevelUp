@@ -47,7 +47,7 @@
 		select * 
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number
-		and d.product_state='판매중'
+		and d.product_state=#{product_state}	<!-- 판매중 -->
 		and r.req_id=#{member_id}
 	</select>
 
@@ -57,7 +57,7 @@
 		select * 
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number
-		and d.product_state='거래진행중'
+		and d.product_state=#{product_state} <!-- 거래진행중 -->
 		and r.buyer_id=#{member_id}
 	</select>
 	
@@ -73,7 +73,7 @@
 		select *	
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number	
-		and d.product_state='판매완료'
+		and d.product_state=#{product_state}
 		and r.buyer_id=#{member_id}
 	</select> 
 
