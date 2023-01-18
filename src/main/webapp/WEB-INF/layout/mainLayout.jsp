@@ -2,12 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<head> 
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nfflwtq6kn"></script>
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/main.css">
 </head>
 <body>
-
 <!-- content -->
 <div id="contents" class="main">
 <div >
@@ -42,112 +45,17 @@
             <div id="intro1slider" class="carousel carousel-dark introslider" data-bs-ride="carousel"
               data-bs-interval="10000000">
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <h3>소정자원
-                    <a href="/ongo/companylist" class="btn btn-small">상세보기<i class="las la-external-link-alt"></i></a>
-                  </h3>
-                  <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">서울특별시 강남구 삼성로111길</span></li>
-                    <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#폐가전#가구#플라스틱</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">010-9963-996</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">psjjava@gmail.com</span></li>
-                  </ul>
-                  <div class="introlink">
-                    <span><a href="#">거래요청</a></span>
-                    <span><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></span>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <h3>규민강철
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
-                  </h3>
-                  <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">경기도 용인시 처인구 명인로1길</span></li>
-                    <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#고철#비철#구리#폐전선#철거구</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">031-123-1234</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">diewhite9095@gmail.com</span></li>
-                  </ul>
-                  <div class="introlink">
-                    <span><a href="#">거래요청</a></span>
-                    <span><a href="#">쪽지보내기</a></span>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <h3>윤희자원
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
-                  </h3>
-                  <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">전라북도 전주시 송천동 33길</span></li>
-                    <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#고철#고철#비철#파지#헌옷</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">031-123-1234</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">yoonhee010@gmail.com</span></li>
-                  </ul>
-                  <div class="introlink">
-                    <span><a href="#">거래요청</a></span>
-                    <span><a href="#">쪽지보내기</a></span>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <h3>태원강철
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
-                  </h3>
-                  <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">대구 수성구 황금동 70길</span></li>
-                    <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#비철#철거#해체#고철#고물상</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">031-123-1234</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">gavykim1124@gamil.com</span></li>
-                  </ul>
-                  <div class="introlink">
-                    <span><a href="#">거래요청</a></span>
-                    <span><a href="#">쪽지보내기</a></span>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <h3>경민강철
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
-                  </h3>
-                  <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">부산광역시 해운대로 123</span></li>
-                    <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#철거#고가매입#고물상#고철</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">031-123-1234</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">chjk3200620@gmail.com</span></li>
-                  </ul>
-                  <div class="introlink">
-                    <span><a href="#">거래요청</a></span>
-                    <span><a href="#">쪽지보내기</a></span>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <h3>성민자원
-                    <a href=# class="btn btn-small" target="_blank"
-                      title="새창">상세보기<i class="las la-external-link-alt"></i></a>
-                  </h3>
-                  <ul class="introlist">
-                    <li><span class="introlist_tit">주소</span><span class="introlist_txt">제주 오도11길</span></li>
-                    <li><span class="introlist_tit">거래품목</span><span class="introlist_txt">#고철#폐지#비철#기타재활용품</span></li>
-                    <li><span class="introlist_tit">문의</span><span class="introlist_txt">031-123-1234</span></li>
-                    <li><span class="introlist_tit">견적</span><span class="introlist_txt">sadlzn77@gmail.com</span></li>
-                  </ul>
-                  <div class="introlink">
-                    <span><a href="#">거래요청</a></span>
-                    <span><a href="#">쪽지보내기</a></span>
-                  </div>
-                </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#intro1slider" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#intro1slider" data-bs-slide="prev" onclick="markerChg()">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#intro1slider" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#intro1slider" data-bs-slide="next" onclick="markerChg()">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-            <div class="map map1">
+            <!-- <div class="map map1">
               <ul>
                 <li class="seoul"><button type="button" class="btn active">소정자원</button></li>
                 <li class="daeduck"><button type="button" class="btn">태원강철</button></li>
@@ -155,7 +63,8 @@
                 <li class="yongin"><button type="button" class="btn">규민강철</button></li>
                 <li class="busan"><button type="button" class="btn">경민강철</button></li>
                 <li class="jeju"><button type="button" class="btn">성민자원</button></li>
-              </ul>
+              </ul> -->
+            <div id="map" class = "map map1" style="position: absolute;">
             </div>
           </div>
           <div class="tab-pane fade" id="intro2" aria-labelledby="intro2-tab">
@@ -453,6 +362,7 @@
       </div>
       <!-- //  -->
     
+    
     </section>
 
    <section class="foot section fp-auto-height">
@@ -555,10 +465,75 @@
 	$(document).ready(function () {
 		$("#srchWord2-btn").on("click", function () {
 			location.href="serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
-		})
+		})//end #srchWord2-btn event
 		
-	})
+		$.ajax({
+			url : '/ongo/cooperation/ajax_list',
+			type : 'get',
+			success : function(data){
+				var pagelist="";
+				for(var i=0;i<data.length;i++){
+					var page = "";
+					if(i==0){
+						page = '<div class="carousel-item active"><h3>'+data[i].name
+					} else {
+						page = '<div class="carousel-item"><h3>'+data[i].name 
+					}
+					page = page +'</h3><ul class="introlist">'+
+					   			 '<li><span class="introlist_tit">주소</span><span class="introlist_txt">'+data[i].addr+'</span></li>'+
+					   			 '<li><span class="introlist_tit">거래품목</span><span class="introlist_txt">'+data[i].content+'</span></li>'+
+					   			 '<li><span class="introlist_tit">문의</span><span class="introlist_txt">'+data[i].tel+'</span></li>'+
+					   			 '<li><span class="introlist_tit">견적</span><span class="introlist_txt">'+data[i].email+'</span></li>'+
+					   			 '</ul><div class="introlink"><span><a href="#">거래요청</a></span><span><a href="#">쪽지보내기</a></span></div></div>'
+					pagelist = pagelist + page;
+				}
+				document.getElementById("intro1slider").childNodes[1].innerHTML = pagelist;
+				itemlist = document.getElementById("intro1slider").childNodes[1].childNodes
+			},
+			error : function(obj,msg,statusMsg){
+				alert("오류:"+statusMsg);
+			}
+		})//end ajax
+		
+		markerChg();
+		makeMap();
+		
+	})//end document ready
+	var itemlist;
+	var activeNo = 0;
+	function markerChg(){
+		itemlist = document.getElementById("intro1slider").childNodes[1].childNodes
+		for(var i=0; i<itemlist.length; i++){
+			if(itemlist[i].className=="carousel-item active"){
+				activeNo = i;
+			}
+		}
+		makeMap();
+	}
 	
+	function makeMap(){
+		var locations = [
+			{place:"소정자원", lat:37.5135381, lng:127.0520362},
+			{place:"규민강철", lat:37.23444, lng:127.201346},
+			{place:"태원강철", lat:35.8460881, lng:128.6385098},
+			{place:"경민강철", lat:35.1861875, lng:129.1226139},
+			{place:"성민자원", lat:33.4896229, lng:126.4600159},
+			{place:"윤희자원", lat:35.8795273, lng:127.1109433}
+		]		
+		
+		var mapOptions = {
+			    center: new naver.maps.LatLng(35.9819689, 128.094434),
+			    zoom: 7
+			};
+
+			var map = new naver.maps.Map('map', mapOptions);
+		
+		var marker = new naver.maps.Marker({
+			map : map,
+			title : locations[activeNo].place,
+			position : new naver.maps.LatLng(locations[activeNo].lat,locations[activeNo].lng)
+		})
+	}
 </script>
 <!-- //modal -->
   
