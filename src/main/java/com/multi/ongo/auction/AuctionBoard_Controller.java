@@ -24,26 +24,27 @@ public class AuctionBoard_Controller {
 		return "auctionWrite";
 	}
 
-	@RequestMapping("auction_Write.do") // get vs post
+	@RequestMapping("/auctionWrite.do") // get vs post
 	public String auctionWrite(AuctionBoard_DTO dto) {
 
 		/**
 		 * 컨트롤러 어떤 요청을 받아서 무엇을 해야할지 결정하는 역할. 쓰는을 하려면 유저 데이터를 받아옴 (다음 뷰 , 또는 디비에 반영될 데이
 		 * 받아온 데이터를 DB에 넣음 (디비에 접근, 데이터 조작) 다 완료되면 다른 페이지로 이동함
 		 */
-
+		System.out.println("테스트 : "+dto);
 		service.writeProd(dto);
 		return "redirect:/auction_listAll.do?auction_state=all";
 	}
-
-//	//경매 거래게시글 전체 리스트
-//	@RequestMapping("/auction/auctionlistAll")
-//	public ModelAndView listall() {
-//		ModelAndView mavx` = new ModelAndView("auctionBoard");
-//		List<AuctionBoard_DTO> boardlist = service.boardlist();
-//		mav.addObject("boardlist", boardlist);
-//		return mav;
-//	}
+	
+	
+	//경매 거래게시글 전체 리스트
+	@RequestMapping("/auction_listAll.do")
+	public ModelAndView listall() {
+		ModelAndView mav = new ModelAndView("auctionBoard");
+		List<AuctionBoard_DTO> boardlist = service.boardlist();
+		mav.addObject("boardlist", boardlist);
+		return mav;
+	}
 	
 //	경매 거래게시글 카테고리 조회 
 	@RequestMapping("/auction/auctionBoard") 
@@ -91,9 +92,13 @@ public class AuctionBoard_Controller {
 	@RequestMapping("/auction/auctionRead")
 	public String auctionRead(int auction_no, Model model) {
 		AuctionBoard_DTO board = service.auctionRead(auction_no);
-		System.out.println("no:" + auction_no);
-		System.out.println("start:" + board.getWrite_date());
-		System.out.println("end:" + board.getEnd_date());
+		List<AuctionBoard_DTO> bidList = service.bidList(auction_no);
+		if(bidList.size()==0) {
+			model.addAttribute("currPrice", 0);
+		}else {
+			model.addAttribute("currPrice", bidList.get(0).getAdd_price());
+		}
+		model.addAttribute("bidList", bidList);
 		model.addAttribute("board", board);
 		return "auctionRead";
 		}
@@ -107,4 +112,13 @@ public class AuctionBoard_Controller {
 		return "redirect:/auction/auctionBoard?auction_category=all";
 	}
 	//________________________________________________________________
+	
+	//경매게시판 입찰하기
+	@RequestMapping("/auction/bidding")
+	public String bidding(AuctionBoard_DTO dto) {
+		service.bidding(dto);
+		service.updatePrice(dto);
+		int auction_num = dto.getAuction_number();
+		return "redirect:/auction/auctionRead?auction_no="+auction_num;
+	}
 }

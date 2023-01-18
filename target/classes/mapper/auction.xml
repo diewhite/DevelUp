@@ -7,7 +7,7 @@
 	<select id="read" resultType="auctionDTO" parameterType="Int">
 		select
 		auction_number,member_id,auction_category,auction_state,auction_title,hits,to_char(write_date,'yyyy-mm-dd hh24:mi:ss') as "write_date",
-		board_content,list_photo,min_price,start_price,end_price,to_char(end_date,'yyyy-mm-dd hh24:mi:ss') as "end_date" 
+		board_content,list_photo,min_price,start_price,end_price,to_char(end_date,'yyyy-mm-dd hh24:mi:ss') as "end_date"
 		from auction_table where auction_number = #{auction_no}
 	</select>
 
@@ -21,38 +21,52 @@
 	<select id="categorySelect" resultType="auctionDTO"
 		parameterType="String">
 		select * from auction_table
-		where auction_category=#{auction_category}
+		where
+		auction_category=#{auction_category}
 	</select>
-	
+
 	<!-- 게시ㅣ글 작성 -->
 	<insert id="auction_write" parameterType="auctionDTO">
-	insert into auction_table
-	(AUCTION_NUMBE,
-member_id, 
-auction_state, 
-auction_title,start_price,board_content,list_photo
-)
-		values(auction_number.nextval, #{member_id}, #{auction_state}, 
-		 #{auction_title}, #{start_price}, #{board_content}, #{list_photo})
-		
-		</insert>
+		insert into auction_table
+		(AUCTION_NUMBER,
+		member_id,
+		auction_state,
+		auction_title,start_price,board_content,list_photo,write_date,end_date
+		)
+		values(auction_number.nextval, #{member_id}, #{auction_state},
+		#{auction_title}, #{start_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
+	</insert>
 
-  
+
 
 	<!-- 경매게시판 글 삭제 -by태원 __________________________________________ -->
 	<delete id="auctionDelete" parameterType="auctionDTO">
-		delete from auction_table
+		delete from
+		auction_table
 		where auction_number=#{auction_number}
 	</delete>
-	<!--_________________________________________________________________  -->
+	<!--_________________________________________________________________ -->
 
-	<!-- 경매게시판 카테고리 조회 -->
+	<!-- 경매 종료시간 초과 후 상태변경 -->
 	<update id="auctionStatus">
-		update auction_table set auction_state = '입찰종료' 
+		update auction_table set auction_state = '입찰종료'
 		where <![CDATA[end_date < sysdate]]>
 	</update>
-
-
+	
+	<!-- 경매내역조회 -->
+	<select id="bidList" resultType="auctionDTO" parameterType="Int">
+		select * from auction_bid where auction_number = #{auction_no} order by add_price desc
+	</select>
+	
+	<!-- 입찰 -->
+	<insert id="bidding" parameterType="auctionDTO">
+		insert into auction_bid values(#{auction_number},#{add_user},#{add_price},sysdate)
+	</insert>
+	
+	<!-- 현재가격업데이트 -->
+	<update id="updatePrice" parameterType="auctionDTO">
+		update auction_table set current_price = #{add_price} where auction_number = #{auction_number}
+	</update>
 </mapper>
 	
 

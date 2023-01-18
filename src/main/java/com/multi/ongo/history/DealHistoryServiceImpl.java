@@ -49,36 +49,46 @@ public class DealHistoryServiceImpl implements DealHistoryService {
 		return list;
 	}
 
-	// 중고거래판매내역 > '거래하기'클릭 시 > 구매자 정보 update
+	// 중고거래판매내역 > '거래하기'클릭 시 > 구매자 정보 update & 거래상태 변경 
 	@Override
-	public int choosebuyer(DealRequestDTO dealreqDTO) {
-		return dao.choosebuyer(dealreqDTO);
+	public int dealBtn (DealRequestDTO dto, int deal_number) {
+		System.out.println("컨트롤러에서 받아온 값 : "+dto+","+deal_number);
+		dao.stateChange(deal_number);
+		dao.choosebuyer(dto);
+		return 0;
 	}
 
-	// 중고거래판매내역 '거래하기' 클릭시 거래상태 변경 
-	@Override
-	public int stateChange(int deal_number) {
-		return dao.stateChange(deal_number);
-	}
-	
 	
 //	************* 구매 관리 *****************
 	
-	//구매내역 list 
+	//중고거래 구매내역 list > mysealList 로 대체 
 	@Override
 	public List<DealRequestDTO> myreqlist(String member_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	//거래진행중 list 
+	
+	//중고거래 구매내역list 조회 > 전체 list & 구매요청 list  & 거래진행중/구매완료 list 
+		//원래 용도 : 거래진행중 list 
 	@Override
-	public List<DealRequestDTO> mydealList(String member_id) {
-		// TODO Auto-generated method stub
+	public List<DealBoard_DTO> mydealList(String member_id, String product_state) {
+		List<DealBoard_DTO> list = null;
+		if(product_state!=null) {
+			if(product_state.equals("all")) {
+				//모든 구매내역 list 
+				dao.purchaseAll(member_id);
+			}if(product_state.equals("판매중")) {
+				// 거래요청 list 
+				dao.myreqlist(member_id);
+			}if(product_state.equals("거래진행중")) {
+				
+			}
+			
+		}
 		return null;
 	}
 
-	//구매완료(=판매완료) list
+	//구매완료(=판매완료) list > mysealList 로 대체 
 	@Override
 	public List<DealRequestDTO> purchaseList(String member_id) {
 		// TODO Auto-generated method stub

@@ -9,32 +9,40 @@
 <head> </head>
 <body>
 <!-- 이 아래부터  content부분부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
-
+ <form action="/ongo/auctionWrite.do" method="post">
 <!-- content -->
 <div id="contents">
         <!-- title -->
         <div class="sub_top">
             <div class="container">
-            <h1>{$user}</h1>
+          	
                 <h1>경매등록</h1>
             </div>
         </div>
         <!-- //title -->
-
         <!-- 게시판 -->
        <div class="container">
-    <form action="/ongo/auctionWrite.do?auction_number=${auctionWrite.auction_number}" method="post">
-      <input type="hidden" value="">
+   								<!-- 아이디 세션에서 가져와야함 -->
+   								<div class="grid-item colspan2">
+							<label for="HOFS_DTADR">작성자</label>
+							<div class="tbl-basic-td">
+								<div class="input-wrap w100">
+								<label>${user.member_id}<input type="hidden" id="member_id" name="member_id" value="${user.member_id}">
+								</label>
+									</div>
+							</div>
+						</div>
+      <input type="hidden" >
       <input type="hidden">
       <div class="cont-box-inner">
         
         <div class="tbl grid-layout grid2">
-        
+        	
           <div class="grid-item colspan2">
             <label for="select_target_1">상태</label>
             <div class="tbl-basic-td">
-              <div class="input-wrap w20" name="auction_state">
-                <select class="form-select grid-input"title="상태">
+              <div class="input-wrap w20" >
+                <select class="form-select grid-input" title="상태" name="auction_state">
                  <option value="01">경매진행중</option>
                  <option value="02">경매완료</option>
                 </select>
@@ -42,20 +50,14 @@
             </div>
           </div>
           <div class="grid-item colspan2">
-            <label for="HOFS_DTADR" id="auction_title" name="auction_title">제목</label>
+            <label for="HOFS_DTADR" id="auction_title" >제목</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
-                <input class="grid-input" type="text"  maxlength="50" title="타이틀">
+                <input class="grid-input" type="text"  maxlength="50" title="타이틀" name="auction_title">
               </div>
             </div>
           </div>
-          <div class="grid-item colspan2">
-            <label for="HOFS_DTADR" name="member_id"></label>
-            <div class="tbl-basic-td">
-              
-            
-              </div>
-            </div>
+          
           </div>
           <div class="grid-item colspan2">
             <label for="HOFS_DTADR" >경매</label>
@@ -70,10 +72,10 @@
          
           
           <div class="grid-item colspan2">
-            <label for="HOFS_INTR_MTRL_CNTS">내용</label>
+            <label for="HOFS_INTR_MTRL_CNTS">사이즈(상세스펙)</label>
             <div class="tbl-basic-td">
               <div class="input-wrap w100">
-                <textarea id="board_content" name="board_content" class="grid-input" role="textbox" id="HOFS_INTR_MTRL_CNTS" name="HOFS_INTR_MTRL_CNTS" title="본사 소개자료내용 입력" maxlength="500" rows="5"></textarea>
+                <textarea name="board_content" id="board_content"  class="grid-input" role="textbox"  maxlength="500" rows="5"></textarea>
               </div>
             </div>
           </div>
@@ -95,10 +97,10 @@
   			<!--글등록   -->
        <button class="btn btn-primary btn-large" type="submit" onclick="location.href='/ongo/auction/auctionwrite'">글등록</button>
       </div>
-        </form>
+      
         </div>
-        </div>
- 
+      
+   </form>
    
 <!-- // content -->
 
