@@ -1,9 +1,9 @@
-package com.multi.ongo.history;
+package com.multi.ongo.detail;
 
 import java.sql.Date;
 
 //중고거래요청 테이블
-public class DealRequestDTO {
+public class AuctionRequestDTO {
 	private int dealreq_no; 	//구매요청번호 (PK) 
 	private String seller_id;	//구매자 id
 	private String buyer_id ;	//판매자 id
@@ -11,20 +11,22 @@ public class DealRequestDTO {
 	private Date req_time; 		//구매요청날짜
 	private int deal_number; 	//글번호 (FK) 
 	
-	public DealRequestDTO() {
+	public AuctionRequestDTO() {
 		
 	}
 	
 
-		public DealRequestDTO(String req_id, int deal_number) {
+	
+	
+	public AuctionRequestDTO(String req_id, int deal_number) {
 		super();
 		this.req_id = req_id;
 		this.deal_number = deal_number;
 	}
-	
 
 
-	public DealRequestDTO(int dealreq_no, String seller_id, String buyer_id, String req_id, Date req_time,
+
+	public AuctionRequestDTO(int dealreq_no, String seller_id, String buyer_id, String req_id, Date req_time,
 			int deal_number) {
 		super();
 		this.dealreq_no = dealreq_no;

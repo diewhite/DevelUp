@@ -84,4 +84,19 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		return dao.auctionStatus();
 	}
 
+	@Override
+	public List<AuctionBoard_DTO> bidList(int auction_no) {
+		return dao.bidList(auction_no);
+	}
+
+	@Override
+	public int bidding(AuctionBoard_DTO dto) {
+		return dao.bidding(dto);
+	}
+
+	@Override
+	public int updatePrice(AuctionBoard_DTO dto) {
+		return dao.updatePrice(dto);
+	}
+
 }

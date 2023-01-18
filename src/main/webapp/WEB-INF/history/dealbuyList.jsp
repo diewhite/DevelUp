@@ -29,9 +29,6 @@ $(document).ready(function () {
 			</div>
 			<!-- //title -->
 
-
-
-
 		<!-- 조회 테이블 시작 -->
 			<div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
