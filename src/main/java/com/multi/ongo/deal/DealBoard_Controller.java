@@ -122,6 +122,9 @@ public class DealBoard_Controller {
 	//중고거래게시글 타입별조회(카테고리)
 	@RequestMapping("deal_listAll2.do")
 	public ModelAndView dealType_list(String dealType) {
+		//첨부파일목록 불러오기 위하여작성
+		//List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
+		
 		ModelAndView mav = new ModelAndView("deallistAll2");
 		List<DealBoard_DTO> listall = service.dealType_list(dealType);
 		mav.addObject("dealType",dealType);
@@ -147,10 +150,7 @@ public class DealBoard_Controller {
 	//중고거래게시글 읽기
 	@RequestMapping("dealRead.do")
 	public ModelAndView dealRead(int deal_number, String state) {
-		
-		//첨부파일목록 불러오기 위하여작성
-		List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
-		 
+		List<DealFile_DTO> filedtolist = service.getFileList(deal_number);//첨부파일목록 불러오기 위하여작성
 		DealBoard_DTO dealRead = service.dealRead(deal_number);
 		String view = "";
 		if(state.equals("READ")) {	
@@ -165,6 +165,7 @@ public class DealBoard_Controller {
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
 		mav.addObject("filedtolist",filedtolist); //파일첨부 결과 공유
+		System.out.println("filedtolist : "+ filedtolist);
 		//System.out.println("컨트롤 공유 dealread 체크:" + dealRead);
 		//System.out.println("찍먹state:" + state);
 		return mav;
@@ -210,8 +211,14 @@ public class DealBoard_Controller {
 		return ajaxlist;
 	}
 	
-	
-	
+	//중고거래 리스트 이미지 -실패..
+//	@RequestMapping(value = "/dealListImg", produces = "application/json;charset=utf-8")
+//	@ResponseBody
+//	public List<DealFile_DTO> dealListImg(int deal_number){
+//		System.out.println("컨트롤 파라미터 체크 : " + deal_number);
+//		List<DealFile_DTO> filedtolist = service.getFileList(deal_number);//첨부파일목록 불러오기 위하여작성
+//		return filedtolist;
+//	}
 	
 	
 	

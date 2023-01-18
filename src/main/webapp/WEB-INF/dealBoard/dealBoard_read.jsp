@@ -35,35 +35,6 @@
 	
 
 </script>
-<!-- 
-<style>
-      .modal2 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      .modal2.show {
-        display: block;
-      }
-      .modal2_body {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-		text-align:left;
-        width: 200px;
-        height: auto;
-        padding: 5px;
-        text-align: center;
-        background-color: rgb(255, 255, 255);
-        border-radius: 10px;
-        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-        transform: translateX(-50%) translateY(-50%);
-      }
-    </style> -->
 
 
 </head>
@@ -152,27 +123,11 @@
 								</div>
 							</div>
 							
-							
-							
-							
-							<!--<div class="grid-item colspan2">
-								<label for="select_target_1">상태</label>
-							 	<div class="tbl-basic-td">
-									<div class="input-wrap w20">
-										<select class="form-select grid-input" title="상태">
-											<option value="01">판매중</option>
-											<option value="02">판매완료</option>
-										</select>
-									</div>
-								</div> 
-							</div>-->
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">제목</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										${dealRead.board_title}
-										<!-- <input class="grid-input" type="text" maxlength="500"
-											title="board_title" id="board_title" name="board_title"> -->
 									</div>
 								</div>
 							</div>
@@ -214,23 +169,42 @@
 							</div>
 
 
+
 							<div class="grid-item colspan2">
-								<label for="HOFS_INTR_MTRL_CNTS">내용</label>
+								<label for="HOFS_DTADR">내용</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										${dealRead.board_content}
-										<!-- <textarea class="grid-input" role="textbox"
-											id="board_content" name="board_content"
-											title="board_content" maxlength="1000" rows="5"></textarea> -->
 									</div>
 								</div>
 							</div>
+						
+					
+								
+							
+							
+
+								<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">사진</label>
+								<div class="tbl-basic-td">
+									<div class="input-wrap w100">
+										<c:forEach var="file" items="${filedtolist}" >
+											<img alt="" src="/ongo/dealUpload/${file.storeFilename}">
+										</c:forEach>
+									</div>
+								</div>
+								</div>
+							
+
+
+
 
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">첨부파일</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<c:forEach var="file" items="${filedtolist}" >
+											<%-- <img alt="" src="/ongo/dealUpload/${file.storeFilename}"> --%>
 											<label for="HOFS_DTADR"><a href="/ongo/dealDownload/${dealRead.member_id}/${dealRead.deal_number}/${file.dealFile_number}">${file.originalFilename}</a></label><br/>
 										</c:forEach>
 									
@@ -408,6 +382,8 @@
 			}//end error
 		})//end ajax
 	}//end modalData
+	
+	
 </script>
 </body>
 </html>
