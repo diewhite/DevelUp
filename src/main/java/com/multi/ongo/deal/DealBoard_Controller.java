@@ -33,7 +33,7 @@ public class DealBoard_Controller {
 		this.service = service;
 		this.fileUploadService=fileUploadService;
 	}
-	//중고거래 등록페이지 config-view처리 
+	//중고거래 등록페이지 config-view처리  
 	
 	
 	
@@ -51,7 +51,6 @@ public class DealBoard_Controller {
 //					  사용자가 링크를 클릭할때 이것은 일반html열기가 아니라 파일을 다운로드 하는것이고,
 //                    결국 스프링에있는 File os를 통해서 꺼내게 되는데, 그 File os를 관리하는게 urlResource  
 		
-		
 		//System.out.println("첨부파일 다운로드 파라미터 체크 : member_id" + member_id +",  " + deal_number+",  " + dealFile_number );
 		
 		//전달받은 파라미터(글번호,파일번호) 이용해서 파일조회 후, 가져오기
@@ -66,8 +65,6 @@ public class DealBoard_Controller {
 		//String encodeFilename = UriUtils.encode(파일이름, "UTF-8");
 		String encodeedFilename = UriUtils.encode(selectFile.getOriginalFilename(), "UTF-8");
 		String mycontenttype = "attachment; filename=\"" + encodeedFilename + "\""; // \" = "넣기위해
-		
-		
 		
 		return ResponseEntity.ok() //.ok는 BodyBuilder 사용하며, 정상적으로 200번으로 실행됬을때를말함
 				.header(HttpHeaders.CONTENT_DISPOSITION, mycontenttype) //.header(헤더명,헤더value)  // 헤더명 : HttpHeaders.CONTENT_DISPOSITION는 실제 response body의 타입이 뭔지 알려줌(즉 헤더에서, 이건 다운로드야 알려줌)

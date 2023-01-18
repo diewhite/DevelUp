@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.multi.ongo.deal.DealBoard_DTO;
 
 @Controller
 public class AuctionBoard_Controller {
@@ -111,6 +114,19 @@ public class AuctionBoard_Controller {
 		service.auctionDelete(auction_number);
 		return "redirect:/auction/auctionBoard?auction_category=all";
 	}
+	
+		
+	//홈배너 [ajax]
+	@RequestMapping(value = "/auction/mainlayout", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<AuctionBoard_DTO> dealType_main(){
+		List<AuctionBoard_DTO> auction_ajaxlist = service.boardlist();
+		System.out.println("옥션홈배너 결과체크"+auction_ajaxlist);
+		return auction_ajaxlist;
+	}
+	
+	
+	
 	//________________________________________________________________
 	
 	//경매게시판 입찰하기
