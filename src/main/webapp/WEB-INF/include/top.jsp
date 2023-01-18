@@ -75,7 +75,7 @@
             </div>
           </li>
         <li>
-   <a id="siTitle" href="/ongo/companylist" ><span >협력업체</span></a>
+   <a id="siTitle" href="/ongo/cooperation/list" ><span >협력업체</span></a>
           </li>
   <c:if test="${sessionScope.user!=null }">  
     <c:if test="${sessionScope.user.member_role=='1' }">  
@@ -220,7 +220,7 @@
                 <h2>협력업체</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="/ongo/companylist" class="sitemap_depth2_tit" ><span>협력업체</span></a>
+                    <a href="/ongo/cooperation/list" class="sitemap_depth2_tit" ><span>협력업체</span></a>
                   </div>
               	</div>
               </div>

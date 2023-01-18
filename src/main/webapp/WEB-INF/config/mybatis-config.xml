@@ -10,6 +10,7 @@
 		<typeAlias type="com.multi.ongo.note.NoteDTO" alias="note"/>
 		<typeAlias type="com.multi.ongo.history.DealRequestDTO" alias="dealReqDTO"/>
 		<typeAlias type="com.multi.ongo.auction.AuctionBoard_DTO" alias="auctionDTO"/>
+		<typeAlias type="com.multi.ongo.cooperation.CooperationDTO" alias="cooperDTO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -19,5 +20,6 @@
 		<mapper resource="mapper/note.xml"/>
 		<mapper resource="mapper/dealrequest.xml"/>
 		<mapper resource="mapper/auction.xml"/>
+		<mapper resource="mapper/cooperation.xml"/>
 	</mappers>
 </configuration>
