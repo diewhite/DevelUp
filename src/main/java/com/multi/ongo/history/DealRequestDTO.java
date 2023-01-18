@@ -16,14 +16,12 @@ public class DealRequestDTO {
 	}
 	
 
-	
-	
-	public DealRequestDTO(String req_id, int deal_number) {
+		public DealRequestDTO(String req_id, int deal_number) {
 		super();
 		this.req_id = req_id;
 		this.deal_number = deal_number;
 	}
-
+	
 
 
 	public DealRequestDTO(int dealreq_no, String seller_id, String buyer_id, String req_id, Date req_time,

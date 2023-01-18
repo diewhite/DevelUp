@@ -61,8 +61,10 @@ public class DealHistoryDAOImpl implements DealHistoryDAO {
 
 	//중고거래판매내역 '거래하기'클릭 시 구매자 정보 update
 	@Override
-	public int choosebuyer (DealRequestDTO dealreqDTO) {
-		int choosebuyer = sqlsession.update("com.multi.ongo.dealreq.choicebuyer", dealreqDTO);
+	public int choosebuyer(DealRequestDTO dto) {
+		
+		
+		int choosebuyer = sqlsession.update("com.multi.ongo.dealreq.choicebuyer", dto);
 //		System.out.println("거래하기 클릭 -> dealreq테이블 update : "+choosebuyer);
 		return choosebuyer;
 	}
@@ -77,24 +79,31 @@ public class DealHistoryDAOImpl implements DealHistoryDAO {
 
 	
 //	************* 구매 관리 *****************
+
+	//구매내역 list 
+		@Override
+		public List<DealBoard_DTO> purchaseAll(String member_id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	
 	//구매내역 list 
 	@Override
-	public List<DealRequestDTO> myreqlist(String member_id) {
+	public List<DealBoard_DTO> myreqlist(String member_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	//거래진행중 list 
 	@Override
-	public List<DealRequestDTO> mydealList(String member_id) {
+	public List<DealBoard_DTO> mydealList(String member_id,String product_state) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	//구매완료(=판매완료) list
 	@Override
-	public List<DealRequestDTO> purchaseList(String member_id) {
+	public List<DealBoard_DTO> purchaseList(String member_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
