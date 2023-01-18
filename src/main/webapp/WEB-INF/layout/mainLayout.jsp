@@ -29,7 +29,7 @@
               role="tab" aria-controls="intro1" aria-selected="true">협력업체</button>
           </li>
            <li class="nav-item" role="presentation">
-            <button class="nav-link" id="intro1-tab" data-bs-toggle="tab" data-bs-target="#intro2" type="button"
+            <button class="nav-link" id="intro_auction" data-bs-toggle="tab" data-bs-target="#intro2" type="button"
               role="tab" aria-controls="intro1" aria-selected="true">경매</button>
           </li>
           <li class="nav-item" role="presentation">
@@ -161,7 +161,110 @@
           <div class="tab-pane fade" id="intro2" aria-labelledby="intro2-tab">
             <div id="intro2slider" class="carousel carousel-dark introslider" data-bs-ride="carousel"
               data-bs-interval="10000000">
-              <div class="carousel-inner">
+              <div class="carousel-inner" id="carousel-inner_auction">
+              
+              
+              
+              
+              
+              
+              
+<!--경매  _______________________________________________________________________________________________-->
+              <script type="text/javascript">
+              	$(document).ready(function () {
+              		$("#intro_auction").click(function () {
+						/* dealType = "all"; */
+						/* $(this).attr("class", "active"); //클래스속성에 active속성부여  */
+					$.ajax({
+						url: "/ongo/auction/mainlayout",
+						type: "get",
+						data:{
+							/* "dealType": dealType, */
+						},
+						success: function(ajaxlist) {
+							mydata = "";
+							for (var i = 0; i < ajaxlist.length; i++) {
+								// active가 안되어있어서 결과가 안나왔었음!!
+							 if(i==0){
+								 data = 
+									
+									 "<div class='carousel-item active' >"+
+									 "<h3> "+
+										"<a href='/ongo/auction/auctionRead?auction_no="+ ajaxlist[i].auction_number + "'class='btn btn-small'"+
+					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
+					                  "</h3>"+
+						                  
+						                  
+						                  "<h3>제목 : " + ajaxlist[i].auction_title +  "</h3>"+
+						                  "<ul class='introlist'>"+
+						                  "<li><span class='introlist_tit'>시작가격</span><span class='introlist_txt'>" + ajaxlist[i].start_price + "원</span></li>"+
+						                  "<li><span class='introlist_tit'>현재가격</span><span class='introlist_txt'>" + ajaxlist[i].current_price + "원</span></li>"+
+						                  "<li><span class='introlist_tit'>종료시간</span><span class='introlist_txt'>" + ajaxlist[i].end_date + "</span></li>"+
+						                  "</ul>"+
+						                  "<div class='introlink'>"+
+						                  "<span><a href='#'>거래요청</a></span>"+
+						                  "<span><a href='#'>쪽지보내기</a></span>"+
+						                  "</div>"+
+						                "</div>"
+							 }else{
+								data =  
+									"<div class='carousel-item' >"+
+									"<h3> "+
+										"<a href='/ongo/auction/auctionRead?auction_no="+ ajaxlist[i].auction_number + "'class='btn btn-small'"+
+					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
+					                  "</h3>"+
+					                  "<h3>제목 : " + ajaxlist[i].auction_title +  "</h3>"+
+					                  "<ul class='introlist'>"+
+					                  "<li><span class='introlist_tit'>시작가격</span><span class='introlist_txt'>" + ajaxlist[i].start_price + "원</span></li>"+
+					                  "<li><span class='introlist_tit'>현재가격</span><span class='introlist_txt'>" + ajaxlist[i].current_price + "원</span></li>"+
+					                  "<li><span class='introlist_tit'>종료시간</span><span class='introlist_txt'>" + ajaxlist[i].end_date + "</span></li>"+
+					                  "</ul>"+
+					                  "<div class='introlink'>"+
+					                  "<span><a href='#'>거래요청</a></span>"+
+					                  "<span><a href='#'>쪽지보내기</a></span>"+
+					                  "</div>"+
+					                "</div>"
+							 }
+							 mydata = mydata +data;
+							}
+							
+							$("#carousel-inner_auction").html(mydata); 
+							
+							
+						},
+							error: function (a,b,c) {
+								alert(c)
+							}
+						})//end ajax
+					})//end clcick
+              	}) //end ready
+              		/* $("#deal-item"). */
+              
+              </script>
+              
+              
+              
+              
+              
+              
+              <!--__________________________________________________ -->
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
                 <div class="carousel-item active">
                   <h3>
                     냉장고128L
@@ -218,7 +321,7 @@
               <div class="carousel-inner" id="carousel-inner">
               
               
-              
+    <!--중고거래  _______________________________________________________________________________________________-->
               <script type="text/javascript">
               	$(document).ready(function () {
               		$("#intro2-tab").click(function () {
