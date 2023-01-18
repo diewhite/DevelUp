@@ -97,7 +97,7 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	//업로드한파일을 목록조회
 	@Override
 	public List<DealFile_DTO> getFileList(int deal_number) {
-		System.out.println("서비스임플 deal_number 파라미터 체크 : " + deal_number);
+		//System.out.println("서비스임플 deal_number 파라미터 체크 : " + deal_number);
 		return dao.getFileList(deal_number);
 	}
 	//중고거래글 등록 ( +첨부파일) DealBoard_DTO테이블과 DealFile_DTO테이블에 저장
@@ -106,6 +106,11 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		dao.writeProd(dto);
 		dao.insertFile(listfiledto);
 		return 0;
+	}
+	//첨부파일 가져오기(다운로드)
+	@Override
+	public DealFile_DTO getFile(int deal_number, int dealFile_number) {
+		return dao.getFile(deal_number, dealFile_number);
 	}
 
 	

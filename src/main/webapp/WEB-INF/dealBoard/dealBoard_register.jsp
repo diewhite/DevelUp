@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -218,11 +218,11 @@
  -->
 
 						<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">사진</label>
+								<label for="HOFS_DTADR">첨부파일</label>
 							<div class="tbl-basic-td">
 								<div class="input-wrap w100">
-										<input type="file" name="dealFiles" onchange="document.getElementById('dealFiles').src = window.URL.createObjectURL(this.files[0])" accept="dealUpload/*" multiple="multiple">
-										<img src="/ongo/images/myphoto.jpg" id="dealFiles" style="width: 100px">
+										<input type="file" name="dealFiles" onchange="document.getElementById('dealFiles').src = window.URL.createObjectURL(this.files[0])" accept="dealUpload/*" multiple="multiple" style="float: left;">
+										<img src="/ongo/images/myphoto.png" id="dealFiles" style="width: 50px; float: left;"> 
 								</div>
 							</div>
 						</div>

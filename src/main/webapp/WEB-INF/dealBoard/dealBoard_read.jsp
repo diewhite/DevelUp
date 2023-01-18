@@ -178,30 +178,6 @@
 							</div>
 						
 							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							<%-- 원본
-								<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">작성자</label>
-								<div class="tbl-basic-td">
-									<div class="col-md-8" >
-										<input type="button" id="modal2-open" value="${dealRead.member_id}" style="border: 0em;">
-										<div class="col-md-8">${dealRead.member_id}</div>
-									</div>
-								</div>
-							</div>
-							 --%>
-							
-							
-							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">작성자</label>
 								<div class="tbl-basic-td" onclick="modalData(this)">
@@ -218,76 +194,6 @@
 									</div>
 								</div>
 							</div>
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							<!-- 
-							
-							
-				모달 ---------------------------------------------------------
-							
-							<div class="modal2" id="modal2">
-					<div class="modal2_body">
-						<ul>
-							<li><a href="" onclick="location.href='#'">쪽지보내기</a></li>
-							<li><a href="" onclick="location.href='#'">회원정보보기</a></li>
-							<li><a href="" onclick="location.href='#'">거래내역보기</a></li>
-						</ul>
-					</div>
-				</div>
-				
-				<script type="text/javascript">
-					 const body = document.querySelector('body');
-				      const modal2 = document.querySelector('.modal2');
-				      //const btnOpenPopup = document.querySelector('.btn-open-popup');
-				      const btnOpenPopup = document.querySelector('#modal2-open');
-				      btnOpenPopup.addEventListener('click', () => {
-				        modal2.classList.toggle('show');
-				        if (modal2.classList.contains('show')) {
-				          body.style.overflow = 'hidden';
-				        }
-				      });
-				      modal2.addEventListener('click', (event) => {
-				        if (event.target === modal2) {
-				          modal2.classList.toggle('show');
-				          if (!modal2.classList.contains('show')) {
-				            body.style.overflow = 'auto';
-				          }
-				        }
-				      });
-				</script>
-							 -->
-							
-							<!-- --------------------------------------------------------- -->
-						<%-- 	<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">상품명</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										${dealRead.product_name}
-										<!-- <input class="grid-input" type="text" maxlength="50"
-											title="product_name" id="product_name" name="product_name"> -->
-									</div>
-								</div>
-							</div>
-							 --%>
-							
-							
 							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">금액</label>
@@ -325,7 +231,8 @@
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<c:forEach var="file" items="${filedtolist}" >
-											<label for="HOFS_DTADR"><a href="/ongo/dealUpload/${file.storeFilename }">${file.originalFilename}</a></label><br/>
+											<%-- <label for="HOFS_DTADR"><a href="/ongo/dealUpload/${file.storeFilename }">${file.originalFilename}</a></label><br/> --%>
+											<label for="HOFS_DTADR"><a href="/ongo/dealDownload/${dealRead.member_id}/${dealRead.deal_number}/${file.dealFile_number}">${file.originalFilename}</a></label><br/>
 										</c:forEach>
 									
 										

@@ -41,6 +41,7 @@ public interface DealBoard_Service {
 	public int insertFile (DealBoard_DTO dto, List<DealFile_DTO> listfiledto); //DealFile_DTO 는 DealBoard_DTO에 종속되어있음
 	//업로드한파일을 목록조회
 	public List<DealFile_DTO> getFileList(int deal_number);
-	
+	//첨부파일 가져오기(다운로드)
+	DealFile_DTO getFile(int deal_number, int dealFile_number);
 
 }

@@ -116,7 +116,7 @@
 		<!-- collection : List사용했으니 list, Array사용했다면 array, 저장명을 별도사용했다면 저장명, 향상된for문처럼...  collection에 저장된걸 item에서 하나씩 꺼내어 저장  -->
 		<!-- separator into 와 into사이 구분을 위한 띄워쓰기 -->
 			<foreach collection="list" item="file" separator=" ">
-				into deal_file values(deal_no2.currval, #{file.originalFilename}, #{file.storeFilename})
+				into deal_file values(deal_no2.currval, #{file.originalFilename}, #{file.storeFilename}, #{file.dealFile_number})
 			</foreach>
 		select * from dual
 	</insert>
@@ -128,8 +128,11 @@
 	select * from dual;
 	 -->
 	
-	
-	
+		<!-- 첨부파일 가져오기(다운로드) -->
+	<select id="getFile" parameterType="Map" resultType="fileDTO">
+		select * from deal_file
+		where deal_number=#{deal_number} and dealFile_number=#{dealFile_number}
+	</select>
 	
 	
 	

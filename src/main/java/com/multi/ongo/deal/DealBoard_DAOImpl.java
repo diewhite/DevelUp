@@ -110,6 +110,17 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	public List<DealFile_DTO> getFileList(int deal_number) {
 		return sqlSession.selectList("com.multi.ongo.deal.getFileList", deal_number);
 	}
+
+
+	//첨부파일 가져오기(다운로드)
+	@Override
+	public DealFile_DTO getFile(int deal_number, int dealFile_number) {
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("deal_number", deal_number);
+		map.put("dealFile_number", dealFile_number);
+		System.out.println("DAOImpl map체크 : " + map);
+		return sqlSession.selectOne("com.multi.ongo.deal.getFile", map);
+	}
 	
 	
 	
