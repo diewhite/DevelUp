@@ -44,8 +44,8 @@
             <div class="tbl-basic-td">
               <div class="input-wrap w20" >
                 <select class="form-select grid-input" title="상태" name="auction_state">
-                 <option value="01">경매진행중</option><!--보편적으로 0이 false 1이 true  -->
-                 <option value="02">경매완료</option> 
+                 <option value="경매중">경매진행중</option><!--보편적으로 0이 false 1이 true  -->
+                 <option value="경매완료">경매완료</option> 
                 </select>
               </div>
             </div>
