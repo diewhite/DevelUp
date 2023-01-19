@@ -17,12 +17,12 @@
 	})//end document ready
 	
 	var startTime = new Date().getTime();
-	var endTime = new Date('${board.end_date}');
+	var endTime = new Date('${board.end_date}').getTime();
 	var remainTime = endTime - startTime;
 	var showRemain = "";
 
 	function auction_time(){
-		var hours = Math.floor((remainTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var hours = Math.floor((remainTime  / (1000 * 60 * 60)));
 		var miniutes = Math.floor((remainTime % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((remainTime % (1000 * 60)) / 1000);
 		
@@ -105,7 +105,7 @@
 	            <input type="hidden">
 	            <div class="tbl grid-layout grid2">
 	             <div class="grid-item colspan2">
-	                  <label >판매자  </label>
+	                  <label >판매자   </label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
 	                      ${board.member_id }	                    

@@ -53,15 +53,14 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                 
 					<c:forEach var="boardlist" items="${boardlist}"> 
-					<c:if test="${boardlist.auction_state eq '입찰중'}">
+					<c:if test="${boardlist.auction_state eq '경매중'}">
 						<div class="auctionboard"><!--col -->
 	                      <%--     <c:forEach var="boardlist" items="${boardlist}"> --%>
 	                      <div class="auction-card">
 	                        <div class="auction-img-main ">
 	                          <ul>
 	                            <li >
-	                            <div>${boardlist.list_photo}</div>
-	                              <img id="auction-image" src="${boardlist.list_photo}"/>
+	                            
 	                              <img id="auction-image" src="/ongo/upload/${boardlist.list_photo}"
 	                              
 	                              onclick="location.href='/ongo/auction/auctionRead?auction_number=${boardlist.auction_number}'">
