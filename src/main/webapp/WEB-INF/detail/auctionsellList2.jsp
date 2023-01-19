@@ -11,16 +11,89 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-/* 1. 거래상태별 게시글 조회  */
-var type = "${product_state}" 
-$(document).ready(function () {
-	$("#product_state").val(type).attr("selected","selected");
-	$("#product_state").change(function () {
-
-		location.href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
-	})
-
 	
+	/* 거래상태별 게시글 조회  */
+	var type = "${auction_state}" 
+	$(document).ready(function () {
+		$("#auction_state").val(type).attr("selected","selected");
+		$("#auction_state").change(function () {
+
+			location.href="/ongo/history/auctionsellList?member_id=${user.member_id}&auction_state="+encodeURI($(this).val());
+		})
+	})
+	
+	
+	
+	/* 판매중 게시글 list > 거래요청한 유저 정보보기 - ajax로호 통신  */
+	$(document).ready(function() {
+
+		$(".showdata").on("click", function() {
+			$(this).closest("tr").next().toggle()
+			//버튼과 가장 가까운 tr 태그의 다음 tr 태그를 선택 
+			// => 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
+			reqtr = $(this).closest("tr").next()
+			//	= 거래요청 tr  
+			num = reqtr.attr("id")
+			//	= 거래요청 tr의 id의 속성 값 = 게시글 번호 
+			 datanode = $(reqtr).children().find(".reqdata")
+			// 거래요청 tr의 자식 노드 중 reqdate 라는 클래스명을 가진 자식노드 찾음 
+				// = ajax를 통해 가져올 데이터가 출력될 부분  
+			// $(datanode).html(num+"<span>번 게시글/////</span>") 
+			//ajax요청결과를 datanode에 출력하기
+			
+
+			$.ajax({
+				url : "/ongo/history/dealReqinfo",
+				type : "get",
+				data : {
+					"deal_number" : num
+				},
+				success : function(data) {
+					 
+					console.log("ajax success//////:",data)
+					
+				  userinfo = "";
+				for(i=0; i<data.length; i++){
+				
+					/* userinfo=userinfo+"<li>"+data[i]+"</li>"	 */
+					
+				console.log("ajax success/2/:",data[i].req_id)
+				
+				userinfo = userinfo +
+				"<tr ><td id='no'>"+data[i].aut_number
+					+"</td><td id='date'>"+data[i].req_time
+					+"</td><td id='id'>"+data[i].req_id
+					+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+					+"onclick='#'>쪽지보내기</button></td>"
+					+"<td id='deal-btn'><button type='button' id='"+data[i].req_id+"' class='btn btn-info dealbtn text-white'"
+					+">거래하기</button></td></tr>"
+					
+					console.log("ajax success///33:",data[i].req_id)
+					
+					var req_id = data[i].req_id
+					var test ="test"
+					
+					 $(document).on("click","button[id='test']",function() {
+						//console.log(data[i].req_id, data[i].deal_number)
+						/* location.href="/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number */	
+						//var string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number
+						console.log(test)
+								
+				})
+					
+				} 
+					 $(".reqdata").empty();
+					$(".reqdata").append(userinfo); 
+					
+					
+					
+				},
+				error : function(a, b, c) {
+					alert("오류발생" + a + b + c)
+				} //end error			
+			}) //end ajax					
+		}) //end click
+	}) //end ready
 </script>
 </head>
 <body>
@@ -32,6 +105,10 @@ $(document).ready(function () {
 				<h1>경매관리</h1>
 			</div>
 			<!-- //title -->
+
+	<button onclick="location.href='/ongo/history/choicebuyer' ">구매하기 버튼 클릭하면?</button>
+
+
 			<!-- 조회 테이블 시작 -->
 			<div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
@@ -47,7 +124,7 @@ $(document).ready(function () {
 											<option value="all"  >전체</option>
 											<option value="경매중">경매중</option>
 											<option value="경매종료" >경매종료</option>
-											<option value="거래진행중"  >결제진행중</option>
+											<option value="거래진행중"  >거래진행중</option>
 										</select>
 									</div>
 								</div>
@@ -82,8 +159,9 @@ $(document).ready(function () {
 									<div class="form-group">
 										<select name="field" id="field" class="form-control dpInblock">
 											<option value="SG" selected="">통합검색</option>
-											<option value="SA">거래번호</option>
+											<option value="SA">물품번호</option>
 											<option value="SB">물품제목</option>
+											<option value="SC">입찰ID</option>
 											<option value="SH">물품내용</option>
 										</select>
 									</div>
@@ -106,43 +184,67 @@ $(document).ready(function () {
 				<div class="table-responsive px-2">
 					<div class="sellList">
 						<table class="table table-borderless table-hover">
-							
+							<colgroup>
+								<col width="5%">
+								<!-- 번호 -->
+								<col width="5%">
+								<!-- 구분 -->
+								<col width="10%">
+								<!-- 상품사진 -->
+								<col width="28%">
+								<!-- 제 목 -->
+								<col width="8%">
+								<!-- 가격 -->
+								<col width="10%">
+								<!-- 구매요청 -->
+								<col width="8%">
+								<!-- 구매자 -->
+								<col width="*">
+								<!-- 작성일 -->
+								<col width="*">
+								<!-- 거래상태 -->
+								<col width="*">
+								<!-- 결제여부 -->
+							</colgroup>
 							<thead >
 								<tr >
-									<th class="table-header" scope="col" width="8%">거래번호</th>
-									<th class="table-header" scope="col" width="10%">상품사진</th>
-									<th class="table-header-title" scope="col" width="22%">제 목</th>
-									<th class="table-header" scope="col" width="10%">시작가</th>
-									<th class="table-header" scope="col" width="10%">입찰내역</th>
-									<th class="table-header" scope="col" width="12%">작성일</th>
-									<th class="table-header" scope="col" width="10%">거래상태</th>
-									<th class="table-header" scope="col" width="10%">낙찰</th>
-									<th class="table-header" scope="col" width="8%">결제여부</th>
+									<th class="table-header" scope="col">번호</th>
+									<th class="table-header" scope="col">구분</th>
+									<th class="table-header" scope="col">상품사진</th>
+									<th class="table-header-title" scope="col">제 목</th>
+									<th class="table-header" scope="col">시작가</th>
+									<th class="table-header" scope="col">입찰내역</th>
+									<th class="table-header" scope="col">작성일</th>
+									<th class="table-header" scope="col">거래상태</th>
+									<th class="table-header" scope="col">낙찰</th>
+									<th class="table-header" scope="col">결제여부</th>
 								</tr>
 							</thead>
 							<tbody class="text-center">
 
-								<c:forEach var="auctionlist" items="${auctionlist}">
+								<c:forEach var="sellList" items="${sellList }">
 
 									<tr>
-										<td>${auctionlist.auction_number}</td>
+										<td>${sellList.deal_number }</td>
+										<td>${sellList.dealType }</td>
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
-										<td>${auctionlist.auction_title}</td>
-										<td><fmt:formatNumber value="${auctionlist.start_price}"
+										<td><a
+											href="/ongo/dealRead.do?deal_number=${auctsell_List.auction_number}&state=READ'">${auctsell_List.auction_title}</a></td>
+										<td><fmt:formatNumber value="${sellList.product_price}"
 												pattern="#,###원" /></td>
 										<td>
 											<button class="showdata">입찰내역보기</button>
 										</td>
-										<td>${auctionlist.write_date }</td>
-										<td>${auctionlist.auction_state}</td>
-										<td>-</td>
-										<td>-</td>
+										<td>구매자id</td>
+										<td>${sellList.write_date }</td>
+										<td>${sellList.product_state }</td>
+										<td>-</td>ㅋ
 									</tr>
 									
 									
 									<!-- 거래요청 tr = reqtr -->
-									<%-- <tr id="${auctionlist.deal_number}" style="display: none;">
+									<tr id="${sellList.deal_number}" style="display: none;">
 										<td colspan="10">
 											<table>
 												<colgroup>
@@ -170,13 +272,38 @@ $(document).ready(function () {
 											
 												<tbody class="reqdata"> 
 												
+												 
+														
+														
+													
+												
+												   
+														<!--test ver.원본 시작 -->
+												<!-- 	<tr>
+														 <td colspan="4" id="reqUserInfo">
+															<div class="reqdata">
+															ajax 내용 들어갈 부분	
+															</div>
+														</td> 
+													</tr> -->
+														<!-- test ver.원본 끝 -->
+														
+														<!--test ver.2 시작 -->
+													<!-- <tr >
+														<td id="date">${reqinfo.req_date }</td>
+														<td id="id">${reqinfo.id }</td>
+														<td id="chat-btn"></td>
+														<td id="deal-btn"></td>											
+													</tr> 	 -->
+														<!-- test ver.2 끝 -->
+														
 												
 														
 												</tbody> 
 												
 											</table>
 										</td>
-									</tr> --%>
+									</tr>
 
 								</c:forEach>
 								<!-- sellList  -->

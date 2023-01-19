@@ -91,7 +91,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+                    <li><a href="/ongo/detail/auctionsellList?member_id=${user.member_id}">판매관리</a></li>
                     <li><a href="#">구매관리</a></li>
                   </ul>                 
                 </div>
