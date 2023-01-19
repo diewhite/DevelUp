@@ -89,12 +89,15 @@ public class DealHistoryController {
 		}
 		
 		
+		
+		
+		
 //		============= 구매관리 페이지 ====================
 		
 		
 		//중고거래 구매관리 > main list 
 		@RequestMapping("/history/dealbuyList")
-		public ModelAndView dealbuyList (String member_id,String product_state) {
+		public ModelAndView dealbuyList (String member_id, String product_state) {
 			System.out.println("dealbuyList 데이터 넘어오는지 확인:"+member_id+product_state);
 			ModelAndView mav = new ModelAndView("history/dealbuyList");
 			List<DealBoard_DTO> buylist = service.mydealList(member_id, product_state);
