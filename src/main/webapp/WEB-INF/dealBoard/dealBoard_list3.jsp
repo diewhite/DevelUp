@@ -41,8 +41,8 @@
 	<div class="sub_top">
 		<div class="container">
 			<h1>중고거래</h1>
-			<span class="blue">보다 더 · 당신의 일상과 가깝게</span>
-			<div class="form_box d-grid d-md-flex justify-content-md-end">
+			<span class="blue">보다 더 · 당신의 일상과 가깝게</span><br/>
+			<div class="form_box d-grid d-md-flex justify-content-md-end" style="width:400px; float: left;">
 				<select class="form-select grid-input" id="dealType" name="dealType">
 					<option value="all">전체</option>
 					<option value="중고">중고</option>
@@ -50,13 +50,47 @@
 				</select>
 			</div>
 		</div>
-	</div>
+		</div>
+		
+		</div>
+		
+		
+		<div class="container">
+
+
+			<div class="board_list">
+				<div class="board_info d-flex">
+					 <div class="total">
+					</div> 
+						<div class="form_box">
+	                        <fieldset>
+	                            <legend class="visually-hidden">검색</legend>
+	                            <div class="input-group">
+	                                 <div class="select">
+	                                    <label class="visually-hidden" for="category">검색 구분</label>
+	                                </div>
+	                                <input type="search" id="searchBox" class="form-control" name="keyword" title="검색어 입력" placeholder="검색어를 입력하세요." value="">
+	                                <button type="button" class="btn btn-search" onclick="#"><i class="las la-search"></i> 검색</button>
+	                            </div>
+	                        </fieldset>
+	                    </div>
+				</div>
+			</div>
+		
+	
+		
+		
+		
+		
+		
+		
+	
 
 
 
 
 
-	<!-- 게시판 -->
+	<!-- 게시판  -->
 	<div class="container">
 		<table class="table table-borderless" id="myTable">
 			<!-- table-borderless -->
@@ -147,10 +181,10 @@
 
 
 
-		<div class="input-group">
+<!-- 		<div class="input-group">
 			<label for="searchBox">검색 : </label> 
 			<input type="search" id="searchBox" placeholder="">
-		</div>
+		</div> -->
 
 	</div>
 
