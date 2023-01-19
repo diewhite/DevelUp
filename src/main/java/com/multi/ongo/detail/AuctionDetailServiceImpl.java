@@ -22,8 +22,34 @@ public class AuctionDetailServiceImpl implements AuctionDetailService {
 	@Override
 	public List<AuctionBoard_DTO> auctsell_List(String member_id, String auction_state) {
 		//System.out.println("service test"+member_id);
-		List<AuctionBoard_DTO> list = dao.auctsell_List(member_id);
+		List<AuctionBoard_DTO> list = null;
+		if(auction_state!=null) {
+		if(auction_state.equals("all")) {
+			list = dao.auctsell_List(member_id);
+		}else {
+			list = dao.auctsell_state(member_id, auction_state);
+		}
+	 }
 		return list;
+	}
+
+	// [dealreq] 경매거래게시글 거래요청 > 거래요청한 유저 데이터 insert 
+	@Override
+	public int auctdealreq(AuctionRequestDTO dto) {
+		return dao.auctdealreq(dto);
+	}
+
+//중고거래 판매내역 > 판매중 list > 거래요청 유저 정보 list 
+	@Override
+	public List<AuctionRequestDTO> auctreqinfo(int auction_number) {
+		List<AuctionRequestDTO> list = dao.auctreqinfo(auction_number);
+		return list;
+	}
+		
+	@Override
+	public int auctdealBtn(AuctionRequestDTO dto, int auction_number) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

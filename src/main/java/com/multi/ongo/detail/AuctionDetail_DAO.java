@@ -10,9 +10,7 @@ public interface AuctionDetail_DAO {
 	List<AuctionBoard_DTO> auctsell_List(String member_id);
 	//dao 데이터 베이스에 접근하는 객체 service 가 DB에 연결할 수 잇게 해주는 역할 DB를 사용하여 데이터를 조회가나 조작하는 기능 전담
 	//경매 판매내역 조회
-	// [deal_table2] 경매거래 판매내역 > 판매중/경매진행중/판매종료 list
-//	List<AuctionBoard_DTO> auctsell_state(String member_id, String auction_state);
-//	
+
 //	// [deal_table2] 경매거래 판매내역 > 메인(판매중 list)
 //	List<AuctionBoard_DTO> auctsell_List(String member_id);
 //	
@@ -43,5 +41,15 @@ public interface AuctionDetail_DAO {
 //		
 //		//구매확정 
 //		int auctconfirm (int deal_number);
-//		
+	
+	
+	//[deal_table2] 경매거래 판매내역 > 판매중/경매진행중/판매종료 list
+	List<AuctionBoard_DTO> auctsell_state(String member_id, String auction_state);
+	// [dealreq] 경매거래 판매내역 > 판매중 list > 거래요청 유저 정보 list  ********
+	List<AuctionRequestDTO> auctreqinfo(int auction_number);
+	// [dealreq] 경매거래 판매내역 > 구매자 선택 > 구매자 정보 update
+	int choosebuyer(AuctionRequestDTO auctreqDTO);
+	// [dealreq] 경매거래게시글 거래요청 > 거래요청한 유저 데이터 insert 
+
+	int auctdealreq(AuctionRequestDTO dto);
 	}

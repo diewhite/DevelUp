@@ -34,7 +34,7 @@ public DetailController (){}
 	//중고거래 판매내역 > 판매중 list + 카테고리별 조회 (서비스단에서 if문으로 처리) 
 			@RequestMapping("/detail/auctionsellList")	
 			public ModelAndView  auctionsellList(String member_id, String auction_state) {
-				// System.out.println(member_id);
+				System.out.println(member_id + auction_state );
 				ModelAndView mav = new ModelAndView("detail/auctionsellList");//타일즈에서 연결
 				List<AuctionBoard_DTO> auctionlist =service.auctsell_List(member_id, auction_state);
 				//System.out.println("컨트롤러테스트오케이?"+auctionlist);
@@ -72,17 +72,5 @@ public DetailController (){}
 //	mav.setViewName("detail/auctionsellList");
 //	return mav;
 //			}
-	
-	//결제 상세내역 psj추가
-	@RequestMapping(value = "/payment2/PayParticulars1")
-	public String pay1() {
-		return "payment2/PayParticulars1";
-	}
-	
-	//결제 상세내역 psj추가
-	@RequestMapping(value = "/payment2/PayParticulars2")
-	public String pay2() {
-		return "payment2/PayParticulars2";
-	}
 	
 }

@@ -8,22 +8,31 @@ public class DealRequestDTO {
 	private String seller_id;	//구매자 id
 	private String buyer_id ;	//판매자 id
 	private String req_id;		//구매요청 유저 id
-	private Date req_time; 		//구매요청날짜
+	private Date req_time; 		//구매요청날짜 
 	private int deal_number; 	//글번호 (FK) 
 	
 	public DealRequestDTO() {
 		
 	}
 	
-
-		public DealRequestDTO(String req_id, int deal_number) {
+		//구매자 id 출력을 위한 생성자
+		public DealRequestDTO(String buyer_id) {
+			super();
+			this.buyer_id = buyer_id;
+		}
+			
+	
+		//거래하기 클릭 시 구매자 정보 update를 위한 생성자 
+		public DealRequestDTO(String req_id, int deal_number, int dealreq_no) {
 		super();
 		this.req_id = req_id;
 		this.deal_number = deal_number;
+		this.dealreq_no = dealreq_no;
 	}
 	
 
 
+	
 	public DealRequestDTO(int dealreq_no, String seller_id, String buyer_id, String req_id, Date req_time,
 			int deal_number) {
 		super();

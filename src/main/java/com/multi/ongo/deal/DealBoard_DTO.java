@@ -20,6 +20,7 @@ public class DealBoard_DTO {
 		private String buyer_id;									   // 첨부파일이 여러개인경우 List나 배열로 관리
 	public DealBoard_DTO() {
 		
+		
 	}
 
 
@@ -59,24 +60,6 @@ public class DealBoard_DTO {
 		this.write_date = write_date;
 		this.dealFiles = dealFiles;
 		this.buyer_id = buyer_id;
-	}
-
-
-
-	public DealBoard_DTO(int deal_number, String member_id, String dealType, String product_category,
-			String product_state, String board_title, int product_price, String board_content, int hits,
-			Date write_date) {
-		super();
-		this.deal_number = deal_number;
-		this.member_id = member_id;
-		this.dealType = dealType;
-		this.product_category = product_category;
-		this.product_state = product_state;
-		this.board_title = board_title;
-		this.product_price = product_price;
-		this.board_content = board_content;
-		this.hits = hits;
-		this.write_date = write_date;
 	}
 
 

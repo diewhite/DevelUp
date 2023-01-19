@@ -26,7 +26,7 @@
 				<hr>	
 			</div>
 			<div class="btn-area ">
-				<button class="btn btn-primary mt-5 btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">
+				<button class="btn btn-primary mt-5 btn-large" type="button" onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">
 						글 목록으로 돌아가기 
 				</button>				
 				<button class="btn btn-primary mt-5 btn-large" type="button" onclick="location.href='/ongo/history/dealbuyList'">
