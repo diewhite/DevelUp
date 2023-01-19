@@ -159,7 +159,7 @@
 		<!-- title -->
 		<div class="container">
 			<div class="sub_top">
-				<h1>판매관리</h1>
+				<h1>판매관리</h1> <span> 내가 게시한 판매글을 조회할 수 있습니다.</span>
 			</div>
 			<!-- //title -->
 
@@ -184,7 +184,7 @@
 								</div>
 							</td>
 						</tr> 
-						<tr>
+					<!-- 	<tr>
 							<th rowspan="2">기간별<br class="visible-xs"> 조회
 							</th>
 						</tr>
@@ -226,7 +226,7 @@
 									</div>
 								</div>
 							</td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
 			</div>

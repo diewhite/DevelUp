@@ -11,7 +11,7 @@ public class PaymentController {
 		return "payment/paymentlist";
 	}
 	
-	//결제 상세내역 psj추가
+	//결제하기 페이지 psj추가
 	@RequestMapping(value = "/payment2/PayParticulars1")
 	public String pay1() {
 		return "payment2/PayParticulars1";

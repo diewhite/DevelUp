@@ -25,7 +25,7 @@ $(document).ready(function () {
 		<!-- title -->
 		<div class="container">
 			<div class="sub_top">
-				<h1>구매관리</h1>
+				<h1>구매관리</h1><span>거래요청한 게시글과 거래진행중 및 구매완료 된 게시글을 조회할 수 있습니다.</span>
 			</div>
 			<!-- //title -->
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
 								</div>
 							</td>
 						</tr> 
-						<tr>
+					<!-- 	<tr>
 							<th rowspan="2">기간별<br class="visible-xs"> 조회
 							</th>
 						</tr>
@@ -92,7 +92,7 @@ $(document).ready(function () {
 									</div>
 								</div>
 							</td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
 			</div>

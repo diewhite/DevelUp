@@ -8,10 +8,11 @@
  		<put-attribute name="content" value="/WEB-INF/payment/paymentList.jsp"></put-attribute>
  	</definition>
 
- 		<!-- 결제하기 psj추가 	-->
+ 	<!-- 결제하기 psj추가 	-->
  	<definition name="payment2/PayParticulars1" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/payment2/PayParticulars1.jsp"></put-attribute>
  	</definition> 	
+ 	
  	<!-- 결제완료 psj추가 -->
  	<definition name="payment2/PayParticulars2" extends="indexTemplate">
  		<put-attribute name="content" value="/WEB-INF/payment2/PayParticulars2.jsp"></put-attribute>
