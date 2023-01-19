@@ -2,7 +2,9 @@ package com.multi.ongo.detail;
 
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,26 +22,25 @@ public class AuctionDetailDAOImpl implements AuctionDetail_DAO {
 		this.sqlsession = sqlsession;
 	}
 //	************* 판매 관리 *****************
-	
+	//경매거래 판매내역 > 메인 (판매중 list)
+	@Override
 	public List<AuctionBoard_DTO> auctsell_List(String member_id) {
-		System.out.println("dao test"+member_id);
+//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("member_id", member_id);
 		List<AuctionBoard_DTO> list = sqlsession.selectList("com.multi.ongo.auction.auctsaleAll",member_id);
-		System.out.println("db결과 test"+list);
+		System.out.println("멤버아이디"+ list);
 		return list;
 	}
-	
-	
-	
-//	//경매거래 판매내역 > 판매중/거래진행중/판매종료 list
-//	@Override
-//	public List<AuctionBoard_DTO> auctsell_state(String member_id, String auction_state) {
-//		Map<String,String> map = new HashMap<String, String>();
-//		map.put("member_id", member_id);
-//		map.put("auction_state", auction_state);
-//		List<AuctionBoard_DTO> list = sqlsession.selectList("com.multi.ongo.auction.auctselectState", map);
-//		//System.out.println("=============list ==========="+list);
-//		return list;
-//		}
+	//경매거래 판매내역 > 판매중/거래진행중/판매종료 list
+	@Override
+	public List<AuctionBoard_DTO> auctsell_state(String member_id, String auction_state) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("member_id", member_id);
+		map.put("auction_state", auction_state);
+		List<AuctionBoard_DTO> list = sqlsession.selectList("com.multi.ongo.auction.auctselectState", map);
+		System.out.println("=============list ==========="+list);
+		return list;
+		}
 	//경매거래 판매내역 > 메인 (판매중 list)
 	//@Override
 //	public List<AuctionBoard_DTO> auctsell_List(String member_id) {
@@ -55,22 +56,26 @@ public class AuctionDetailDAOImpl implements AuctionDetail_DAO {
 //	return sqlsession.insert("com.multi.ongo.dealreq.auctdealreq", dto);
 //}
 //
-//@Override
-//public List<AuctionRequestDTO> auctreqinfo(int auction_number) {
-//	// TODO Auto-generated method stub
-////	System.out.println("dao.dealreqinfo()에 deal_number넘어왔나 체크"+deal_number);
-//	List<AuctionRequestDTO> sqlresult = sqlsession.selectList("com.multi.ongo.dealreq.auctreqinfo", auction_number);
-////	System.out.println("매퍼 실행 결과 :"+sqlresult);
-//	return sqlresult;
-//
-//}
-//
-//@Override
-//public int choosebuyer(AuctionRequestDTO auctreqDTO) {
-//	// TODO Auto-generated method stub
-//	return 0;
-//}
-//
+@Override
+public List<AuctionRequestDTO> auctreqinfo(int auction_number) {
+	// TODO Auto-generated method stub
+//	System.out.println("dao.dealreqinfo()에 deal_number넘어왔나 체크"+deal_number);
+	List<AuctionRequestDTO> sqlresult = sqlsession.selectList("com.multi.ongo.dealreq.auctreqinfo", auction_number);
+//	System.out.println("매퍼 실행 결과 :"+sqlresult);
+	return sqlresult;
+}
+
+	@Override
+	public int choosebuyer(AuctionRequestDTO auctreqDTO) {
+		// TODO Auto-generated method stub
+	return 0;
+	}
+	@Override
+	public int auctdealreq(AuctionRequestDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 //@Override
 //public int stateChange(int auction_number) {
 //	// TODO Auto-generated method stub

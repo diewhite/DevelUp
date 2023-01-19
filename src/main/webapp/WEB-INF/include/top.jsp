@@ -52,7 +52,7 @@
       <div id="gnb" class="d-flex justify-content-center">
         <ul class="dep1">
           <li>
-             <a id="siTitle" href="/ongo/auction/auctionBoard?auction_category=all" onmouseover="menuover(this);" ><span >경매</span></a>
+           <a id="siTitle" href="/ongo/auction/auctionBoard?auction_category=all" onmouseover="menuover(this);" ><span >경매</span></a>
           </li>
 
           <li>
@@ -91,7 +91,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/detail/auctionsellList?member_id=${user.member_id}">판매관리</a></li>
+                    <li><a href="/ongo/detail/auctionsellList?member_id=${user.member_id}&auction_state=all">판매관리</a></li>
                     <li><a href="#">구매관리</a></li>
                   </ul>                 
                 </div>
