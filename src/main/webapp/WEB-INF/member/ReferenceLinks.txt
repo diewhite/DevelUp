@@ -15,6 +15,7 @@
 == 페이징처리 유튜브 태원님 # https://www.youtube.com/watch?v=KNAbTFYDHNU&list=PLE5Oosh5zKQfO_md_TwiITjwMhMnzcR2R&index=44&t=260s
 == 깃 스테이징에 파일 안올라갈 때 윤희님 # https://sowon-dev.github.io/2021/07/07/210708sts-icon-meaning/
 == MySQL-Oracle데이터 타입 비교 # https://arrkaize86.tistory.com/entry/MySQL-Oracle-%EA%B3%BC-%EB%B9%84%EA%B5%90
+== mysql auto_increment table create # https://www.w3schools.com/sql/sql_autoincrement.asp
 
 ++++++++++++++++++++
 public 개념
