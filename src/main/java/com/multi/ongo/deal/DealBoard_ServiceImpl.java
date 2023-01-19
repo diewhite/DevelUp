@@ -119,8 +119,13 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	//중고거래글 등록 ( +첨부파일) DealBoard_DTO테이블과 DealFile_DTO테이블에 저장
 	@Override
 	public int insertFile(DealBoard_DTO dto, List<DealFile_DTO> listfiledto) {
-		dao.writeProd(dto);
-		dao.insertFile(listfiledto);
+		if(listfiledto.isEmpty()) {
+			dao.writeProd(dto);
+			
+		}else {
+			dao.writeProd(dto);
+			dao.insertFile(listfiledto);
+		}
 		return 0;
 	}
 	//첨부파일 가져오기(다운로드)
@@ -129,16 +134,21 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		return dao.getFile(deal_number, dealFile_number);
 	}
 	
+	//중고거래 게시글수정(+첨부파일)
+//	@Override
+//	public int update(DealBoard_DTO dto, List<DealFile_DTO> listfiledto) {
+//		System.out.println("[ServiceImpl_수정] 파리터체크 : " +listfiledto);
+//		dao.update(dto);
+//		dao.updateFile(listfiledto);
+//		return 0;
+//	}
+
 	//중고거래 게시글수정
 	@Override
-	public int update(DealBoard_DTO dto, List<DealFile_DTO> listfiledto) {
-		System.out.println("[ServiceImpl_수정] 파리터체크 : " +listfiledto);
-		dao.update(dto);
-		dao.updateFile(listfiledto);
-		return 0;
+	public int update(DealBoard_DTO dto) {
+		return dao.update(dto);
+		 
 	}
-
-	
 	
 	
 	

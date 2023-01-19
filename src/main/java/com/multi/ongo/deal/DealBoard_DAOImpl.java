@@ -51,11 +51,11 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 
 
 	//중고거래 게시글 수정(첨부파일)
-	@Override
-	public int updateFile (List<DealFile_DTO> filedtolist) {
-		System.out.println("[DAOImpl_수정] 파라터체크 : " +filedtolist);
-		return sqlSession.update("com.multi.ongo.deal.updateFile", filedtolist);
-	}
+//	@Override
+//	public int updateFile (List<DealFile_DTO> filedtolist) {
+//		System.out.println("[DAOImpl_수정] 파라터체크 : " +filedtolist);
+//		return sqlSession.update("com.multi.ongo.deal.updateFile", filedtolist);
+//	}
 	
 	
 	

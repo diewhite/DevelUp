@@ -130,9 +130,7 @@
 					<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" class="dataRow">
 						<%-- <td hidden="true"><span class="gray-bold" id="dealIMG">${board.deal_number }</span></td> --%>
 						<td><span class="gray-bold">${board.dealType }</span></td>
-						<td id="dealListImg"> <img alt="" src="/ongo/dealUpload/${board.storeFilename}" width="50" height="50"></td>
-								<!-- <img src="/ongo/images/myphoto.png"   width="50" height="50"> -->
-						<!-- <img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50" > -->
+						<td id="dealListImg"> <img alt="" src="/ongo/dealUpload/${board.storeFilename}" onerror="this.style.display='none'"  width="50" height="50"></td>
 						<td><span class="gray-bold">${board.board_title }</span></td>
 						<td><span class="blue-bold"><fmt:formatNumber value="${board.product_price}" pattern="#,###원" /></span></td>
 						<td><span class="blue-bold">${board.member_id }</span></td>

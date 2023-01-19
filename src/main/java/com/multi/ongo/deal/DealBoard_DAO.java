@@ -18,7 +18,7 @@ public interface DealBoard_DAO {
 	int update(DealBoard_DTO dto);
 	
 	//중고거래 게시글 수정(첨부파일)
-	public int updateFile (List<DealFile_DTO> filedtolist);
+	//public int updateFile (List<DealFile_DTO> filedtolist);
 	
 	
 	//중고거래 게시글 삭제

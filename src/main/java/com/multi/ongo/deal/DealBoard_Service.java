@@ -16,7 +16,11 @@ public interface DealBoard_Service {
 	public DealBoard_DTO dealRead(int deal_number);
 
 	//중고거래 게시글 업데이트(수정)
-	int update(DealBoard_DTO dto, List<DealFile_DTO> listfiledto);
+	//int update(DealBoard_DTO dto, List<DealFile_DTO> listfiledto);
+	
+	//중고게시글 수정
+	public int update(DealBoard_DTO dto);
+	
 	
 	//중고거래 게시글 삭제
 	int dealDelete(int deal_number);
