@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head> 
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript">
 	//구분 저장공유
 	$(document).ready(function(){ 
@@ -53,7 +53,7 @@
 
         <!-- 게시판 -->
         <div class="container">
-            <form  action="/ongo/dealRead.do?deal_number=${dealRead.deal_number}&state=UPDATE" method="post">
+            <form  action="/ongo/dealRead.do?deal_number=${dealRead.deal_number}&state=UPDATE" method="post" >
                 <input type="hidden" name="countPerPage" id="countPerPage" value="10">
                 <input type="hidden" name="zon" id="zon" value="">
 
@@ -76,7 +76,7 @@
 							</div>
 							</div>
 					</div> -->
-							
+							<p>글번호 :${dealRead.deal_number} </p>
 				
 							
 							<div class="cont-box-inner">

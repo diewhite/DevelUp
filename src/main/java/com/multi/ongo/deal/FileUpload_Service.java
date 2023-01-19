@@ -32,6 +32,7 @@ public class FileUpload_Service {
 				multipartFile.transferTo(new File(path+File.separator+storeFilename));  //중복되지않도록 uuid로 만든 storeFilename으로 생성
 				
 				filedtolist.add(new DealFile_DTO(originalFilename, storeFilename)); //dto생성자 2개짜리 만들어야함
+				
 			}
 		}
 		return filedtolist;

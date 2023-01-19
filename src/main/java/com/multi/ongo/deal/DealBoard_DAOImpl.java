@@ -41,14 +41,25 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	}
 
 
-	//중고거래 게시글수정
+	//중고거래 게시글 수정(일반폼수정)
 	@Override
 	public int update(DealBoard_DTO dto) {
-		System.out.println("dto 수정 : " +dto);
+		System.out.println("DAO임플_수정) dto 수정파라터체크 : " +dto);
 		return sqlSession.update("com.multi.ongo.deal.dealUpdate", dto);
 	}
 
 
+
+	//중고거래 게시글 수정(첨부파일)
+	@Override
+	public int updateFile (List<DealFile_DTO> filedtolist) {
+		System.out.println("[DAOImpl_수정] 파라터체크 : " +filedtolist);
+		return sqlSession.update("com.multi.ongo.deal.updateFile", filedtolist);
+	}
+	
+	
+	
+	
 	//중고거래 게시글삭제
 	@Override
 	public int dealDelete(int deal_number) {
@@ -134,6 +145,8 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	public List<DealTotalList_DTO> dealTotalList(String dealType) {
 		return sqlSession.selectList("com.multi.ongo.deal.dealTotalList2", dealType);
 	}
+
+
 	
 	
 	

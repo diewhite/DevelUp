@@ -80,35 +80,6 @@ public class DealBoard_Controller {
 	
 	
 	
-	// 중고거래 게시글등록(+첨부파일)
-	@RequestMapping("deal_Write.do")
-	public String dealWrite(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
-		//System.out.println("등록) dto__체크 : " + dto);
-		
-		// ① List<MultipartFile>정보를 추출하기
-		List<MultipartFile> files = dto.getDealFiles(); 
-		//System.out.println("List<MultipartFile> files___체크 : "+  files);
-		
-		// ② 업로드될 서버의 경로 ( 경로 추출을 위해 HttpSession필요)
-		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/dealUpload");
-		//spring이 제공하는 WebUtils 클래스. getRealPath메서드( ServletContext, Path )
-		//ServletContext객체란? 프로젝트의 context정보(path 등)를 가지고 있는 객체. Path(지정)
-		System.out.println("path __________체크 : " + path);
-		
-		// ③ FileUpload_Service 클래스를 호출해서 실제 서버에 등록되도록 작업
-		List<DealFile_DTO> filedtolist =  fileUploadService.uploadFiles(files, path);
-		
-		//다중첨부시 파일번호주기
-		int count =1;
-		for(DealFile_DTO filedto : filedtolist) {
-			filedto.setDealFile_number(count);
-			count++;
-		}
-		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장
-		service.insertFile(dto,filedtolist);
-		return "redirect:/deal_listAll2.do?dealType=all";  //리스트페이지로
-	}
-	
 	
 	
 	
@@ -121,17 +92,17 @@ public class DealBoard_Controller {
 	
 	
 	//중고거래게시글 타입별조회(카테고리)
-	@RequestMapping("deal_listAll2.do")
-	public ModelAndView dealType_list(String dealType) {
-		//첨부파일목록 불러오기 위하여작성
-		//List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
-				ModelAndView mav = new ModelAndView("deallistAll2");
-		List<DealBoard_DTO> listall = service.dealType_list(dealType);
-		//System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
-		mav.addObject("dealType",dealType);
-		mav.addObject("listall",listall);
-		return mav;
-	}
+//	@RequestMapping("deal_listAll2.do")
+//	public ModelAndView dealType_list(String dealType) {
+//		//첨부파일목록 불러오기 위하여작성
+//		//List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
+//				ModelAndView mav = new ModelAndView("deallistAll2");
+//		List<DealBoard_DTO> listall = service.dealType_list(dealType);
+//		//System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
+//		mav.addObject("dealType",dealType);
+//		mav.addObject("listall",listall);
+//		return mav;
+//	}
 	
 	
 	//조인***한 결과로 중고거래 게시글 타입별 조회
@@ -182,27 +153,73 @@ public class DealBoard_Controller {
 			//System.out.println("조회수 처리후 : "+dealRead.getHits()  + "/______/매개변수확인" + deal_number);
 			view ="dealBoardRead";
 		}else {
-			System.out.println("컨트롤 업데이트 진입 : " + deal_number); //넘어감
+			//System.out.println("컨트롤 업데이트 진입 : " + deal_number); //넘어감
 			view ="dealBoardUpdate";
 		}
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
 		mav.addObject("filedtolist",filedtolist); //파일첨부 결과 공유
 		//System.out.println("filedtolist : "+ filedtolist);
-		//System.out.println("컨트롤 공유 dealread 체크:" + dealRead);
+		System.out.println("컨트롤 공유_읽기 dealread 체크:" + dealRead);
 		//System.out.println("찍먹state:" + state);
 		return mav;
 	}
 	
+	
+	
+	
+	
+	
+
+	
+	// 중고거래 게시글등록(+첨부파일)
+	@RequestMapping("deal_Write.do")
+	public String dealWrite(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
+		System.out.println("등록) dto__체크 : " + dto);
+		
+		// ① List<MultipartFile>정보를 추출하기
+		List<MultipartFile> files = dto.getDealFiles(); 
+		//System.out.println("List<MultipartFile> files___체크 : "+  files);
+		
+		// ② 업로드될 서버의 경로 ( 경로 추출을 위해 HttpSession필요)
+		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/dealUpload");
+		//spring이 제공하는 WebUtils 클래스. getRealPath메서드( ServletContext, Path )
+		//ServletContext객체란? 프로젝트의 context정보(path 등)를 가지고 있는 객체. Path(지정)
+		//System.out.println("path __________체크 : " + path);
+		
+		// ③ FileUpload_Service 클래스를 호출해서 실제 서버에 등록되도록 작업
+		List<DealFile_DTO> filedtolist =  fileUploadService.uploadFiles(files, path);
+		
+		//다중첨부시 파일번호주기
+		int count =1;
+		for(DealFile_DTO filedto : filedtolist) {
+			filedto.setDealFile_number(count);
+			count++;
+		}
+		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장
+		service.insertFile(dto,filedtolist);
+		return "redirect:/deal_listAll3.do?dealType=all";  //리스트페이지로
+	}
+	
 	//중고거래 게시글 수정
 	@RequestMapping("dealUpdate.do")
-	public String update(DealBoard_DTO dto) {
-		//System.out.println("넘어오는가?찍먹1: " + dto);
-		//System.out.println("getDeal_number넘어오는가?찍먹1: " + dto.getDeal_number());
-		service.update(dto);
-		//System.out.println("넘어오는가?찍먹2: " + dto);
-		return "redirect:/deal_listAll2.do?dealType=all";
+	public String update(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
+		System.out.println("[컨트롤러_수정] 파라미터 체크: " + dto +"________");
+		List<MultipartFile> files = dto.getDealFiles(); 
+		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/dealUpload"); //경로따기
+		List<DealFile_DTO> filedtolist =  fileUploadService.uploadFiles(files, path); //서버에등록하기
+		
+		//다중첨부시 파일번호주기
+				int count =1;
+				for(DealFile_DTO filedto : filedtolist) {
+					filedto.setDealFile_number(count);
+					count++;
+				}
+		service.update(dto, filedtolist);
+		
+		return "redirect:/deal_listAll3.do?dealType=all";
 	}
+	
 	
 	
 	
@@ -210,7 +227,7 @@ public class DealBoard_Controller {
 	@RequestMapping("dealDelete.do")
 	public String dealDelete(int deal_number) {
 		service.dealDelete(deal_number);
-		return "redirect:/deal_listAll2.do?dealType=all";
+		return "redirect:/deal_listAll3.do?dealType=all";
 	}
 	
 	//하단검색
