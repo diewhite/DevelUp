@@ -52,7 +52,7 @@ public class DealBoard_Controller {
 //					  사용자가 링크를 클릭할때 이것은 일반html열기가 아니라 파일을 다운로드 하는것이고,
 //                    결국 스프링에있는 File os를 통해서 꺼내게 되는데, 그 File os를 관리하는게 urlResource  
 		
-		//System.out.println("첨부파일 다운로드 파라미터 체크 : member_id" + member_id +",  " + deal_number+",  " + dealFile_number );
+		//System.out.println("첨부파일 다운로드 파라미터 체크 : " + deal_number+",  " + dealFile_number );
 		
 		//전달받은 파라미터(글번호,파일번호) 이용해서 파일조회 후, 가져오기
 		DealFile_DTO selectFile = service.getFile(deal_number, dealFile_number);
@@ -185,7 +185,7 @@ public class DealBoard_Controller {
 		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/dealUpload");
 		//spring이 제공하는 WebUtils 클래스. getRealPath메서드( ServletContext, Path )
 		//ServletContext객체란? 프로젝트의 context정보(path 등)를 가지고 있는 객체. Path(지정)
-		//System.out.println("path __________체크 : " + path);
+		System.out.println("path __________체크 : " + path);
 		
 		// ③ FileUpload_Service 클래스를 호출해서 실제 서버에 등록되도록 작업
 		List<DealFile_DTO> filedtolist =  fileUploadService.uploadFiles(files, path);
