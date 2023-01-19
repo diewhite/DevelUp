@@ -43,6 +43,7 @@
 		var minPrice = ${board.min_price};
 		var minBid;
 		var currPrice = ${currPrice};
+		//비드쪽 테이블
 		var bidInput = $("#bidding_price").val();
 		var bidPrice = 0;
 		var bidListSize = ${bidList.size()};
@@ -81,12 +82,14 @@
 	    
 <div class="container"  >
 	      <!--  경매부분   -->
+	      
+	       <div>${boardlist.list_photo}</div>
 	      <div id="images" class="row ">
                 <div class="col-sm-6">
 	       <div class="auction-img-main ">
                           <ul>
                             <li >
-                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"></li>
+                                 <img id="auction-image" src="/ongo/upload/${board.list_photo}"</li>
                           </ul>
                         </div>
 					   	</div>
@@ -102,7 +105,7 @@
 	            <input type="hidden">
 	            <div class="tbl grid-layout grid2">
 	             <div class="grid-item colspan2">
-	                  <label >판매자</label>
+	                  <label >판매자  </label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap w20">
 	                      ${board.member_id }	                    
@@ -132,7 +135,7 @@
 	                  </div>
 	                </div>
 	                   <div class="grid-item colspan2">
-	                  <label >현재입찰가</label>
+	                  <label >현재입찰가 </label>
 	                  <div class="tbl-basic-td">
 	                    <div class="input-wrap blue" >
 	                    	<c:choose>

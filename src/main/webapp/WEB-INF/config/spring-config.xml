@@ -19,6 +19,7 @@
 	<resources mapping="/dealUpload/**" location="/WEB-INF/dealUpload/" />
 	<resources mapping="/images/**" location="/WEB-INF/static/images/" />
 	<resources mapping="/common/**" location="/WEB-INF/static/common/" />
+	<resources mapping="/upload/**" location="/WEB-INF/upload/" />
 
 	<!--===================== 일반jsp만 만들어내는 ViewResolver 등록 ==============-->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

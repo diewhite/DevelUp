@@ -1,5 +1,9 @@
 package com.multi.ongo.auction;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class AuctionBoard_DTO {
 	private int auction_number; //거래번호
 	private String member_id;		//글쓴사람id
@@ -19,6 +23,10 @@ public class AuctionBoard_DTO {
 	private int add_price; //입찰테이블용 add_price
 	private String add_time; //입찰테이블용 add_time
 	private String bid_count; //입찰테이블 경매
+	private List<MultipartFile> files; //입찰테이블 경매
+	
+	
+
 	
 	//기본생성자
 	public AuctionBoard_DTO() {
@@ -192,6 +200,14 @@ public class AuctionBoard_DTO {
 
 	public void setBid_count(String bid_count) {
 		this.bid_count = bid_count;
+	}
+	
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
 	}
 
 	@Override
