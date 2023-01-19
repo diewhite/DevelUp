@@ -56,7 +56,7 @@
           </li>
 
           <li>
-            <a id="siTitle" href="/ongo/deal_listAll2.do?dealType=all" onmouseover="menuover(this);" ><span >중고거래</span></a>
+            <a id="siTitle" href="/ongo/deal_listAll3.do?dealType=all" onmouseover="menuover(this);" ><span >중고거래</span></a>
             <!-- onclick="location.href='deal.html'" -->
             <div class="dep2_wrap">
               <div class="dep2_left">
@@ -66,8 +66,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#" >중고</a></span>
                   <ul class="dep2_link">
-                    <li><a href="#" onclick="location.href='/ongo/deal_listAll2.do?dealType=중고'">중고</a></li>
-                    <li><a href="#" onclick="location.href='/ongo/deal_listAll2.do?dealType=나눔'">나눔</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/deal_listAll3.do?dealType=중고'">중고</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/deal_listAll3.do?dealType=나눔'">나눔</a></li>
                   </ul>
                 </div>
                 
@@ -75,7 +75,7 @@
             </div>
           </li>
         <li>
-   <a id="siTitle" href="/ongo/companylist" ><span >협력업체</span></a>
+   <a id="siTitle" href="/ongo/cooperation/list" ><span >협력업체</span></a>
           </li>
   <c:if test="${sessionScope.user!=null }">  
     <c:if test="${sessionScope.user.member_role=='1' }">  
@@ -91,7 +91,7 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/history/dealsellList">판매관리</a></li>
+                    <li><a href="/ongo/detail/auctionsellList?member_id=${user.member_id}">판매관리</a></li>
                     <li><a href="#">구매관리</a></li>
                   </ul>                 
                 </div>
@@ -111,6 +111,43 @@
                 </div>
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="/ongo/member/usermypage" >마이페이지</a></span>
+                  <ul class="dep2_link">
+                    <li>
+                    <a href="/ongo/member/usermypage?user_id=${user.member_id}">정보수정</a></li>
+                  </ul>
+                </div>
+                <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#" >쪽지함</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=${user.member_id}'">받은쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=${user.member_id}'">보낸쪽지함</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+    <li>
+    </c:if>
+    <c:if test="${sessionScope.user.member_role=='2' }">  
+          <li>
+            <a id="siTitle" href="#" onmouseover="menuover(this);"><span >나의온고</span></a>
+            <div class="dep2_wrap">
+              <div class="dep2_left">
+                <span>나의온고</span>
+              </div>
+              <div class="dep2_right" onmouseleave="menuout();">
+              
+             <!-- 수정할부분 -->
+				<div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#" >거래요청목록</a></span>
+                  <ul class="dep2_link">
+                    <li>
+                    <a href="/ongo/recycle/list?receive_id=${user.member_id}">거래요청목록</a></li>
+                  </ul>
+                </div>
+                <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#" >마이페이지</a></span>
                   <ul class="dep2_link">
                     <li>
                     <a href="/ongo/member/usermypage?user_id=${user.member_id}">정보수정</a></li>
@@ -203,13 +240,13 @@
                 <h2>중고거래</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="/ongo/deal_listAll2.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
+                    <a href="/ongo/deal_listAll3.do?dealType=중고" class="sitemap_depth2_tit" ><span onclick="">중고</span></a>
                     <!-- <ul class="sitemap_depth3 dot_list">
                      <li ><a href="#" >중고상품</a></li>
                     </ul> -->
                   </div>
                   <div class="sitemap_depth2">
-                    <a href="/ongo/deal_listAll2.do?dealType=나눔" class="sitemap_depth2_tit" ><span onclick="">나눔</span></a>
+                    <a href="/ongo/deal_listAll3.do?dealType=나눔" class="sitemap_depth2_tit" ><span onclick="">나눔</span></a>
                     <!-- <ul class="sitemap_depth3 dot_list">
                      <li ><a href="#" >새상품</a></li>
                     </ul> -->
@@ -220,7 +257,7 @@
                 <h2>협력업체</h2>
                 <div class="sitemap_depth2_wrap">
                   <div class="sitemap_depth2">
-                    <a href="/ongo/companylist" class="sitemap_depth2_tit" ><span>협력업체</span></a>
+                    <a href="/ongo/cooperation/list" class="sitemap_depth2_tit" ><span>협력업체</span></a>
                   </div>
               	</div>
               </div>

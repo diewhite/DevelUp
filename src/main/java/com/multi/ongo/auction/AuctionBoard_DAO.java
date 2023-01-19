@@ -5,11 +5,15 @@ import java.util.List;
 
 
 public interface AuctionBoard_DAO {
+	public AuctionBoardUpFile_DTO getFile(String boardno);
+	public AuctionBoardUpFile_DTO getFileList(String boardno);
+	//첨부파일을 저장하기 위한 메소드	
+		int insertFile(AuctionBoardUpFile_DTO boardfile);
 	//게시글 등록
 	public int writeProd(AuctionBoard_DTO dto);
 	
 	//게시글읽기
-	public AuctionBoard_DTO auctionRead(int auction_no);
+	public AuctionBoard_DTO auctionRead(int auction_number);
 	
 	//전체조회
 	public List<AuctionBoard_DTO> boardlist();
@@ -31,7 +35,7 @@ public interface AuctionBoard_DAO {
 		//______________________________________________________________
 		
 	//경매내역 조회
-	public List<AuctionBoard_DTO> bidList(int auction_no);
+	public List<AuctionBoard_DTO> bidList(int auction_number);
 	
 	//경매입찰
 	public int bidding(AuctionBoard_DTO dto);

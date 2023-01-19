@@ -8,6 +8,7 @@
 .invoice {
     position: relative;
     background-color: #FFF;
+    min-height: 680px;
     padding: 15px
 }
 
@@ -48,6 +49,10 @@
     color: #3989c6
 }
 
+.invoice main {
+    padding-bottom: 50px
+}
+
 .invoice main .thanks {
     margin-top: -100px;
     font-size: 2em;
@@ -72,6 +77,8 @@
 
 .invoice table td,.invoice table th {
     padding: 15px;
+    background: #eee;
+    border-bottom: 1px solid #fff
 }
 
 .invoice table th {
@@ -89,6 +96,7 @@
 
 .invoice table .qty,.invoice table .total,.invoice table .unit {
     text-align: center;
+    font-size: 1.2em
 }
 
 .product id  {
@@ -195,6 +203,7 @@ function fnLogin(){
       <h2 class="visually-hidden">결제</h2>
       <!-- //현재 탭 표시 -->
       <div class="login_wrap">
+      
       <div id="invoice">
     <div class="invoice overflow-auto">
         <div style="">
@@ -213,45 +222,69 @@ function fnLogin(){
             <main>
                  <div class="row">
                   <div class="col-md-2">
-                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR6NbjHprfrQQnPnli8KD6Twz0f83FurA6s2trUKBBnwEfcci59kOrPEV2tGgAG1T0Qr879b6pPOw&amp;usqp=CAc" width="auto," height="100px/">
+                            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR6NbjHprfrQQnPnli8KD6Twz0f83FurA6s2trUKBBnwEfcci59kOrPEV2tGgAG1T0Qr879b6pPOw&amp;usqp=CAc" width="auto," height="100px/">
                     </div>
                  <div class="col-md-7">
-                        <h3 class="invoice-id">A급 아이폰팝니다.</h3>
+                        <h1 class="invoice-id">A급 아이폰팝니다.</h1>
                  </div>
-                 
-             <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless table-hover">
-                    <thead>
-								<tr>
-									
-									<th class="table-header" scope="col">구분</th>
-									<th class="table-header-title" scope="col">제 목</th>
-									<th class="table-header" scope="col">판매가격</th>
-									<th class="table-header" scope="col">판매자</th>
-									<th class="table-header" scope="col">작성일</th>
-									
-									
-								</tr>
-							</thead>
-                    <tbody class="text-center">
-									
-									<tr>
-										<td>나눔</td>
-										
-										<td>강아지 목줄 나눔해요</td>
-										<td>0원</td>
-										
-										<td>id</td>
-										<td>2022-01-01</td>
-									</tr>
-									
-							</tbody>
-                  <tfoot>
+                 <div class="col-md-3">
+                        <div class="order-id">아이폰 14 512GB</div>
+                        <div class="order-id">user_2</div>
+                        <div class="date">낙찰일자 : 23.01.06</div>
                         
-                        <tr><td></td> </tr>
+                  </div>
+             
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Aantal</th>
+                            <th class="text-center">Productnaam</th>
+                            <th class="text-center">Artikelnummer</th>
+                            <th class="text-center">Prijs per stuk<br>(excel. BTW)</th>
+                            <th class="text-center">BTW</th>
+                            <th class="text-center">Totaal<br>(excl. BTW)</th>
+                            <th class="text-center">Totaal<br>(BTW)</th>
+                            <th class="text-center">Totaal<br>(incl. BTW)</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="qty">2 stuks</td>
+                            <td class="product-name"><h3>
+                            아이폰 14 512GB
+                            </h3>
+                            </td>
+                            <td class="product id">SBC03</td>
+                            <td class="brutto one">€ 8.26</td>
+                            <td class="vat">21%</td>
+                            <td class="brutto-price-for-all">€ 16.52</td>
+                            <td class="vat">21%</td>
+                            <td class="total">$0.00</td>
+                            
+                        </tr>
+                                           </tbody>
+                    <tfoot>
                         <tr>
                             <td colspan="3"></td>
-                            <td colspan="">결제금액</td>
-                            <td>30,000원</td>
+                            <td colspan="2">SUBTOTAL</td>
+                            <td>€ 16.52</td>
+                            <td>€</td>
+                            <td>$5,200.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">금액</td>
+                            <td>€ 1.65</td>
+                            <td>€ 0.35</td>
+                            <td>€ 2.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">주문금액</td>
+                            <td></td>
+                            <td></td>
+                            <td>$6,500.00</td>
                            
                         </tr>
                     </tfoot>
@@ -264,14 +297,16 @@ function fnLogin(){
         <div></div>
     </div>
 </div>
-   
+              
+              
           </div>
-    <div class="btn-area">
+      </div>    
+     <div class="btn-area">
                   <button type="button" class="btn btn-primary btn-large me-md-2" onclick="fnLogin()">결제</button>
                   <button type="button" class="btn btn-outline-secondary btn-large" onclick="fnHome()">취소</button>
               </div>
   </div>
-</div>
+
 <!-- // contents -->
 
  

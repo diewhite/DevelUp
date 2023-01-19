@@ -4,13 +4,32 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.ongo.auction">
 
+
+<select id="fileselect" parameterType="String" resultType="boardfile">
+		select * from board_file where board_no = #{board_no} 
+	</select>
+	<select id="getfileinfo" parameterType="String" resultType="boardfile">
+		select * from board_file where board_no = #{board_no}  and boardFileno = #{boardFileno}
+	</select>
+	
+	<insert id="fileinsert" parameterType="java.util.List">
+		insert all
+		<foreach collection="list" item="file" separator=" ">
+			into board_file values(tbboard_seq.currval,#{file.originalFilename},#{file.storeFilename},#{file.boardFileno})	
+		</foreach>
+		select * from dual</insert>
+
+
+
+
+
+
 	<select id="read" resultType="auctionDTO" parameterType="Int">
 		select
-		auction_number,member_id,auction_category,auction_state,auction_title,hits,to_char(write_date,'yyyy-mm-dd
-		hh24:mi:ss') as "write_date",
-		board_content,list_photo,min_price,start_price,end_price,to_char(end_date,'yyyy-mm-dd
-		hh24:mi:ss') as "end_date"
-		from auction_table where auction_number = #{auction_no}
+		auction_number,member_id,auction_category,auction_state,auction_title,hits,to_char(write_date,'yyyy-mm-dd hh24:mi:ss') as "write_date",
+		board_content,list_photo,min_price,start_price,end_price,to_char(end_date,'yyyy-mm-dd hh24:mi:ss') as "end_date"
+		from auction_table where auction_number = #{auction_number}
+
 	</select>
 
 	<!-- 경매게시판 전체게시글 조회 -->
@@ -33,13 +52,10 @@
 		(AUCTION_NUMBER,
 		member_id,
 		auction_state,
-		auction_title,start_price,board_content,list_photo,write_date,end_date
+		auction_title,start_price,min_price,board_content,list_photo,write_date,end_date
 		)
 		values(auction_number.nextval, #{member_id}, #{auction_state},
-		#{auction_title}, #{start_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
-		
-		
-
+		#{auction_title}, #{start_price},#{min_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
 	</insert>
 
 
@@ -52,13 +68,26 @@
 	</delete>
 	<!--_________________________________________________________________ -->
 
-	<!-- 경매게시판 카테고리 조회 -->
+	<!-- 경매 종료시간 초과 후 상태변경 -->
 	<update id="auctionStatus">
 		update auction_table set auction_state = '입찰종료'
 		where <![CDATA[end_date < sysdate]]>
 	</update>
-
-
+	
+	<!-- 경매내역조회 -->
+	<select id="bidList" resultType="auctionDTO" parameterType="Int">
+		select * from auction_bid where auction_number = #{auction_number} order by add_price desc
+	</select>
+	
+	<!-- 입찰 -->
+	<insert id="bidding" parameterType="auctionDTO">
+		insert into auction_bid values(#{auction_number},#{add_user},#{add_price},sysdate)
+	</insert>
+	
+	<!-- 현재가격업데이트 -->
+	<update id="updatePrice" parameterType="auctionDTO">
+		update auction_table set current_price = #{add_price} where auction_number = #{auction_number}
+	</update>
 </mapper>
 	
 

@@ -8,6 +8,5 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<view-controller path="/dealRegister" view-name="dealRegister"/> 
-	<view-controller path="/myongopage" view-name="myongopage"/> 
-  	<view-controller path="/companylist" view-name="member/companylist"/> 
+	<view-controller path="/myongopage" view-name="myongopage"/>  	 
 </beans:beans>

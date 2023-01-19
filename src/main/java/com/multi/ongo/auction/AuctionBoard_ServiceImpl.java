@@ -5,14 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.multi.ongo.deal.DealBoard_DTO;
-
 @Service
 public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 	/**
 	 * 비지니스 로직에 관련된 코드를 여기다 작성
 	 */
-
 	AuctionBoard_DAO dao;
 
 	@Autowired
@@ -21,6 +18,26 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		this.dao = dao;
 	}
 
+	@Override
+	public AuctionBoardUpFile_DTO getFileList(String boardno) {
+		// TODO Auto-generated method stub
+		return dao.getFileList(boardno);
+	}
+	
+//	게시글등록
+//	=> 게시글기본정보 저장, 첨부된 파일에 대한 정보 저장
+//	dao클래스에 정의된 두 개의 메소드를 호출
+	@Override
+	public int insertFile( AuctionBoardUpFile_DTO boardfile) {
+		dao.insertFile(boardfile);
+		return 0;
+	}
+	@Override
+	public AuctionBoardUpFile_DTO getFile(String boardno) {
+		// TODO Auto-generated method stub
+		return dao.getFile(boardno);
+	}
+	
 	public int writeProd(AuctionBoard_DTO dto) {
 
 		/**
@@ -58,8 +75,8 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 //	}
 
 	@Override
-	public AuctionBoard_DTO auctionRead(int auction_no) {
-		return dao.auctionRead(auction_no);
+	public AuctionBoard_DTO auctionRead(int auction_number) {
+		return dao.auctionRead(auction_number);
 	}
 
 	@Override
@@ -85,8 +102,8 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 	}
 
 	@Override
-	public List<AuctionBoard_DTO> bidList(int auction_no) {
-		return dao.bidList(auction_no);
+	public List<AuctionBoard_DTO> bidList(int auction_number) {
+		return dao.bidList(auction_number);
 	}
 
 	@Override
@@ -98,5 +115,6 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 	public int updatePrice(AuctionBoard_DTO dto) {
 		return dao.updatePrice(dto);
 	}
+
 
 }
