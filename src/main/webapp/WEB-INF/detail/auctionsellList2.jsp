@@ -12,18 +12,22 @@
 
 <script type="text/javascript">
 	
-	/* 1. 거래상태별 게시글 조회  */
-	var type = "${product_state}" 
+	/* 거래상태별 게시글 조회  */
+	var type = "${auction_state}" 
 	$(document).ready(function () {
-		$("#product_state").val(type).attr("selected","selected");
-		$("#product_state").change(function () {
+		$("#auction_state").val(type).attr("selected","selected");
+		$("#auction_state").change(function () {
 
-			location.href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
+			location.href="/ongo/history/auctionsellList?member_id=${user.member_id}&auction_state="+encodeURI($(this).val());
 		})
+	})
 	
 	
-	/* 2. 판매중 list > 거래요청한 유저 정보보기 - ajax로 통신  */
-		$(".showReqID").on("click", function() {
+	
+	/* 판매중 게시글 list > 거래요청한 유저 정보보기 - ajax로호 통신  */
+	$(document).ready(function() {
+
+		$(".showdata").on("click", function() {
 			$(this).closest("tr").next().toggle()
 			//버튼과 가장 가까운 tr 태그의 다음 tr 태그를 선택 
 			// => 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
@@ -36,8 +40,7 @@
 				// = ajax를 통해 가져올 데이터가 출력될 부분  
 			// $(datanode).html(num+"<span>번 게시글/////</span>") 
 			//ajax요청결과를 datanode에 출력하기
-		
-				
+			
 
 			$.ajax({
 				url : "/ongo/history/dealReqinfo",
@@ -49,40 +52,39 @@
 					 
 					console.log("ajax success//////:",data)
 					
-				$(".reqdata").empty();
-				
-					
-					
-				/* +구매요청 데이터가 없는 경우 화면 만들기 */
-				  
-				
-				/* 3. 구매요청 list > 구매요청한 유저 정보 출력   */
+				  userinfo = "";
 				for(i=0; i<data.length; i++){
-					
-					
-			
-			userinfo = "";
 				
-				
-			var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}"
+					/* userinfo=userinfo+"<li>"+data[i]+"</li>"	 */
 					
-				userinfo = 
-				"<tr ><td id='no'>"+data[i].deal_number
+				console.log("ajax success/2/:",data[i].req_id)
+				
+				userinfo = userinfo +
+				"<tr ><td id='no'>"+data[i].aut_number
 					+"</td><td id='date'>"+data[i].req_time
 					+"</td><td id='id'>"+data[i].req_id
 					+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
 					+"onclick='#'>쪽지보내기</button></td>"
-					+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
-					+">거래하기</button></a></td></tr>"
+					+"<td id='deal-btn'><button type='button' id='"+data[i].req_id+"' class='btn btn-info dealbtn text-white'"
+					+">거래하기</button></td></tr>"
 					
+					console.log("ajax success///33:",data[i].req_id)
 					
+					var req_id = data[i].req_id
+					var test ="test"
 					
-					$(".reqdata").append(userinfo); 
- 					
+					 $(document).on("click","button[id='test']",function() {
+						//console.log(data[i].req_id, data[i].deal_number)
+						/* location.href="/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number */	
+						//var string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number
+						console.log(test)
+								
+				})
+					
 				} 
+					 $(".reqdata").empty();
+					$(".reqdata").append(userinfo); 
 					
-				
-				
 					
 					
 				},
@@ -100,11 +102,11 @@
 		<!-- title -->
 		<div class="container">
 			<div class="sub_top">
-				<h1>판매관리</h1>
+				<h1>경매관리</h1>
 			</div>
 			<!-- //title -->
 
-	
+	<button onclick="location.href='/ongo/history/choicebuyer' ">구매하기 버튼 클릭하면?</button>
 
 
 			<!-- 조회 테이블 시작 -->
@@ -117,11 +119,11 @@
 							<td>
 								<div class="form-inline">
 									<div class="select ">
-										<select class="form-select" id="product_state"
-											name="product_state" title="거래상태 조회">
+										<select class="form-select" id="auction_state"
+											name="auction_state" title="거래상태 조회">
 											<option value="all"  >전체</option>
-											<option value="판매중">판매중</option>
-											<option value="판매종료" >판매종료</option>
+											<option value="경매중">경매중</option>
+											<option value="경매종료" >경매종료</option>
 											<option value="거래진행중"  >거래진행중</option>
 										</select>
 									</div>
@@ -159,7 +161,7 @@
 											<option value="SG" selected="">통합검색</option>
 											<option value="SA">물품번호</option>
 											<option value="SB">물품제목</option>
-											<option value="SC">구매요청ID</option>
+											<option value="SC">입찰ID</option>
 											<option value="SH">물품내용</option>
 										</select>
 									</div>
@@ -210,11 +212,11 @@
 									<th class="table-header" scope="col">구분</th>
 									<th class="table-header" scope="col">상품사진</th>
 									<th class="table-header-title" scope="col">제 목</th>
-									<th class="table-header" scope="col">가격</th>
-									<th class="table-header" scope="col">구매요청</th>
-									<th class="table-header" scope="col">구매자</th>
+									<th class="table-header" scope="col">시작가</th>
+									<th class="table-header" scope="col">입찰내역</th>
 									<th class="table-header" scope="col">작성일</th>
 									<th class="table-header" scope="col">거래상태</th>
+									<th class="table-header" scope="col">낙찰</th>
 									<th class="table-header" scope="col">결제여부</th>
 								</tr>
 							</thead>
@@ -223,21 +225,21 @@
 								<c:forEach var="sellList" items="${sellList }">
 
 									<tr>
-										<td>${sellList.deal_number}</td>
+										<td>${sellList.deal_number }</td>
 										<td>${sellList.dealType }</td>
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
 										<td><a
-											href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'">${sellList.board_title}</a></td>
+											href="/ongo/dealRead.do?deal_number=${auctsell_List.auction_number}&state=READ'">${auctsell_List.auction_title}</a></td>
 										<td><fmt:formatNumber value="${sellList.product_price}"
 												pattern="#,###원" /></td>
 										<td>
-											<button class="showReqID">요청ID보기</button>
+											<button class="showdata">입찰내역보기</button>
 										</td>
 										<td>구매자id</td>
 										<td>${sellList.write_date }</td>
 										<td>${sellList.product_state }</td>
-										<td>-</td>
+										<td>-</td>ㅋ
 									</tr>
 									
 									
@@ -368,5 +370,3 @@
 	<!-- //Footer -->
 </body>
 </html>
-
-

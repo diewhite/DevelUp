@@ -5,10 +5,10 @@
 <mapper namespace="com.multi.ongo.auction">
 
 	<!--경매 판매내역 메인 (전체) -->
-	<select id= auctsaleAll" parameterType="String" resultType="auctionDTO">
+	<select id= "auctsaleAll" parameterType="String" resultType="auctionDTO">
 		select * from auction_table
 		where member_id=#{member_id}
-		
+		</select>
 		<!-- 거래상태 별로 테이블 조회 (판매중/판매종료/거래진행중) -->
 	<select id="auctselectState" parameterType="Map" resultType="auctionDTO">
 		select * from auction_table
@@ -30,3 +30,4 @@
 	</select>
 
 
+</mapper>
