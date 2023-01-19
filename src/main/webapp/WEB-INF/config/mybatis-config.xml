@@ -22,6 +22,7 @@
 		<mapper resource="mapper/note.xml"/>
 		<mapper resource="mapper/dealrequest.xml"/>
 		<mapper resource="mapper/auction.xml"/>
+		<mapper resource="mapper/auction2.xml"/>
 		<mapper resource="mapper/cooperation.xml"/>
 	</mappers>
 </configuration>
