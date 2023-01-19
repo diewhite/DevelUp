@@ -1,24 +1,32 @@
 package com.multi.ongo.auction;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import com.multi.ongo.deal.DealBoard_DTO;
 
 @Controller
 public class AuctionBoard_Controller {
 	AuctionBoard_Service service;
+	FileUpload fileupload;
 
 	@Autowired
-	public AuctionBoard_Controller(AuctionBoard_Service service) {
+	public AuctionBoard_Controller(AuctionBoard_Service service,FileUpload fileupload ) {
 		super();
 		this.service = service;
+		this.fileupload = fileupload;
 	}
 
 	// 글쓰러가기
@@ -26,19 +34,32 @@ public class AuctionBoard_Controller {
 	public String auctionWrite() {
 		return "auctionWrite";
 	}
-
-	@RequestMapping("/auctionWrite.do") // get vs post
-	public String auctionWrite(AuctionBoard_DTO dto) {
-
+	
+	@RequestMapping(value = "/auctionWrite.do", method = RequestMethod.POST)
+	public String upload(AuctionBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
+		List<MultipartFile> files = dto.getFiles();
+		List<AuctionBoardUpFile_DTO> boardfiledtolist = null;
+		if (files != null) {
+			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+			boardfiledtolist = fileupload.uploadFiles(files, path);
+		}
+	 
+		
 		/**
 		 * 컨트롤러 어떤 요청을 받아서 무엇을 해야할지 결정하는 역할. 쓰는을 하려면 유저 데이터를 받아옴 (다음 뷰 , 또는 디비에 반영될 데이
 		 * 받아온 데이터를 DB에 넣음 (디비에 접근, 데이터 조작) 다 완료되면 다른 페이지로 이동함
 		 */
 		System.out.println("테스트 : "+dto);
+		
+		
+		String file_name = boardfiledtolist.get(0).getStoreFilename();
+		dto.setList_photo(file_name);
+		
+		System.out.println("테스트 : "+file_name);
+		
 		service.writeProd(dto);
-		return "redirect:/auction_listAll.do?auction_state=all";
+		return "redirect:/auction_listAll.do?auction_statcl";
 	}
-	
 	
 	//경매 거래게시글 전체 리스트
 	@RequestMapping("/auction_listAll.do")
@@ -93,9 +114,13 @@ public class AuctionBoard_Controller {
 
 	// 경매게시판 글 읽기
 	@RequestMapping("/auction/auctionRead")
-	public String auctionRead(int auction_no, Model model) {
-		AuctionBoard_DTO board = service.auctionRead(auction_no);
-		List<AuctionBoard_DTO> bidList = service.bidList(auction_no);
+	public String auctionRead(int auction_number, Model model) {
+		
+		AuctionBoard_DTO board = service.auctionRead(auction_number);
+		System.out.println("이미지테스트:"+board);
+		
+		
+		List<AuctionBoard_DTO> bidList = service.bidList(auction_number);
 		if(bidList.size()==0) {
 			model.addAttribute("currPrice", 0);
 		}else {
@@ -104,6 +129,7 @@ public class AuctionBoard_Controller {
 		model.addAttribute("bidList", bidList);
 		model.addAttribute("board", board);
 		return "auctionRead";
+		
 		}
 	
 	
@@ -135,6 +161,6 @@ public class AuctionBoard_Controller {
 		service.bidding(dto);
 		service.updatePrice(dto);
 		int auction_num = dto.getAuction_number();
-		return "redirect:/auction/auctionRead?auction_no="+auction_num;
+		return "redirect:/auction/auctionRead?auction_number="+auction_num;
 	}
 }

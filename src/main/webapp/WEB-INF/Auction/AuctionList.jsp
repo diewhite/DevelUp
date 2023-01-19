@@ -46,12 +46,12 @@
                 
           <div class="board_list">
             <div class="board_info d-flex">
-                <div class="total">전체 <strong class="blue" id="totalCount">4</strong>건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="totalPage">1</span>)</div>
-              
+                <div class="total">전체 <strong class="blue" id="totalCount">${boardlist.size()}</strong>건 (페이지 <strong class="blue" id="nowPage">1</strong>/<span id="totalPage">1</span>)</div>
             </div>
+            
             <div >
-                 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
+                
 					<c:forEach var="boardlist" items="${boardlist}"> 
 					<c:if test="${boardlist.auction_state eq '입찰중'}">
 						<div class="auctionboard"><!--col -->
@@ -60,14 +60,21 @@
 	                        <div class="auction-img-main ">
 	                          <ul>
 	                            <li >
-	                              <img id="auction-image" src="https://i.imgur.com/oLXMXVW.jpg"  
-	                              onclick="location.href='/ongo/auction/auctionRead?auction_no=${boardlist.auction_number}'"></li>
+	                            <div>${boardlist.list_photo}</div>
+	                              <img id="auction-image" src="${boardlist.list_photo}"/>
+	                              <img id="auction-image" src="/ongo/upload/${boardlist.list_photo}"
+	                              
+	                              onclick="location.href='/ongo/auction/auctionRead?auction_number=${boardlist.auction_number}'">
+	                              
+	                              
+	                              
+	                             </li>
 	                          </ul>
 	                        </div>
 	                       
 	                        <div class="mt-2">
 	                          <ul class="company_list">
-	                    		<h3><a onclick="location.href='/ongo/auction/auctionRead'">${boardlist.auction_title }</a></h3>
+	                    		<h3><a onclick="location.href='/ongo/auction/auctionRead?auction_number=${boardlist.auction_number}'">${boardlist.auction_title }</a></h3>
 	                            <li><strong>시작가격 &nbsp &nbsp</strong><span>${boardlist.start_price }</span>	<!-- 입찰하면 입찰한 금액으로 start_price가 update됨 -->
 	                            <c:choose>
 	                            	<c:when test="${boardlist.current_price==null }">
