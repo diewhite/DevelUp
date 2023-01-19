@@ -34,7 +34,7 @@ public class DealBoard_Controller {
 		this.service = service;
 		this.fileUploadService=fileUploadService;
 	}
-	//중고거래 등록페이지 config-view처리  
+	//중고거래 등록페이지 config-view처리   
 	
 	
 	
