@@ -53,10 +53,10 @@
 		(AUCTION_NUMBER,
 		member_id,
 		auction_state,
-		auction_title,start_price,board_content,list_photo,write_date,end_date
+		auction_title,start_price,min_price,board_content,list_photo,write_date,end_date
 		)
 		values(auction_number.nextval, #{member_id}, #{auction_state},
-		#{auction_title}, #{start_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
+		#{auction_title}, #{start_price},#{min_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
 		
 		
 

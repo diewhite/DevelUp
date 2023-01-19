@@ -7,12 +7,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <html>
 <head> </head>
-<body>
+<body onload="글등록후 수정불가능!!!">
 <!-- 이 아래부터  content부분부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
- <form action="/ongo/auctionWrite.do" method="post">
+ <form action="/ongo/auctionWrite.do" method="post" enctype="multipart/form-data">
 <!-- content -->
 <div id="contents">
         <!-- title -->
+        
         <div class="sub_top">
             <div class="container">
           	
@@ -43,8 +44,8 @@
             <div class="tbl-basic-td">
               <div class="input-wrap w20" >
                 <select class="form-select grid-input" title="상태" name="auction_state">
-                 <option value="01">경매진행중</option>
-                 <option value="02">경매완료</option>
+                 <option value="01">경매진행중</option><!--보편적으로 0이 false 1이 true  -->
+                 <option value="02">경매완료</option> 
                 </select>
               </div>
             </div>
@@ -66,6 +67,10 @@
               <div> 시작가   </div>
               <input id="start_price" name="start_price" class="bid-start" type="text"  maxlength="50" title="시작가"> 
               <h6 >!경고! 가격은 등록후 수정불가능합니다.</h6>
+              
+                <div> 최소가   </div>
+              <input id="min_price" name="min_price" class="bid-start" type="text"  maxlength="50" title="최소가"> 
+            
               </div>
             </div>
           </div>
@@ -84,8 +89,7 @@
             <label for="HOFS_DTADR">첨부파일</label>
             <div id="list_photo" class="tbl-basic-td">
               <div class="input-wrap w100">
-              
-                  <input type="file" class="form-control" id="list_photo" name="list_photo" value="${AuctionRead.list_photo}"/>
+                  <input type="file" class="form-control" id="list_photo" name="files" value="${AuctionRead.list_photo}"/>
               </div>
             </div>
           </div>

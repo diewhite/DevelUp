@@ -1,5 +1,9 @@
 package com.multi.ongo.auction;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class AuctionBoard_DTO {
 	private int auction_number; //거래번호
 	private String member_id;		//글쓴사람id
@@ -19,6 +23,10 @@ public class AuctionBoard_DTO {
 	private int add_price; //입찰테이블용 add_price
 	private String add_time; //입찰테이블용 add_time
 	private String bid_count; //입찰테이블 경매
+	private List<MultipartFile> files; //입찰테이블 경매
+	
+	
+
 	
 	//기본생성자
 	public AuctionBoard_DTO() {
@@ -27,7 +35,7 @@ public class AuctionBoard_DTO {
 
 	public AuctionBoard_DTO(int auction_number, String member_id, String auction_category, String auction_state,
 			String auction_title, String hits, String write_date, String board_content, String list_photo, String min_price,
-			String start_price, String end_price, Date end_date) {
+			String start_price, String end_price, String end_date) {
 
 		super();
 		this.auction_number = auction_number;
@@ -146,11 +154,11 @@ public class AuctionBoard_DTO {
 		this.end_price = end_price;
 	}
 
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 
@@ -192,6 +200,14 @@ public class AuctionBoard_DTO {
 
 	public void setBid_count(String bid_count) {
 		this.bid_count = bid_count;
+	}
+	
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
 	}
 
 	@Override

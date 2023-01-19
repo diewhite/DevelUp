@@ -11,6 +11,29 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 // <mapper namespace="com.multi.ongo.deal">
 	SqlSession sqlSession;
 
+	@Override
+	public int insertFile(AuctionBoardUpFile_DTO boardfile) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("com.multi.ongo.auction.fileinsert", boardfile);
+	}
+	
+//	@Override 여러장때활용
+//	public AuctionBoardUpFile_DTO getFileList(String boardno) {
+//		return sqlSession.selectOne("com.multi.ongo.auction.fileselect", boardno);
+//	}
+	
+	@Override
+	public  AuctionBoardUpFile_DTO getFile(String boardno) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("com.multi.ongo.auction.getfileinfo", boardno);
+	} 
+	//여기까지가 업로드관련
+
+	
+	
+	
+	
+	
 	// 글등록
 	public int writeProd(AuctionBoard_DTO dto) {
 		System.out.println("등록 daoImpl : " + dto);
@@ -24,8 +47,8 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 	}
 
 	@Override
-	public AuctionBoard_DTO auctionRead(int auction_no) {
-		return sqlSession.selectOne("com.multi.ongo.auction.read", auction_no);
+	public AuctionBoard_DTO auctionRead(int auction_number) {
+		return sqlSession.selectOne("com.multi.ongo.auction.read", auction_number);
 	}
 
 	@Override
@@ -64,8 +87,8 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 	}
 
 	@Override
-	public List<AuctionBoard_DTO> bidList(int auction_no) {
-		return sqlSession.selectList("com.multi.ongo.auction.bidList", auction_no);
+	public List<AuctionBoard_DTO> bidList(int auction_number) {
+		return sqlSession.selectList("com.multi.ongo.auction.bidList", auction_number);
 	}
 
 	@Override
@@ -76,6 +99,12 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 	@Override
 	public int updatePrice(AuctionBoard_DTO dto) {
 		return sqlSession.update("com.multi.ongo.auction.updatePrice", dto);
+	}
+
+	@Override
+	public AuctionBoardUpFile_DTO getFileList(String boardno) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }	
