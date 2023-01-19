@@ -61,7 +61,7 @@
 	                          <ul>
 	                            <li >
 	                            
-	                              <img id="auction-image" src="/ongo/upload/${boardlist.list_photo}"
+	                              <img id="auction-image" src="/ongo/upload/${boardlist.list_photo} " onerror="this.style.display='none'"
 	                              
 	                              onclick="location.href='/ongo/auction/auctionRead?auction_number=${boardlist.auction_number}'">
 	                              
