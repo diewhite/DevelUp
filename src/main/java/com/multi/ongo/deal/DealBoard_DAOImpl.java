@@ -121,6 +121,19 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 		System.out.println("DAOImpl map체크 : " + map);
 		return sqlSession.selectOne("com.multi.ongo.deal.getFile", map);
 	}
+
+
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	@Override
+	public List<DealTotalList_DTO> dealTotalList() {
+		return sqlSession.selectList("com.multi.ongo.deal.dealTotalList");
+	}
+
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	@Override
+	public List<DealTotalList_DTO> dealTotalList(String dealType) {
+		return sqlSession.selectList("com.multi.ongo.deal.dealTotalList2", dealType);
+	}
 	
 	
 	

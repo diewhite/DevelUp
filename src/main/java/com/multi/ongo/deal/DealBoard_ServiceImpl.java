@@ -53,7 +53,7 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	}
 
 	
-	//중고거래 거래구분선택
+	//중고거래 게시글 타입구분
 	@Override
 	public List<DealBoard_DTO> dealType_list(String dealType) {
 		List<DealBoard_DTO> list = null;
@@ -66,7 +66,25 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		}
 			return list;
 	}
+	
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	@Override
+	public List<DealTotalList_DTO> dealTotalList(String dealType) {
+		List<DealTotalList_DTO> list = null;
+		if(dealType != null) {
+			if(dealType.equals("all")) {
+				list = dao.dealTotalList();
+			}else {
+				list = dao.dealTotalList(dealType);
+			}
+		}
+			return list;
+	}
 
+	
+	
+	
+	//메인페이지 ajax사용 타입구분
 	@Override
 	public List<DealBoard_DTO> dealType_main(String dealType) {
 		List<DealBoard_DTO> list = null;
@@ -80,6 +98,7 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 			return list;
 	}
 
+	//조회수
 	@Override
 	public int hits_update(int deal_number) {
 		return dao.hits_update(deal_number);
@@ -112,6 +131,7 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	public DealFile_DTO getFile(int deal_number, int dealFile_number) {
 		return dao.getFile(deal_number, dealFile_number);
 	}
+
 
 	
 	

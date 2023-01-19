@@ -13,6 +13,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -126,11 +127,33 @@ public class DealBoard_Controller {
 		//List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
 				ModelAndView mav = new ModelAndView("deallistAll2");
 		List<DealBoard_DTO> listall = service.dealType_list(dealType);
-		System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
+		//System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
 		mav.addObject("dealType",dealType);
 		mav.addObject("listall",listall);
 		return mav;
 	}
+	
+	
+	//조인***한 결과로 중고거래 게시글 타입별 조회
+	@RequestMapping("deal_listAll3.do")
+	public String dealTotalList(String dealType, Model model) {
+		List<DealTotalList_DTO> dealtotallist =service.dealTotalList(dealType);
+		model.addAttribute("dealtotallist", dealtotallist);
+		model.addAttribute("dealType", dealType);
+		System.out.println("dealtotallist 조인결과 체크 : " + dealtotallist);
+		return "deallistAll3";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//중고거래게시글 전체리스트
