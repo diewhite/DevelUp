@@ -7,7 +7,7 @@ public interface DealBoard_Service {
 	
 	
 	//거래등록(기존)
-	public int writeProd(DealBoard_DTO dto);
+//	public int writeProd(DealBoard_DTO dto);
 		 
 	//중고거래 전체조회
 	public List<DealBoard_DTO> boardlist();
@@ -16,8 +16,8 @@ public interface DealBoard_Service {
 	public DealBoard_DTO dealRead(int deal_number);
 
 	//중고거래 게시글 업데이트(수정)
-	int update(DealBoard_DTO dto);
-		
+	int update(DealBoard_DTO dto, List<DealFile_DTO> listfiledto);
+	
 	//중고거래 게시글 삭제
 	int dealDelete(int deal_number);
 	

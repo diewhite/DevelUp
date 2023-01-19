@@ -14,8 +14,11 @@ public interface DealBoard_DAO {
 	public DealBoard_DTO dealRead(int deal_number);
 
 	
-	//중고거래 게시글 업데이트(수정)
+	//중고거래 게시글 업데이트(일반폼수정)
 	int update(DealBoard_DTO dto);
+	
+	//중고거래 게시글 수정(첨부파일)
+	public int updateFile (List<DealFile_DTO> filedtolist);
 	
 	
 	//중고거래 게시글 삭제

@@ -12,11 +12,11 @@
 	</update> 
 	
 	
-	<!--중고거래_등록  -->
+	<!--중고거래_등록   -->
 	<insert id="deal_write" parameterType="dealDTO">
 		insert into deal_table2
 		values(deal_no2.nextval, #{member_id}, #{dealType}, #{product_category}, 
-		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate)
+		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate, 0)
 	</insert>
 	
 	<!--중고거래 게시글_전체조회  -->
@@ -59,12 +59,6 @@
 		where deal_number=#{deal_number}
 	</select>
 	
-	<!--중고거래 게시글_ 업데이트(수정)-->
-	<update id="dealUpdate" parameterType="dealDTO">
-		update deal_table2
-		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}
-		where deal_number = #{deal_number}
-	</update>
 	
 	<!--중고거래 게시글_삭제  -->
 	<delete id="dealDelete" parameterType="int">
@@ -143,6 +137,25 @@
    		 ...
 	select * from dual;
 	 -->
+	
+	<!--중고거래 게시글 수정(일반폼수정)-->
+	<update id="dealUpdate" parameterType="dealDTO">
+		update deal_table2
+		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}
+		where deal_number = #{deal_number}
+	</update>
+	
+	
+	<!--중고거래 게시글 수정(첨부파일수정)-->
+	<update id="updateFile" parameterType="java.util.List">
+		update deal_table2
+		<foreach collection="list" item="file" separator=" ">
+				set originalFilename = #{file.originalFilename}, storeFilename = #{file.storeFilename}, dealFile_number = #{file.dealFile_number})
+		where deal_number = #{file.deal_number}
+		</foreach>
+	</update>
+	
+	
 	
 		<!-- 첨부파일 가져오기(다운로드) -->
 	<select id="getFile" parameterType="Map" resultType="fileDTO">

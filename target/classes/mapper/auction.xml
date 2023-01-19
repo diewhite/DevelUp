@@ -26,10 +26,10 @@
 
 	<select id="read" resultType="auctionDTO" parameterType="Int">
 		select
-
 		auction_number,member_id,auction_category,auction_state,auction_title,hits,to_char(write_date,'yyyy-mm-dd hh24:mi:ss') as "write_date",
 		board_content,list_photo,min_price,start_price,end_price,to_char(end_date,'yyyy-mm-dd hh24:mi:ss') as "end_date"
 		from auction_table where auction_number = #{auction_number}
+
 	</select>
 
 	<!-- 경매게시판 전체게시글 조회 -->
@@ -55,7 +55,6 @@
 		auction_title,start_price,min_price,board_content,list_photo,write_date,end_date
 		)
 		values(auction_number.nextval, #{member_id}, #{auction_state},
-
 		#{auction_title}, #{start_price},#{min_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
 	</insert>
 

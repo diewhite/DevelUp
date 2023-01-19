@@ -17,10 +17,10 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	}
 
 	//중고거래등록
-	@Override
-	public int writeProd(DealBoard_DTO dto) {
-		return dao.writeProd(dto);
-	}
+//	@Override
+//	public int writeProd(DealBoard_DTO dto) {
+//		return dao.writeProd(dto);
+//	}
 
 	//중고거래 전체조회
 	@Override
@@ -33,12 +33,9 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	public DealBoard_DTO dealRead(int deal_number) {
 		return dao.dealRead(deal_number);
 	}
-	//중고거래 게시글수정
-	@Override
-	public int update(DealBoard_DTO dto) {
-		return dao.update(dto);
-	}
 
+	
+	
 	//중고거래 게시글 삭제
 	@Override
 	public int dealDelete(int deal_number) {
@@ -131,7 +128,15 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	public DealFile_DTO getFile(int deal_number, int dealFile_number) {
 		return dao.getFile(deal_number, dealFile_number);
 	}
-
+	
+	//중고거래 게시글수정
+	@Override
+	public int update(DealBoard_DTO dto, List<DealFile_DTO> listfiledto) {
+		System.out.println("[ServiceImpl_수정] 파리터체크 : " +listfiledto);
+		dao.update(dto);
+		dao.updateFile(listfiledto);
+		return 0;
+	}
 
 	
 	
