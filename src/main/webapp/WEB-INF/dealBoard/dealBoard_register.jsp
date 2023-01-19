@@ -214,7 +214,7 @@
 								</div>
 							</div> 
 						</div>
-					</div>
+			      	</div> 
  -->
 
 						<div class="grid-item colspan2">
