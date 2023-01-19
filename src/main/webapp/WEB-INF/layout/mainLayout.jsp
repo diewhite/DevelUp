@@ -483,8 +483,12 @@
 					   			 '<li><span class="introlist_tit">주소</span><span class="introlist_txt">'+data[i].addr+'</span></li>'+
 					   			 '<li><span class="introlist_tit">거래품목</span><span class="introlist_txt">'+data[i].content+'</span></li>'+
 					   			 '<li><span class="introlist_tit">문의</span><span class="introlist_txt">'+data[i].tel+'</span></li>'+
-					   			 '<li><span class="introlist_tit">견적</span><span class="introlist_txt">'+data[i].email+'</span></li>'+
-					   			 '</ul><div class="introlink"><span><a href="#">거래요청</a></span><span><a href="#">쪽지보내기</a></span></div></div>'
+					   			 '<li><span class="introlist_tit">견적</span><span class="introlist_txt">'+data[i].email+'</span></li></ul>'
+					if(${user.member_id!=null && user.member_role!=2}){
+						page = page + '<div class="introlink"><span><a href="/ongo/recycle/writepage?receive_id='+data[i].name+'">거래요청</a></span></div></div>' 
+					} else {
+						page = page + '</div>'
+					}
 					pagelist = pagelist + page;
 				}
 				document.getElementById("intro1slider").childNodes[1].innerHTML = pagelist;

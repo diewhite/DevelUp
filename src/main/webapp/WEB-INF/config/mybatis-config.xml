@@ -11,6 +11,7 @@
 		<typeAlias type="com.multi.ongo.history.DealRequestDTO" alias="dealReqDTO"/>
 		<typeAlias type="com.multi.ongo.auction.AuctionBoard_DTO" alias="auctionDTO"/>
 		<typeAlias type="com.multi.ongo.cooperation.CooperationDTO" alias="cooperDTO"/>
+		<typeAlias type="com.multi.ongo.recycle.RecycleDTO" alias="recycleDTO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,5 +22,6 @@
 		<mapper resource="mapper/dealrequest.xml"/>
 		<mapper resource="mapper/auction.xml"/>
 		<mapper resource="mapper/cooperation.xml"/>
+		<mapper resource="mapper/recycle.xml"/>
 	</mappers>
 </configuration>
