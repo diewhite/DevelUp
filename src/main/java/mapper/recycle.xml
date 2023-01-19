@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.multi.ongo.recycle">
+  	<select id="list" resultType="recycleDTO" parameterType="String">
+  		select * from recycle_board where receive_id = #{receive_id}
+  	</select>
+  	<insert id="write" parameterType="recycleDTO">
+  		insert into recycle_board values(recycle_seq.nextval,#{send_id},#{receive_id},sysdate,#{title},#{content})
+  	</insert>
+  	<select id="read" resultType="recycleDTO" parameterType="String">
+  		select * from recycle_board where no = #{no}
+  	</select>
+  </mapper>
