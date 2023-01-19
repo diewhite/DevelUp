@@ -11,9 +11,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
+	mystate = "";
 	/* 1. 거래상태별 게시글 조회  */
 	var type = "${product_state}" 
+	console.log(mystate)
+	var trobj ;
 	$(document).ready(function () {
 		$("#product_state").val(type).attr("selected","selected");
 		$("#product_state").change(function () {
@@ -24,7 +26,8 @@
 	
 	/* 2. 판매중 list > 거래요청한 유저 정보보기 - ajax로 통신  */
 		$(".showReqID").on("click", function() {
-			$(this).closest("tr").next().toggle()
+			trobj = $(this).closest("tr").next()
+			
 			//버튼과 가장 가까운 tr 태그의 다음 tr 태그를 선택 
 			// => 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
 			reqtr = $(this).closest("tr").next()
@@ -36,9 +39,10 @@
 				// = ajax를 통해 가져올 데이터가 출력될 부분  
 			// $(datanode).html(num+"<span>번 게시글/////</span>") 
 			//ajax요청결과를 datanode에 출력하기
-		
-				
-
+			
+		    state = $(this).closest("tr");
+			mystate = state.attr("id");
+			
 			$.ajax({
 				url : "/ongo/history/dealReqinfo",
 				type : "get",
@@ -46,139 +50,101 @@
 					"deal_number" : num
 				},
 				success : function(data) {
-					 
-					console.log("ajax success//////:",data)
-					
-				$(".reqdata").empty();
 				
 					
+				if(data.length != 0){
+					trobj.toggle()
 					
-				/* +구매요청 데이터가 없는 경우 화면 만들기 */
-				  
-				
-				/* 3. 구매요청 list > 구매요청한 유저 정보 출력   */
-				for(i=0; i<data.length; i++){
-					
-					
-					////추가된 부분 시작 
-					var buyer_id = data[i].buyer_id
-					
-					
-					/* 거래상태가 '거래진행중'일 경우 */
-					if(${sellList.product_state } == '거래진행중'){
+					$(".reqdata").empty();
+					/* 3. 구매요청 list > 구매요청한 유저 정보 출력   */
+					for(i=0; i<data.length; i++){
 							
-							/* 구매요청한 사람 = 구매자인 경우 */
-							if(data[i].req_id=buyer_id){
-								
-								payRequset = "";
-								
-								/* 	결제 요청 시 파라미터 넘길 url 작업해야함
-								var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}" */
+							/* (1) 거래상태가 '거래진행중'일 경우 */
+							if(mystate == '거래진행중'){
+									
+									/* (1) - 1 ) 구매요청한 사람 = 구매자인 경우 */
+									if(data[i].req_id == data[i].buyer_id){
+									
+										dealreqinfo = "";
 										
-								payRequset = 
-									"<tr ><td id='no'>"+data[i].deal_number
-										+"</td><td id='date'>"+data[i].req_time
-										+"</td><td id='id'>"+data[i].req_id
-										+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-										+"onclick='#'>쪽지보내기</button></td>"
-										+"<td id='deal-btn'><a class='payRequset' href='#'><button type='button' class='btn btn-warning'"
-										+">결제요청</button></td></tr>"
+										 /* 결제 요청 시 파라미터 넘길 url 작업해야함 */
+										var payRequest = "/ongo/history/payRequest?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number
+												+"&buyer_id="+data[i].buyer_id+"&dealreq_no="+data[i].dealreq_no
+												
+										dealreqinfo = 
+											"<tr ><td id='no'>"+data[i].deal_number
+												+"</td><td id='date'>"+data[i].req_time
+												+"</td><td id='id'>"+data[i].req_id
+												+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+												+"onclick='#'>쪽지보내기</button></td>"
+												+"<td id='deal-btn'><a class='payRequest' href='"+payRequest+"'><button type='button' class='btn btn-warning'"
+												+">결제요청</button></td></tr>"
+												
+												const req_id = data[i].req_id 
+												
+												$(".payRequset").on("click", function() {
+													alert(req_id+"님에게 결제요청이 완료되었습니다.")
+												} )
+						
+										/* (1) - 2 ) 구매요청한 사람 =/= 구매자인 경우 */			
+										}else{
 											
-										$(".reqdata").append(payRequset); 
-										
-										${".payRequset"}.onclick().alert(data[i].req_id+"님에게 결제요청이 완료되었습니다.")
-										
+											dealreqinfo = "";
+											
+											dealreqinfo = 
+											"<tr ><td id='no'>"+data[i].deal_number
+												+"</td><td id='date'>"+data[i].req_time
+												+"</td><td id='id'>"+data[i].req_id
+												+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+												+"onclick='#'>쪽지보내기</button></td>"
+												+"<td id='deal-btn'><button type='button' class='btn btn-outline-secondary'"
+												+">거래불가</button></td></tr>"
+												
+										}
 								
-										
-							/* 구매요청한 사람 =/= 구매자인 경우 */			
-							}else{
-								notBuyer = "";
-								
-								
-								notBuyer = 
-								"<tr ><td id='no'>"+data[i].deal_number
-									+"</td><td id='date'>"+data[i].req_time
-									+"</td><td id='id'>"+data[i].req_id
-									+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-									+"onclick='#'>쪽지보내기</button></td>"
-									+"<td id='deal-btn'><button type='button' class='btn btn-outline-secondary'"
-									+">거래불가</button></td></tr>"
-									
-									$(".reqdata").append(notBuyer); 
-									
-								
-							}
+								/* (2) 거래상태가 '판매중'일 경우 */
+								}else if (mystate == '판매중'){
 							
-							/* sellingStatus = "";
-							
-							String url =  "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}" 
-								
-							sellingStatus = 
-								"<tr ><td id='no'>"+data[i].deal_number
-									+"</td><td id='date'>"+data[i].req_time
-									+"</td><td id='id'>"+data[i].req_id
-									+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-									+"onclick='#'>쪽지보내기</button></td>"
-									+"<td id='deal-btn'><a href='"+ url +"'><button type='button' class='btn btn-info dealbtn text-white'"
-									+">Cancel</button></a></td></tr>"
+									dealreqinfo = "";
 									
-									$(".reqdata").append(sellingStatus) */
-						
-					/* 거래상태가 '판매중'일 경우 */
-					}else if (${sellList.product_state } == '판매중'){
-						
-					
-						requserinfo = "";
-						
-						var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}"
+									var url_string = "/ongo/history/choicebuyer?dealreq_no="+data[i].dealreq_no+"&req_id="+data[i].req_id
+											+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}"
+											
+									dealreqinfo = 
+										"<tr ><td id='no'>"+data[i].deal_number
+											+"</td><td id='date'>"+data[i].req_time
+											+"</td><td id='id'>"+data[i].req_id
+											+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+											+"onclick='#'>쪽지보내기</button></td>"
+											+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
+											+">거래하기</button></a></td></tr>"
 								
-							userinfo = 
-							"<tr ><td id='no'>"+data[i].deal_number
-								+"</td><td id='date'>"+data[i].req_time
-								+"</td><td id='id'>"+data[i].req_id
-								+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-								+"onclick='#'>쪽지보내기</button></td>"
-								+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
-								+">거래하기</button></a></td></tr>"
+								/* (3) 거래상태가 '판매종료'일 경우 */
+								}else{
+									
+									dealreqinfo = "";
+	
+									dealreqinfo = 
+										"<tr ><td id='no'>"+data[i].deal_number
+											+"</td><td id='date'>"+data[i].req_time
+											+"</td><td id='id'>"+data[i].req_id
+											+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
+											+"onclick='#'>쪽지보내기</button></td>"
+											+"<td id='deal-btn'><button type='button' class='btn btn-secondary text-white'"
+											+">거래완료</button></a></td></tr>"			
 								
-								$(".reqdata").append(userinfo); 
-						
+								}
+							
+						$(".reqdata").append(dealreqinfo);
+					} //for문 end
 					
-					/* 거래상태가 '판매종료'일 경우 */
-					}else{
-						
-						
-						
-					}
-					/////////추가된 부분 끝 
-				}
-			/*	for문 원본 
-			
-			userinfo = "";
-				
-				
-			var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}"
+				}else{	//=(data.length == 0)  
+					alert("거래요청 내역이 존재하지 않습니다.")
 					
-				userinfo = 
-				"<tr ><td id='no'>"+data[i].deal_number
-					+"</td><td id='date'>"+data[i].req_time
-					+"</td><td id='id'>"+data[i].req_id
-					+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-					+"onclick='#'>쪽지보내기</button></td>"
-					+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
-					+">거래하기</button></a></td></tr>"
-					
-					
-					
-					$(".reqdata").append(userinfo); 
- 					*/
-				} 
-					
-				
+				}	// 제일 바깥 if문 end
 				
 					
-					
-				},
+				},//success의 end
 				error : function(a, b, c) {
 					alert("오류발생" + a + b + c)
 				} //end error			
@@ -196,9 +162,6 @@
 				<h1>판매관리</h1>
 			</div>
 			<!-- //title -->
-
-	
-
 
 			<!-- 조회 테이블 시작 -->
 			<div class="tableDefault table-vertical mb-5 mt-5">
@@ -275,47 +238,25 @@
 				<div class="table-responsive px-2">
 					<div class="sellList">
 						<table class="table table-borderless table-hover">
-							<colgroup>
-								<col width="5%">
-								<!-- 번호 -->
-								<col width="5%">
-								<!-- 구분 -->
-								<col width="10%">
-								<!-- 상품사진 -->
-								<col width="28%">
-								<!-- 제 목 -->
-								<col width="8%">
-								<!-- 가격 -->
-								<col width="10%">
-								<!-- 구매요청 -->
-								<col width="8%">
-								<!-- 구매자 -->
-								<col width="*">
-								<!-- 작성일 -->
-								<col width="*">
-								<!-- 거래상태 -->
-								<col width="*">
-								<!-- 결제여부 -->
-							</colgroup>
 							<thead >
 								<tr >
-									<th class="table-header" scope="col">번호</th>
-									<th class="table-header" scope="col">구분</th>
-									<th class="table-header" scope="col">상품사진</th>
-									<th class="table-header-title" scope="col">제 목</th>
-									<th class="table-header" scope="col">가격</th>
-									<th class="table-header" scope="col">구매요청</th>
-									<th class="table-header" scope="col">구매자</th>
-									<th class="table-header" scope="col">작성일</th>
-									<th class="table-header" scope="col">거래상태</th>
-									<th class="table-header" scope="col">결제여부</th>
+									<th class="table-header" scope="col" width="5%">번호</th>
+									<th class="table-header" scope="col" width="5%">구분</th>
+									<th class="table-header" scope="col" width="10%">상품사진</th>
+									<th class="table-header-title" scope="col" width="28%">제 목</th>
+									<th class="table-header" scope="col" width="8%">가격</th>
+									<th class="table-header" scope="col" width="10%">구매요청</th>
+									<th class="table-header" scope="col" width="8%">구매자</th>
+									<th class="table-header" scope="col" width="*">작성일</th>
+									<th class="table-header" scope="col" width="*">거래상태</th>
+									<th class="table-header" scope="col" width="*">결제여부</th>
 								</tr>
 							</thead>
 							<tbody class="text-center">
 
 								<c:forEach var="sellList" items="${sellList }">
 
-									<tr>
+									<tr id="${sellList.product_state}">
 										<td>${sellList.deal_number }</td>
 										<td>${sellList.dealType }</td>
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
@@ -327,7 +268,14 @@
 										<td>
 											<button class="showReqID">요청ID보기</button>
 										</td>
-										<td>구매자id</td>
+										<c:choose>
+											<c:when test="${sellList.product_state=='거래진행중' }">
+											<td >${sellList.buyer_id }</td>
+											</c:when>
+											<c:otherwise>	
+												<td > - </td>
+											</c:otherwise>
+										</c:choose> 
 										<td>${sellList.write_date }</td>
 										<td>${sellList.product_state }</td>
 										<td>-</td>
@@ -337,64 +285,25 @@
 									<!-- 거래요청 tr = reqtr -->
 									<tr id="${sellList.deal_number}" style="display: none;">
 										<td colspan="10">
-											<table>
-												<colgroup>
-													<col width="10%">
-													<!-- 글번호 -->
-													<col width="20%">
-													<!-- 날짜 -->
-													<col width="30%">
-													<!-- 요청id -->
-													<col width="20%">
-													<!-- 요청날짜&시간 -->
-													<col width="*">
-													<!-- 쪽지보내기 버튼 -->
-												
-												</colgroup>
+											<table  >
 												<thead>
 													<tr >
-														<th scope="col">글번호</th>
-														<th scope="col">날짜</th>
-														<th scope="col">요청ID</th>
-														<th scope="col">쪽지</th>
-														<th scope="col" >거래하기</th>
+														<th scope="col" width="10%">글번호</th>
+														<th scope="col" width="20%">날짜</th>
+														<th scope="col" width="30%">요청ID</th>
+														<th scope="col" width="20%">쪽지</th>
+														<th scope="col" width="*">거래하기</th>
 													</tr>
 												</thead>
 											
 												<tbody class="reqdata"> 
+												<!-- ajax 데이터가 출력될 부분 -->
 												
-												 
-														
-														
-													
-												
-												   
-														<!--test ver.원본 시작 -->
-												<!-- 	<tr>
-														 <td colspan="4" id="reqUserInfo">
-															<div class="reqdata">
-															ajax 내용 들어갈 부분	
-															</div>
-														</td> 
-													</tr> -->
-														<!-- test ver.원본 끝 -->
-														
-														<!--test ver.2 시작 -->
-													<!-- <tr >
-														<td id="date">${reqinfo.req_date }</td>
-														<td id="id">${reqinfo.id }</td>
-														<td id="chat-btn"></td>
-														<td id="deal-btn"></td>											
-													</tr> 	 -->
-														<!-- test ver.2 끝 -->
-														
-												
-														
 												</tbody> 
-												
 											</table>
 										</td>
 									</tr>
+										
 
 								</c:forEach>
 								<!-- sellList  -->
@@ -437,19 +346,6 @@
 		<!-- 컨테이너 끝  -->
 	</div>
 	<!-- 컨텐츠 끝 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	<!--====== // </div> container=====-->

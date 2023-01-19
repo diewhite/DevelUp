@@ -42,9 +42,9 @@ $(document).ready(function () {
 										<select class="form-select" id="product_state"
 											name="product_state" title="거래상태 조회">
 											<option value="all"  >전체</option>
-											<option value="판매중">구매요청</option>
+											<option value="판매중">거래요청</option>
 											<option value="거래진행중" >거래진행중</option>
-											<option value="구매완료"  >구매완료</option>
+											<option value="판매완료" >구매완료</option>
 										</select>
 									</div>
 								</div>
@@ -117,21 +117,26 @@ $(document).ready(function () {
 								</tr>
 							</thead>
 							<tbody class="text-center">
+							
+							<c:forEach var="buylist" items="${buylist }">
+							
 									<tr>
-										<td>4</td>
-										<td>중고</td>
+										<td>${buylist.deal_number }</td>
+										<td>${buylist.dealType }</td>
 										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
-										<td><a
-											href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ'">제목</a></td>
-										<td><fmt:formatNumber value="1111"
+										<td>${buylist.board_title }</td>
+										<td><fmt:formatNumber value="${buylist.product_price }"
 												pattern="#,###원" /></td>
 										
-										<td>판매자id</td>
-										<td>날짜</td>
-										<td>구매요청</td>
+										<td>${buylist.member_id }</td>
+										<td>${buylist.write_date }</td>
+										<td>${buylist.product_state }</td>
 										<td>-</td>
 									</tr>
+									
+							</c:forEach>
+							
 							</tbody>
 						</table>
 

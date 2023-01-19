@@ -51,46 +51,49 @@ public class DealHistoryServiceImpl implements DealHistoryService {
 
 	// 중고거래판매내역 > '거래하기'클릭 시 > 구매자 정보 update & 거래상태 변경 
 	@Override
-	public int dealBtn (DealRequestDTO dto, int deal_number) {
-		System.out.println("컨트롤러에서 받아온 값 : "+dto+","+deal_number);
+	public int dealBtn (String req_id, int deal_number, int dealreq_no, String member_id) {
+		//System.out.println("컨트롤러에서 받아온 값 : "+req_id+","+dealreq_no+","+deal_number+","+member_id);
+		DealRequestDTO dto = new DealRequestDTO(req_id, deal_number, dealreq_no);
 		dao.stateChange(deal_number);
 		dao.choosebuyer(dto);
+		dao.addbuyid(req_id, deal_number);
 		return 0;
 	}
 
-	
+
 //	************* 구매 관리 *****************
 	
 	//중고거래 구매내역 list > mysealList 로 대체 
 	@Override
-	public List<DealRequestDTO> myreqlist(String member_id) {
+	public List<DealRequestDTO> myreqlist(String member_id,  String product_state) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	//중고거래 구매내역list 조회 > 전체 list & 구매요청 list  & 거래진행중/구매완료 list 
-		//원래 용도 : 거래진행중 list 
+	//중고거래 구매내역list 조회 > 전체 list & 거래요청 list  & 거래진행중/구매완료 list 
 	@Override
 	public List<DealBoard_DTO> mydealList(String member_id, String product_state) {
 		List<DealBoard_DTO> list = null;
 		if(product_state!=null) {
-			if(product_state.equals("all")) {
-				//모든 구매내역 list 
-				dao.purchaseAll(member_id);
-			}if(product_state.equals("판매중")) {
-				// 거래요청 list 
-				dao.myreqlist(member_id);
-			}if(product_state.equals("거래진행중")) {
+			if(product_state.equals("all")) {			//모든 구매내역 list 
+				list = dao.purchaseAll(member_id);
 				
+			}else if(product_state.equals("판매중")) {	//거래요청 list 
+				list = dao.myreqlist(member_id, product_state);
+				
+			}else if(product_state.equals("거래진행중")) {	//거래진행중 list 
+				list = dao.tradingList(member_id, product_state);
+				
+			}else if(product_state.equals("판매완료")) {	//구매완료 list 
+				list = dao.purchaseList(member_id, product_state);
 			}
-			
 		}
-		return null;
+		return list;
 	}
 
 	//구매완료(=판매완료) list > mysealList 로 대체 
 	@Override
-	public List<DealRequestDTO> purchaseList(String member_id) {
+	public List<DealRequestDTO> purchaseList(String member_id, String product_state) {
 		// TODO Auto-generated method stub
 		return null;
 	}

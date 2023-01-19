@@ -14,16 +14,22 @@ public class DealHistoryDTO {
 	private int hits; // 조회수	노쇼=  
 	private Date write_date; //작성일  - 노쇼=  ★게시글등록시필요
 	private String list_photo; // 리스트사진  - ★게시글등록시필요
+	private DealRequestDTO dto;
 	
 	//기본 생성자
 	public DealHistoryDTO() {
 		
 	}
 	
+
 	//생성자
+	public int getDeal_number() {
+		return deal_number;
+	}
+	
 	public DealHistoryDTO(int deal_number, String member_id, String dealType, String product_category,
 			String product_state, String board_title, int product_price, String board_content, int hits,
-			Date write_date, String list_photo) {
+			Date write_date, String list_photo, DealRequestDTO dto) {
 		super();
 		this.deal_number = deal_number;
 		this.member_id = member_id;
@@ -36,6 +42,7 @@ public class DealHistoryDTO {
 		this.hits = hits;
 		this.write_date = write_date;
 		this.list_photo = list_photo;
+		this.dto = dto;
 	}
 	
 	
@@ -45,13 +52,19 @@ public class DealHistoryDTO {
 		return "DealHistoryDTO [deal_number=" + deal_number + ", member_id=" + member_id + ", dealType=" + dealType
 				+ ", product_category=" + product_category + ", product_state=" + product_state + ", board_title="
 				+ board_title + ", product_price=" + product_price + ", board_content=" + board_content + ", hits="
-				+ hits + ", write_date=" + write_date + ", list_photo=" + list_photo + "]";
+				+ hits + ", write_date=" + write_date + ", list_photo=" + list_photo + ", dto=" + dto + "]";
 	}
 
-
-	public int getDeal_number() {
-		return deal_number;
+	
+	
+	public DealRequestDTO getDto() {
+		return dto;
 	}
+
+	public void setDto(DealRequestDTO dto) {
+		this.dto = dto;
+	}
+
 	public void setDeal_number(int deal_number) {
 		this.deal_number = deal_number;
 	}
