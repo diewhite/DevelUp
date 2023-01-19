@@ -27,13 +27,19 @@ public interface DealBoard_DAO {
 	//중고거래 거래구분선택
 	public List<DealBoard_DTO> dealType_list(String dealType);	
 		
-	//중고거래시글 타입-메인
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	List<DealTotalList_DTO> dealTotalList();
+	List<DealTotalList_DTO> dealTotalList(String dealType);
+	
+	
+	
+	
+	
+	//메인페이지 ajax사용 타입구분
 		List<DealBoard_DTO> dealType_main(String dealType);
 		
 	// 조회수
 	public int hits_update(int deal_number);
-	
-	
 	
 	
 	//업로드한파일을 목록조회

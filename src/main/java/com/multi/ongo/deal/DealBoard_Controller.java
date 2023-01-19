@@ -13,6 +13,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,8 +43,8 @@ public class DealBoard_Controller {
 	
 	
 	//첨부파일 다운로드  ( @PathVariable ; path에서 변수로 쓰겠다)
-	@RequestMapping("dealDownload/{member_id}/{deal_number}/{dealFile_number}")
-	public ResponseEntity<UrlResource> downloadFile(@PathVariable String member_id, @PathVariable int deal_number, @PathVariable int dealFile_number, HttpSession session) throws MalformedURLException, FileNotFoundException, UnsupportedEncodingException {
+	@RequestMapping("dealDownload/{deal_number}/{dealFile_number}")
+	public ResponseEntity<UrlResource> downloadFile(@PathVariable int deal_number, @PathVariable int dealFile_number, HttpSession session) throws MalformedURLException, FileNotFoundException, UnsupportedEncodingException {
 //		ResponseEntity<UrlResource> 란?  HttpEntity / ResponseEntity 상속받고있음
 //		HttpEntity란? Http의 요청과 응답을 관리하는 객체(요청헤더,바디,응답헤더,바디)
 //		ResponseEntity란? 응답데이터를 관리하는 객체 (Http헤더, Http바디, Http상태정보)
@@ -126,11 +127,33 @@ public class DealBoard_Controller {
 		//List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
 				ModelAndView mav = new ModelAndView("deallistAll2");
 		List<DealBoard_DTO> listall = service.dealType_list(dealType);
-		System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
+		//System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
 		mav.addObject("dealType",dealType);
 		mav.addObject("listall",listall);
 		return mav;
 	}
+	
+	
+	//조인***한 결과로 중고거래 게시글 타입별 조회
+	@RequestMapping("deal_listAll3.do")
+	public String dealTotalList(String dealType, Model model) {
+		List<DealTotalList_DTO> dealtotallist =service.dealTotalList(dealType);
+		model.addAttribute("dealtotallist", dealtotallist);
+		model.addAttribute("dealType", dealType);
+		//System.out.println("dealtotallist 조인결과 체크 : " + dealtotallist);
+		return "deallistAll3";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//중고거래게시글 전체리스트
@@ -165,7 +188,7 @@ public class DealBoard_Controller {
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("dealRead",dealRead);
 		mav.addObject("filedtolist",filedtolist); //파일첨부 결과 공유
-		System.out.println("filedtolist : "+ filedtolist);
+		//System.out.println("filedtolist : "+ filedtolist);
 		//System.out.println("컨트롤 공유 dealread 체크:" + dealRead);
 		//System.out.println("찍먹state:" + state);
 		return mav;

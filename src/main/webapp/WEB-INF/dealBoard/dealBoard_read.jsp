@@ -205,7 +205,7 @@
 									<div class="input-wrap w100">
 										<c:forEach var="file" items="${filedtolist}" >
 											<%-- <img alt="" src="/ongo/dealUpload/${file.storeFilename}"> --%>
-											<label for="HOFS_DTADR"><a href="/ongo/dealDownload/${dealRead.member_id}/${dealRead.deal_number}/${file.dealFile_number}">${file.originalFilename}</a></label><br/>
+											<label for="HOFS_DTADR"><a href="/ongo/dealDownload/${dealRead.deal_number}/${file.dealFile_number}">${file.originalFilename}</a></label><br/>
 										</c:forEach>
 									
 										
@@ -229,7 +229,7 @@
 					</div> -->
 			<div class="btn-area">
 
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
+				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll3.do?dealType=all'">리스트</button>
 				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" >거래요청</button>
 											<!-- onclick="location.href='/ongo/history/dealreq?
 				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'" -->										

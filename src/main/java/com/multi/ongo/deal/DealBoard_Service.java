@@ -27,8 +27,13 @@ public interface DealBoard_Service {
 	//중고거래시글 타입
 	List<DealBoard_DTO> dealType_list(String dealType);
 		
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	List<DealTotalList_DTO> dealTotalList(String dealType);
+	
+	
+	
 		
-	//중고거래시글 타입-메인
+	//중고거래시글 타입-메인 [ajax]
 		List<DealBoard_DTO> dealType_main(String dealType);
 	
 	// 조회수
