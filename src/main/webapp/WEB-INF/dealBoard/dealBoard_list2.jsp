@@ -27,13 +27,14 @@
 									+ encodeURI($(this).val());
 						})
 			})
+			
+		
 </script>
 
 
 </head>
 <body>
 	<!-- 이  아래부터  content부분 부터 복사해서 붙여넣기 하시면 됩니다. 하단 footer부분 인클루트 시켜주세요 -->
- 
 
 	<!-- content   -->
 	<!-- title -->
@@ -92,15 +93,13 @@
 			</thead>
 			<tbody>
 				<c:forEach var="board" items="${listall}">
-					<tr
-						onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'"
-						class="dataRow">
+					<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" class="dataRow">
+						<%-- <td hidden="true"><span class="gray-bold" id="dealIMG">${board.deal_number }</span></td> --%>
 						<td><span class="gray-bold">${board.dealType }</span></td>
-						<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-							width="50" height="50"> </td>
+						<td id="dealListImg"> <img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50" ></td>
+						<!-- <img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50" > -->
 						<td><span class="gray-bold">${board.board_title }</span></td>
-						<td><span class="blue-bold"><fmt:formatNumber
-									value="${board.product_price}" pattern="#,###원" /></span></td>
+						<td><span class="blue-bold"><fmt:formatNumber value="${board.product_price}" pattern="#,###원" /></span></td>
 						<td><span class="blue-bold">${board.member_id }</span></td>
 						<td><span class="blue-bold">${board.write_date }</span></td>
 						<td><span class="blue-bold">${board.hits }</span></td>
@@ -109,9 +108,38 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<br />
-		<br />
-
+		<br/>
+		<br/>
+		
+	<!-- 	리스트에 ajax시도하였으나 실패;
+		<script type="text/javascript">
+			window.onload = function () {
+				//alert("준비완료")
+				var dealIMG = {"deal_number":$("#dealIMG").text()}
+				$.ajax({
+					url: "/ongo/auction/mainlayout",
+					type: "get",
+					data: dealIMG,
+					success: function(ajaxlist) {
+							mydata = "";
+							
+							if(ajaxlist != null){
+								for (var i = 0; i < ajaxlist.length; i++) {
+									mydata = mydata + "<img src='/ongo/WEB-INF/dealUpload/"+ajaxlist.storeFilename +"'>";
+								}
+							}else{
+									mydata = "<img src='/ongo/WEB-INF/static/images/myphoto.png'>";
+							}
+							$("#dealListImg").html(mydata); 
+						},
+					error: function (a,b,c) {
+						alert(c)
+					}
+				})
+			}
+		</script>
+	 -->
+              
 
 
 

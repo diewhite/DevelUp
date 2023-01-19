@@ -121,7 +121,7 @@ public class AuctionBoard_Controller {
 	@ResponseBody
 	public List<AuctionBoard_DTO> dealType_main(){
 		List<AuctionBoard_DTO> auction_ajaxlist = service.boardlist();
-		System.out.println("옥션홈배너 결과체크"+auction_ajaxlist);
+		//System.out.println("옥션홈배너 결과체크"+auction_ajaxlist);
 		return auction_ajaxlist;
 	}
 	
