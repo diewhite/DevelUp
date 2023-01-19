@@ -129,6 +129,43 @@
           </li>
     <li>
     </c:if>
+    <c:if test="${sessionScope.user.member_role=='2' }">  
+          <li>
+            <a id="siTitle" href="#" onmouseover="menuover(this);"><span >나의온고</span></a>
+            <div class="dep2_wrap">
+              <div class="dep2_left">
+                <span>나의온고</span>
+              </div>
+              <div class="dep2_right" onmouseleave="menuout();">
+              
+             <!-- 수정할부분 -->
+				<div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#" >거래요청목록</a></span>
+                  <ul class="dep2_link">
+                    <li>
+                    <a href="/ongo/recycle/list?receive_id=${user.member_id}">거래요청목록</a></li>
+                  </ul>
+                </div>
+                <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#" >마이페이지</a></span>
+                  <ul class="dep2_link">
+                    <li>
+                    <a href="/ongo/member/usermypage?user_id=${user.member_id}">정보수정</a></li>
+                  </ul>
+                </div>
+                <div class="dep2_right_li">
+                  <span class="dep2_tit" ><a href="#" >쪽지함</a></span>
+                  <ul class="dep2_link">
+                    <li><a href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/receivebox?id=${user.member_id}'">받은쪽지함</a></li>
+                    <li><a href="#" onclick="location.href='/ongo/mypage/note/sendbox?id=${user.member_id}'">보낸쪽지함</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+    <li>
+    </c:if>
 
 <c:if test="${sessionScope.user.member_role=='99'  }">
   <li>
