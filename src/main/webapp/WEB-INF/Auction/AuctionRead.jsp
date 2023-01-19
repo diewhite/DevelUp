@@ -89,7 +89,7 @@
 	       <div class="auction-img-main ">
                           <ul>
                             <li >
-                                 <img id="auction-image" src="/ongo/upload/${board.list_photo}"></li>
+                                 <img id="auction-image" src="/ongo/upload/${board.list_photo}"   onerror="this.style.display='none'"></li>
                           </ul>
                         </div>
 					   	</div>
