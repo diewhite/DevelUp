@@ -118,7 +118,7 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("deal_number", deal_number);
 		map.put("dealFile_number", dealFile_number);
-		System.out.println("DAOImpl map체크 : " + map);
+		//System.out.println("DAOImpl map체크 : " + map);
 		return sqlSession.selectOne("com.multi.ongo.deal.getFile", map);
 	}
 

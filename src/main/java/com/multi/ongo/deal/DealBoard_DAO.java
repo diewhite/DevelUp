@@ -34,6 +34,7 @@ public interface DealBoard_DAO {
 	
 	
 	
+	
 	//메인페이지 ajax사용 타입구분
 		List<DealBoard_DTO> dealType_main(String dealType);
 		

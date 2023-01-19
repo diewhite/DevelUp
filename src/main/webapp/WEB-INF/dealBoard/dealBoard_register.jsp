@@ -237,7 +237,7 @@
 					<div class="btn-area" >
 						<button class="btn btn-primary btn-large" type="reset">새로입력</button>
 						<button class="btn btn-primary btn-large" type="button"
-							onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">리스트</button>
+							onclick="location.href='/ongo/deal_listAll3.do?dealType=all'">리스트</button>
 						<input type="submit" value="게시글 등록"
 							class="btn btn-primary btn-large" />
 					
