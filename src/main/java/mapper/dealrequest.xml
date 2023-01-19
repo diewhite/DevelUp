@@ -13,22 +13,28 @@
 	<!-- 	구매요청번호(PK) 	seller_id	buyer_id	req_id		req_time// @@시간포맷까지 포함해보기@@		글번호(FK) 	 -->
 	</insert>
 	
-	
 	<!-- 판매중 list > 거래요청 유저 정보 list   -->
 	<select id="dealreqinfo" resultType="dealReqDTO" parameterType="int">
-		select r.deal_number, r.dealreq_no, r.req_id, r.req_time		
+		select r.deal_number, r.dealreq_no, r.req_id, r.req_time, r.buyer_id	
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number	
 		and r.deal_number=#{deal_number}
 	</select>
 
-	
 	<!-- '거래하기' 클릭 시 구매자 정보 update -->
-	<update id="choicebuyer" parameterType="dealReqDTO">
+	 <update id="choicebuyer_ver2" parameterType="dealReqDTO">
 		update dealreq
 		set buyer_id=#{req_id} 
 		where deal_number=#{deal_number}
-	</update>
+		and dealreq_no=#{dealreq_no}
+	</update> 
+	
+	<!-- <update id="choicebuyer_ver1" parameterType="dealReqDTO">
+		update dealreq
+		set buyer_id=#{req_id} 
+		where deal_number=#{deal_number}
+	</update> -->
+	
 	
 	<!-- ================================ 구 매 내 역 ============================== -->
 	

@@ -18,7 +18,7 @@
  	
  	<!-- 중고거래 판매관리 페이지 -->
 	<definition name="history/dealsellList" extends="indexTemplate">
- 		<put-attribute name="content" value="/WEB-INF/history/dealsellList_ver3.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/history/dealsellList_ver4.jsp"></put-attribute>
  	</definition> 	
  	
  	<!-- 중고거래 구매관리 페이지 -->

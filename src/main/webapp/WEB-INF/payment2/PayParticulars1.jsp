@@ -301,12 +301,12 @@ function fnLogin(){
               
           </div>
       </div>    
-      \<div class="btn-area">
+     <div class="btn-area">
                   <button type="button" class="btn btn-primary btn-large me-md-2" onclick="fnLogin()">결제</button>
                   <button type="button" class="btn btn-outline-secondary btn-large" onclick="fnHome()">취소</button>
               </div>
   </div>
-</div>
+
 <!-- // contents -->
 
  
