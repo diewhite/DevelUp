@@ -90,7 +90,7 @@
 
 
 
-	<!-- 게시판 -->
+	<!-- 게시판  -->
 	<div class="container">
 		<table class="table table-borderless" id="myTable">
 			<!-- table-borderless -->
