@@ -53,7 +53,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                 
 					<c:forEach var="boardlist" items="${boardlist}"> 
-					<c:if test="${boardlist.auction_state eq '입찰중'}">
+					<c:if test="${boardlist.auction_state eq '경매중'}">
 						<div class="auctionboard"><!--col -->
 	                      <%--     <c:forEach var="boardlist" items="${boardlist}"> --%>
 	                      <div class="auction-card">
