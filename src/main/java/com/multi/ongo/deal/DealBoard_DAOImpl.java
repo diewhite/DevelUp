@@ -85,6 +85,55 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	public int hits_update(int deal_number) {
 		return sqlSession.update("com.multi.ongo.deal.hits_update", deal_number);
 	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//중고거래글 등록 ( +첨부파일) DealBoard_DTO테이블과 DealFile_DTO테이블에 저장
+	@Override
+	public int insertFile(List<DealFile_DTO> filedtolist) {
+		return sqlSession.insert("com.multi.ongo.deal.insertFile", filedtolist);
+	}
+
+
+	//업로드한파일을 목록조회
+	@Override
+	public List<DealFile_DTO> getFileList(int deal_number) {
+		return sqlSession.selectList("com.multi.ongo.deal.getFileList", deal_number);
+	}
+
+
+	//첨부파일 가져오기(다운로드)
+	@Override
+	public DealFile_DTO getFile(int deal_number, int dealFile_number) {
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("deal_number", deal_number);
+		map.put("dealFile_number", dealFile_number);
+		//System.out.println("DAOImpl map체크 : " + map);
+		return sqlSession.selectOne("com.multi.ongo.deal.getFile", map);
+	}
+
+
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	@Override
+	public List<DealTotalList_DTO> dealTotalList() {
+		return sqlSession.selectList("com.multi.ongo.deal.dealTotalList");
+	}
+
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	@Override
+	public List<DealTotalList_DTO> dealTotalList(String dealType) {
+		return sqlSession.selectList("com.multi.ongo.deal.dealTotalList2", dealType);
+	}
 	
 	
 	

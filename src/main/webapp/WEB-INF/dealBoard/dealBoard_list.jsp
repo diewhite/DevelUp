@@ -98,7 +98,7 @@
 								<c:forEach var = "board" items="${listall}">
 									<tr onclick="location.href='/ongo/dealRead.do?deal_number=${board.deal_number}&state=READ'" class="dataRow">
 										<td><span class="gray-bold">${board.dealType }</span></td>
-										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50">${board.list_photo }</td>
+										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
 										<td><span class="gray-bold">${board.board_title }</span></td>
 										<td><span class="blue-bold"><fmt:formatNumber value="${board.product_price}" pattern="#,###원"/></span></td>
 										<td><span class="blue-bold">${board.member_id }</span></td>

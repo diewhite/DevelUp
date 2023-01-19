@@ -16,13 +16,14 @@
 	<insert id="deal_write" parameterType="dealDTO">
 		insert into deal_table2
 		values(deal_no2.nextval, #{member_id}, #{dealType}, #{product_category}, 
-		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate, #{list_photo})
+		'판매중', #{board_title}, #{product_price}, #{board_content}, 0, sysdate)
 	</insert>
 	
 	<!--중고거래 게시글_전체조회  -->
 	<select id="selectAll" resultType="dealDTO">
 		select * from deal_table2
 		order by write_date desc
+		
 	</select>
 	
 	<!--중고거래 거래타입 검색  -->
@@ -30,6 +31,21 @@
 		select * from deal_table2
 		where dealType = #{dealType}
 		order by write_date desc
+	</select>
+	
+	<!--조인한 결과로 중고거래 게시글 타입별 조회  **************************-->
+	<select id="dealTotalList" resultType="dealtotalDTO">
+		select a.*, b.*
+		from deal_table2 a left outer join deal_file b 
+		on (a.deal_number=b.deal_number)
+		order by a.write_date desc
+	</select>
+	<select id="dealTotalList2" resultType="dealtotalDTO" parameterType="String">
+		select a.*, b.*
+		from deal_table2 a left outer join deal_file b 
+		on (a.deal_number=b.deal_number)
+		where dealType = #{dealType}
+		order by a.write_date desc
 	</select>
 	
 	
@@ -46,7 +62,7 @@
 	<!--중고거래 게시글_ 업데이트(수정)-->
 	<update id="dealUpdate" parameterType="dealDTO">
 		update deal_table2
-		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}, list_photo=#{list_photo}
+		set dealType=#{dealType}, product_category=#{product_category}, board_title=#{board_title},  product_price=#{product_price}, board_content=#{board_content}
 		where deal_number = #{deal_number}
 	</update>
 	
@@ -102,6 +118,37 @@
 				]]>  
 	</select>
 	
+	
+	<!-- 첨부파일목록 -->
+	<select id="getFileList" parameterType="int" resultType="fileDTO">
+		select * from deal_file 
+		where deal_number = #{deal_number}
+	</select>
+	
+	
+	<!-- 첨부파일등록 (파라미터타입 주의!! )-->
+	<insert id="insertFile" parameterType="java.util.List">
+		insert all
+		<!-- collection : List사용했으니 list, Array사용했다면 array, 저장명을 별도사용했다면 저장명, 향상된for문처럼...  collection에 저장된걸 item에서 하나씩 꺼내어 저장  -->
+		<!-- separator into 와 into사이 구분을 위한 띄워쓰기 -->
+			<foreach collection="list" item="file" separator=" ">
+				into deal_file values(deal_no2.currval, #{file.originalFilename}, #{file.storeFilename}, #{file.dealFile_number})
+			</foreach>
+		select * from dual
+	</insert>
+	<!-- 원래사용하려했던 예시
+	insert all
+		into 테이블명 values('컬럼1내용', '컬럼2내용'...)
+	    into 테이블명 values('컬럼1내용', '컬럼2내용'...)
+   		 ...
+	select * from dual;
+	 -->
+	
+		<!-- 첨부파일 가져오기(다운로드) -->
+	<select id="getFile" parameterType="Map" resultType="fileDTO">
+		select * from deal_file
+		where deal_number=#{deal_number} and dealFile_number=#{dealFile_number}
+	</select>
 	
 	
 	

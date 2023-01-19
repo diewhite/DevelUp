@@ -53,7 +53,7 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 	}
 
 	
-	//중고거래 거래구분선택
+	//중고거래 게시글 타입구분
 	@Override
 	public List<DealBoard_DTO> dealType_list(String dealType) {
 		List<DealBoard_DTO> list = null;
@@ -66,7 +66,25 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 		}
 			return list;
 	}
+	
+	//조인한 결과로 중고거래 게시글 타입별 조회
+	@Override
+	public List<DealTotalList_DTO> dealTotalList(String dealType) {
+		List<DealTotalList_DTO> list = null;
+		if(dealType != null) {
+			if(dealType.equals("all")) {
+				list = dao.dealTotalList();
+			}else {
+				list = dao.dealTotalList(dealType);
+			}
+		}
+			return list;
+	}
 
+	
+	
+	
+	//메인페이지 ajax사용 타입구분
 	@Override
 	public List<DealBoard_DTO> dealType_main(String dealType) {
 		List<DealBoard_DTO> list = null;
@@ -80,9 +98,49 @@ public class DealBoard_ServiceImpl implements DealBoard_Service {
 			return list;
 	}
 
+	//조회수
 	@Override
 	public int hits_update(int deal_number) {
 		return dao.hits_update(deal_number);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//업로드한파일을 목록조회
+	@Override
+	public List<DealFile_DTO> getFileList(int deal_number) {
+		//System.out.println("서비스임플 deal_number 파라미터 체크 : " + deal_number);
+		return dao.getFileList(deal_number);
+	}
+	//중고거래글 등록 ( +첨부파일) DealBoard_DTO테이블과 DealFile_DTO테이블에 저장
+	@Override
+	public int insertFile(DealBoard_DTO dto, List<DealFile_DTO> listfiledto) {
+		dao.writeProd(dto);
+		dao.insertFile(listfiledto);
+		return 0;
+	}
+	//첨부파일 가져오기(다운로드)
+	@Override
+	public DealFile_DTO getFile(int deal_number, int dealFile_number) {
+		return dao.getFile(deal_number, dealFile_number);
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

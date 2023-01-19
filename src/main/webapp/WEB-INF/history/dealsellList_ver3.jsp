@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 	
-	/* 거래상태별 게시글 조회  */
+	/* 1. 거래상태별 게시글 조회  */
 	var type = "${product_state}" 
 	$(document).ready(function () {
 		$("#product_state").val(type).attr("selected","selected");
@@ -20,14 +20,10 @@
 
 			location.href="/ongo/history/dealsellList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
 		})
-	})
 	
 	
-	
-	/* 판매중 게시글 list > 거래요청한 유저 정보보기 - ajax로 통신  */
-	$(document).ready(function() {
-
-		$(".showdata").on("click", function() {
+	/* 2. 판매중 list > 거래요청한 유저 정보보기 - ajax로 통신  */
+		$(".showReqID").on("click", function() {
 			$(this).closest("tr").next().toggle()
 			//버튼과 가장 가까운 tr 태그의 다음 tr 태그를 선택 
 			// => 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
@@ -40,7 +36,8 @@
 				// = ajax를 통해 가져올 데이터가 출력될 부분  
 			// $(datanode).html(num+"<span>번 게시글/////</span>") 
 			//ajax요청결과를 datanode에 출력하기
-			
+		
+				
 
 			$.ajax({
 				url : "/ongo/history/dealReqinfo",
@@ -52,39 +49,40 @@
 					 
 					console.log("ajax success//////:",data)
 					
-				  userinfo = "";
-				for(i=0; i<data.length; i++){
+				$(".reqdata").empty();
 				
-					/* userinfo=userinfo+"<li>"+data[i]+"</li>"	 */
 					
-				console.log("ajax success/2/:",data[i].req_id)
+					
+				/* +구매요청 데이터가 없는 경우 화면 만들기 */
+				  
 				
-				userinfo = userinfo +
+				/* 3. 구매요청 list > 구매요청한 유저 정보 출력   */
+				for(i=0; i<data.length; i++){
+					
+					
+			
+			userinfo = "";
+				
+				
+			var url_string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number+"&member_id=${user.member_id}"
+					
+				userinfo = 
 				"<tr ><td id='no'>"+data[i].deal_number
 					+"</td><td id='date'>"+data[i].req_time
 					+"</td><td id='id'>"+data[i].req_id
 					+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
 					+"onclick='#'>쪽지보내기</button></td>"
-					+"<td id='deal-btn'><button type='button' id='"+data[i].req_id+"' class='btn btn-info dealbtn text-white'"
-					+">거래하기</button></td></tr>"
+					+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
+					+">거래하기</button></a></td></tr>"
 					
-					console.log("ajax success///33:",data[i].req_id)
 					
-					var req_id = data[i].req_id
-					var test ="test"
 					
-					 $(document).on("click","button[id='test']",function() {
-						//console.log(data[i].req_id, data[i].deal_number)
-						/* location.href="/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number */	
-						//var string = "/ongo/history/choicebuyer?req_id="+data[i].req_id+"&deal_number="+data[i].deal_number
-						console.log(test)
-								
-				})
-					
-				} 
-					 $(".reqdata").empty();
 					$(".reqdata").append(userinfo); 
+ 					
+				} 
 					
+				
+				
 					
 					
 				},
@@ -106,7 +104,7 @@
 			</div>
 			<!-- //title -->
 
-	<button onclick="location.href='/ongo/history/choicebuyer' ">구매하기 버튼 클릭하면?</button>
+	
 
 
 			<!-- 조회 테이블 시작 -->
@@ -234,7 +232,7 @@
 										<td><fmt:formatNumber value="${sellList.product_price}"
 												pattern="#,###원" /></td>
 										<td>
-											<button class="showdata">요청ID보기</button>
+											<button class="showReqID">요청ID보기</button>
 										</td>
 										<td>구매자id</td>
 										<td>${sellList.write_date }</td>
@@ -370,3 +368,5 @@
 	<!-- //Footer -->
 </body>
 </html>
+
+

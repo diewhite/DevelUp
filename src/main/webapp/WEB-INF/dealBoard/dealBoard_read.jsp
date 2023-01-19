@@ -35,35 +35,6 @@
 	
 
 </script>
-<!-- 
-<style>
-      .modal2 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      .modal2.show {
-        display: block;
-      }
-      .modal2_body {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-		text-align:left;
-        width: 200px;
-        height: auto;
-        padding: 5px;
-        text-align: center;
-        background-color: rgb(255, 255, 255);
-        border-radius: 10px;
-        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-        transform: translateX(-50%) translateY(-50%);
-      }
-    </style> -->
 
 
 </head>
@@ -87,7 +58,7 @@
                 <input type="hidden" name="zon" id="zon" value="">
 
                 <!-- 현재 탭 표시 -->
-                <h2 class="visually-hidden">중고</h2>
+                <h2 class="visually-hidden">중고거래</h2>
                 <!-- //현재 탭 표시 -->
 
 		
@@ -152,61 +123,15 @@
 								</div>
 							</div>
 							
-							
-							
-							
-							<!--<div class="grid-item colspan2">
-								<label for="select_target_1">상태</label>
-							 	<div class="tbl-basic-td">
-									<div class="input-wrap w20">
-										<select class="form-select grid-input" title="상태">
-											<option value="01">판매중</option>
-											<option value="02">판매완료</option>
-										</select>
-									</div>
-								</div> 
-							</div>-->
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">제목</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										${dealRead.board_title}
-										<!-- <input class="grid-input" type="text" maxlength="500"
-											title="board_title" id="board_title" name="board_title"> -->
 									</div>
 								</div>
 							</div>
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							<%-- 원본
-								<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">작성자</label>
-								<div class="tbl-basic-td">
-									<div class="col-md-8" >
-										<input type="button" id="modal2-open" value="${dealRead.member_id}" style="border: 0em;">
-										<div class="col-md-8">${dealRead.member_id}</div>
-									</div>
-								</div>
-							</div>
-							 --%>
-							
-							
+						
 							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">작성자</label>
@@ -224,76 +149,6 @@
 									</div>
 								</div>
 							</div>
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							<!-- 
-							
-							
-				모달 ---------------------------------------------------------
-							
-							<div class="modal2" id="modal2">
-					<div class="modal2_body">
-						<ul>
-							<li><a href="" onclick="location.href='#'">쪽지보내기</a></li>
-							<li><a href="" onclick="location.href='#'">회원정보보기</a></li>
-							<li><a href="" onclick="location.href='#'">거래내역보기</a></li>
-						</ul>
-					</div>
-				</div>
-				
-				<script type="text/javascript">
-					 const body = document.querySelector('body');
-				      const modal2 = document.querySelector('.modal2');
-				      //const btnOpenPopup = document.querySelector('.btn-open-popup');
-				      const btnOpenPopup = document.querySelector('#modal2-open');
-				      btnOpenPopup.addEventListener('click', () => {
-				        modal2.classList.toggle('show');
-				        if (modal2.classList.contains('show')) {
-				          body.style.overflow = 'hidden';
-				        }
-				      });
-				      modal2.addEventListener('click', (event) => {
-				        if (event.target === modal2) {
-				          modal2.classList.toggle('show');
-				          if (!modal2.classList.contains('show')) {
-				            body.style.overflow = 'auto';
-				          }
-				        }
-				      });
-				</script>
-							 -->
-							
-							<!-- --------------------------------------------------------- -->
-						<%-- 	<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">상품명</label>
-								<div class="tbl-basic-td">
-									<div class="input-wrap w100">
-										${dealRead.product_name}
-										<!-- <input class="grid-input" type="text" maxlength="50"
-											title="product_name" id="product_name" name="product_name"> -->
-									</div>
-								</div>
-							</div>
-							 --%>
-							
-							
 							
 							<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">금액</label>
@@ -314,24 +169,46 @@
 							</div>
 
 
+
 							<div class="grid-item colspan2">
-								<label for="HOFS_INTR_MTRL_CNTS">내용</label>
+								<label for="HOFS_DTADR">내용</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										${dealRead.board_content}
-										<!-- <textarea class="grid-input" role="textbox"
-											id="board_content" name="board_content"
-											title="board_content" maxlength="1000" rows="5"></textarea> -->
 									</div>
 								</div>
 							</div>
+						
+					
+								
+							
+							
 
-							<div class="grid-item colspan2">
-								<label for="HOFS_DTADR">대표사진</label>
+								<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">사진</label>
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
-									${dealRead.list_photo}
-										<!-- <input type="file" class="form-control" id="list_photo" Name="list_photo" value=""/> -->
+										<c:forEach var="file" items="${filedtolist}" >
+											<img alt="" src="/ongo/dealUpload/${file.storeFilename}">
+										</c:forEach>
+									</div>
+								</div>
+								</div>
+							
+
+
+
+
+							<div class="grid-item colspan2">
+								<label for="HOFS_DTADR">첨부파일</label>
+								<div class="tbl-basic-td">
+									<div class="input-wrap w100">
+										<c:forEach var="file" items="${filedtolist}" >
+											<%-- <img alt="" src="/ongo/dealUpload/${file.storeFilename}"> --%>
+											<label for="HOFS_DTADR"><a href="/ongo/dealDownload/${dealRead.deal_number}/${file.dealFile_number}">${file.originalFilename}</a></label><br/>
+										</c:forEach>
+									
+										
 									</div>
 								</div>
 							</div> 
@@ -339,13 +216,20 @@
 						</div>
 					</div>
 				
+				
+				
+					
+							
+							
+							
+							
 					
 					<!-- <div class="btn-area">
 						<input type="submit" value="게시글 등록" class="btn btn-primary btn-large" />
 					</div> -->
 			<div class="btn-area">
 
-				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll.do?dealType=all'">리스트</button>
+				<button class="btn btn-primary btn-large" type="button" onclick="location.href='/ongo/deal_listAll3.do?dealType=all'">리스트</button>
 				<button class="btn btn-primary btn-large" id="dealreq-btn" type="button" >거래요청</button>
 											<!-- onclick="location.href='/ongo/history/dealreq?
 				seller_id=${dealRead.member_id}&req_id=${user.member_id}&deal_number=${dealRead.deal_number}'" -->										
@@ -498,6 +382,8 @@
 			}//end error
 		})//end ajax
 	}//end modalData
+	
+	
 </script>
 </body>
 </html>

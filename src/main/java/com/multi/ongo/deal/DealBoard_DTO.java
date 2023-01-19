@@ -1,28 +1,32 @@
 package com.multi.ongo.deal;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class DealBoard_DTO {
-		private int deal_number; // 거래번호  - 노쇼=  ★게시글등록시필요
-		private String member_id;  //유저아이디  - ★게시글등록불필요 이미로그인
-		private String dealType;    // 중고거래구분( 중고거래,나눔)  - ★게시글등록시필요
-		private String product_category;  //상품카테고리(디지털기기,의류 등등)  - ★게시글등록시필요
-		private String product_state; // 상품상태(판매중,거래진행중, 완료 )  - 노쇼=  ★게시글등록시필요
-		private String board_title; // 제목  - ★게시글등록시필요
-		private int product_price; // 상품가격  - ★게시글등록시필요
-		private String board_content; // 내용  - ★게시글등록시필요
-		private int hits; // 조회수	노쇼=  
-		private Date write_date; //작성일  - 노쇼=  ★게시글등록시필요
-		private String list_photo; // 리스트사진  - ★게시글등록시필요
-		
-
+		private int deal_number; // 거래번호  
+		private String member_id;  //유저아이디  
+		private String dealType;    // 중고거래구분( 중고거래,나눔) 
+		private String product_category;  //상품카테고리(디지털기기,의류 등등)
+		private String product_state; // 상품상태(판매중,거래진행중, 완료 )  
+		private String board_title; // 제목  
+		private int product_price; // 상품가격
+		private String board_content; // 내용
+		private int hits; // 조회수	  
+		private Date write_date; //작성일 
+		private List<MultipartFile> dealFiles; // 클라가 전송하는 바이너리파일 데이터를 스프링 mvc내부에서 MultipartFile객체로 저장
+											   // 첨부파일이 여러개인경우 List나 배열로 관리
 	public DealBoard_DTO() {
 		
 	}
 
+
+
 	public DealBoard_DTO(int deal_number, String member_id, String dealType, String product_category,
 			String product_state, String board_title, int product_price, String board_content, int hits,
-			Date write_date, String list_photo) {
+			Date write_date) {
 		super();
 		this.deal_number = deal_number;
 		this.member_id = member_id;
@@ -34,16 +38,51 @@ public class DealBoard_DTO {
 		this.board_content = board_content;
 		this.hits = hits;
 		this.write_date = write_date;
-		this.list_photo = list_photo;
 	}
+
+
+
+	public DealBoard_DTO(int deal_number, String member_id, String dealType, String product_category,
+			String product_state, String board_title, int product_price, String board_content, int hits,
+			Date write_date, List<MultipartFile> dealFiles) {
+		super();
+		this.deal_number = deal_number;
+		this.member_id = member_id;
+		this.dealType = dealType;
+		this.product_category = product_category;
+		this.product_state = product_state;
+		this.board_title = board_title;
+		this.product_price = product_price;
+		this.board_content = board_content;
+		this.hits = hits;
+		this.write_date = write_date;
+		this.dealFiles = dealFiles;
+	}
+
+
+
+
+	public List<MultipartFile> getDealFiles() {
+		return dealFiles;
+	}
+
+
+
+	public void setDealFiles(List<MultipartFile> dealFiles) {
+		this.dealFiles = dealFiles;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "DealBoard_DTO [deal_number=" + deal_number + ", member_id=" + member_id + ", dealType=" + dealType
 				+ ", product_category=" + product_category + ", product_state=" + product_state + ", board_title="
 				+ board_title + ", product_price=" + product_price + ", board_content=" + board_content + ", hits="
-				+ hits + ", write_date=" + write_date + ", list_photo=" + list_photo + "]";
+				+ hits + ", write_date=" + write_date + ", dealFiles=" + dealFiles + "]";
 	}
+
+
 
 	public int getDeal_number() {
 		return deal_number;
@@ -125,12 +164,5 @@ public class DealBoard_DTO {
 		this.write_date = write_date;
 	}
 
-	public String getList_photo() {
-		return list_photo;
-	}
-
-	public void setList_photo(String list_photo) {
-		this.list_photo = list_photo;
-	}
 
 }
