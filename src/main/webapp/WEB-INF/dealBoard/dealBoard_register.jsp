@@ -215,7 +215,7 @@
 							</div> 
 						</div>
 			      	</div> 
- -->
+  -->
 
 						<div class="grid-item colspan2">
 								<label for="HOFS_DTADR">첨부파일</label>
