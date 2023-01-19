@@ -40,11 +40,12 @@
 		on (a.deal_number=b.deal_number)
 		order by a.write_date desc
 	</select>
-	<select id="dealTotalList2" resultType="dealtotalDTO" parameterType="String">
+	<!-- 리스트3 -->
+	<select id="dealTotalList2" resultType="dealtotalDTO" parameterType="String"> 
 		select a.*, b.*
 		from deal_table2 a left outer join deal_file b 
 		on (a.deal_number=b.deal_number)
-		where dealType = #{dealType}
+		where dealType = #{dealType}		
 		order by a.write_date desc
 	</select>
 	
@@ -145,14 +146,13 @@
 		where deal_number = #{deal_number}
 	</update>
 	
-	
 	<!--중고거래 게시글 수정(첨부파일수정)-->
 	<update id="updateFile" parameterType="java.util.List">
 		update deal_table2
-		<foreach collection="list" item="file" separator=" ">
+		<foreach collection="list" item="file" >
 				set originalFilename = #{file.originalFilename}, storeFilename = #{file.storeFilename}, dealFile_number = #{file.dealFile_number})
-		where deal_number = #{file.deal_number}
 		</foreach>
+		where deal_number = #{deal_number}
 	</update>
 	
 	
@@ -161,6 +161,7 @@
 	<select id="getFile" parameterType="Map" resultType="fileDTO">
 		select * from deal_file
 		where deal_number=#{deal_number} and dealFile_number=#{dealFile_number}
+		and dealFile_number != null
 	</select>
 	
 	

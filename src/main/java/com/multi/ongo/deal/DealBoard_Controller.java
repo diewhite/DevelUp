@@ -160,7 +160,7 @@ public class DealBoard_Controller {
 		mav.addObject("dealRead",dealRead);
 		mav.addObject("filedtolist",filedtolist); //파일첨부 결과 공유
 		//System.out.println("filedtolist : "+ filedtolist);
-		System.out.println("컨트롤 공유_읽기 dealread 체크:" + dealRead);
+		//System.out.println("컨트롤 공유_읽기 dealread 체크:" + dealRead);
 		//System.out.println("찍먹state:" + state);
 		return mav;
 	}
@@ -203,20 +203,8 @@ public class DealBoard_Controller {
 	
 	//중고거래 게시글 수정
 	@RequestMapping("dealUpdate.do")
-	public String update(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
-		System.out.println("[컨트롤러_수정] 파라미터 체크: " + dto +"________");
-		List<MultipartFile> files = dto.getDealFiles(); 
-		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/dealUpload"); //경로따기
-		List<DealFile_DTO> filedtolist =  fileUploadService.uploadFiles(files, path); //서버에등록하기
-		
-		//다중첨부시 파일번호주기
-				int count =1;
-				for(DealFile_DTO filedto : filedtolist) {
-					filedto.setDealFile_number(count);
-					count++;
-				}
-		service.update(dto, filedtolist);
-		
+	public String update(DealBoard_DTO dto){
+		service.update(dto);
 		return "redirect:/deal_listAll3.do?dealType=all";
 	}
 	
