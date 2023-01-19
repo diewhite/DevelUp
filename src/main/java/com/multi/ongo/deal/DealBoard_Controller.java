@@ -124,9 +124,9 @@ public class DealBoard_Controller {
 	public ModelAndView dealType_list(String dealType) {
 		//첨부파일목록 불러오기 위하여작성
 		//List<DealFile_DTO> filedtolist = service.getFileList(deal_number);
-		
-		ModelAndView mav = new ModelAndView("deallistAll2");
+				ModelAndView mav = new ModelAndView("deallistAll2");
 		List<DealBoard_DTO> listall = service.dealType_list(dealType);
+		System.out.println("중고거래 전체글조회 listall 체크 : " + listall);
 		mav.addObject("dealType",dealType);
 		mav.addObject("listall",listall);
 		return mav;

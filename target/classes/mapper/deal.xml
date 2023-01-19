@@ -23,6 +23,11 @@
 	<select id="selectAll" resultType="dealDTO">
 		select * from deal_table2
 		order by write_date desc
+		
+	<!-- 	select a.*, b.*
+	from deal_table2 a left outer join deal_file b 
+	on (a.deal_number=b.deal_number) -->
+		
 	</select>
 	
 	<!--중고거래 거래타입 검색  -->
