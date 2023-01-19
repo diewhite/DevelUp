@@ -9,33 +9,26 @@ public class AuctionRequestDTO {
 	private String add_user;	//구매요청 유저 id
 	private String add_price; 	//입찰가격
 	private Date req_time; 		//구매요청날짜
-	private int deal_number; 	//글번호 (FK) 
+	private int auction_number; 	//글번호 (FK) 
 	
 	public AuctionRequestDTO() {
-		
-	}
-
-	public AuctionRequestDTO(String add_price, int deal_number) {
-		super();
-		this.add_price = add_price;
-		this.deal_number = deal_number;
 	}
 
 	public AuctionRequestDTO(int dealreq_no, String seller_id, String add_user, String add_price, Date req_time,
-			int deal_number) {
+			int auction_number) {
 		super();
 		this.dealreq_no = dealreq_no;
 		this.seller_id = seller_id;
 		this.add_user = add_user;
 		this.add_price = add_price;
 		this.req_time = req_time;
-		this.deal_number = deal_number;
+		this.auction_number = auction_number;
 	}
 
 	@Override
 	public String toString() {
 		return "AuctionRequestDTO [dealreq_no=" + dealreq_no + ", seller_id=" + seller_id + ", add_user=" + add_user
-				+ ", add_price=" + add_price + ", req_time=" + req_time + ", deal_number=" + deal_number
+				+ ", add_price=" + add_price + ", req_time=" + req_time + ", auction_number=" + auction_number
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
@@ -60,7 +53,10 @@ public class AuctionRequestDTO {
 		this.req_time = req_time;
 	}
 
-	public void setDeal_number(int deal_number) {
-		this.deal_number = deal_number;
+	public void setAuction_number(int auction_number) {
+		this.auction_number = auction_number;
 	}
-}
+	
+	}
+
+	
