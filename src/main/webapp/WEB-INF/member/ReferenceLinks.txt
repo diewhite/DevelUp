@@ -88,3 +88,12 @@ Ajax(Asynchronous Javascript and XML)
 +++++++++++++
 인터셉터는 모든 페이지를 user.member_id!=null 일때만 열리게 설정해두고
 로그인 안한 상태에서도 접근가능한 페이지만 작성해서 검사 안하게끔
+
+  
+++++++++++++++++++++
+ DB
++++++++++++++
+  <select id="idcheck" resultType="memberP" parameterType="String">
+    select * from member2 where member_id = #{member_id}
+ </select>
+#{member_id} => 이란? 클라이언트에서 요청하는 파라미터 값을 DB에 넣었다
