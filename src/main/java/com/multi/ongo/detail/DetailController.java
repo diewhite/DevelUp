@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.multi.ongo.auction.AuctionBoard_DTO;
+import com.multi.ongo.deal.DealBoard_DTO;
+import com.multi.ongo.history.DealRequestDTO;
 
 
 @Controller   
@@ -66,7 +68,22 @@ public DetailController (){}
 			return mav;
 	}
 //	
-//	@RequestMapping("/detail/auctionsellList")
+//	@RequestMapping("/detail/auctionbuyList")
+//	public ModelAndView auctionbuyList() {
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("detail/auctionbuyList");
+//		return mav;
+//}
+	//구매내역 main list
+	@RequestMapping("detail/auctionbuyList")
+	public ModelAndView auctionbuyList(String member_id, String auction_state){
+	ModelAndView mav = new ModelAndView("detail/auctionbuyList");
+	List<AuctionBoard_DTO> auctbuylist = service.myauctionList(member_id, auction_state);
+	System.out.println("컨트롤러에서 db 실행 결과 test : "+auctbuylist);
+	mav.addObject("buylist", auctbuylist);
+	return mav;	
+	}
+ //	@RequestMapping("/detail/auctionsellList")
 //	public ModelAndView auctionsellList() {
 //	ModelAndView mav = new ModelAndView();
 //	mav.setViewName("detail/auctionsellList");

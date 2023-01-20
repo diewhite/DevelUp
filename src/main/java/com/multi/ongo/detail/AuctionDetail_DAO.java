@@ -46,10 +46,19 @@ public interface AuctionDetail_DAO {
 	//[deal_table2] 경매거래 판매내역 > 판매중/경매진행중/판매종료 list
 	List<AuctionBoard_DTO> auctsell_state(String member_id, String auction_state);
 	// [dealreq] 경매거래 판매내역 > 판매중 list > 거래요청 유저 정보 list  ********
-	List<AuctionRequestDTO> auctreqinfo(int auction_number);
+//	List<AuctionRequestDTO> auctreqinfo(int auction_number);
 	// [dealreq] 경매거래 판매내역 > 구매자 선택 > 구매자 정보 update
 	int choosebuyer(AuctionRequestDTO auctreqDTO);
 	// [dealreq] 경매거래게시글 거래요청 > 거래요청한 유저 데이터 insert 
 
 	int auctdealreq(AuctionRequestDTO dto);
+//	************* 구매 내역 *****************
+	
+	//모든 구매내역 list 
+	List<AuctionBoard_DTO> auctpurchaseAll(String member_id);
+	//중고거래 판매내역 > 판매중 list > 거래요청 유저 정보 list 
+	List<AuctionRequestDTO> auctreqinfo(int auction_number);
+	//구매내역 list 
+	List<AuctionBoard_DTO> myauctionList(String member_id, String auction_state);
+	
 	}

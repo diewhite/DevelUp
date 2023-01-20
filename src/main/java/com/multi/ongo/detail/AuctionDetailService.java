@@ -16,4 +16,7 @@ public interface AuctionDetailService {
 	
 	//중고거래 판매내역 > 판매중 list > 거래요청 유저 정보 list  
 	List<AuctionRequestDTO> auctreqinfo(int auction_number);
+
+	//구매내역 main list
+	List<AuctionBoard_DTO> myauctionList(String member_id, String auction_state);
 }

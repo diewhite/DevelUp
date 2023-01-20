@@ -75,7 +75,11 @@ public List<AuctionRequestDTO> auctreqinfo(int auction_number) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+// 경매 구매내역 전체 list
+	@Override
+	public List<AuctionBoard_DTO> myauctionList(String member_id, String auction_state){
+		return sqlsession.selectList("com.multi.ongo.detail.myauctionList", member_id);
+	}
 //@Override
 //public int stateChange(int auction_number) {
 //	// TODO Auto-generated method stub
@@ -147,4 +151,9 @@ public List<AuctionRequestDTO> auctreqinfo(int auction_number) {
 //	// TODO Auto-generated method stub
 //	return null;
 //}
+	@Override
+	public List<AuctionBoard_DTO> auctpurchaseAll(String member_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

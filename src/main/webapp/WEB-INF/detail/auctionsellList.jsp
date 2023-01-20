@@ -11,82 +11,16 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-/* 1. 거래상태별 게시글 조회  */
-var type = "${auction_state}" 
+ /* 1. 거래상태별 게시글 조회  */
+/* var type = "${product_state}" 
 $(document).ready(function () {
-	$("#auction_state").val(type).attr("selected","selected");
-	$("#auction_state").change(function () {
+	$("#product_state").val(type).attr("selected","selected");
+	$("#product_state").change(function () {
 
-		location.href="/ongo/detail/auctionsellList?member_id=${user.member_id}&auction_state="+encodeURI($(this).val());
+		location.href="/ongo/detail/auctionsellList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
 	})
-	 
-	/* 2. 판매중 list > 거래요청한 유저 정보보기 - ajax로 통신  */
-		$(".showReqID").on("click", function() {
-			$(this).closest("tr").next().toggle()
-			//버튼과 가장 가까운 tr 태그의 다음 tr 태그를 선택 
-			// => 버튼 클릭할 때마다 거래요청id tr 이 보이거나 닫힘  
-			reqtr = $(this).closest("tr").next()
-			//	= 거래요청 tr  
-			num = reqtr.attr("id")
-			//	= 거래요청 tr의 id의 속성 값 = 게시글 번호 
-			 datanode = $(reqtr).children().find(".reqdata")
-			// 거래요청 tr의 자식 노드 중 reqdate 라는 클래스명을 가진 자식노드 찾음 
-				// = ajax를 통해 가져올 데이터가 출력될 부분  
-			// $(datanode).html(num+"<span>번 게시글/////</span>") 
-			//ajax요청결과를 datanode에 출력하기
-			 $.ajax({
-					url : "/ongo/detail/auctreqinfo",
-					type : "get",
-					data : {
-						"auction_number" : num
-					},
-					success : function(data) {
-						 
-						console.log("ajax success//////:",data)
-						
-					$(".reqdata").empty();
-					
-						
-						
-					/* +구매요청 데이터가 없는 경우 화면 만들기 */
-					  
-					
-					/* 3. 구매요청 list > 구매요청한 유저 정보 출력   */
-					for(i=0; i<data.length; i++){
-						
-						
-				
-				userinfo = "";
-					
-					
-				var url_string = "/ongo/detail/choicebuyer?req_id="+data[i].req_id+"&auction_number="+data[i].auction_number+"&member_id=${user.member_id}"
-						
-					userinfo = 
-					"<tr ><td id='no'>"+data[i].auction_number
-						+"</td><td id='date'>"+data[i].req_time
-						+"</td><td id='id'>"+data[i].seller_id
-						+"</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-						+"onclick='#'>쪽지보내기</button></td>"
-						+"<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
-						+">거래하기</button></a></td></tr>"
-						
-						
-						
-						$(".reqdata").append(userinfo); 
-	 					
-					} 
-						
-					
-					
-						
-						
-					},
-					error : function(a, b, c) {
-						alert("오류발생" + a + b + c)
-					} //end error			
-				}) //end ajax					
-			}) //end click
-		}) //end ready
+}) */
+	
 </script>
 </head>
 <body>
@@ -99,7 +33,7 @@ $(document).ready(function () {
 			</div>
 			<!-- //title -->
 			<!-- 조회 테이블 시작 -->
-			<div class="tableDefault table-vertical mb-5 mt-5">
+			<!-- <div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
 					<tbody>
 						 <tr>
@@ -112,7 +46,7 @@ $(document).ready(function () {
 											name="auction_state" title="거래상태 조회">
 											<option value="all"  >전체</option>
 											<option value="경매중">경매중</option>
-											<option value="입찰종료" >입찰종료</option>
+											<option value="경매종료" >경매종료</option>
 											<option value="거래진행중"  >결제진행중</option>
 										</select>
 									</div>
@@ -163,7 +97,7 @@ $(document).ready(function () {
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</div> -->
 			<!-- 조회 테이블 끝 -->
 
 
@@ -201,14 +135,14 @@ $(document).ready(function () {
 											<button class="showdata">입찰내역보기</button>
 										</td>
 										<td>${auctionlist.write_date }</td>
-										<td>${auctionlist.auction_state }</td>
+										<td>${auctionlist.auction_state}</td>
 										<td>-</td>
 										<td>-</td>
 									</tr>
 									
 									
 									<!-- 거래요청 tr = reqtr -->
-									 	<tr id="${auctionlist.auction_number}" style="display: none;">
+									<%-- <tr id="${auctionlist.deal_number}" style="display: none;">
 										<td colspan="10">
 											<table>
 												<colgroup>
@@ -242,7 +176,7 @@ $(document).ready(function () {
 												
 											</table>
 										</td>
-									</tr>
+									</tr> --%>
 
 								</c:forEach>
 								<!-- sellList  -->

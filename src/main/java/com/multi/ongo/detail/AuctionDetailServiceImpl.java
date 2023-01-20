@@ -52,4 +52,11 @@ public class AuctionDetailServiceImpl implements AuctionDetailService {
 		return 0;
 	}
 
+	//구매내역 list 
+	@Override
+	public List<AuctionBoard_DTO> myauctionList(String member_id, String auction_state) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

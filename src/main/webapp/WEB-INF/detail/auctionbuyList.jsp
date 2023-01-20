@@ -6,31 +6,30 @@
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/dealhistory.css">
 
 <script type="text/javascript"> 
-<!-- 
+
 /* 거래상태별 게시글 조회  */
-var type = "${product_state}" 
+/* var type = "${product_state}" 
 $(document).ready(function () {
-	$("#auctiont_state").val(type).attr("selected","selected");
-	$("#auction_state").change(function () {
-		location.href="/ongo/history/auction?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
+	$("#product_state").val(type).attr("selected","selected");
+	$("#product_state").change(function () {
+		location.href="/ongo/history/dealbuyList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
 	})
 })
-
+ */
 </script>
 </head>
 <body>
-
-		content
+		<!-- content -->
 	<div id="contents">
-		title
+		<!-- title -->
 		<div class="container">
 			<div class="sub_top">
 				<h1>구매관리</h1><span>거래요청한 게시글과 거래진행중 및 구매완료 된 게시글을 조회할 수 있습니다.</span>
 			</div>
-			//title
+			<!-- //title -->
 
-<!-- 		조회 테이블 시작
-			<div class="tableDefault table-vertical mb-5 mt-5">
+		<!-- -- 조회 테이블 시작 -->
+					<!-- <div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
 					<tbody>
 						 <tr>
@@ -49,9 +48,8 @@ $(document).ready(function () {
 									</div>
 								</div>
 							</td>
-						</tr>
-						
-						<tr>
+						</tr>  -->
+					<!-- 	<tr>
 							<th rowspan="2">기간별<br class="visible-xs"> 조회
 							</th>
 						</tr>
@@ -108,9 +106,9 @@ $(document).ready(function () {
 								<tr>
 									<th class="table-header" width="5%" scope="col">번호</th>
 									<th class="table-header" width="5%" scope="col">구분</th>
-									<th class="table-header" width="10%" scope="col">상품사진</th>
+								<!-- 	<th class="table-header" width="10%" scope="col">상품사진</th> -->
 									<th class="table-header-title" width="28%" scope="col">제 목</th>
-									<th class="table-header" width="*%" scope="col">가격</th>
+									<th class="table-header" width="*%" scope="col">입찰가격</th>
 									<th class="table-header" width="*%" scope="col">판매자</th>
 									<th class="table-header" width="*%" scope="col">작성일</th>
 									<th class="table-header" width="*%" scope="col">거래상태</th>
@@ -119,20 +117,19 @@ $(document).ready(function () {
 							</thead>
 							<tbody class="text-center">
 							
-							<c:forEach var="buylist" items="${buylist }">
+							<c:forEach var="buylist" items="${auctbuylist }">
 							
 									<tr>
-										<td>${buylist.deal_number }</td>
-										<td>${buylist.dealType }</td>
-										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+										<td>${auctbuylist.auction_number}</td>
+										<td>${auctbuylist.auction_categor }</td>
+										<!-- <td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
-										<td>${buylist.board_title }</td>
-										<td><fmt:formatNumber value="${buylist.product_price }"
+ -->										<td>${auctbuylist.auction_title; }</td>
+										<td><fmt:formatNumber value="${auctbuylis.product_price }"
 												pattern="#,###원" /></td>
-										
-										<td>${buylist.member_id }</td>
-										<td>${buylist.write_date }</td>
-										<td>${buylist.product_state }</td>
+										<td>${auctbuylis.member_id }</td>
+										<td>${auctbuylis.write_date }</td>
+										<td>${auctbuylis.auction_state  }</td>
 										<td>-</td>
 									</tr>
 									
