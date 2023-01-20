@@ -85,4 +85,24 @@
 	</websocket:handlers>
 	
 	
+		<!-- ================================인터셉터===================================================================== -->
+	
+	<!-- <interceptors>
+
+		<interceptor>
+			<mapping path="/**"/>
+			
+			<exclude-mapping path="/ongo/member/**"/>
+			<exclude-mapping path="/ongo/login.do"/>
+			<exclude-mapping path="/emp/spring/login"/>
+			<exclude-mapping path="/board/list.do"/>
+			<exclude-mapping path="/index.do"/>
+			<exclude-mapping path="/images/**"/>
+			<beans:bean class="com.multi.ongo.common.LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors> -->
+	
+	
+	
+	
 </beans:beans>
