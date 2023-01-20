@@ -98,3 +98,187 @@
   	</select>
   </mapper>
   
+  <!-- 
+  ====================================== ORACLE ======================================
+  
+  	<select id="receivelist" resultType="note" parameterType="Map">
+  		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk 
+		from (select rownum as num, n1.*
+			  from note n1
+			  where n1.receive_id=#{id}
+			  order by n1.no desc)
+		where num between (((#{page}-1)*#{perpage})+1) and (#{page}*#{perpage})		
+  	</select>
+  	<select id="sendlist" resultType="note" parameterType="Map">
+  		
+  		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk 
+		from (select rownum as num, n1.*
+			  from note n1
+			  where n1.send_id=#{id}
+			  order by n1.no desc)
+		where num between (((#{page}-1)*#{perpage})+1) and (#{page}*#{perpage})
+  	</select>
+  	<insert id="sendnote" parameterType="note">
+  		insert into note values(note_seq.nextval,#{send_id},#{receive_id},sysdate,null,#{content},0)
+  	</insert>
+  	<select id="searchsendbox" resultType="note" parameterType="Map">
+  		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk
+  		from (select rownum as num, n1.*
+			  from note n1
+			  <where>
+			  n1.send_id=#{send_id}
+			  <if test="category=='content' and keyword!=''">
+			  and n1.content like '%' || #{keyword} || '%'
+			  </if>
+			  <if test="category=='receive_id' and keyword!=''">
+			  and n1.receive_id like '%' || #{keyword} || '%'
+			  </if>
+			  </where>
+			  order by n1.no desc)
+			  where num between (((#{page}-1)*#{perpage})+1) and (#{page}*#{perpage})
+  	</select>
+  	 <select id="searchreceivebox" resultType="note" parameterType="Map">
+  		select no,send_id,receive_id,to_char(send_time,'yyyy-mm-dd hh24:mi:ss') as "send_time",to_char(read_time,'yyyy-mm-dd hh24:mi:ss') as "read_time",content,read_chk
+  		from (select rownum as num, n1.*
+			  from note n1
+			  <where>
+			  n1.receive_id=#{receive_id}
+			  <if test="category=='content' and keyword!=''">
+			  and n1.content like '%' || #{keyword} || '%'
+			  </if>
+			  <if test="category=='send_id' and keyword!=''">
+			  and n1.send_id like '%' || #{keyword} || '%'
+			  </if>
+			  </where>
+			  order by n1.no desc)
+			  where num between (((#{page}-1)*#{perpage})+1) and (#{page}*#{perpage})
+  	</select>
+  	<delete id="deletenote" parameterType="String">
+  		delete from note where no = #{no}
+  	</delete>
+  	<update id="readcheck" parameterType="String">
+  		update note set read_time = sysdate, read_chk = 1 where no = #{no}
+  	</update>
+  	<select id="receivenotecnt" resultType="note" parameterType="String">
+  		select count(no) as count from note where receive_id=#{id}
+  	</select>
+  	<select id="sendnotecnt" resultType="note" parameterType="String">
+  		select count(no) as count from note where send_id=#{id}
+  	</select>
+  	<select id="searchreceivecnt" resultType="note" parameterType="Map">
+  		select count(no) as count from note
+  		<where>
+  			receive_id=#{receive_id}
+			<if test="category=='content' and keyword!=''">
+  				and content like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  			<if test="category=='send_id' and keyword!=''">
+  				and send_id like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  		</where>
+  	</select>
+  	<select id="searchsendcnt" resultType="note" parameterType="Map">
+  		select count(no) as count from note
+  		<where>
+  			send_id=#{send_id}
+			<if test="category=='content' and keyword!=''">
+  				and content like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  			<if test="category=='receive_id' and keyword!=''">
+  				and receive_id like '%' || #{keyword} || '%' order by no desc
+  			</if>
+  		</where>
+  	</select>
+  	<select id="checknewnote" resultType="note" parameterType="String">
+  		select count(no) as count from note where receive_id=#{receive_id} and read_chk=0
+  	</select>
+  
+    ====================================== MySQL ======================================
+  
+   	<select id="receivelist" resultType="note" parameterType="Map">
+		select * from note
+		where receive_id=#{id}
+		order by no desc
+		limit ((#{page}-1)*#{perpage}) and (#{page}*#{perpage})		
+  	</select>
+  	<select id="sendlist" resultType="note" parameterType="Map">
+		select * from note
+		where send_id=#{id}
+		order by no desc
+		limit ((#{page}-1)*#{perpage}) and (#{page}*#{perpage})
+  	</select>
+  	<insert id="sendnote" parameterType="note">
+  		insert into note (send_id,receive_id, send_time,read_time,content,read_chk)
+		values(#{send_id},#{receive_id},sysdate(),null,#{content},0);
+  	</insert>
+  	<select id="searchsendbox" resultType="note" parameterType="Map">
+		select * from note
+			<where>
+			send_id=#{send_id}
+				<if test="category=='content' and keyword!=''">
+				and content like concat('%',#{keyword},'%')
+				</if>
+				<if test="category=='receive_id' and keyword!=''">
+				and receive_id like concat('%',#{keyword},'%')
+				</if>
+			</where>
+		order by no desc
+		limit ((#{page}-1)*#{perpage}) and (#{page}*#{perpage})
+  	</select>
+  	 <select id="searchreceivebox" resultType="note" parameterType="Map">
+		select * from note
+			<where>
+			receive_id=#{receive_id}
+				<if test="category=='content' and keyword!=''">
+				and content like concat('%',#{keyword},'%')
+				</if>
+				<if test="category=='send_id' and keyword!=''">
+				and send_id like concat('%',#{keyword},'%')
+				</if>
+			</where>
+		order by no desc
+		limit ((#{page}-1)*#{perpage}) and (#{page}*#{perpage})
+  	</select>
+  	<delete id="deletenote" parameterType="String">
+  		delete from note where no = #{no}
+  	</delete>
+  	<update id="readcheck" parameterType="String">
+  		update note set read_time = sysdate(), read_chk = 1 where no = #{no}
+  	</update>
+  	<select id="receivenotecnt" resultType="note" parameterType="String">
+  		select count(no) as count from note where receive_id=#{id}
+  	</select>
+  	<select id="sendnotecnt" resultType="note" parameterType="String">
+  		select count(no) as count from note where send_id=#{id}
+  	</select>
+  	<select id="searchreceivecnt" resultType="note" parameterType="Map">
+  		select count(no) as count from note
+			<where>
+			receive_id=#{receive_id}
+				<if test="category=='content' and keyword!=''">
+				and content like concat('%',#{keyword},'%')
+				</if>
+				<if test="category=='send_id' and keyword!=''">
+				and send_id like concat('%',#{keyword},'%')
+				</if>
+			</where>
+  	</select>
+  	<select id="searchsendcnt" resultType="note" parameterType="Map">
+  		select count(no) as count from note
+			<where>
+			send_id=#{send_id}
+				<if test="category=='content' and keyword!=''">
+				and content like concat('%',#{keyword},'%')
+				</if>
+				<if test="category=='receive_id' and keyword!=''">
+				and receive_id like concat('%',#{keyword},'%')
+				</if>
+			</where>
+  	</select>
+  	<select id="checknewnote" resultType="note" parameterType="String">
+  		select count(no) as count from note where receive_id=#{receive_id} and read_chk=0
+  	</select>
+  
+  
+   -->
+  

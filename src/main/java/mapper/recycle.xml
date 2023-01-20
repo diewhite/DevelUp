@@ -13,3 +13,32 @@
   		select * from recycle_board where no = #{no}
   	</select>
   </mapper>
+  
+  <!-- 
+  ====================================== ORACLE ======================================
+  
+   	<select id="list" resultType="recycleDTO" parameterType="String">
+  		select * from recycle_board where receive_id = #{receive_id}
+  	</select>
+  	<insert id="write" parameterType="recycleDTO">
+  		insert into recycle_board values(recycle_seq.nextval,#{send_id},#{receive_id},sysdate,#{title},#{content})
+  	</insert>
+  	<select id="read" resultType="recycleDTO" parameterType="String">
+  		select * from recycle_board where no = #{no}
+  	</select>
+  	
+  ====================================== MySQL ======================================
+  
+   	<select id="list" resultType="recycleDTO" parameterType="String">
+  		select * from recycle_board where receive_id = #{receive_id}
+  	</select>
+  	<insert id="write" parameterType="recycleDTO">
+  		insert into recycle_board (send_id,receive_id,write_date,title,content)
+		values(#{send_id},#{receive_id},sysdate(),#{title},#{content})
+  	</insert>
+  	<select id="read" resultType="recycleDTO" parameterType="String">
+  		select * from recycle_board where no = #{no}
+  	</select>
+  
+   -->
+  
