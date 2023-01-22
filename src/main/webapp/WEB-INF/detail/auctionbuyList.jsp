@@ -121,15 +121,15 @@ $(document).ready(function () {
 							
 									<tr>
 										<td>${auctbuylist.auction_number}</td>
-										<td>${auctbuylist.auction_categor }</td>
+										<td>${auctbuylist.auction_category}</td>
 										<!-- <td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
- -->										<td>${auctbuylist.auction_title; }</td>
-										<td><fmt:formatNumber value="${auctbuylis.product_price }"
+ -->										<td>${auctbuylist.auction_title}</td>
+										<td><fmt:formatNumber value="${auctbuylis.current_price }"
 												pattern="#,###원" /></td>
 										<td>${auctbuylis.member_id }</td>
 										<td>${auctbuylis.write_date }</td>
-										<td>${auctbuylis.auction_state  }</td>
+										<td>${auctbuylis.auction_state}</td>
 										<td>-</td>
 									</tr>
 									

@@ -120,9 +120,9 @@ $(document).ready(function () {
 									<th class="table-header" scope="col" width="8%">결제여부</th>
 								</tr>
 							</thead>
-							<tbody class="text-center">
+							<tbody class="text-center"  >
 
-								<c:forEach var="auctionlist" items="${auctionlist}">
+								<c:forEach var="auctionlist" items="${auctionlist}" >
 
 									<tr>
 										<td>${auctionlist.auction_number}</td>
