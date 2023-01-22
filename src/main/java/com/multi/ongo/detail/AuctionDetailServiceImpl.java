@@ -3,6 +3,7 @@ package com.multi.ongo.detail;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.multi.ongo.auction.AuctionBoard_DTO;
@@ -75,7 +76,7 @@ import com.multi.ongo.auction.AuctionBoard_DTO;
 			}else if(auction_state.equals("경매완료")) { //경매완료 list 
 				list = dao.auctpurchaseList(member_id, auction_state);
 			}
-		}
+	}
 		return list;
 	}
 

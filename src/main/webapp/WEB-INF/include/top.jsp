@@ -91,8 +91,8 @@
                 <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="#">경매관리</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/detail/auctionsellList?member_id=${user.member_id}&auction_state=all">판매관리</a></li>
-                    <li><a href="/ongo/detail/auctionbuyList?member_id=${user.member_id}&auction_state=all">구매관리</a></li>
+                    <li><a href="/ongo/detail/auctionsellList?member_id=${user.member_id}&auction_state=all">경매관리</a></li>
+                   <%--  <li><a href="/ongo/detail/auctionbuyList?member_id=${user.member_id}&auction_state=all">구매관리</a></li> --%>
                   </ul>                 
                 </div>
                 <div class="dep2_right_li">
@@ -272,7 +272,7 @@
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">경매관리</span></a>
                     <ul class="sitemap_depth3 dot_list">
                         <li><a href="/ongo/detat/dealsellList">판매관리</a></li>
-                   	 	<li><a href="/ongo/detail/auctionbuyList">구매관리</a></li>   
+                   	 	<!-- <li><a href="/ongo/detail/auctionbuyList">구매관리</a></li>    -->
                     </ul>
                   </div>
                   

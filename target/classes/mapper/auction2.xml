@@ -2,19 +2,20 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.multi.ongo.auction">
+	<mapper namespace="com.multi.ongo.auction">
 
 	<!--경매 판매내역 메인 (전체) -->
 	<select id= "auctsaleAll" parameterType="String" resultType="auctionDTO">
 		select * from auction_table
 		where member_id=#{member_id}
+		order by auction_number
 		</select>
-		<!-- 거래상태 별로 테이블 조회 (판매중/판매종료/거래진행중) -->
+		<!-- 거래상태 별로 테이블 조회 (입찰중/입찰종료) -->
 	<select id="auctselectState" parameterType="Map" resultType="auctionDTO">
 		select * from auction_table
-		where member_id=#{member_id}
-		 <!-- 내가 쓴 글만 조회하기 위한 조건 -->
+		where member_id=#{member_id} <!-- 내가 쓴 글만 조회하기 위한 조건 --> 
 		and auction_state=#{auction_state}	<!-- 탭메뉴 클릭 시 컨트롤러로 넘어오는 거래상태 -->
+		order by auction_number
 	</select>
 	<!-- '거래하기' 클릭 시 거래상태 변경  -->
 	<update id="auctstateChange" parameterType="int">
@@ -28,6 +29,37 @@
 		where member_id = #{member_id}
 		and auction_state = #{auction_state} 
 	</select>
+
+
+
+	<!-- ===================== 구매 관리 ======================== -->
+	
+	 <!--  구매내역 메인(거래상태=all)  -->
+	<select id = "auctpurchaseAll" resultType="auctionDTO" parameterType="String">
+			select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d, auction_bid r		
+		where d.deal_number=r.auction_number <!-- 거래진행중 -->
+<!-- 		and r.buyer_id=#{member_id} -->
+		order by deal_number 
+	</select>
+	<!-- 구매내역 > 나의 거래요청 리스트 조회 -->
+ 	<select id = "myauctreqlist" resultType="auctionDTO" parameterType="String">
+ 	select d.auction_number, d.auction_category , d.auction_title, d.current_price, d.member_id, d.write_date, d.auction_state
+	from auction_table d , auction_bid r
+	where d.auction_number = r.auction_number
+	and d.auction_state=#{auction_state}
+	order by auction_number
+ 	</select>
+ 	
+ 	<!-- 구매완료(=판매완료) list -->
+<!-- 	<selcet id="auctpurchaseList" parameterType="String" resultTyep="auctionDTO">
+ 	select d.auction_number, d.auction_category , d.auction_title, d.current_price, d.member_id, d.write_date, d.auction_state
+	from auction_table d , auction_bid r
+	where d.auction_number = r.auction_number
+	and d.auction_state=#{auction_state}
+	order by auction_number
+	</selcet> -->
+
 
 
 </mapper>

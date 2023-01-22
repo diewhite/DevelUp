@@ -3,16 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.member"> <!-- mapper는 namespace="내가 사용한 패키지명"-->
-	<!--  Mybatis 연동을 통하여 Oracle 데이터를 스프링 프로젝트를 사용하기 위함.
- parameterType="자바에서 String또는int 값이 들어올거라는것을 인지시켜 주는 역할"
-resultType="select 된 데이터를 반환할 (그릇)정의"
-=> mybatis-config.xml에서 보았듯이 MemberDTO 객체에 담기고 그걸 alias 에 담아서 가져온 후 resultType에 넣어준다
-  => <typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/> alias="패키지 이름지정"
-    
-  관리자계정 = 인설트가 아니라 업데이트로 처리
-  회원삭제시 = 1 = 삭제 0= 살아있다
-        
--->		
+
         
          <!-- 로그인 : login이라는 이름은 mapper에 정의된 이름 -->
         <select id="login" resultType="memberP" parameterType="memberP">
@@ -78,7 +69,7 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
 		select * from member2 where member_name like '%' || #{member_name} || '%' 
 	</select>
 
-		 <!-- 관리자 >회원정보수정 -->
+		 <!-- 관리자 >회원정보수정-->
      	<update id="idUpdate" parameterType="memberP"> 
         	update member2
         	set member_pw=#{member_pw}, member_name=#{member_name},
@@ -87,5 +78,164 @@ resultType="select 된 데이터를 반환할 (그릇)정의"
         	where member_id = #{member_id}
         </update>
       
-	
+<!--  Mybatis 연동을 통하여 Oracle 데이터를 스프링 프로젝트를 사용하기 위함.
+ parameterType="자바에서 String또는int 값이 들어올거라는것을 인지시켜 주는 역할"
+resultType="select 된 데이터를 반환할 (그릇)정의"
+=> mybatis-config.xml에서 보았듯이 MemberDTO 객체에 담기고 그걸 alias 에 담아서 가져온 후 resultType에 넣어준다
+  => <typeAlias type="com.multi.ongo.member.MemberDTO" alias="memberP"/> alias="패키지 이름지정"
+    
+  관리자계정 = 인설트가 아니라 업데이트로 처리
+  회원삭제시 = 1 = 삭제 0= 살아있다
+   
+ =============================== 오라클===========================================
+ 
+        로그인 : login이라는 이름은 mapper에 정의된 이름
+        <select id="login" resultType="memberP" parameterType="memberP">
+        	select * from member2 
+        	where member_id = #{member_id} and member_pw = #{member_pw}
+        		and member_sign = '가입'
+        </select>
+        
+         아이디중복체크
+        <select id="idcheck" resultType="memberP" parameterType="String">
+        	select * from member2 where member_id = #{member_id}
+        </select>
+ 
+		 회원가입-입력 / 탈퇴시 : 업데이트 명령어로 처리 member_sign 컬럼값을 가입에서 탈퇴
+	 	<insert id="joinwrite" parameterType="memberP">
+             insert into member2
+             values(member_no.nextval, #{member_id},#{member_pw},#{member_name},
+             #{zipcode},#{member_addr1},#{member_addr2}, #{member_phone},
+             #{member_email},'1',sysdate, #{member_sign}
+             )
+        </insert>
+        
+        회원 탈퇴 
+        <update id="unsign">
+        	update member2 set member_sign = '탈퇴' where member_id = #{member_id}
+        </update>
+        
+        회원 아이디 찾기
+        <select id="findid" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_phone = #{member_phone} and member_email = #{member_email}
+        </select>
+        
+        회원 비밀번호 찾기
+        <select id="findpass" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_id = #{member_id} and member_email = #{member_email}
+        </select>
+        
+       회원 비밀번호 수정
+        <update id="passmodi">
+        	update member2 set member_pw = #{member_pw} where member_id = #{member_id}
+        </update>
+        
+        관리자 >회원목록리스트
+		<select id="selectall" resultType="memberP">
+                select * from member2
+                order by member_no desc
+        </select>
+   
+       관리자 >회원목록리스트> 상세읽기
+	    <select id="idRead" resultType="memberP" parameterType="String"> 
+	        	select * from member2
+	        	where member_id = #{member_id}
+	     </select>
+	     
+	     관리자> 삭제
+     	 <delete id="idDelete" parameterType="String">
+        	delete from member2 
+        	where member_id = #{member_id}
+        </delete>
+        
+       
+         <select id="nameSearch" resultType="memberP" parameterType="String">
+		select * from member2 where member_name like '%' || #{member_name} || '%' 
+	</select>
+
+		관리자 >회원정보수정
+     	<update id="idUpdate" parameterType="memberP"> 
+        	update member2
+        	set member_pw=#{member_pw}, member_name=#{member_name},
+        	zipcode=#{zipcode}, member_addr1=#{member_addr1}, member_addr2=#{member_addr2},member_phone=#{member_phone},
+        	 member_email=#{member_email}
+        	where member_id = #{member_id}
+        </update>
+ 
+=============================== // 오라클===========================================
+
+=============================== MySql===========================================
+        로그인 : login이라는 이름은 mapper에 정의된 이름
+        <select id="login" resultType="memberP" parameterType="memberP">
+        	select * from member2 
+        	where member_id = #{member_id} and member_pw = #{member_pw}
+        		and member_sign = '가입'
+        </select>
+        
+         아이디중복체크
+        <select id="idcheck" resultType="memberP" parameterType="String">
+        	select * from member2 where member_id = #{member_id}
+        </select>
+ 
+		 회원가입-입력 / 탈퇴시 : 업데이트 명령어로 처리 member_sign 컬럼값을 가입에서 탈퇴
+	 	<insert id="joinwrite" parameterType="memberP">
+             insert into member2
+             values(null, #{member_id},#{member_pw},#{member_name},
+             #{zipcode},#{member_addr1},#{member_addr2}, #{member_phone},
+             #{member_email},'1',date_format(now(),'%Y-%m-%d'), #{member_sign}
+             )
+        </insert>
+        
+        회원 탈퇴 
+        <update id="unsign">
+        	update member2 set member_sign = '탈퇴' where member_id = #{member_id}
+        </update>
+        
+        회원 아이디 찾기
+        <select id="findid" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_phone = #{member_phone} and member_email = #{member_email}
+        </select>
+        
+        회원 비밀번호 찾기
+        <select id="findpass" resultType="memberP" parameterType="memberP">
+        	select * from member2 where member_id = #{member_id} and member_email = #{member_email}
+        </select>
+        
+       회원 비밀번호 수정
+        <update id="passmodi">
+        	update member2 set member_pw = #{member_pw} where member_id = #{member_id}
+        </update>
+        
+        관리자 >회원목록리스트
+		<select id="selectall" resultType="memberP">
+                select * from member2
+                order by member_no desc
+        </select>
+   
+       관리자 >회원목록리스트> 상세읽기
+	    <select id="idRead" resultType="memberP" parameterType="String"> 
+	        	select * from member2
+	        	where member_id = #{member_id}
+	     </select>
+	     
+	     관리자> 삭제
+     	 <delete id="idDelete" parameterType="String">
+        	delete from member2 
+        	where member_id = #{member_id}
+        </delete>
+        
+       
+     <select id="nameSearch" resultType="memberP" parameterType="String">
+		select * from member2 where member_name like concat('%', #{member_name} ,'%' )
+	</select>
+
+		관리자 >회원정보수정
+     	<update id="idUpdate" parameterType="memberP"> 
+        	update member2
+        	set member_pw=#{member_pw}, member_name=#{member_name},
+        	zipcode=#{zipcode}, member_addr1=#{member_addr1}, member_addr2=#{member_addr2},member_phone=#{member_phone},
+        	 member_email=#{member_email}
+        	where member_id = #{member_id}
+        </update>
+-->			
   </mapper>

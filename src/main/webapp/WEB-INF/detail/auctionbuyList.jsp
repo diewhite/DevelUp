@@ -100,7 +100,7 @@ $(document).ready(function () {
 				<!-- list 시작 -->
 
 				<div class="table-responsive px-2">
-					<div class="sellList">
+					<div class="seeList">
 						<table class="table table-borderless table-hover">
 							<thead>
 								<tr>
@@ -108,8 +108,8 @@ $(document).ready(function () {
 									<th class="table-header" width="5%" scope="col">구분</th>
 								<!-- 	<th class="table-header" width="10%" scope="col">상품사진</th> -->
 									<th class="table-header-title" width="28%" scope="col">제 목</th>
-									<th class="table-header" width="*%" scope="col">입찰가격</th>
-									<th class="table-header" width="*%" scope="col">판매자</th>
+									<th class="table-header" width="*%" scope="col">현재가격</th>
+									<!-- <th class="table-header" width="*%" scope="col">판매자</th> -->
 									<th class="table-header" width="*%" scope="col">작성일</th>
 									<th class="table-header" width="*%" scope="col">거래상태</th>
 									<th class="table-header" width="*%" scope="col">결제여부</th>
@@ -117,7 +117,7 @@ $(document).ready(function () {
 							</thead>
 							<tbody class="text-center">
 							
-							<c:forEach var="buylist" items="${auctbuylist }">
+							<c:forEach var="buylist" items="${auctbuylist}">
 							
 									<tr>
 										<td>${auctbuylist.auction_number}</td>
@@ -127,7 +127,7 @@ $(document).ready(function () {
  -->										<td>${auctbuylist.auction_title}</td>
 										<td><fmt:formatNumber value="${auctbuylis.current_price }"
 												pattern="#,###원" /></td>
-										<td>${auctbuylis.member_id }</td>
+										<%-- <td>${auctbuylis.member_id}</td> --%>
 										<td>${auctbuylis.write_date }</td>
 										<td>${auctbuylis.auction_state}</td>
 										<td>-</td>
