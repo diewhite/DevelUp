@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <html>
 <head>
 <style type="text/css">
@@ -79,7 +82,7 @@ hr {
 		<!-- title -->
 		<div class="sub_top">
 			<div class="container">
-				<h1>결제내역조회</h1>
+				<h1>결제내역조회</h1> <span class="ms-2"> ${user.member_id } 님이 결제한 내역입니다.</span>
 			</div>
 		</div>
 		<!-- //title -->
@@ -87,7 +90,7 @@ hr {
 		<!--======  <div class="container">  부분부터 복사해서 붙여넣기 하시면 됩니다.======  -->
 		<!-- 결제내역 필터링 -->
 		<div class="container">
-			<div class="board_view_file" id="fileList">
+			<!-- <div class="board_view_file" id="fileList">
 				<div class="file_left">조회기간</div>
 				<ul class="file_list" id="fileListArea">
 					<li>
@@ -122,14 +125,15 @@ hr {
 				</ul>
 			</div>
 	 	</div>
-
+ -->
 		<!-- //필터링 끝 -->
 		<div class="justify-content-center mt-50 mb-50">
 			<div class="container">
+			<c:forEach var="payhisory" items="${payhisory }">
 				<div class="board_info d-flex mb-3">
-					<div class="total">
+					<!-- <div class="total">
 						전체 <strong class="blue" id="totalCount"> 9</strong> 건
-					</div>
+					</div> -->
 				</div>
 				<div class="col-md-12">
 					<div class="card card-body">
@@ -141,16 +145,17 @@ hr {
 							</div>
 							<div class="col-5 ms-4 mt-3 text-start" style="float: left;">
 								<h5 class="media-title font-weight-semibold">
-									<a href="#" data-abc="true">아이폰 14프로 팝니다</a>
+									<a href="#" data-abc="true">${payhisory.board_title }</a>
 								</h5>
 								<ul class="list-inline list-inline-dotted mt-2 mb-3 mb-lg-2">
-									<li class="list-inline-item">중고거래</li>
+									<li class="list-inline-item">${payhisory.dealType }</li>
 									<li class="list-inline-item">|</li>
-									<li class="list-inline-item">2023년 1월 6일</li>
+									<li class="list-inline-item">${payhisory.pay_date }</li>
 								</ul>
 								<div>
+							<!-- 	<li class="list-inline-item">판매자 | </li> -->
 									<h5>
-										<a href="#"> user_id </a>
+										<a href="#">판매자 | ${payhisory.seller_id } </a>
 									</h5>
 								</div>
 								<hr>
@@ -161,85 +166,42 @@ hr {
 							</div>
 							<div class="col-2 mt-5 text-center" style="float: left;">
 								<div class="mt-4 ms-5">
-									<h4>결제완료</h4>
+									<h4>${payhisory.pay_state }</h4>
 								</div>
 							</div>
 
 							<div class="col-2 ms-5 mt-5 text-center" style="float: left;">
-								<h3 class="mb-0 font-weight-semibold">700,000원</h3>
-								<button type="button" class="btn btn-warning mt-2 text-white">
+								<h3 class="mb-0 font-weight-semibold"><fmt:formatNumber value="${payhisory.product_price }"
+												pattern="#,###원" /></h3>
+								<c:choose>
+								<c:when test="${payhisory.product_state=='거래진행중' }">
+								<a href="/ongo/history/dealconfirm?deal_number=${payhisory.deal_number }"><button type="button" class="btn btn-warning mt-2 text-white">
 									<i class="icon-cart-add mr-2"></i> 구매확정
-								</button>
-								<button type="button" class="btn btn-warning mt-2 text-white">
-									<i class="icon-cart-add mr-2"></i> 후기쓰기
-								</button>
+								</button></a>
+								</c:when>
+								<c:otherwise>
+								<a href="/ongo/history/dealconfirm?deal_number=${payhisory.deal_number }"><button type="button" class="btn btn-warning mt-2 text-white">
+									<i class="icon-cart-add mr-2"></i> 확정완료
+								</button></a>
+								</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
 				</div>
+				</c:forEach>
 			</div>
 		</div>
 
-		<div class="justify-content-center mt-50 mb-50">
-			<div class="container">
-				<div class="col-md-12">
-					<div class="card card-body">
-						<div
-							class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-							<div class="col-2 mt-3" style="float: left;">
-								<img class="product_img" src="https://i.imgur.com/5Aqgz7o.jpg"
-									alt="">
-							</div>
-							<div class="col-5 ms-4 mt-3 text-start" style="float: left;">
-								<h5 class="media-title font-weight-semibold">
-									<a href="#" data-abc="true">아이폰 14프로 팝니다</a>
-								</h5>
-								<ul class="list-inline list-inline-dotted mt-2 mb-3 mb-lg-2">
-									<li class="list-inline-item">중고거래</li>
-									<li class="list-inline-item">|</li>
-									<li class="list-inline-item">2023년 1월 6일</li>
-								</ul>
-								<div>
-									<h5>
-										<a href="#"> user_id </a>
-									</h5>
-								</div>
-								<hr>
-								<p class="mb-3">
-									결제가 완료되었습니다. <br> 구매확정 이후 상품에 관해 궁금한 점과 배송에 대한 문의는 판매자에게
-									문의해주세요.
-								</p>
-							</div>
-							<div class="col-2 mt-5 text-center" style="float: left;">
-								<div class="mt-4 ms-5">
-									<h4>결제대기</h4>
-								</div>
-							</div>
-
-							<div class="col-2 ms-5 mt-5 text-center" style="float: left;">
-								<h3 class="mb-0 font-weight-semibold">700,000원</h3>
-								<button type="button" class="btn btn-warning mt-2 text-white">
-									<i class="icon-cart-add mr-2"></i> 구매확정
-								</button>
-								<button type="button" class="btn btn-warning mt-2 text-white">
-									<i class="icon-cart-add mr-2"></i> 후기쓰기
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	</div>
 </div>
 
-
-		<!--====== // </div> container=====-->
-
-<!-- 	</div> -->
+	
 	<!-- //contents -->
 
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" /> 
 	<!-- //Footer -->
+	
 </body>
 </html>

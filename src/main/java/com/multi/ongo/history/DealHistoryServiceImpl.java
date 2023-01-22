@@ -2,10 +2,12 @@ package com.multi.ongo.history;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.ongo.deal.DealBoard_DTO;
+import com.multi.ongo.payment.PaymentDAO;
 
 @Service
 public class DealHistoryServiceImpl implements DealHistoryService {
@@ -16,10 +18,12 @@ public class DealHistoryServiceImpl implements DealHistoryService {
 		super();
 		this.dao = dao;
 	}
+	
 
-//	************* 구매 관리 *****************
-	
-	
+
+
+//	************* 판매 관리 *****************
+
 	//중고거래 판매내역list 조회 
 	@Override
 	public List<DealBoard_DTO> sell_List(String member_id, String product_state) {
@@ -59,7 +63,14 @@ public class DealHistoryServiceImpl implements DealHistoryService {
 		dao.addbuyid(req_id, deal_number);
 		return 0;
 	}
-
+	
+	//중고거래판매내역 '거래취소' 클릭시 > deal_table2에 거래상태 변경 & dealreq 구매자 정보 null 처리 
+	@Override
+	public int dealcancle(int deal_number) {
+		dao.dropBuyerData(deal_number);
+		dao.sellingcancle(deal_number);
+		return 0;
+	}
 
 //	************* 구매 관리 *****************
 	
@@ -101,9 +112,10 @@ public class DealHistoryServiceImpl implements DealHistoryService {
 	//구매확정 
 	@Override
 	public int dealconfirm(int deal_number) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.dealconfirm(deal_number);
 	}
+
+	
 
 
 	

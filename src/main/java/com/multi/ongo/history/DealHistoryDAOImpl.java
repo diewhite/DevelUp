@@ -88,7 +88,19 @@ public class DealHistoryDAOImpl implements DealHistoryDAO {
 		//System.out.println("거래하기 클릭 -> deal_table2 테이블 update : "+stateChange);
 		return stateChange;
 	}
-
+	//중고거래판매내역 '거래취소' 클릭시 dealreq 구매자 정보 null 처리 
+	@Override
+	public int dropBuyerData(int deal_number) {
+		// TODO Auto-generated method stub
+		return sqlsession.update("com.multi.ongo.dealreq.dropBuyerData", deal_number);
+	}
+	
+	//중고거래판매내역 '거래취소' 클릭시 deal_table2에 거래상태 변경  
+	@Override
+	public int sellingcancle (int deal_number) {
+		// TODO Auto-generated method stub
+		return sqlsession.update("com.multi.ongo.deal.sellingcacle", deal_number);
+	}
 
 	
 //	************* 구매 관리 *****************
@@ -130,10 +142,11 @@ public class DealHistoryDAOImpl implements DealHistoryDAO {
 	//구매확정
 	@Override
 	public int dealconfirm(int deal_number) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlsession.update("com.multi.ongo.deal.dealconfirm", deal_number);
+		return result;
 	}
 
+	
 
 
 	

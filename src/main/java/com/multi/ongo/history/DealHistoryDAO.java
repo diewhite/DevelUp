@@ -29,6 +29,11 @@ public interface DealHistoryDAO {
 	//중고거래판매내역 '거래하기' 클릭시 deal_table2에 구매자 id 저장 
 	int addbuyid(String req_id, int deal_number);
 	
+	//중고거래판매내역 '거래취소' 클릭시 dealreq 구매자 정보 null 처리 
+	int dropBuyerData (int deal_number);
+	
+	//중고거래판매내역 '거래취소' 클릭시 deal_table2에 거래상태 변경  
+	int sellingcancle (int deal_number);
 	
 //	************* 구매 내역 *****************
 	

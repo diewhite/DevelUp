@@ -105,8 +105,8 @@
                  <div class="dep2_right_li">
                   <span class="dep2_tit" ><a href="/ongo/payment/paymentlist">결제내역</a></span>
                   <ul class="dep2_link">
-                    <li><a href="/ongo/payment/paymentlist">결제내역조회</a></li>
-                     <li ><a href="/ongo/payment2/PayParticulars" >결제내역상세</a></li>
+                    <li><a href="/ongo/payment/paymentlist?member_id=${user.member_id }">결제내역조회</a></li>
+                     
                   </ul>
                 </div>
                 <div class="dep2_right_li">
@@ -287,7 +287,7 @@
                     <a href="#" class="sitemap_depth2_tit"><span onclick="pageMove(this, true)">결제내역</span></a>
                     <ul class="sitemap_depth3 dot_list">
 	                    <li><a href="/ongo/payment/paymentlist">결제내역조회</a></li>
-                    	<li ><a href="/ongo/payment2/PayParticulars" >결제내역상세</a></li>
+                    
                     </ul>
                   </div>
                   <div class="sitemap_depth2">

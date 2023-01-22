@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.ongo.pay">
+
+
+<!-- 결제 프로세스 : 
+1. [판매자] 결제요청 버튼 클릭
+2. [DB] 결제테이블에 결제정보가 insert 됨 (이때 결제상태도 '결제대기'로 변경됨)
+3. [구매자] 게시물의 결제상태가 '결제대기' 상태가 되면 구매내역 '결제하기' 버튼 클릭 -> 결제창 뜸 
+4. [구매자] 결제창에서 결제정보 list 조회 & '결제하기' 버튼 클릭 
+5. [DB] 결제상태가 '결제완료'로 변경됨 
+6. [구매자] 결제상태가 '결제완료'가 되면 '구매확정' 버튼이 클릭 
+7. [DB] 게시물의 거래상태가 '판매완료'로 변경됨 -->
+
+
+	<!-- ==================== 중고거래 ======================= -->
+
+	<!-- 중고거래 판매내역 > 결제요청 버튼 클릭 > 결제 테이블에 결제 정보 insert -->
+	<insert id="setPayInfo_deal" parameterType="payDTO">
+	insert into payment values (#{seller_id}, #{buyer_id}, #{board_number},pay_number.nextval, #{product_price},to_date(sysdate, 'YYYY-MM-DD'), '결제대기',null)
+	</insert>
+
+	<!-- 중고거래 구매내역 > 결제창 > 결제정보 list 출력 -->
+	<select id="buyList_payInfo_deal" parameterType="Map" resultType="paytotalDTO">
+	select p.*, d.*
+	from payment p, deal_table2 d 
+	where p.board_number=d.deal_number
+	and p.buyer_id=#{member_id}
+	and p.board_number=#{board_number}
+	</select>
+		
+	<!-- [중고거래] 결제창 > 결제완료 버튼 클릭 > 결제 상태 변경 (결제대기->결제완료) -->
+	<update id="changePayState_deal">
+	update payment 
+	set pay_state = '결제완료'
+	where board_number=#{board_number}
+	</update>
+	
+	<!-- 결제내역조회 -->
+	<select id="paymentHistory" parameterType="String" resultType="paytotalDTO">
+	select p.*, d.*
+	from payment p, deal_table2 d 
+	where p.board_number=d.deal_number
+	and p.buyer_id=#{member_id}
+	</select>
+	
+	
+	<!-- ==================== 경매 ======================= -->
+	
+	
+	<!-- 경매 판매내역 > 결제요청 버튼 클릭 > 결제 테이블에 결제 정보 insert -->
+	<insert id="setPayInfo_auction" parameterType="payDTO">
+	insert into payment values (#{seller_id}, #{buyer_id}, null, pay_number.nextval, #{product_price},to_date(sysdate, 'YYYY-DD-MM'), '결제대기',#{auction_number})
+	</insert>
+
+	
+	<!-- 경매 구매내역 > 결제상태 출력 -->
+	<select id="payStateList_auction" parameterType="int" resultType="payDTO">
+	select p.pay_state from deal_number d, payment p 
+	where d.auction_number=p.auction_number 
+	and deal_number=#{auction_board}
+	</select>
+
+	<!-- 결제창 > 결제정보 list 출력 -->  <!-- member_id 필요한가? 테스트하고 옥션꺼도 만들기 -->
+	<select id="payInfoList_auction" parameterType="Map" resultType="payDTO">
+	select d.dealType, d.board_title, d.product_price, d.member_id, p.pay_date, p.pay_state
+	from payment p, deal_table2 d 
+	where d.buyer_id=#{member_id} 
+	and d.deal_number=r.deal_number 
+	and d.deal_number=#{deal_number}
+	</select>
+
+	<!-- [경매] 결제창 > 결제완료 버튼 클릭 > 결제 상태 변경 (결제대기->결제완료) -->
+	<update id="changePayState_auction" parameterType="int">
+	update payment 
+	set pay_state = '결제완료'
+	where board_number={#board_number}
+	</update>
+
+</mapper>
+	
+

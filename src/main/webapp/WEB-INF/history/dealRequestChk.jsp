@@ -29,7 +29,7 @@
 				<button class="btn btn-primary mt-5 btn-large" type="button" onclick="location.href='/ongo/deal_listAll2.do?dealType=all'">
 						글 목록으로 돌아가기 
 				</button>				
-				<button class="btn btn-primary mt-5 btn-large" type="button" onclick="location.href='/ongo/history/dealbuyList'">
+				<button class="btn btn-primary mt-5 btn-large" type="button" onclick="location.href='/ongo/history/dealbuyList?member_id=${user.member_id}&product_state=all'">
 						구매내역으로 이동하기 
 				</button>		
 			</div>
