@@ -4,12 +4,23 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.ongo.deal">
 	
+		<!-- ####################################### 실행용 오라클 쿼리문 ###################################### -->
+	
 	<!-- 판매내역 메인 (전체) -->
  	  <select id="saleAll" parameterType="String" resultType="dealDTO">
 		select * from deal_table2 
 		where member_id=#{member_id}
 		order by deal_number 
 	</select>  
+	
+	<!-- 결제내역 포함 판매내역 -->
+	<select id="saleAll2" parameterType="String" resultType="dealDTO">
+	select d.*, pay_state 
+	from deal_table2 d, payment p 
+	where d.deal_number=p.board_number 
+	and member_id=#{member_id}
+	order by deal_number 
+	</select>
 	
 	<!-- <select id="saleAll2" parameterType="String" resultType="dealDTO">
 		select distinct d.deal_number, d.dealType, d.board_title, d.product_price, d.write_date, d.product_state, r.buyer_id
@@ -51,18 +62,25 @@
 		where deal_number=#{deal_number}
 	</update> 
 
+	<!-- 중고거래판매내역 '거래취소' 클릭시 deal_table2에 거래상태 변경   -->
+	<update id="sellingcacle" parameterType="int">
+	update deal_table2 
+		set product_state='판매중'
+		where deal_number=#{deal_number}
+	</update> 
+
 	<!-- 탭메뉴 클릭시 조회되는 게시글 수 -->
-	<select id="pageTotal" parameterType="String">
+	<!-- <select id="pageTotal" parameterType="String">
 		select count(deal_number) as count from deal_table2
 		where member_id = #{member_id}
 		and product_state = #{product_state} 
-	</select>
+	</select> -->
 	
 	<!-- ===================== 구매 관리 ======================== -->
 	
 	 <!--  구매내역 메인(거래상태=all)  -->
 	 <select id="purchaseAll" resultType="dealDTO" parameterType="String">
-		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		select d.deal_number, d.dealType, d.board_title, d.product_price, d.member_id, d.write_date, d.product_state
 		from deal_table2 d, dealreq r
 		where d.deal_number = r.deal_number   
 		and r.req_id = #{member_id}
@@ -71,7 +89,7 @@
 	
 	<!-- 구매내역 > 나의 거래요청 리스트 조회 -->
 	<select id="myreqlist" resultType="dealDTO" parameterType="Map">
-		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		select d.deal_number, d.dealType, d.board_title, d.product_price,  d.member_id, d.write_date, d.product_state
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number
 		and d.product_state=#{product_state}	<!-- 판매중 -->
@@ -82,7 +100,7 @@
 	
 	 <!-- 구매내역 > 거래진행중 리스트 조회 -->
 	<select id="tradingList" resultType="dealDTO" parameterType="Map">
-		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		select d.deal_number, d.dealType, d.board_title, d.product_price, d.member_id, d.write_date, d.product_state
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number
 		and d.product_state=#{product_state} <!-- 거래진행중 -->
@@ -92,7 +110,7 @@
 	
 	<!-- 구매내역 > 구매완료(=판매완료) list -->
 	<select id="purchaseList" parameterType="String" resultType="dealDTO">
-		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		select d.deal_number, d.dealType, d.board_title,d.product_price, d.member_id, d.write_date, d.product_state
 		from deal_table2 d, dealreq r		
 		where d.deal_number=r.deal_number	
 		and d.product_state=#{product_state}
@@ -107,7 +125,245 @@
 		where deal_number=#{deal_number}
 	</update>	
 	
+	
+	
+	<!-- ####################################### 참고용 오라클 쿼리문 ###################################### -->
+	
+	
+	<!-- 
+	 판매내역 메인 (전체) 
+ 	  <select id="saleAll" parameterType="String" resultType="dealDTO">
+		select * from deal_table2 
+		where member_id=#{member_id}
+		order by deal_number 
+	</select>  
+	
+	판매내역 메인 (전체) - 테스트용
+	<select id="saleAll2" parameterType="String" resultType="dealDTO">
+		select distinct d.deal_number, d.dealType, d.board_title, d.product_price, d.write_date, d.product_state, r.buyer_id
+		from deal_table2 d, dealreq r 
+		where d.member_id=#{member_id}
+		order by deal_number 
+	</select> 
+	
+	 거래상태 별로 테이블 조회 (판매중/판매종료) 
+	<select id="dealselectState" parameterType="Map" resultType="dealDTO">
+		select * from deal_table2 
+		where member_id=#{member_id}	내가 쓴 글만 조회하기 위한 조건
+		and product_state=#{product_state}	탭메뉴 클릭 시 컨트롤러로 넘어오는 거래상태
+		order by deal_number desc	
+	</select>
+	
+	거래상태 '거래진행중' 테이블 조회 
+	<select id="selectTrading" parameterType="String" resultType="dealDTO">
+		select d.deal_number, d.dealType, d.board_title, d.product_price, d.buyer_id, d.write_date,d.product_state
+		from deal_table2 d, dealreq r 
+		where d.deal_number=r.deal_number 
+		and d.member_id=#{member_id}
+		and r.req_id=buyer_id
+		and product_state='거래진행중'
+		order by deal_number
+	</select>
 
+	 '거래하기' 클릭 시 거래상태 변경 
+	<update id="stateChange" parameterType="int">
+		update deal_table2 
+		set product_state='거래진행중'
+		where deal_number=#{deal_number}
+	</update>
+
+	 '거래하기' 클릭 시 deal_table2에 구매자 데이터 추가하기 
+ 	<update id="addBuyerID" parameterType="Map">
+		update deal_table2
+		set buyer_id=#{req_id} 
+		where deal_number=#{deal_number}
+	</update> 
+
+	 탭메뉴 클릭시 조회되는 게시글 수 
+	<select id="pageTotal" parameterType="String">
+		select count(deal_number) as count from deal_table2
+		where member_id = #{member_id}
+		and product_state = #{product_state} 
+	</select> 
+	
+	중고거래판매내역 '거래취소' 클릭시 deal_table2에 거래상태 변경 
+	<update id="sellingcacle" parameterType="int">
+	update deal_table2 
+		set product_state='판매중'
+		where deal_number=#{deal_number}
+	</update> 
+	
+	-->
+	
+	<!-- ===================== 구매 관리 ======================== -->
+	
+<!-- 	  구매내역 메인(거래상태=all)  
+	 <select id="purchaseAll" resultType="dealDTO" parameterType="String">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d, dealreq r
+		where d.deal_number = r.deal_number   
+		and r.req_id = #{member_id}
+		order by deal_number
+	</select>
+	
+	구매내역 > 나의 거래요청 리스트 조회
+	<select id="myreqlist" resultType="dealDTO" parameterType="Map">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number
+		and d.product_state=#{product_state}	판매중
+		and r.req_id=#{member_id}
+		order by deal_number 
+	</select>
+
+	
+	 구매내역 > 거래진행중 리스트 조회
+	<select id="tradingList" resultType="dealDTO" parameterType="Map">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number
+		and d.product_state=#{product_state} 거래진행중
+		and r.buyer_id=#{member_id}
+		order by deal_number 
+	</select>
+	
+	 구매내역 > 구매완료(=판매완료) list 
+	<select id="purchaseList" parameterType="String" resultType="dealDTO">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d, dealreq r		
+		where d.deal_number=r.deal_number	
+		and d.product_state=#{product_state}
+		and r.buyer_id=#{member_id}
+		order by deal_number 
+	</select> 
+
+	구매 확정 
+	<update id="dealconfirm" parameterType="int">
+		update deal_table2
+		set product_state='판매완료'
+		where deal_number=#{deal_number}
+	</update>	
+	
+	 -->
+	
+
+	<!-- ####################################### MYSQL쿼리문 ###################################### -->
+	
+	<!-- 판매내역 메인 (전체) - 사용
+ 	  <select id="saleAll" parameterType="String" resultType="dealDTO">
+		select * from deal_table2 
+		where member_id=#{member_id}
+		order by deal_number 
+	</select>  
+	
+		판매내역 메인 (전체) - 테스트용 
+	 <select id="saleAll2" parameterType="String" resultType="dealDTO">
+		select distinct d.deal_number, d.dealType, d.board_title, d.product_price, d.write_date, d.product_state, r.buyer_id
+		from deal_table2 d, dealreq r 
+		where d.member_id=#{member_id}
+		order by deal_number 
+	</select>  
+	
+	 거래상태 별로 테이블 조회 (판매중/판매종료) 
+	<select id="dealselectState" parameterType="Map" resultType="dealDTO">
+		select * from deal_table2 
+		where member_id=#{member_id}	
+		and product_state=#{product_state}	
+		order by deal_number desc	
+	</select>
+	
+	 거래상태 '거래진행중' 테이블 조회 
+	<select id="selectTrading" parameterType="String" resultType="dealDTO">
+		select d.deal_number, d.dealType, d.board_title, d.product_price, d.buyer_id, d.write_date,d.product_state
+		from deal_table2 d, dealreq r 
+		where d.deal_number=r.deal_number 
+		and d.member_id=#{member_id}
+		and r.req_id=buyer_id
+		and product_state='거래진행중'
+		order by deal_number
+	</select>
+
+	'거래하기' 클릭 시 거래상태 변경 
+	<update id="stateChange" parameterType="int">
+		update deal_table2 
+		set product_state='거래진행중'
+		where deal_number=#{deal_number}
+	</update>
+
+	 '거래하기' 클릭 시 deal_table2에 구매자 데이터 추가하기 
+ 	<update id="addBuyerID" parameterType="Map">
+		update deal_table2
+		set buyer_id=#{req_id} 
+		where deal_number=#{deal_number}
+	</update> 
+
+	 탭메뉴 클릭시 조회되는 게시글 수
+	<select id="pageTotal" parameterType="String">
+		select count(deal_number) as count from deal_table2
+		where member_id = #{member_id}
+		and product_state = #{product_state} 
+	</select> -->
+	
+	<!-- ===================== 구매 관리 ======================== -->
+	
+	<!--    구매내역 메인(거래상태=all)  
+	 <select id="purchaseAll" resultType="dealDTO" parameterType="String">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d left outer join  dealreq r
+		where d.deal_number = r.deal_number   
+		and r.req_id = #{member_id}
+		order by deal_number
+	</select>
+	
+	 구매내역 > 나의 거래요청 리스트 조회 
+	<select id="myreqlist" resultType="dealDTO" parameterType="Map">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d left outer join dealreq r		
+		where d.deal_number=r.deal_number
+		and d.product_state=#{product_state}	판매중
+		and r.req_id=#{member_id}
+		order by deal_number 
+	</select>
+
+	
+	  구매내역 > 거래진행중 리스트 조회 
+	<select id="tradingList" resultType="dealDTO" parameterType="Map">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d left outer join dealreq r		
+		where d.deal_number=r.deal_number
+		and d.product_state=#{product_state} 거래진행중
+		and r.buyer_id=#{member_id}
+		order by deal_number 
+	</select>
+	
+	 구매내역 > 구매완료(=판매완료) list 
+	<select id="purchaseList" parameterType="String" resultType="dealDTO">
+		select d.deal_number, d.dealType, d.board_title, d.member_id, d.write_date, d.product_state
+		from deal_table2 d left outer join dealreq r		
+		where d.deal_number=r.deal_number	
+		and d.product_state=#{product_state}
+		and r.buyer_id=#{member_id}
+		order by deal_number 
+	</select> 
+
+	 구매 확정 
+	<update id="dealconfirm" parameterType="int">
+		update deal_table2
+		set product_state='판매완료'
+		where deal_number=#{deal_number}
+	</update>	
+	 
+	중고거래판매내역 '거래취소' 클릭시 deal_table2에 거래상태 변경
+	<update id="sellingcacle" parameterType="int">
+	update deal_table2 
+		set product_state='판매중'
+		where deal_number=#{deal_number}
+	</update> 
+	 
+	 
+	 
+	 -->
+	
 	
 	
   </mapper>

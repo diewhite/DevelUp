@@ -20,19 +20,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.multi.ongo.deal.DealBoard_DTO;
 import com.multi.ongo.deal.DealBoard_Service;
 import com.multi.ongo.member.MemberDTO;
+import com.multi.ongo.payment.PaymentDTO;
+import com.multi.ongo.payment.PaymentService;
 
 @Controller
 public class DealHistoryController {
 	DealHistoryService service;
-	
-	public DealHistoryController() {}
+	PaymentService payservice;
 
 	@Autowired
-	public DealHistoryController(DealHistoryService service) {
+	public DealHistoryController(DealHistoryService service, PaymentService payservice) {
 		super();
 		this.service = service;
+		this.payservice = payservice;
 	}
 
+
+	public DealHistoryController() {}
 
 		//나의온고 click 시 보이는 화면
 		@RequestMapping("/history/myongo")	// spring-config의 component-scan에 등록한 패키지 명 뒷부분 이어서 작성해야함 
@@ -42,13 +46,18 @@ public class DealHistoryController {
 			return mav;
 		}
 	
-	
+
+		
+		
 		//중고거래 판매내역 > 전체 list + 카테고리별 조회 (서비스단에서 if문으로 처리) 
 		@RequestMapping("/history/dealsellList")	
 		public ModelAndView dealsellList (String member_id, String product_state) {
 			ModelAndView mav = new ModelAndView("history/dealsellList");
 			List<DealBoard_DTO> sellList = service.sell_List(member_id, product_state);
-			mav.addObject("sellList", sellList);
+			mav.addObject("sellList", sellList);			
+//			//결제상태 출력 
+//			List<PaymentDTO> payInfoList = payservice.payInfoList_buyList(member_id);
+//			mav.addObject("payInfoList", payInfoList);
 			return mav;
 			}
 		
@@ -81,15 +90,15 @@ public class DealHistoryController {
 			return "redirect:/history/dealsellList?member_id="+user.getMember_id()+"&product_state=all";
 		}
 		
-		//결제요청 클릭 시 
-		@RequestMapping("/history/payrequest")							
-		public String payRequest (String req_id ,int deal_number ,String buyer_id,int dealreq_no) {
-			
-			return null;
+		//중고거래 판매내역 > 거래진행중list > 거래취소 버튼 클랙시 
+		@RequestMapping("/history/dealcancle")							
+		public String payRequest (int deal_number,  HttpSession session) {
+			MemberDTO user = (MemberDTO)session.getAttribute("user");
+			//deal_table2 update product_state='판매중' where deal_number=#{}
+			//dealreq update buyer_id=null where deal_number=#{}
+			service.dealcancle(deal_number);
+			return "redirect:/history/dealsellList?member_id="+user.getMember_id()+"&product_state=all";
 		}
-		
-		
-		
 		
 		
 //		============= 구매관리 페이지 ====================
@@ -98,35 +107,20 @@ public class DealHistoryController {
 		//중고거래 구매관리 > main list 
 		@RequestMapping("/history/dealbuyList")
 		public ModelAndView dealbuyList (String member_id, String product_state) {
-			System.out.println("dealbuyList 데이터 넘어오는지 확인:"+member_id+product_state);
 			ModelAndView mav = new ModelAndView("history/dealbuyList");
 			List<DealBoard_DTO> buylist = service.mydealList(member_id, product_state);
-			System.out.println("컨트롤러에서 db 실행 결과 test : "+buylist);
 			mav.addObject("buylist", buylist);
 			return mav;
 		}
 		
-		
-		//구매내역 list 
-		List<DealRequestDTO> myreqlist (String member_id){
-			return null;
+		// 중고거래 구매관리 > 구매 확정 버튼 클릭 > 거래상태 변경 (거래진행중->판매완료) => dealhistorycontroller에서 처리하기 
+		@RequestMapping("/history/dealconfirm")
+		public String dealConfirm (int deal_number, HttpSession session) {
+			MemberDTO user = (MemberDTO)session.getAttribute("user");
+			System.out.println("deal_number넘어왔나 test :" + deal_number);
+			service.dealconfirm(deal_number);
+			return "redirect:/history/dealbuyList?member_id="+user.getMember_id()+"&product_state=all";
 		}
-		
-		//거래진행중 list 
-		List<DealRequestDTO> mydealList (String member_id){
-			return null;
-		}
-		
-		//구매완료(=판매완료) list
-		List<DealRequestDTO> purchaseList (String member_id){
-			return null;
-		}
-		
-		//구매확정 
-		int dealconfirm (int deal_number) {
-			return 0;
-		}
-		
 		
 		
 		

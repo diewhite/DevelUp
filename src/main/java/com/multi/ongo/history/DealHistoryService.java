@@ -20,6 +20,10 @@ public interface DealHistoryService {
 	// 중고거래판매내역 > '거래하기'클릭 시 > 구매자 정보 update & 거래상태 변경 
 	int dealBtn (String req_id, int deal_number, int dealreq_no, String member_id);
 	
+	//중고거래판매내역 '거래취소' 클릭시 > deal_table2에 거래상태 변경 & dealreq 구매자 정보 null 처리 
+	int dealcancle (int deal_number);
+	
+	
 
 //	************* 구매 내역 *****************
 	

@@ -7,3 +7,19 @@
   		select * from cooperation
   	</select>
   </mapper>
+  
+  <!-- 
+    ====================================== ORACLE ======================================
+    
+   	<select id="list" resultType="cooperDTO">
+  		select * from cooperation
+  	</select>
+    
+    ====================================== MySQL ======================================
+    
+   	<select id="list" resultType="cooperDTO">
+  		select * from cooperation
+  	</select>
+  	
+   -->
+  

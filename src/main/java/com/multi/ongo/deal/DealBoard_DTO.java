@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.multi.ongo.payment.PaymentDAO;
+import com.multi.ongo.payment.PaymentDTO;
+
 public class DealBoard_DTO {
 		private int deal_number; // 거래번호  
 		private String member_id;  //유저아이디  
@@ -18,7 +21,9 @@ public class DealBoard_DTO {
 		private Date write_date; //작성일 
 		private List<MultipartFile> dealFiles; // 클라가 전송하는 바이너리파일 데이터를 스프링 mvc내부에서 MultipartFile객체로 저장
 		private String buyer_id;									   // 첨부파일이 여러개인경우 List나 배열로 관리
-	public DealBoard_DTO() {
+	
+
+		public DealBoard_DTO() {
 		
 		
 	}
@@ -99,12 +104,18 @@ public class DealBoard_DTO {
 	
 
 
+	
+
+
+	
+
 	@Override
 	public String toString() {
 		return "DealBoard_DTO [deal_number=" + deal_number + ", member_id=" + member_id + ", dealType=" + dealType
 				+ ", product_category=" + product_category + ", product_state=" + product_state + ", board_title="
 				+ board_title + ", product_price=" + product_price + ", board_content=" + board_content + ", hits="
-				+ hits + ", write_date=" + write_date + ", dealFiles=" + dealFiles + ", buyer_id=" + buyer_id + "]";
+				+ hits + ", write_date=" + write_date + ", dealFiles=" + dealFiles + ", buyer_id=" + buyer_id
+				+ ", pay_state=" + "]";
 	}
 
 
