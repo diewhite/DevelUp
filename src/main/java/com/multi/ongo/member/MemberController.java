@@ -43,6 +43,8 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user); // 컨트롤러에서 저장해준 "user"라는 이름으로 저장된 객체 top.jsp에서 꺼내쓰기 위함
 			view = "redirect:/index";
+	
+			
 		} else {
 			view = "member/login";
 		}

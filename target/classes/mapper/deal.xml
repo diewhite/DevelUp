@@ -161,7 +161,6 @@
 	<select id="getFile" parameterType="Map" resultType="fileDTO">
 		select * from deal_file
 		where deal_number=#{deal_number} and dealFile_number=#{dealFile_number}
-		and dealFile_number != null
 	</select>
 	
 	

@@ -21,7 +21,7 @@ public class FileUpload_Service {
 			if(!multipartFile.isEmpty()) {
 				// 클라이언트가 업로드한 원래파일명
 				String originalFilename = multipartFile.getOriginalFilename();
-				System.out.println("originalFilename___체크 : " + originalFilename); //확인완료
+				//System.out.println("originalFilename___체크 : " + originalFilename); //확인완료
 						
 				// 서버에서 식별할수 있도록 파일명을 변경 (uuid)
 				String storeFilename = createStoreFileNmae(originalFilename);
