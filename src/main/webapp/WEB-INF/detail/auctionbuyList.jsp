@@ -1,39 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-
 <link type="text/css" rel="stylesheet" href="/ongo/common/css/dealhistory.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"> 
 
-<script type="text/javascript">
- /* 1. 거래상태별 게시글 조회  */
+/* 거래상태별 게시글 조회  */
 /* var type = "${product_state}" 
 $(document).ready(function () {
 	$("#product_state").val(type).attr("selected","selected");
 	$("#product_state").change(function () {
-
-		location.href="/ongo/detail/auctionsellList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
+		location.href="/ongo/history/dealbuyList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
 	})
-}) */
-	
+})
+ */
 </script>
 </head>
 <body>
-	<!-- content -->
+		<!-- content -->
 	<div id="contents">
 		<!-- title -->
 		<div class="container">
 			<div class="sub_top">
-				<h1>경매관리</h1>
+				<h1>구매관리</h1><span>거래요청한 게시글과 거래진행중 및 구매완료 된 게시글을 조회할 수 있습니다.</span>
 			</div>
 			<!-- //title -->
-			<!-- 조회 테이블 시작 -->
-			<!-- <div class="tableDefault table-vertical mb-5 mt-5">
+
+		<!-- -- 조회 테이블 시작 -->
+					<!-- <div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
 					<tbody>
 						 <tr>
@@ -42,18 +38,18 @@ $(document).ready(function () {
 							<td>
 								<div class="form-inline">
 									<div class="select ">
-										<select class="form-select" id="auction_state"
-											name="auction_state" title="거래상태 조회">
+										<select class="form-select" id="product_state"
+											name="product_state" title="거래상태 조회">
 											<option value="all"  >전체</option>
-											<option value="경매중">경매중</option>
-											<option value="경매종료" >경매종료</option>
-											<option value="거래진행중"  >결제진행중</option>
+											<option value="판매중">거래요청</option>
+											<option value="거래진행중" >거래진행중</option>
+											<option value="판매완료" >구매완료</option>
 										</select>
 									</div>
 								</div>
 							</td>
-						</tr> 
-						<tr>
+						</tr>  -->
+					<!-- 	<tr>
 							<th rowspan="2">기간별<br class="visible-xs"> 조회
 							</th>
 						</tr>
@@ -82,8 +78,9 @@ $(document).ready(function () {
 									<div class="form-group">
 										<select name="field" id="field" class="form-control dpInblock">
 											<option value="SG" selected="">통합검색</option>
-											<option value="SA">거래번호</option>
+											<option value="SA">물품번호</option>
 											<option value="SB">물품제목</option>
+											<option value="SC">판매자</option>
 											<option value="SH">물품내용</option>
 										</select>
 									</div>
@@ -94,95 +91,50 @@ $(document).ready(function () {
 									</div>
 								</div>
 							</td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
-			</div> -->
+			</div>
 			<!-- 조회 테이블 끝 -->
-
 
 				<!-- list 시작 -->
 
 				<div class="table-responsive px-2">
-					<div class="sellList">
+					<div class="seeList">
 						<table class="table table-borderless table-hover">
-							
-							<thead >
-								<tr >
-									<th class="table-header" scope="col" width="8%">거래번호</th>
-									<th class="table-header" scope="col" width="10%">상품사진</th>
-									<th class="table-header-title" scope="col" width="22%">제 목</th>
-									<th class="table-header" scope="col" width="10%">시작가</th>
-									<th class="table-header" scope="col" width="10%">입찰내역</th>
-									<th class="table-header" scope="col" width="12%">작성일</th>
-									<th class="table-header" scope="col" width="10%">거래상태</th>
-									<th class="table-header" scope="col" width="10%">낙찰</th>
-									<th class="table-header" scope="col" width="8%">결제여부</th>
+							<thead>
+								<tr>
+									<th class="table-header" width="5%" scope="col">번호</th>
+									<th class="table-header" width="5%" scope="col">구분</th>
+								<!-- 	<th class="table-header" width="10%" scope="col">상품사진</th> -->
+									<th class="table-header-title" width="28%" scope="col">제 목</th>
+									<th class="table-header" width="*%" scope="col">현재가격</th>
+									<!-- <th class="table-header" width="*%" scope="col">판매자</th> -->
+									<th class="table-header" width="*%" scope="col">작성일</th>
+									<th class="table-header" width="*%" scope="col">거래상태</th>
+									<th class="table-header" width="*%" scope="col">결제여부</th>
 								</tr>
 							</thead>
-							<tbody class="text-center"  >
-
-								<c:forEach var="auctionlist" items="${auctionlist}" >
-
+							<tbody class="text-center">
+							
+							<c:forEach var="buylist" items="${auctbuylist}">
+							
 									<tr>
-										<td>${auctionlist.auction_number}</td>
-										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+										<td>${auctbuylist.auction_number}</td>
+										<td>${auctbuylist.auction_category}</td>
+										<!-- <td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
 											width="50" height="50"></td>
-										<td>${auctionlist.auction_title}</td>
-										<td><fmt:formatNumber value="${auctionlist.start_price}"
+ -->										<td>${auctbuylist.auction_title}</td>
+										<td><fmt:formatNumber value="${auctbuylis.current_price }"
 												pattern="#,###원" /></td>
-										<td>
-											<button class="showdata">입찰내역보기</button>
-										</td>
-										<td>${auctionlist.write_date }</td>
-										<td>${auctionlist.auction_state}</td>
-										<td>-</td>
+										<%-- <td>${auctbuylis.member_id}</td> --%>
+										<td>${auctbuylis.write_date }</td>
+										<td>${auctbuylis.auction_state}</td>
 										<td>-</td>
 									</tr>
 									
-									
-									<!-- 거래요청 tr = reqtr -->
-									<%-- <tr id="${auctionlist.deal_number}" style="display: none;">
-										<td colspan="10">
-											<table>
-												<colgroup>
-													<col width="10%">
-													<!-- 글번호 -->
-													<col width="20%">
-													<!-- 날짜 -->
-													<col width="30%">
-													<!-- 요청id -->
-													<col width="20%">
-													<!-- 요청날짜&시간 -->
-													<col width="*">
-													<!-- 쪽지보내기 버튼 -->
-												
-												</colgroup>
-												<thead>
-													<tr >
-														<th scope="col">글번호</th>
-														<th scope="col">날짜</th>
-														<th scope="col">요청ID</th>
-														<th scope="col">쪽지</th>
-														<th scope="col" >거래하기</th>
-													</tr>
-												</thead>
-											
-												<tbody class="reqdata"> 
-												
-												
-														
-												</tbody> 
-												
-											</table>
-										</td>
-									</tr> --%>
-
-								</c:forEach>
-								<!-- sellList  -->
-
-
-
+							</c:forEach>
+							
 							</tbody>
 						</table>
 
@@ -213,6 +165,7 @@ $(document).ready(function () {
 
 					</div>
 				</div>
+				
 				<!-- list 끝   -->
 
 		</div>
@@ -233,13 +186,15 @@ $(document).ready(function () {
 
 
 
+		
+		
+		
 
-	<!--====== // </div> container=====-->
+    <!--====== // </div> container=====-->
+<!-- //contents -->
 
-	<!-- //contents -->
-
-	<!-- Footer -->
-	<jsp:include page="../include/footer.jsp" />
-	<!-- //Footer -->
+<!-- Footer -->
+<jsp:include page="../include/footer.jsp"/>
+<!-- //Footer -->
 </body>
 </html>
