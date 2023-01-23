@@ -169,13 +169,13 @@
 </style>
 
 <script type="text/javascript"> 
-<!-- 
+
 /* 거래상태별 게시글 조회  */
 var type = "${product_state}" 
 $(document).ready(function () {
-	$("#auctiont_state").val(type).attr("selected","selected");
-	$("#auction_state").change(function () {
-		location.href="/ongo/history/auction?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
+	$("#product_state").val(type).attr("selected","selected");
+	$("#product_state").change(function () {
+		location.href="/ongo/history/dealbuyList?member_id=${user.member_id}&product_state="+encodeURI($(this).val());
 	})
 })
 
@@ -191,16 +191,16 @@ $(document).ready(function () {
 </head>
 <body>
 
-		content
+		<!-- content -->
 	<div id="contents">
-		title
+		<!-- title -->
 		<div class="container">
 			<div class="sub_top">
 				<h1>구매관리</h1><span>거래요청한 게시글과 거래진행중 및 구매완료 된 게시글을 조회할 수 있습니다.</span>
 			</div>
-			//title
+			<!-- //title -->
 
-<!-- 		조회 테이블 시작
+		<!-- 조회 테이블 시작 -->
 			<div class="tableDefault table-vertical mb-5 mt-5">
 				<table class="filter-tb">
 					<tbody>
@@ -220,9 +220,8 @@ $(document).ready(function () {
 									</div>
 								</div>
 							</td>
-						</tr>
-						
-						<tr>
+						</tr> 
+					<!-- 	<tr>
 							<th rowspan="2">기간별<br class="visible-xs"> 조회
 							</th>
 						</tr>
