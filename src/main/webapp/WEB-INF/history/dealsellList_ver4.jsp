@@ -89,18 +89,11 @@
 																					+ data[i].req_time
 																					+ "</td><td id='id'>"
 																					+ data[i].req_id
-																					+ "</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-												+"onclick='#'>쪽지보내기</button></td>"
-																					+ "<td id='deal-btn'><a class='dealcancle' href='"+dealcancle+"'><button type='button' class='btn btn-warning'"
-												+">거래취소</button></td></tr>"
+																					+ "</td><td id='deal-btn'><a class='dealcancle' href='"+dealcancle+"'><button type='button' class='btn btn-warning'"
+																					+ ">거래취소</button></a></td></tr>"
 
-																			$(
-																					".dealcancle")
-																					.on(
-																							"click",
-																							function() {
-																								alert("거래가 취소되었습니다.")
-																							})
+																			$(".dealcancle").on("click",function() {
+																				alert("거래가 취소되었습니다.")})
 
 																			/* (1) - 2 ) 구매요청한 사람 =/= 구매자인 경우 */
 																		} else {
@@ -113,9 +106,7 @@
 																					+ data[i].req_time
 																					+ "</td><td id='id'>"
 																					+ data[i].req_id
-																					+ "</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-																					+"onclick='#'>쪽지보내기</button></td>"
-																					+ "<td id='deal-btn'><button type='button' class='btn btn-outline-secondary'"
+																					+ "</td><td id='deal-btn'><button type='button' class='btn btn-outline-secondary'"
 																					+">선택불가</button></td></tr>"
 
 																		}
@@ -139,10 +130,8 @@
 																				+ data[i].req_time
 																				+ "</td><td id='id'>"
 																				+ data[i].req_id
-																				+ "</td><td id='chat-btn'><button type='button' class='btn btn-primary'"
-											+"onclick='#'>쪽지보내기</button></td>"
-																				+ "<td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
-											+">거래하기</button></a></td></tr>"
+																				+ "</td><td id='deal-btn'><a href='"+ url_string +"'><button type='button' class='btn btn-info dealbtn text-white'"
+																				+ ">거래하기</button></a></td></tr>"
 
 																		/* (3) 거래상태가 '판매종료'일 경우 */
 																	} else {
@@ -153,10 +142,8 @@
 
 																	}
 
-																	$(
-																			".reqdata")
-																			.append(
-																					dealreqinfo);
+																	$(".reqdata").append(
+																		dealreqinfo);
 																} //for문 end
 
 															} else { //=(data.length == 0)  
@@ -313,7 +300,7 @@
 															<li><a class="dropdown-item"
 																href="/ongo/payment/payRequest?seller_id=${user.member_id}&buyer_id=${sellList.buyer_id }&board_number=${sellList.deal_number}&product_price=${sellList.product_price}">결제요청하기</a>
 															</li>
-															<li><a class="dropdown-item" href="#">쪽지보내기</a></li> 
+														<!-- 	<li><a class="dropdown-item" href="#">쪽지보내기</a></li>  -->
 														</ul>
 													</c:when>
 													</c:choose> 
@@ -338,7 +325,6 @@
 													<th scope="col" width="10%">글번호</th>
 													<th scope="col" width="20%">날짜</th>
 													<th scope="col" width="30%">요청ID</th>
-													 <th scope="col" width="20%">쪽지</th> 
 													<th scope="col" width="*">거래하기</th>
 												</tr>
 											</thead>
