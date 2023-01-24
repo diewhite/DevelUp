@@ -21,7 +21,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 			MemberDTO user =
 					(MemberDTO) session.getAttribute("user");
 			if(user==null) {//로그인하지 않은 상태
-				response.sendRedirect("/member/login.do");
+				response.sendRedirect("/ongo/member/login.do");
 				return false;//다음 컨트롤러를 실행할 수 없도록 처리
 			}
 		}
