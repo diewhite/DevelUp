@@ -1,3 +1,10 @@
+김윤희 yoonhee010@gmail.com
+최경민 chjk3200620@gmail.com
+박소정 psjsub1@gmail.com
+김규민 diewhite9095@gmail.com
+김태원 gavykim1124@gamil.com
+손성민 sadlzn77@gmail.com
+
 ++++++++++++++++++++
  작업 할때 참조한 페이지 링크 모음
 +++++++++++++
@@ -16,6 +23,28 @@
 == 깃 스테이징에 파일 안올라갈 때 윤희님 # https://sowon-dev.github.io/2021/07/07/210708sts-icon-meaning/
 == MySQL-Oracle데이터 타입 비교 # https://arrkaize86.tistory.com/entry/MySQL-Oracle-%EA%B3%BC-%EB%B9%84%EA%B5%90
 == mysql auto_increment table create # https://www.w3schools.com/sql/sql_autoincrement.asp
+
+공부사이트
+== 생활코딩 https://www.opentutorials.org/course/3930 
+== 생활코딩 유튜브 자바 https://www.youtube.com/watch?v=jdTsJzXmgU0&list=PLuHgQVnccGMCeAy-2-llhw3nWoQKUvQck
+== 백준 알고리즘 https://www.acmicpc.net/step
+== 인프런 무료 강좌 https://www.inflearn.com/courses?charge=free&s=java&order=search
+== SQL 문제풀이 https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit 
+
+프로젝트링크
+== ERD다이어그램 https://www.erdcloud.com/d/BRRmnEvq8vmMBrdiG
+== 1조 구글드라이브 공유폴더 https://drive.google.com/drive/folders/1mG5QUC3ZnAbufQV1ZulSw7Op-NxFfRdE
+== 메이븐 https://mvnrepository.com/
+== 오라클API https://docs.oracle.com/javase/7/docs/api/index.html
+== 강사님 블로그 https://blog.naver.com/heaves1
+== 멀티캠퍼스 MLP https://lc.multicampus.com/kdt-developer/#/login
+== 넬리파이 온고뷰 페이지 https://teamdevelup.netlify.app/index.html
+== 1조 노션 https://www.notion.so/TEAM-Devel-Up-3f99cf0fa5b74ae5b6c6660067a6f7c9
+== 깃마인드 https://gitmind.com/app/docs/mm7ytbpp
+== 디스코드 https://discord.com/invite/QfVTBuhv
+== TaskFlow (+윤곽페이지 ) https://gitmind.com/app/docs/ma2ndnhf
+==  
+==
 
 ++++++++++++++++++++
 public 개념
