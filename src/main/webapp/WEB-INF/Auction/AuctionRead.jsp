@@ -2,13 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<html>
 	<head> 
-<style>   //모달에 적용한 css속성값. 
-.auction-img-main {
-    background-color:#fff !important;
-    height: 80% !important;
-}
+<style>
+.auction-img-main{height:481px !important;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    }
 .auction-img-main ul li img {
-    height: 80% !important;
+    height:440px !important;
 }
 </style>
 <script type="text/javascript">
