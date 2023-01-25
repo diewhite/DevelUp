@@ -98,40 +98,22 @@
 								 data = 
 									
 									 "<div class='carousel-item active' >"+
-									 "<h3> "+
-										"<a href='/ongo/auction/auctionRead?auction_no="+ ajaxlist[i].auction_number + "'class='btn btn-small'"+
-					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
-					                  "</h3>"+
-						                  
-						                  
 						                  "<h3>제목 : " + ajaxlist[i].auction_title +  "</h3>"+
 						                  "<ul class='introlist'>"+
 						                  "<li><span class='introlist_tit'>시작가격</span><span class='introlist_txt'>" + ajaxlist[i].start_price + "원</span></li>"+
 						                  "<li><span class='introlist_tit'>현재가격</span><span class='introlist_txt'>" + ajaxlist[i].current_price + "원</span></li>"+
 						                  "<li><span class='introlist_tit'>종료시간</span><span class='introlist_txt'>" + ajaxlist[i].end_date + "</span></li>"+
 						                  "</ul>"+
-						                  "<div class='introlink'>"+
-						                  "<span><a href='#'>거래요청</a></span>"+
-						                  "<span><a href='#'>쪽지보내기</a></span>"+
-						                  "</div>"+
 						                "</div>"
 							 }else{
 								data =  
 									"<div class='carousel-item' >"+
-									"<h3> "+
-										"<a href='/ongo/auction/auctionRead?auction_no="+ ajaxlist[i].auction_number + "'class='btn btn-small'"+
-					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
-					                  "</h3>"+
 					                  "<h3>제목 : " + ajaxlist[i].auction_title +  "</h3>"+
 					                  "<ul class='introlist'>"+
 					                  "<li><span class='introlist_tit'>시작가격</span><span class='introlist_txt'>" + ajaxlist[i].start_price + "원</span></li>"+
 					                  "<li><span class='introlist_tit'>현재가격</span><span class='introlist_txt'>" + ajaxlist[i].current_price + "원</span></li>"+
 					                  "<li><span class='introlist_tit'>종료시간</span><span class='introlist_txt'>" + ajaxlist[i].end_date + "</span></li>"+
 					                  "</ul>"+
-					                  "<div class='introlink'>"+
-					                  "<span><a href='#'>거래요청</a></span>"+
-					                  "<span><a href='#'>쪽지보내기</a></span>"+
-					                  "</div>"+
 					                "</div>"
 							 }
 							 mydata = mydata +data;
@@ -259,10 +241,6 @@
 						                  "<ul class='introlist'>"+
 						                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
 						                  "</ul>"+
-						                  "<div class='introlink'>"+
-						                  "<span><a href='#'>거래요청</a></span>"+
-						                  "<span><a href='#'>쪽지보내기</a></span>"+
-						                  "</div>"+
 						                "</div>"
 							 }else{
 								data =  
@@ -276,10 +254,6 @@
 					                  "<ul class='introlist'>"+
 					                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
 					                  "</ul>"+
-					                  "<div class='introlink'>"+
-					                  "<span><a href='#'>거래요청</a></span>"+
-					                  "<span><a href='#'>쪽지보내기</a></span>"+
-					                  "</div>"+
 					                "</div>"
 							 }
 							 mydata = mydata +data;
@@ -391,8 +365,8 @@
             <div class="input-group">
               <label for="srchWord1" class="form-label visually-hidden">경매물품 검색</label>
               <input type="text" class="form-control service_sch" name="srchWord" id="srchWord1"
-                title="'경매물품' 또는 '상품' 입력" placeholder="'경매물품' 또는 '상품' 입력">
-              <button type="button" class="btn btn-search" onclick="fnSearchAddr();"><span
+                title="'경매물품' 또는 '상품' 입력" placeholder="'단어' 입력">
+              <button id="srchWord1-btn" type="button" class="btn btn-search" onclick="fnSearchAddr();"><span
                   class="visually-hidden">검색</span></button>
             </div>
           </div>
@@ -566,9 +540,16 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function () {
+		/* 홈배너 경매검색 */
 		$("#srchWord2-btn").on("click", function () {
-			location.href="serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
+			location.href="/ongo/serarchData.do?searchData="+$("#srchWord2").val();
 		})//end #srchWord2-btn event
+		/* 홈배너 중고검색 */
+		$("#srchWord1-btn").on("click", function () {
+			location.href="/ongo/auction/serarch?searchData="+$("#srchWord1").val();
+		})//end #srchWord2-btn event
+		
+		
 		
 		$.ajax({
 			url : '/ongo/cooperation/ajax_list',

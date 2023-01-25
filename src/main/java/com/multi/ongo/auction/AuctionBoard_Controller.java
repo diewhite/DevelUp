@@ -42,7 +42,7 @@ public class AuctionBoard_Controller {
 		String file_name="";
 		
 		if (!files.get(0).isEmpty()){
-			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/static/images/dealUpload");
 			boardfiledtolist = fileupload.uploadFiles(files, path);
 			file_name=boardfiledtolist.get(0).getStoreFilename();
 			dto.setList_photo(file_name);
@@ -156,7 +156,16 @@ public class AuctionBoard_Controller {
 		return auction_ajaxlist;
 	}
 	
-	
+	//홈배너검색
+	@RequestMapping("/auction/serarch")
+	public ModelAndView auctionSearch(String searchData) {
+		System.out.println("searchData값 체크 : " +  searchData);
+		ModelAndView mav = new ModelAndView("auctionBoard");
+		List<AuctionBoard_DTO> boardlist = service.auctionSearch(searchData);
+		mav.addObject("boardlist", boardlist);
+		System.out.println("searchData값 체크 : " +  boardlist);
+		return mav;
+	}
 	
 	//________________________________________________________________
 	

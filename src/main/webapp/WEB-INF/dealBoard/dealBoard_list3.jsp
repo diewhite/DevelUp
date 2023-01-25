@@ -190,6 +190,7 @@
 		<button class="btn btn-primary btn-large" type="button"
 			onclick="location.href='/ongo/dealRegister'" >글쓰기</button>
 	</div>
+</div>
 
 
 
@@ -225,7 +226,7 @@
 						})
 	</script>
 	<!-- Footer -->
-	<jsp:include page="../include/footer.jsp" />
+<jsp:include page="../include/footer.jsp"/>
 	<!-- //Footer -->
 
 </body>

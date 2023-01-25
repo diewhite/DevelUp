@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		<!-- //title -->
-<p>딜넘버 체크 : ${dealRead.deal_number}</p>
+<%-- <p>딜넘버 체크 : ${dealRead.deal_number}</p>  --%>
 		<!-- 게시판 -->
 		<div class="container">
 			<form action="/ongo/dealUpdate.do?deal_number=${dealRead.deal_number}" method="post" enctype="multipart/form-data">

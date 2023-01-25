@@ -1,0 +1,137 @@
+김윤희 yoonhee010@gmail.com
+최경민 chjk3200620@gmail.com
+박소정 psjsub1@gmail.com
+김규민 diewhite9095@gmail.com
+김태원 gavykim1124@gamil.com
+손성민 sadlzn77@gmail.com
+
+멘토이메일
+심형용 멘토님: hyshim@gmail.com
+김정욱 멘토님: ryonkim@naver.com
+메일 보내실 때 제목 앞에 '[멀캠 멘토링]' 이라고 붙여주세요!
+ex. [멀캠 멘토링] 프로젝트 관련 문의사항
+
+++++++++++++++++++++
+ 작업 할때 참조한 페이지 링크 모음
++++++++++++++
+
+== 부트스트랩 v5.1 # https://getbootstrap.com/docs/5.1/getting-started/introduction/
+== W3C html,css,부트스트랩,자바스크립트 참조 # https://www.w3schools.com/bootstrap5/bootstrap_modal.php
+== 글쓰기 부트스트랩 호환 CKEditor # https://ccusean.tistory.com/entry/CKEditor-5-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95
+
+== 카카오 주소 API # https://devofroad.tistory.com/42
+== 아이디 중복체크 #  https://sincerity.tistory.com/342
+== 아이디 쿠키 저장 # https://chobopark.tistory.com/203 
+== 실시간경매시스템만들기 태원님 # https://velog.io/@skh9797/실시간-경매-시스템-만들기
+== 심형용멘토님 검색어: 톰캣 백그라운드 프로세스 만들기 # https://woowaa.net/118
+== 규민님 페이징 처리  # https://po9357.github.io/spring/2019-05-28-Board_Paging/
+== 페이징처리 유튜브 태원님 # https://www.youtube.com/watch?v=KNAbTFYDHNU&list=PLE5Oosh5zKQfO_md_TwiITjwMhMnzcR2R&index=44&t=260s
+== 깃 스테이징에 파일 안올라갈 때 윤희님 # https://sowon-dev.github.io/2021/07/07/210708sts-icon-meaning/
+== MySQL-Oracle데이터 타입 비교 # https://arrkaize86.tistory.com/entry/MySQL-Oracle-%EA%B3%BC-%EB%B9%84%EA%B5%90
+== mysql auto_increment table create # https://www.w3schools.com/sql/sql_autoincrement.asp
+== 정찬훈 강사 노션 https://time-click-b2a.notion.site/IT-d04bf3e531f449f7b9abffcb190cde9b
+== 정찬훈 강사 블로그 https://blog.naver.com/jch2100
+== 멀티캠퍼스 취업지원 센터 https://el.multicampus.com/de_common/mulcam/event/2022/06/0614_11/loadmap.html
+
+공부사이트
+== 생활코딩 https://www.opentutorials.org/course/3930 
+== 생활코딩 유튜브 자바 https://www.youtube.com/watch?v=jdTsJzXmgU0&list=PLuHgQVnccGMCeAy-2-llhw3nWoQKUvQck
+== 백준 알고리즘 https://www.acmicpc.net/step
+== 인프런 무료 강좌 https://www.inflearn.com/courses?charge=free&s=java&order=search
+== SQL 문제풀이 https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit 
+
+프로젝트링크
+== ERD다이어그램 https://www.erdcloud.com/d/BRRmnEvq8vmMBrdiG
+== 1조 구글드라이브 공유폴더 https://drive.google.com/drive/folders/1mG5QUC3ZnAbufQV1ZulSw7Op-NxFfRdE
+== 메이븐 https://mvnrepository.com/
+== 오라클API https://docs.oracle.com/javase/7/docs/api/index.html
+== 강사님 블로그 https://blog.naver.com/heaves1
+== 멀티캠퍼스 MLP https://lc.multicampus.com/kdt-developer/#/login
+== 넬리파이 온고뷰 페이지 https://teamdevelup.netlify.app/index.html
+== 1조 노션 https://www.notion.so/TEAM-Devel-Up-3f99cf0fa5b74ae5b6c6660067a6f7c9
+== 깃마인드 https://gitmind.com/app/docs/mm7ytbpp
+== 디스코드 https://discord.com/invite/QfVTBuhv
+== TaskFlow (+윤곽페이지 ) https://gitmind.com/app/docs/ma2ndnhf
+==  
+==
+
+++++++++++++++++++++
+public 개념
++++++++++++++
+
+public 리턴타입 메소드명(파라미터(매개변수)의데이터타입 변수명) { 
+	메소드가 호출되면 실행될 부분
+}
+
+매개변수 혹은 파라미터라고 한다
+
+컬럼명을 정의해 놓은것 파라미터값을 int,String,Date = 멤버변수 라고 한다
+public MemberDTO(A,B,C) => A,B,C:매개변수
+매개변수는 메서드 안에서 사용되는 애, string 변수명 => 자체가 매개변수라고 보면된다  즉 변수명에 들어가는게 매개변수
+
+++++++++++++++++++++
+ get set 개념
++++++++++++++
+method = RequestMethod.GET get =:>  디비에 데이터 가져올 때 / 뷰 페이지 GET
+method = RequestMethod.POST post => 디비에 데이터 집어넣을 때 (생성) / db로 넘겨받는 페이지 POST
+put => 디비에 데이터를 덮어씌워 버릴때 (update)
+patch => 디비에 데이터 일부를 덮었씌울 때 (update)
+delete => 삭제
+RESTful API -> 우리 이렇게 개발하자 방법론.
+
+C : 크리에이트- 만든다는 의미 (insert문)
+L : 리스트-전체목록뿌리기 (조건없는 select문)
+R : 리드-읽기 (select문) primary 키로 조건을 주는 경우
+U : 업데이트-수정(update문)
+D : 삭제 (delete문)
+
+++++++++++++++++++++
+ 깃허브
++++++++++++++
+파란 ✓ (assume-valid) : 해당 파일에 무슨 변화가 있더라도 변화가 없다고 판단한다.
+어슘다시 끌어올때 : 깃허브플젝우클릭>  Team -> Advanced -> No Assume Unchanged 클릭
+2번을 실행해도 여전히 체크 아이콘이 있을 것이다. 당황하지 않고 😁 STS/이클립스를 재시작해준다.
+재시작 후 확인해보면 해당 파일의 체크 아이콘이 노란 네모 아이콘으로 바뀐 것을 확인할 수 있다!
+
+
+++++++++++++++++++++
+ Ajax - XMLHttpRequest라는 객체를 이용해서 하는 비동기 통신
++++++++++++++
+Ajax(Asynchronous Javascript and XML)
+  - XMLHttpRequest라는 객체를 이용해서 비동기통신
+  
+  
+1. $.ajax()를 이용해서 ajax통신
+  - jQuery의 메소드를 정의할 때 매개변수를 설정하는 방법은 json표기법으로 정의
+  
+  [매개변수]
+  url : ajax로 요청할 path
+  type : 요청방식 - get or post
+  data : 서버로 전송할 데이터 - 서버로 보내서 처리할 데이터가 여러개이면 json의 형식으로 처리
+  dataType : ajax처리 결과에 대한 타입 -text,json
+  success : 서버와 통신이 성공했을때 호출되는 함수
+  error : 서버와의 통신이 실패했을때 호출되는 함수
+
+  
+++++++++++++++++++++
+ 트랜젝션 처리
++++++++++++++
+트랜젝션은 한사이클의 프로세스가 1~10까지 해야 하는 작업이라면 10까지 도달 못하고 작업이 취소가 되는 사유 발생 시 기존 작업을 취소 or 삭제 등등 후처리를 하는 작업으로 알고있습니다.
+결제요청 -> 결제-> 결제완료 -> 결제내역 생성 -> 결제요청을 완료로 db에 변경  이라고 하면
+결제 완료 했는데 결제내역 생성하다가 오류가 나면
+  다시 처음으로 다 되돌리는 거라고 생각하시면 될거같아요
+  
+++++++++++++++++++++
+ 인터셉터
++++++++++++++
+인터셉터는 모든 페이지를 user.member_id!=null 일때만 열리게 설정해두고
+로그인 안한 상태에서도 접근가능한 페이지만 작성해서 검사 안하게끔
+
+  
+++++++++++++++++++++
+ DB
++++++++++++++
+  <select id="idcheck" resultType="memberP" parameterType="String">
+    select * from member2 where member_id = #{member_id}
+ </select>
+#{member_id} => 이란? 클라이언트에서 요청하는 파라미터 값을 DB에 넣었다

@@ -87,20 +87,24 @@
 	
 		<!-- ================================인터셉터===================================================================== -->
 	
-	<!-- <interceptors>
-
+	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
-			
-			<exclude-mapping path="/ongo/member/**"/>
-			<exclude-mapping path="/ongo/login.do"/>
-			<exclude-mapping path="/emp/spring/login"/>
-			<exclude-mapping path="/board/list.do"/>
+			<exclude-mapping path="/common/**"/>
+			<exclude-mapping path="/images/**"/>
+			<exclude-mapping path="/member/**"/>
+			<exclude-mapping path="/login.do"/>
 			<exclude-mapping path="/index.do"/>
 			<exclude-mapping path="/images/**"/>
+			<exclude-mapping path="/cooperation/ajax_list"/>
+			<exclude-mapping path="/auction/mainlayout"/>
+			<exclude-mapping path="/dealType_main.do"/>
+			<exclude-mapping path="/cooperation/list"/>
+			<exclude-mapping path="/auction/auctionBoard"/>
+			<exclude-mapping path="/deal_listAll3.do"/>
 			<beans:bean class="com.multi.ongo.common.LoginCheckInterceptor"/>
 		</interceptor>
-	</interceptors> -->
+	</interceptors>
 	
 	
 	

@@ -175,7 +175,7 @@ public class DealBoard_Controller {
 	// 중고거래 게시글등록(+첨부파일)
 	@RequestMapping("deal_Write.do")
 	public String dealWrite(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
-		System.out.println("등록) dto__체크 : " + dto);
+		//System.out.println("등록) dto__체크 : " + dto);
 		
 		// ① List<MultipartFile>정보를 추출하기
 		List<MultipartFile> files = dto.getDealFiles(); 
@@ -222,9 +222,10 @@ public class DealBoard_Controller {
 	@RequestMapping("serarchData.do")
 	public ModelAndView dataSearch(String tag, String searchData) {
 		//System.out.println("tag : " + tag + ",   searchData값 : " +  searchData);
-		ModelAndView mav = new ModelAndView("deallistAll");
-		List<DealBoard_DTO> listall = service.searchData(tag, searchData);
-		mav.addObject("listall", listall);
+		ModelAndView mav = new ModelAndView("deallistAll3");
+		List<DealBoard_DTO> dealtotallist = service.searchData(tag, searchData);
+		System.out.println("검색 결과체크 : " + dealtotallist);
+		mav.addObject("dealtotallist", dealtotallist);
 		return mav;
 	}
 
