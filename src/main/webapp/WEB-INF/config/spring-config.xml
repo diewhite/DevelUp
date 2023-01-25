@@ -90,6 +90,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
+			<exclude-mapping path="/common/**"/>
+			<exclude-mapping path="/images/**"/>
 			<exclude-mapping path="/member/**"/>
 			<exclude-mapping path="/login.do"/>
 			<exclude-mapping path="/index.do"/>
