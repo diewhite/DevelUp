@@ -1,6 +1,8 @@
 package com.multi.ongo.auction;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +81,12 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 	public int auctionDelete(int auction_number) {
 		return sqlSession.delete("com.multi.ongo.auction.auctionDelete", auction_number);
 	}
+	@Override
+	public List<AuctionBoard_DTO> auctionSearch(String searchData) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("searchData", searchData);
+		return sqlSession.selectList("com.multi.ongo.auction.auctionSearch", map);
+	}
 	//________________________________________________________________
 
 	@Override
@@ -106,5 +114,7 @@ public class AuctionBoard_DAOImpl implements AuctionBoard_DAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }	

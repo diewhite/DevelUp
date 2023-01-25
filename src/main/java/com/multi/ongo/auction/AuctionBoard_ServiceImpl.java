@@ -93,7 +93,10 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 		dao.auctionDelete(auction_number);
 		return 0;
 	}
-
+	@Override
+	public List<AuctionBoard_DTO> auctionSearch(String searchData) {
+		return dao.auctionSearch(searchData);
+	}
 	//________________________________________________________________
 
 	@Override
@@ -115,6 +118,8 @@ public class AuctionBoard_ServiceImpl implements AuctionBoard_Service {
 	public int updatePrice(AuctionBoard_DTO dto) {
 		return dao.updatePrice(dto);
 	}
+
+	
 
 
 }
