@@ -55,7 +55,7 @@
 									<div class="numbers">
 										<div>
 											<p class="card-category"><span class=" my_01">경매</span>(판매)</p>
-											<h4 class="card-title">15건</h4>
+											<h4 class="card-title">1건</h4>
 										</div>
 									</div>
 								</div>
@@ -75,7 +75,7 @@
 									<div class="numbers">
 										<div>
 											<p class="card-category"><span class=" my_01">경매</span>(구매)</p>
-											<h4 class="card-title">15건</h4>
+											<h4 class="card-title">2건</h4>
 										</div>
 									</div>
 								</div>
@@ -95,7 +95,7 @@
 									<div class="numbers">
 										<div>
 											<p class="card-category"><span class=" my_01">중고거래</span>(판매)</p>
-											<h4 class="card-title">15건</h4>
+											<h4 class="card-title">1건</h4>
 										</div>
 									</div>
 								</div>
@@ -115,7 +115,7 @@
 									<div class="numbers">
 										<div>
 											<p class="card-category"><span class=" my_01">중고거래</span>(구매)</p>
-											<h4 class="card-title">15건</h4>
+											<h4 class="card-title">7건</h4>
 										</div>
 									</div>
 								</div>
@@ -192,7 +192,7 @@
 											<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-									          ${user.member_id}
+									          lee
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
 									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
@@ -201,17 +201,17 @@
 									        </ul>
 											</td>
 											<td>2023년 1월 3일</td>
-											<td>판매중</td>
+											<td>거래완료</td>
 										</tr>
 										<tr>
 											<td><span class="gray-bold">1</span></td>
 											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-											<td><span class="blue-bold">15,000원</span></td>
+											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">르네상스시절같은 조각상팔아요</a></span></td>
+											<td><span class="blue-bold">4,000원</span></td>
 											<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-									          ${user.member_id}
+									          song
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
 									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
@@ -259,7 +259,7 @@
 										<tr>
 											<td><span class="gray-bold">1</span></td>
 											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">아기모빌 팔아요</a></span></td>
 											<td><span class="blue-bold">15,000원</span></td>
 											<td>
 											<span class="blue-bold">
@@ -283,7 +283,7 @@
 											<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-									          ${user.member_id}
+									         park
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
 									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
@@ -357,13 +357,13 @@
 									<tbody>
 										<tr>
 											<td><span class="gray-bold">1</span></td>
-											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-											<td><span class="blue-bold">15,000원</span></td>
+											<td><img alt="" src="/ongo/static/images/dealboard/deal10.jpg" width="50" height="50"></td>
+											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">아기모빌 팝니다</a></span></td>
+											<td><span class="blue-bold">13,000원</span></td>
 											<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-									          ${user.member_id}
+									          kim
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
 									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
@@ -377,8 +377,8 @@
 										<tr>
 											<td><span class="gray-bold">1</span></td>
 											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-											<td><span class="blue-bold">15,000원</span></td>
+											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">아기 유모차 나눔해요</a></span></td>
+											<td><span class="blue-bold">0원</span></td>
 										<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -430,12 +430,12 @@
 										<tr>
 											<td><span class="gray-bold">1</span></td>
 											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-											<td><span class="blue-bold">15,000원</span></td>
+											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">디스커버리 흰색 롱 패딩</a></span></td>
+											<td><span class="blue-bold">3,000원</span></td>
 											<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-									          ${user.member_id}
+									          kim
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
 									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
@@ -449,12 +449,12 @@
 										<tr>
 											<td><span class="gray-bold">1</span></td>
 											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
-											<td><span class="blue-bold">15,000원</span></td>
+											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">미개봉 구찌 스니커즈</a></span></td>
+											<td><span class="blue-bold">100,000원</span></td>
 											<td>
 											<span class="blue-bold">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-									          ${user.member_id}
+									         new
 									        </a>
 									        <ul class="dropdown-menu" style="width: 100px;">
 									            <li><a class="dropdown-item" href="#" title="쪽지보내기 팝업" data-bs-toggle="modal" data-bs-target="#sendNoteModal" id=sendnote>쪽지보내기</a></li>
