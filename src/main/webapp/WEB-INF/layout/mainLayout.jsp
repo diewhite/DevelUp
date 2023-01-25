@@ -98,40 +98,22 @@
 								 data = 
 									
 									 "<div class='carousel-item active' >"+
-									 "<h3> "+
-										"<a href='/ongo/auction/auctionRead?auction_no="+ ajaxlist[i].auction_number + "'class='btn btn-small'"+
-					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
-					                  "</h3>"+
-						                  
-						                  
 						                  "<h3>제목 : " + ajaxlist[i].auction_title +  "</h3>"+
 						                  "<ul class='introlist'>"+
 						                  "<li><span class='introlist_tit'>시작가격</span><span class='introlist_txt'>" + ajaxlist[i].start_price + "원</span></li>"+
 						                  "<li><span class='introlist_tit'>현재가격</span><span class='introlist_txt'>" + ajaxlist[i].current_price + "원</span></li>"+
 						                  "<li><span class='introlist_tit'>종료시간</span><span class='introlist_txt'>" + ajaxlist[i].end_date + "</span></li>"+
 						                  "</ul>"+
-						                  "<div class='introlink'>"+
-						                  "<span><a href='#'>거래요청</a></span>"+
-						                  "<span><a href='#'>쪽지보내기</a></span>"+
-						                  "</div>"+
 						                "</div>"
 							 }else{
 								data =  
 									"<div class='carousel-item' >"+
-									"<h3> "+
-										"<a href='/ongo/auction/auctionRead?auction_no="+ ajaxlist[i].auction_number + "'class='btn btn-small'"+
-					                      "title='새창'>상세보기<i class='las la-external-link-alt'></i></a>"+
-					                  "</h3>"+
 					                  "<h3>제목 : " + ajaxlist[i].auction_title +  "</h3>"+
 					                  "<ul class='introlist'>"+
 					                  "<li><span class='introlist_tit'>시작가격</span><span class='introlist_txt'>" + ajaxlist[i].start_price + "원</span></li>"+
 					                  "<li><span class='introlist_tit'>현재가격</span><span class='introlist_txt'>" + ajaxlist[i].current_price + "원</span></li>"+
 					                  "<li><span class='introlist_tit'>종료시간</span><span class='introlist_txt'>" + ajaxlist[i].end_date + "</span></li>"+
 					                  "</ul>"+
-					                  "<div class='introlink'>"+
-					                  "<span><a href='#'>거래요청</a></span>"+
-					                  "<span><a href='#'>쪽지보내기</a></span>"+
-					                  "</div>"+
 					                "</div>"
 							 }
 							 mydata = mydata +data;
@@ -259,10 +241,6 @@
 						                  "<ul class='introlist'>"+
 						                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
 						                  "</ul>"+
-						                  "<div class='introlink'>"+
-						                  "<span><a href='#'>거래요청</a></span>"+
-						                  "<span><a href='#'>쪽지보내기</a></span>"+
-						                  "</div>"+
 						                "</div>"
 							 }else{
 								data =  
@@ -276,10 +254,6 @@
 					                  "<ul class='introlist'>"+
 					                  "<li><span class='introlist_tit'>금액</span><span class='introlist_txt'>" + ajaxlist[i].product_price + "원</span></li>"+
 					                  "</ul>"+
-					                  "<div class='introlink'>"+
-					                  "<span><a href='#'>거래요청</a></span>"+
-					                  "<span><a href='#'>쪽지보내기</a></span>"+
-					                  "</div>"+
 					                "</div>"
 							 }
 							 mydata = mydata +data;
