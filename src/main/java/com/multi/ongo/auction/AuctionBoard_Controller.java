@@ -156,7 +156,16 @@ public class AuctionBoard_Controller {
 		return auction_ajaxlist;
 	}
 	
-	
+	//홈배너검색
+	@RequestMapping("/auction/serarch")
+	public ModelAndView auctionSearch(String searchData) {
+		System.out.println("searchData값 체크 : " +  searchData);
+		ModelAndView mav = new ModelAndView("auctionBoard");
+		List<AuctionBoard_DTO> boardlist = service.auctionSearch(searchData);
+		mav.addObject("boardlist", boardlist);
+		System.out.println("searchData값 체크 : " +  boardlist);
+		return mav;
+	}
 	
 	//________________________________________________________________
 	

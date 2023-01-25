@@ -66,6 +66,30 @@
 		auction_table
 		where auction_number=#{auction_number}
 	</delete>
+	
+	
+	
+	
+	
+	
+	<!-- 홈배너검색 -->
+	<select id="auctionSearch" resultType="auctionDTO" parameterType="Map">
+		<!-- select * from auction_table where auction_title = #{searchData} -->
+		select * from auction_table
+		 <where>
+		 
+			<if test="searchData != ''">
+				auction_title like '%' || #{searchData} || '%'
+			</if>
+			<if test="searchData == ''">
+				1=1			
+			</if>
+		</where>
+			order by write_date desc
+		
+	</select>
+	
+	
 	<!--_________________________________________________________________ -->
 
 	<!-- 경매 종료시간 초과 후 상태변경 -->

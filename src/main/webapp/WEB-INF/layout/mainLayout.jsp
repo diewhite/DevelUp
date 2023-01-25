@@ -391,8 +391,8 @@
             <div class="input-group">
               <label for="srchWord1" class="form-label visually-hidden">경매물품 검색</label>
               <input type="text" class="form-control service_sch" name="srchWord" id="srchWord1"
-                title="'경매물품' 또는 '상품' 입력" placeholder="'경매물품' 또는 '상품' 입력">
-              <button type="button" class="btn btn-search" onclick="fnSearchAddr();"><span
+                title="'경매물품' 또는 '상품' 입력" placeholder="'단어' 입력">
+              <button id="srchWord1-btn" type="button" class="btn btn-search" onclick="fnSearchAddr();"><span
                   class="visually-hidden">검색</span></button>
             </div>
           </div>
@@ -566,9 +566,16 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function () {
+		/* 홈배너 경매검색 */
 		$("#srchWord2-btn").on("click", function () {
-			location.href="serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
+			location.href="/ongo/serarchData.do?searchData="+$("#srchWord2").val();
 		})//end #srchWord2-btn event
+		/* 홈배너 중고검색 */
+		$("#srchWord1-btn").on("click", function () {
+			location.href="/ongo/auction/serarch?searchData="+$("#srchWord1").val();
+		})//end #srchWord2-btn event
+		
+		
 		
 		$.ajax({
 			url : '/ongo/cooperation/ajax_list',

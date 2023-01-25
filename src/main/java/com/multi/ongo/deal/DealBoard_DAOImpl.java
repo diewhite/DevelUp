@@ -70,6 +70,7 @@ public class DealBoard_DAOImpl implements DealBoard_DAO{
 	//중고거래 게시글검색(제목,작성자,작성일)
 	@Override
 	public List<DealBoard_DTO> searchData(String tag, String searchData) {
+		System.out.println("파라미터 체크 : " + tag + "      , " + searchData);
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("tag", tag);
 		map.put("searchData", searchData);
