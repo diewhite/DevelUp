@@ -2,6 +2,8 @@ package com.multi.ongo.auction;
 
 import java.util.List;
 
+import com.multi.ongo.deal.DealBoard_DTO;
+
 public interface AuctionBoard_Service {
 	
 	public AuctionBoardUpFile_DTO getFile(String boardno);
@@ -33,6 +35,7 @@ public interface AuctionBoard_Service {
 	
 	//경매게시판 글 삭제 -by태원 __________________________________________
 	public int auctionDelete(int auction_number);
+	List<AuctionBoard_DTO> auctionSearch(String searchData);
 	//______________________________________________________________
 	
 	//경매내역 조회

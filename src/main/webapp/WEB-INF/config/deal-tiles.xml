@@ -14,9 +14,9 @@
  		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_register.jsp"></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
- 	<definition name="deallistAll" extends="indexTemplate">
+ 	<definition name="deallistAll3" extends="indexTemplate">
  		<put-attribute name="top" value="/WEB-INF/include/top.jsp"></put-attribute>
- 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list.jsp"></put-attribute>
+ 		<put-attribute name="content" value="/WEB-INF/dealBoard/dealBoard_list3.jsp"></put-attribute>
  		<put-attribute name="footer" value="/WEB-INF/include/footer.jsp"></put-attribute>
  	</definition>
  	<definition name="dealBoardRead" extends="indexTemplate">

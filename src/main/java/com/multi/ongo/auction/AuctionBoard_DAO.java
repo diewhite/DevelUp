@@ -32,6 +32,7 @@ public interface AuctionBoard_DAO {
 	
 	//경매게시판 글 삭제 -by태원 __________________________________________
 		public int auctionDelete(int auction_number);
+		List<AuctionBoard_DTO> auctionSearch(String searchData);
 		//______________________________________________________________
 		
 	//경매내역 조회

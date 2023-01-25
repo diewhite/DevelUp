@@ -68,8 +68,10 @@
 	</delete>
 		
 	<!-- 하단검색 -->
-	<select id="searchData" parameterType="Map" resultType="dealDTO">
-		select * from deal_table2
+	<select id="searchData" parameterType="Map" resultType="dealtotalDTO">
+		select a.*, b.*
+		from deal_table2 a left outer join deal_file b 
+		on (a.deal_number=b.deal_number)
 		<where>
 			<if test="tag == 'board_title' and searchData != ''">
 				board_title like '%' || #{searchData} || '%'
@@ -83,19 +85,17 @@
 				]]> 
 			</if>
 			<if test="tag == 'board_title' and searchData == ''">
-				board_title like '%' || #{searchData} || '%'
+				1=1
 			</if>
 			<if test="tag == 'member_id' and searchData == ''">
-				member_id like '%' || #{searchData} || '%'
+				1=1
 			</if>
 			<if test="tag == 'write_date' and searchData == ''">
-				write_date like '%' || #{searchData} || '%'
-				<!--  <![CDATA[
-					write_date <= #{searchData} 
-				]]>  -->
-			</if>
+				1=1			
+			</if> 
 		</where>
-			order by write_date desc
+		order by a.write_date desc
+		
 	</select>
 	
 	<!--//메인화면 거래배너리스트  -->
