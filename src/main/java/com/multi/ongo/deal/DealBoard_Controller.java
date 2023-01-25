@@ -175,7 +175,7 @@ public class DealBoard_Controller {
 	// 중고거래 게시글등록(+첨부파일)
 	@RequestMapping("deal_Write.do")
 	public String dealWrite(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
-		System.out.println("등록) dto__체크 : " + dto);
+		//System.out.println("등록) dto__체크 : " + dto);
 		
 		// ① List<MultipartFile>정보를 추출하기
 		List<MultipartFile> files = dto.getDealFiles(); 
