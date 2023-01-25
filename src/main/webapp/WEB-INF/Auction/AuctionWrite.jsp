@@ -16,7 +16,7 @@
         
         <div class="sub_top">
             <div class="container">
-          	
+          		<input type=hidden hits=0,auction_category=null,end_price=0,current_price=0>
                 <h1>경매등록</h1>
             </div>
         </div>
@@ -45,7 +45,19 @@
               <div class="input-wrap w20" >
                 <select class="form-select grid-input" title="상태" name="auction_state">
                  <option value="경매중">경매진행중</option><!--보편적으로 0이 false 1이 true  -->
-                 <option value="경매완료">경매완료</option> 
+            <!--      <option value="경매완료">경매완료</option>  -->
+                </select>
+              </div>
+            </div>
+          </div>
+             	
+          <div class="grid-item colspan2">
+            <label for="select_target_1">카테고리</label>
+            <div class="tbl-basic-td">
+              <div class="input-wrap w20" >
+                <select class="form-select grid-input" title="카테고리" name="auction_category">
+                 <option value="가전">가전</option><!--보편적으로 0이 false 1이 true  -->
+                 <option value="컴퓨터">컴퓨터</option> 
                 </select>
               </div>
             </div>

@@ -49,13 +49,10 @@
 	<!-- 게시ㅣ글 작성 -->
 	<insert id="auction_write" parameterType="auctionDTO">
 		insert into auction_table
-		(AUCTION_NUMBER,
-		member_id,
-		auction_state,
-		auction_title,start_price,min_price,board_content,list_photo,write_date,end_date
-		)
-		values(auction_number.nextval, #{member_id}, #{auction_state},
-		#{auction_title}, #{start_price},#{min_price}, #{board_content}, #{list_photo},sysdate,sysdate+(interval '72' hour))
+		
+		values(auction_number.nextval, #{member_id},#{auction_category}, #{auction_state},#{auction_title}, 0,
+		 #{board_content},#{list_photo}, #{min_price},#{start_price},0,
+		sysdate,sysdate+(interval '72' hour),0)
 	</insert>
 
 

@@ -105,6 +105,8 @@
 			<exclude-mapping path="/auction/auctionBoard"/>
 			<exclude-mapping path="/deal_listAll3.do/**"/>
 			<exclude-mapping path="/deal_listAll3.do?dealType=all"/>
+			<exclude-mapping path="/upload/**"/>
+			<exclude-mapping path="/dealUpload/**"/>
 		
 			<beans:bean class="com.multi.ongo.common.LoginCheckInterceptor"/>
 		</interceptor>
