@@ -16,10 +16,12 @@
 
 	<!-- ===================== 공통파일 관련설정============== -->
 	<!-- 	<resources mapping="/resources/**" location="/resources/" />  -->
-	<resources mapping="/dealUpload/**" location="/WEB-INF/dealUpload/" />
+	<resources mapping="/dealUpload/**" location="/WEB-INF/static/images/dealUpload/" />
 	<resources mapping="/images/**" location="/WEB-INF/static/images/" />
 	<resources mapping="/common/**" location="/WEB-INF/static/common/" />
 	<resources mapping="/upload/**" location="/WEB-INF/upload/" />
+	
+	
 
 	<!--===================== 일반jsp만 만들어내는 ViewResolver 등록 ==============-->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -101,7 +103,9 @@
 			<exclude-mapping path="/dealType_main.do"/>
 			<exclude-mapping path="/cooperation/list"/>
 			<exclude-mapping path="/auction/auctionBoard"/>
-			<exclude-mapping path="/deal_listAll3.do"/>
+			<exclude-mapping path="/deal_listAll3.do/**"/>
+			<exclude-mapping path="/deal_listAll3.do?dealType=all"/>
+		
 			<beans:bean class="com.multi.ongo.common.LoginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>

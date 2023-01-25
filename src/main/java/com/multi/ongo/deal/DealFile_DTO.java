@@ -19,6 +19,11 @@ public class DealFile_DTO {
 	
 	
 	
+	public DealFile_DTO(String originalFilename) {
+		super();
+		this.originalFilename = originalFilename;
+	}
+
 	// 파일의 상세정보 보기 insert
 	public DealFile_DTO(String originalFilename, String storeFilename, int dealFile_number) {
 		super();
