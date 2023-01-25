@@ -64,7 +64,7 @@ public class DealBoard_Controller {
 			filedto.setDealFile_number(count);
 			count++;
 		}
-		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장
+		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장 
 		service.insertFile(dto,filedtolist);
 		return "redirect:/deal_listAll3.do?dealType=all";  //리스트페이지로
 	}
