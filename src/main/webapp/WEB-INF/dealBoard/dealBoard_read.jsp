@@ -189,7 +189,7 @@
 								<div class="tbl-basic-td">
 									<div class="input-wrap w100">
 										<c:forEach var="file" items="${filedtolist}" >
-											<img alt="" src="/ongo/dealUpload/${file.storeFilename}" style="width: 500px;">
+											<img alt="" src="/ongo/dealUpload/${file.originalFilename}" style="width: 500px;">
 										</c:forEach>
 									</div>
 								</div>

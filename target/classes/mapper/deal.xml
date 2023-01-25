@@ -127,7 +127,7 @@
 		<!-- collection : List사용했으니 list, Array사용했다면 array, 저장명을 별도사용했다면 저장명, 향상된for문처럼...  collection에 저장된걸 item에서 하나씩 꺼내어 저장  -->
 		<!-- separator into 와 into사이 구분을 위한 띄워쓰기 -->
 			<foreach collection="list" item="file" separator=" ">
-				into deal_file values(deal_no2.currval, #{file.originalFilename}, #{file.storeFilename}, #{file.dealFile_number})
+				into deal_file values(deal_no2.currval, #{file.originalFilename}, 0, #{file.dealFile_number})
 			</foreach>
 		select * from dual
 	</insert>
@@ -150,7 +150,7 @@
 	<update id="updateFile" parameterType="java.util.List">
 		update deal_table2
 		<foreach collection="list" item="file" >
-				set originalFilename = #{file.originalFilename}, storeFilename = #{file.storeFilename}, dealFile_number = #{file.dealFile_number})
+				set originalFilename = #{file.originalFilename}, 0, dealFile_number = #{file.dealFile_number})
 		</foreach>
 		where deal_number = #{deal_number}
 	</update>

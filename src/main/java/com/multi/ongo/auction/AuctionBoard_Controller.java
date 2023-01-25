@@ -42,7 +42,7 @@ public class AuctionBoard_Controller {
 		String file_name="";
 		
 		if (!files.get(0).isEmpty()){
-			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/static/images/dealUpload");
+			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
 			boardfiledtolist = fileupload.uploadFiles(files, path);
 			file_name=boardfiledtolist.get(0).getStoreFilename();
 			dto.setList_photo(file_name);
