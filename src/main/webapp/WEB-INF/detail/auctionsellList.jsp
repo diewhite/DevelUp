@@ -132,7 +132,7 @@ $(document).ready(function () {
 										<td><fmt:formatNumber value="${auctionlist.start_price}"
 												pattern="#,###원" /></td>
 										<td>
-											<button class="showdata">입찰내역보기</button>
+											<button class="showdata" data-bs-toggle="modal" data-bs-target="#listModal">입찰내역보기</button>
 										</td>
 										<td>${auctionlist.write_date }</td>
 										<td>${auctionlist.auction_state}</td>
@@ -241,5 +241,64 @@ $(document).ready(function () {
 	<!-- Footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- //Footer -->
+	<!-- 입찰내역보기 modal -->
+	<div class="modal fade" id="listModal" tabindex="-1"
+		aria-labelledby="Modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="modal-tit">
+						<h2 class="h3">입찰내역</h2>
+					</div>
+					<div class="modal-con">
+						<div class="container">
+            <div class="board_list">
+               
+                <div class="board_info d-flex">
+                    <div class="total">전체 <strong class="blue" id="totalCount">${bidList.size() } </strong>건 </div>
+                </div>
+                <div class="board">
+                   <table class="table" id="example">
+                           <caption>게시판 목록</caption>
+                           <colgroup>
+                              <col width="8%">
+                              <col width="8%">
+                               <col width="8%">
+                           </colgroup>
+                           <thead>
+                               <tr> 
+                                   <th scope="col">입찰자</th>
+                                   <th scope="col">입찰 날짜</th>
+                                   <th scope="col">입찰 금액</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                             <c:forEach var="bid" items="${bidList }">
+                             <tr>
+                             	<td data-before="입찰자">${bid.add_user }</td>
+                             	<td data-before="입찰날짜">${bid.add_time }</td>
+                             	<td data-before="입찰금액">${bid.add_price }원 </td>
+							</tr>
+							</c:forEach>
+                           </tbody>
+                       </table>
+              
+                </div>
+            </div>
+        </div>
+					</div>
+					<div class="btn-area">
+						<button type="submit" class="btn btn-primary btn-large" data-bs-dismiss="modal" aria-label="Close" >확인</button>
+					</div>
+					<!-- 닫기버튼 -->
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close">
+						<i class="las la-times"></i>
+					</button>
+					<!-- //닫기버튼 -->
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
