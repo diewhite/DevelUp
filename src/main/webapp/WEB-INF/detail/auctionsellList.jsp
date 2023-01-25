@@ -109,15 +109,15 @@ $(document).ready(function () {
 							
 							<thead >
 								<tr >
-									<th class="table-header" scope="col" width="8%">거래번호</th>
-									<th class="table-header" scope="col" width="10%">상품사진</th>
-									<th class="table-header-title" scope="col" width="22%">제 목</th>
-									<th class="table-header" scope="col" width="10%">시작가</th>
-									<th class="table-header" scope="col" width="10%">입찰내역</th>
-									<th class="table-header" scope="col" width="12%">작성일</th>
-									<th class="table-header" scope="col" width="10%">거래상태</th>
-									<th class="table-header" scope="col" width="10%">낙찰</th>
-									<th class="table-header" scope="col" width="8%">결제여부</th>
+									<th class="table-header" scope="col" width="10%">거래번호</th>
+								<!-- 	<th class="table-header" scope="col" width="10%">상품사진</th> -->
+									<th class="table-header-title" scope="col" width="24%">제 목</th>
+									<th class="table-header" scope="col" width="11%">시작가</th>
+									<th class="table-header" scope="col" width="11%">입찰내역</th>
+									<th class="table-header" scope="col" width="11%">작성일</th>
+									<th class="table-header" scope="col" width="11%">거래상태</th>
+									<th class="table-header" scope="col" width="11%">낙찰</th>
+									<th class="table-header" scope="col" width="10%">결제여부</th>
 								</tr>
 							</thead>
 							<tbody class="text-center"  >
@@ -126,8 +126,8 @@ $(document).ready(function () {
 
 									<tr>
 										<td>${auctionlist.auction_number}</td>
-										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-											width="50" height="50"></td>
+										<!-- <td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td> -->
 										<td>${auctionlist.auction_title}</td>
 										<td><fmt:formatNumber value="${auctionlist.start_price}"
 												pattern="#,###원" /></td>
