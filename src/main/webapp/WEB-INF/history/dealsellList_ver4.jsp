@@ -252,7 +252,7 @@
 							<tr>
 								<th class="table-header" scope="col" width="5%">번호</th>
 								<th class="table-header" scope="col" width="5%">구분</th>
-								<th class="table-header" scope="col" width="10%">상품사진</th>
+							<!-- 	<th class="table-header" scope="col" width="10%">상품사진</th> -->
 								<th class="table-header-title" scope="col" width="28%">제 목</th>
 								<th class="table-header" scope="col" width="8%">가격</th>
 								<th class="table-header" scope="col" width="10%">구매요청</th>
@@ -269,8 +269,8 @@
 								<tr id="${sellList.product_state}">
 									<td>${sellList.deal_number }</td>
 									<td>${sellList.dealType }</td>
-									<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-										width="50" height="50"></td>
+								<!-- 	<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+										width="50" height="50"></td> -->
 									<td><a
 										href="/ongo/dealRead.do?deal_number=${sellList.deal_number}&state=READ">${sellList.board_title}</a></td>
 									<td><fmt:formatNumber value="${sellList.product_price}"
@@ -318,7 +318,7 @@
 
 								<!-- 거래요청 tr = reqtr -->
 								<tr id="${sellList.deal_number}" style="display: none;">
-									<td colspan="9">
+									<td colspan="8">
 										<table>
 											<thead>
 												<tr>

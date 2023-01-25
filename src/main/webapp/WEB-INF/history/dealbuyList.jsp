@@ -278,7 +278,7 @@ $(document).ready(function () {
 								<tr>
 									<th class="table-header" width="5%" scope="col">번호</th>
 									<th class="table-header" width="5%" scope="col">구분</th>
-									<th class="table-header" width="10%" scope="col">상품사진</th>
+									<!-- <th class="table-header" width="10%" scope="col">상품사진</th> -->
 									<th class="table-header-title" width="28%" scope="col">제 목</th>
 									<th class="table-header" width="*%" scope="col">가격</th>
 									<th class="table-header" width="*%" scope="col">판매자</th>
@@ -294,8 +294,8 @@ $(document).ready(function () {
 									<tr>
 										<td>${buylist.deal_number }</td>
 										<td>${buylist.dealType }</td>
-										<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
-											width="50" height="50"></td>
+									<!-- 	<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg"
+											width="50" height="50"></td> -->
 										<td>${buylist.board_title }</td>
 										<td><fmt:formatNumber value="${buylist.product_price }"
 												pattern="#,###원" /></td>
