@@ -240,13 +240,13 @@
 			<div class="btn-area">
 				<button type="submit" class="btn btn-success btn-large">수정</button>
 			</div>
-			</form>
+			
 		</c:when>	
 			<c:otherwise>
 			</c:otherwise>				
 				
 		</c:choose>	
-		
+		</form>
 		
 						
 			</div>
