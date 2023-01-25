@@ -139,10 +139,10 @@ hr {
 					<div class="card card-body">
 						<div
 							class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-							<div class="col-2 mt-3" style="float: left;">
+							<!-- <div class="col-2 mt-3" style="float: left;">
 								<img class="product_img" src="https://i.imgur.com/5Aqgz7o.jpg"
-									alt="">
-							</div>
+									alt=""> 
+							</div> -->
 							<div class="col-5 ms-4 mt-3 text-start" style="float: left;">
 								<h5 class="media-title font-weight-semibold">
 									<a href="#" data-abc="true">${payhisory.board_title }</a>
@@ -170,7 +170,8 @@ hr {
 								</div>
 							</div>
 
-							<div class="col-2 ms-5 mt-5 text-center" style="float: left;">
+						<!-- <div class="col-2 ms-5 mt-5 text-center" style="float: left;"> -->
+							<div class="col-4 ms-5 mt-5 text-center" style="float: left;">
 								<h3 class="mb-0 font-weight-semibold"><fmt:formatNumber value="${payhisory.product_price }"
 												pattern="#,###원" /></h3>
 								<c:choose>

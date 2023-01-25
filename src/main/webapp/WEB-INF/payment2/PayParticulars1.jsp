@@ -216,14 +216,14 @@
 								<main>
 
 									<div class="row">
-										<div class="col-md-2">
+										<%-- <div class="col-md-2">
 											<img
 												src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR6NbjHprfrQQnPnli8KD6Twz0f83FurA6s2trUKBBnwEfcci59kOrPEV2tGgAG1T0Qr879b6pPOw&amp;usqp=CAc"
-												width="auto," height="100px/">
+												width="auto," height="100px/"> 
 										</div>
-										<div class="col-md-7">
+										<div class="col-md-7 mb-3">
 											<h3 class="invoice-id">${payInfoList.board_title }</h3>
-										</div>
+										</div> --%>
 
 										<table border="0" cellspacing="0" cellpadding="0"
 											class="table table-borderless table-hover">
