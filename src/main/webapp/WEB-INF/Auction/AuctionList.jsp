@@ -98,7 +98,7 @@
                
                 <div class="text-right">
                 <!--글쓰러가는버튼  -->
-                    <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/auction/auctionwrite'">글쓰러가기</button>
+                    <button type="button" class="btn btn-primary btn-large" onclick="location.href='/ongo/auction/auctionwrite'">글등록</button>
                 </div>
                 <!-- 페이지네이션 -->
                 <nav aria-label="Page navigation" id="pageNav">

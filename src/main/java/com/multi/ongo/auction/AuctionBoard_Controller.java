@@ -71,6 +71,7 @@ public class AuctionBoard_Controller {
 	public ModelAndView listall() {
 		ModelAndView mav = new ModelAndView("auctionBoard");
 		List<AuctionBoard_DTO> boardlist = service.boardlist();
+		System.out.println(boardlist);
 		mav.addObject("boardlist", boardlist);
 		return mav;
 	}
@@ -82,6 +83,7 @@ public class AuctionBoard_Controller {
 		System.out.println("auction_category가져왔나 테스트"+auction_category);
 		ModelAndView mav = new ModelAndView("auctionBoard");
 		List<AuctionBoard_DTO> boardlist = service.boardlist();
+		System.out.println(boardlist);
 		mav.addObject("boardlist", boardlist);
 		return mav;
 	}

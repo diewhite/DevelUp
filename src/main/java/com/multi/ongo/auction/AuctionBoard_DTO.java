@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class AuctionBoard_DTO {
 	private int auction_number; //거래번호
 	private String member_id;		//글쓴사람id
-	private String auction_category;//카테고리
 	private String auction_state ;  //경매진행중,경매종료 표시
 	private String auction_title;	//제목
 	private String hits ;	//조회수
@@ -40,7 +39,6 @@ public class AuctionBoard_DTO {
 		super();
 		this.auction_number = auction_number;
 		this.member_id = member_id;
-		this.auction_category = auction_category;
 		this.auction_state = auction_state;
 		this.auction_title = auction_title;
 		this.hits = hits;
@@ -74,13 +72,6 @@ public class AuctionBoard_DTO {
 		this.member_id = member_id;
 	}
 
-	public String getAuction_category() {
-		return auction_category;
-	}
-
-	public void setAuction_category(String auction_category) {
-		this.auction_category = auction_category;
-	}
 
 	public String getAuction_state() {
 		return auction_state;
@@ -212,8 +203,8 @@ public class AuctionBoard_DTO {
 
 	@Override
 	public String toString() {
-		return "AuctionBoard_DTO [auction_number=" + auction_number + ", member_id=" + member_id + ", auction_category="
-				+ auction_category + ", auction_state=" + auction_state + ", auction_title=" + auction_title + ", hits="
+		return "AuctionBoard_DTO [auction_number=" + auction_number + ", member_id=" + member_id   
+				+  ", auction_state=" + auction_state + ", auction_title=" + auction_title + ", hits="
 				+ hits + ", write_date=" + write_date + ", board_content=" + board_content + ", list_photo="
 				+ list_photo + ", min_price=" + min_price + ", start_price=" + start_price + ", end_price=" + end_price
 				+ ", end_date=" + end_date + ", current_price=" + current_price + ", add_user=" + add_user

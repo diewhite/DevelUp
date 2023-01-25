@@ -3,12 +3,11 @@
 	<html>
 	<head> 
 <style>   //모달에 적용한 css속성값. 
-.auction-img-main {
-    background-color:#fff !important;
-    height: 80% !important;
-}
+
 .auction-img-main ul li img {
-    height: 80% !important;
+  background-size: cover;
+    height: 1000 
+    weight:500
 }
 </style>
 <script type="text/javascript">
@@ -86,9 +85,9 @@
 	       <div>${boardlist.list_photo}</div>
 	      <div id="images" class="row ">
                 <div class="col-sm-6">
-	       <div class="auction-img-main ">
+	       <div class="auction-img-main "padding-bottom: 20%>
                           <ul>
-                            <li >
+                            <li  >
                                  <img id="auction-image" src="/ongo/upload/${board.list_photo}"   onerror="this.style.display='none'"></li>
                           </ul>
                         </div>
