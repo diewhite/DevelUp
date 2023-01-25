@@ -200,13 +200,13 @@
 									            <li><a class="dropdown-item" href="#">거래내역보기</a></li>
 									        </ul>
 											</td>
-											<td>2023년 1월 3일</td>
+											<td>2023-01-25</td>
 											<td>거래완료</td>
 										</tr>
 										<tr>
 											<td><span class="gray-bold">1</span></td>
-											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">르네상스시절같은 조각상팔아요</a></span></td>
+											<td><img alt="" src="/ongo/upload/auction4.jpg" width="50" height="50"></td>
+											<td><span class="blue-bold"><a href="#">르네상스시절같은 조각상팔아요</a></span></td>
 											<td><span class="blue-bold">4,000원</span></td>
 											<td>
 											<span class="blue-bold">
@@ -219,7 +219,7 @@
 									            <li><a class="dropdown-item" href="#">거래내역보기</a></li>
 									        </ul>
 											</td>
-											<td>2023년 1월 3일</td>
+											<td>2023-01-15</td>
 											<td>판매중</td>
 										</tr>
 									</tbody>
@@ -277,8 +277,8 @@
 										</tr>
 										<tr>
 											<td><span class="gray-bold">1</span></td>
-											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">상태 좋은 아이폰14pro 팝니다</a></span></td>
+											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpㄷg" width="50" height="50"></td>
+											<td><span class="blue-bold"><a href="/ongo/upload/">상태 좋은 아이폰14pro 팝니다</a></span></td>
 											<td><span class="blue-bold">15,000원</span></td>
 											<td>
 											<span class="blue-bold">
@@ -357,8 +357,8 @@
 									<tbody>
 										<tr>
 											<td><span class="gray-bold">1</span></td>
-											<td><img alt="" src="/ongo/static/images/dealboard/deal10.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">아기모빌 팝니다</a></span></td>
+											<td><img alt="" src="/ongo/dealUpload/deal1.jpeg" width="50" height="50"></td>
+											<td><span class="blue-bold"><a href="">아기모빌 팝니다</a></span></td>
 											<td><span class="blue-bold">13,000원</span></td>
 											<td>
 											<span class="blue-bold">
@@ -371,13 +371,13 @@
 									            <li><a class="dropdown-item" href="#">거래내역보기</a></li>
 									        </ul>
 											</td>
-											<td>2023년 1월 3일</td>
+											<td>2023-01-25</td>
 											<td>판매중</td>
 										</tr>
 										<tr>
 											<td><span class="gray-bold">1</span></td>
-											<td><img alt="" src="https://i.imgur.com/5Aqgz7o.jpg" width="50" height="50"></td>
-											<td><span class="blue-bold"><a href="/ongo/history/joongodetail">아기 유모차 나눔해요</a></span></td>
+											<td><img alt="" src="/ongo/dealUpload/deal11.png" width="50" height="50"></td>
+											<td><span class="blue-bold"><a href="">아기 유모차 나눔해요</a></span></td>
 											<td><span class="blue-bold">0원</span></td>
 										<td>
 											<span class="blue-bold">
@@ -390,7 +390,7 @@
 									            <li><a class="dropdown-item" href="#">거래내역보기</a></li>
 									        </ul>
 											</td>
-											<td>2023년 1월 3일</td>
+											<td>2023-01-05</td>
 											<td>판매중</td>
 										</tr>
 									</tbody>
