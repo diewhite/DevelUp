@@ -37,12 +37,13 @@ public class AuctionBoard_Controller {
 	
 	@RequestMapping(value = "/auctionWrite.do", method = RequestMethod.POST)
 	public String upload(AuctionBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
+		System.out.println("&&&&&&&&&7"+dto);
 		List<MultipartFile> files = dto.getFiles();
 		List<AuctionBoardUpFile_DTO> boardfiledtolist = null;
 		String file_name="";
 		
 		if (!files.get(0).isEmpty()){
-			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload/");
 			boardfiledtolist = fileupload.uploadFiles(files, path);
 			file_name=boardfiledtolist.get(0).getStoreFilename();
 			dto.setList_photo(file_name);
