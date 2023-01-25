@@ -92,7 +92,7 @@
 	
 	<!--_________________________________________________________________ -->
 
-	<!-- 경매 종료시간 초과 후 상태변경 -->
+	<!-- 경매 종료시간 초과 후 상태변경  -->
 	<update id="auctionStatus">
 		update auction_table set auction_state = '입찰종료'
 		where <![CDATA[end_date < sysdate]]>
