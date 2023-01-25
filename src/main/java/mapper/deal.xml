@@ -36,14 +36,14 @@
 	<!--조인한 결과로 중고거래 게시글 타입별 조회  **************************-->
 	<select id="dealTotalList" resultType="dealtotalDTO">
 		select a.*, b.*
-		from deal_table2 a left outer join deal_file b 
+		from deal_table2 a left outer join dealfile_table b 
 		on (a.deal_number=b.deal_number)
 		order by a.write_date desc
 	</select>
 	<!-- 리스트3 -->
 	<select id="dealTotalList2" resultType="dealtotalDTO" parameterType="String"> 
 		select a.*, b.*
-		from deal_table2 a left outer join deal_file b 
+		from deal_table2 a left outer join dealfile_table b 
 		on (a.deal_number=b.deal_number)
 		where dealType = #{dealType}		
 		order by a.write_date desc
