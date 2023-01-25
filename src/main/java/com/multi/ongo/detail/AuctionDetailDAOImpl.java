@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.multi.ongo.auction.AuctionBoard_DTO;
-import com.mysql.cj.x.protobuf.MysqlxNotice.SessionStateChanged.Parameter;
 
 	@Repository
 public class AuctionDetailDAOImpl implements AuctionDetail_DAO {
