@@ -43,11 +43,11 @@ public class DealBoard_Controller {
 	// 중고거래 게시글등록(+첨부파일)
 	@RequestMapping("deal_Write.do")
 	public String dealWrite(DealBoard_DTO dto, HttpSession session) throws IllegalStateException, IOException {
-		//System.out.println("등록) dto__체크 : " + dto);
+		System.out.println("등록) dto__체크 : " + dto);
 		
 		// ① List<MultipartFile>정보를 추출하기
 		List<MultipartFile> files = dto.getDealFiles(); 
-		//System.out.println("List<MultipartFile> files___체크 : "+  files);
+		System.out.println("List<MultipartFile> files___체크 : "+  files);
 		
 		// ② 업로드될 서버의 경로 ( 경로 추출을 위해 HttpSession필요)
 		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/static/images/dealUpload");
@@ -64,7 +64,7 @@ public class DealBoard_Controller {
 			filedto.setDealFile_number(count);
 			count++;
 		}
-		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장
+		// ④ 게시글 등록에 대한 글 + 첨부되파일의 정보를 DB에 저장 
 		service.insertFile(dto,filedtolist);
 		return "redirect:/deal_listAll3.do?dealType=all";  //리스트페이지로
 	}
@@ -90,7 +90,7 @@ public class DealBoard_Controller {
 		
 		//파일명을 이용해서 다운로드할 파일을 객체로 생성하기
 		//UrlResource resource = new UrlResource("file:" + 파일의 전체경로)  +@ 업로드될 서버의 경로(Path가 필요) 
-		UrlResource resource = new UrlResource("file:" + WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/static/images/dealUpload/"+selectFile.getStoreFilename()));
+		UrlResource resource = new UrlResource("file:" + WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/static/images/dealUpload/"+selectFile.getOriginalFilename()));
 		
 		//파일명에 한글이 있는경우 오류 발생치 않도록 처리
 		//String encodeFilename = UriUtils.encode(파일이름, "UTF-8");

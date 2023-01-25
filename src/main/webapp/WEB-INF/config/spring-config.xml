@@ -103,7 +103,9 @@
 			<exclude-mapping path="/dealType_main.do"/>
 			<exclude-mapping path="/cooperation/list"/>
 			<exclude-mapping path="/auction/auctionBoard"/>
-			<exclude-mapping path="/deal_listAll3.do"/>
+			<exclude-mapping path="/deal_listAll3.do/**"/>
+			<exclude-mapping path="/deal_listAll3.do?dealType=all"/>
+		
 			<beans:bean class="com.multi.ongo.common.LoginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
