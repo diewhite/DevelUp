@@ -542,7 +542,7 @@
 	$(document).ready(function () {
 		/* 홈배너 경매검색 */
 		$("#srchWord2-btn").on("click", function () {
-			location.href="/ongo/serarchData.do?searchData="+$("#srchWord2").val();
+			location.href="/ongo/serarchData.do?tag=board_title&searchData="+$("#srchWord2").val();
 		})//end #srchWord2-btn event
 		/* 홈배너 중고검색 */
 		$("#srchWord1-btn").on("click", function () {

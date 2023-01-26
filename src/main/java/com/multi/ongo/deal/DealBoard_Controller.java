@@ -225,7 +225,7 @@ public class DealBoard_Controller {
 		//System.out.println("tag : " + tag + ",   searchData값 : " +  searchData);
 		ModelAndView mav = new ModelAndView("deallistAll3");
 		List<DealBoard_DTO> dealtotallist = service.searchData(tag, searchData);
-		System.out.println("검색 결과체크 : " + dealtotallist);
+		//System.out.println("검색 결과체크 : " + dealtotallist);
 		mav.addObject("dealtotallist", dealtotallist);
 		return mav;
 	}
