@@ -3,7 +3,7 @@
 #오라클 테이블 사용
 
 ___________________________________________________________________________________________________________________________________________
-#협력업체 테이블
+# 협력업체 테이블
 create table cooperation(
 name varchar2(30) primary key,
 addr varchar2(300),
@@ -11,7 +11,8 @@ content varchar2(500),
 tel varchar2(30),
 email varchar2(100));
 
-#협력업체 거래요청 게시판
+
+# 협력업체 거래요청 게시판
 create table recycle_board(
 no number primary key,
 send_id varchar2(30),
@@ -20,10 +21,10 @@ write_date date,
 title varchar2(500),
 content varchar2(1000));
 
-#협력업체 거래요청 게시판 번호용 시퀀스
+# 협력업체 거래요청 게시판 번호용 시퀀스
 create sequence recycle_seq;
 
-#sample data
+# sample data
 insert into cooperation values('소정자원','서울특별시 강남구 삼성로111길','#폐가전#가구#플라스틱','02-111-1111','psjjava@gmail.com');
 insert into cooperation values('규민강철','경기도 용인시 처인구 명인로1길','#고철#비철#구리#폐전선#철거구','031-222-2222','diewhite9095@gmail.com');
 insert into cooperation values('태원강철','대구 수성구 황금동 70길','#비철#철거#해체#고철#고물상','053-333-3333','gavikim1124@gmail.com');
@@ -33,7 +34,7 @@ insert into cooperation values('윤희자원','전라북도 전주시 송천동 
 
 ___________________________________________________________________________________________________________________________________________
 
-#멤버 테이블 만들기
+# 멤버 테이블 만들기
 create table member2(
 member_no number ,
 member_id varchar2(20) primary key ,
@@ -48,11 +49,11 @@ member_role varchar2(20) ,
 member_date date ,
 member_sign varchar2(20)
 );
-
-#멤버테이블 시퀀스
+  
+# 멤버테이블 시퀀스
 create sequence member_no;
 
-#회원 data
+# 회원 data
 insert into member2 values(member_no.nextval,'admin','1234','관리자','222346',
 '대구광역시 황금로','13길','010-111-2222','Devel-Up@gmail.com','99','2023/01/01','가입');
 insert into member2 values(member_no.nextval,'park','1234','박소정','224567',
@@ -84,7 +85,7 @@ insert into member2 values(member_no.nextval,'윤희자원','1234','성민강철
 ___________________________________________________________________________________________________________________________________________
 
 
-#거래테이블
+# 거래테이블
 create table deal_table2(        
         deal_number number primary key,
         member_id varchar2(20),
@@ -108,11 +109,11 @@ create table deal_file(
 );
 
 
-#특수문자 insert를 위함
+# 특수문자 insert를 위함
 SET DEFINE OFF;
 
 
-#데이터
+# 데이터
 insert into deal_table2 values(deal_no2.nextval, 'park', '중고', '유아동', '판매중', '아기 모빌 팝니다.', 30000, '몇번 사용안하여 상태 좋습니다. 쪽지주세요~', 0, (to_date('2023-01-01','YYYY-MM-DD')),0);
 insert into deal_table2 values(deal_no2.nextval, 'park', '나눔', '디지털&가전', '판매중', '무선 마우스 나눔해요', 0, '반응속도가 저랑 맞지않아 나눔합니다.. 쪽지주세요~', 0, (to_date('2022-12-22','YYYY-MM-DD')),0);
 insert into deal_table2 values(deal_no2.nextval, 'new', '중고', '디지털&가전', '판매중', '샤오미 가습기 판매합니다.', 100000, '분무 잘되고, 건조한 날씨 언능 준비하셔요~. 쪽지주세요~', 0, (to_date('2023-01-02','YYYY-MM-DD')), 0);
@@ -152,7 +153,7 @@ ________________________________________________________________________________
 
 
 
-#쪽지 테이블
+# 쪽지 테이블
 create table note(
    no number(20),
    send_id varchar2(30),
@@ -162,10 +163,10 @@ create table note(
    content varchar2(1000),
    read_chk number(10));
 
-#시퀀스생성
+# 시퀀스생성
 create sequence note_seq;
 
-#데이터
+# 데이터
 insert into note values(note_seq.nextval,'song','park',sysdate,null,'안녕하세요 구매가능한가요?',1);
 insert into note values(note_seq.nextval,'park','song',sysdate,null,'안녕하세요! 네 구매가능하세요!',1);
 insert into note values(note_seq.nextval,'song','park',sysdate,null,'시간언제괜찮으실까요',1);
@@ -177,14 +178,14 @@ insert into note values(note_seq.nextval,'lee','park',sysdate,null,'안녕하세
 insert into note values(note_seq.nextval,'new','park',sysdate,null,'HYPEBOY!',1);
 
 
-#alter table note
+# alter table note
 add constraint no_pk primary key(no);
 
 
 
 ___________________________________________________________________________________________________________________________________________
 
-#2. 거래요청 테이블 생성 
+#  거래요청 테이블 생성 
 create table dealreq(
 dealreq_no number primary key,
 seller_id varchar2(20),
@@ -202,7 +203,7 @@ create sequence dealreq_no;
 
 
 
-#데이터
+# 데이터
 
 insert into dealreq values(
 1, 'park', null, 'test1',to_date(sysdate, 'YYYY-MM-DD'), 1);
@@ -215,13 +216,13 @@ dealreq_no.nextval, 'test1', null, 'park',to_date(sysdate, 'YYYY-MM-DD'), 3);
 
 
 
-#테스트 시나리오 
+# 테스트 시나리오 
 로그인 > 다른 아이디로 작성된 중고거래게시물 > 거래요청 버튼 클릭
 
 
 
 
-#글번호 1번에 대한 거래요청 (판매자 : park) 
+# 글번호 1번에 대한 거래요청 (판매자 : park) 
 insert into dealreq values(
 dealreq_no.nextval, 'park', null, 'kim',to_date(sysdate, 'YYYY-MM-DD'), 1);
 insert into dealreq values(
@@ -232,7 +233,7 @@ insert into dealreq values(
 dealreq_no.nextval, 'park', null, 'lee',to_date(sysdate, 'YYYY-MM-DD'), 1);
 
 
-#결제 테이블 
+# 결제 테이블 
 create table payment (
 seller_id varchar2(20),
 buyer_id varchar2(20),
@@ -245,21 +246,21 @@ auction_number number
 );
 
 
-//시퀀스 생성 
+# 시퀀스 생성 
 create sequence pay_number; 
 
-//fk키 설정 - buyer_id
+# fk키 설정 - buyer_id
 alter table payment add CONSTRAINT payseller_FK 
 FOREIGN KEY(buyer_id) REFERENCES member2(member_id)
 ON DELETE CASCADE; 
 
 
-//fk키 설정 - board_number
+# fk키 설정 - board_number
 alter table payment add CONSTRAINT boardnum_FK 
 FOREIGN KEY(board_number) REFERENCES deal_table2(deal_number)
 ON DELETE CASCADE; 
 
-//fk키 설정 - auction_number
+# fk키 설정 - auction_number
 alter table payment add CONSTRAINT auctionnum_FK 
 FOREIGN KEY(auction_number) REFERENCES auction_table(auction_number)
 ON DELETE CASCADE; 
@@ -268,7 +269,7 @@ ON DELETE CASCADE;
 ___________________________________________________________________________________________________________________________________________
 
 
-//경매테이블
+# 경매테이블
 create table auction_table(
 auction_number number primary key,
 member_id varchar2(20),
@@ -286,7 +287,7 @@ end_date date,
 current_price varchar2(30)
 );
 
-//경매 입찰 테이블
+# 경매 입찰 테이블
 create table auction_bid(
 auction_number number,
 add_user varchar2(20),
@@ -295,7 +296,7 @@ add_time timestamp
 );
 
 
-//경매테이블시퀀스
+# 경매테이블시퀀스
 create sequence auction_number;
 
 
@@ -311,7 +312,7 @@ insert into auction_table values(auction_number.nextval,'new','기타','경매�
 insert into auction_table values(auction_number.nextval,'test2','여성의류','경매중','20년 f/w시즌 단종된 원피스 ',0,sysdate,'12cmx5cmx30cm','345678.png','2000','30000',null,sysdate+(interval '72' hour),0);
 
 
-============================================== 글번호 수동 + 판매자 수정 ===============================================================
+# 글번호 수동 + 판매자 수정
 
 insert into auction_table values(
 '1','song','가구','경매중','더이상 안쓰는 옷장 팝니다',0,'2000x3000x1000',
@@ -339,7 +340,7 @@ insert into auction_table values(
 );
 
 
-#테이블 부분추가
+# 테이블 부분추가
 alter table auction_table add(current_price varchar2(30));
 commit;
 
