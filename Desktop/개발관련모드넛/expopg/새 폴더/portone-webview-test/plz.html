@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>포트원 테스트 결제</title>
+  <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+  <h2>포트원 테스트 결제</h2>
+  <button onclick="requestPay()" style="padding: 10px 20px; font-size: 16px;">결제하기</button>
+
+  <script>
+    function requestPay() {
+      const IMP = window.IMP;
+      IMP.init("imp10391932"); // 포트원 테스트용 가맹점 식별코드
+
+      IMP.request_pay(
+        {
+          pg: "html5_inicis",
+          pay_method: "card",
+          merchant_uid: "mid_" + new Date().getTime(),
+          name: "React Native WebView 테스트 결제",
+          amount: 100,
+          buyer_email: "example@example.com",
+          buyer_name: "홍길동",
+          buyer_tel: "01012345678",
+          m_redirect_url: "https://example.com/payment-complete" // 실제 앱에서는 WebView가 이 URL 변경 감지해야 함
+        },
+        function (rsp) {
+          if (rsp.success) {
+            alert("결제 성공: " + rsp.imp_uid);
+          } else {
+            alert("결제 실패: " + rsp.error_msg);
+          }
+        }
+      );
+    }
+  </script>
+</body>
+</html>
